@@ -1,0 +1,13 @@
+{
+  "repo": "fusionauth",
+  "feeds": [
+    {
+      "source": "https://fusionauth.io/blog/",
+      "feed_url": "https://fusionauth.io/blog/feed.xml",
+      "saved": 10,
+      "title": "FusionAuth Blog"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:28:06Z"
+}
