@@ -67,6 +67,20 @@ common:
     url: https://github.com/fusionauth
   - type: Pricing
     url: https://fusionauth.io/pricing
+  - type: Integrations
+    url: https://fusionauth.io/partners
+integrations:
+  - name: fusionauth partner specialist
+  - name: fusionauth start building
+  - name: FusionAuth AWS Partner
+  - name: FusionAuth AWS Qualified Software badge
+  - name: AICPA SOC 2 Compliance
+  - name: fusionauth ISO 27001 certified
+  - name: fusionauth social github
+  - name: fusionauth social twitter
+  - name: fusionauth social linkedin
+  - name: fusionauth social youtube
+  - name: fusionauth rss feed
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
