@@ -49,21 +49,21 @@ apis:
       - type: SDKs
         url: https://fusionauth.io/docs/sdks/
 common:
-  - type: Getting Started
+  - type: GettingStarted
     url: https://fusionauth.io/docs/get-started/
   - type: SDKs
     url: https://fusionauth.io/docs/sdks/
-  - type: Change Log
+  - type: ChangeLog
     url: https://fusionauth.io/docs/release-notes/
   - type: Blog
     url: https://fusionauth.io/blog/
   - type: Login
     url: https://login.fusionauth.io/oauth2/authorize
-  - type: Sign Up
+  - type: SignUp
     url: https://login.fusionauth.io/oauth2/register
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://fusionauth.io/privacy-policy
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/fusionauth
   - type: Pricing
     url: https://fusionauth.io/pricing
