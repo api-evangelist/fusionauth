@@ -18,7 +18,7 @@ tags:
   - Single Sign-On
   - Multi-Factor Authentication
 created: '2024-09-26'
-modified: '2026-04-28'
+modified: '2026-05-19'
 position: Consumer
 access: 3rd-Party
 url: >-
@@ -69,6 +69,12 @@ common:
     url: https://fusionauth.io/pricing
   - type: Integrations
     url: https://fusionauth.io/partners
+  - name: MCP Server
+    url: https://github.com/FusionAuth/fusionauth-mcp-api
+    type: MCPServer
+  - name: Agent Skills
+    url: https://github.com/FusionAuth/webhook-skills
+    type: AgentSkill
 integrations:
   - name: fusionauth partner specialist
   - name: fusionauth start building
