@@ -49,6 +49,8 @@ apis:
       - type: SDKs
         url: https://fusionauth.io/docs/sdks/
 common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/fusionauth
   - type: GettingStarted
     url: https://fusionauth.io/docs/get-started/
   - type: SDKs
