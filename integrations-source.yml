@@ -1,0 +1,281 @@
+# Curated top FusionAuth integrations grouped by category.
+# Each entry becomes one Naftiko capability YAML in integrations/.
+# Categories reflect the systems-of-record that identity teams routinely pair with FusionAuth:
+# CRM/billing (Stripe, Salesforce, HubSpot), workspace identity (Microsoft Entra, Google Workspace),
+# IdP migrations (Okta, Auth0), developer login (GitHub OAuth), notification + audit fan-out
+# (Slack, Splunk), AI usage telemetry (Anthropic), and MFA delivery (Twilio).
+# FusionAuth's REST API base path is /api on the customer's FusionAuth host
+# (e.g. https://your-fusionauth-host/api/user).
+
+# Billing (1)
+- partner: stripe
+  name: Promote FusionAuth users to Stripe customers
+  category: Billing
+  use_case: When a FusionAuth user is created or registers for a paid application, upsert the matching Stripe Customer (keyed on email) and stash the Stripe customer ID back onto the FusionAuth user so billing, dunning, and revenue reporting stay reconciled to one identity.
+  partner_baseUri: https://api.stripe.com
+  partner_api: Stripe API
+  provider_ops:
+    - method: GET
+      path: /api/user/{userId}
+      name: getUser
+      description: Retrieve a FusionAuth user by id.
+    - method: PATCH
+      path: /api/user/{userId}
+      name: patchUser
+      description: Patch a FusionAuth user to store the Stripe customer id in data.
+  partner_ops:
+    - method: POST
+      path: /v1/customers
+      name: createCustomer
+    - method: POST
+      path: /v1/customers/{id}
+      name: updateCustomer
+
+# CRM (2)
+- partner: salesforce
+  name: Sync FusionAuth users to Salesforce contacts
+  category: CRM
+  use_case: When a FusionAuth user registers, verifies email, or updates profile, upsert the corresponding Salesforce Contact by email so reps see signup, MFA enrollment, and last-login signal directly in the timeline without standing up a custom auth-event bus.
+  partner_baseUri: https://yourinstance.my.salesforce.com
+  partner_api: Salesforce REST API
+  provider_ops:
+    - method: GET
+      path: /api/user/{userId}
+      name: getUser
+      description: Retrieve the FusionAuth user driving the sync.
+    - method: GET
+      path: /api/user/registration/{userId}/{applicationId}
+      name: getRegistration
+      description: Read the user's application registration for role/role-grant context.
+  partner_ops:
+    - method: POST
+      path: /services/data/v60.0/sobjects/Contact
+      name: createContact
+    - method: PATCH
+      path: /services/data/v60.0/sobjects/Contact/{id}
+      name: updateContact
+
+- partner: hubspot
+  name: Push FusionAuth registrations into HubSpot contacts and lifecycle
+  category: CRM
+  use_case: When a FusionAuth user registers for an application, upsert the matching HubSpot Contact and set lifecycle stage to "product qualified lead" so marketing automation, sequences, and lead scoring stay in step with real signups instead of stale form fills.
+  partner_baseUri: https://api.hubapi.com
+  partner_api: HubSpot CRM API
+  provider_ops:
+    - method: GET
+      path: /api/user/{userId}
+      name: getUser
+      description: Get the FusionAuth user record.
+    - method: GET
+      path: /api/application/{applicationId}
+      name: getApplication
+      description: Resolve the FusionAuth application for lifecycle mapping.
+  partner_ops:
+    - method: POST
+      path: /crm/v3/objects/contacts
+      name: createOrUpdateContact
+    - method: PATCH
+      path: /crm/v3/objects/contacts/{id}
+      name: updateContact
+
+# ChatOps / Notifications (1)
+- partner: slack
+  name: Stream FusionAuth login + admin events to Slack
+  category: ChatOps
+  use_case: Watch the FusionAuth webhook event stream and post high-signal events (failed logins, new admin grants, IP-ACL changes, breached-password detections) into a dedicated Slack channel so the security on-call sees suspicious identity activity without spelunking the audit log.
+  partner_baseUri: https://slack.com/api
+  partner_api: Slack Web API
+  provider_ops:
+    - method: GET
+      path: /api/system/audit-log
+      name: searchAuditLogs
+      description: Search the FusionAuth audit log for the events to fan out.
+    - method: GET
+      path: /api/system/event-log
+      name: searchEventLog
+      description: Search the FusionAuth event log for system events.
+  partner_ops:
+    - method: POST
+      path: /chat.postMessage
+      name: postMessage
+
+# Workspace Identity Federation (2)
+- partner: microsoft-entra
+  name: Federate FusionAuth with Microsoft Entra ID
+  category: Federation
+  use_case: Stand up an OIDC identity provider in FusionAuth pointing at Microsoft Entra ID (Azure AD) and reconcile incoming Entra users to FusionAuth users so enterprise customers can SSO into your app with their Microsoft tenant credentials without you owning their employee directory.
+  partner_baseUri: https://graph.microsoft.com
+  partner_api: Microsoft Graph API
+  provider_ops:
+    - method: POST
+      path: /api/identity-provider
+      name: createIdentityProvider
+      description: Create or update the OIDC identity provider entry for Entra.
+    - method: POST
+      path: /api/identity-provider/link
+      name: linkIdentityProvider
+      description: Link the inbound Entra identity to a FusionAuth user.
+  partner_ops:
+    - method: GET
+      path: /v1.0/users/{id}
+      name: getEntraUser
+    - method: GET
+      path: /v1.0/me/memberOf
+      name: listGroupMemberships
+
+- partner: google-workspace
+  name: Federate FusionAuth with Google Workspace SSO
+  category: Federation
+  use_case: Provision a Google OIDC identity provider in FusionAuth and reconcile inbound Google Workspace users (with domain claim) to FusionAuth users so customers with Google-backed corporate identity can log in to your application with one click while their group membership drives role grants.
+  partner_baseUri: https://www.googleapis.com
+  partner_api: Google Workspace Admin SDK
+  provider_ops:
+    - method: POST
+      path: /api/identity-provider
+      name: createIdentityProvider
+      description: Create or update the Google OIDC identity provider entry.
+    - method: POST
+      path: /api/identity-provider/link
+      name: linkIdentityProvider
+      description: Link the inbound Google identity to a FusionAuth user.
+  partner_ops:
+    - method: GET
+      path: /admin/directory/v1/users/{userKey}
+      name: getWorkspaceUser
+    - method: GET
+      path: /admin/directory/v1/groups
+      name: listWorkspaceGroups
+
+# IdP Migration (2)
+- partner: okta
+  name: Migrate Okta users into FusionAuth
+  category: Migration
+  use_case: Pull users (and optionally group memberships) out of an Okta tenant via the Users API, bulk-import them into FusionAuth with original Okta user-id stashed in data, and rewire the application's identity provider so customers can walk off Okta licensing without forcing a global password reset.
+  partner_baseUri: https://your-okta-domain.okta.com
+  partner_api: Okta Users API
+  provider_ops:
+    - method: POST
+      path: /api/user/import
+      name: bulkImportUsers
+      description: Bulk-import migrated users into FusionAuth.
+    - method: POST
+      path: /api/user/registration/{userId}
+      name: createRegistration
+      description: Register the imported user against the target application.
+  partner_ops:
+    - method: GET
+      path: /api/v1/users
+      name: listOktaUsers
+    - method: GET
+      path: /api/v1/users/{userId}/groups
+      name: listOktaUserGroups
+
+- partner: auth0
+  name: Migrate Auth0 users into FusionAuth
+  category: Migration
+  use_case: Export an Auth0 tenant's users (including app metadata) via the Management API, bulk-import them into FusionAuth, and stand up an Auth0-shaped identity provider so existing Auth0-issued tokens keep validating during cutover while costs collapse onto FusionAuth's flat pricing.
+  partner_baseUri: https://your-tenant.auth0.com
+  partner_api: Auth0 Management API
+  provider_ops:
+    - method: POST
+      path: /api/user/import
+      name: bulkImportUsers
+      description: Bulk-import the migrated Auth0 users into FusionAuth.
+    - method: POST
+      path: /api/identity-provider
+      name: createIdentityProvider
+      description: Create an Auth0-style identity provider for the cutover window.
+  partner_ops:
+    - method: GET
+      path: /api/v2/users
+      name: listAuth0Users
+    - method: GET
+      path: /api/v2/users/{id}
+      name: getAuth0User
+
+# Developer OAuth (1)
+- partner: github
+  name: Add GitHub OAuth login to FusionAuth applications
+  category: Social Login
+  use_case: Register GitHub as an OAuth identity provider in FusionAuth and reconcile inbound GitHub users (login, primary email, org memberships) to FusionAuth users so developer-facing products can ship one-click GitHub login with org-membership-driven role grants instead of hand-rolling an OAuth dance.
+  partner_baseUri: https://api.github.com
+  partner_api: GitHub REST API
+  provider_ops:
+    - method: POST
+      path: /api/identity-provider
+      name: createIdentityProvider
+      description: Create the GitHub OAuth identity provider entry.
+    - method: POST
+      path: /api/identity-provider/link
+      name: linkIdentityProvider
+      description: Link the inbound GitHub identity to a FusionAuth user.
+  partner_ops:
+    - method: GET
+      path: /user
+      name: getGitHubUser
+    - method: GET
+      path: /user/orgs
+      name: listGitHubUserOrgs
+
+# AI Usage Telemetry (1)
+- partner: anthropic
+  name: Attribute Anthropic spend back to FusionAuth users
+  category: AI Telemetry
+  use_case: For LLM-backed applications, attribute Anthropic Messages API usage to the FusionAuth user that initiated the call by tagging each request with the FusionAuth user id and stashing token / cost telemetry back onto the user's data block so product and finance can see per-user AI economics in one place.
+  partner_baseUri: https://api.anthropic.com
+  partner_api: Anthropic Messages API
+  provider_ops:
+    - method: GET
+      path: /api/user/{userId}
+      name: getUser
+      description: Get the FusionAuth user driving the LLM call.
+    - method: PATCH
+      path: /api/user/{userId}
+      name: patchUser
+      description: Patch user data with token usage and cost telemetry.
+  partner_ops:
+    - method: POST
+      path: /v1/messages
+      name: createMessage
+
+# Audit / SIEM (1)
+- partner: splunk
+  name: Forward FusionAuth audit + event logs to Splunk HEC
+  category: Audit
+  use_case: Continuously drain the FusionAuth audit log and event log into Splunk via the HTTP Event Collector so SecOps can correlate identity activity (failed logins, role grants, IdP linking, key rotation) with the rest of the enterprise telemetry without writing custom log shippers.
+  partner_baseUri: https://splunk-hec.example.com:8088
+  partner_api: Splunk HTTP Event Collector
+  provider_ops:
+    - method: GET
+      path: /api/system/audit-log
+      name: searchAuditLogs
+      description: Page the FusionAuth audit log for forwarding.
+    - method: GET
+      path: /api/system/event-log
+      name: searchEventLog
+      description: Page the FusionAuth event log for forwarding.
+  partner_ops:
+    - method: POST
+      path: /services/collector/event
+      name: postEvent
+
+# MFA Delivery (1)
+- partner: twilio
+  name: Deliver FusionAuth MFA codes via Twilio SMS
+  category: MFA
+  use_case: Wire a FusionAuth SMS messenger to Twilio so two-factor enrollment and challenge codes route through Twilio Programmable Messaging, falling back across sender pools, and the customer's MFA reliability lives on a real telecom provider instead of an ad-hoc SMTP-to-SMS hack.
+  partner_baseUri: https://api.twilio.com
+  partner_api: Twilio Programmable Messaging API
+  provider_ops:
+    - method: POST
+      path: /api/messenger
+      name: createMessenger
+      description: Create or update the Twilio-backed SMS messenger in FusionAuth.
+    - method: POST
+      path: /api/two-factor/send
+      name: sendTwoFactorCode
+      description: Trigger FusionAuth to send the two-factor code through the messenger.
+  partner_ops:
+    - method: POST
+      path: /2010-04-01/Accounts/{AccountSid}/Messages.json
+      name: sendSms

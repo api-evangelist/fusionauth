@@ -1,0 +1,124 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Federate FusionAuth with Google Workspace SSO
+  description: Provision a Google OIDC identity provider in FusionAuth and reconcile inbound Google Workspace users (with domain claim) to FusionAuth users so customers with Google-backed corporate identity can log in to your application with one click while their group membership drives role grants.
+  tags:
+  - FusionAuth
+  - Integration
+  - Federation
+  - google-workspace
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    FUSIONAUTH_API_KEY: FUSIONAUTH_API_KEY
+    GOOGLE_WORKSPACE_API_KEY: GOOGLE_WORKSPACE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: fusionauth
+    baseUri: https://your-fusionauth-host/api
+    description: FusionAuth API operations consumed by this integration.
+    resources:
+    - name: api-identity-provider
+      path: /api/identity-provider
+      operations:
+      - name: createidentityprovider
+        method: POST
+        description: Create or update the Google OIDC identity provider entry.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-identity-provider-link
+      path: /api/identity-provider/link
+      operations:
+      - name: linkidentityprovider
+        method: POST
+        description: Link the inbound Google identity to a FusionAuth user.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  - type: http
+    namespace: google-workspace
+    baseUri: https://www.googleapis.com
+    description: Google Workspace Admin SDK operations consumed by this integration.
+    resources:
+    - name: admin-directory-v1-users-userkey
+      path: /admin/directory/v1/users/{userKey}
+      operations:
+      - name: getworkspaceuser
+        method: GET
+        description: 'Google Workspace Admin SDK: getWorkspaceUser'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userKey
+          in: path
+          type: string
+          description: Path parameter userKey.
+          required: true
+    - name: admin-directory-v1-groups
+      path: /admin/directory/v1/groups
+      operations:
+      - name: listworkspacegroups
+        method: GET
+        description: 'Google Workspace Admin SDK: listWorkspaceGroups'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters: []
+  exposes:
+  - type: mcp
+    namespace: fusionauth-google-workspace-mcp
+    description: MCP adapter for the fusionauth-google-workspace integration.
+    tools:
+    - name: fusionauth_google_workspace
+      description: Execute the fusionauth google workspace integration end-to-end.
+      inputSchema:
+        type: object
+        properties:
+          trigger_event:
+            type: object
+            description: Triggering event payload.
+        required:
+        - trigger_event
+  - type: rest
+    namespace: fusionauth-google-workspace-rest
+    port: 8080
+    description: REST adapter for the fusionauth-google-workspace integration.
+    resources:
+    - path: /fusionauth-google-workspace
+      name: fusionauth-google-workspace
+      description: REST surface for the fusionauth-google-workspace integration.
+      operations:
+      - method: POST
+        name: trigger
+        description: Trigger the fusionauth-google-workspace integration.
+        call: fusionauth_google_workspace
+        with:
+          trigger_event: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.

@@ -1,0 +1,338 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: FusionAuth API — Two-Factor
+  description: 'FusionAuth API — Two-Factor. 7 operations. Lead operation: Generate a Two Factor secret that can be used to enable Two Factor authentication for a User. The response will contain both the secret and . Self-contained Naftiko capability covering one business surface.'
+  tags:
+  - FusionAuth
+  - Two-Factor
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    FUSIONAUTH_API_KEY: FUSIONAUTH_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: fusionauth-two-factor
+    baseUri: http://localhost:9011
+    description: FusionAuth API — Two-Factor business capability. Self-contained, no shared references.
+    resources:
+    - name: api-two-factor-login
+      path: /api/two-factor/login
+      operations:
+      - name: twofactorloginwithid
+        method: POST
+        description: Complete login using a 2FA challenge
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-two-factor-secret
+      path: /api/two-factor/secret
+      operations:
+      - name: generatetwofactorsecretusingjwtwithid
+        method: GET
+        description: 'Generate a Two Factor secret that can be used to enable Two Factor authentication for a User. The response will contain both the secret and '
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters: []
+    - name: api-two-factor-send
+      path: /api/two-factor/send
+      operations:
+      - name: sendtwofactorcodeforenabledisablewithid
+        method: POST
+        description: Send a Two Factor authentication code to assist in setting up Two Factor authentication or disabling.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-two-factor-send-twofactorid
+      path: /api/two-factor/send/{twoFactorId}
+      operations:
+      - name: sendtwofactorcodeforloginusingmethodwithid
+        method: POST
+        description: Send a Two Factor authentication code to allow the completion of Two Factor authentication.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: twoFactorId
+          in: path
+          type: string
+          description: The Id returned by the Login API necessary to complete Two Factor authentication.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-two-factor-start
+      path: /api/two-factor/start
+      operations:
+      - name: starttwofactorloginwithid
+        method: POST
+        description: Start a Two-Factor login request by generating a two-factor identifier. This code can then be sent to the Two Factor Send  API (/api/two-fac
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-two-factor-status
+      path: /api/two-factor/status
+      operations:
+      - name: retrievetwofactorstatuswithrequestwithid
+        method: POST
+        description: Retrieve a user's two-factor status.  This can be used to see if a user will need to complete a two-factor challenge to complete a login, an
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-two-factor-status-twofactortrustid
+      path: /api/two-factor/status/{twoFactorTrustId}
+      operations:
+      - name: retrievetwofactorstatuswithid
+        method: GET
+        description: Retrieve a user's two-factor status.  This can be used to see if a user will need to complete a two-factor challenge to complete a login, an
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: query
+          type: string
+          description: The user Id to retrieve the Two-Factor status.
+        - name: applicationId
+          in: query
+          type: string
+          description: The optional applicationId to verify.
+        - name: twoFactorTrustId
+          in: path
+          type: string
+          description: The optional two-factor trust Id to verify.
+          required: true
+  exposes:
+  - type: rest
+    namespace: fusionauth-two-factor-rest
+    port: 8080
+    description: REST adapter for FusionAuth API — Two-Factor. One resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/api/two-factor/login
+      name: api-two-factor-login
+      description: REST surface for api-two-factor-login.
+      operations:
+      - method: POST
+        name: twofactorloginwithid
+        description: Complete login using a 2FA challenge
+        call: fusionauth-two-factor.twofactorloginwithid
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/two-factor/secret
+      name: api-two-factor-secret
+      description: REST surface for api-two-factor-secret.
+      operations:
+      - method: GET
+        name: generatetwofactorsecretusingjwtwithid
+        description: 'Generate a Two Factor secret that can be used to enable Two Factor authentication for a User. The response will contain both the secret and '
+        call: fusionauth-two-factor.generatetwofactorsecretusingjwtwithid
+        with: {}
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/two-factor/send
+      name: api-two-factor-send
+      description: REST surface for api-two-factor-send.
+      operations:
+      - method: POST
+        name: sendtwofactorcodeforenabledisablewithid
+        description: Send a Two Factor authentication code to assist in setting up Two Factor authentication or disabling.
+        call: fusionauth-two-factor.sendtwofactorcodeforenabledisablewithid
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/two-factor/send/{twoFactorId}
+      name: api-two-factor-send-twofactorid
+      description: REST surface for api-two-factor-send-twofactorid.
+      operations:
+      - method: POST
+        name: sendtwofactorcodeforloginusingmethodwithid
+        description: Send a Two Factor authentication code to allow the completion of Two Factor authentication.
+        call: fusionauth-two-factor.sendtwofactorcodeforloginusingmethodwithid
+        with:
+          twoFactorId: rest.twoFactorId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/two-factor/start
+      name: api-two-factor-start
+      description: REST surface for api-two-factor-start.
+      operations:
+      - method: POST
+        name: starttwofactorloginwithid
+        description: Start a Two-Factor login request by generating a two-factor identifier. This code can then be sent to the Two Factor Send  API (/api/two-fac
+        call: fusionauth-two-factor.starttwofactorloginwithid
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/two-factor/status
+      name: api-two-factor-status
+      description: REST surface for api-two-factor-status.
+      operations:
+      - method: POST
+        name: retrievetwofactorstatuswithrequestwithid
+        description: Retrieve a user's two-factor status.  This can be used to see if a user will need to complete a two-factor challenge to complete a login, an
+        call: fusionauth-two-factor.retrievetwofactorstatuswithrequestwithid
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/two-factor/status/{twoFactorTrustId}
+      name: api-two-factor-status-twofactortrustid
+      description: REST surface for api-two-factor-status-twofactortrustid.
+      operations:
+      - method: GET
+        name: retrievetwofactorstatuswithid
+        description: Retrieve a user's two-factor status.  This can be used to see if a user will need to complete a two-factor challenge to complete a login, an
+        call: fusionauth-two-factor.retrievetwofactorstatuswithid
+        with:
+          userId: rest.userId
+          applicationId: rest.applicationId
+          twoFactorTrustId: rest.twoFactorTrustId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: fusionauth-two-factor-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for FusionAuth API — Two-Factor. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: fusionauth-twofactorloginwithid
+      description: Complete login using a 2FA challenge
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-two-factor.twofactorloginwithid
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-generatetwofactorsecretusingjwtwithid
+      description: 'Generate a Two Factor secret that can be used to enable Two Factor authentication for a User. The response will contain both the secret and '
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fusionauth-two-factor.generatetwofactorsecretusingjwtwithid
+      with: {}
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-sendtwofactorcodeforenabledisablewithid
+      description: Send a Two Factor authentication code to assist in setting up Two Factor authentication or disabling.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-two-factor.sendtwofactorcodeforenabledisablewithid
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-sendtwofactorcodeforloginusingmethodwithid
+      description: Send a Two Factor authentication code to allow the completion of Two Factor authentication.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-two-factor.sendtwofactorcodeforloginusingmethodwithid
+      with:
+        twoFactorId: tools.twoFactorId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-starttwofactorloginwithid
+      description: Start a Two-Factor login request by generating a two-factor identifier. This code can then be sent to the Two Factor Send  API (/api/two-fac
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-two-factor.starttwofactorloginwithid
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-retrievetwofactorstatuswithrequestwithid
+      description: Retrieve a user's two-factor status.  This can be used to see if a user will need to complete a two-factor challenge to complete a login, an
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-two-factor.retrievetwofactorstatuswithrequestwithid
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-retrievetwofactorstatuswithid
+      description: Retrieve a user's two-factor status.  This can be used to see if a user will need to complete a two-factor challenge to complete a login, an
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fusionauth-two-factor.retrievetwofactorstatuswithid
+      with:
+        userId: tools.userId
+        applicationId: tools.applicationId
+        twoFactorTrustId: tools.twoFactorTrustId
+      outputParameters:
+      - type: object
+        mapping: $.

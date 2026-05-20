@@ -1,0 +1,451 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: FusionAuth API — JWT
+  description: 'FusionAuth API — JWT. 10 operations. Lead operation: Issue a new access token (JWT) for the requested Application after ensuring the provided JWT is valid. A valid access token is properly sign. Self-contained Naftiko capability covering one business surface.'
+  tags:
+  - FusionAuth
+  - JWT
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    FUSIONAUTH_API_KEY: FUSIONAUTH_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: fusionauth-jwt
+    baseUri: http://localhost:9011
+    description: FusionAuth API — JWT business capability. Self-contained, no shared references.
+    resources:
+    - name: api-jwt-issue
+      path: /api/jwt/issue
+      operations:
+      - name: issuejwtwithid
+        method: GET
+        description: Issue a new access token (JWT) for the requested Application after ensuring the provided JWT is valid. A valid access token is properly sign
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: applicationId
+          in: query
+          type: string
+          description: The Application Id for which you are requesting a new access token be issued.
+        - name: refreshToken
+          in: query
+          type: string
+          description: An existing refresh token used to request a refresh token in addition to a JWT in the response. <p>The target application represented by the applicationId request parameter must have refresh tokens en
+    - name: api-jwt-public-key
+      path: /api/jwt/public-key
+      operations:
+      - name: retrievejwtpublickey
+        method: GET
+        description: 'Retrieves the Public Key configured for verifying the JSON Web Tokens (JWT) issued by the Login API by the Application Id. OR Retrieves the '
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: applicationId
+          in: query
+          type: string
+          description: The Id of the Application for which this key is used.
+        - name: keyId
+          in: query
+          type: string
+          description: The Id of the public key (kid).
+    - name: api-jwt-reconcile
+      path: /api/jwt/reconcile
+      operations:
+      - name: reconcilejwtwithid
+        method: POST
+        description: Reconcile a User to FusionAuth using JWT issued from another Identity Provider.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-jwt-refresh
+      path: /api/jwt/refresh
+      operations:
+      - name: exchangerefreshtokenforjwtwithid
+        method: POST
+        description: Exchange a refresh token for a new JWT.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: retrieverefreshtokenswithid
+        method: GET
+        description: Retrieves the refresh tokens that belong to the user with the given Id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: query
+          type: string
+          description: The Id of the user.
+      - name: deletejwtrefresh
+        method: DELETE
+        description: Revokes refresh tokens using the information in the JSON body. The handling for this method is the same as the revokeRefreshToken method and
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: query
+          type: string
+          description: The unique Id of the user that you want to delete all refresh tokens for.
+        - name: applicationId
+          in: query
+          type: string
+          description: The unique Id of the application that you want to delete refresh tokens for.
+        - name: token
+          in: query
+          type: string
+          description: The refresh token to delete.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-jwt-refresh-tokenid
+      path: /api/jwt/refresh/{tokenId}
+      operations:
+      - name: retrieverefreshtokenbyidwithid
+        method: GET
+        description: Retrieves a single refresh token by unique Id. This is not the same thing as the string value of the refresh token. If you have that, you al
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: tokenId
+          in: path
+          type: string
+          description: The Id of the token.
+          required: true
+      - name: revokerefreshtokenbyidwithid
+        method: DELETE
+        description: Revokes a single refresh token by the unique Id. The unique Id is not sensitive as it cannot be used to obtain another JWT.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: tokenId
+          in: path
+          type: string
+          description: The unique Id of the token to delete.
+          required: true
+    - name: api-jwt-validate
+      path: /api/jwt/validate
+      operations:
+      - name: validatejwtwithid
+        method: GET
+        description: Validates the provided JWT (encoded JWT string) to ensure the token is valid. A valid access token is properly signed and not expired.  This
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters: []
+    - name: api-jwt-vend
+      path: /api/jwt/vend
+      operations:
+      - name: vendjwtwithid
+        method: POST
+        description: It's a JWT vending machine!  Issue a new access token (JWT) with the provided claims in the request. This JWT is not scoped to a tenant or u
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+  exposes:
+  - type: rest
+    namespace: fusionauth-jwt-rest
+    port: 8080
+    description: REST adapter for FusionAuth API — JWT. One resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/api/jwt/issue
+      name: api-jwt-issue
+      description: REST surface for api-jwt-issue.
+      operations:
+      - method: GET
+        name: issuejwtwithid
+        description: Issue a new access token (JWT) for the requested Application after ensuring the provided JWT is valid. A valid access token is properly sign
+        call: fusionauth-jwt.issuejwtwithid
+        with:
+          applicationId: rest.applicationId
+          refreshToken: rest.refreshToken
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/jwt/public-key
+      name: api-jwt-public-key
+      description: REST surface for api-jwt-public-key.
+      operations:
+      - method: GET
+        name: retrievejwtpublickey
+        description: 'Retrieves the Public Key configured for verifying the JSON Web Tokens (JWT) issued by the Login API by the Application Id. OR Retrieves the '
+        call: fusionauth-jwt.retrievejwtpublickey
+        with:
+          applicationId: rest.applicationId
+          keyId: rest.keyId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/jwt/reconcile
+      name: api-jwt-reconcile
+      description: REST surface for api-jwt-reconcile.
+      operations:
+      - method: POST
+        name: reconcilejwtwithid
+        description: Reconcile a User to FusionAuth using JWT issued from another Identity Provider.
+        call: fusionauth-jwt.reconcilejwtwithid
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/jwt/refresh
+      name: api-jwt-refresh
+      description: REST surface for api-jwt-refresh.
+      operations:
+      - method: POST
+        name: exchangerefreshtokenforjwtwithid
+        description: Exchange a refresh token for a new JWT.
+        call: fusionauth-jwt.exchangerefreshtokenforjwtwithid
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: retrieverefreshtokenswithid
+        description: Retrieves the refresh tokens that belong to the user with the given Id.
+        call: fusionauth-jwt.retrieverefreshtokenswithid
+        with:
+          userId: rest.userId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletejwtrefresh
+        description: Revokes refresh tokens using the information in the JSON body. The handling for this method is the same as the revokeRefreshToken method and
+        call: fusionauth-jwt.deletejwtrefresh
+        with:
+          userId: rest.userId
+          applicationId: rest.applicationId
+          token: rest.token
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/jwt/refresh/{tokenId}
+      name: api-jwt-refresh-tokenid
+      description: REST surface for api-jwt-refresh-tokenid.
+      operations:
+      - method: GET
+        name: retrieverefreshtokenbyidwithid
+        description: Retrieves a single refresh token by unique Id. This is not the same thing as the string value of the refresh token. If you have that, you al
+        call: fusionauth-jwt.retrieverefreshtokenbyidwithid
+        with:
+          tokenId: rest.tokenId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: revokerefreshtokenbyidwithid
+        description: Revokes a single refresh token by the unique Id. The unique Id is not sensitive as it cannot be used to obtain another JWT.
+        call: fusionauth-jwt.revokerefreshtokenbyidwithid
+        with:
+          tokenId: rest.tokenId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/jwt/validate
+      name: api-jwt-validate
+      description: REST surface for api-jwt-validate.
+      operations:
+      - method: GET
+        name: validatejwtwithid
+        description: Validates the provided JWT (encoded JWT string) to ensure the token is valid. A valid access token is properly signed and not expired.  This
+        call: fusionauth-jwt.validatejwtwithid
+        with: {}
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/jwt/vend
+      name: api-jwt-vend
+      description: REST surface for api-jwt-vend.
+      operations:
+      - method: POST
+        name: vendjwtwithid
+        description: It's a JWT vending machine!  Issue a new access token (JWT) with the provided claims in the request. This JWT is not scoped to a tenant or u
+        call: fusionauth-jwt.vendjwtwithid
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: fusionauth-jwt-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for FusionAuth API — JWT. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: fusionauth-issuejwtwithid
+      description: Issue a new access token (JWT) for the requested Application after ensuring the provided JWT is valid. A valid access token is properly sign
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fusionauth-jwt.issuejwtwithid
+      with:
+        applicationId: tools.applicationId
+        refreshToken: tools.refreshToken
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-retrievejwtpublickey
+      description: 'Retrieves the Public Key configured for verifying the JSON Web Tokens (JWT) issued by the Login API by the Application Id. OR Retrieves the '
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fusionauth-jwt.retrievejwtpublickey
+      with:
+        applicationId: tools.applicationId
+        keyId: tools.keyId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-reconcilejwtwithid
+      description: Reconcile a User to FusionAuth using JWT issued from another Identity Provider.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-jwt.reconcilejwtwithid
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-exchangerefreshtokenforjwtwithid
+      description: Exchange a refresh token for a new JWT.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-jwt.exchangerefreshtokenforjwtwithid
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-retrieverefreshtokenswithid
+      description: Retrieves the refresh tokens that belong to the user with the given Id.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fusionauth-jwt.retrieverefreshtokenswithid
+      with:
+        userId: tools.userId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-deletejwtrefresh
+      description: Revokes refresh tokens using the information in the JSON body. The handling for this method is the same as the revokeRefreshToken method and
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: fusionauth-jwt.deletejwtrefresh
+      with:
+        userId: tools.userId
+        applicationId: tools.applicationId
+        token: tools.token
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-retrieverefreshtokenbyidwithid
+      description: Retrieves a single refresh token by unique Id. This is not the same thing as the string value of the refresh token. If you have that, you al
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fusionauth-jwt.retrieverefreshtokenbyidwithid
+      with:
+        tokenId: tools.tokenId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-revokerefreshtokenbyidwithid
+      description: Revokes a single refresh token by the unique Id. The unique Id is not sensitive as it cannot be used to obtain another JWT.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: fusionauth-jwt.revokerefreshtokenbyidwithid
+      with:
+        tokenId: tools.tokenId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-validatejwtwithid
+      description: Validates the provided JWT (encoded JWT string) to ensure the token is valid. A valid access token is properly signed and not expired.  This
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fusionauth-jwt.validatejwtwithid
+      with: {}
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-vendjwtwithid
+      description: It's a JWT vending machine!  Issue a new access token (JWT) with the provided claims in the request. This JWT is not scoped to a tenant or u
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-jwt.vendjwtwithid
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

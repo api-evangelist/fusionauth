@@ -1,0 +1,117 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Attribute Anthropic spend back to FusionAuth users
+  description: For LLM-backed applications, attribute Anthropic Messages API usage to the FusionAuth user that initiated the call by tagging each request with the FusionAuth user id and stashing token / cost telemetry back onto the user's data block so product and finance can see per-user AI economics in one place.
+  tags:
+  - FusionAuth
+  - Integration
+  - AI Telemetry
+  - anthropic
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    FUSIONAUTH_API_KEY: FUSIONAUTH_API_KEY
+    ANTHROPIC_API_KEY: ANTHROPIC_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: fusionauth
+    baseUri: https://your-fusionauth-host/api
+    description: FusionAuth API operations consumed by this integration.
+    resources:
+    - name: api-user-userid
+      path: /api/user/{userId}
+      operations:
+      - name: getuser
+        method: GET
+        description: Get the FusionAuth user driving the LLM call.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          description: Path parameter userId.
+          required: true
+    - name: api-user-userid
+      path: /api/user/{userId}
+      operations:
+      - name: patchuser
+        method: PATCH
+        description: Patch user data with token usage and cost telemetry.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          description: Path parameter userId.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  - type: http
+    namespace: anthropic
+    baseUri: https://api.anthropic.com
+    description: Anthropic Messages API operations consumed by this integration.
+    resources:
+    - name: v1-messages
+      path: /v1/messages
+      operations:
+      - name: createmessage
+        method: POST
+        description: 'Anthropic Messages API: createMessage'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: mcp
+    namespace: fusionauth-anthropic-mcp
+    description: MCP adapter for the fusionauth-anthropic integration.
+    tools:
+    - name: fusionauth_anthropic
+      description: Execute the fusionauth anthropic integration end-to-end.
+      inputSchema:
+        type: object
+        properties:
+          trigger_event:
+            type: object
+            description: Triggering event payload.
+        required:
+        - trigger_event
+  - type: rest
+    namespace: fusionauth-anthropic-rest
+    port: 8080
+    description: REST adapter for the fusionauth-anthropic integration.
+    resources:
+    - path: /fusionauth-anthropic
+      name: fusionauth-anthropic
+      description: REST surface for the fusionauth-anthropic integration.
+      operations:
+      - method: POST
+        name: trigger
+        description: Trigger the fusionauth-anthropic integration.
+        call: fusionauth_anthropic
+        with:
+          trigger_event: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.

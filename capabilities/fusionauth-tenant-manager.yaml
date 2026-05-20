@@ -1,0 +1,277 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: FusionAuth API — Tenant Manager
+  description: 'FusionAuth API — Tenant Manager. 6 operations. Lead operation: Updates, via PATCH, the Tenant Manager configuration.. Self-contained Naftiko capability covering one business surface.'
+  tags:
+  - FusionAuth
+  - Tenant Manager
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    FUSIONAUTH_API_KEY: FUSIONAUTH_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: fusionauth-tenant-manager
+    baseUri: http://localhost:9011
+    description: FusionAuth API — Tenant Manager business capability. Self-contained, no shared references.
+    resources:
+    - name: api-tenant-manager
+      path: /api/tenant-manager
+      operations:
+      - name: patchtenantmanagerconfigurationwithid
+        method: PATCH
+        description: Updates, via PATCH, the Tenant Manager configuration.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: updatetenantmanagerconfigurationwithid
+        method: PUT
+        description: Updates the Tenant Manager configuration.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-tenant-manager-identity-provider-type
+      path: /api/tenant-manager/identity-provider/{type}
+      operations:
+      - name: createtenantmanageridentityprovidertypeconfigurationwithid
+        method: POST
+        description: Creates a tenant manager identity provider type configuration for the given identity provider type.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          description: The type of the identity provider.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deletetenantmanageridentityprovidertypeconfigurationwithid
+        method: DELETE
+        description: Deletes the tenant manager identity provider type configuration for the given identity provider type.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          description: The type of the identity provider.
+          required: true
+      - name: patchtenantmanageridentityprovidertypeconfigurationwithid
+        method: PATCH
+        description: Patches the tenant manager identity provider type configuration for the given identity provider type.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          description: The type of the identity provider.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: updatetenantmanageridentityprovidertypeconfigurationwithid
+        method: PUT
+        description: Updates the tenant manager identity provider type configuration for the given identity provider type.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          description: The type of the identity provider.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+  exposes:
+  - type: rest
+    namespace: fusionauth-tenant-manager-rest
+    port: 8080
+    description: REST adapter for FusionAuth API — Tenant Manager. One resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/api/tenant-manager
+      name: api-tenant-manager
+      description: REST surface for api-tenant-manager.
+      operations:
+      - method: PATCH
+        name: patchtenantmanagerconfigurationwithid
+        description: Updates, via PATCH, the Tenant Manager configuration.
+        call: fusionauth-tenant-manager.patchtenantmanagerconfigurationwithid
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatetenantmanagerconfigurationwithid
+        description: Updates the Tenant Manager configuration.
+        call: fusionauth-tenant-manager.updatetenantmanagerconfigurationwithid
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/tenant-manager/identity-provider/{type}
+      name: api-tenant-manager-identity-provider-type
+      description: REST surface for api-tenant-manager-identity-provider-type.
+      operations:
+      - method: POST
+        name: createtenantmanageridentityprovidertypeconfigurationwithid
+        description: Creates a tenant manager identity provider type configuration for the given identity provider type.
+        call: fusionauth-tenant-manager.createtenantmanageridentityprovidertypeconfigurationwithid
+        with:
+          type: rest.type
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletetenantmanageridentityprovidertypeconfigurationwithid
+        description: Deletes the tenant manager identity provider type configuration for the given identity provider type.
+        call: fusionauth-tenant-manager.deletetenantmanageridentityprovidertypeconfigurationwithid
+        with:
+          type: rest.type
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: patchtenantmanageridentityprovidertypeconfigurationwithid
+        description: Patches the tenant manager identity provider type configuration for the given identity provider type.
+        call: fusionauth-tenant-manager.patchtenantmanageridentityprovidertypeconfigurationwithid
+        with:
+          type: rest.type
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatetenantmanageridentityprovidertypeconfigurationwithid
+        description: Updates the tenant manager identity provider type configuration for the given identity provider type.
+        call: fusionauth-tenant-manager.updatetenantmanageridentityprovidertypeconfigurationwithid
+        with:
+          type: rest.type
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: fusionauth-tenant-manager-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for FusionAuth API — Tenant Manager. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: fusionauth-patchtenantmanagerconfigurationwithid
+      description: Updates, via PATCH, the Tenant Manager configuration.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-tenant-manager.patchtenantmanagerconfigurationwithid
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-updatetenantmanagerconfigurationwithid
+      description: Updates the Tenant Manager configuration.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: fusionauth-tenant-manager.updatetenantmanagerconfigurationwithid
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-createtenantmanageridentityprovidertypeconfigurationwithid
+      description: Creates a tenant manager identity provider type configuration for the given identity provider type.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-tenant-manager.createtenantmanageridentityprovidertypeconfigurationwithid
+      with:
+        type: tools.type
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-deletetenantmanageridentityprovidertypeconfigurationwithid
+      description: Deletes the tenant manager identity provider type configuration for the given identity provider type.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: fusionauth-tenant-manager.deletetenantmanageridentityprovidertypeconfigurationwithid
+      with:
+        type: tools.type
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-patchtenantmanageridentityprovidertypeconfigurationwithid
+      description: Patches the tenant manager identity provider type configuration for the given identity provider type.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-tenant-manager.patchtenantmanageridentityprovidertypeconfigurationwithid
+      with:
+        type: tools.type
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-updatetenantmanageridentityprovidertypeconfigurationwithid
+      description: Updates the tenant manager identity provider type configuration for the given identity provider type.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: fusionauth-tenant-manager.updatetenantmanageridentityprovidertypeconfigurationwithid
+      with:
+        type: tools.type
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

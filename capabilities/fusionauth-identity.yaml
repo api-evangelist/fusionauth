@@ -1,0 +1,200 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: FusionAuth API — Identity
+  description: 'FusionAuth API — Identity. 4 operations. Lead operation: Administratively verify a user identity.. Self-contained Naftiko capability covering one business surface.'
+  tags:
+  - FusionAuth
+  - Identity
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    FUSIONAUTH_API_KEY: FUSIONAUTH_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: fusionauth-identity
+    baseUri: http://localhost:9011
+    description: FusionAuth API — Identity business capability. Self-contained, no shared references.
+    resources:
+    - name: api-identity-verify
+      path: /api/identity/verify
+      operations:
+      - name: verifyidentitywithid
+        method: POST
+        description: Administratively verify a user identity.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-identity-verify-complete
+      path: /api/identity/verify/complete
+      operations:
+      - name: completeverifyidentitywithid
+        method: POST
+        description: Completes verification of an identity using verification codes from the Verify Start API.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-identity-verify-send
+      path: /api/identity/verify/send
+      operations:
+      - name: sendverifyidentitywithid
+        method: POST
+        description: Send a verification code using the appropriate transport for the identity type being verified.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-identity-verify-start
+      path: /api/identity/verify/start
+      operations:
+      - name: startverifyidentitywithid
+        method: POST
+        description: 'Start a verification of an identity by generating a code. This code can be sent to the User using the Verify Send API Verification Code API '
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+  exposes:
+  - type: rest
+    namespace: fusionauth-identity-rest
+    port: 8080
+    description: REST adapter for FusionAuth API — Identity. One resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/api/identity/verify
+      name: api-identity-verify
+      description: REST surface for api-identity-verify.
+      operations:
+      - method: POST
+        name: verifyidentitywithid
+        description: Administratively verify a user identity.
+        call: fusionauth-identity.verifyidentitywithid
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/identity/verify/complete
+      name: api-identity-verify-complete
+      description: REST surface for api-identity-verify-complete.
+      operations:
+      - method: POST
+        name: completeverifyidentitywithid
+        description: Completes verification of an identity using verification codes from the Verify Start API.
+        call: fusionauth-identity.completeverifyidentitywithid
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/identity/verify/send
+      name: api-identity-verify-send
+      description: REST surface for api-identity-verify-send.
+      operations:
+      - method: POST
+        name: sendverifyidentitywithid
+        description: Send a verification code using the appropriate transport for the identity type being verified.
+        call: fusionauth-identity.sendverifyidentitywithid
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/identity/verify/start
+      name: api-identity-verify-start
+      description: REST surface for api-identity-verify-start.
+      operations:
+      - method: POST
+        name: startverifyidentitywithid
+        description: 'Start a verification of an identity by generating a code. This code can be sent to the User using the Verify Send API Verification Code API '
+        call: fusionauth-identity.startverifyidentitywithid
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: fusionauth-identity-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for FusionAuth API — Identity. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: fusionauth-verifyidentitywithid
+      description: Administratively verify a user identity.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-identity.verifyidentitywithid
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-completeverifyidentitywithid
+      description: Completes verification of an identity using verification codes from the Verify Start API.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-identity.completeverifyidentitywithid
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-sendverifyidentitywithid
+      description: Send a verification code using the appropriate transport for the identity type being verified.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-identity.sendverifyidentitywithid
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-startverifyidentitywithid
+      description: 'Start a verification of an identity by generating a code. This code can be sent to the User using the Verify Send API Verification Code API '
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-identity.startverifyidentitywithid
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

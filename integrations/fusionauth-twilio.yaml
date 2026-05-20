@@ -1,0 +1,117 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Deliver FusionAuth MFA codes via Twilio SMS
+  description: Wire a FusionAuth SMS messenger to Twilio so two-factor enrollment and challenge codes route through Twilio Programmable Messaging, falling back across sender pools, and the customer's MFA reliability lives on a real telecom provider instead of an ad-hoc SMTP-to-SMS hack.
+  tags:
+  - FusionAuth
+  - Integration
+  - MFA
+  - twilio
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    FUSIONAUTH_API_KEY: FUSIONAUTH_API_KEY
+    TWILIO_API_KEY: TWILIO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: fusionauth
+    baseUri: https://your-fusionauth-host/api
+    description: FusionAuth API operations consumed by this integration.
+    resources:
+    - name: api-messenger
+      path: /api/messenger
+      operations:
+      - name: createmessenger
+        method: POST
+        description: Create or update the Twilio-backed SMS messenger in FusionAuth.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-two-factor-send
+      path: /api/two-factor/send
+      operations:
+      - name: sendtwofactorcode
+        method: POST
+        description: Trigger FusionAuth to send the two-factor code through the messenger.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  - type: http
+    namespace: twilio
+    baseUri: https://api.twilio.com
+    description: Twilio Programmable Messaging API operations consumed by this integration.
+    resources:
+    - name: 2010-04-01-accounts-accountsid-messages-json
+      path: /2010-04-01/Accounts/{AccountSid}/Messages.json
+      operations:
+      - name: sendsms
+        method: POST
+        description: 'Twilio Programmable Messaging API: sendSms'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: AccountSid
+          in: path
+          type: string
+          description: Path parameter AccountSid.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: mcp
+    namespace: fusionauth-twilio-mcp
+    description: MCP adapter for the fusionauth-twilio integration.
+    tools:
+    - name: fusionauth_twilio
+      description: Execute the fusionauth twilio integration end-to-end.
+      inputSchema:
+        type: object
+        properties:
+          trigger_event:
+            type: object
+            description: Triggering event payload.
+        required:
+        - trigger_event
+  - type: rest
+    namespace: fusionauth-twilio-rest
+    port: 8080
+    description: REST adapter for the fusionauth-twilio integration.
+    resources:
+    - path: /fusionauth-twilio
+      name: fusionauth-twilio
+      description: REST surface for the fusionauth-twilio integration.
+      operations:
+      - method: POST
+        name: trigger
+        description: Trigger the fusionauth-twilio integration.
+        call: fusionauth_twilio
+        with:
+          trigger_event: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.

@@ -1,0 +1,1124 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: FusionAuth API — Entity
+  description: 'FusionAuth API — Entity. 24 operations. Lead operation: Retrieves the entities for the given Ids. If any Id is invalid, it is ignored.. Self-contained Naftiko capability covering one business surface.'
+  tags:
+  - FusionAuth
+  - Entity
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    FUSIONAUTH_API_KEY: FUSIONAUTH_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: fusionauth-entity
+    baseUri: http://localhost:9011
+    description: FusionAuth API — Entity business capability. Self-contained, no shared references.
+    resources:
+    - name: api-entity
+      path: /api/entity
+      operations:
+      - name: createentity
+        method: POST
+        description: Creates an Entity. You can optionally specify an Id for the Entity. If not provided one will be generated.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-entity-grant-search
+      path: /api/entity/grant/search
+      operations:
+      - name: searchentitygrantswithid
+        method: POST
+        description: Searches Entity Grants with the specified criteria and pagination.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-entity-search
+      path: /api/entity/search
+      operations:
+      - name: searchentitieswithid
+        method: POST
+        description: Searches entities with the specified criteria and pagination.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: searchentitiesbyidswithid
+        method: GET
+        description: Retrieves the entities for the given Ids. If any Id is invalid, it is ignored.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ids
+          in: query
+          type: string
+          description: The entity ids to search for.
+    - name: api-entity-type
+      path: /api/entity/type
+      operations:
+      - name: createentitytype
+        method: POST
+        description: Creates a Entity Type. You can optionally specify an Id for the Entity Type, if not provided one will be generated.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-entity-type-search
+      path: /api/entity/type/search
+      operations:
+      - name: searchentitytypeswithid
+        method: POST
+        description: Searches the entity types with the specified criteria and pagination.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-entity-type-entitytypeid
+      path: /api/entity/type/{entityTypeId}
+      operations:
+      - name: createentitytypewithid
+        method: POST
+        description: Creates a Entity Type. You can optionally specify an Id for the Entity Type, if not provided one will be generated.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: entityTypeId
+          in: path
+          type: string
+          description: The Id for the Entity Type. If not provided a secure random UUID will be generated.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deleteentitytypewithid
+        method: DELETE
+        description: Deletes the Entity Type for the given Id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: entityTypeId
+          in: path
+          type: string
+          description: The Id of the Entity Type to delete.
+          required: true
+      - name: patchentitytypewithid
+        method: PATCH
+        description: Updates, via PATCH, the Entity Type with the given Id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: entityTypeId
+          in: path
+          type: string
+          description: The Id of the Entity Type to update.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: retrieveentitytypewithid
+        method: GET
+        description: Retrieves the Entity Type for the given Id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: entityTypeId
+          in: path
+          type: string
+          description: The Id of the Entity Type.
+          required: true
+      - name: updateentitytypewithid
+        method: PUT
+        description: Updates the Entity Type with the given Id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: entityTypeId
+          in: path
+          type: string
+          description: The Id of the Entity Type to update.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-entity-type-entitytypeid-permission
+      path: /api/entity/type/{entityTypeId}/permission
+      operations:
+      - name: createentitytypepermission
+        method: POST
+        description: Creates a new permission for an entity type. You must specify the Id of the entity type you are creating the permission for. You can optiona
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: entityTypeId
+          in: path
+          type: string
+          description: The Id of the entity type to create the permission on.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-entity-type-entitytypeid-permission-permissionid
+      path: /api/entity/type/{entityTypeId}/permission/{permissionId}
+      operations:
+      - name: createentitytypepermissionwithid
+        method: POST
+        description: Creates a new permission for an entity type. You must specify the Id of the entity type you are creating the permission for. You can optiona
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: entityTypeId
+          in: path
+          type: string
+          description: The Id of the entity type to create the permission on.
+          required: true
+        - name: permissionId
+          in: path
+          type: string
+          description: The Id of the permission. If not provided a secure random UUID will be generated.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deleteentitytypepermissionwithid
+        method: DELETE
+        description: Hard deletes a permission. This is a dangerous operation and should not be used in most circumstances. This permanently removes the given pe
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: entityTypeId
+          in: path
+          type: string
+          description: The Id of the entityType the the permission belongs to.
+          required: true
+        - name: permissionId
+          in: path
+          type: string
+          description: The Id of the permission to delete.
+          required: true
+      - name: patchentitytypepermissionwithid
+        method: PATCH
+        description: Patches the permission with the given Id for the entity type.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: entityTypeId
+          in: path
+          type: string
+          description: The Id of the entityType that the permission belongs to.
+          required: true
+        - name: permissionId
+          in: path
+          type: string
+          description: The Id of the permission to patch.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: updateentitytypepermissionwithid
+        method: PUT
+        description: Updates the permission with the given Id for the entity type.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: entityTypeId
+          in: path
+          type: string
+          description: The Id of the entityType that the permission belongs to.
+          required: true
+        - name: permissionId
+          in: path
+          type: string
+          description: The Id of the permission to update.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-entity-entityid
+      path: /api/entity/{entityId}
+      operations:
+      - name: createentitywithid
+        method: POST
+        description: Creates an Entity. You can optionally specify an Id for the Entity. If not provided one will be generated.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: entityId
+          in: path
+          type: string
+          description: The Id for the Entity. If not provided a secure random UUID will be generated.
+          required: true
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deleteentitywithid
+        method: DELETE
+        description: Deletes the Entity for the given Id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: entityId
+          in: path
+          type: string
+          description: The Id of the Entity to delete.
+          required: true
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+      - name: patchentitywithid
+        method: PATCH
+        description: Updates, via PATCH, the Entity with the given Id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: entityId
+          in: path
+          type: string
+          description: The Id of the Entity Type to update.
+          required: true
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: retrieveentitywithid
+        method: GET
+        description: Retrieves the Entity for the given Id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: entityId
+          in: path
+          type: string
+          description: The Id of the Entity.
+          required: true
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+      - name: updateentitywithid
+        method: PUT
+        description: Updates the Entity with the given Id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: entityId
+          in: path
+          type: string
+          description: The Id of the Entity to update.
+          required: true
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-entity-entityid-grant
+      path: /api/entity/{entityId}/grant
+      operations:
+      - name: deleteentitygrantwithid
+        method: DELETE
+        description: Deletes an Entity Grant for the given User or Entity.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: recipientEntityId
+          in: query
+          type: string
+          description: The Id of the Entity that the Entity Grant is for.
+        - name: userId
+          in: query
+          type: string
+          description: The Id of the User that the Entity Grant is for.
+        - name: entityId
+          in: path
+          type: string
+          description: The Id of the Entity that the Entity Grant is being deleted for.
+          required: true
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+      - name: retrieveentitygrantwithid
+        method: GET
+        description: Retrieves an Entity Grant for the given Entity and User/Entity.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: recipientEntityId
+          in: query
+          type: string
+          description: The Id of the Entity that the Entity Grant is for.
+        - name: userId
+          in: query
+          type: string
+          description: The Id of the User that the Entity Grant is for.
+        - name: entityId
+          in: path
+          type: string
+          description: The Id of the Entity.
+          required: true
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+      - name: upsertentitygrantwithid
+        method: POST
+        description: Creates or updates an Entity Grant. This is when a User/Entity is granted permissions to an Entity.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: entityId
+          in: path
+          type: string
+          description: The Id of the Entity that the User/Entity is being granted access to.
+          required: true
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+  exposes:
+  - type: rest
+    namespace: fusionauth-entity-rest
+    port: 8080
+    description: REST adapter for FusionAuth API — Entity. One resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/api/entity
+      name: api-entity
+      description: REST surface for api-entity.
+      operations:
+      - method: POST
+        name: createentity
+        description: Creates an Entity. You can optionally specify an Id for the Entity. If not provided one will be generated.
+        call: fusionauth-entity.createentity
+        with:
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/entity/grant/search
+      name: api-entity-grant-search
+      description: REST surface for api-entity-grant-search.
+      operations:
+      - method: POST
+        name: searchentitygrantswithid
+        description: Searches Entity Grants with the specified criteria and pagination.
+        call: fusionauth-entity.searchentitygrantswithid
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/entity/search
+      name: api-entity-search
+      description: REST surface for api-entity-search.
+      operations:
+      - method: POST
+        name: searchentitieswithid
+        description: Searches entities with the specified criteria and pagination.
+        call: fusionauth-entity.searchentitieswithid
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: searchentitiesbyidswithid
+        description: Retrieves the entities for the given Ids. If any Id is invalid, it is ignored.
+        call: fusionauth-entity.searchentitiesbyidswithid
+        with:
+          ids: rest.ids
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/entity/type
+      name: api-entity-type
+      description: REST surface for api-entity-type.
+      operations:
+      - method: POST
+        name: createentitytype
+        description: Creates a Entity Type. You can optionally specify an Id for the Entity Type, if not provided one will be generated.
+        call: fusionauth-entity.createentitytype
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/entity/type/search
+      name: api-entity-type-search
+      description: REST surface for api-entity-type-search.
+      operations:
+      - method: POST
+        name: searchentitytypeswithid
+        description: Searches the entity types with the specified criteria and pagination.
+        call: fusionauth-entity.searchentitytypeswithid
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/entity/type/{entityTypeId}
+      name: api-entity-type-entitytypeid
+      description: REST surface for api-entity-type-entitytypeid.
+      operations:
+      - method: POST
+        name: createentitytypewithid
+        description: Creates a Entity Type. You can optionally specify an Id for the Entity Type, if not provided one will be generated.
+        call: fusionauth-entity.createentitytypewithid
+        with:
+          entityTypeId: rest.entityTypeId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteentitytypewithid
+        description: Deletes the Entity Type for the given Id.
+        call: fusionauth-entity.deleteentitytypewithid
+        with:
+          entityTypeId: rest.entityTypeId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: patchentitytypewithid
+        description: Updates, via PATCH, the Entity Type with the given Id.
+        call: fusionauth-entity.patchentitytypewithid
+        with:
+          entityTypeId: rest.entityTypeId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: retrieveentitytypewithid
+        description: Retrieves the Entity Type for the given Id.
+        call: fusionauth-entity.retrieveentitytypewithid
+        with:
+          entityTypeId: rest.entityTypeId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateentitytypewithid
+        description: Updates the Entity Type with the given Id.
+        call: fusionauth-entity.updateentitytypewithid
+        with:
+          entityTypeId: rest.entityTypeId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/entity/type/{entityTypeId}/permission
+      name: api-entity-type-entitytypeid-permission
+      description: REST surface for api-entity-type-entitytypeid-permission.
+      operations:
+      - method: POST
+        name: createentitytypepermission
+        description: Creates a new permission for an entity type. You must specify the Id of the entity type you are creating the permission for. You can optiona
+        call: fusionauth-entity.createentitytypepermission
+        with:
+          entityTypeId: rest.entityTypeId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/entity/type/{entityTypeId}/permission/{permissionId}
+      name: api-entity-type-entitytypeid-permission-permissionid
+      description: REST surface for api-entity-type-entitytypeid-permission-permissionid.
+      operations:
+      - method: POST
+        name: createentitytypepermissionwithid
+        description: Creates a new permission for an entity type. You must specify the Id of the entity type you are creating the permission for. You can optiona
+        call: fusionauth-entity.createentitytypepermissionwithid
+        with:
+          entityTypeId: rest.entityTypeId
+          permissionId: rest.permissionId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteentitytypepermissionwithid
+        description: Hard deletes a permission. This is a dangerous operation and should not be used in most circumstances. This permanently removes the given pe
+        call: fusionauth-entity.deleteentitytypepermissionwithid
+        with:
+          entityTypeId: rest.entityTypeId
+          permissionId: rest.permissionId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: patchentitytypepermissionwithid
+        description: Patches the permission with the given Id for the entity type.
+        call: fusionauth-entity.patchentitytypepermissionwithid
+        with:
+          entityTypeId: rest.entityTypeId
+          permissionId: rest.permissionId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateentitytypepermissionwithid
+        description: Updates the permission with the given Id for the entity type.
+        call: fusionauth-entity.updateentitytypepermissionwithid
+        with:
+          entityTypeId: rest.entityTypeId
+          permissionId: rest.permissionId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/entity/{entityId}
+      name: api-entity-entityid
+      description: REST surface for api-entity-entityid.
+      operations:
+      - method: POST
+        name: createentitywithid
+        description: Creates an Entity. You can optionally specify an Id for the Entity. If not provided one will be generated.
+        call: fusionauth-entity.createentitywithid
+        with:
+          entityId: rest.entityId
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteentitywithid
+        description: Deletes the Entity for the given Id.
+        call: fusionauth-entity.deleteentitywithid
+        with:
+          entityId: rest.entityId
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: patchentitywithid
+        description: Updates, via PATCH, the Entity with the given Id.
+        call: fusionauth-entity.patchentitywithid
+        with:
+          entityId: rest.entityId
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: retrieveentitywithid
+        description: Retrieves the Entity for the given Id.
+        call: fusionauth-entity.retrieveentitywithid
+        with:
+          entityId: rest.entityId
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateentitywithid
+        description: Updates the Entity with the given Id.
+        call: fusionauth-entity.updateentitywithid
+        with:
+          entityId: rest.entityId
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/entity/{entityId}/grant
+      name: api-entity-entityid-grant
+      description: REST surface for api-entity-entityid-grant.
+      operations:
+      - method: DELETE
+        name: deleteentitygrantwithid
+        description: Deletes an Entity Grant for the given User or Entity.
+        call: fusionauth-entity.deleteentitygrantwithid
+        with:
+          recipientEntityId: rest.recipientEntityId
+          userId: rest.userId
+          entityId: rest.entityId
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: retrieveentitygrantwithid
+        description: Retrieves an Entity Grant for the given Entity and User/Entity.
+        call: fusionauth-entity.retrieveentitygrantwithid
+        with:
+          recipientEntityId: rest.recipientEntityId
+          userId: rest.userId
+          entityId: rest.entityId
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: upsertentitygrantwithid
+        description: Creates or updates an Entity Grant. This is when a User/Entity is granted permissions to an Entity.
+        call: fusionauth-entity.upsertentitygrantwithid
+        with:
+          entityId: rest.entityId
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: fusionauth-entity-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for FusionAuth API — Entity. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: fusionauth-createentity
+      description: Creates an Entity. You can optionally specify an Id for the Entity. If not provided one will be generated.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-entity.createentity
+      with:
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-searchentitygrantswithid
+      description: Searches Entity Grants with the specified criteria and pagination.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-entity.searchentitygrantswithid
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-searchentitieswithid
+      description: Searches entities with the specified criteria and pagination.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-entity.searchentitieswithid
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-searchentitiesbyidswithid
+      description: Retrieves the entities for the given Ids. If any Id is invalid, it is ignored.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fusionauth-entity.searchentitiesbyidswithid
+      with:
+        ids: tools.ids
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-createentitytype
+      description: Creates a Entity Type. You can optionally specify an Id for the Entity Type, if not provided one will be generated.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-entity.createentitytype
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-searchentitytypeswithid
+      description: Searches the entity types with the specified criteria and pagination.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-entity.searchentitytypeswithid
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-createentitytypewithid
+      description: Creates a Entity Type. You can optionally specify an Id for the Entity Type, if not provided one will be generated.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-entity.createentitytypewithid
+      with:
+        entityTypeId: tools.entityTypeId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-deleteentitytypewithid
+      description: Deletes the Entity Type for the given Id.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: fusionauth-entity.deleteentitytypewithid
+      with:
+        entityTypeId: tools.entityTypeId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-patchentitytypewithid
+      description: Updates, via PATCH, the Entity Type with the given Id.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-entity.patchentitytypewithid
+      with:
+        entityTypeId: tools.entityTypeId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-retrieveentitytypewithid
+      description: Retrieves the Entity Type for the given Id.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fusionauth-entity.retrieveentitytypewithid
+      with:
+        entityTypeId: tools.entityTypeId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-updateentitytypewithid
+      description: Updates the Entity Type with the given Id.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: fusionauth-entity.updateentitytypewithid
+      with:
+        entityTypeId: tools.entityTypeId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-createentitytypepermission
+      description: Creates a new permission for an entity type. You must specify the Id of the entity type you are creating the permission for. You can optiona
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-entity.createentitytypepermission
+      with:
+        entityTypeId: tools.entityTypeId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-createentitytypepermissionwithid
+      description: Creates a new permission for an entity type. You must specify the Id of the entity type you are creating the permission for. You can optiona
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-entity.createentitytypepermissionwithid
+      with:
+        entityTypeId: tools.entityTypeId
+        permissionId: tools.permissionId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-deleteentitytypepermissionwithid
+      description: Hard deletes a permission. This is a dangerous operation and should not be used in most circumstances. This permanently removes the given pe
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: fusionauth-entity.deleteentitytypepermissionwithid
+      with:
+        entityTypeId: tools.entityTypeId
+        permissionId: tools.permissionId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-patchentitytypepermissionwithid
+      description: Patches the permission with the given Id for the entity type.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-entity.patchentitytypepermissionwithid
+      with:
+        entityTypeId: tools.entityTypeId
+        permissionId: tools.permissionId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-updateentitytypepermissionwithid
+      description: Updates the permission with the given Id for the entity type.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: fusionauth-entity.updateentitytypepermissionwithid
+      with:
+        entityTypeId: tools.entityTypeId
+        permissionId: tools.permissionId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-createentitywithid
+      description: Creates an Entity. You can optionally specify an Id for the Entity. If not provided one will be generated.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-entity.createentitywithid
+      with:
+        entityId: tools.entityId
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-deleteentitywithid
+      description: Deletes the Entity for the given Id.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: fusionauth-entity.deleteentitywithid
+      with:
+        entityId: tools.entityId
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-patchentitywithid
+      description: Updates, via PATCH, the Entity with the given Id.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-entity.patchentitywithid
+      with:
+        entityId: tools.entityId
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-retrieveentitywithid
+      description: Retrieves the Entity for the given Id.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fusionauth-entity.retrieveentitywithid
+      with:
+        entityId: tools.entityId
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-updateentitywithid
+      description: Updates the Entity with the given Id.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: fusionauth-entity.updateentitywithid
+      with:
+        entityId: tools.entityId
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-deleteentitygrantwithid
+      description: Deletes an Entity Grant for the given User or Entity.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: fusionauth-entity.deleteentitygrantwithid
+      with:
+        recipientEntityId: tools.recipientEntityId
+        userId: tools.userId
+        entityId: tools.entityId
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-retrieveentitygrantwithid
+      description: Retrieves an Entity Grant for the given Entity and User/Entity.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fusionauth-entity.retrieveentitygrantwithid
+      with:
+        recipientEntityId: tools.recipientEntityId
+        userId: tools.userId
+        entityId: tools.entityId
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-upsertentitygrantwithid
+      description: Creates or updates an Entity Grant. This is when a User/Entity is granted permissions to an Entity.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-entity.upsertentitygrantwithid
+      with:
+        entityId: tools.entityId
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

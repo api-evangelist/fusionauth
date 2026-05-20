@@ -1,0 +1,303 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: FusionAuth API — Report
+  description: 'FusionAuth API — Report. 5 operations. Lead operation: Retrieves the daily active user report between the two instants. If you specify an application Id, it will only return the daily active coun. Self-contained Naftiko capability covering one business surface.'
+  tags:
+  - FusionAuth
+  - Report
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    FUSIONAUTH_API_KEY: FUSIONAUTH_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: fusionauth-report
+    baseUri: http://localhost:9011
+    description: FusionAuth API — Report business capability. Self-contained, no shared references.
+    resources:
+    - name: api-report-daily-active-user
+      path: /api/report/daily-active-user
+      operations:
+      - name: retrievedailyactivereportwithid
+        method: GET
+        description: Retrieves the daily active user report between the two instants. If you specify an application Id, it will only return the daily active coun
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: applicationId
+          in: query
+          type: string
+          description: The application Id.
+        - name: start
+          in: query
+          type: string
+          description: The start instant as UTC milliseconds since Epoch.
+        - name: end
+          in: query
+          type: string
+          description: The end instant as UTC milliseconds since Epoch.
+    - name: api-report-login
+      path: /api/report/login
+      operations:
+      - name: retrievereportlogin
+        method: GET
+        description: Retrieves the login report between the two instants for a particular user by login Id, using specific loginIdTypes. If you specify an applic
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: applicationId
+          in: query
+          type: string
+          description: The application id.
+        - name: loginId
+          in: query
+          type: string
+          description: The userId id.
+        - name: start
+          in: query
+          type: string
+          description: The start instant as UTC milliseconds since Epoch.
+        - name: end
+          in: query
+          type: string
+          description: The end instant as UTC milliseconds since Epoch.
+        - name: loginIdTypes
+          in: query
+          type: array
+          description: The identity types that FusionAuth will compare the loginId to.
+        - name: userId
+          in: query
+          type: string
+          description: The userId Id.
+    - name: api-report-monthly-active-user
+      path: /api/report/monthly-active-user
+      operations:
+      - name: retrievemonthlyactivereportwithid
+        method: GET
+        description: 'Retrieves the monthly active user report between the two instants. If you specify an application Id, it will only return the monthly active '
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: applicationId
+          in: query
+          type: string
+          description: The application Id.
+        - name: start
+          in: query
+          type: string
+          description: The start instant as UTC milliseconds since Epoch.
+        - name: end
+          in: query
+          type: string
+          description: The end instant as UTC milliseconds since Epoch.
+    - name: api-report-registration
+      path: /api/report/registration
+      operations:
+      - name: retrieveregistrationreportwithid
+        method: GET
+        description: Retrieves the registration report between the two instants. If you specify an application Id, it will only return the registration counts fo
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: applicationId
+          in: query
+          type: string
+          description: The application Id.
+        - name: start
+          in: query
+          type: string
+          description: The start instant as UTC milliseconds since Epoch.
+        - name: end
+          in: query
+          type: string
+          description: The end instant as UTC milliseconds since Epoch.
+    - name: api-report-totals
+      path: /api/report/totals
+      operations:
+      - name: retrievetotalreportwithexcludeswithid
+        method: GET
+        description: Retrieves the totals report. This allows excluding applicationTotals from the report. An empty list will include the applicationTotals.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: excludes
+          in: query
+          type: array
+          description: List of fields to exclude in the response. Currently only allows applicationTotals.
+  exposes:
+  - type: rest
+    namespace: fusionauth-report-rest
+    port: 8080
+    description: REST adapter for FusionAuth API — Report. One resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/api/report/daily-active-user
+      name: api-report-daily-active-user
+      description: REST surface for api-report-daily-active-user.
+      operations:
+      - method: GET
+        name: retrievedailyactivereportwithid
+        description: Retrieves the daily active user report between the two instants. If you specify an application Id, it will only return the daily active coun
+        call: fusionauth-report.retrievedailyactivereportwithid
+        with:
+          applicationId: rest.applicationId
+          start: rest.start
+          end: rest.end
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/report/login
+      name: api-report-login
+      description: REST surface for api-report-login.
+      operations:
+      - method: GET
+        name: retrievereportlogin
+        description: Retrieves the login report between the two instants for a particular user by login Id, using specific loginIdTypes. If you specify an applic
+        call: fusionauth-report.retrievereportlogin
+        with:
+          applicationId: rest.applicationId
+          loginId: rest.loginId
+          start: rest.start
+          end: rest.end
+          loginIdTypes: rest.loginIdTypes
+          userId: rest.userId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/report/monthly-active-user
+      name: api-report-monthly-active-user
+      description: REST surface for api-report-monthly-active-user.
+      operations:
+      - method: GET
+        name: retrievemonthlyactivereportwithid
+        description: 'Retrieves the monthly active user report between the two instants. If you specify an application Id, it will only return the monthly active '
+        call: fusionauth-report.retrievemonthlyactivereportwithid
+        with:
+          applicationId: rest.applicationId
+          start: rest.start
+          end: rest.end
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/report/registration
+      name: api-report-registration
+      description: REST surface for api-report-registration.
+      operations:
+      - method: GET
+        name: retrieveregistrationreportwithid
+        description: Retrieves the registration report between the two instants. If you specify an application Id, it will only return the registration counts fo
+        call: fusionauth-report.retrieveregistrationreportwithid
+        with:
+          applicationId: rest.applicationId
+          start: rest.start
+          end: rest.end
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/report/totals
+      name: api-report-totals
+      description: REST surface for api-report-totals.
+      operations:
+      - method: GET
+        name: retrievetotalreportwithexcludeswithid
+        description: Retrieves the totals report. This allows excluding applicationTotals from the report. An empty list will include the applicationTotals.
+        call: fusionauth-report.retrievetotalreportwithexcludeswithid
+        with:
+          excludes: rest.excludes
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: fusionauth-report-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for FusionAuth API — Report. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: fusionauth-retrievedailyactivereportwithid
+      description: Retrieves the daily active user report between the two instants. If you specify an application Id, it will only return the daily active coun
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fusionauth-report.retrievedailyactivereportwithid
+      with:
+        applicationId: tools.applicationId
+        start: tools.start
+        end: tools.end
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-retrievereportlogin
+      description: Retrieves the login report between the two instants for a particular user by login Id, using specific loginIdTypes. If you specify an applic
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fusionauth-report.retrievereportlogin
+      with:
+        applicationId: tools.applicationId
+        loginId: tools.loginId
+        start: tools.start
+        end: tools.end
+        loginIdTypes: tools.loginIdTypes
+        userId: tools.userId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-retrievemonthlyactivereportwithid
+      description: 'Retrieves the monthly active user report between the two instants. If you specify an application Id, it will only return the monthly active '
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fusionauth-report.retrievemonthlyactivereportwithid
+      with:
+        applicationId: tools.applicationId
+        start: tools.start
+        end: tools.end
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-retrieveregistrationreportwithid
+      description: Retrieves the registration report between the two instants. If you specify an application Id, it will only return the registration counts fo
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fusionauth-report.retrieveregistrationreportwithid
+      with:
+        applicationId: tools.applicationId
+        start: tools.start
+        end: tools.end
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-retrievetotalreportwithexcludeswithid
+      description: Retrieves the totals report. This allows excluding applicationTotals from the report. An empty list will include the applicationTotals.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fusionauth-report.retrievetotalreportwithexcludeswithid
+      with:
+        excludes: tools.excludes
+      outputParameters:
+      - type: object
+        mapping: $.

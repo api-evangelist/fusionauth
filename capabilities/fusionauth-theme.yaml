@@ -1,0 +1,319 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: FusionAuth API — Theme
+  description: 'FusionAuth API — Theme. 7 operations. Lead operation: Retrieves the theme for the given Id.. Self-contained Naftiko capability covering one business surface.'
+  tags:
+  - FusionAuth
+  - Theme
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    FUSIONAUTH_API_KEY: FUSIONAUTH_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: fusionauth-theme
+    baseUri: http://localhost:9011
+    description: FusionAuth API — Theme business capability. Self-contained, no shared references.
+    resources:
+    - name: api-theme
+      path: /api/theme
+      operations:
+      - name: createtheme
+        method: POST
+        description: Creates a Theme. You can optionally specify an Id for the theme, if not provided one will be generated.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-theme-search
+      path: /api/theme/search
+      operations:
+      - name: searchthemeswithid
+        method: POST
+        description: Searches themes with the specified criteria and pagination.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-theme-themeid
+      path: /api/theme/{themeId}
+      operations:
+      - name: createthemewithid
+        method: POST
+        description: Creates a Theme. You can optionally specify an Id for the theme, if not provided one will be generated.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: themeId
+          in: path
+          type: string
+          description: The Id for the theme. If not provided a secure random UUID will be generated.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deletethemewithid
+        method: DELETE
+        description: Deletes the theme for the given Id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: themeId
+          in: path
+          type: string
+          description: The Id of the theme to delete.
+          required: true
+      - name: patchthemewithid
+        method: PATCH
+        description: Updates, via PATCH, the theme with the given Id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: themeId
+          in: path
+          type: string
+          description: The Id of the theme to update.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: retrievethemewithid
+        method: GET
+        description: Retrieves the theme for the given Id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: themeId
+          in: path
+          type: string
+          description: The Id of the theme.
+          required: true
+      - name: updatethemewithid
+        method: PUT
+        description: Updates the theme with the given Id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: themeId
+          in: path
+          type: string
+          description: The Id of the theme to update.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+  exposes:
+  - type: rest
+    namespace: fusionauth-theme-rest
+    port: 8080
+    description: REST adapter for FusionAuth API — Theme. One resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/api/theme
+      name: api-theme
+      description: REST surface for api-theme.
+      operations:
+      - method: POST
+        name: createtheme
+        description: Creates a Theme. You can optionally specify an Id for the theme, if not provided one will be generated.
+        call: fusionauth-theme.createtheme
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/theme/search
+      name: api-theme-search
+      description: REST surface for api-theme-search.
+      operations:
+      - method: POST
+        name: searchthemeswithid
+        description: Searches themes with the specified criteria and pagination.
+        call: fusionauth-theme.searchthemeswithid
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/theme/{themeId}
+      name: api-theme-themeid
+      description: REST surface for api-theme-themeid.
+      operations:
+      - method: POST
+        name: createthemewithid
+        description: Creates a Theme. You can optionally specify an Id for the theme, if not provided one will be generated.
+        call: fusionauth-theme.createthemewithid
+        with:
+          themeId: rest.themeId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletethemewithid
+        description: Deletes the theme for the given Id.
+        call: fusionauth-theme.deletethemewithid
+        with:
+          themeId: rest.themeId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: patchthemewithid
+        description: Updates, via PATCH, the theme with the given Id.
+        call: fusionauth-theme.patchthemewithid
+        with:
+          themeId: rest.themeId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: retrievethemewithid
+        description: Retrieves the theme for the given Id.
+        call: fusionauth-theme.retrievethemewithid
+        with:
+          themeId: rest.themeId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatethemewithid
+        description: Updates the theme with the given Id.
+        call: fusionauth-theme.updatethemewithid
+        with:
+          themeId: rest.themeId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: fusionauth-theme-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for FusionAuth API — Theme. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: fusionauth-createtheme
+      description: Creates a Theme. You can optionally specify an Id for the theme, if not provided one will be generated.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-theme.createtheme
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-searchthemeswithid
+      description: Searches themes with the specified criteria and pagination.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-theme.searchthemeswithid
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-createthemewithid
+      description: Creates a Theme. You can optionally specify an Id for the theme, if not provided one will be generated.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-theme.createthemewithid
+      with:
+        themeId: tools.themeId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-deletethemewithid
+      description: Deletes the theme for the given Id.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: fusionauth-theme.deletethemewithid
+      with:
+        themeId: tools.themeId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-patchthemewithid
+      description: Updates, via PATCH, the theme with the given Id.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-theme.patchthemewithid
+      with:
+        themeId: tools.themeId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-retrievethemewithid
+      description: Retrieves the theme for the given Id.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fusionauth-theme.retrievethemewithid
+      with:
+        themeId: tools.themeId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-updatethemewithid
+      description: Updates the theme with the given Id.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: fusionauth-theme.updatethemewithid
+      with:
+        themeId: tools.themeId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

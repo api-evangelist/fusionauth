@@ -1,0 +1,599 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: FusionAuth API — System
+  description: 'FusionAuth API — System. 14 operations. Lead operation: Retrieves the FusionAuth system status using an API key. Using an API key will cause the response to include the product version, health che. Self-contained Naftiko capability covering one business surface.'
+  tags:
+  - FusionAuth
+  - System
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    FUSIONAUTH_API_KEY: FUSIONAUTH_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: fusionauth-system
+    baseUri: http://localhost:9011
+    description: FusionAuth API — System business capability. Self-contained, no shared references.
+    resources:
+    - name: api-status
+      path: /api/status
+      operations:
+      - name: retrievestatus
+        method: GET
+        description: Retrieves the FusionAuth system status using an API key. Using an API key will cause the response to include the product version, health che
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters: []
+    - name: api-system-configuration
+      path: /api/system-configuration
+      operations:
+      - name: patchsystemconfigurationwithid
+        method: PATCH
+        description: Updates, via PATCH, the system configuration.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: updatesystemconfigurationwithid
+        method: PUT
+        description: Updates the system configuration.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-system-audit-log
+      path: /api/system/audit-log
+      operations:
+      - name: createauditlogwithid
+        method: POST
+        description: Creates an audit log with the message and user name (usually an email). Audit logs should be written anytime you make changes to the FusionA
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-system-audit-log-search
+      path: /api/system/audit-log/search
+      operations:
+      - name: searchauditlogswithid
+        method: POST
+        description: Searches the audit logs with the specified criteria and pagination.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-system-audit-log-auditlogid
+      path: /api/system/audit-log/{auditLogId}
+      operations:
+      - name: retrieveauditlogwithid
+        method: GET
+        description: Retrieves a single audit log for the given Id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: auditLogId
+          in: path
+          type: string
+          description: The Id of the audit log to retrieve.
+          required: true
+    - name: api-system-event-log-search
+      path: /api/system/event-log/search
+      operations:
+      - name: searcheventlogswithid
+        method: POST
+        description: Searches the event logs with the specified criteria and pagination.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-system-event-log-eventlogid
+      path: /api/system/event-log/{eventLogId}
+      operations:
+      - name: retrieveeventlogwithid
+        method: GET
+        description: Retrieves a single event log for the given Id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: eventLogId
+          in: path
+          type: string
+          description: The Id of the event log to retrieve.
+          required: true
+    - name: api-system-login-record-search
+      path: /api/system/login-record/search
+      operations:
+      - name: searchloginrecordswithid
+        method: POST
+        description: Searches the login records with the specified criteria and pagination.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-system-reindex
+      path: /api/system/reindex
+      operations:
+      - name: reindexwithid
+        method: POST
+        description: Requests Elasticsearch to delete and rebuild the index for FusionAuth users or entities. Be very careful when running this request as it wil
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-system-version
+      path: /api/system/version
+      operations:
+      - name: retrieveversionwithid
+        method: GET
+        description: Retrieves the FusionAuth version string.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters: []
+    - name: api-system-webhook-attempt-log-webhookattemptlogid
+      path: /api/system/webhook-attempt-log/{webhookAttemptLogId}
+      operations:
+      - name: retrievewebhookattemptlogwithid
+        method: GET
+        description: Retrieves a single webhook attempt log for the given Id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: webhookAttemptLogId
+          in: path
+          type: string
+          description: The Id of the webhook attempt log to retrieve.
+          required: true
+    - name: api-system-webhook-event-log-search
+      path: /api/system/webhook-event-log/search
+      operations:
+      - name: searchwebhookeventlogswithid
+        method: POST
+        description: Searches the webhook event logs with the specified criteria and pagination.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-system-webhook-event-log-webhookeventlogid
+      path: /api/system/webhook-event-log/{webhookEventLogId}
+      operations:
+      - name: retrievewebhookeventlogwithid
+        method: GET
+        description: Retrieves a single webhook event log for the given Id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: webhookEventLogId
+          in: path
+          type: string
+          description: The Id of the webhook event log to retrieve.
+          required: true
+  exposes:
+  - type: rest
+    namespace: fusionauth-system-rest
+    port: 8080
+    description: REST adapter for FusionAuth API — System. One resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/api/status
+      name: api-status
+      description: REST surface for api-status.
+      operations:
+      - method: GET
+        name: retrievestatus
+        description: Retrieves the FusionAuth system status using an API key. Using an API key will cause the response to include the product version, health che
+        call: fusionauth-system.retrievestatus
+        with: {}
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/system-configuration
+      name: api-system-configuration
+      description: REST surface for api-system-configuration.
+      operations:
+      - method: PATCH
+        name: patchsystemconfigurationwithid
+        description: Updates, via PATCH, the system configuration.
+        call: fusionauth-system.patchsystemconfigurationwithid
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatesystemconfigurationwithid
+        description: Updates the system configuration.
+        call: fusionauth-system.updatesystemconfigurationwithid
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/system/audit-log
+      name: api-system-audit-log
+      description: REST surface for api-system-audit-log.
+      operations:
+      - method: POST
+        name: createauditlogwithid
+        description: Creates an audit log with the message and user name (usually an email). Audit logs should be written anytime you make changes to the FusionA
+        call: fusionauth-system.createauditlogwithid
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/system/audit-log/search
+      name: api-system-audit-log-search
+      description: REST surface for api-system-audit-log-search.
+      operations:
+      - method: POST
+        name: searchauditlogswithid
+        description: Searches the audit logs with the specified criteria and pagination.
+        call: fusionauth-system.searchauditlogswithid
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/system/audit-log/{auditLogId}
+      name: api-system-audit-log-auditlogid
+      description: REST surface for api-system-audit-log-auditlogid.
+      operations:
+      - method: GET
+        name: retrieveauditlogwithid
+        description: Retrieves a single audit log for the given Id.
+        call: fusionauth-system.retrieveauditlogwithid
+        with:
+          auditLogId: rest.auditLogId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/system/event-log/search
+      name: api-system-event-log-search
+      description: REST surface for api-system-event-log-search.
+      operations:
+      - method: POST
+        name: searcheventlogswithid
+        description: Searches the event logs with the specified criteria and pagination.
+        call: fusionauth-system.searcheventlogswithid
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/system/event-log/{eventLogId}
+      name: api-system-event-log-eventlogid
+      description: REST surface for api-system-event-log-eventlogid.
+      operations:
+      - method: GET
+        name: retrieveeventlogwithid
+        description: Retrieves a single event log for the given Id.
+        call: fusionauth-system.retrieveeventlogwithid
+        with:
+          eventLogId: rest.eventLogId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/system/login-record/search
+      name: api-system-login-record-search
+      description: REST surface for api-system-login-record-search.
+      operations:
+      - method: POST
+        name: searchloginrecordswithid
+        description: Searches the login records with the specified criteria and pagination.
+        call: fusionauth-system.searchloginrecordswithid
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/system/reindex
+      name: api-system-reindex
+      description: REST surface for api-system-reindex.
+      operations:
+      - method: POST
+        name: reindexwithid
+        description: Requests Elasticsearch to delete and rebuild the index for FusionAuth users or entities. Be very careful when running this request as it wil
+        call: fusionauth-system.reindexwithid
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/system/version
+      name: api-system-version
+      description: REST surface for api-system-version.
+      operations:
+      - method: GET
+        name: retrieveversionwithid
+        description: Retrieves the FusionAuth version string.
+        call: fusionauth-system.retrieveversionwithid
+        with: {}
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/system/webhook-attempt-log/{webhookAttemptLogId}
+      name: api-system-webhook-attempt-log-webhookattemptlogid
+      description: REST surface for api-system-webhook-attempt-log-webhookattemptlogid.
+      operations:
+      - method: GET
+        name: retrievewebhookattemptlogwithid
+        description: Retrieves a single webhook attempt log for the given Id.
+        call: fusionauth-system.retrievewebhookattemptlogwithid
+        with:
+          webhookAttemptLogId: rest.webhookAttemptLogId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/system/webhook-event-log/search
+      name: api-system-webhook-event-log-search
+      description: REST surface for api-system-webhook-event-log-search.
+      operations:
+      - method: POST
+        name: searchwebhookeventlogswithid
+        description: Searches the webhook event logs with the specified criteria and pagination.
+        call: fusionauth-system.searchwebhookeventlogswithid
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/system/webhook-event-log/{webhookEventLogId}
+      name: api-system-webhook-event-log-webhookeventlogid
+      description: REST surface for api-system-webhook-event-log-webhookeventlogid.
+      operations:
+      - method: GET
+        name: retrievewebhookeventlogwithid
+        description: Retrieves a single webhook event log for the given Id.
+        call: fusionauth-system.retrievewebhookeventlogwithid
+        with:
+          webhookEventLogId: rest.webhookEventLogId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: fusionauth-system-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for FusionAuth API — System. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: fusionauth-retrievestatus
+      description: Retrieves the FusionAuth system status using an API key. Using an API key will cause the response to include the product version, health che
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fusionauth-system.retrievestatus
+      with: {}
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-patchsystemconfigurationwithid
+      description: Updates, via PATCH, the system configuration.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-system.patchsystemconfigurationwithid
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-updatesystemconfigurationwithid
+      description: Updates the system configuration.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: fusionauth-system.updatesystemconfigurationwithid
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-createauditlogwithid
+      description: Creates an audit log with the message and user name (usually an email). Audit logs should be written anytime you make changes to the FusionA
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-system.createauditlogwithid
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-searchauditlogswithid
+      description: Searches the audit logs with the specified criteria and pagination.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-system.searchauditlogswithid
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-retrieveauditlogwithid
+      description: Retrieves a single audit log for the given Id.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fusionauth-system.retrieveauditlogwithid
+      with:
+        auditLogId: tools.auditLogId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-searcheventlogswithid
+      description: Searches the event logs with the specified criteria and pagination.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-system.searcheventlogswithid
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-retrieveeventlogwithid
+      description: Retrieves a single event log for the given Id.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fusionauth-system.retrieveeventlogwithid
+      with:
+        eventLogId: tools.eventLogId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-searchloginrecordswithid
+      description: Searches the login records with the specified criteria and pagination.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-system.searchloginrecordswithid
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-reindexwithid
+      description: Requests Elasticsearch to delete and rebuild the index for FusionAuth users or entities. Be very careful when running this request as it wil
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-system.reindexwithid
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-retrieveversionwithid
+      description: Retrieves the FusionAuth version string.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fusionauth-system.retrieveversionwithid
+      with: {}
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-retrievewebhookattemptlogwithid
+      description: Retrieves a single webhook attempt log for the given Id.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fusionauth-system.retrievewebhookattemptlogwithid
+      with:
+        webhookAttemptLogId: tools.webhookAttemptLogId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-searchwebhookeventlogswithid
+      description: Searches the webhook event logs with the specified criteria and pagination.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-system.searchwebhookeventlogswithid
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-retrievewebhookeventlogwithid
+      description: Retrieves a single webhook event log for the given Id.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fusionauth-system.retrievewebhookeventlogwithid
+      with:
+        webhookEventLogId: tools.webhookEventLogId
+      outputParameters:
+      - type: object
+        mapping: $.

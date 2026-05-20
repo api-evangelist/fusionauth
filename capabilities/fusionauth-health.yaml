@@ -1,0 +1,67 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: FusionAuth API — Health
+  description: 'FusionAuth API — Health. 1 operations. Lead operation: Retrieves the FusionAuth system health. This API will return 200 if the system is healthy, and 500 if the system is un-healthy.. Self-contained Naftiko capability covering one business surface.'
+  tags:
+  - FusionAuth
+  - Health
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    FUSIONAUTH_API_KEY: FUSIONAUTH_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: fusionauth-health
+    baseUri: http://localhost:9011
+    description: FusionAuth API — Health business capability. Self-contained, no shared references.
+    resources:
+    - name: api-health
+      path: /api/health
+      operations:
+      - name: retrievesystemhealthwithid
+        method: GET
+        description: Retrieves the FusionAuth system health. This API will return 200 if the system is healthy, and 500 if the system is un-healthy.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters: []
+  exposes:
+  - type: rest
+    namespace: fusionauth-health-rest
+    port: 8080
+    description: REST adapter for FusionAuth API — Health. One resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/api/health
+      name: api-health
+      description: REST surface for api-health.
+      operations:
+      - method: GET
+        name: retrievesystemhealthwithid
+        description: Retrieves the FusionAuth system health. This API will return 200 if the system is healthy, and 500 if the system is un-healthy.
+        call: fusionauth-health.retrievesystemhealthwithid
+        with: {}
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: fusionauth-health-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for FusionAuth API — Health. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: fusionauth-retrievesystemhealthwithid
+      description: Retrieves the FusionAuth system health. This API will return 200 if the system is healthy, and 500 if the system is un-healthy.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fusionauth-health.retrievesystemhealthwithid
+      with: {}
+      outputParameters:
+      - type: object
+        mapping: $.

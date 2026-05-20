@@ -1,0 +1,189 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: FusionAuth API — Login
+  description: 'FusionAuth API — Login. 3 operations. Lead operation: Authenticates a user to FusionAuth.   This API optionally requires an API key. See Application.loginConfiguration.requireAuthentication.. Self-contained Naftiko capability covering one business surface.'
+  tags:
+  - FusionAuth
+  - Login
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    FUSIONAUTH_API_KEY: FUSIONAUTH_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: fusionauth-login
+    baseUri: http://localhost:9011
+    description: FusionAuth API — Login business capability. Self-contained, no shared references.
+    resources:
+    - name: api-login
+      path: /api/login
+      operations:
+      - name: loginwithid
+        method: POST
+        description: Authenticates a user to FusionAuth.   This API optionally requires an API key. See Application.loginConfiguration.requireAuthentication.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: loginpingwithrequestwithid
+        method: PUT
+        description: Sends a ping to FusionAuth indicating that the user was automatically logged into an application. When using FusionAuth's SSO or your own, y
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-login-userid-applicationid
+      path: /api/login/{userId}/{applicationId}
+      operations:
+      - name: loginpingwithid
+        method: PUT
+        description: Sends a ping to FusionAuth indicating that the user was automatically logged into an application. When using FusionAuth's SSO or your own, y
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: callerIPAddress
+          in: query
+          type: string
+          description: The IP address of the end-user that is logging in. If a null value is provided the IP address will be that of the client or last proxy that sent the request.
+        - name: userId
+          in: path
+          type: string
+          description: The Id of the user that was logged in.
+          required: true
+        - name: applicationId
+          in: path
+          type: string
+          description: The Id of the application that they logged into.
+          required: true
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+  exposes:
+  - type: rest
+    namespace: fusionauth-login-rest
+    port: 8080
+    description: REST adapter for FusionAuth API — Login. One resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/api/login
+      name: api-login
+      description: REST surface for api-login.
+      operations:
+      - method: POST
+        name: loginwithid
+        description: Authenticates a user to FusionAuth.   This API optionally requires an API key. See Application.loginConfiguration.requireAuthentication.
+        call: fusionauth-login.loginwithid
+        with:
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: loginpingwithrequestwithid
+        description: Sends a ping to FusionAuth indicating that the user was automatically logged into an application. When using FusionAuth's SSO or your own, y
+        call: fusionauth-login.loginpingwithrequestwithid
+        with:
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/login/{userId}/{applicationId}
+      name: api-login-userid-applicationid
+      description: REST surface for api-login-userid-applicationid.
+      operations:
+      - method: PUT
+        name: loginpingwithid
+        description: Sends a ping to FusionAuth indicating that the user was automatically logged into an application. When using FusionAuth's SSO or your own, y
+        call: fusionauth-login.loginpingwithid
+        with:
+          callerIPAddress: rest.callerIPAddress
+          userId: rest.userId
+          applicationId: rest.applicationId
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: fusionauth-login-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for FusionAuth API — Login. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: fusionauth-loginwithid
+      description: Authenticates a user to FusionAuth.   This API optionally requires an API key. See Application.loginConfiguration.requireAuthentication.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-login.loginwithid
+      with:
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-loginpingwithrequestwithid
+      description: Sends a ping to FusionAuth indicating that the user was automatically logged into an application. When using FusionAuth's SSO or your own, y
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: fusionauth-login.loginpingwithrequestwithid
+      with:
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-loginpingwithid
+      description: Sends a ping to FusionAuth indicating that the user was automatically logged into an application. When using FusionAuth's SSO or your own, y
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: fusionauth-login.loginpingwithid
+      with:
+        callerIPAddress: tools.callerIPAddress
+        userId: tools.userId
+        applicationId: tools.applicationId
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,509 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: FusionAuth API — Group
+  description: 'FusionAuth API — Group. 11 operations. Lead operation: Retrieves the group for the given Id.. Self-contained Naftiko capability covering one business surface.'
+  tags:
+  - FusionAuth
+  - Group
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    FUSIONAUTH_API_KEY: FUSIONAUTH_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: fusionauth-group
+    baseUri: http://localhost:9011
+    description: FusionAuth API — Group business capability. Self-contained, no shared references.
+    resources:
+    - name: api-group
+      path: /api/group
+      operations:
+      - name: creategroup
+        method: POST
+        description: Creates a group. You can optionally specify an Id for the group, if not provided one will be generated.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-group-member
+      path: /api/group/member
+      operations:
+      - name: creategroupmemberswithid
+        method: POST
+        description: Creates a member in a group.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deletegroupmemberswithid
+        method: DELETE
+        description: Removes users as members of a group.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: updategroupmemberswithid
+        method: PUT
+        description: Creates a member in a group.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-group-member-search
+      path: /api/group/member/search
+      operations:
+      - name: searchgroupmemberswithid
+        method: POST
+        description: Searches group members with the specified criteria and pagination.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-group-search
+      path: /api/group/search
+      operations:
+      - name: searchgroupswithid
+        method: POST
+        description: Searches groups with the specified criteria and pagination.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-group-groupid
+      path: /api/group/{groupId}
+      operations:
+      - name: creategroupwithid
+        method: POST
+        description: Creates a group. You can optionally specify an Id for the group, if not provided one will be generated.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: groupId
+          in: path
+          type: string
+          description: The Id for the group. If not provided a secure random UUID will be generated.
+          required: true
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deletegroupwithid
+        method: DELETE
+        description: Deletes the group for the given Id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: groupId
+          in: path
+          type: string
+          description: The Id of the group to delete.
+          required: true
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+      - name: patchgroupwithid
+        method: PATCH
+        description: Updates, via PATCH, the group with the given Id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: groupId
+          in: path
+          type: string
+          description: The Id of the group to update.
+          required: true
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: retrievegroupwithid
+        method: GET
+        description: Retrieves the group for the given Id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: groupId
+          in: path
+          type: string
+          description: The Id of the group.
+          required: true
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+      - name: updategroupwithid
+        method: PUT
+        description: Updates the group with the given Id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: groupId
+          in: path
+          type: string
+          description: The Id of the group to update.
+          required: true
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+  exposes:
+  - type: rest
+    namespace: fusionauth-group-rest
+    port: 8080
+    description: REST adapter for FusionAuth API — Group. One resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/api/group
+      name: api-group
+      description: REST surface for api-group.
+      operations:
+      - method: POST
+        name: creategroup
+        description: Creates a group. You can optionally specify an Id for the group, if not provided one will be generated.
+        call: fusionauth-group.creategroup
+        with:
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/group/member
+      name: api-group-member
+      description: REST surface for api-group-member.
+      operations:
+      - method: POST
+        name: creategroupmemberswithid
+        description: Creates a member in a group.
+        call: fusionauth-group.creategroupmemberswithid
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletegroupmemberswithid
+        description: Removes users as members of a group.
+        call: fusionauth-group.deletegroupmemberswithid
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updategroupmemberswithid
+        description: Creates a member in a group.
+        call: fusionauth-group.updategroupmemberswithid
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/group/member/search
+      name: api-group-member-search
+      description: REST surface for api-group-member-search.
+      operations:
+      - method: POST
+        name: searchgroupmemberswithid
+        description: Searches group members with the specified criteria and pagination.
+        call: fusionauth-group.searchgroupmemberswithid
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/group/search
+      name: api-group-search
+      description: REST surface for api-group-search.
+      operations:
+      - method: POST
+        name: searchgroupswithid
+        description: Searches groups with the specified criteria and pagination.
+        call: fusionauth-group.searchgroupswithid
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/group/{groupId}
+      name: api-group-groupid
+      description: REST surface for api-group-groupid.
+      operations:
+      - method: POST
+        name: creategroupwithid
+        description: Creates a group. You can optionally specify an Id for the group, if not provided one will be generated.
+        call: fusionauth-group.creategroupwithid
+        with:
+          groupId: rest.groupId
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletegroupwithid
+        description: Deletes the group for the given Id.
+        call: fusionauth-group.deletegroupwithid
+        with:
+          groupId: rest.groupId
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: patchgroupwithid
+        description: Updates, via PATCH, the group with the given Id.
+        call: fusionauth-group.patchgroupwithid
+        with:
+          groupId: rest.groupId
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: retrievegroupwithid
+        description: Retrieves the group for the given Id.
+        call: fusionauth-group.retrievegroupwithid
+        with:
+          groupId: rest.groupId
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updategroupwithid
+        description: Updates the group with the given Id.
+        call: fusionauth-group.updategroupwithid
+        with:
+          groupId: rest.groupId
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: fusionauth-group-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for FusionAuth API — Group. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: fusionauth-creategroup
+      description: Creates a group. You can optionally specify an Id for the group, if not provided one will be generated.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-group.creategroup
+      with:
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-creategroupmemberswithid
+      description: Creates a member in a group.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-group.creategroupmemberswithid
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-deletegroupmemberswithid
+      description: Removes users as members of a group.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: fusionauth-group.deletegroupmemberswithid
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-updategroupmemberswithid
+      description: Creates a member in a group.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: fusionauth-group.updategroupmemberswithid
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-searchgroupmemberswithid
+      description: Searches group members with the specified criteria and pagination.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-group.searchgroupmemberswithid
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-searchgroupswithid
+      description: Searches groups with the specified criteria and pagination.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-group.searchgroupswithid
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-creategroupwithid
+      description: Creates a group. You can optionally specify an Id for the group, if not provided one will be generated.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-group.creategroupwithid
+      with:
+        groupId: tools.groupId
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-deletegroupwithid
+      description: Deletes the group for the given Id.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: fusionauth-group.deletegroupwithid
+      with:
+        groupId: tools.groupId
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-patchgroupwithid
+      description: Updates, via PATCH, the group with the given Id.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-group.patchgroupwithid
+      with:
+        groupId: tools.groupId
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-retrievegroupwithid
+      description: Retrieves the group for the given Id.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fusionauth-group.retrievegroupwithid
+      with:
+        groupId: tools.groupId
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-updategroupwithid
+      description: Updates the group with the given Id.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: fusionauth-group.updategroupwithid
+      with:
+        groupId: tools.groupId
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

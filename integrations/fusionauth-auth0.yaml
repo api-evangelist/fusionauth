@@ -1,0 +1,124 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Migrate Auth0 users into FusionAuth
+  description: Export an Auth0 tenant's users (including app metadata) via the Management API, bulk-import them into FusionAuth, and stand up an Auth0-shaped identity provider so existing Auth0-issued tokens keep validating during cutover while costs collapse onto FusionAuth's flat pricing.
+  tags:
+  - FusionAuth
+  - Integration
+  - Migration
+  - auth0
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    FUSIONAUTH_API_KEY: FUSIONAUTH_API_KEY
+    AUTH0_API_KEY: AUTH0_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: fusionauth
+    baseUri: https://your-fusionauth-host/api
+    description: FusionAuth API operations consumed by this integration.
+    resources:
+    - name: api-user-import
+      path: /api/user/import
+      operations:
+      - name: bulkimportusers
+        method: POST
+        description: Bulk-import the migrated Auth0 users into FusionAuth.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-identity-provider
+      path: /api/identity-provider
+      operations:
+      - name: createidentityprovider
+        method: POST
+        description: Create an Auth0-style identity provider for the cutover window.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  - type: http
+    namespace: auth0
+    baseUri: https://your-tenant.auth0.com
+    description: Auth0 Management API operations consumed by this integration.
+    resources:
+    - name: api-v2-users
+      path: /api/v2/users
+      operations:
+      - name: listauth0users
+        method: GET
+        description: 'Auth0 Management API: listAuth0Users'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters: []
+    - name: api-v2-users-id
+      path: /api/v2/users/{id}
+      operations:
+      - name: getauth0user
+        method: GET
+        description: 'Auth0 Management API: getAuth0User'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Path parameter id.
+          required: true
+  exposes:
+  - type: mcp
+    namespace: fusionauth-auth0-mcp
+    description: MCP adapter for the fusionauth-auth0 integration.
+    tools:
+    - name: fusionauth_auth0
+      description: Execute the fusionauth auth0 integration end-to-end.
+      inputSchema:
+        type: object
+        properties:
+          trigger_event:
+            type: object
+            description: Triggering event payload.
+        required:
+        - trigger_event
+  - type: rest
+    namespace: fusionauth-auth0-rest
+    port: 8080
+    description: REST adapter for the fusionauth-auth0 integration.
+    resources:
+    - path: /fusionauth-auth0
+      name: fusionauth-auth0
+      description: REST surface for the fusionauth-auth0 integration.
+      operations:
+      - method: POST
+        name: trigger
+        description: Trigger the fusionauth-auth0 integration.
+        call: fusionauth_auth0
+        with:
+          trigger_event: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.

@@ -1,0 +1,129 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Migrate Okta users into FusionAuth
+  description: Pull users (and optionally group memberships) out of an Okta tenant via the Users API, bulk-import them into FusionAuth with original Okta user-id stashed in data, and rewire the application's identity provider so customers can walk off Okta licensing without forcing a global password reset.
+  tags:
+  - FusionAuth
+  - Integration
+  - Migration
+  - okta
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    FUSIONAUTH_API_KEY: FUSIONAUTH_API_KEY
+    OKTA_API_KEY: OKTA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: fusionauth
+    baseUri: https://your-fusionauth-host/api
+    description: FusionAuth API operations consumed by this integration.
+    resources:
+    - name: api-user-import
+      path: /api/user/import
+      operations:
+      - name: bulkimportusers
+        method: POST
+        description: Bulk-import migrated users into FusionAuth.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-user-registration-userid
+      path: /api/user/registration/{userId}
+      operations:
+      - name: createregistration
+        method: POST
+        description: Register the imported user against the target application.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          description: Path parameter userId.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  - type: http
+    namespace: okta
+    baseUri: https://your-okta-domain.okta.com
+    description: Okta Users API operations consumed by this integration.
+    resources:
+    - name: api-v1-users
+      path: /api/v1/users
+      operations:
+      - name: listoktausers
+        method: GET
+        description: 'Okta Users API: listOktaUsers'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters: []
+    - name: api-v1-users-userid-groups
+      path: /api/v1/users/{userId}/groups
+      operations:
+      - name: listoktausergroups
+        method: GET
+        description: 'Okta Users API: listOktaUserGroups'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          description: Path parameter userId.
+          required: true
+  exposes:
+  - type: mcp
+    namespace: fusionauth-okta-mcp
+    description: MCP adapter for the fusionauth-okta integration.
+    tools:
+    - name: fusionauth_okta
+      description: Execute the fusionauth okta integration end-to-end.
+      inputSchema:
+        type: object
+        properties:
+          trigger_event:
+            type: object
+            description: Triggering event payload.
+        required:
+        - trigger_event
+  - type: rest
+    namespace: fusionauth-okta-rest
+    port: 8080
+    description: REST adapter for the fusionauth-okta integration.
+    resources:
+    - path: /fusionauth-okta
+      name: fusionauth-okta
+      description: REST surface for the fusionauth-okta integration.
+      operations:
+      - method: POST
+        name: trigger
+        description: Trigger the fusionauth-okta integration.
+        call: fusionauth_okta
+        with:
+          trigger_event: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.

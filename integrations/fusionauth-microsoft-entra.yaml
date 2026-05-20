@@ -1,0 +1,124 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Federate FusionAuth with Microsoft Entra ID
+  description: Stand up an OIDC identity provider in FusionAuth pointing at Microsoft Entra ID (Azure AD) and reconcile incoming Entra users to FusionAuth users so enterprise customers can SSO into your app with their Microsoft tenant credentials without you owning their employee directory.
+  tags:
+  - FusionAuth
+  - Integration
+  - Federation
+  - microsoft-entra
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    FUSIONAUTH_API_KEY: FUSIONAUTH_API_KEY
+    MICROSOFT_ENTRA_API_KEY: MICROSOFT_ENTRA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: fusionauth
+    baseUri: https://your-fusionauth-host/api
+    description: FusionAuth API operations consumed by this integration.
+    resources:
+    - name: api-identity-provider
+      path: /api/identity-provider
+      operations:
+      - name: createidentityprovider
+        method: POST
+        description: Create or update the OIDC identity provider entry for Entra.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-identity-provider-link
+      path: /api/identity-provider/link
+      operations:
+      - name: linkidentityprovider
+        method: POST
+        description: Link the inbound Entra identity to a FusionAuth user.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  - type: http
+    namespace: microsoft-entra
+    baseUri: https://graph.microsoft.com
+    description: Microsoft Graph API operations consumed by this integration.
+    resources:
+    - name: v1-0-users-id
+      path: /v1.0/users/{id}
+      operations:
+      - name: getentrauser
+        method: GET
+        description: 'Microsoft Graph API: getEntraUser'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Path parameter id.
+          required: true
+    - name: v1-0-me-memberof
+      path: /v1.0/me/memberOf
+      operations:
+      - name: listgroupmemberships
+        method: GET
+        description: 'Microsoft Graph API: listGroupMemberships'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters: []
+  exposes:
+  - type: mcp
+    namespace: fusionauth-microsoft-entra-mcp
+    description: MCP adapter for the fusionauth-microsoft-entra integration.
+    tools:
+    - name: fusionauth_microsoft_entra
+      description: Execute the fusionauth microsoft entra integration end-to-end.
+      inputSchema:
+        type: object
+        properties:
+          trigger_event:
+            type: object
+            description: Triggering event payload.
+        required:
+        - trigger_event
+  - type: rest
+    namespace: fusionauth-microsoft-entra-rest
+    port: 8080
+    description: REST adapter for the fusionauth-microsoft-entra integration.
+    resources:
+    - path: /fusionauth-microsoft-entra
+      name: fusionauth-microsoft-entra
+      description: REST surface for the fusionauth-microsoft-entra integration.
+      operations:
+      - method: POST
+        name: trigger
+        description: Trigger the fusionauth-microsoft-entra integration.
+        call: fusionauth_microsoft_entra
+        with:
+          trigger_event: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.

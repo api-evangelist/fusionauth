@@ -1,0 +1,102 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Stream FusionAuth login + admin events to Slack
+  description: Watch the FusionAuth webhook event stream and post high-signal events (failed logins, new admin grants, IP-ACL changes, breached-password detections) into a dedicated Slack channel so the security on-call sees suspicious identity activity without spelunking the audit log.
+  tags:
+  - FusionAuth
+  - Integration
+  - ChatOps
+  - slack
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    FUSIONAUTH_API_KEY: FUSIONAUTH_API_KEY
+    SLACK_API_KEY: SLACK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: fusionauth
+    baseUri: https://your-fusionauth-host/api
+    description: FusionAuth API operations consumed by this integration.
+    resources:
+    - name: api-system-audit-log
+      path: /api/system/audit-log
+      operations:
+      - name: searchauditlogs
+        method: GET
+        description: Search the FusionAuth audit log for the events to fan out.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters: []
+    - name: api-system-event-log
+      path: /api/system/event-log
+      operations:
+      - name: searcheventlog
+        method: GET
+        description: Search the FusionAuth event log for system events.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters: []
+  - type: http
+    namespace: slack
+    baseUri: https://slack.com/api
+    description: Slack Web API operations consumed by this integration.
+    resources:
+    - name: chat-postmessage
+      path: /chat.postMessage
+      operations:
+      - name: postmessage
+        method: POST
+        description: 'Slack Web API: postMessage'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: mcp
+    namespace: fusionauth-slack-mcp
+    description: MCP adapter for the fusionauth-slack integration.
+    tools:
+    - name: fusionauth_slack
+      description: Execute the fusionauth slack integration end-to-end.
+      inputSchema:
+        type: object
+        properties:
+          trigger_event:
+            type: object
+            description: Triggering event payload.
+        required:
+        - trigger_event
+  - type: rest
+    namespace: fusionauth-slack-rest
+    port: 8080
+    description: REST adapter for the fusionauth-slack integration.
+    resources:
+    - path: /fusionauth-slack
+      name: fusionauth-slack
+      description: REST surface for the fusionauth-slack integration.
+      operations:
+      - method: POST
+        name: trigger
+        description: Trigger the fusionauth-slack integration.
+        call: fusionauth_slack
+        with:
+          trigger_event: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.

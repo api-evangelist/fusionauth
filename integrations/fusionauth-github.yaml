@@ -1,0 +1,119 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Add GitHub OAuth login to FusionAuth applications
+  description: Register GitHub as an OAuth identity provider in FusionAuth and reconcile inbound GitHub users (login, primary email, org memberships) to FusionAuth users so developer-facing products can ship one-click GitHub login with org-membership-driven role grants instead of hand-rolling an OAuth dance.
+  tags:
+  - FusionAuth
+  - Integration
+  - Social Login
+  - github
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    FUSIONAUTH_API_KEY: FUSIONAUTH_API_KEY
+    GITHUB_API_KEY: GITHUB_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: fusionauth
+    baseUri: https://your-fusionauth-host/api
+    description: FusionAuth API operations consumed by this integration.
+    resources:
+    - name: api-identity-provider
+      path: /api/identity-provider
+      operations:
+      - name: createidentityprovider
+        method: POST
+        description: Create the GitHub OAuth identity provider entry.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-identity-provider-link
+      path: /api/identity-provider/link
+      operations:
+      - name: linkidentityprovider
+        method: POST
+        description: Link the inbound GitHub identity to a FusionAuth user.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  - type: http
+    namespace: github
+    baseUri: https://api.github.com
+    description: GitHub REST API operations consumed by this integration.
+    resources:
+    - name: user
+      path: /user
+      operations:
+      - name: getgithubuser
+        method: GET
+        description: 'GitHub REST API: getGitHubUser'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters: []
+    - name: user-orgs
+      path: /user/orgs
+      operations:
+      - name: listgithubuserorgs
+        method: GET
+        description: 'GitHub REST API: listGitHubUserOrgs'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters: []
+  exposes:
+  - type: mcp
+    namespace: fusionauth-github-mcp
+    description: MCP adapter for the fusionauth-github integration.
+    tools:
+    - name: fusionauth_github
+      description: Execute the fusionauth github integration end-to-end.
+      inputSchema:
+        type: object
+        properties:
+          trigger_event:
+            type: object
+            description: Triggering event payload.
+        required:
+        - trigger_event
+  - type: rest
+    namespace: fusionauth-github-rest
+    port: 8080
+    description: REST adapter for the fusionauth-github integration.
+    resources:
+    - path: /fusionauth-github
+      name: fusionauth-github
+      description: REST surface for the fusionauth-github integration.
+      operations:
+      - method: POST
+        name: trigger
+        description: Trigger the fusionauth-github integration.
+        call: fusionauth_github
+        with:
+          trigger_event: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.

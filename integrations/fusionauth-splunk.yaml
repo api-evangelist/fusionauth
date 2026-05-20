@@ -1,0 +1,102 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Forward FusionAuth audit + event logs to Splunk HEC
+  description: Continuously drain the FusionAuth audit log and event log into Splunk via the HTTP Event Collector so SecOps can correlate identity activity (failed logins, role grants, IdP linking, key rotation) with the rest of the enterprise telemetry without writing custom log shippers.
+  tags:
+  - FusionAuth
+  - Integration
+  - Audit
+  - splunk
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    FUSIONAUTH_API_KEY: FUSIONAUTH_API_KEY
+    SPLUNK_API_KEY: SPLUNK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: fusionauth
+    baseUri: https://your-fusionauth-host/api
+    description: FusionAuth API operations consumed by this integration.
+    resources:
+    - name: api-system-audit-log
+      path: /api/system/audit-log
+      operations:
+      - name: searchauditlogs
+        method: GET
+        description: Page the FusionAuth audit log for forwarding.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters: []
+    - name: api-system-event-log
+      path: /api/system/event-log
+      operations:
+      - name: searcheventlog
+        method: GET
+        description: Page the FusionAuth event log for forwarding.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters: []
+  - type: http
+    namespace: splunk
+    baseUri: https://splunk-hec.example.com:8088
+    description: Splunk HTTP Event Collector operations consumed by this integration.
+    resources:
+    - name: services-collector-event
+      path: /services/collector/event
+      operations:
+      - name: postevent
+        method: POST
+        description: 'Splunk HTTP Event Collector: postEvent'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: mcp
+    namespace: fusionauth-splunk-mcp
+    description: MCP adapter for the fusionauth-splunk integration.
+    tools:
+    - name: fusionauth_splunk
+      description: Execute the fusionauth splunk integration end-to-end.
+      inputSchema:
+        type: object
+        properties:
+          trigger_event:
+            type: object
+            description: Triggering event payload.
+        required:
+        - trigger_event
+  - type: rest
+    namespace: fusionauth-splunk-rest
+    port: 8080
+    description: REST adapter for the fusionauth-splunk integration.
+    resources:
+    - path: /fusionauth-splunk
+      name: fusionauth-splunk
+      description: REST surface for the fusionauth-splunk integration.
+      operations:
+      - method: POST
+        name: trigger
+        description: Trigger the fusionauth-splunk integration.
+        call: fusionauth_splunk
+        with:
+          trigger_event: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.

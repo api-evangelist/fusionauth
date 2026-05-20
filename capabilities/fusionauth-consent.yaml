@@ -1,0 +1,355 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: FusionAuth API — Consent
+  description: 'FusionAuth API — Consent. 7 operations. Lead operation: Retrieves the Consent for the given Id.. Self-contained Naftiko capability covering one business surface.'
+  tags:
+  - FusionAuth
+  - Consent
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    FUSIONAUTH_API_KEY: FUSIONAUTH_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: fusionauth-consent
+    baseUri: http://localhost:9011
+    description: FusionAuth API — Consent business capability. Self-contained, no shared references.
+    resources:
+    - name: api-consent
+      path: /api/consent
+      operations:
+      - name: createconsent
+        method: POST
+        description: Creates a user consent type. You can optionally specify an Id for the consent type, if not provided one will be generated.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-consent-search
+      path: /api/consent/search
+      operations:
+      - name: searchconsentswithid
+        method: POST
+        description: Searches consents with the specified criteria and pagination.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-consent-consentid
+      path: /api/consent/{consentId}
+      operations:
+      - name: createconsentwithid
+        method: POST
+        description: Creates a user consent type. You can optionally specify an Id for the consent type, if not provided one will be generated.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: consentId
+          in: path
+          type: string
+          description: The Id for the consent. If not provided a secure random UUID will be generated.
+          required: true
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deleteconsentwithid
+        method: DELETE
+        description: Deletes the consent for the given Id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: consentId
+          in: path
+          type: string
+          description: The Id of the consent to delete.
+          required: true
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+      - name: patchconsentwithid
+        method: PATCH
+        description: Updates, via PATCH, the consent with the given Id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: consentId
+          in: path
+          type: string
+          description: The Id of the consent to update.
+          required: true
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: retrieveconsentwithid
+        method: GET
+        description: Retrieves the Consent for the given Id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: consentId
+          in: path
+          type: string
+          description: The Id of the consent.
+          required: true
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+      - name: updateconsentwithid
+        method: PUT
+        description: Updates the consent with the given Id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: consentId
+          in: path
+          type: string
+          description: The Id of the consent to update.
+          required: true
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+  exposes:
+  - type: rest
+    namespace: fusionauth-consent-rest
+    port: 8080
+    description: REST adapter for FusionAuth API — Consent. One resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/api/consent
+      name: api-consent
+      description: REST surface for api-consent.
+      operations:
+      - method: POST
+        name: createconsent
+        description: Creates a user consent type. You can optionally specify an Id for the consent type, if not provided one will be generated.
+        call: fusionauth-consent.createconsent
+        with:
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/consent/search
+      name: api-consent-search
+      description: REST surface for api-consent-search.
+      operations:
+      - method: POST
+        name: searchconsentswithid
+        description: Searches consents with the specified criteria and pagination.
+        call: fusionauth-consent.searchconsentswithid
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/consent/{consentId}
+      name: api-consent-consentid
+      description: REST surface for api-consent-consentid.
+      operations:
+      - method: POST
+        name: createconsentwithid
+        description: Creates a user consent type. You can optionally specify an Id for the consent type, if not provided one will be generated.
+        call: fusionauth-consent.createconsentwithid
+        with:
+          consentId: rest.consentId
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteconsentwithid
+        description: Deletes the consent for the given Id.
+        call: fusionauth-consent.deleteconsentwithid
+        with:
+          consentId: rest.consentId
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: patchconsentwithid
+        description: Updates, via PATCH, the consent with the given Id.
+        call: fusionauth-consent.patchconsentwithid
+        with:
+          consentId: rest.consentId
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: retrieveconsentwithid
+        description: Retrieves the Consent for the given Id.
+        call: fusionauth-consent.retrieveconsentwithid
+        with:
+          consentId: rest.consentId
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateconsentwithid
+        description: Updates the consent with the given Id.
+        call: fusionauth-consent.updateconsentwithid
+        with:
+          consentId: rest.consentId
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: fusionauth-consent-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for FusionAuth API — Consent. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: fusionauth-createconsent
+      description: Creates a user consent type. You can optionally specify an Id for the consent type, if not provided one will be generated.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-consent.createconsent
+      with:
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-searchconsentswithid
+      description: Searches consents with the specified criteria and pagination.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-consent.searchconsentswithid
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-createconsentwithid
+      description: Creates a user consent type. You can optionally specify an Id for the consent type, if not provided one will be generated.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-consent.createconsentwithid
+      with:
+        consentId: tools.consentId
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-deleteconsentwithid
+      description: Deletes the consent for the given Id.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: fusionauth-consent.deleteconsentwithid
+      with:
+        consentId: tools.consentId
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-patchconsentwithid
+      description: Updates, via PATCH, the consent with the given Id.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-consent.patchconsentwithid
+      with:
+        consentId: tools.consentId
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-retrieveconsentwithid
+      description: Retrieves the Consent for the given Id.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fusionauth-consent.retrieveconsentwithid
+      with:
+        consentId: tools.consentId
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-updateconsentwithid
+      description: Updates the consent with the given Id.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: fusionauth-consent.updateconsentwithid
+      with:
+        consentId: tools.consentId
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

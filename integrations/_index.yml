@@ -1,0 +1,60 @@
+- slug: fusionauth-stripe
+  label: Promote FusionAuth users to Stripe customers
+  partner: stripe
+  category: Billing
+  use_case: When a FusionAuth user is created or registers for a paid application, upsert the matching Stripe Customer (keyed on email) and stash the Stripe customer ID back onto the FusionAuth user so billing, dunning, and revenue reporting stay reconciled to one identity.
+- slug: fusionauth-salesforce
+  label: Sync FusionAuth users to Salesforce contacts
+  partner: salesforce
+  category: CRM
+  use_case: When a FusionAuth user registers, verifies email, or updates profile, upsert the corresponding Salesforce Contact by email so reps see signup, MFA enrollment, and last-login signal directly in the timeline without standing up a custom auth-event bus.
+- slug: fusionauth-hubspot
+  label: Push FusionAuth registrations into HubSpot contacts and lifecycle
+  partner: hubspot
+  category: CRM
+  use_case: When a FusionAuth user registers for an application, upsert the matching HubSpot Contact and set lifecycle stage to "product qualified lead" so marketing automation, sequences, and lead scoring stay in step with real signups instead of stale form fills.
+- slug: fusionauth-slack
+  label: Stream FusionAuth login + admin events to Slack
+  partner: slack
+  category: ChatOps
+  use_case: Watch the FusionAuth webhook event stream and post high-signal events (failed logins, new admin grants, IP-ACL changes, breached-password detections) into a dedicated Slack channel so the security on-call sees suspicious identity activity without spelunking the audit log.
+- slug: fusionauth-microsoft-entra
+  label: Federate FusionAuth with Microsoft Entra ID
+  partner: microsoft-entra
+  category: Federation
+  use_case: Stand up an OIDC identity provider in FusionAuth pointing at Microsoft Entra ID (Azure AD) and reconcile incoming Entra users to FusionAuth users so enterprise customers can SSO into your app with their Microsoft tenant credentials without you owning their employee directory.
+- slug: fusionauth-google-workspace
+  label: Federate FusionAuth with Google Workspace SSO
+  partner: google-workspace
+  category: Federation
+  use_case: Provision a Google OIDC identity provider in FusionAuth and reconcile inbound Google Workspace users (with domain claim) to FusionAuth users so customers with Google-backed corporate identity can log in to your application with one click while their group membership drives role grants.
+- slug: fusionauth-okta
+  label: Migrate Okta users into FusionAuth
+  partner: okta
+  category: Migration
+  use_case: Pull users (and optionally group memberships) out of an Okta tenant via the Users API, bulk-import them into FusionAuth with original Okta user-id stashed in data, and rewire the application's identity provider so customers can walk off Okta licensing without forcing a global password reset.
+- slug: fusionauth-auth0
+  label: Migrate Auth0 users into FusionAuth
+  partner: auth0
+  category: Migration
+  use_case: Export an Auth0 tenant's users (including app metadata) via the Management API, bulk-import them into FusionAuth, and stand up an Auth0-shaped identity provider so existing Auth0-issued tokens keep validating during cutover while costs collapse onto FusionAuth's flat pricing.
+- slug: fusionauth-github
+  label: Add GitHub OAuth login to FusionAuth applications
+  partner: github
+  category: Social Login
+  use_case: Register GitHub as an OAuth identity provider in FusionAuth and reconcile inbound GitHub users (login, primary email, org memberships) to FusionAuth users so developer-facing products can ship one-click GitHub login with org-membership-driven role grants instead of hand-rolling an OAuth dance.
+- slug: fusionauth-anthropic
+  label: Attribute Anthropic spend back to FusionAuth users
+  partner: anthropic
+  category: AI Telemetry
+  use_case: For LLM-backed applications, attribute Anthropic Messages API usage to the FusionAuth user that initiated the call by tagging each request with the FusionAuth user id and stashing token / cost telemetry back onto the user's data block so product and finance can see per-user AI economics in one place.
+- slug: fusionauth-splunk
+  label: Forward FusionAuth audit + event logs to Splunk HEC
+  partner: splunk
+  category: Audit
+  use_case: Continuously drain the FusionAuth audit log and event log into Splunk via the HTTP Event Collector so SecOps can correlate identity activity (failed logins, role grants, IdP linking, key rotation) with the rest of the enterprise telemetry without writing custom log shippers.
+- slug: fusionauth-twilio
+  label: Deliver FusionAuth MFA codes via Twilio SMS
+  partner: twilio
+  category: MFA
+  use_case: Wire a FusionAuth SMS messenger to Twilio so two-factor enrollment and challenge codes route through Twilio Programmable Messaging, falling back across sender pools, and the customer's MFA reliability lives on a real telecom provider instead of an ad-hoc SMTP-to-SMS hack.

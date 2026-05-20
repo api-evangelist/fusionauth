@@ -1,0 +1,422 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: FusionAuth API — OAuth2
+  description: 'FusionAuth API — OAuth2. 10 operations. Lead operation: Returns public keys used by FusionAuth to cryptographically verify JWTs using the JSON Web Key format.. Self-contained Naftiko capability covering one business surface.'
+  tags:
+  - FusionAuth
+  - OAuth2
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    FUSIONAUTH_API_KEY: FUSIONAUTH_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: fusionauth-oauth2
+    baseUri: http://localhost:9011
+    description: FusionAuth API — OAuth2 business capability. Self-contained, no shared references.
+    resources:
+    - name: well-known-jwks-json
+      path: /.well-known/jwks.json
+      operations:
+      - name: retrievejsonwebkeysetwithid
+        method: GET
+        description: Returns public keys used by FusionAuth to cryptographically verify JWTs using the JSON Web Key format.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters: []
+    - name: well-known-openid-configuration
+      path: /.well-known/openid-configuration
+      operations:
+      - name: retrieveopenidconfigurationwithid
+        method: GET
+        description: Returns the well known OpenID Configuration JSON document
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters: []
+    - name: oauth2-device-approve
+      path: /oauth2/device/approve
+      operations:
+      - name: createdeviceapprove
+        method: POST
+        description: Approve a device grant. OR Approve a device grant.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: oauth2-device-user-code
+      path: /oauth2/device/user-code
+      operations:
+      - name: retrievedeviceusercode
+        method: GET
+        description: Retrieve a user_code that is part of an in-progress Device Authorization Grant.  This API is useful if you want to build your own login work
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters: []
+      - name: createdeviceusercode
+        method: POST
+        description: Retrieve a user_code that is part of an in-progress Device Authorization Grant.  This API is useful if you want to build your own login work
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: oauth2-device-validate
+      path: /oauth2/device/validate
+      operations:
+      - name: retrievedevicevalidate
+        method: GET
+        description: Validates the end-user provided user_code from the user-interaction of the Device Authorization Grant. If you build your own activation form
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: user_code
+          in: query
+          type: string
+          description: The end-user verification code.
+        - name: client_id
+          in: query
+          type: string
+          description: The client Id.
+    - name: oauth2-device-authorize
+      path: /oauth2/device_authorize
+      operations:
+      - name: createdeviceauthorize
+        method: POST
+        description: Start the Device Authorization flow using a request body OR Start the Device Authorization flow using form-encoded parameters
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: oauth2-introspect
+      path: /oauth2/introspect
+      operations:
+      - name: createintrospect
+        method: POST
+        description: 'Inspect an access token issued as the result of the Client Credentials Grant. OR Inspect an access token issued as the result of the Client '
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: oauth2-token
+      path: /oauth2/token
+      operations:
+      - name: createtoken
+        method: POST
+        description: Exchange User Credentials for a Token. If you will be using the Resource Owner Password Credential Grant, you will make a request to the Tok
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: oauth2-userinfo
+      path: /oauth2/userinfo
+      operations:
+      - name: retrieveuserinfofromaccesstokenwithid
+        method: GET
+        description: Call the UserInfo endpoint to retrieve User Claims from the access token issued by FusionAuth.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters: []
+  exposes:
+  - type: rest
+    namespace: fusionauth-oauth2-rest
+    port: 8080
+    description: REST adapter for FusionAuth API — OAuth2. One resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/.well-known/jwks.json
+      name: well-known-jwks-json
+      description: REST surface for well-known-jwks-json.
+      operations:
+      - method: GET
+        name: retrievejsonwebkeysetwithid
+        description: Returns public keys used by FusionAuth to cryptographically verify JWTs using the JSON Web Key format.
+        call: fusionauth-oauth2.retrievejsonwebkeysetwithid
+        with: {}
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/.well-known/openid-configuration
+      name: well-known-openid-configuration
+      description: REST surface for well-known-openid-configuration.
+      operations:
+      - method: GET
+        name: retrieveopenidconfigurationwithid
+        description: Returns the well known OpenID Configuration JSON document
+        call: fusionauth-oauth2.retrieveopenidconfigurationwithid
+        with: {}
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/oauth2/device/approve
+      name: oauth2-device-approve
+      description: REST surface for oauth2-device-approve.
+      operations:
+      - method: POST
+        name: createdeviceapprove
+        description: Approve a device grant. OR Approve a device grant.
+        call: fusionauth-oauth2.createdeviceapprove
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/oauth2/device/user-code
+      name: oauth2-device-user-code
+      description: REST surface for oauth2-device-user-code.
+      operations:
+      - method: GET
+        name: retrievedeviceusercode
+        description: Retrieve a user_code that is part of an in-progress Device Authorization Grant.  This API is useful if you want to build your own login work
+        call: fusionauth-oauth2.retrievedeviceusercode
+        with: {}
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createdeviceusercode
+        description: Retrieve a user_code that is part of an in-progress Device Authorization Grant.  This API is useful if you want to build your own login work
+        call: fusionauth-oauth2.createdeviceusercode
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/oauth2/device/validate
+      name: oauth2-device-validate
+      description: REST surface for oauth2-device-validate.
+      operations:
+      - method: GET
+        name: retrievedevicevalidate
+        description: Validates the end-user provided user_code from the user-interaction of the Device Authorization Grant. If you build your own activation form
+        call: fusionauth-oauth2.retrievedevicevalidate
+        with:
+          user_code: rest.user_code
+          client_id: rest.client_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/oauth2/device_authorize
+      name: oauth2-device-authorize
+      description: REST surface for oauth2-device-authorize.
+      operations:
+      - method: POST
+        name: createdeviceauthorize
+        description: Start the Device Authorization flow using a request body OR Start the Device Authorization flow using form-encoded parameters
+        call: fusionauth-oauth2.createdeviceauthorize
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/oauth2/introspect
+      name: oauth2-introspect
+      description: REST surface for oauth2-introspect.
+      operations:
+      - method: POST
+        name: createintrospect
+        description: 'Inspect an access token issued as the result of the Client Credentials Grant. OR Inspect an access token issued as the result of the Client '
+        call: fusionauth-oauth2.createintrospect
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/oauth2/token
+      name: oauth2-token
+      description: REST surface for oauth2-token.
+      operations:
+      - method: POST
+        name: createtoken
+        description: Exchange User Credentials for a Token. If you will be using the Resource Owner Password Credential Grant, you will make a request to the Tok
+        call: fusionauth-oauth2.createtoken
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/oauth2/userinfo
+      name: oauth2-userinfo
+      description: REST surface for oauth2-userinfo.
+      operations:
+      - method: GET
+        name: retrieveuserinfofromaccesstokenwithid
+        description: Call the UserInfo endpoint to retrieve User Claims from the access token issued by FusionAuth.
+        call: fusionauth-oauth2.retrieveuserinfofromaccesstokenwithid
+        with: {}
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: fusionauth-oauth2-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for FusionAuth API — OAuth2. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: fusionauth-retrievejsonwebkeysetwithid
+      description: Returns public keys used by FusionAuth to cryptographically verify JWTs using the JSON Web Key format.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fusionauth-oauth2.retrievejsonwebkeysetwithid
+      with: {}
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-retrieveopenidconfigurationwithid
+      description: Returns the well known OpenID Configuration JSON document
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fusionauth-oauth2.retrieveopenidconfigurationwithid
+      with: {}
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-createdeviceapprove
+      description: Approve a device grant. OR Approve a device grant.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-oauth2.createdeviceapprove
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-retrievedeviceusercode
+      description: Retrieve a user_code that is part of an in-progress Device Authorization Grant.  This API is useful if you want to build your own login work
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fusionauth-oauth2.retrievedeviceusercode
+      with: {}
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-createdeviceusercode
+      description: Retrieve a user_code that is part of an in-progress Device Authorization Grant.  This API is useful if you want to build your own login work
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-oauth2.createdeviceusercode
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-retrievedevicevalidate
+      description: Validates the end-user provided user_code from the user-interaction of the Device Authorization Grant. If you build your own activation form
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fusionauth-oauth2.retrievedevicevalidate
+      with:
+        user_code: tools.user_code
+        client_id: tools.client_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-createdeviceauthorize
+      description: Start the Device Authorization flow using a request body OR Start the Device Authorization flow using form-encoded parameters
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-oauth2.createdeviceauthorize
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-createintrospect
+      description: 'Inspect an access token issued as the result of the Client Credentials Grant. OR Inspect an access token issued as the result of the Client '
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-oauth2.createintrospect
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-createtoken
+      description: Exchange User Credentials for a Token. If you will be using the Resource Owner Password Credential Grant, you will make a request to the Tok
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-oauth2.createtoken
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-retrieveuserinfofromaccesstokenwithid
+      description: Call the UserInfo endpoint to retrieve User Claims from the access token issued by FusionAuth.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fusionauth-oauth2.retrieveuserinfofromaccesstokenwithid
+      with: {}
+      outputParameters:
+      - type: object
+        mapping: $.

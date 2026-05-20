@@ -1,0 +1,592 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: FusionAuth API — Messenger
+  description: 'FusionAuth API — Messenger. 14 operations. Lead operation: Retrieves the message template for the given Id. If you don''t specify the Id, this will return all the message templates.. Self-contained Naftiko capability covering one business surface.'
+  tags:
+  - FusionAuth
+  - Messenger
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    FUSIONAUTH_API_KEY: FUSIONAUTH_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: fusionauth-messenger
+    baseUri: http://localhost:9011
+    description: FusionAuth API — Messenger business capability. Self-contained, no shared references.
+    resources:
+    - name: api-message-template
+      path: /api/message/template
+      operations:
+      - name: createmessagetemplate
+        method: POST
+        description: Creates an message template. You can optionally specify an Id for the template, if not provided one will be generated.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: retrievemessagetemplate
+        method: GET
+        description: Retrieves the message template for the given Id. If you don't specify the Id, this will return all the message templates.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters: []
+    - name: api-message-template-preview
+      path: /api/message/template/preview
+      operations:
+      - name: retrievemessagetemplatepreviewwithid
+        method: POST
+        description: Creates a preview of the message template provided in the request, normalized to a given locale.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-message-template-messagetemplateid
+      path: /api/message/template/{messageTemplateId}
+      operations:
+      - name: createmessagetemplatewithid
+        method: POST
+        description: Creates an message template. You can optionally specify an Id for the template, if not provided one will be generated.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: messageTemplateId
+          in: path
+          type: string
+          description: The Id for the template. If not provided a secure random UUID will be generated.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deletemessagetemplatewithid
+        method: DELETE
+        description: Deletes the message template for the given Id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: messageTemplateId
+          in: path
+          type: string
+          description: The Id of the message template to delete.
+          required: true
+      - name: patchmessagetemplatewithid
+        method: PATCH
+        description: Updates, via PATCH, the message template with the given Id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: messageTemplateId
+          in: path
+          type: string
+          description: The Id of the message template to update.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: retrievemessagetemplatewithid
+        method: GET
+        description: Retrieves the message template for the given Id. If you don't specify the Id, this will return all the message templates.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: messageTemplateId
+          in: path
+          type: string
+          description: The Id of the message template.
+          required: true
+      - name: updatemessagetemplatewithid
+        method: PUT
+        description: Updates the message template with the given Id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: messageTemplateId
+          in: path
+          type: string
+          description: The Id of the message template to update.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-messenger
+      path: /api/messenger
+      operations:
+      - name: createmessenger
+        method: POST
+        description: Creates a messenger.  You can optionally specify an Id for the messenger, if not provided one will be generated.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-messenger-messengerid
+      path: /api/messenger/{messengerId}
+      operations:
+      - name: createmessengerwithid
+        method: POST
+        description: Creates a messenger.  You can optionally specify an Id for the messenger, if not provided one will be generated.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: messengerId
+          in: path
+          type: string
+          description: The Id for the messenger. If not provided a secure random UUID will be generated.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deletemessengerwithid
+        method: DELETE
+        description: Deletes the messenger for the given Id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: messengerId
+          in: path
+          type: string
+          description: The Id of the messenger to delete.
+          required: true
+      - name: patchmessengerwithid
+        method: PATCH
+        description: Updates, via PATCH, the messenger with the given Id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: messengerId
+          in: path
+          type: string
+          description: The Id of the messenger to update.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: retrievemessengerwithid
+        method: GET
+        description: Retrieves the messenger with the given Id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: messengerId
+          in: path
+          type: string
+          description: The Id of the messenger.
+          required: true
+      - name: updatemessengerwithid
+        method: PUT
+        description: Updates the messenger with the given Id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: messengerId
+          in: path
+          type: string
+          description: The Id of the messenger to update.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+  exposes:
+  - type: rest
+    namespace: fusionauth-messenger-rest
+    port: 8080
+    description: REST adapter for FusionAuth API — Messenger. One resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/api/message/template
+      name: api-message-template
+      description: REST surface for api-message-template.
+      operations:
+      - method: POST
+        name: createmessagetemplate
+        description: Creates an message template. You can optionally specify an Id for the template, if not provided one will be generated.
+        call: fusionauth-messenger.createmessagetemplate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: retrievemessagetemplate
+        description: Retrieves the message template for the given Id. If you don't specify the Id, this will return all the message templates.
+        call: fusionauth-messenger.retrievemessagetemplate
+        with: {}
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/message/template/preview
+      name: api-message-template-preview
+      description: REST surface for api-message-template-preview.
+      operations:
+      - method: POST
+        name: retrievemessagetemplatepreviewwithid
+        description: Creates a preview of the message template provided in the request, normalized to a given locale.
+        call: fusionauth-messenger.retrievemessagetemplatepreviewwithid
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/message/template/{messageTemplateId}
+      name: api-message-template-messagetemplateid
+      description: REST surface for api-message-template-messagetemplateid.
+      operations:
+      - method: POST
+        name: createmessagetemplatewithid
+        description: Creates an message template. You can optionally specify an Id for the template, if not provided one will be generated.
+        call: fusionauth-messenger.createmessagetemplatewithid
+        with:
+          messageTemplateId: rest.messageTemplateId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletemessagetemplatewithid
+        description: Deletes the message template for the given Id.
+        call: fusionauth-messenger.deletemessagetemplatewithid
+        with:
+          messageTemplateId: rest.messageTemplateId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: patchmessagetemplatewithid
+        description: Updates, via PATCH, the message template with the given Id.
+        call: fusionauth-messenger.patchmessagetemplatewithid
+        with:
+          messageTemplateId: rest.messageTemplateId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: retrievemessagetemplatewithid
+        description: Retrieves the message template for the given Id. If you don't specify the Id, this will return all the message templates.
+        call: fusionauth-messenger.retrievemessagetemplatewithid
+        with:
+          messageTemplateId: rest.messageTemplateId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatemessagetemplatewithid
+        description: Updates the message template with the given Id.
+        call: fusionauth-messenger.updatemessagetemplatewithid
+        with:
+          messageTemplateId: rest.messageTemplateId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/messenger
+      name: api-messenger
+      description: REST surface for api-messenger.
+      operations:
+      - method: POST
+        name: createmessenger
+        description: Creates a messenger.  You can optionally specify an Id for the messenger, if not provided one will be generated.
+        call: fusionauth-messenger.createmessenger
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/messenger/{messengerId}
+      name: api-messenger-messengerid
+      description: REST surface for api-messenger-messengerid.
+      operations:
+      - method: POST
+        name: createmessengerwithid
+        description: Creates a messenger.  You can optionally specify an Id for the messenger, if not provided one will be generated.
+        call: fusionauth-messenger.createmessengerwithid
+        with:
+          messengerId: rest.messengerId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletemessengerwithid
+        description: Deletes the messenger for the given Id.
+        call: fusionauth-messenger.deletemessengerwithid
+        with:
+          messengerId: rest.messengerId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: patchmessengerwithid
+        description: Updates, via PATCH, the messenger with the given Id.
+        call: fusionauth-messenger.patchmessengerwithid
+        with:
+          messengerId: rest.messengerId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: retrievemessengerwithid
+        description: Retrieves the messenger with the given Id.
+        call: fusionauth-messenger.retrievemessengerwithid
+        with:
+          messengerId: rest.messengerId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatemessengerwithid
+        description: Updates the messenger with the given Id.
+        call: fusionauth-messenger.updatemessengerwithid
+        with:
+          messengerId: rest.messengerId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: fusionauth-messenger-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for FusionAuth API — Messenger. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: fusionauth-createmessagetemplate
+      description: Creates an message template. You can optionally specify an Id for the template, if not provided one will be generated.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-messenger.createmessagetemplate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-retrievemessagetemplate
+      description: Retrieves the message template for the given Id. If you don't specify the Id, this will return all the message templates.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fusionauth-messenger.retrievemessagetemplate
+      with: {}
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-retrievemessagetemplatepreviewwithid
+      description: Creates a preview of the message template provided in the request, normalized to a given locale.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-messenger.retrievemessagetemplatepreviewwithid
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-createmessagetemplatewithid
+      description: Creates an message template. You can optionally specify an Id for the template, if not provided one will be generated.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-messenger.createmessagetemplatewithid
+      with:
+        messageTemplateId: tools.messageTemplateId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-deletemessagetemplatewithid
+      description: Deletes the message template for the given Id.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: fusionauth-messenger.deletemessagetemplatewithid
+      with:
+        messageTemplateId: tools.messageTemplateId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-patchmessagetemplatewithid
+      description: Updates, via PATCH, the message template with the given Id.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-messenger.patchmessagetemplatewithid
+      with:
+        messageTemplateId: tools.messageTemplateId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-retrievemessagetemplatewithid
+      description: Retrieves the message template for the given Id. If you don't specify the Id, this will return all the message templates.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fusionauth-messenger.retrievemessagetemplatewithid
+      with:
+        messageTemplateId: tools.messageTemplateId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-updatemessagetemplatewithid
+      description: Updates the message template with the given Id.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: fusionauth-messenger.updatemessagetemplatewithid
+      with:
+        messageTemplateId: tools.messageTemplateId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-createmessenger
+      description: Creates a messenger.  You can optionally specify an Id for the messenger, if not provided one will be generated.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-messenger.createmessenger
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-createmessengerwithid
+      description: Creates a messenger.  You can optionally specify an Id for the messenger, if not provided one will be generated.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-messenger.createmessengerwithid
+      with:
+        messengerId: tools.messengerId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-deletemessengerwithid
+      description: Deletes the messenger for the given Id.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: fusionauth-messenger.deletemessengerwithid
+      with:
+        messengerId: tools.messengerId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-patchmessengerwithid
+      description: Updates, via PATCH, the messenger with the given Id.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-messenger.patchmessengerwithid
+      with:
+        messengerId: tools.messengerId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-retrievemessengerwithid
+      description: Retrieves the messenger with the given Id.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fusionauth-messenger.retrievemessengerwithid
+      with:
+        messengerId: tools.messengerId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-updatemessengerwithid
+      description: Updates the messenger with the given Id.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: fusionauth-messenger.updatemessengerwithid
+      with:
+        messengerId: tools.messengerId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

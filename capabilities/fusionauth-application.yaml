@@ -1,0 +1,1053 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: FusionAuth API — Application
+  description: 'FusionAuth API — Application. 20 operations. Lead operation: Retrieves all the applications that are currently inactive. OR Retrieves the application for the given Id or all the applications if the Id . Self-contained Naftiko capability covering one business surface.'
+  tags:
+  - FusionAuth
+  - Application
+  created: '2026-05-20'
+  modified: '2026-05-20'
+binds:
+- namespace: env
+  keys:
+    FUSIONAUTH_API_KEY: FUSIONAUTH_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: fusionauth-application
+    baseUri: http://localhost:9011
+    description: FusionAuth API — Application business capability. Self-contained, no shared references.
+    resources:
+    - name: api-application
+      path: /api/application
+      operations:
+      - name: createapplication
+        method: POST
+        description: Creates an application. You can optionally specify an Id for the application, if not provided one will be generated.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: retrieveapplication
+        method: GET
+        description: 'Retrieves all the applications that are currently inactive. OR Retrieves the application for the given Id or all the applications if the Id '
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: inactive
+          in: query
+          type: string
+          description: query parameter inactive.
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+    - name: api-application-search
+      path: /api/application/search
+      operations:
+      - name: searchapplicationswithid
+        method: POST
+        description: Searches applications with the specified criteria and pagination.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-application-applicationid
+      path: /api/application/{applicationId}
+      operations:
+      - name: createapplicationwithid
+        method: POST
+        description: Creates an application. You can optionally specify an Id for the application, if not provided one will be generated.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: applicationId
+          in: path
+          type: string
+          description: The Id to use for the application. If not provided a secure random UUID will be generated.
+          required: true
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deleteapplicationwithid
+        method: DELETE
+        description: Hard deletes an application. This is a dangerous operation and should not be used in most circumstances. This will delete the application, a
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: hardDelete
+          in: query
+          type: string
+          description: query parameter hardDelete.
+        - name: applicationId
+          in: path
+          type: string
+          description: The Id of the application to delete.
+          required: true
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+      - name: patchapplicationwithid
+        method: PATCH
+        description: Updates, via PATCH, the application with the given Id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: applicationId
+          in: path
+          type: string
+          description: The Id of the application to update.
+          required: true
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: updateapplicationwithid
+        method: PUT
+        description: Updates the application with the given Id. OR Reactivates the application with the given Id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: applicationId
+          in: path
+          type: string
+          description: The Id of the application to update.
+          required: true
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        - name: reactivate
+          in: query
+          type: string
+          description: query parameter reactivate.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: retrieveapplicationwithid
+        method: GET
+        description: Retrieves the application for the given Id or all the applications if the Id is null.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: applicationId
+          in: path
+          type: string
+          description: The application Id.
+          required: true
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+    - name: api-application-applicationid-oauth-configuration
+      path: /api/application/{applicationId}/oauth-configuration
+      operations:
+      - name: retrieveoauthconfigurationwithid
+        method: GET
+        description: Retrieves the Oauth2 configuration for the application for the given Application Id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: applicationId
+          in: path
+          type: string
+          description: The Id of the Application to retrieve OAuth configuration.
+          required: true
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+    - name: api-application-applicationid-role
+      path: /api/application/{applicationId}/role
+      operations:
+      - name: createapplicationrole
+        method: POST
+        description: 'Creates a new role for an application. You must specify the Id of the application you are creating the role for. You can optionally specify '
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: applicationId
+          in: path
+          type: string
+          description: The Id of the application to create the role on.
+          required: true
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-application-applicationid-role-roleid
+      path: /api/application/{applicationId}/role/{roleId}
+      operations:
+      - name: createapplicationrolewithid
+        method: POST
+        description: 'Creates a new role for an application. You must specify the Id of the application you are creating the role for. You can optionally specify '
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: applicationId
+          in: path
+          type: string
+          description: The Id of the application to create the role on.
+          required: true
+        - name: roleId
+          in: path
+          type: string
+          description: The Id of the role. If not provided a secure random UUID will be generated.
+          required: true
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deleteapplicationrolewithid
+        method: DELETE
+        description: Hard deletes an application role. This is a dangerous operation and should not be used in most circumstances. This permanently removes the g
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: applicationId
+          in: path
+          type: string
+          description: The Id of the application that the role belongs to.
+          required: true
+        - name: roleId
+          in: path
+          type: string
+          description: The Id of the role to delete.
+          required: true
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+      - name: patchapplicationrolewithid
+        method: PATCH
+        description: Updates, via PATCH, the application role with the given Id for the application.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: applicationId
+          in: path
+          type: string
+          description: The Id of the application that the role belongs to.
+          required: true
+        - name: roleId
+          in: path
+          type: string
+          description: The Id of the role to update.
+          required: true
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: updateapplicationrolewithid
+        method: PUT
+        description: Updates the application role with the given Id for the application.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: applicationId
+          in: path
+          type: string
+          description: The Id of the application that the role belongs to.
+          required: true
+        - name: roleId
+          in: path
+          type: string
+          description: The Id of the role to update.
+          required: true
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-application-applicationid-scope
+      path: /api/application/{applicationId}/scope
+      operations:
+      - name: createoauthscope
+        method: POST
+        description: Creates a new custom OAuth scope for an application. You must specify the Id of the application you are creating the scope for. You can opti
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: applicationId
+          in: path
+          type: string
+          description: The Id of the application to create the OAuth scope on.
+          required: true
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: api-application-applicationid-scope-scopeid
+      path: /api/application/{applicationId}/scope/{scopeId}
+      operations:
+      - name: createoauthscopewithid
+        method: POST
+        description: Creates a new custom OAuth scope for an application. You must specify the Id of the application you are creating the scope for. You can opti
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: applicationId
+          in: path
+          type: string
+          description: The Id of the application to create the OAuth scope on.
+          required: true
+        - name: scopeId
+          in: path
+          type: string
+          description: The Id of the OAuth scope. If not provided a secure random UUID will be generated.
+          required: true
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deleteoauthscopewithid
+        method: DELETE
+        description: Hard deletes a custom OAuth scope. OAuth workflows that are still requesting the deleted OAuth scope may fail depending on the application's
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: applicationId
+          in: path
+          type: string
+          description: The Id of the application that the OAuth scope belongs to.
+          required: true
+        - name: scopeId
+          in: path
+          type: string
+          description: The Id of the OAuth scope to delete.
+          required: true
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+      - name: patchoauthscopewithid
+        method: PATCH
+        description: Updates, via PATCH, the custom OAuth scope with the given Id for the application.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: applicationId
+          in: path
+          type: string
+          description: The Id of the application that the OAuth scope belongs to.
+          required: true
+        - name: scopeId
+          in: path
+          type: string
+          description: The Id of the OAuth scope to update.
+          required: true
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: retrieveoauthscopewithid
+        method: GET
+        description: Retrieves a custom OAuth scope.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: applicationId
+          in: path
+          type: string
+          description: The Id of the application that the OAuth scope belongs to.
+          required: true
+        - name: scopeId
+          in: path
+          type: string
+          description: The Id of the OAuth scope to retrieve.
+          required: true
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+      - name: updateoauthscopewithid
+        method: PUT
+        description: Updates the OAuth scope with the given Id for the application.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: applicationId
+          in: path
+          type: string
+          description: The Id of the application that the OAuth scope belongs to.
+          required: true
+        - name: scopeId
+          in: path
+          type: string
+          description: The Id of the OAuth scope to update.
+          required: true
+        - name: X-FusionAuth-TenantId
+          in: header
+          type: string
+          description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+  exposes:
+  - type: rest
+    namespace: fusionauth-application-rest
+    port: 8080
+    description: REST adapter for FusionAuth API — Application. One resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/api/application
+      name: api-application
+      description: REST surface for api-application.
+      operations:
+      - method: POST
+        name: createapplication
+        description: Creates an application. You can optionally specify an Id for the application, if not provided one will be generated.
+        call: fusionauth-application.createapplication
+        with:
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: retrieveapplication
+        description: 'Retrieves all the applications that are currently inactive. OR Retrieves the application for the given Id or all the applications if the Id '
+        call: fusionauth-application.retrieveapplication
+        with:
+          inactive: rest.inactive
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/application/search
+      name: api-application-search
+      description: REST surface for api-application-search.
+      operations:
+      - method: POST
+        name: searchapplicationswithid
+        description: Searches applications with the specified criteria and pagination.
+        call: fusionauth-application.searchapplicationswithid
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/application/{applicationId}
+      name: api-application-applicationid
+      description: REST surface for api-application-applicationid.
+      operations:
+      - method: POST
+        name: createapplicationwithid
+        description: Creates an application. You can optionally specify an Id for the application, if not provided one will be generated.
+        call: fusionauth-application.createapplicationwithid
+        with:
+          applicationId: rest.applicationId
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteapplicationwithid
+        description: Hard deletes an application. This is a dangerous operation and should not be used in most circumstances. This will delete the application, a
+        call: fusionauth-application.deleteapplicationwithid
+        with:
+          hardDelete: rest.hardDelete
+          applicationId: rest.applicationId
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: patchapplicationwithid
+        description: Updates, via PATCH, the application with the given Id.
+        call: fusionauth-application.patchapplicationwithid
+        with:
+          applicationId: rest.applicationId
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateapplicationwithid
+        description: Updates the application with the given Id. OR Reactivates the application with the given Id.
+        call: fusionauth-application.updateapplicationwithid
+        with:
+          applicationId: rest.applicationId
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+          reactivate: rest.reactivate
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: retrieveapplicationwithid
+        description: Retrieves the application for the given Id or all the applications if the Id is null.
+        call: fusionauth-application.retrieveapplicationwithid
+        with:
+          applicationId: rest.applicationId
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/application/{applicationId}/oauth-configuration
+      name: api-application-applicationid-oauth-configuration
+      description: REST surface for api-application-applicationid-oauth-configuration.
+      operations:
+      - method: GET
+        name: retrieveoauthconfigurationwithid
+        description: Retrieves the Oauth2 configuration for the application for the given Application Id.
+        call: fusionauth-application.retrieveoauthconfigurationwithid
+        with:
+          applicationId: rest.applicationId
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/application/{applicationId}/role
+      name: api-application-applicationid-role
+      description: REST surface for api-application-applicationid-role.
+      operations:
+      - method: POST
+        name: createapplicationrole
+        description: 'Creates a new role for an application. You must specify the Id of the application you are creating the role for. You can optionally specify '
+        call: fusionauth-application.createapplicationrole
+        with:
+          applicationId: rest.applicationId
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/application/{applicationId}/role/{roleId}
+      name: api-application-applicationid-role-roleid
+      description: REST surface for api-application-applicationid-role-roleid.
+      operations:
+      - method: POST
+        name: createapplicationrolewithid
+        description: 'Creates a new role for an application. You must specify the Id of the application you are creating the role for. You can optionally specify '
+        call: fusionauth-application.createapplicationrolewithid
+        with:
+          applicationId: rest.applicationId
+          roleId: rest.roleId
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteapplicationrolewithid
+        description: Hard deletes an application role. This is a dangerous operation and should not be used in most circumstances. This permanently removes the g
+        call: fusionauth-application.deleteapplicationrolewithid
+        with:
+          applicationId: rest.applicationId
+          roleId: rest.roleId
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: patchapplicationrolewithid
+        description: Updates, via PATCH, the application role with the given Id for the application.
+        call: fusionauth-application.patchapplicationrolewithid
+        with:
+          applicationId: rest.applicationId
+          roleId: rest.roleId
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateapplicationrolewithid
+        description: Updates the application role with the given Id for the application.
+        call: fusionauth-application.updateapplicationrolewithid
+        with:
+          applicationId: rest.applicationId
+          roleId: rest.roleId
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/application/{applicationId}/scope
+      name: api-application-applicationid-scope
+      description: REST surface for api-application-applicationid-scope.
+      operations:
+      - method: POST
+        name: createoauthscope
+        description: Creates a new custom OAuth scope for an application. You must specify the Id of the application you are creating the scope for. You can opti
+        call: fusionauth-application.createoauthscope
+        with:
+          applicationId: rest.applicationId
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/application/{applicationId}/scope/{scopeId}
+      name: api-application-applicationid-scope-scopeid
+      description: REST surface for api-application-applicationid-scope-scopeid.
+      operations:
+      - method: POST
+        name: createoauthscopewithid
+        description: Creates a new custom OAuth scope for an application. You must specify the Id of the application you are creating the scope for. You can opti
+        call: fusionauth-application.createoauthscopewithid
+        with:
+          applicationId: rest.applicationId
+          scopeId: rest.scopeId
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteoauthscopewithid
+        description: Hard deletes a custom OAuth scope. OAuth workflows that are still requesting the deleted OAuth scope may fail depending on the application's
+        call: fusionauth-application.deleteoauthscopewithid
+        with:
+          applicationId: rest.applicationId
+          scopeId: rest.scopeId
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: patchoauthscopewithid
+        description: Updates, via PATCH, the custom OAuth scope with the given Id for the application.
+        call: fusionauth-application.patchoauthscopewithid
+        with:
+          applicationId: rest.applicationId
+          scopeId: rest.scopeId
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: retrieveoauthscopewithid
+        description: Retrieves a custom OAuth scope.
+        call: fusionauth-application.retrieveoauthscopewithid
+        with:
+          applicationId: rest.applicationId
+          scopeId: rest.scopeId
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateoauthscopewithid
+        description: Updates the OAuth scope with the given Id for the application.
+        call: fusionauth-application.updateoauthscopewithid
+        with:
+          applicationId: rest.applicationId
+          scopeId: rest.scopeId
+          X-FusionAuth-TenantId: rest.X-FusionAuth-TenantId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: fusionauth-application-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for FusionAuth API — Application. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: fusionauth-createapplication
+      description: Creates an application. You can optionally specify an Id for the application, if not provided one will be generated.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-application.createapplication
+      with:
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-retrieveapplication
+      description: 'Retrieves all the applications that are currently inactive. OR Retrieves the application for the given Id or all the applications if the Id '
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fusionauth-application.retrieveapplication
+      with:
+        inactive: tools.inactive
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-searchapplicationswithid
+      description: Searches applications with the specified criteria and pagination.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-application.searchapplicationswithid
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-createapplicationwithid
+      description: Creates an application. You can optionally specify an Id for the application, if not provided one will be generated.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-application.createapplicationwithid
+      with:
+        applicationId: tools.applicationId
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-deleteapplicationwithid
+      description: Hard deletes an application. This is a dangerous operation and should not be used in most circumstances. This will delete the application, a
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: fusionauth-application.deleteapplicationwithid
+      with:
+        hardDelete: tools.hardDelete
+        applicationId: tools.applicationId
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-patchapplicationwithid
+      description: Updates, via PATCH, the application with the given Id.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-application.patchapplicationwithid
+      with:
+        applicationId: tools.applicationId
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-updateapplicationwithid
+      description: Updates the application with the given Id. OR Reactivates the application with the given Id.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: fusionauth-application.updateapplicationwithid
+      with:
+        applicationId: tools.applicationId
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+        reactivate: tools.reactivate
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-retrieveapplicationwithid
+      description: Retrieves the application for the given Id or all the applications if the Id is null.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fusionauth-application.retrieveapplicationwithid
+      with:
+        applicationId: tools.applicationId
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-retrieveoauthconfigurationwithid
+      description: Retrieves the Oauth2 configuration for the application for the given Application Id.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fusionauth-application.retrieveoauthconfigurationwithid
+      with:
+        applicationId: tools.applicationId
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-createapplicationrole
+      description: 'Creates a new role for an application. You must specify the Id of the application you are creating the role for. You can optionally specify '
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-application.createapplicationrole
+      with:
+        applicationId: tools.applicationId
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-createapplicationrolewithid
+      description: 'Creates a new role for an application. You must specify the Id of the application you are creating the role for. You can optionally specify '
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-application.createapplicationrolewithid
+      with:
+        applicationId: tools.applicationId
+        roleId: tools.roleId
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-deleteapplicationrolewithid
+      description: Hard deletes an application role. This is a dangerous operation and should not be used in most circumstances. This permanently removes the g
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: fusionauth-application.deleteapplicationrolewithid
+      with:
+        applicationId: tools.applicationId
+        roleId: tools.roleId
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-patchapplicationrolewithid
+      description: Updates, via PATCH, the application role with the given Id for the application.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-application.patchapplicationrolewithid
+      with:
+        applicationId: tools.applicationId
+        roleId: tools.roleId
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-updateapplicationrolewithid
+      description: Updates the application role with the given Id for the application.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: fusionauth-application.updateapplicationrolewithid
+      with:
+        applicationId: tools.applicationId
+        roleId: tools.roleId
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-createoauthscope
+      description: Creates a new custom OAuth scope for an application. You must specify the Id of the application you are creating the scope for. You can opti
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-application.createoauthscope
+      with:
+        applicationId: tools.applicationId
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-createoauthscopewithid
+      description: Creates a new custom OAuth scope for an application. You must specify the Id of the application you are creating the scope for. You can opti
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-application.createoauthscopewithid
+      with:
+        applicationId: tools.applicationId
+        scopeId: tools.scopeId
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-deleteoauthscopewithid
+      description: Hard deletes a custom OAuth scope. OAuth workflows that are still requesting the deleted OAuth scope may fail depending on the application's
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: fusionauth-application.deleteoauthscopewithid
+      with:
+        applicationId: tools.applicationId
+        scopeId: tools.scopeId
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-patchoauthscopewithid
+      description: Updates, via PATCH, the custom OAuth scope with the given Id for the application.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: fusionauth-application.patchoauthscopewithid
+      with:
+        applicationId: tools.applicationId
+        scopeId: tools.scopeId
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-retrieveoauthscopewithid
+      description: Retrieves a custom OAuth scope.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fusionauth-application.retrieveoauthscopewithid
+      with:
+        applicationId: tools.applicationId
+        scopeId: tools.scopeId
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fusionauth-updateoauthscopewithid
+      description: Updates the OAuth scope with the given Id for the application.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: fusionauth-application.updateoauthscopewithid
+      with:
+        applicationId: tools.applicationId
+        scopeId: tools.scopeId
+        X-FusionAuth-TenantId: tools.X-FusionAuth-TenantId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
