@@ -77,6 +77,8 @@ common:
   - name: Agent Skills
     url: https://github.com/FusionAuth/webhook-skills
     type: AgentSkill
+  - type: LLMsTxt
+    url: https://fusionauth.io/llms.txt
 integrations:
   - name: fusionauth partner specialist
   - name: fusionauth start building
