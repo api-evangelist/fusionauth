@@ -2,12 +2,20 @@
   "repo": "fusionauth",
   "feeds": [
     {
-      "source": "https://fusionauth.io/blog/",
+      "source": "https://fusionauth.io/blog/feed.xml",
       "feed_url": "https://fusionauth.io/blog/feed.xml",
-      "title": "FusionAuth Blog",
-      "saved": 42
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://fusionauth.io/docs/release-notes/",
+      "feed_url": "https://fusionauth.io/docs/release-notes/",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "post_count": 55,
-  "fetched": "2026-05-17T20:20:35Z"
+  "post_count": 56,
+  "fetched": "2026-06-01T23:35:02Z"
 }
