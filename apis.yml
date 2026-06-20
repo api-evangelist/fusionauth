@@ -7,7 +7,7 @@ description: >-
   multi-factor authentication, single sign-on, OAuth2 and OpenID Connect, and
   user management capabilities through a comprehensive REST API and
   self-hostable identity service.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Authentication
   - Authorization
