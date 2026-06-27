@@ -61,7 +61,7 @@ common:
     url: https://fusionauth.io/blog/
   - type: Login
     url: https://login.fusionauth.io/oauth2/authorize
-  - type: SignUp
+  - type: Signup
     url: https://login.fusionauth.io/oauth2/register
   - type: PrivacyPolicy
     url: https://fusionauth.io/privacy-policy
@@ -76,8 +76,8 @@ common:
     type: MCPServer
   - name: Agent Skills
     url: https://github.com/FusionAuth/webhook-skills
-    type: AgentSkill
-  - type: LLMsTxt
+    type: AgentSkills
+  - type: LlmsText
     url: https://fusionauth.io/llms.txt
 integrations:
   - name: fusionauth partner specialist
