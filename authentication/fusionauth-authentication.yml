@@ -1,0 +1,22 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/fusionauth-openapi.yaml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: ApiKeyAuth
+  type: apiKey
+  in: header
+  parameter: Authorization
+  sources:
+  - openapi/fusionauth-openapi.yaml
+- name: BearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  sources:
+  - openapi/fusionauth-openapi.yaml

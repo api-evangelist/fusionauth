@@ -49,6 +49,14 @@ apis:
       - type: SDKs
         url: https://fusionauth.io/docs/sdks/
 common:
+  - type: TrustCenter
+    url: security/fusionauth-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/fusionauth-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/fusionauth-domain-security.yml
+  - type: Authentication
+    url: authentication/fusionauth-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/fusionauth
   - type: GettingStarted
