@@ -49,6 +49,8 @@ apis:
       - type: SDKs
         url: https://fusionauth.io/docs/sdks/
 common:
+  - type: AgenticAccess
+    url: agentic-access/fusionauth-agentic-access.yml
   - type: TrustCenter
     url: security/fusionauth-trust-center.yml
   - type: VulnerabilityDisclosure
