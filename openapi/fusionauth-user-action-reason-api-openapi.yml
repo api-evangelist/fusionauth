@@ -1,0 +1,265 @@
+openapi: 3.0.3
+info:
+  version: 1.66.0
+  title: FusionAuth Api Key User Action Reason API
+  description: This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.
+  license:
+    name: Apache2
+servers:
+- url: http://localhost:9011
+- url: https://sandbox.fusionauth.io
+security:
+- ApiKeyAuth: []
+tags:
+- name: User Action Reason
+paths:
+  /api/user-action-reason:
+    post:
+      description: Creates a user reason. This user action reason cannot be used when actioning a user until this call completes successfully. Anytime after that the user action reason can be used.
+      operationId: createUserActionReason
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserActionReasonRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserActionReasonResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User Action Reason
+    get:
+      description: Retrieves the user action reason for the given Id. If you pass in null for the Id, this will return all the user action reasons.
+      operationId: retrieveUserActionReason
+      parameters: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserActionReasonResponse'
+        default:
+          description: Error
+      tags:
+      - User Action Reason
+  /api/user-action-reason/{userActionReasonId}:
+    post:
+      description: Creates a user reason. This user action reason cannot be used when actioning a user until this call completes successfully. Anytime after that the user action reason can be used.
+      operationId: createUserActionReasonWithId
+      parameters:
+      - name: userActionReasonId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id for the user action reason. If not provided a secure random UUID will be generated.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserActionReasonRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserActionReasonResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User Action Reason
+    delete:
+      description: Deletes the user action reason for the given Id.
+      operationId: deleteUserActionReasonWithId
+      parameters:
+      - name: userActionReasonId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the user action reason to delete.
+      responses:
+        '200':
+          description: Success
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User Action Reason
+    patch:
+      description: Updates, via PATCH, the user action reason with the given Id.
+      operationId: patchUserActionReasonWithId
+      parameters:
+      - name: userActionReasonId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the user action reason to update.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserActionReasonRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserActionReasonResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User Action Reason
+    get:
+      description: Retrieves the user action reason for the given Id. If you pass in null for the Id, this will return all the user action reasons.
+      operationId: retrieveUserActionReasonWithId
+      parameters:
+      - name: userActionReasonId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the user action reason.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserActionReasonResponse'
+        default:
+          description: Error
+      tags:
+      - User Action Reason
+    put:
+      description: Updates the user action reason with the given Id.
+      operationId: updateUserActionReasonWithId
+      parameters:
+      - name: userActionReasonId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the user action reason to update.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserActionReasonRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserActionReasonResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User Action Reason
+components:
+  schemas:
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    LocalizedStrings:
+      description: Models a set of localized Strings that can be stored as JSON.
+      type: object
+      properties: {}
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    UserActionReasonRequest:
+      description: User Action Reason API request object.
+      type: object
+      properties:
+        userActionReason:
+          $ref: '#/components/schemas/UserActionReason'
+    UserActionReasonResponse:
+      description: User Action Reason API response object.
+      type: object
+      properties:
+        userActionReason:
+          $ref: '#/components/schemas/UserActionReason'
+        userActionReasons:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserActionReason'
+    UserActionReason:
+      description: Models action reasons.
+      type: object
+      properties:
+        code:
+          type: string
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        localizedTexts:
+          $ref: '#/components/schemas/LocalizedStrings'
+        text:
+          type: string
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      name: Authorization
+      in: header
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

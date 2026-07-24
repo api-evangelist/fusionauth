@@ -1,0 +1,157 @@
+openapi: 3.0.3
+info:
+  version: 1.66.0
+  title: FusionAuth Api Key Integration API
+  description: This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.
+  license:
+    name: Apache2
+servers:
+- url: http://localhost:9011
+- url: https://sandbox.fusionauth.io
+security:
+- ApiKeyAuth: []
+tags:
+- name: Integration
+paths:
+  /api/integration:
+    patch:
+      description: Updates, via PATCH, the available integrations.
+      operationId: patchIntegrationsWithId
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IntegrationRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Integration
+    put:
+      description: Updates the available integrations.
+      operationId: updateIntegrationsWithId
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IntegrationRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Integration
+components:
+  schemas:
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    IntegrationResponse:
+      description: The Integration Response
+      type: object
+      properties:
+        integrations:
+          $ref: '#/components/schemas/Integrations'
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    KafkaConfiguration:
+      description: ''
+      type: object
+      properties:
+        defaultTopic:
+          type: string
+        producer:
+          type: object
+          additionalProperties:
+            type: string
+        enabled:
+          type: boolean
+    IntegrationRequest:
+      description: The Integration Request
+      type: object
+      properties:
+        integrations:
+          $ref: '#/components/schemas/Integrations'
+    UsernameModeration:
+      type: object
+      properties:
+        applicationId:
+          type: string
+          format: uuid
+        enabled:
+          type: boolean
+    Integrations:
+      description: Available Integrations
+      type: object
+      properties:
+        cleanspeak:
+          $ref: '#/components/schemas/CleanSpeakConfiguration'
+        kafka:
+          $ref: '#/components/schemas/KafkaConfiguration'
+    CleanSpeakConfiguration:
+      description: CleanSpeak configuration at the system and application level.
+      type: object
+      properties:
+        apiKey:
+          type: string
+        applicationIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+        url:
+          type: string
+          format: URI
+        usernameModeration:
+          $ref: '#/components/schemas/UsernameModeration'
+        enabled:
+          type: boolean
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      name: Authorization
+      in: header
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

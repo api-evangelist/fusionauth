@@ -1,0 +1,2943 @@
+openapi: 3.0.3
+info:
+  version: 1.66.0
+  title: FusionAuth Api Key User API
+  description: This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.
+  license:
+    name: Apache2
+servers:
+- url: http://localhost:9011
+- url: https://sandbox.fusionauth.io
+security:
+- ApiKeyAuth: []
+tags:
+- name: User
+paths:
+  /api/user:
+    post:
+      description: Creates a user. You can optionally specify an Id for the user, if not provided one will be generated.
+      operationId: createUser
+      parameters:
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+    get:
+      description: Retrieves the user by a verificationId. The intended use of this API is to retrieve a user after the forgot password workflow has been initiated and you may not know the user's email or username. OR Retrieves the user for the given username. OR Retrieves the user for the loginId, using specific loginIdTypes. OR Retrieves the user for the loginId. The loginId can be either the username or the email. OR Retrieves the user for the given email. OR Retrieves the user by a change password Id. The intended use of this API is to retrieve a user after the forgot password workflow has been initiated and you may not know the user's email or username.
+      operationId: retrieveUser
+      parameters:
+      - name: verificationId
+        in: query
+        schema:
+          type: string
+        description: The unique verification Id that has been set on the user object.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      - name: username
+        in: query
+        schema:
+          type: string
+        description: The username of the user.
+      - name: loginId
+        in: query
+        schema:
+          type: string
+        description: The email or username of the user.
+      - name: loginIdTypes
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+        description: The identity types that FusionAuth will compare the loginId to.
+      - name: email
+        in: query
+        schema:
+          type: string
+        description: The email of the user.
+      - name: changePasswordId
+        in: query
+        schema:
+          type: string
+        description: The unique change password Id that was sent via email or returned by the Forgot Password API.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+  /api/user/action:
+    post:
+      description: Takes an action on a user. The user being actioned is called the "actionee" and the user taking the action is called the "actioner". Both user ids are required in the request object.
+      operationId: actionUserWithId
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ActionRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActionResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+    get:
+      description: Retrieves all the actions for the user with the given Id that are currently inactive. An inactive action means one that is time based and has been canceled or has expired, or is not time based. OR Retrieves all the actions for the user with the given Id that are currently active. An active action means one that is time based and has not been canceled, and has not ended. OR Retrieves all the actions for the user with the given Id that are currently preventing the User from logging in. OR Retrieves all the actions for the user with the given Id. This will return all time based actions that are active, and inactive as well as non-time based actions.
+      operationId: retrieveUserActioning
+      parameters:
+      - name: userId
+        in: query
+        schema:
+          type: string
+        description: The Id of the user to fetch the actions for.
+      - name: active
+        in: query
+        schema:
+          type: string
+      - name: preventingLogin
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActionResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+  /api/user/action/{actionId}:
+    delete:
+      description: Cancels the user action.
+      operationId: cancelActionWithId
+      parameters:
+      - name: actionId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The action Id of the action to cancel.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ActionRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActionResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+    put:
+      description: Modifies a temporal user action by changing the expiration of the action and optionally adding a comment to the action.
+      operationId: modifyActionWithId
+      parameters:
+      - name: actionId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the action to modify. This is technically the user action log Id.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ActionRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActionResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+    get:
+      description: Retrieves a single action log (the log of a user action that was taken on a user previously) for the given Id.
+      operationId: retrieveActionWithId
+      parameters:
+      - name: actionId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the action to retrieve.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActionResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+  /api/user/bulk:
+    delete:
+      description: Deletes the users with the given Ids, or users matching the provided JSON query or queryString. The order of preference is Ids, query and then queryString, it is recommended to only provide one of the three for the request.  This method can be used to deactivate or permanently delete (hard-delete) users based upon the hardDelete boolean in the request body. Using the dryRun parameter you may also request the result of the action without actually deleting or deactivating any users. OR Deactivates the users with the given Ids.
+      operationId: deleteUserBulk
+      parameters:
+      - name: userIds
+        in: query
+        schema:
+          type: string
+        description: The ids of the users to deactivate.
+      - name: dryRun
+        in: query
+        schema:
+          type: string
+      - name: hardDelete
+        in: query
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserDeleteRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDeleteResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+  /api/user/change-password:
+    post:
+      description: 'Changes a user''s password using their access token (JWT) instead of the changePasswordId A common use case for this method will be if you want to allow the user to change their own password.  Remember to send refreshToken in the request body if you want to get a new refresh token when login using the returned oneTimePassword. OR Changes a user''s password using their identity (loginId and password). Using a loginId instead of the changePasswordId bypasses the email verification and allows a password to be changed directly without first calling the #forgotPassword method.'
+      operationId: createUserChangePassword
+      security:
+      - BearerAuth: []
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangePasswordRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChangePasswordResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+    get:
+      description: Check to see if the user must obtain a Trust Request Id in order to complete a change password request. When a user has enabled Two-Factor authentication, before you are allowed to use the Change Password API to change your password, you must obtain a Trust Request Id by completing a Two-Factor Step-Up authentication.  An HTTP status code of 400 with a general error code of [TrustTokenRequired] indicates that a Trust Token is required to make a POST request to this API. OR Check to see if the user must obtain a Trust Request Id in order to complete a change password request. When a user has enabled Two-Factor authentication, before you are allowed to use the Change Password API to change your password, you must obtain a Trust Request Id by completing a Two-Factor Step-Up authentication.  An HTTP status code of 400 with a general error code of [TrustTokenRequired] indicates that a Trust Token is required to make a POST request to this API. OR Check to see if the user must obtain a Trust Request Id in order to complete a change password request. When a user has enabled Two-Factor authentication, before you are allowed to use the Change Password API to change your password, you must obtain a Trust Request Id by completing a Two-Factor Step-Up authentication.  An HTTP status code of 400 with a general error code of [TrustTokenRequired] indicates that a Trust Token is required to make a POST request to this API. OR Check to see if the user must obtain a Trust Request Id in order to complete a change password request. When a user has enabled Two-Factor authentication, before you are allowed to use the Change Password API to change your password, you must obtain a Trust Request Id by completing a Two-Factor Step-Up authentication.  An HTTP status code of 400 with a general error code of [TrustTokenRequired] indicates that a Trust Token is required to make a POST request to this API. OR Check to see if the user must obtain a Trust Token Id in order to complete a change password request. When a user has enabled Two-Factor authentication, before you are allowed to use the Change Password API to change your password, you must obtain a Trust Token by completing a Two-Factor Step-Up authentication.  An HTTP status code of 400 with a general error code of [TrustTokenRequired] indicates that a Trust Token is required to make a POST request to this API. OR Check to see if the user must obtain a Trust Token Id in order to complete a change password request. When a user has enabled Two-Factor authentication, before you are allowed to use the Change Password API to change your password, you must obtain a Trust Token by completing a Two-Factor Step-Up authentication.  An HTTP status code of 400 with a general error code of [TrustTokenRequired] indicates that a Trust Token is required to make a POST request to this API.
+      operationId: retrieveUserChangePassword
+      parameters:
+      - name: loginId
+        in: query
+        schema:
+          type: string
+        description: The loginId of the User that you intend to change the password for.
+      - name: loginIdTypes
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+        description: The identity types that FusionAuth will compare the loginId to.
+      - name: ipAddress
+        in: query
+        schema:
+          type: string
+        description: IP address of the user changing their password. This is used for MFA risk assessment.
+      responses:
+        '200':
+          description: Success
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+  /api/user/change-password/{changePasswordId}:
+    post:
+      description: Changes a user's password using the change password Id. This usually occurs after an email has been sent to the user and they clicked on a link to reset their password.  As of version 1.32.2, prefer sending the changePasswordId in the request body. To do this, omit the first parameter, and set the value in the request body.
+      operationId: changePasswordWithId
+      parameters:
+      - name: changePasswordId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The change password Id used to find the user. This value is generated by FusionAuth once the change password workflow has been initiated.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangePasswordRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChangePasswordResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+    get:
+      description: Check to see if the user must obtain a Trust Token Id in order to complete a change password request. When a user has enabled Two-Factor authentication, before you are allowed to use the Change Password API to change your password, you must obtain a Trust Token by completing a Two-Factor Step-Up authentication.  An HTTP status code of 400 with a general error code of [TrustTokenRequired] indicates that a Trust Token is required to make a POST request to this API. OR Check to see if the user must obtain a Trust Token Id in order to complete a change password request. When a user has enabled Two-Factor authentication, before you are allowed to use the Change Password API to change your password, you must obtain a Trust Token by completing a Two-Factor Step-Up authentication.  An HTTP status code of 400 with a general error code of [TrustTokenRequired] indicates that a Trust Token is required to make a POST request to this API.
+      operationId: retrieveUserChangePasswordWithId
+      parameters:
+      - name: ipAddress
+        in: query
+        schema:
+          type: string
+        description: IP address of the user changing their password. This is used for MFA risk assessment.
+      - name: changePasswordId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The change password Id used to find the user. This value is generated by FusionAuth once the change password workflow has been initiated.
+      responses:
+        '200':
+          description: Success
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+  /api/user/comment:
+    post:
+      description: Adds a comment to the user's account.
+      operationId: commentOnUserWithId
+      parameters:
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCommentRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserCommentResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+  /api/user/comment/search:
+    post:
+      description: Searches user comments with the specified criteria and pagination.
+      operationId: searchUserCommentsWithId
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCommentSearchRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserCommentSearchResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+  /api/user/comment/{userId}:
+    get:
+      description: Retrieves all the comments for the user with the given Id.
+      operationId: retrieveUserCommentsWithId
+      parameters:
+      - name: userId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the user.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserCommentResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+  /api/user/consent:
+    post:
+      description: Creates a single User consent.
+      operationId: createUserConsent
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserConsentRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserConsentResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+    get:
+      description: Retrieves all the consents for a User.
+      operationId: retrieveUserConsentsWithId
+      parameters:
+      - name: userId
+        in: query
+        schema:
+          type: string
+        description: The User's Id
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserConsentResponse'
+        default:
+          description: Error
+      tags:
+      - User
+  /api/user/consent/{userConsentId}:
+    post:
+      description: Creates a single User consent.
+      operationId: createUserConsentWithId
+      parameters:
+      - name: userConsentId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id for the User consent. If not provided a secure random UUID will be generated.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserConsentRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserConsentResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+    patch:
+      description: Updates, via PATCH, a single User consent by Id.
+      operationId: patchUserConsentWithId
+      parameters:
+      - name: userConsentId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The User Consent Id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserConsentRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserConsentResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+    get:
+      description: Retrieve a single User consent by Id.
+      operationId: retrieveUserConsentWithId
+      parameters:
+      - name: userConsentId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The User consent Id
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserConsentResponse'
+        default:
+          description: Error
+      tags:
+      - User
+    delete:
+      description: Revokes a single User consent by Id.
+      operationId: revokeUserConsentWithId
+      parameters:
+      - name: userConsentId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The User Consent Id
+      responses:
+        '200':
+          description: Success
+        default:
+          description: Error
+      tags:
+      - User
+    put:
+      description: Updates a single User consent by Id.
+      operationId: updateUserConsentWithId
+      parameters:
+      - name: userConsentId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The User Consent Id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserConsentRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserConsentResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+  /api/user/family:
+    post:
+      description: Creates a family with the user Id in the request as the owner and sole member of the family. You can optionally specify an Id for the family, if not provided one will be generated.
+      operationId: createFamily
+      parameters:
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FamilyRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FamilyResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+    get:
+      description: Retrieves all the families that a user belongs to.
+      operationId: retrieveFamiliesWithId
+      parameters:
+      - name: userId
+        in: query
+        schema:
+          type: string
+        description: The User's id
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FamilyResponse'
+        default:
+          description: Error
+      tags:
+      - User
+  /api/user/family/pending:
+    get:
+      description: Retrieves all the children for the given parent email address.
+      operationId: retrievePendingChildrenWithId
+      parameters:
+      - name: parentEmail
+        in: query
+        schema:
+          type: string
+        description: The email of the parent.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PendingResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+  /api/user/family/request:
+    post:
+      description: Sends out an email to a parent that they need to register and create a family or need to log in and add a child to their existing family.
+      operationId: sendFamilyRequestEmailWithId
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FamilyEmailRequest'
+      responses:
+        '200':
+          description: Success
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+  /api/user/family/{familyId}:
+    put:
+      description: Updates a family with a given Id. OR Adds a user to an existing family. The family Id must be specified.
+      operationId: updateUserFamilyWithId
+      parameters:
+      - name: familyId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the family to update.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FamilyRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FamilyResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+    post:
+      description: Creates a family with the user Id in the request as the owner and sole member of the family. You can optionally specify an Id for the family, if not provided one will be generated.
+      operationId: createFamilyWithId
+      parameters:
+      - name: familyId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id for the family. If not provided a secure random UUID will be generated.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FamilyRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FamilyResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+    get:
+      description: Retrieves all the members of a family by the unique Family Id.
+      operationId: retrieveFamilyMembersByFamilyIdWithId
+      parameters:
+      - name: familyId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The unique Id of the Family.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FamilyResponse'
+        default:
+          description: Error
+      tags:
+      - User
+  /api/user/family/{familyId}/{userId}:
+    delete:
+      description: Removes a user from the family with the given Id.
+      operationId: removeUserFromFamilyWithId
+      parameters:
+      - name: familyId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the family to remove the user from.
+      - name: userId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the user to remove from the family.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      responses:
+        '200':
+          description: Success
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+  /api/user/forgot-password:
+    post:
+      description: Begins the forgot password sequence, which kicks off an email to the user so that they can reset their password.
+      operationId: forgotPasswordWithId
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ForgotPasswordRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForgotPasswordResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+  /api/user/import:
+    post:
+      description: Bulk imports users. This request performs minimal validation and runs batch inserts of users with the expectation that each user does not yet exist and each registration corresponds to an existing FusionAuth Application. This is done to increases the insert performance.  Therefore, if you encounter an error due to a database key violation, the response will likely offer a generic explanation. If you encounter an error, you may optionally enable additional validation to receive a JSON response body with specific validation errors. This will slow the request down but will allow you to identify the cause of the failure. See the validateDbConstraints request parameter.
+      operationId: importUsersWithId
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ImportRequest'
+      responses:
+        '200':
+          description: Success
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+  /api/user/recent-login:
+    get:
+      description: Retrieves the last number of login records for a user. OR Retrieves the last number of login records.
+      operationId: retrieveUserRecentLogin
+      parameters:
+      - name: userId
+        in: query
+        schema:
+          type: string
+        description: The Id of the user.
+      - name: offset
+        in: query
+        schema:
+          type: string
+        description: The initial record. e.g. 0 is the last login, 100 will be the 100th most recent login.
+      - name: limit
+        in: query
+        schema:
+          type: string
+        description: (Optional, defaults to 10) The number of records to retrieve.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecentLoginResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+  /api/user/refresh-token/import:
+    post:
+      description: Bulk imports refresh tokens. This request performs minimal validation and runs batch inserts of refresh tokens with the expectation that each token represents a user that already exists and is registered for the corresponding FusionAuth Application. This is done to increases the insert performance.  Therefore, if you encounter an error due to a database key violation, the response will likely offer a generic explanation. If you encounter an error, you may optionally enable additional validation to receive a JSON response body with specific validation errors. This will slow the request down but will allow you to identify the cause of the failure. See the validateDbConstraints request parameter.
+      operationId: importRefreshTokensWithId
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefreshTokenImportRequest'
+      responses:
+        '200':
+          description: Success
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+  /api/user/registration:
+    post:
+      description: Registers a user for an application. If you provide the User and the UserRegistration object on this request, it will create the user as well as register them for the application. This is called a Full Registration. However, if you only provide the UserRegistration object, then the user must already exist and they will be registered for the application. The user Id can also be provided and it will either be used to look up an existing user or it will be used for the newly created User.
+      operationId: register
+      parameters:
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegistrationRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegistrationResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+  /api/user/registration/{userId}:
+    patch:
+      description: Updates, via PATCH, the registration for the user with the given Id and the application defined in the request.
+      operationId: patchRegistrationWithId
+      parameters:
+      - name: userId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the user whose registration is going to be updated.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegistrationRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegistrationResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+    post:
+      description: Registers a user for an application. If you provide the User and the UserRegistration object on this request, it will create the user as well as register them for the application. This is called a Full Registration. However, if you only provide the UserRegistration object, then the user must already exist and they will be registered for the application. The user Id can also be provided and it will either be used to look up an existing user or it will be used for the newly created User.
+      operationId: registerWithId
+      parameters:
+      - name: userId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the user being registered for the application and optionally created.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegistrationRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegistrationResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+    put:
+      description: Updates the registration for the user with the given Id and the application defined in the request.
+      operationId: updateRegistrationWithId
+      parameters:
+      - name: userId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the user whose registration is going to be updated.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegistrationRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegistrationResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+  /api/user/registration/{userId}/{applicationId}:
+    delete:
+      description: Deletes the user registration for the given user and application along with the given JSON body that contains the event information. OR Deletes the user registration for the given user and application.
+      operationId: deleteUserRegistrationWithId
+      parameters:
+      - name: userId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the user whose registration is being deleted.
+      - name: applicationId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the application to remove the registration for.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegistrationDeleteRequest'
+      responses:
+        '200':
+          description: Success
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+    get:
+      description: Retrieves the user registration for the user with the given Id and the given application Id.
+      operationId: retrieveRegistrationWithId
+      parameters:
+      - name: userId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the user.
+      - name: applicationId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the application.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegistrationResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+  /api/user/search:
+    get:
+      description: Retrieves the users for the given Ids. If any Id is invalid, it is ignored.
+      operationId: searchUsersByIdsWithId
+      parameters:
+      - name: ids
+        in: query
+        schema:
+          type: string
+        description: The user Ids to search for.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+    post:
+      description: Retrieves the users for the given search criteria and pagination.
+      operationId: searchUsersByQueryWithId
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+  /api/user/two-factor/recovery-code/{userId}:
+    post:
+      description: Generate two-factor recovery codes for a user. Generating two-factor recovery codes will invalidate any existing recovery codes.
+      operationId: generateTwoFactorRecoveryCodesWithId
+      parameters:
+      - name: userId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the user to generate new Two Factor recovery codes.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TwoFactorRecoveryCodeResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+    get:
+      description: Retrieve two-factor recovery codes for a user.
+      operationId: retrieveTwoFactorRecoveryCodesWithId
+      parameters:
+      - name: userId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the user to retrieve Two Factor recovery codes.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TwoFactorRecoveryCodeResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+  /api/user/two-factor/{userId}:
+    delete:
+      description: Disable two-factor authentication for a user using a JSON body rather than URL parameters. OR Disable two-factor authentication for a user.
+      operationId: deleteUserTwoFactorWithId
+      parameters:
+      - name: userId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the User for which you're disabling two-factor authentication.
+      - name: methodId
+        in: query
+        schema:
+          type: string
+        description: The two-factor method identifier you wish to disable
+      - name: code
+        in: query
+        schema:
+          type: string
+        description: The two-factor code used verify the the caller knows the two-factor secret.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TwoFactorDisableRequest'
+      responses:
+        '200':
+          description: Success
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+    post:
+      description: Enable two-factor authentication for a user.
+      operationId: enableTwoFactorWithId
+      parameters:
+      - name: userId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the user to enable two-factor authentication.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TwoFactorRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TwoFactorResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+  /api/user/verify-email:
+    put:
+      description: Re-sends the verification email to the user. If the Application has configured a specific email template this will be used instead of the tenant configuration. OR Re-sends the verification email to the user. OR Generate a new Email Verification Id to be used with the Verify Email API. This API will not attempt to send an email to the User. This API may be used to collect the verificationId for use with a third party system.
+      operationId: updateUserVerifyEmail
+      parameters:
+      - name: applicationId
+        in: query
+        schema:
+          type: string
+        description: The unique Application Id to used to resolve an application specific email template.
+      - name: email
+        in: query
+        schema:
+          type: string
+        description: The email address of the user that needs a new verification email.
+      - name: sendVerifyEmail
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerifyEmailResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+    post:
+      description: Administratively verify a user's email address. Use this method to bypass email verification for the user.  The request body will contain the userId to be verified. An API key is required when sending the userId in the request body. OR Confirms a user's email address.   The request body will contain the verificationId. You may also be required to send a one-time use code based upon your configuration. When  the tenant is configured to gate a user until their email address is verified, this procedures requires two values instead of one.  The verificationId is a high entropy value and the one-time use code is a low entropy value that is easily entered in a user interactive form. The  two values together are able to confirm a user's email address and mark the user's email address as verified.
+      operationId: createUserVerifyEmail
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VerifyEmailRequest'
+      responses:
+        '200':
+          description: Success
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+  /api/user/verify-registration:
+    put:
+      description: Re-sends the application registration verification email to the user. OR Generate a new Application Registration Verification Id to be used with the Verify Registration API. This API will not attempt to send an email to the User. This API may be used to collect the verificationId for use with a third party system.
+      operationId: updateUserVerifyRegistration
+      parameters:
+      - name: email
+        in: query
+        schema:
+          type: string
+        description: The email address of the user that needs a new verification email.
+      - name: applicationId
+        in: query
+        schema:
+          type: string
+        description: The Id of the application to be verified.
+      - name: sendVerifyPasswordEmail
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerifyRegistrationResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+    post:
+      description: Confirms a user's registration.   The request body will contain the verificationId. You may also be required to send a one-time use code based upon your configuration. When  the application is configured to gate a user until their registration is verified, this procedures requires two values instead of one.  The verificationId is a high entropy value and the one-time use code is a low entropy value that is easily entered in a user interactive form. The  two values together are able to confirm a user's registration and mark the user's registration as verified.
+      operationId: verifyUserRegistrationWithId
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VerifyRegistrationRequest'
+      responses:
+        '200':
+          description: Success
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+  /api/user/{userId}:
+    post:
+      description: Creates a user. You can optionally specify an Id for the user, if not provided one will be generated.
+      operationId: createUserWithId
+      parameters:
+      - name: userId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id for the user. If not provided a secure random UUID will be generated.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+    delete:
+      description: Deletes the user based on the given request (sent to the API as JSON). This permanently deletes all information, metrics, reports and data associated with the user. OR Deletes the user for the given Id. This permanently deletes all information, metrics, reports and data associated with the user. OR Deactivates the user with the given Id.
+      operationId: deleteUserWithId
+      parameters:
+      - name: userId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the user to delete (required).
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      - name: hardDelete
+        in: query
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserDeleteSingleRequest'
+      responses:
+        '200':
+          description: Success
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+    patch:
+      description: Updates, via PATCH, the user with the given Id.
+      operationId: patchUserWithId
+      parameters:
+      - name: userId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the user to update.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+    put:
+      description: Updates the user with the given Id. OR Reactivates the user with the given Id.
+      operationId: updateUserWithId
+      parameters:
+      - name: userId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the user to update.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      - name: reactivate
+        in: query
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+    get:
+      description: Retrieves the user for the given Id.
+      operationId: retrieveUserWithId
+      parameters:
+      - name: userId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the user.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User
+components:
+  schemas:
+    ActionData:
+      type: object
+      properties:
+        actioneeUserId:
+          type: string
+          format: uuid
+        actionerUserId:
+          type: string
+          format: uuid
+        applicationIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+        comment:
+          type: string
+        emailUser:
+          type: boolean
+        expiry:
+          $ref: '#/components/schemas/ZonedDateTime'
+        notifyUser:
+          type: boolean
+        option:
+          type: string
+        reasonId:
+          type: string
+          format: uuid
+        userActionId:
+          type: string
+          format: uuid
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    RecentLoginResponse:
+      description: Response for the user login report.
+      type: object
+      properties:
+        logins:
+          type: array
+          items:
+            $ref: '#/components/schemas/DisplayableRawLogin'
+    SearchResponse:
+      description: Search API response.
+      type: object
+      properties:
+        total:
+          type: integer
+          format: int64
+        nextResults:
+          type: string
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+        expandable:
+          type: array
+          items:
+            type: string
+    ChangePasswordRequest:
+      description: Change password request object.
+      type: object
+      properties:
+        applicationId:
+          type: string
+          format: uuid
+        changePasswordId:
+          type: string
+        currentPassword:
+          type: string
+        loginId:
+          type: string
+        loginIdTypes:
+          type: array
+          items:
+            type: string
+        password:
+          type: string
+        refreshToken:
+          type: string
+        trustChallenge:
+          type: string
+        trustToken:
+          type: string
+        eventInfo:
+          $ref: '#/components/schemas/EventInfo'
+    EmailPlus:
+      type: object
+      properties:
+        emailTemplateId:
+          type: string
+          format: uuid
+        maximumTimeToSendEmailInHours:
+          type: integer
+        minimumTimeToSendEmailInHours:
+          type: integer
+        enabled:
+          type: boolean
+    ContentStatus:
+      description: Status for content like usernames, profile attributes, etc.
+      type: string
+      enum:
+      - ACTIVE
+      - PENDING
+      - REJECTED
+    TOTPAlgorithm:
+      type: string
+      enum:
+      - HmacSHA1
+      - HmacSHA256
+      - HmacSHA512
+    EventInfo:
+      description: Information about a user event (login, register, etc) that helps identify the source of the event (location, device type, OS, etc).
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        deviceDescription:
+          type: string
+        deviceName:
+          type: string
+        deviceType:
+          type: string
+        ipAddress:
+          type: string
+        location:
+          $ref: '#/components/schemas/Location'
+        os:
+          type: string
+        userAgent:
+          type: string
+    GroupMember:
+      description: A User's membership into a Group
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        groupId:
+          type: string
+          format: uuid
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        userId:
+          type: string
+          format: uuid
+    UserDeleteResponse:
+      description: User API bulk response object.
+      type: object
+      properties:
+        dryRun:
+          type: boolean
+        hardDelete:
+          type: boolean
+        total:
+          type: integer
+        userIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+    BreachedPasswordStatus:
+      description: ''
+      type: string
+      enum:
+      - None
+      - ExactMatch
+      - SubAddressMatch
+      - PasswordOnly
+      - CommonPassword
+    Location:
+      description: Location information. Useful for IP addresses and other displayable data objects.
+      type: object
+      properties:
+        city:
+          type: string
+        country:
+          type: string
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        region:
+          type: string
+        zipcode:
+          type: string
+        displayString:
+          type: string
+    RefreshTokenImportRequest:
+      description: Refresh Token Import request.
+      type: object
+      properties:
+        refreshTokens:
+          type: array
+          items:
+            $ref: '#/components/schemas/RefreshToken'
+        validateDbConstraints:
+          type: boolean
+    UserCommentSearchCriteria:
+      description: Search criteria for user comments.
+      type: object
+      properties:
+        comment:
+          type: string
+        commenterId:
+          type: string
+          format: uuid
+        tenantId:
+          type: string
+          format: uuid
+        userId:
+          type: string
+          format: uuid
+        numberOfResults:
+          type: integer
+        orderBy:
+          type: string
+        startRow:
+          type: integer
+    UserRequest:
+      description: User API request object.
+      type: object
+      properties:
+        applicationId:
+          type: string
+          format: uuid
+        currentPassword:
+          type: string
+        disableDomainBlock:
+          type: boolean
+        sendSetPasswordEmail:
+          type: boolean
+        sendSetPasswordIdentityType:
+          $ref: '#/components/schemas/SendSetPasswordIdentityType'
+        skipVerification:
+          type: boolean
+        user:
+          $ref: '#/components/schemas/User'
+        verificationIds:
+          type: array
+          items:
+            type: string
+        eventInfo:
+          $ref: '#/components/schemas/EventInfo'
+    ImportRequest:
+      description: Import request.
+      type: object
+      properties:
+        encryptionScheme:
+          type: string
+        factor:
+          type: integer
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+        validateDbConstraints:
+          type: boolean
+        eventInfo:
+          $ref: '#/components/schemas/EventInfo'
+    VerifyEmailRequest:
+      description: ''
+      type: object
+      properties:
+        oneTimeCode:
+          type: string
+        userId:
+          type: string
+          format: uuid
+        verificationId:
+          type: string
+        eventInfo:
+          $ref: '#/components/schemas/EventInfo'
+    FamilyResponse:
+      description: API response for managing families and members.
+      type: object
+      properties:
+        families:
+          type: array
+          items:
+            $ref: '#/components/schemas/Family'
+        family:
+          $ref: '#/components/schemas/Family'
+    UserResponse:
+      description: User API response object.
+      type: object
+      properties:
+        emailVerificationId:
+          type: string
+        emailVerificationOneTimeCode:
+          type: string
+        registrationVerificationIds:
+          type: object
+          additionalProperties:
+            type: string
+        registrationVerificationOneTimeCodes:
+          type: object
+          additionalProperties:
+            type: string
+        token:
+          type: string
+        tokenExpirationInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        user:
+          $ref: '#/components/schemas/User'
+        verificationIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/VerificationId'
+    UserCommentResponse:
+      description: User Comment Response
+      type: object
+      properties:
+        userComment:
+          $ref: '#/components/schemas/UserComment'
+        userComments:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserComment'
+    UserConsentResponse:
+      description: API response for User consent.
+      type: object
+      properties:
+        userConsent:
+          $ref: '#/components/schemas/UserConsent'
+        userConsents:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserConsent'
+    DeviceInfo:
+      description: ''
+      type: object
+      properties:
+        description:
+          type: string
+        lastAccessedAddress:
+          type: string
+        lastAccessedInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        name:
+          type: string
+        type:
+          type: string
+    IdentityVerifiedReason:
+      description: Models the reason that {@link UserIdentity#verified} was set to true or false.
+      type: string
+      enum:
+      - Skipped
+      - Trusted
+      - Unverifiable
+      - Implicit
+      - Pending
+      - Completed
+      - Disabled
+      - Administrative
+      - Import
+    Sort:
+      description: ''
+      type: string
+      enum:
+      - asc
+      - desc
+    ForgotPasswordRequest:
+      description: Forgot password request object.
+      type: object
+      properties:
+        applicationId:
+          type: string
+          format: uuid
+        changePasswordId:
+          type: string
+        loginId:
+          type: string
+        loginIdTypes:
+          type: array
+          items:
+            type: string
+        sendForgotPasswordEmail:
+          type: boolean
+        sendForgotPasswordMessage:
+          type: boolean
+        state:
+          type: object
+          additionalProperties:
+            type: object
+        email:
+          type: string
+        username:
+          type: string
+        eventInfo:
+          $ref: '#/components/schemas/EventInfo'
+    UserDeleteRequest:
+      description: User API delete request object.
+      type: object
+      properties:
+        dryRun:
+          type: boolean
+        hardDelete:
+          type: boolean
+        limit:
+          type: integer
+        query:
+          type: string
+        queryString:
+          type: string
+        userIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+        eventInfo:
+          $ref: '#/components/schemas/EventInfo'
+    ConsentStatus:
+      description: Models a consent.
+      type: string
+      enum:
+      - Active
+      - Revoked
+    Locale:
+      description: A Locale object represents a specific geographical, political, or cultural region.
+      example: en_US
+      type: string
+    ForgotPasswordResponse:
+      description: Forgot password response object.
+      type: object
+      properties:
+        changePasswordId:
+          type: string
+    TwoFactorDisableRequest:
+      description: ''
+      type: object
+      properties:
+        applicationId:
+          type: string
+          format: uuid
+        code:
+          type: string
+        methodId:
+          type: string
+        eventInfo:
+          $ref: '#/components/schemas/EventInfo'
+    AuthenticatorConfiguration:
+      description: ''
+      type: object
+      properties:
+        algorithm:
+          $ref: '#/components/schemas/TOTPAlgorithm'
+        codeLength:
+          type: integer
+        timeStep:
+          type: integer
+    RegistrationDeleteRequest:
+      description: Registration delete API request object.
+      type: object
+      properties:
+        eventInfo:
+          $ref: '#/components/schemas/EventInfo'
+    UserCommentSearchRequest:
+      description: Search request for user comments
+      type: object
+      properties:
+        search:
+          $ref: '#/components/schemas/UserCommentSearchCriteria'
+    ActionResponse:
+      description: The user action response object.
+      type: object
+      properties:
+        action:
+          $ref: '#/components/schemas/UserActionLog'
+        actions:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserActionLog'
+    Consent:
+      description: Models a consent.
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        consentEmailTemplateId:
+          type: string
+          format: uuid
+        countryMinimumAgeForSelfConsent:
+          $ref: '#/components/schemas/LocalizedIntegers'
+        defaultMinimumAgeForSelfConsent:
+          type: integer
+        emailPlus:
+          $ref: '#/components/schemas/EmailPlus'
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        multipleValuesAllowed:
+          type: boolean
+        name:
+          type: string
+        values:
+          type: array
+          items:
+            type: string
+    ActionRequest:
+      description: The user action request object.
+      type: object
+      properties:
+        action:
+          $ref: '#/components/schemas/ActionData'
+        broadcast:
+          type: boolean
+        eventInfo:
+          $ref: '#/components/schemas/EventInfo'
+    User:
+      description: The public, global view of a User. This object contains all global information about the user including birthdate, registration information  preferred languages, global attributes, etc.
+      type: object
+      properties:
+        preferredLanguages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Locale'
+        active:
+          type: boolean
+        birthDate:
+          $ref: '#/components/schemas/LocalDate'
+        cleanSpeakId:
+          type: string
+          format: uuid
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        email:
+          type: string
+        expiry:
+          $ref: '#/components/schemas/ZonedDateTime'
+        firstName:
+          type: string
+        fullName:
+          type: string
+        imageUrl:
+          type: string
+          format: URI
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastName:
+          type: string
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        middleName:
+          type: string
+        mobilePhone:
+          type: string
+        parentEmail:
+          type: string
+        phoneNumber:
+          type: string
+        tenantId:
+          type: string
+          format: uuid
+        timezone:
+          $ref: '#/components/schemas/ZoneId'
+        twoFactor:
+          $ref: '#/components/schemas/UserTwoFactorConfiguration'
+        memberships:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupMember'
+        registrations:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRegistration'
+        identities:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserIdentity'
+        breachedPasswordLastCheckedInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        breachedPasswordStatus:
+          $ref: '#/components/schemas/BreachedPasswordStatus'
+        connectorId:
+          type: string
+          format: uuid
+        encryptionScheme:
+          type: string
+        factor:
+          type: integer
+        id:
+          type: string
+          format: uuid
+        lastLoginInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        password:
+          type: string
+        passwordChangeReason:
+          $ref: '#/components/schemas/ChangePasswordReason'
+        passwordChangeRequired:
+          type: boolean
+        passwordLastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        salt:
+          type: string
+        uniqueUsername:
+          type: string
+        username:
+          type: string
+        usernameStatus:
+          $ref: '#/components/schemas/ContentStatus'
+        verified:
+          type: boolean
+        verifiedInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+    FamilyRequest:
+      description: API request for managing families and members.
+      type: object
+      properties:
+        familyMember:
+          $ref: '#/components/schemas/FamilyMember'
+    RegistrationResponse:
+      description: Registration API request object.
+      type: object
+      properties:
+        refreshToken:
+          type: string
+        refreshTokenId:
+          type: string
+          format: uuid
+        registration:
+          $ref: '#/components/schemas/UserRegistration'
+        registrationVerificationId:
+          type: string
+        registrationVerificationOneTimeCode:
+          type: string
+        token:
+          type: string
+        tokenExpirationInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        user:
+          $ref: '#/components/schemas/User'
+        verificationIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/VerificationId'
+    UserActionLog:
+      description: A log for an action that was taken on a User.
+      type: object
+      properties:
+        actioneeUserId:
+          type: string
+          format: uuid
+        actionerUserId:
+          type: string
+          format: uuid
+        applicationIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+        comment:
+          type: string
+        emailUserOnEnd:
+          type: boolean
+        endEventSent:
+          type: boolean
+        expiry:
+          $ref: '#/components/schemas/ZonedDateTime'
+        history:
+          $ref: '#/components/schemas/LogHistory'
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        localizedName:
+          type: string
+        localizedOption:
+          type: string
+        localizedReason:
+          type: string
+        name:
+          type: string
+        notifyUserOnEnd:
+          type: boolean
+        option:
+          type: string
+        reason:
+          type: string
+        reasonCode:
+          type: string
+        userActionId:
+          type: string
+          format: uuid
+    RefreshToken:
+      description: Models a JWT Refresh Token.
+      type: object
+      properties:
+        applicationId:
+          type: string
+          format: uuid
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        metaData:
+          $ref: '#/components/schemas/MetaData'
+        startInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        tenantId:
+          type: string
+          format: uuid
+        token:
+          type: string
+        userId:
+          type: string
+          format: uuid
+    ZoneId:
+      description: Timezone Identifier
+      example: America/Denver
+      pattern: ^w+/w+$
+      type: string
+    TwoFactorMethod:
+      description: ''
+      type: object
+      properties:
+        authenticator:
+          $ref: '#/components/schemas/AuthenticatorConfiguration'
+        email:
+          type: string
+        id:
+          type: string
+        lastUsed:
+          type: boolean
+        method:
+          type: string
+        mobilePhone:
+          type: string
+        secret:
+          type: string
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    FamilyMember:
+      description: Models a single family member.
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        owner:
+          type: boolean
+        role:
+          $ref: '#/components/schemas/FamilyRole'
+        userId:
+          type: string
+          format: uuid
+    TwoFactorRecoveryCodeResponse:
+      description: ''
+      type: object
+      properties:
+        recoveryCodes:
+          type: array
+          items:
+            type: string
+    LogHistory:
+      description: A historical state of a user log event. Since events can be modified, this stores the historical state.
+      type: object
+      properties:
+        historyItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoryItem'
+    LocalizedIntegers:
+      description: Models a set of localized Integers that can be stored as JSON.
+      type: object
+      properties: {}
+    UserCommentSearchResponse:
+      description: User comment search response
+      type: object
+      properties:
+        total:
+          type: integer
+          format: int64
+        userComments:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserComment'
+    UserRegistration:
+      description: User registration information for a single application.
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        preferredLanguages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Locale'
+        tokens:
+          type: object
+          additionalProperties:
+            type: string
+        applicationId:
+          type: string
+          format: uuid
+        authenticationToken:
+          type: string
+        cleanSpeakId:
+          type: string
+          format: uuid
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastLoginInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        roles:
+          type: array
+          uniqueItems: true
+          items: {}
+        timezone:
+          $ref: '#/components/schemas/ZoneId'
+        username:
+          type: string
+        usernameStatus:
+          $ref: '#/components/schemas/ContentStatus'
+        verified:
+          type: boolean
+        verifiedInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+    FamilyEmailRequest:
+      description: API request for sending out family requests to parent's.
+      type: object
+      properties:
+        parentEmail:
+          type: string
+    UserComment:
+      description: A log for an event that happened to a User.
+      type: object
+      properties:
+        comment:
+          type: string
+        commenterId:
+          type: string
+          format: uuid
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        userId:
+          type: string
+          format: uuid
+    UserConsentRequest:
+      description: API response for User consent.
+      type: object
+      properties:
+        userConsent:
+          $ref: '#/components/schemas/UserConsent'
+    UserIdentity:
+      description: ''
+      type: object
+      properties:
+        displayValue:
+          type: string
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastLoginInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        moderationStatus:
+          $ref: '#/components/schemas/ContentStatus'
+        primary:
+          type: boolean
+        type:
+          $ref: '#/components/schemas/IdentityType'
+        value:
+          type: string
+        verified:
+          type: boolean
+        verifiedInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        verifiedReason:
+          $ref: '#/components/schemas/IdentityVerifiedReason'
+    TwoFactorResponse:
+      description: ''
+      type: object
+      properties:
+        code:
+          type: string
+        recoveryCodes:
+          type: array
+          items:
+            type: string
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    UserCommentRequest:
+      description: ''
+      type: object
+      properties:
+        userComment:
+          $ref: '#/components/schemas/UserComment'
+    IdentityType:
+      description: Model identity types provided by FusionAuth.
+      type: object
+      properties:
+        name:
+          type: string
+    SearchRequest:
+      description: Search API request.
+      type: object
+      properties:
+        search:
+          $ref: '#/components/schemas/UserSearchCriteria'
+        expand:
+          type: array
+          items:
+            type: string
+    SortField:
+      description: ''
+      type: object
+      properties:
+        missing:
+          type: string
+        name:
+          type: string
+        order:
+          $ref: '#/components/schemas/Sort'
+    UserSearchCriteria:
+      description: This class is the user query. It provides a build pattern as well as public fields for use on forms and in actions.
+      type: object
+      properties:
+        accurateTotal:
+          type: boolean
+        ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+        nextResults:
+          type: string
+        query:
+          type: string
+        queryString:
+          type: string
+        sortFields:
+          type: array
+          items:
+            $ref: '#/components/schemas/SortField'
+    LocalDate:
+      description: A date without a time-zone in the ISO-8601 calendar system, such as 2007-12-03.
+      example: '2007-12-03'
+      pattern: ^[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]$
+      type: string
+    RegistrationRequest:
+      description: Registration API request object.
+      type: object
+      properties:
+        disableDomainBlock:
+          type: boolean
+        generateAuthenticationToken:
+          type: boolean
+        registration:
+          $ref: '#/components/schemas/UserRegistration'
+        sendSetPasswordEmail:
+          type: boolean
+        sendSetPasswordIdentityType:
+          $ref: '#/components/schemas/SendSetPasswordIdentityType'
+        skipRegistrationVerification:
+          type: boolean
+        skipVerification:
+          type: boolean
+        user:
+          $ref: '#/components/schemas/User'
+        verificationIds:
+          type: array
+          items:
+            type: string
+        eventInfo:
+          $ref: '#/components/schemas/EventInfo'
+    ChangePasswordResponse:
+      description: Change password response object.
+      type: object
+      properties:
+        oneTimePassword:
+          type: string
+        state:
+          type: object
+          additionalProperties:
+            type: object
+    MetaData:
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        device:
+          $ref: '#/components/schemas/DeviceInfo'
+        scopes:
+          type: array
+          uniqueItems: true
+          items: {}
+    UserTwoFactorConfiguration:
+      description: ''
+      type: object
+      properties:
+        methods:
+          type: array
+          items:
+            $ref: '#/components/schemas/TwoFactorMethod'
+        recoveryCodes:
+          type: array
+          items:
+            type: string
+    UserDeleteSingleRequest:
+      description: User API delete request object for a single user.
+      type: object
+      properties:
+        hardDelete:
+          type: boolean
+        eventInfo:
+          $ref: '#/components/schemas/EventInfo'
+    TwoFactorRequest:
+      description: ''
+      type: object
+      properties:
+        applicationId:
+          type: string
+          format: uuid
+        authenticatorId:
+          type: string
+        code:
+          type: string
+        email:
+          type: string
+        method:
+          type: string
+        mobilePhone:
+          type: string
+        secret:
+          type: string
+        secretBase32Encoded:
+          type: string
+        twoFactorId:
+          type: string
+        eventInfo:
+          $ref: '#/components/schemas/EventInfo'
+    UserConsent:
+      description: Models a User consent.
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        consent:
+          $ref: '#/components/schemas/Consent'
+        consentId:
+          type: string
+          format: uuid
+        giverUserId:
+          type: string
+          format: uuid
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        status:
+          $ref: '#/components/schemas/ConsentStatus'
+        userId:
+          type: string
+          format: uuid
+        values:
+          type: array
+          items:
+            type: string
+    VerifyRegistrationResponse:
+      description: ''
+      type: object
+      properties:
+        oneTimeCode:
+          type: string
+        verificationId:
+          type: string
+    DisplayableRawLogin:
+      description: A displayable raw login that includes application name and user loginId.
+      type: object
+      properties:
+        applicationName:
+          type: string
+        location:
+          $ref: '#/components/schemas/Location'
+        loginId:
+          type: string
+        loginIdType:
+          $ref: '#/components/schemas/IdentityType'
+        applicationId:
+          type: string
+          format: uuid
+        instant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        ipAddress:
+          type: string
+        userId:
+          type: string
+          format: uuid
+    VerificationId:
+      type: object
+      properties:
+        id:
+          type: string
+        oneTimeCode:
+          type: string
+        type:
+          $ref: '#/components/schemas/IdentityType'
+        value:
+          type: string
+    Family:
+      description: Models a family grouping of users.
+      type: object
+      properties:
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/FamilyMember'
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+    PendingResponse:
+      description: ''
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+    VerifyEmailResponse:
+      description: ''
+      type: object
+      properties:
+        oneTimeCode:
+          type: string
+        verificationId:
+          type: string
+    SendSetPasswordIdentityType:
+      description: Used to indicate which identity type a password "request" might go to. It could be  used for send set passwords or send password resets.
+      type: string
+      enum:
+      - email
+      - phone
+      - doNotSend
+    FamilyRole:
+      type: string
+      enum:
+      - Child
+      - Teen
+      - Adult
+    HistoryItem:
+      type: object
+      properties:
+        actionerUserId:
+          type: string
+          format: uuid
+        comment:
+          type: string
+        createInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        expiry:
+          $ref: '#/components/schemas/ZonedDateTime'
+    VerifyRegistrationRequest:
+      description: ''
+      type: object
+      properties:
+        oneTimeCode:
+          type: string
+        verificationId:
+          type: string
+        eventInfo:
+          $ref: '#/components/schemas/EventInfo'
+    ChangePasswordReason:
+      description: ''
+      type: string
+      enum:
+      - Administrative
+      - Breached
+      - Expired
+      - Validation
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      name: Authorization
+      in: header
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

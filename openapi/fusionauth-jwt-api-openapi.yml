@@ -1,0 +1,922 @@
+openapi: 3.0.3
+info:
+  version: 1.66.0
+  title: FusionAuth Api Key Jwt API
+  description: This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.
+  license:
+    name: Apache2
+servers:
+- url: http://localhost:9011
+- url: https://sandbox.fusionauth.io
+security:
+- ApiKeyAuth: []
+tags:
+- name: Jwt
+paths:
+  /api/jwt/issue:
+    get:
+      description: Issue a new access token (JWT) for the requested Application after ensuring the provided JWT is valid. A valid access token is properly signed and not expired. <p> This API may be used in an SSO configuration to issue new tokens for another application after the user has obtained a valid token from authentication.
+      operationId: issueJWTWithId
+      security:
+      - BearerAuth: []
+      parameters:
+      - name: applicationId
+        in: query
+        schema:
+          type: string
+        description: The Application Id for which you are requesting a new access token be issued.
+      - name: refreshToken
+        in: query
+        schema:
+          type: string
+        description: An existing refresh token used to request a refresh token in addition to a JWT in the response. <p>The target application represented by the applicationId request parameter must have refresh tokens enabled in order to receive a refresh token in the response.</p>
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IssueResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Jwt
+  /api/jwt/public-key:
+    get:
+      description: Retrieves the Public Key configured for verifying the JSON Web Tokens (JWT) issued by the Login API by the Application Id. OR Retrieves the Public Key configured for verifying JSON Web Tokens (JWT) by the key Id (kid).
+      operationId: retrieveJwtPublicKey
+      parameters:
+      - name: applicationId
+        in: query
+        schema:
+          type: string
+        description: The Id of the Application for which this key is used.
+      - name: keyId
+        in: query
+        schema:
+          type: string
+        description: The Id of the public key (kid).
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicKeyResponse'
+        default:
+          description: Error
+      tags:
+      - Jwt
+  /api/jwt/reconcile:
+    post:
+      description: Reconcile a User to FusionAuth using JWT issued from another Identity Provider.
+      operationId: reconcileJWTWithId
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IdentityProviderLoginRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Jwt
+  /api/jwt/refresh:
+    post:
+      description: Exchange a refresh token for a new JWT.
+      operationId: exchangeRefreshTokenForJWTWithId
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefreshRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JWTRefreshResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Jwt
+    get:
+      description: Retrieves the refresh tokens that belong to the user with the given Id.
+      operationId: retrieveRefreshTokensWithId
+      parameters:
+      - name: userId
+        in: query
+        schema:
+          type: string
+        description: The Id of the user.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RefreshTokenResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Jwt
+    delete:
+      description: 'Revokes refresh tokens using the information in the JSON body. The handling for this method is the same as the revokeRefreshToken method and is based on the information you provide in the RefreshDeleteRequest object. See that method for additional information. OR Revoke all refresh tokens that belong to a user by user Id for a specific application by applicationId. OR Revoke all refresh tokens that belong to a user by user Id. OR Revoke all refresh tokens that belong to an application by applicationId. OR Revokes a single refresh token by using the actual refresh token value. This refresh token value is sensitive, so  be careful with this API request. OR Revokes refresh tokens.  Usage examples:   - Delete a single refresh token, pass in only the token.       revokeRefreshToken(token)    - Delete all refresh tokens for a user, pass in only the userId.       revokeRefreshToken(null, userId)    - Delete all refresh tokens for a user for a specific application, pass in both the userId and the applicationId.       revokeRefreshToken(null, userId, applicationId)    - Delete all refresh tokens for an application       revokeRefreshToken(null, null, applicationId)  Note: <code>null</code> may be handled differently depending upon the programming language.  See also: (method names may vary by language... but you''ll figure it out)   - revokeRefreshTokenById  - revokeRefreshTokenByToken  - revokeRefreshTokensByUserId  - revokeRefreshTokensByApplicationId  - revokeRefreshTokensByUserIdForApplication'
+      operationId: deleteJwtRefresh
+      parameters:
+      - name: userId
+        in: query
+        schema:
+          type: string
+        description: The unique Id of the user that you want to delete all refresh tokens for.
+      - name: applicationId
+        in: query
+        schema:
+          type: string
+        description: The unique Id of the application that you want to delete refresh tokens for.
+      - name: token
+        in: query
+        schema:
+          type: string
+        description: The refresh token to delete.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefreshTokenRevokeRequest'
+      responses:
+        '200':
+          description: Success
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Jwt
+  /api/jwt/refresh/{tokenId}:
+    get:
+      description: Retrieves a single refresh token by unique Id. This is not the same thing as the string value of the refresh token. If you have that, you already have what you need.
+      operationId: retrieveRefreshTokenByIdWithId
+      parameters:
+      - name: tokenId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the token.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RefreshTokenResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Jwt
+    delete:
+      description: Revokes a single refresh token by the unique Id. The unique Id is not sensitive as it cannot be used to obtain another JWT.
+      operationId: revokeRefreshTokenByIdWithId
+      parameters:
+      - name: tokenId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The unique Id of the token to delete.
+      responses:
+        '200':
+          description: Success
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Jwt
+  /api/jwt/validate:
+    get:
+      description: Validates the provided JWT (encoded JWT string) to ensure the token is valid. A valid access token is properly signed and not expired. <p> This API may be used to verify the JWT as well as decode the encoded JWT into human readable identity claims.
+      operationId: validateJWTWithId
+      security:
+      - BearerAuth: []
+      parameters: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidateResponse'
+        default:
+          description: Error
+      tags:
+      - Jwt
+  /api/jwt/vend:
+    post:
+      description: It's a JWT vending machine!  Issue a new access token (JWT) with the provided claims in the request. This JWT is not scoped to a tenant or user, it is a free form  token that will contain what claims you provide. <p> The iat, exp and jti claims will be added by FusionAuth, all other claims must be provided by the caller.  If a TTL is not provided in the request, the TTL will be retrieved from the default Tenant or the Tenant specified on the request either  by way of the X-FusionAuth-TenantId request header, or a tenant scoped API key.
+      operationId: vendJWTWithId
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JWTVendRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JWTVendResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Jwt
+components:
+  schemas:
+    IdentityVerifiedReason:
+      description: Models the reason that {@link UserIdentity#verified} was set to true or false.
+      type: string
+      enum:
+      - Skipped
+      - Trusted
+      - Unverifiable
+      - Implicit
+      - Pending
+      - Completed
+      - Disabled
+      - Administrative
+      - Import
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    IssueResponse:
+      description: ''
+      type: object
+      properties:
+        refreshToken:
+          type: string
+        token:
+          type: string
+    PublicKeyResponse:
+      description: JWT Public Key Response Object
+      type: object
+      properties:
+        publicKey:
+          type: string
+        publicKeys:
+          type: object
+          additionalProperties:
+            type: string
+    Locale:
+      description: A Locale object represents a specific geographical, political, or cultural region.
+      example: en_US
+      type: string
+    ContentStatus:
+      description: Status for content like usernames, profile attributes, etc.
+      type: string
+      enum:
+      - ACTIVE
+      - PENDING
+      - REJECTED
+    TOTPAlgorithm:
+      type: string
+      enum:
+      - HmacSHA1
+      - HmacSHA256
+      - HmacSHA512
+    MetaData:
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        device:
+          $ref: '#/components/schemas/DeviceInfo'
+        scopes:
+          type: array
+          uniqueItems: true
+          items: {}
+    UserRegistration:
+      description: User registration information for a single application.
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        preferredLanguages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Locale'
+        tokens:
+          type: object
+          additionalProperties:
+            type: string
+        applicationId:
+          type: string
+          format: uuid
+        authenticationToken:
+          type: string
+        cleanSpeakId:
+          type: string
+          format: uuid
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastLoginInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        roles:
+          type: array
+          uniqueItems: true
+          items: {}
+        timezone:
+          $ref: '#/components/schemas/ZoneId'
+        username:
+          type: string
+        usernameStatus:
+          $ref: '#/components/schemas/ContentStatus'
+        verified:
+          type: boolean
+        verifiedInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+    IdentityProviderLoginRequest:
+      description: Login API request object used for login to third-party systems (i.e. Login with Facebook).
+      type: object
+      properties:
+        connectionTestId:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: string
+        identityProviderId:
+          type: string
+          format: uuid
+        noLink:
+          type: boolean
+        encodedJWT:
+          type: string
+        applicationId:
+          type: string
+          format: uuid
+        ipAddress:
+          type: string
+        metaData:
+          $ref: '#/components/schemas/MetaData'
+        newDevice:
+          type: boolean
+        noJWT:
+          type: boolean
+    GroupMember:
+      description: A User's membership into a Group
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        groupId:
+          type: string
+          format: uuid
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        userId:
+          type: string
+          format: uuid
+    EventInfo:
+      description: Information about a user event (login, register, etc) that helps identify the source of the event (location, device type, OS, etc).
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        deviceDescription:
+          type: string
+        deviceName:
+          type: string
+        deviceType:
+          type: string
+        ipAddress:
+          type: string
+        location:
+          $ref: '#/components/schemas/Location'
+        os:
+          type: string
+        userAgent:
+          type: string
+    UserTwoFactorConfiguration:
+      description: ''
+      type: object
+      properties:
+        methods:
+          type: array
+          items:
+            $ref: '#/components/schemas/TwoFactorMethod'
+        recoveryCodes:
+          type: array
+          items:
+            type: string
+    BreachedPasswordStatus:
+      description: ''
+      type: string
+      enum:
+      - None
+      - ExactMatch
+      - SubAddressMatch
+      - PasswordOnly
+      - CommonPassword
+    Location:
+      description: Location information. Useful for IP addresses and other displayable data objects.
+      type: object
+      properties:
+        city:
+          type: string
+        country:
+          type: string
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        region:
+          type: string
+        zipcode:
+          type: string
+        displayString:
+          type: string
+    JWTRefreshResponse:
+      description: API response for refreshing a JWT with a Refresh Token.  <p>  Using a different response object from RefreshTokenResponse because the retrieve response will return an object for refreshToken, and this is a  string.
+      type: object
+      properties:
+        refreshToken:
+          type: string
+        refreshTokenId:
+          type: string
+          format: uuid
+        token:
+          type: string
+    AuthenticatorConfiguration:
+      description: ''
+      type: object
+      properties:
+        algorithm:
+          $ref: '#/components/schemas/TOTPAlgorithm'
+        codeLength:
+          type: integer
+        timeStep:
+          type: integer
+    JWTVendRequest:
+      description: ''
+      type: object
+      properties:
+        claims:
+          type: object
+          additionalProperties:
+            type: object
+        keyId:
+          type: string
+          format: uuid
+        timeToLiveInSeconds:
+          type: integer
+    UserIdentity:
+      description: ''
+      type: object
+      properties:
+        displayValue:
+          type: string
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastLoginInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        moderationStatus:
+          $ref: '#/components/schemas/ContentStatus'
+        primary:
+          type: boolean
+        type:
+          $ref: '#/components/schemas/IdentityType'
+        value:
+          type: string
+        verified:
+          type: boolean
+        verifiedInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        verifiedReason:
+          $ref: '#/components/schemas/IdentityVerifiedReason'
+    RefreshRequest:
+      description: ''
+      type: object
+      properties:
+        refreshToken:
+          type: string
+        timeToLiveInSeconds:
+          type: integer
+        token:
+          type: string
+        eventInfo:
+          $ref: '#/components/schemas/EventInfo'
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    RefreshTokenResponse:
+      description: API response for retrieving Refresh Tokens
+      type: object
+      properties:
+        refreshToken:
+          $ref: '#/components/schemas/RefreshToken'
+        refreshTokens:
+          type: array
+          items:
+            $ref: '#/components/schemas/RefreshToken'
+    IdentityType:
+      description: Model identity types provided by FusionAuth.
+      type: object
+      properties:
+        name:
+          type: string
+    ValidateResponse:
+      description: ''
+      type: object
+      properties:
+        jwt:
+          $ref: '#/components/schemas/JWT'
+    User:
+      description: The public, global view of a User. This object contains all global information about the user including birthdate, registration information  preferred languages, global attributes, etc.
+      type: object
+      properties:
+        preferredLanguages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Locale'
+        active:
+          type: boolean
+        birthDate:
+          $ref: '#/components/schemas/LocalDate'
+        cleanSpeakId:
+          type: string
+          format: uuid
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        email:
+          type: string
+        expiry:
+          $ref: '#/components/schemas/ZonedDateTime'
+        firstName:
+          type: string
+        fullName:
+          type: string
+        imageUrl:
+          type: string
+          format: URI
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastName:
+          type: string
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        middleName:
+          type: string
+        mobilePhone:
+          type: string
+        parentEmail:
+          type: string
+        phoneNumber:
+          type: string
+        tenantId:
+          type: string
+          format: uuid
+        timezone:
+          $ref: '#/components/schemas/ZoneId'
+        twoFactor:
+          $ref: '#/components/schemas/UserTwoFactorConfiguration'
+        memberships:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupMember'
+        registrations:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRegistration'
+        identities:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserIdentity'
+        breachedPasswordLastCheckedInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        breachedPasswordStatus:
+          $ref: '#/components/schemas/BreachedPasswordStatus'
+        connectorId:
+          type: string
+          format: uuid
+        encryptionScheme:
+          type: string
+        factor:
+          type: integer
+        id:
+          type: string
+          format: uuid
+        lastLoginInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        password:
+          type: string
+        passwordChangeReason:
+          $ref: '#/components/schemas/ChangePasswordReason'
+        passwordChangeRequired:
+          type: boolean
+        passwordLastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        salt:
+          type: string
+        uniqueUsername:
+          type: string
+        username:
+          type: string
+        usernameStatus:
+          $ref: '#/components/schemas/ContentStatus'
+        verified:
+          type: boolean
+        verifiedInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+    LoginPreventedResponse:
+      description: The summary of the action that is preventing login to be returned on the login response.
+      type: object
+      properties:
+        actionId:
+          type: string
+          format: uuid
+        actionerUserId:
+          type: string
+          format: uuid
+        expiry:
+          $ref: '#/components/schemas/ZonedDateTime'
+        localizedName:
+          type: string
+        localizedOption:
+          type: string
+        localizedReason:
+          type: string
+        name:
+          type: string
+        option:
+          type: string
+        reason:
+          type: string
+        reasonCode:
+          type: string
+    RefreshTokenRevokeRequest:
+      description: Request for the Refresh Token API to revoke a refresh token rather than using the URL parameters.
+      type: object
+      properties:
+        applicationId:
+          type: string
+          format: uuid
+        token:
+          type: string
+        userId:
+          type: string
+          format: uuid
+        eventInfo:
+          $ref: '#/components/schemas/EventInfo'
+    RefreshToken:
+      description: Models a JWT Refresh Token.
+      type: object
+      properties:
+        applicationId:
+          type: string
+          format: uuid
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        metaData:
+          $ref: '#/components/schemas/MetaData'
+        startInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        tenantId:
+          type: string
+          format: uuid
+        token:
+          type: string
+        userId:
+          type: string
+          format: uuid
+    LocalDate:
+      description: A date without a time-zone in the ISO-8601 calendar system, such as 2007-12-03.
+      example: '2007-12-03'
+      pattern: ^[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]$
+      type: string
+    ZoneId:
+      description: Timezone Identifier
+      example: America/Denver
+      pattern: ^w+/w+$
+      type: string
+    JWT:
+      description: 'JSON Web Token (JWT) as defined by RFC 7519.  <pre>  From RFC 7519 Section 1. Introduction:     The suggested pronunciation of JWT is the same as the English word "jot".  <pre>  The JWT is not Thread-Safe and should not be re-used.'
+      type: object
+      properties:
+        aud:
+          type: object
+        exp:
+          $ref: '#/components/schemas/ZonedDateTime'
+        iat:
+          $ref: '#/components/schemas/ZonedDateTime'
+        iss:
+          type: string
+        nbf:
+          $ref: '#/components/schemas/ZonedDateTime'
+        otherClaims:
+          type: object
+          additionalProperties:
+            type: object
+        sub:
+          type: string
+        jti:
+          type: string
+    DeviceInfo:
+      description: ''
+      type: object
+      properties:
+        description:
+          type: string
+        lastAccessedAddress:
+          type: string
+        lastAccessedInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        name:
+          type: string
+        type:
+          type: string
+    ChangePasswordReason:
+      description: ''
+      type: string
+      enum:
+      - Administrative
+      - Breached
+      - Expired
+      - Validation
+    JWTVendResponse:
+      description: ''
+      type: object
+      properties:
+        token:
+          type: string
+    TwoFactorMethod:
+      description: ''
+      type: object
+      properties:
+        authenticator:
+          $ref: '#/components/schemas/AuthenticatorConfiguration'
+        email:
+          type: string
+        id:
+          type: string
+        lastUsed:
+          type: boolean
+        method:
+          type: string
+        mobilePhone:
+          type: string
+        secret:
+          type: string
+    LoginResponse:
+      description: ''
+      type: object
+      properties:
+        actions:
+          type: array
+          items:
+            $ref: '#/components/schemas/LoginPreventedResponse'
+        changePasswordId:
+          type: string
+        changePasswordReason:
+          $ref: '#/components/schemas/ChangePasswordReason'
+        configurableMethods:
+          type: array
+          items:
+            type: string
+        emailVerificationId:
+          type: string
+        identityVerificationId:
+          type: string
+        methods:
+          type: array
+          items:
+            $ref: '#/components/schemas/TwoFactorMethod'
+        pendingIdPLinkId:
+          type: string
+        refreshToken:
+          type: string
+        refreshTokenId:
+          type: string
+          format: uuid
+        registrationVerificationId:
+          type: string
+        state:
+          type: object
+          additionalProperties:
+            type: object
+        threatsDetected:
+          type: array
+          uniqueItems: true
+          items: {}
+        token:
+          type: string
+        tokenExpirationInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        trustToken:
+          type: string
+        twoFactorId:
+          type: string
+        twoFactorTrustId:
+          type: string
+        user:
+          $ref: '#/components/schemas/User'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      name: Authorization
+      in: header
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

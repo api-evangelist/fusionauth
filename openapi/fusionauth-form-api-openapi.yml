@@ -1,0 +1,524 @@
+openapi: 3.0.3
+info:
+  version: 1.66.0
+  title: FusionAuth Api Key Form API
+  description: This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.
+  license:
+    name: Apache2
+servers:
+- url: http://localhost:9011
+- url: https://sandbox.fusionauth.io
+security:
+- ApiKeyAuth: []
+tags:
+- name: Form
+paths:
+  /api/form:
+    post:
+      description: Creates a form.  You can optionally specify an Id for the form, if not provided one will be generated.
+      operationId: createForm
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FormRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FormResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Form
+  /api/form/field:
+    post:
+      description: Creates a form field.  You can optionally specify an Id for the form, if not provided one will be generated.
+      operationId: createFormField
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FormFieldRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FormFieldResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Form
+  /api/form/field/{fieldId}:
+    post:
+      description: Creates a form field.  You can optionally specify an Id for the form, if not provided one will be generated.
+      operationId: createFormFieldWithId
+      parameters:
+      - name: fieldId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id for the form field. If not provided a secure random UUID will be generated.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FormFieldRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FormFieldResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Form
+    delete:
+      description: Deletes the form field for the given Id.
+      operationId: deleteFormFieldWithId
+      parameters:
+      - name: fieldId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the form field to delete.
+      responses:
+        '200':
+          description: Success
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Form
+    patch:
+      description: Patches the form field with the given Id.
+      operationId: patchFormFieldWithId
+      parameters:
+      - name: fieldId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the form field to patch.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FormFieldRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FormFieldResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Form
+    get:
+      description: Retrieves the form field with the given Id.
+      operationId: retrieveFormFieldWithId
+      parameters:
+      - name: fieldId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the form field.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FormFieldResponse'
+        default:
+          description: Error
+      tags:
+      - Form
+    put:
+      description: Updates the form field with the given Id.
+      operationId: updateFormFieldWithId
+      parameters:
+      - name: fieldId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the form field to update.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FormFieldRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FormFieldResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Form
+  /api/form/{formId}:
+    post:
+      description: Creates a form.  You can optionally specify an Id for the form, if not provided one will be generated.
+      operationId: createFormWithId
+      parameters:
+      - name: formId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id for the form. If not provided a secure random UUID will be generated.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FormRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FormResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Form
+    delete:
+      description: Deletes the form for the given Id.
+      operationId: deleteFormWithId
+      parameters:
+      - name: formId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the form to delete.
+      responses:
+        '200':
+          description: Success
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Form
+    patch:
+      description: Patches the form with the given Id.
+      operationId: patchFormWithId
+      parameters:
+      - name: formId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the form to patch.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FormRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FormResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Form
+    get:
+      description: Retrieves the form with the given Id.
+      operationId: retrieveFormWithId
+      parameters:
+      - name: formId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the form.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FormResponse'
+        default:
+          description: Error
+      tags:
+      - Form
+    put:
+      description: Updates the form with the given Id.
+      operationId: updateFormWithId
+      parameters:
+      - name: formId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the form to update.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FormRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FormResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Form
+components:
+  schemas:
+    Form:
+      description: ''
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        name:
+          type: string
+        steps:
+          type: array
+          items:
+            $ref: '#/components/schemas/FormStep'
+        type:
+          $ref: '#/components/schemas/FormType'
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    FormRequest:
+      description: Form response.
+      type: object
+      properties:
+        form:
+          $ref: '#/components/schemas/Form'
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    FormFieldRequest:
+      description: The FormField API request object.
+      type: object
+      properties:
+        field:
+          $ref: '#/components/schemas/FormField'
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FormField'
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    FormField:
+      description: ''
+      type: object
+      properties:
+        confirm:
+          type: boolean
+        consentId:
+          type: string
+          format: uuid
+        control:
+          $ref: '#/components/schemas/FormControl'
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        description:
+          type: string
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        key:
+          type: string
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        name:
+          type: string
+        options:
+          type: array
+          items:
+            type: string
+        required:
+          type: boolean
+        type:
+          $ref: '#/components/schemas/FormDataType'
+        validator:
+          $ref: '#/components/schemas/FormFieldValidator'
+    FormDataType:
+      description: ''
+      type: string
+      enum:
+      - bool
+      - consent
+      - date
+      - email
+      - number
+      - phoneNumber
+      - string
+    FormType:
+      description: ''
+      type: string
+      enum:
+      - registration
+      - adminRegistration
+      - adminUser
+      - selfServiceUser
+    FormFieldResponse:
+      description: Form field response.
+      type: object
+      properties:
+        field:
+          $ref: '#/components/schemas/FormField'
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FormField'
+    FormControl:
+      description: ''
+      type: string
+      enum:
+      - checkbox
+      - number
+      - password
+      - radio
+      - select
+      - textarea
+      - text
+    FormFieldValidator:
+      description: ''
+      type: object
+      properties:
+        expression:
+          type: string
+        enabled:
+          type: boolean
+    FormStepType:
+      description: Denotes the type of form step. This is used to configure different behavior on form steps in the registration flow.
+      type: string
+      enum:
+      - collectData
+      - verifyEmail
+      - verifyPhoneNumber
+    FormResponse:
+      description: Form response.
+      type: object
+      properties:
+        form:
+          $ref: '#/components/schemas/Form'
+        forms:
+          type: array
+          items:
+            $ref: '#/components/schemas/Form'
+    FormStep:
+      description: ''
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            type: string
+            format: uuid
+        type:
+          $ref: '#/components/schemas/FormStepType'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      name: Authorization
+      in: header
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

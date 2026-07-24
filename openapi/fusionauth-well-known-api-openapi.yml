@@ -1,0 +1,203 @@
+openapi: 3.0.3
+info:
+  version: 1.66.0
+  title: FusionAuth Api Key .well Known API
+  description: This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.
+  license:
+    name: Apache2
+servers:
+- url: http://localhost:9011
+- url: https://sandbox.fusionauth.io
+security:
+- ApiKeyAuth: []
+tags:
+- name: .well Known
+paths:
+  /.well-known/jwks.json:
+    get:
+      description: Returns public keys used by FusionAuth to cryptographically verify JWTs using the JSON Web Key format.
+      operationId: retrieveJsonWebKeySetWithId
+      parameters: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JWKSResponse'
+        default:
+          description: Error
+      tags:
+      - .well Known
+  /.well-known/openid-configuration:
+    get:
+      description: Returns the well known OpenID Configuration JSON document
+      operationId: retrieveOpenIdConfigurationWithId
+      parameters: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OpenIdConfiguration'
+        default:
+          description: Error
+      tags:
+      - .well Known
+components:
+  schemas:
+    OpenIdConfiguration:
+      description: OpenID Connect Configuration as described by the <a href="https:openid.netspecsopenid-connect-discovery-1_0.html#ProviderMetadata">OpenID  Provider Metadata<a>.
+      type: object
+      properties:
+        authorization_endpoint:
+          type: string
+        backchannel_logout_supported:
+          type: boolean
+        claims_supported:
+          type: array
+          items:
+            type: string
+        device_authorization_endpoint:
+          type: string
+        dpop_signing_alg_values_supported:
+          type: array
+          items:
+            type: string
+        end_session_endpoint:
+          type: string
+        frontchannel_logout_supported:
+          type: boolean
+        grant_types_supported:
+          type: array
+          items:
+            type: string
+        id_token_signing_alg_values_supported:
+          type: array
+          items:
+            type: string
+        issuer:
+          type: string
+        jwks_uri:
+          type: string
+        response_modes_supported:
+          type: array
+          items:
+            type: string
+        response_types_supported:
+          type: array
+          items:
+            type: string
+        scopes_supported:
+          type: array
+          items:
+            type: string
+        subject_types_supported:
+          type: array
+          items:
+            type: string
+        token_endpoint:
+          type: string
+        token_endpoint_auth_methods_supported:
+          type: array
+          items:
+            type: string
+        userinfo_endpoint:
+          type: string
+        userinfo_signing_alg_values_supported:
+          type: array
+          items:
+            type: string
+        code_challenge_methods_supported:
+          type: array
+          items:
+            type: string
+    Algorithm:
+      description: Available JSON Web Algorithms (JWA) as described in RFC 7518 available for this JWT implementation.
+      type: string
+      enum:
+      - ES256
+      - ES384
+      - ES512
+      - HS256
+      - HS384
+      - HS512
+      - PS256
+      - PS384
+      - PS512
+      - RS256
+      - RS384
+      - RS512
+      - none
+    JWKSResponse:
+      description: ''
+      type: object
+      properties:
+        keys:
+          type: array
+          items:
+            $ref: '#/components/schemas/JSONWebKey'
+    KeyType:
+      type: string
+      enum:
+      - EC
+      - RSA
+      - HMAC
+      - OKP
+      - Secret
+    JSONWebKey:
+      description: A JSON Web Key as defined by <a href="https:tools.ietf.orghtmlrfc7517#section-4">RFC 7517 JSON Web Key (JWK)  Section 4<a> and <a href="https:tools.ietf.orghtmlrfc7518">RFC 7518 JSON Web Algorithms (JWA)<a>.
+      type: object
+      properties:
+        alg:
+          $ref: '#/components/schemas/Algorithm'
+        crv:
+          type: string
+        d:
+          type: string
+        dp:
+          type: string
+        dq:
+          type: string
+        e:
+          type: string
+        kid:
+          type: string
+        kty:
+          $ref: '#/components/schemas/KeyType'
+        n:
+          type: string
+        other:
+          type: object
+          additionalProperties:
+            type: object
+        p:
+          type: string
+        q:
+          type: string
+        qi:
+          type: string
+        use:
+          type: string
+        x:
+          type: string
+        x5c:
+          type: array
+          items:
+            type: string
+        x5t:
+          type: string
+        x5t#S256:
+          type: string
+        y:
+          type: string
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      name: Authorization
+      in: header
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

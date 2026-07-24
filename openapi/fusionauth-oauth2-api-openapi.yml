@@ -1,0 +1,494 @@
+openapi: 3.0.3
+info:
+  version: 1.66.0
+  title: FusionAuth Api Key Oauth2 API
+  description: This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.
+  license:
+    name: Apache2
+servers:
+- url: http://localhost:9011
+- url: https://sandbox.fusionauth.io
+security:
+- ApiKeyAuth: []
+tags:
+- name: Oauth2
+paths:
+  /oauth2/device/approve:
+    post:
+      description: Approve a device grant. OR Approve a device grant.
+      operationId: createDeviceApprove
+      parameters: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceApprovalResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Oauth2
+  /oauth2/device/user-code:
+    get:
+      description: Retrieve a user_code that is part of an in-progress Device Authorization Grant.  This API is useful if you want to build your own login workflow to complete a device grant.  This request will require an API key. OR Retrieve a user_code that is part of an in-progress Device Authorization Grant.  This API is useful if you want to build your own login workflow to complete a device grant.
+      operationId: retrieveDeviceUserCode
+      parameters: []
+      responses:
+        '200':
+          description: Success
+        default:
+          description: Error
+      tags:
+      - Oauth2
+    post:
+      description: Retrieve a user_code that is part of an in-progress Device Authorization Grant.  This API is useful if you want to build your own login workflow to complete a device grant. OR Retrieve a user_code that is part of an in-progress Device Authorization Grant.  This API is useful if you want to build your own login workflow to complete a device grant.  This request will require an API key.
+      operationId: createDeviceUserCode
+      parameters: []
+      responses:
+        '200':
+          description: Success
+        default:
+          description: Error
+      tags:
+      - Oauth2
+  /oauth2/device/validate:
+    get:
+      description: Validates the end-user provided user_code from the user-interaction of the Device Authorization Grant. If you build your own activation form you should validate the user provided code prior to beginning the Authorization grant. OR Validates the end-user provided user_code from the user-interaction of the Device Authorization Grant. If you build your own activation form you should validate the user provided code prior to beginning the Authorization grant.
+      operationId: retrieveDeviceValidate
+      parameters:
+      - name: user_code
+        in: query
+        schema:
+          type: string
+        description: The end-user verification code.
+      - name: client_id
+        in: query
+        schema:
+          type: string
+        description: The client Id.
+      responses:
+        '200':
+          description: Success
+        default:
+          description: Error
+      tags:
+      - Oauth2
+  /oauth2/device_authorize:
+    post:
+      description: Start the Device Authorization flow using a request body OR Start the Device Authorization flow using form-encoded parameters
+      operationId: createDevice_authorize
+      parameters: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuthError'
+      tags:
+      - Oauth2
+  /oauth2/introspect:
+    post:
+      description: Inspect an access token issued as the result of the Client Credentials Grant. OR Inspect an access token issued as the result of the Client Credentials Grant. OR Inspect an access token issued as the result of the User based grant such as the Authorization Code Grant, Implicit Grant, the User Credentials Grant or the Refresh Grant. OR Inspect an access token issued as the result of the User based grant such as the Authorization Code Grant, Implicit Grant, the User Credentials Grant or the Refresh Grant.
+      operationId: createIntrospect
+      parameters: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntrospectResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuthError'
+      tags:
+      - Oauth2
+  /oauth2/token:
+    post:
+      description: Exchange User Credentials for a Token. If you will be using the Resource Owner Password Credential Grant, you will make a request to the Token endpoint to exchange the user’s email and password for an access token. OR Exchange User Credentials for a Token. If you will be using the Resource Owner Password Credential Grant, you will make a request to the Token endpoint to exchange the user’s email and password for an access token. OR Exchange a Refresh Token for an Access Token. If you will be using the Refresh Token Grant, you will make a request to the Token endpoint to exchange the user’s refresh token for an access token. OR Exchange a Refresh Token for an Access Token. If you will be using the Refresh Token Grant, you will make a request to the Token endpoint to exchange the user’s refresh token for an access token. OR Exchanges an OAuth authorization code for an access token. Makes a request to the Token endpoint to exchange the authorization code returned from the Authorize endpoint for an access token. OR Exchanges an OAuth authorization code and code_verifier for an access token. Makes a request to the Token endpoint to exchange the authorization code returned from the Authorize endpoint and a code_verifier for an access token. OR Exchanges an OAuth authorization code and code_verifier for an access token. Makes a request to the Token endpoint to exchange the authorization code returned from the Authorize endpoint and a code_verifier for an access token. OR Exchanges an OAuth authorization code for an access token. Makes a request to the Token endpoint to exchange the authorization code returned from the Authorize endpoint for an access token. OR Make a Client Credentials grant request to obtain an access token. OR Make a Client Credentials grant request to obtain an access token.
+      operationId: createToken
+      parameters: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessToken'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuthError'
+      tags:
+      - Oauth2
+  /oauth2/userinfo:
+    get:
+      description: Call the UserInfo endpoint to retrieve User Claims from the access token issued by FusionAuth.
+      operationId: retrieveUserInfoFromAccessTokenWithId
+      security:
+      - BearerAuth: []
+      parameters: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserinfoResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuthError'
+      tags:
+      - Oauth2
+components:
+  schemas:
+    UserinfoResponse:
+      description: ''
+      type: object
+      properties: {}
+    IntrospectResponse:
+      description: ''
+      type: object
+      properties: {}
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    OAuthError:
+      description: ''
+      type: object
+      properties:
+        change_password_id:
+          type: string
+        error_description:
+          type: string
+        error:
+          $ref: '#/components/schemas/OAuthErrorType'
+        error_uri:
+          type: string
+        two_factor_methods:
+          type: array
+          items:
+            $ref: '#/components/schemas/TwoFactorMethod'
+        error_reason:
+          $ref: '#/components/schemas/OAuthErrorReason'
+        two_factor_id:
+          type: string
+    OAuthErrorType:
+      type: string
+      enum:
+      - invalid_request
+      - invalid_client
+      - invalid_grant
+      - invalid_token
+      - consent_required
+      - interaction_required
+      - login_required
+      - unauthorized_client
+      - invalid_scope
+      - server_error
+      - unsupported_grant_type
+      - unsupported_response_type
+      - access_denied
+      - change_password_required
+      - not_licensed
+      - two_factor_required
+      - authorization_pending
+      - expired_token
+      - unsupported_token_type
+      - invalid_dpop_proof
+    OAuthErrorReason:
+      type: string
+      enum:
+      - auth_code_not_found
+      - access_token_malformed
+      - access_token_expired
+      - access_token_unavailable_for_processing
+      - access_token_failed_processing
+      - access_token_invalid
+      - access_token_required
+      - refresh_token_not_found
+      - refresh_token_type_not_supported
+      - id_token_invalid
+      - unsupported_token_type
+      - token_type_hint_mismatch
+      - invalid_client_id
+      - invalid_expires_in
+      - invalid_user_credentials
+      - invalid_grant_type
+      - invalid_origin
+      - invalid_origin_opaque
+      - invalid_pkce_code_verifier
+      - invalid_pkce_code_challenge
+      - invalid_pkce_code_challenge_method
+      - invalid_prompt
+      - invalid_redirect_uri
+      - invalid_response_mode
+      - invalid_response_type
+      - invalid_id_token_hint
+      - invalid_post_logout_redirect_uri
+      - invalid_device_code
+      - invalid_user_code
+      - invalid_additional_client_id
+      - invalid_target_entity_scope
+      - invalid_entity_permission_scope
+      - invalid_user_id
+      - invalid_tenant_id
+      - grant_type_disabled
+      - missing_client_id
+      - missing_client_secret
+      - missing_code
+      - missing_code_challenge
+      - missing_code_verifier
+      - missing_device_code
+      - missing_grant_type
+      - missing_redirect_uri
+      - missing_refresh_token
+      - missing_response_type
+      - missing_token
+      - missing_user_code
+      - missing_user_id
+      - missing_verification_uri
+      - missing_tenant_id
+      - login_prevented
+      - not_licensed
+      - user_code_expired
+      - user_expired
+      - user_locked
+      - user_not_found
+      - client_authentication_missing
+      - invalid_client_authentication_scheme
+      - invalid_client_authentication
+      - client_id_mismatch
+      - change_password_administrative
+      - change_password_breached
+      - change_password_expired
+      - change_password_validation
+      - unknown
+      - missing_required_scope
+      - unknown_scope
+      - consent_canceled
+      - authentication_required
+      - email_verification_required
+      - multi_factor_challenge_required
+      - phone_verification_required
+      - registration_missing_requirement
+      - registration_required
+      - registration_verification_required
+      - consent_required
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    TwoFactorMethod:
+      description: ''
+      type: object
+      properties:
+        authenticator:
+          $ref: '#/components/schemas/AuthenticatorConfiguration'
+        email:
+          type: string
+        id:
+          type: string
+        lastUsed:
+          type: boolean
+        method:
+          type: string
+        mobilePhone:
+          type: string
+        secret:
+          type: string
+    TokenType:
+      description: <ul>  <li>Bearer Token type as defined by <a href="https:tools.ietf.orghtmlrfc6750">RFC 6750<a>.<li>  <li>MAC Token type as referenced by <a href="https:tools.ietf.orghtmlrfc6749">RFC 6749<a> and  <a href="https:tools.ietf.orghtmldraft-ietf-oauth-v2-http-mac-05">  Draft RFC on OAuth 2.0 Message Authentication Code (MAC) Tokens<a>  <li>  <li>DPoP Token type as defined by <a href="https:datatracker.ietf.orgdochtmlrfc9449">RFC 9449<a><li>  <ul>
+      type: string
+      enum:
+      - Bearer
+      - MAC
+      - DPoP
+    DeviceInfo:
+      description: ''
+      type: object
+      properties:
+        description:
+          type: string
+        lastAccessedAddress:
+          type: string
+        lastAccessedInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        name:
+          type: string
+        type:
+          type: string
+    IdentityProviderType:
+      description: ''
+      type: string
+      enum:
+      - Apple
+      - EpicGames
+      - ExternalJWT
+      - Facebook
+      - Google
+      - HYPR
+      - LinkedIn
+      - Nintendo
+      - OpenIDConnect
+      - SAMLv2
+      - SAMLv2IdPInitiated
+      - SonyPSN
+      - Steam
+      - Twitch
+      - Twitter
+      - Xbox
+    AccessToken:
+      description: ''
+      type: object
+      properties:
+        expires_in:
+          type: integer
+        id_token:
+          type: string
+        refresh_token:
+          type: string
+        refresh_token_id:
+          type: string
+          format: uuid
+        scope:
+          type: string
+        access_token:
+          type: string
+        token_type:
+          $ref: '#/components/schemas/TokenType'
+        userId:
+          type: string
+          format: uuid
+    IdentityProviderLink:
+      description: ''
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        displayName:
+          type: string
+        identityProviderId:
+          type: string
+          format: uuid
+        identityProviderName:
+          type: string
+        identityProviderType:
+          $ref: '#/components/schemas/IdentityProviderType'
+        identityProviderUserId:
+          type: string
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastLoginInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        tenantId:
+          type: string
+          format: uuid
+        token:
+          type: string
+        userId:
+          type: string
+          format: uuid
+    AuthenticatorConfiguration:
+      description: ''
+      type: object
+      properties:
+        algorithm:
+          $ref: '#/components/schemas/TOTPAlgorithm'
+        codeLength:
+          type: integer
+        timeStep:
+          type: integer
+    DeviceResponse:
+      description: ''
+      type: object
+      properties:
+        device_code:
+          type: string
+        expires_in:
+          type: integer
+        interval:
+          type: integer
+        user_code:
+          type: string
+        verification_uri:
+          type: string
+          format: URI
+        verification_uri_complete:
+          type: string
+          format: URI
+    DeviceApprovalResponse:
+      description: ''
+      type: object
+      properties:
+        deviceGrantStatus:
+          type: string
+        deviceInfo:
+          $ref: '#/components/schemas/DeviceInfo'
+        identityProviderLink:
+          $ref: '#/components/schemas/IdentityProviderLink'
+        tenantId:
+          type: string
+          format: uuid
+        userId:
+          type: string
+          format: uuid
+    TOTPAlgorithm:
+      type: string
+      enum:
+      - HmacSHA1
+      - HmacSHA256
+      - HmacSHA512
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      name: Authorization
+      in: header
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

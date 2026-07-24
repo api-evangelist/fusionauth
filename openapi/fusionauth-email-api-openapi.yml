@@ -1,0 +1,562 @@
+openapi: 3.0.3
+info:
+  version: 1.66.0
+  title: FusionAuth Api Key Email API
+  description: This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.
+  license:
+    name: Apache2
+servers:
+- url: http://localhost:9011
+- url: https://sandbox.fusionauth.io
+security:
+- ApiKeyAuth: []
+tags:
+- name: Email
+paths:
+  /api/email/send/{emailTemplateId}:
+    post:
+      description: Send an email using an email template Id. You can optionally provide <code>requestData</code> to access key value pairs in the email template.
+      operationId: sendEmailWithId
+      parameters:
+      - name: emailTemplateId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id for the template.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SendResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Email
+  /api/email/template:
+    post:
+      description: Creates an email template. You can optionally specify an Id for the template, if not provided one will be generated.
+      operationId: createEmailTemplate
+      parameters:
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailTemplateRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailTemplateResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Email
+    get:
+      description: Retrieves the email template for the given Id. If you don't specify the Id, this will return all the email templates.
+      operationId: retrieveEmailTemplate
+      parameters:
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailTemplateResponse'
+        default:
+          description: Error
+      tags:
+      - Email
+  /api/email/template/preview:
+    post:
+      description: Creates a preview of the email template provided in the request. This allows you to preview an email template that hasn't been saved to the database yet. The entire email template does not need to be provided on the request. This will create the preview based on whatever is given.
+      operationId: retrieveEmailTemplatePreviewWithId
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PreviewRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PreviewResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Email
+  /api/email/template/search:
+    post:
+      description: Searches email templates with the specified criteria and pagination.
+      operationId: searchEmailTemplatesWithId
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailTemplateSearchRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailTemplateSearchResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Email
+  /api/email/template/{emailTemplateId}:
+    post:
+      description: Creates an email template. You can optionally specify an Id for the template, if not provided one will be generated.
+      operationId: createEmailTemplateWithId
+      parameters:
+      - name: emailTemplateId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id for the template. If not provided a secure random UUID will be generated.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailTemplateRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailTemplateResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Email
+    delete:
+      description: Deletes the email template for the given Id.
+      operationId: deleteEmailTemplateWithId
+      parameters:
+      - name: emailTemplateId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the email template to delete.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      responses:
+        '200':
+          description: Success
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Email
+    patch:
+      description: Updates, via PATCH, the email template with the given Id.
+      operationId: patchEmailTemplateWithId
+      parameters:
+      - name: emailTemplateId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the email template to update.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailTemplateRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailTemplateResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Email
+    get:
+      description: Retrieves the email template for the given Id. If you don't specify the Id, this will return all the email templates.
+      operationId: retrieveEmailTemplateWithId
+      parameters:
+      - name: emailTemplateId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the email template.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailTemplateResponse'
+        default:
+          description: Error
+      tags:
+      - Email
+    put:
+      description: Updates the email template with the given Id.
+      operationId: updateEmailTemplateWithId
+      parameters:
+      - name: emailTemplateId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the email template to update.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailTemplateRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailTemplateResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Email
+components:
+  schemas:
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    LocalizedStrings:
+      description: Models a set of localized Strings that can be stored as JSON.
+      type: object
+      properties: {}
+    SendResponse:
+      description: ''
+      type: object
+      properties:
+        anonymousResults:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/EmailTemplateErrors'
+        results:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/EmailTemplateErrors'
+    EmailTemplateResponse:
+      description: Email template response.
+      type: object
+      properties:
+        emailTemplate:
+          $ref: '#/components/schemas/EmailTemplate'
+        emailTemplates:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailTemplate'
+    Locale:
+      description: A Locale object represents a specific geographical, political, or cultural region.
+      example: en_US
+      type: string
+    EmailTemplateSearchResponse:
+      description: Email template search response
+      type: object
+      properties:
+        emailTemplates:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailTemplate'
+        total:
+          type: integer
+          format: int64
+    Attachment:
+      description: This class is a simple attachment with a byte array, name and MIME type.
+      type: object
+      properties:
+        attachment:
+          type: string
+          format: binary
+        mime:
+          type: string
+        name:
+          type: string
+    SendRequest:
+      description: ''
+      type: object
+      properties:
+        applicationId:
+          type: string
+          format: uuid
+        bccAddresses:
+          type: array
+          items:
+            type: string
+        ccAddresses:
+          type: array
+          items:
+            type: string
+        preferredLanguages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Locale'
+        requestData:
+          type: object
+          additionalProperties:
+            type: object
+        toAddresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailAddress'
+        userIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+    PreviewRequest:
+      description: ''
+      type: object
+      properties:
+        emailTemplate:
+          $ref: '#/components/schemas/EmailTemplate'
+        locale:
+          $ref: '#/components/schemas/Locale'
+    EmailTemplateErrors:
+      type: object
+      properties:
+        parseErrors:
+          type: object
+          additionalProperties:
+            type: string
+        renderErrors:
+          type: object
+          additionalProperties:
+            type: string
+    PreviewResponse:
+      description: ''
+      type: object
+      properties:
+        email:
+          $ref: '#/components/schemas/Email'
+        errors:
+          $ref: '#/components/schemas/Errors'
+    Email:
+      description: This class is an abstraction of a simple email message.
+      type: object
+      properties:
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+        bcc:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailAddress'
+        cc:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailAddress'
+        from:
+          $ref: '#/components/schemas/EmailAddress'
+        html:
+          type: string
+        replyTo:
+          $ref: '#/components/schemas/EmailAddress'
+        subject:
+          type: string
+        text:
+          type: string
+        to:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailAddress'
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    EmailTemplateSearchRequest:
+      description: Search request for email templates
+      type: object
+      properties:
+        search:
+          $ref: '#/components/schemas/EmailTemplateSearchCriteria'
+    EmailTemplate:
+      description: Stores an email template used to send emails to users.
+      type: object
+      properties:
+        defaultFromName:
+          type: string
+        defaultHtmlTemplate:
+          type: string
+        defaultSubject:
+          type: string
+        defaultTextTemplate:
+          type: string
+        fromEmail:
+          type: string
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        localizedFromNames:
+          $ref: '#/components/schemas/LocalizedStrings'
+        localizedHtmlTemplates:
+          $ref: '#/components/schemas/LocalizedStrings'
+        localizedSubjects:
+          $ref: '#/components/schemas/LocalizedStrings'
+        localizedTextTemplates:
+          $ref: '#/components/schemas/LocalizedStrings'
+        name:
+          type: string
+    EmailAddress:
+      description: An email address.
+      type: object
+      properties:
+        address:
+          type: string
+        display:
+          type: string
+    EmailTemplateRequest:
+      description: Email template request.
+      type: object
+      properties:
+        emailTemplate:
+          $ref: '#/components/schemas/EmailTemplate'
+    EmailTemplateSearchCriteria:
+      description: Search criteria for Email templates
+      type: object
+      properties:
+        name:
+          type: string
+        numberOfResults:
+          type: integer
+        orderBy:
+          type: string
+        startRow:
+          type: integer
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      name: Authorization
+      in: header
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

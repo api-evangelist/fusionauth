@@ -1,0 +1,125 @@
+openapi: 3.0.3
+info:
+  version: 1.66.0
+  title: FusionAuth Api Key Reactor API
+  description: This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.
+  license:
+    name: Apache2
+servers:
+- url: http://localhost:9011
+- url: https://sandbox.fusionauth.io
+security:
+- ApiKeyAuth: []
+tags:
+- name: Reactor
+paths:
+  /api/reactor:
+    post:
+      description: Activates the FusionAuth Reactor using a license Id and optionally a license text (for air-gapped deployments)
+      operationId: activateReactorWithId
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReactorRequest'
+      responses:
+        '200':
+          description: Success
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Reactor
+  /api/reactor/metrics:
+    get:
+      description: Retrieves the FusionAuth Reactor metrics.
+      operationId: retrieveReactorMetricsWithId
+      parameters: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReactorMetricsResponse'
+        default:
+          description: Error
+      tags:
+      - Reactor
+components:
+  schemas:
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    ReactorRequest:
+      description: Request for managing FusionAuth Reactor and licenses.
+      type: object
+      properties:
+        license:
+          type: string
+        licenseId:
+          type: string
+    ReactorMetrics:
+      description: ''
+      type: object
+      properties:
+        breachedPasswordMetrics:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/BreachedPasswordTenantMetric'
+    ReactorMetricsResponse:
+      description: ''
+      type: object
+      properties:
+        metrics:
+          $ref: '#/components/schemas/ReactorMetrics'
+    BreachedPasswordTenantMetric:
+      description: ''
+      type: object
+      properties:
+        actionRequired:
+          type: integer
+        matchedCommonPasswordCount:
+          type: integer
+        matchedExactCount:
+          type: integer
+        matchedPasswordCount:
+          type: integer
+        matchedSubAddressCount:
+          type: integer
+        passwordsCheckedCount:
+          type: integer
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      name: Authorization
+      in: header
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

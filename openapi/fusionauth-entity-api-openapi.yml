@@ -1,0 +1,1080 @@
+openapi: 3.0.3
+info:
+  version: 1.66.0
+  title: FusionAuth Api Key Entity API
+  description: This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.
+  license:
+    name: Apache2
+servers:
+- url: http://localhost:9011
+- url: https://sandbox.fusionauth.io
+security:
+- ApiKeyAuth: []
+tags:
+- name: Entity
+paths:
+  /api/entity:
+    post:
+      description: Creates an Entity. You can optionally specify an Id for the Entity. If not provided one will be generated.
+      operationId: createEntity
+      parameters:
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EntityRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Entity
+  /api/entity/grant/search:
+    post:
+      description: Searches Entity Grants with the specified criteria and pagination.
+      operationId: searchEntityGrantsWithId
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EntityGrantSearchRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityGrantSearchResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Entity
+  /api/entity/search:
+    post:
+      description: Searches entities with the specified criteria and pagination.
+      operationId: searchEntitiesWithId
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EntitySearchRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntitySearchResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Entity
+    get:
+      description: Retrieves the entities for the given Ids. If any Id is invalid, it is ignored.
+      operationId: searchEntitiesByIdsWithId
+      parameters:
+      - name: ids
+        in: query
+        schema:
+          type: string
+        description: The entity ids to search for.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntitySearchResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Entity
+  /api/entity/type:
+    post:
+      description: Creates a Entity Type. You can optionally specify an Id for the Entity Type, if not provided one will be generated.
+      operationId: createEntityType
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EntityTypeRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityTypeResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Entity
+  /api/entity/type/search:
+    post:
+      description: Searches the entity types with the specified criteria and pagination.
+      operationId: searchEntityTypesWithId
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EntityTypeSearchRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityTypeSearchResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Entity
+  /api/entity/type/{entityTypeId}:
+    post:
+      description: Creates a Entity Type. You can optionally specify an Id for the Entity Type, if not provided one will be generated.
+      operationId: createEntityTypeWithId
+      parameters:
+      - name: entityTypeId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id for the Entity Type. If not provided a secure random UUID will be generated.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EntityTypeRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityTypeResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Entity
+    delete:
+      description: Deletes the Entity Type for the given Id.
+      operationId: deleteEntityTypeWithId
+      parameters:
+      - name: entityTypeId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the Entity Type to delete.
+      responses:
+        '200':
+          description: Success
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Entity
+    patch:
+      description: Updates, via PATCH, the Entity Type with the given Id.
+      operationId: patchEntityTypeWithId
+      parameters:
+      - name: entityTypeId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the Entity Type to update.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EntityTypeRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityTypeResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Entity
+    get:
+      description: Retrieves the Entity Type for the given Id.
+      operationId: retrieveEntityTypeWithId
+      parameters:
+      - name: entityTypeId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the Entity Type.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityTypeResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Entity
+    put:
+      description: Updates the Entity Type with the given Id.
+      operationId: updateEntityTypeWithId
+      parameters:
+      - name: entityTypeId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the Entity Type to update.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EntityTypeRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityTypeResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Entity
+  /api/entity/type/{entityTypeId}/permission:
+    post:
+      description: Creates a new permission for an entity type. You must specify the Id of the entity type you are creating the permission for. You can optionally specify an Id for the permission inside the EntityTypePermission object itself, if not provided one will be generated.
+      operationId: createEntityTypePermission
+      parameters:
+      - name: entityTypeId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the entity type to create the permission on.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EntityTypeRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityTypeResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Entity
+  /api/entity/type/{entityTypeId}/permission/{permissionId}:
+    post:
+      description: Creates a new permission for an entity type. You must specify the Id of the entity type you are creating the permission for. You can optionally specify an Id for the permission inside the EntityTypePermission object itself, if not provided one will be generated.
+      operationId: createEntityTypePermissionWithId
+      parameters:
+      - name: entityTypeId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the entity type to create the permission on.
+      - name: permissionId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the permission. If not provided a secure random UUID will be generated.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EntityTypeRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityTypeResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Entity
+    delete:
+      description: Hard deletes a permission. This is a dangerous operation and should not be used in most circumstances. This permanently removes the given permission from all grants that had it.
+      operationId: deleteEntityTypePermissionWithId
+      parameters:
+      - name: entityTypeId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the entityType the the permission belongs to.
+      - name: permissionId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the permission to delete.
+      responses:
+        '200':
+          description: Success
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Entity
+    patch:
+      description: Patches the permission with the given Id for the entity type.
+      operationId: patchEntityTypePermissionWithId
+      parameters:
+      - name: entityTypeId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the entityType that the permission belongs to.
+      - name: permissionId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the permission to patch.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EntityTypeRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityTypeResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Entity
+    put:
+      description: Updates the permission with the given Id for the entity type.
+      operationId: updateEntityTypePermissionWithId
+      parameters:
+      - name: entityTypeId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the entityType that the permission belongs to.
+      - name: permissionId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the permission to update.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EntityTypeRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityTypeResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Entity
+  /api/entity/{entityId}:
+    post:
+      description: Creates an Entity. You can optionally specify an Id for the Entity. If not provided one will be generated.
+      operationId: createEntityWithId
+      parameters:
+      - name: entityId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id for the Entity. If not provided a secure random UUID will be generated.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EntityRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Entity
+    delete:
+      description: Deletes the Entity for the given Id.
+      operationId: deleteEntityWithId
+      parameters:
+      - name: entityId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the Entity to delete.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      responses:
+        '200':
+          description: Success
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Entity
+    patch:
+      description: Updates, via PATCH, the Entity with the given Id.
+      operationId: patchEntityWithId
+      parameters:
+      - name: entityId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the Entity Type to update.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EntityRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Entity
+    get:
+      description: Retrieves the Entity for the given Id.
+      operationId: retrieveEntityWithId
+      parameters:
+      - name: entityId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the Entity.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Entity
+    put:
+      description: Updates the Entity with the given Id.
+      operationId: updateEntityWithId
+      parameters:
+      - name: entityId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the Entity to update.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EntityRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Entity
+  /api/entity/{entityId}/grant:
+    delete:
+      description: Deletes an Entity Grant for the given User or Entity.
+      operationId: deleteEntityGrantWithId
+      parameters:
+      - name: recipientEntityId
+        in: query
+        schema:
+          type: string
+        description: The Id of the Entity that the Entity Grant is for.
+      - name: userId
+        in: query
+        schema:
+          type: string
+        description: The Id of the User that the Entity Grant is for.
+      - name: entityId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the Entity that the Entity Grant is being deleted for.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      responses:
+        '200':
+          description: Success
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Entity
+    get:
+      description: Retrieves an Entity Grant for the given Entity and User/Entity.
+      operationId: retrieveEntityGrantWithId
+      parameters:
+      - name: recipientEntityId
+        in: query
+        schema:
+          type: string
+        description: The Id of the Entity that the Entity Grant is for.
+      - name: userId
+        in: query
+        schema:
+          type: string
+        description: The Id of the User that the Entity Grant is for.
+      - name: entityId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the Entity.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityGrantResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Entity
+    post:
+      description: Creates or updates an Entity Grant. This is when a User/Entity is granted permissions to an Entity.
+      operationId: upsertEntityGrantWithId
+      parameters:
+      - name: entityId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the Entity that the User/Entity is being granted access to.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EntityGrantRequest'
+      responses:
+        '200':
+          description: Success
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Entity
+components:
+  schemas:
+    Sort:
+      description: ''
+      type: string
+      enum:
+      - asc
+      - desc
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    EntityGrantSearchRequest:
+      description: Search request for entity grants.
+      type: object
+      properties:
+        search:
+          $ref: '#/components/schemas/EntityGrantSearchCriteria'
+    EntitySearchResponse:
+      description: Search request for entities
+      type: object
+      properties:
+        entities:
+          type: array
+          items:
+            $ref: '#/components/schemas/Entity'
+        nextResults:
+          type: string
+        total:
+          type: integer
+          format: int64
+    EntityGrantSearchResponse:
+      description: Search request for entity grants.
+      type: object
+      properties:
+        grants:
+          type: array
+          items:
+            $ref: '#/components/schemas/EntityGrant'
+        total:
+          type: integer
+          format: int64
+    EntityTypeSearchRequest:
+      description: Search request for entity types.
+      type: object
+      properties:
+        search:
+          $ref: '#/components/schemas/EntityTypeSearchCriteria'
+    EntityTypeSearchCriteria:
+      description: Search criteria for entity types.
+      type: object
+      properties:
+        name:
+          type: string
+        numberOfResults:
+          type: integer
+        orderBy:
+          type: string
+        startRow:
+          type: integer
+    EntityRequest:
+      description: Entity API request object.
+      type: object
+      properties:
+        entity:
+          $ref: '#/components/schemas/Entity'
+    EntitySearchCriteria:
+      description: This class is the entity query. It provides a build pattern as well as public fields for use on forms and in actions.
+      type: object
+      properties:
+        accurateTotal:
+          type: boolean
+        ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+        nextResults:
+          type: string
+        query:
+          type: string
+        queryString:
+          type: string
+        sortFields:
+          type: array
+          items:
+            $ref: '#/components/schemas/SortField'
+    EntityTypePermission:
+      description: Models a specific entity type permission. This permission can be granted to users or other entities.
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        description:
+          type: string
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        isDefault:
+          type: boolean
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        name:
+          type: string
+    EntityTypeResponse:
+      description: Entity Type API response object.
+      type: object
+      properties:
+        entityType:
+          $ref: '#/components/schemas/EntityType'
+        entityTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/EntityType'
+        permission:
+          $ref: '#/components/schemas/EntityTypePermission'
+    EntityGrantResponse:
+      description: Entity grant API response object.
+      type: object
+      properties:
+        grants:
+          type: array
+          items:
+            $ref: '#/components/schemas/EntityGrant'
+        grant:
+          $ref: '#/components/schemas/EntityGrant'
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    EntityTypeRequest:
+      description: Entity Type API request object.
+      type: object
+      properties:
+        entityType:
+          $ref: '#/components/schemas/EntityType'
+        permission:
+          $ref: '#/components/schemas/EntityTypePermission'
+    EntityResponse:
+      description: Entity API response object.
+      type: object
+      properties:
+        entity:
+          $ref: '#/components/schemas/Entity'
+    EntitySearchRequest:
+      description: Search request for entities
+      type: object
+      properties:
+        search:
+          $ref: '#/components/schemas/EntitySearchCriteria'
+    Entity:
+      description: Models an entity that a user can be granted permissions to. Or an entity that can be granted permissions to another entity.
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        clientId:
+          type: string
+        clientSecret:
+          type: string
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        name:
+          type: string
+        parentId:
+          type: string
+          format: uuid
+        tenantId:
+          type: string
+          format: uuid
+        type:
+          $ref: '#/components/schemas/EntityType'
+    EntityJWTConfiguration:
+      description: JWT Configuration for entities.
+      type: object
+      properties:
+        accessTokenKeyId:
+          type: string
+          format: uuid
+        timeToLiveInSeconds:
+          type: integer
+        enabled:
+          type: boolean
+    EntityTypeSearchResponse:
+      description: Search response for entity types.
+      type: object
+      properties:
+        entityTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/EntityType'
+        total:
+          type: integer
+          format: int64
+    EntityGrantRequest:
+      description: Entity grant API request object.
+      type: object
+      properties:
+        grant:
+          $ref: '#/components/schemas/EntityGrant'
+    SortField:
+      description: ''
+      type: object
+      properties:
+        missing:
+          type: string
+        name:
+          type: string
+        order:
+          $ref: '#/components/schemas/Sort'
+    EntityType:
+      description: Models an entity type that has a specific set of permissions. These are global objects and can be used across tenants.
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        jwtConfiguration:
+          $ref: '#/components/schemas/EntityJWTConfiguration'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        name:
+          type: string
+        permissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/EntityTypePermission'
+    EntityGrant:
+      description: A grant for an entity to a user or another entity.
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        entity:
+          $ref: '#/components/schemas/Entity'
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        permissions:
+          type: array
+          uniqueItems: true
+          items: {}
+        recipientEntityId:
+          type: string
+          format: uuid
+        userId:
+          type: string
+          format: uuid
+    EntityGrantSearchCriteria:
+      description: Search criteria for entity grants.
+      type: object
+      properties:
+        entityId:
+          type: string
+          format: uuid
+        name:
+          type: string
+        userId:
+          type: string
+          format: uuid
+        numberOfResults:
+          type: integer
+        orderBy:
+          type: string
+        startRow:
+          type: integer
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      name: Authorization
+      in: header
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

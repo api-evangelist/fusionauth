@@ -1,0 +1,364 @@
+openapi: 3.0.3
+info:
+  version: 1.66.0
+  title: FusionAuth Api Key Webhook API
+  description: This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.
+  license:
+    name: Apache2
+servers:
+- url: http://localhost:9011
+- url: https://sandbox.fusionauth.io
+security:
+- ApiKeyAuth: []
+tags:
+- name: Webhook
+paths:
+  /api/webhook:
+    post:
+      description: Creates a webhook. You can optionally specify an Id for the webhook, if not provided one will be generated.
+      operationId: createWebhook
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Webhook
+    get:
+      description: Retrieves the webhook for the given Id. If you pass in null for the Id, this will return all the webhooks.
+      operationId: retrieveWebhook
+      parameters: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookResponse'
+        default:
+          description: Error
+      tags:
+      - Webhook
+  /api/webhook/search:
+    post:
+      description: Searches webhooks with the specified criteria and pagination.
+      operationId: searchWebhooksWithId
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookSearchRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookSearchResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Webhook
+  /api/webhook/{webhookId}:
+    post:
+      description: Creates a webhook. You can optionally specify an Id for the webhook, if not provided one will be generated.
+      operationId: createWebhookWithId
+      parameters:
+      - name: webhookId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id for the webhook. If not provided a secure random UUID will be generated.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Webhook
+    delete:
+      description: Deletes the webhook for the given Id.
+      operationId: deleteWebhookWithId
+      parameters:
+      - name: webhookId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the webhook to delete.
+      responses:
+        '200':
+          description: Success
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Webhook
+    patch:
+      description: Patches the webhook with the given Id.
+      operationId: patchWebhookWithId
+      parameters:
+      - name: webhookId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the webhook to update.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Webhook
+    get:
+      description: Retrieves the webhook for the given Id. If you pass in null for the Id, this will return all the webhooks.
+      operationId: retrieveWebhookWithId
+      parameters:
+      - name: webhookId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the webhook.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookResponse'
+        default:
+          description: Error
+      tags:
+      - Webhook
+    put:
+      description: Updates the webhook with the given Id.
+      operationId: updateWebhookWithId
+      parameters:
+      - name: webhookId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the webhook to update.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Webhook
+components:
+  schemas:
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    WebhookSignatureConfiguration:
+      description: Configuration for signing webhooks.
+      type: object
+      properties:
+        signingKeyId:
+          type: string
+          format: uuid
+        enabled:
+          type: boolean
+    Webhook:
+      description: A server where events are sent. This includes user action events and any other events sent by FusionAuth.
+      type: object
+      properties:
+        connectTimeout:
+          type: integer
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        description:
+          type: string
+        eventsEnabled:
+          type: object
+          additionalProperties:
+            type: boolean
+        global:
+          type: boolean
+        headers:
+          $ref: '#/components/schemas/HTTPHeaders'
+        httpAuthenticationPassword:
+          type: string
+        httpAuthenticationUsername:
+          type: string
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        readTimeout:
+          type: integer
+        signatureConfiguration:
+          $ref: '#/components/schemas/WebhookSignatureConfiguration'
+        sslCertificate:
+          type: string
+        sslCertificateKeyId:
+          type: string
+          format: uuid
+        tenantIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+        url:
+          type: string
+          format: URI
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    WebhookResponse:
+      description: Webhook API response object.
+      type: object
+      properties:
+        webhook:
+          $ref: '#/components/schemas/Webhook'
+        webhooks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Webhook'
+    HTTPHeaders:
+      description: Type for webhook headers.
+      type: object
+      properties: {}
+    WebhookSearchRequest:
+      description: Search request for webhooks
+      type: object
+      properties:
+        search:
+          $ref: '#/components/schemas/WebhookSearchCriteria'
+    WebhookSearchResponse:
+      description: Webhook search response
+      type: object
+      properties:
+        total:
+          type: integer
+          format: int64
+        webhooks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Webhook'
+    WebhookSearchCriteria:
+      description: Search criteria for webhooks.
+      type: object
+      properties:
+        description:
+          type: string
+        tenantId:
+          type: string
+          format: uuid
+        url:
+          type: string
+        numberOfResults:
+          type: integer
+        orderBy:
+          type: string
+        startRow:
+          type: integer
+    WebhookRequest:
+      description: Webhook API request object.
+      type: object
+      properties:
+        webhook:
+          $ref: '#/components/schemas/Webhook'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      name: Authorization
+      in: header
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

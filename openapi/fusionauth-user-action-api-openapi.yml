@@ -1,0 +1,373 @@
+openapi: 3.0.3
+info:
+  version: 1.66.0
+  title: FusionAuth Api Key User Action API
+  description: This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.
+  license:
+    name: Apache2
+servers:
+- url: http://localhost:9011
+- url: https://sandbox.fusionauth.io
+security:
+- ApiKeyAuth: []
+tags:
+- name: User Action
+paths:
+  /api/user-action:
+    post:
+      description: Creates a user action. This action cannot be taken on a user until this call successfully returns. Anytime after that the user action can be applied to any user.
+      operationId: createUserAction
+      parameters:
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserActionRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserActionResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User Action
+    get:
+      description: Retrieves the user action for the given Id. If you pass in null for the Id, this will return all the user actions. OR Retrieves all the user actions that are currently inactive.
+      operationId: retrieveUserAction
+      parameters:
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      - name: inactive
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserActionResponse'
+        default:
+          description: Error
+      tags:
+      - User Action
+  /api/user-action/{userActionId}:
+    post:
+      description: Creates a user action. This action cannot be taken on a user until this call successfully returns. Anytime after that the user action can be applied to any user.
+      operationId: createUserActionWithId
+      parameters:
+      - name: userActionId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id for the user action. If not provided a secure random UUID will be generated.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserActionRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserActionResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User Action
+    delete:
+      description: Deletes the user action for the given Id. This permanently deletes the user action and also any history and logs of the action being applied to any users. OR Deactivates the user action with the given Id.
+      operationId: deleteUserActionWithId
+      parameters:
+      - name: hardDelete
+        in: query
+        schema:
+          type: string
+      - name: userActionId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the user action to delete.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      responses:
+        '200':
+          description: Success
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User Action
+    patch:
+      description: Updates, via PATCH, the user action with the given Id.
+      operationId: patchUserActionWithId
+      parameters:
+      - name: userActionId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the user action to update.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserActionRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserActionResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User Action
+    put:
+      description: Updates the user action with the given Id. OR Reactivates the user action with the given Id.
+      operationId: updateUserActionWithId
+      parameters:
+      - name: userActionId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the user action to update.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      - name: reactivate
+        in: query
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserActionRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserActionResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - User Action
+    get:
+      description: Retrieves the user action for the given Id. If you pass in null for the Id, this will return all the user actions.
+      operationId: retrieveUserActionWithId
+      parameters:
+      - name: userActionId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the user action.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserActionResponse'
+        default:
+          description: Error
+      tags:
+      - User Action
+components:
+  schemas:
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    LocalizedStrings:
+      description: Models a set of localized Strings that can be stored as JSON.
+      type: object
+      properties: {}
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    UserActionResponse:
+      description: User Action API response object.
+      type: object
+      properties:
+        userAction:
+          $ref: '#/components/schemas/UserAction'
+        userActions:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserAction'
+    TransactionType:
+      description: The transaction types for Webhooks and other event systems within FusionAuth.
+      type: string
+      enum:
+      - None
+      - Any
+      - SimpleMajority
+      - SuperMajority
+      - AbsoluteMajority
+    UserAction:
+      description: An action that can be executed on a user (discipline or reward potentially).
+      type: object
+      properties:
+        active:
+          type: boolean
+        cancelEmailTemplateId:
+          type: string
+          format: uuid
+        endEmailTemplateId:
+          type: string
+          format: uuid
+        id:
+          type: string
+          format: uuid
+        includeEmailInEventJSON:
+          type: boolean
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        localizedNames:
+          $ref: '#/components/schemas/LocalizedStrings'
+        modifyEmailTemplateId:
+          type: string
+          format: uuid
+        name:
+          type: string
+        options:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserActionOption'
+        preventLogin:
+          type: boolean
+        sendEndEvent:
+          type: boolean
+        startEmailTemplateId:
+          type: string
+          format: uuid
+        temporal:
+          type: boolean
+        transactionType:
+          $ref: '#/components/schemas/TransactionType'
+        userEmailingEnabled:
+          type: boolean
+        userNotificationsEnabled:
+          type: boolean
+    UserActionOption:
+      description: Models content user action options.
+      type: object
+      properties:
+        localizedNames:
+          $ref: '#/components/schemas/LocalizedStrings'
+        name:
+          type: string
+    UserActionRequest:
+      description: User Action API request object.
+      type: object
+      properties:
+        userAction:
+          $ref: '#/components/schemas/UserAction'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      name: Authorization
+      in: header
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

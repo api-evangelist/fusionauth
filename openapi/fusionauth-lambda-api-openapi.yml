@@ -1,0 +1,369 @@
+openapi: 3.0.3
+info:
+  version: 1.66.0
+  title: FusionAuth Api Key Lambda API
+  description: This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.
+  license:
+    name: Apache2
+servers:
+- url: http://localhost:9011
+- url: https://sandbox.fusionauth.io
+security:
+- ApiKeyAuth: []
+tags:
+- name: Lambda
+paths:
+  /api/lambda:
+    post:
+      description: Creates a Lambda. You can optionally specify an Id for the lambda, if not provided one will be generated.
+      operationId: createLambda
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LambdaRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LambdaResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Lambda
+    get:
+      description: Retrieves all the lambdas for the provided type.
+      operationId: retrieveLambdasByTypeWithId
+      parameters:
+      - name: type
+        in: query
+        schema:
+          type: string
+        description: The type of the lambda to return.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LambdaResponse'
+        default:
+          description: Error
+      tags:
+      - Lambda
+  /api/lambda/search:
+    post:
+      description: Searches lambdas with the specified criteria and pagination.
+      operationId: searchLambdasWithId
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LambdaSearchRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LambdaSearchResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Lambda
+  /api/lambda/{lambdaId}:
+    post:
+      description: Creates a Lambda. You can optionally specify an Id for the lambda, if not provided one will be generated.
+      operationId: createLambdaWithId
+      parameters:
+      - name: lambdaId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id for the lambda. If not provided a secure random UUID will be generated.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LambdaRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LambdaResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Lambda
+    delete:
+      description: Deletes the lambda for the given Id.
+      operationId: deleteLambdaWithId
+      parameters:
+      - name: lambdaId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the lambda to delete.
+      responses:
+        '200':
+          description: Success
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Lambda
+    patch:
+      description: Updates, via PATCH, the lambda with the given Id.
+      operationId: patchLambdaWithId
+      parameters:
+      - name: lambdaId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the lambda to update.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LambdaRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LambdaResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Lambda
+    get:
+      description: Retrieves the lambda for the given Id.
+      operationId: retrieveLambdaWithId
+      parameters:
+      - name: lambdaId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the lambda.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LambdaResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Lambda
+    put:
+      description: Updates the lambda with the given Id.
+      operationId: updateLambdaWithId
+      parameters:
+      - name: lambdaId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the lambda to update.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LambdaRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LambdaResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Lambda
+components:
+  schemas:
+    Lambda:
+      description: A JavaScript lambda function that is executed during certain events inside FusionAuth.
+      type: object
+      properties:
+        body:
+          type: string
+        debug:
+          type: boolean
+        engineType:
+          $ref: '#/components/schemas/LambdaEngineType'
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/LambdaType'
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    LambdaSearchRequest:
+      description: Search request for Lambdas
+      type: object
+      properties:
+        search:
+          $ref: '#/components/schemas/LambdaSearchCriteria'
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    LambdaEngineType:
+      description: ''
+      type: string
+      enum:
+      - GraalJS
+      - Nashorn
+    LambdaResponse:
+      description: Lambda API response object.
+      type: object
+      properties:
+        lambda:
+          $ref: '#/components/schemas/Lambda'
+        lambdas:
+          type: array
+          items:
+            $ref: '#/components/schemas/Lambda'
+    LambdaSearchResponse:
+      description: Lambda search response
+      type: object
+      properties:
+        lambdas:
+          type: array
+          items:
+            $ref: '#/components/schemas/Lambda'
+        total:
+          type: integer
+          format: int64
+    LambdaType:
+      description: The types of lambdas that indicate how they are invoked by FusionAuth.
+      type: string
+      enum:
+      - JWTPopulate
+      - OpenIDReconcile
+      - SAMLv2Reconcile
+      - SAMLv2Populate
+      - AppleReconcile
+      - ExternalJWTReconcile
+      - FacebookReconcile
+      - GoogleReconcile
+      - HYPRReconcile
+      - TwitterReconcile
+      - LDAPConnectorReconcile
+      - LinkedInReconcile
+      - EpicGamesReconcile
+      - NintendoReconcile
+      - SonyPSNReconcile
+      - SteamReconcile
+      - TwitchReconcile
+      - XboxReconcile
+      - ClientCredentialsJWTPopulate
+      - SCIMServerGroupRequestConverter
+      - SCIMServerGroupResponseConverter
+      - SCIMServerUserRequestConverter
+      - SCIMServerUserResponseConverter
+      - SelfServiceRegistrationValidation
+      - UserInfoPopulate
+      - LoginValidation
+      - MFARequirement
+    LambdaRequest:
+      description: Lambda API request object.
+      type: object
+      properties:
+        lambda:
+          $ref: '#/components/schemas/Lambda'
+    LambdaSearchCriteria:
+      description: Search criteria for Lambdas
+      type: object
+      properties:
+        body:
+          type: string
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/LambdaType'
+        numberOfResults:
+          type: integer
+        orderBy:
+          type: string
+        startRow:
+          type: integer
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      name: Authorization
+      in: header
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

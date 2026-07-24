@@ -1,0 +1,813 @@
+openapi: 3.0.3
+info:
+  version: 1.66.0
+  title: FusionAuth Api Key Two Factor API
+  description: This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.
+  license:
+    name: Apache2
+servers:
+- url: http://localhost:9011
+- url: https://sandbox.fusionauth.io
+security:
+- ApiKeyAuth: []
+tags:
+- name: Two Factor
+paths:
+  /api/two-factor/login:
+    post:
+      description: Complete login using a 2FA challenge
+      operationId: twoFactorLoginWithId
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TwoFactorLoginRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Two Factor
+  /api/two-factor/secret:
+    get:
+      description: Generate a Two Factor secret that can be used to enable Two Factor authentication for a User. The response will contain both the secret and a Base32 encoded form of the secret which can be shown to a User when using a 2 Step Authentication application such as Google Authenticator.
+      operationId: generateTwoFactorSecretUsingJWTWithId
+      security:
+      - BearerAuth: []
+      parameters: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SecretResponse'
+        default:
+          description: Error
+      tags:
+      - Two Factor
+  /api/two-factor/send:
+    post:
+      description: Send a Two Factor authentication code to assist in setting up Two Factor authentication or disabling.
+      operationId: sendTwoFactorCodeForEnableDisableWithId
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TwoFactorSendRequest'
+      responses:
+        '200':
+          description: Success
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Two Factor
+  /api/two-factor/send/{twoFactorId}:
+    post:
+      description: Send a Two Factor authentication code to allow the completion of Two Factor authentication.
+      operationId: sendTwoFactorCodeForLoginUsingMethodWithId
+      parameters:
+      - name: twoFactorId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id returned by the Login API necessary to complete Two Factor authentication.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TwoFactorSendRequest'
+      responses:
+        '200':
+          description: Success
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Two Factor
+  /api/two-factor/start:
+    post:
+      description: Start a Two-Factor login request by generating a two-factor identifier. This code can then be sent to the Two Factor Send  API (/api/two-factor/send)in order to send a one-time use code to a user. You can also use one-time use code returned  to send the code out-of-band. The Two-Factor login is completed by making a request to the Two-Factor Login  API (/api/two-factor/login). with the two-factor identifier and the one-time use code.  This API is intended to allow you to begin a Two-Factor login outside a normal login that originated from the Login API (/api/login).
+      operationId: startTwoFactorLoginWithId
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TwoFactorStartRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TwoFactorStartResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Two Factor
+  /api/two-factor/status:
+    post:
+      description: Retrieve a user's two-factor status.  This can be used to see if a user will need to complete a two-factor challenge to complete a login, and optionally identify the state of the two-factor trust across various applications. This operation provides more payload options than retrieveTwoFactorStatus.
+      operationId: retrieveTwoFactorStatusWithRequestWithId
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TwoFactorStatusRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TwoFactorStatusResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Two Factor
+  /api/two-factor/status/{twoFactorTrustId}:
+    get:
+      description: Retrieve a user's two-factor status.  This can be used to see if a user will need to complete a two-factor challenge to complete a login, and optionally identify the state of the two-factor trust across various applications.
+      operationId: retrieveTwoFactorStatusWithId
+      parameters:
+      - name: userId
+        in: query
+        schema:
+          type: string
+        description: The user Id to retrieve the Two-Factor status.
+      - name: applicationId
+        in: query
+        schema:
+          type: string
+        description: The optional applicationId to verify.
+      - name: twoFactorTrustId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The optional two-factor trust Id to verify.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TwoFactorStatusResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Two Factor
+components:
+  schemas:
+    IdentityVerifiedReason:
+      description: Models the reason that {@link UserIdentity#verified} was set to true or false.
+      type: string
+      enum:
+      - Skipped
+      - Trusted
+      - Unverifiable
+      - Implicit
+      - Pending
+      - Completed
+      - Disabled
+      - Administrative
+      - Import
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    Locale:
+      description: A Locale object represents a specific geographical, political, or cultural region.
+      example: en_US
+      type: string
+    ContentStatus:
+      description: Status for content like usernames, profile attributes, etc.
+      type: string
+      enum:
+      - ACTIVE
+      - PENDING
+      - REJECTED
+    TOTPAlgorithm:
+      type: string
+      enum:
+      - HmacSHA1
+      - HmacSHA256
+      - HmacSHA512
+    MetaData:
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        device:
+          $ref: '#/components/schemas/DeviceInfo'
+        scopes:
+          type: array
+          uniqueItems: true
+          items: {}
+    UserRegistration:
+      description: User registration information for a single application.
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        preferredLanguages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Locale'
+        tokens:
+          type: object
+          additionalProperties:
+            type: string
+        applicationId:
+          type: string
+          format: uuid
+        authenticationToken:
+          type: string
+        cleanSpeakId:
+          type: string
+          format: uuid
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastLoginInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        roles:
+          type: array
+          uniqueItems: true
+          items: {}
+        timezone:
+          $ref: '#/components/schemas/ZoneId'
+        username:
+          type: string
+        usernameStatus:
+          $ref: '#/components/schemas/ContentStatus'
+        verified:
+          type: boolean
+        verifiedInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+    GroupMember:
+      description: A User's membership into a Group
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        groupId:
+          type: string
+          format: uuid
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        userId:
+          type: string
+          format: uuid
+    EventInfo:
+      description: Information about a user event (login, register, etc) that helps identify the source of the event (location, device type, OS, etc).
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        deviceDescription:
+          type: string
+        deviceName:
+          type: string
+        deviceType:
+          type: string
+        ipAddress:
+          type: string
+        location:
+          $ref: '#/components/schemas/Location'
+        os:
+          type: string
+        userAgent:
+          type: string
+    UserTwoFactorConfiguration:
+      description: ''
+      type: object
+      properties:
+        methods:
+          type: array
+          items:
+            $ref: '#/components/schemas/TwoFactorMethod'
+        recoveryCodes:
+          type: array
+          items:
+            type: string
+    BreachedPasswordStatus:
+      description: ''
+      type: string
+      enum:
+      - None
+      - ExactMatch
+      - SubAddressMatch
+      - PasswordOnly
+      - CommonPassword
+    TwoFactorStartResponse:
+      description: ''
+      type: object
+      properties:
+        code:
+          type: string
+        methods:
+          type: array
+          items:
+            $ref: '#/components/schemas/TwoFactorMethod'
+        twoFactorId:
+          type: string
+    Location:
+      description: Location information. Useful for IP addresses and other displayable data objects.
+      type: object
+      properties:
+        city:
+          type: string
+        country:
+          type: string
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        region:
+          type: string
+        zipcode:
+          type: string
+        displayString:
+          type: string
+    AuthenticatorConfiguration:
+      description: ''
+      type: object
+      properties:
+        algorithm:
+          $ref: '#/components/schemas/TOTPAlgorithm'
+        codeLength:
+          type: integer
+        timeStep:
+          type: integer
+    MessageType:
+      description: ''
+      type: string
+      enum:
+      - SMS
+      - Voice
+    UserIdentity:
+      description: ''
+      type: object
+      properties:
+        displayValue:
+          type: string
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastLoginInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        moderationStatus:
+          $ref: '#/components/schemas/ContentStatus'
+        primary:
+          type: boolean
+        type:
+          $ref: '#/components/schemas/IdentityType'
+        value:
+          type: string
+        verified:
+          type: boolean
+        verifiedInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        verifiedReason:
+          $ref: '#/components/schemas/IdentityVerifiedReason'
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    IdentityType:
+      description: Model identity types provided by FusionAuth.
+      type: object
+      properties:
+        name:
+          type: string
+    TwoFactorTrust:
+      type: object
+      properties:
+        applicationId:
+          type: string
+          format: uuid
+        expiration:
+          $ref: '#/components/schemas/ZonedDateTime'
+        startInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+    TwoFactorSendRequest:
+      description: ''
+      type: object
+      properties:
+        applicationId:
+          type: string
+          format: uuid
+        email:
+          type: string
+        messageType:
+          $ref: '#/components/schemas/MessageType'
+        method:
+          type: string
+        methodId:
+          type: string
+        mobilePhone:
+          type: string
+        userId:
+          type: string
+          format: uuid
+    TwoFactorStatusRequest:
+      description: Check the status of two-factor authentication for a user, with more options than on a GET request.
+      type: object
+      properties:
+        userId:
+          type: string
+          format: uuid
+        accessToken:
+          type: string
+        action:
+          $ref: '#/components/schemas/MultiFactorAction'
+        applicationId:
+          type: string
+          format: uuid
+        twoFactorTrustId:
+          type: string
+        eventInfo:
+          $ref: '#/components/schemas/EventInfo'
+    User:
+      description: The public, global view of a User. This object contains all global information about the user including birthdate, registration information  preferred languages, global attributes, etc.
+      type: object
+      properties:
+        preferredLanguages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Locale'
+        active:
+          type: boolean
+        birthDate:
+          $ref: '#/components/schemas/LocalDate'
+        cleanSpeakId:
+          type: string
+          format: uuid
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        email:
+          type: string
+        expiry:
+          $ref: '#/components/schemas/ZonedDateTime'
+        firstName:
+          type: string
+        fullName:
+          type: string
+        imageUrl:
+          type: string
+          format: URI
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastName:
+          type: string
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        middleName:
+          type: string
+        mobilePhone:
+          type: string
+        parentEmail:
+          type: string
+        phoneNumber:
+          type: string
+        tenantId:
+          type: string
+          format: uuid
+        timezone:
+          $ref: '#/components/schemas/ZoneId'
+        twoFactor:
+          $ref: '#/components/schemas/UserTwoFactorConfiguration'
+        memberships:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupMember'
+        registrations:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRegistration'
+        identities:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserIdentity'
+        breachedPasswordLastCheckedInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        breachedPasswordStatus:
+          $ref: '#/components/schemas/BreachedPasswordStatus'
+        connectorId:
+          type: string
+          format: uuid
+        encryptionScheme:
+          type: string
+        factor:
+          type: integer
+        id:
+          type: string
+          format: uuid
+        lastLoginInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        password:
+          type: string
+        passwordChangeReason:
+          $ref: '#/components/schemas/ChangePasswordReason'
+        passwordChangeRequired:
+          type: boolean
+        passwordLastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        salt:
+          type: string
+        uniqueUsername:
+          type: string
+        username:
+          type: string
+        usernameStatus:
+          $ref: '#/components/schemas/ContentStatus'
+        verified:
+          type: boolean
+        verifiedInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+    LoginPreventedResponse:
+      description: The summary of the action that is preventing login to be returned on the login response.
+      type: object
+      properties:
+        actionId:
+          type: string
+          format: uuid
+        actionerUserId:
+          type: string
+          format: uuid
+        expiry:
+          $ref: '#/components/schemas/ZonedDateTime'
+        localizedName:
+          type: string
+        localizedOption:
+          type: string
+        localizedReason:
+          type: string
+        name:
+          type: string
+        option:
+          type: string
+        reason:
+          type: string
+        reasonCode:
+          type: string
+    TwoFactorStatusResponse:
+      description: ''
+      type: object
+      properties:
+        trusts:
+          type: array
+          items:
+            $ref: '#/components/schemas/TwoFactorTrust'
+        twoFactorTrustId:
+          type: string
+    MultiFactorAction:
+      description: Communicate various actionscontexts in which multi-factor authentication can be used.
+      type: string
+      enum:
+      - changePassword
+      - login
+      - stepUp
+    TwoFactorStartRequest:
+      description: ''
+      type: object
+      properties:
+        applicationId:
+          type: string
+          format: uuid
+        code:
+          type: string
+        loginId:
+          type: string
+        loginIdTypes:
+          type: array
+          items:
+            type: string
+        state:
+          type: object
+          additionalProperties:
+            type: object
+        trustChallenge:
+          type: string
+        userId:
+          type: string
+          format: uuid
+    LocalDate:
+      description: A date without a time-zone in the ISO-8601 calendar system, such as 2007-12-03.
+      example: '2007-12-03'
+      pattern: ^[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]$
+      type: string
+    ZoneId:
+      description: Timezone Identifier
+      example: America/Denver
+      pattern: ^w+/w+$
+      type: string
+    TwoFactorLoginRequest:
+      description: ''
+      type: object
+      properties:
+        code:
+          type: string
+        trustComputer:
+          type: boolean
+        twoFactorId:
+          type: string
+        userId:
+          type: string
+          format: uuid
+        applicationId:
+          type: string
+          format: uuid
+        ipAddress:
+          type: string
+        metaData:
+          $ref: '#/components/schemas/MetaData'
+        newDevice:
+          type: boolean
+        noJWT:
+          type: boolean
+    DeviceInfo:
+      description: ''
+      type: object
+      properties:
+        description:
+          type: string
+        lastAccessedAddress:
+          type: string
+        lastAccessedInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        name:
+          type: string
+        type:
+          type: string
+    ChangePasswordReason:
+      description: ''
+      type: string
+      enum:
+      - Administrative
+      - Breached
+      - Expired
+      - Validation
+    SecretResponse:
+      description: ''
+      type: object
+      properties:
+        secret:
+          type: string
+        secretBase32Encoded:
+          type: string
+    TwoFactorMethod:
+      description: ''
+      type: object
+      properties:
+        authenticator:
+          $ref: '#/components/schemas/AuthenticatorConfiguration'
+        email:
+          type: string
+        id:
+          type: string
+        lastUsed:
+          type: boolean
+        method:
+          type: string
+        mobilePhone:
+          type: string
+        secret:
+          type: string
+    LoginResponse:
+      description: ''
+      type: object
+      properties:
+        actions:
+          type: array
+          items:
+            $ref: '#/components/schemas/LoginPreventedResponse'
+        changePasswordId:
+          type: string
+        changePasswordReason:
+          $ref: '#/components/schemas/ChangePasswordReason'
+        configurableMethods:
+          type: array
+          items:
+            type: string
+        emailVerificationId:
+          type: string
+        identityVerificationId:
+          type: string
+        methods:
+          type: array
+          items:
+            $ref: '#/components/schemas/TwoFactorMethod'
+        pendingIdPLinkId:
+          type: string
+        refreshToken:
+          type: string
+        refreshTokenId:
+          type: string
+          format: uuid
+        registrationVerificationId:
+          type: string
+        state:
+          type: object
+          additionalProperties:
+            type: object
+        threatsDetected:
+          type: array
+          uniqueItems: true
+          items: {}
+        token:
+          type: string
+        tokenExpirationInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        trustToken:
+          type: string
+        twoFactorId:
+          type: string
+        twoFactorTrustId:
+          type: string
+        user:
+          $ref: '#/components/schemas/User'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      name: Authorization
+      in: header
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

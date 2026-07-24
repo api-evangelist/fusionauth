@@ -1,0 +1,257 @@
+openapi: 3.0.3
+info:
+  version: 1.66.0
+  title: FusionAuth Api Key Identity API
+  description: This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.
+  license:
+    name: Apache2
+servers:
+- url: http://localhost:9011
+- url: https://sandbox.fusionauth.io
+security:
+- ApiKeyAuth: []
+tags:
+- name: Identity
+paths:
+  /api/identity/verify:
+    post:
+      description: Administratively verify a user identity.
+      operationId: verifyIdentityWithId
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VerifyRequest'
+      responses:
+        '200':
+          description: Success
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Identity
+  /api/identity/verify/complete:
+    post:
+      description: Completes verification of an identity using verification codes from the Verify Start API.
+      operationId: completeVerifyIdentityWithId
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VerifyCompleteRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerifyCompleteResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Identity
+  /api/identity/verify/send:
+    post:
+      description: Send a verification code using the appropriate transport for the identity type being verified.
+      operationId: sendVerifyIdentityWithId
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VerifySendRequest'
+      responses:
+        '200':
+          description: Success
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Identity
+  /api/identity/verify/start:
+    post:
+      description: Start a verification of an identity by generating a code. This code can be sent to the User using the Verify Send API Verification Code API or using a mechanism outside of FusionAuth. The verification is completed by using the Verify Complete API with this code.
+      operationId: startVerifyIdentityWithId
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VerifyStartRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerifyStartResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Identity
+components:
+  schemas:
+    VerifyStartRequest:
+      description: ''
+      type: object
+      properties:
+        applicationId:
+          type: string
+          format: uuid
+        existingUserStrategy:
+          $ref: '#/components/schemas/ExistingUserStrategy'
+        loginId:
+          type: string
+        loginIdType:
+          type: string
+        state:
+          type: object
+          additionalProperties:
+            type: object
+        verificationStrategy:
+          $ref: '#/components/schemas/VerificationStrategy'
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    VerifyStartResponse:
+      description: ''
+      type: object
+      properties:
+        oneTimeCode:
+          type: string
+        verificationId:
+          type: string
+    EventInfo:
+      description: Information about a user event (login, register, etc) that helps identify the source of the event (location, device type, OS, etc).
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        deviceDescription:
+          type: string
+        deviceName:
+          type: string
+        deviceType:
+          type: string
+        ipAddress:
+          type: string
+        location:
+          $ref: '#/components/schemas/Location'
+        os:
+          type: string
+        userAgent:
+          type: string
+    VerifyCompleteRequest:
+      description: Verify Complete API request object.
+      type: object
+      properties:
+        oneTimeCode:
+          type: string
+        verificationId:
+          type: string
+        eventInfo:
+          $ref: '#/components/schemas/EventInfo'
+    ExistingUserStrategy:
+      description: Represent the various statesexpectations of a user in the context of starting verification
+      type: string
+      enum:
+      - mustExist
+      - mustNotExist
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    VerifySendRequest:
+      description: Verify Send API request object.
+      type: object
+      properties:
+        verificationId:
+          type: string
+    VerifyCompleteResponse:
+      description: Verify Complete API response object.
+      type: object
+      properties:
+        state:
+          type: object
+          additionalProperties:
+            type: object
+    Location:
+      description: Location information. Useful for IP addresses and other displayable data objects.
+      type: object
+      properties:
+        city:
+          type: string
+        country:
+          type: string
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        region:
+          type: string
+        zipcode:
+          type: string
+        displayString:
+          type: string
+    VerifyRequest:
+      description: Identity verify request. Used to administratively verify an identity.
+      type: object
+      properties:
+        loginId:
+          type: string
+        loginIdType:
+          type: string
+        eventInfo:
+          $ref: '#/components/schemas/EventInfo'
+    VerificationStrategy:
+      description: ''
+      type: string
+      enum:
+      - ClickableLink
+      - FormField
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      name: Authorization
+      in: header
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

@@ -1,0 +1,1712 @@
+openapi: 3.0.3
+info:
+  version: 1.66.0
+  title: FusionAuth Api Key Application API
+  description: This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.
+  license:
+    name: Apache2
+servers:
+- url: http://localhost:9011
+- url: https://sandbox.fusionauth.io
+security:
+- ApiKeyAuth: []
+tags:
+- name: Application
+paths:
+  /api/application:
+    post:
+      description: Creates an application. You can optionally specify an Id for the application, if not provided one will be generated.
+      operationId: createApplication
+      parameters:
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Application
+    get:
+      description: Retrieves all the applications that are currently inactive. OR Retrieves the application for the given Id or all the applications if the Id is null.
+      operationId: retrieveApplication
+      parameters:
+      - name: inactive
+        in: query
+        schema:
+          type: string
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationResponse'
+        default:
+          description: Error
+      tags:
+      - Application
+  /api/application/search:
+    post:
+      description: Searches applications with the specified criteria and pagination.
+      operationId: searchApplicationsWithId
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationSearchRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationSearchResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Application
+  /api/application/{applicationId}:
+    post:
+      description: Creates an application. You can optionally specify an Id for the application, if not provided one will be generated.
+      operationId: createApplicationWithId
+      parameters:
+      - name: applicationId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id to use for the application. If not provided a secure random UUID will be generated.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Application
+    delete:
+      description: Hard deletes an application. This is a dangerous operation and should not be used in most circumstances. This will delete the application, any registrations for that application, metrics and reports for the application, all the roles for the application, and any other data associated with the application. This operation could take a very long time, depending on the amount of data in your database. OR Deactivates the application with the given Id.
+      operationId: deleteApplicationWithId
+      parameters:
+      - name: hardDelete
+        in: query
+        schema:
+          type: string
+      - name: applicationId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the application to delete.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      responses:
+        '200':
+          description: Success
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Application
+    patch:
+      description: Updates, via PATCH, the application with the given Id.
+      operationId: patchApplicationWithId
+      parameters:
+      - name: applicationId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the application to update.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Application
+    put:
+      description: Updates the application with the given Id. OR Reactivates the application with the given Id.
+      operationId: updateApplicationWithId
+      parameters:
+      - name: applicationId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the application to update.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      - name: reactivate
+        in: query
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Application
+    get:
+      description: Retrieves the application for the given Id or all the applications if the Id is null.
+      operationId: retrieveApplicationWithId
+      parameters:
+      - name: applicationId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The application Id.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationResponse'
+        default:
+          description: Error
+      tags:
+      - Application
+  /api/application/{applicationId}/oauth-configuration:
+    get:
+      description: Retrieves the Oauth2 configuration for the application for the given Application Id.
+      operationId: retrieveOauthConfigurationWithId
+      parameters:
+      - name: applicationId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the Application to retrieve OAuth configuration.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuthConfigurationResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Application
+  /api/application/{applicationId}/role:
+    post:
+      description: Creates a new role for an application. You must specify the Id of the application you are creating the role for. You can optionally specify an Id for the role inside the ApplicationRole object itself, if not provided one will be generated.
+      operationId: createApplicationRole
+      parameters:
+      - name: applicationId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the application to create the role on.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Application
+  /api/application/{applicationId}/role/{roleId}:
+    post:
+      description: Creates a new role for an application. You must specify the Id of the application you are creating the role for. You can optionally specify an Id for the role inside the ApplicationRole object itself, if not provided one will be generated.
+      operationId: createApplicationRoleWithId
+      parameters:
+      - name: applicationId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the application to create the role on.
+      - name: roleId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the role. If not provided a secure random UUID will be generated.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Application
+    delete:
+      description: Hard deletes an application role. This is a dangerous operation and should not be used in most circumstances. This permanently removes the given role from all users that had it.
+      operationId: deleteApplicationRoleWithId
+      parameters:
+      - name: applicationId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the application that the role belongs to.
+      - name: roleId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the role to delete.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      responses:
+        '200':
+          description: Success
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Application
+    patch:
+      description: Updates, via PATCH, the application role with the given Id for the application.
+      operationId: patchApplicationRoleWithId
+      parameters:
+      - name: applicationId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the application that the role belongs to.
+      - name: roleId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the role to update.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Application
+    put:
+      description: Updates the application role with the given Id for the application.
+      operationId: updateApplicationRoleWithId
+      parameters:
+      - name: applicationId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the application that the role belongs to.
+      - name: roleId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the role to update.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Application
+  /api/application/{applicationId}/scope:
+    post:
+      description: Creates a new custom OAuth scope for an application. You must specify the Id of the application you are creating the scope for. You can optionally specify an Id for the OAuth scope on the URL, if not provided one will be generated.
+      operationId: createOAuthScope
+      parameters:
+      - name: applicationId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the application to create the OAuth scope on.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationOAuthScopeRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationOAuthScopeResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Application
+  /api/application/{applicationId}/scope/{scopeId}:
+    post:
+      description: Creates a new custom OAuth scope for an application. You must specify the Id of the application you are creating the scope for. You can optionally specify an Id for the OAuth scope on the URL, if not provided one will be generated.
+      operationId: createOAuthScopeWithId
+      parameters:
+      - name: applicationId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the application to create the OAuth scope on.
+      - name: scopeId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the OAuth scope. If not provided a secure random UUID will be generated.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationOAuthScopeRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationOAuthScopeResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Application
+    delete:
+      description: Hard deletes a custom OAuth scope. OAuth workflows that are still requesting the deleted OAuth scope may fail depending on the application's unknown scope policy.
+      operationId: deleteOAuthScopeWithId
+      parameters:
+      - name: applicationId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the application that the OAuth scope belongs to.
+      - name: scopeId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the OAuth scope to delete.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      responses:
+        '200':
+          description: Success
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Application
+    patch:
+      description: Updates, via PATCH, the custom OAuth scope with the given Id for the application.
+      operationId: patchOAuthScopeWithId
+      parameters:
+      - name: applicationId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the application that the OAuth scope belongs to.
+      - name: scopeId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the OAuth scope to update.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationOAuthScopeRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationOAuthScopeResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Application
+    get:
+      description: Retrieves a custom OAuth scope.
+      operationId: retrieveOAuthScopeWithId
+      parameters:
+      - name: applicationId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the application that the OAuth scope belongs to.
+      - name: scopeId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the OAuth scope to retrieve.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationOAuthScopeResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Application
+    put:
+      description: Updates the OAuth scope with the given Id for the application.
+      operationId: updateOAuthScopeWithId
+      parameters:
+      - name: applicationId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the application that the OAuth scope belongs to.
+      - name: scopeId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the OAuth scope to update.
+      - in: header
+        name: X-FusionAuth-TenantId
+        description: The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.
+        required: false
+        schema:
+          type: string
+          format: UUID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationOAuthScopeRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationOAuthScopeResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Application
+components:
+  schemas:
+    LambdaConfiguration:
+      type: object
+      properties:
+        accessTokenPopulateId:
+          type: string
+          format: uuid
+        idTokenPopulateId:
+          type: string
+          format: uuid
+        multiFactorRequirementId:
+          type: string
+          format: uuid
+        samlv2PopulateId:
+          type: string
+          format: uuid
+        selfServiceRegistrationValidationId:
+          type: string
+          format: uuid
+        userinfoPopulateId:
+          type: string
+          format: uuid
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    ApplicationRequest:
+      description: The Application API request object.
+      type: object
+      properties:
+        application:
+          $ref: '#/components/schemas/Application'
+        role:
+          $ref: '#/components/schemas/ApplicationRole'
+        sourceApplicationId:
+          type: string
+          format: uuid
+        eventInfo:
+          $ref: '#/components/schemas/EventInfo'
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    Application:
+      description: ''
+      type: object
+      properties:
+        accessControlConfiguration:
+          $ref: '#/components/schemas/ApplicationAccessControlConfiguration'
+        active:
+          type: boolean
+        authenticationTokenConfiguration:
+          $ref: '#/components/schemas/AuthenticationTokenConfiguration'
+        cleanSpeakConfiguration:
+          $ref: '#/components/schemas/CleanSpeakConfiguration'
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        emailConfiguration:
+          $ref: '#/components/schemas/ApplicationEmailConfiguration'
+        externalIdentifierConfiguration:
+          $ref: '#/components/schemas/ApplicationExternalIdentifierConfiguration'
+        formConfiguration:
+          $ref: '#/components/schemas/ApplicationFormConfiguration'
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        jwtConfiguration:
+          $ref: '#/components/schemas/JWTConfiguration'
+        lambdaConfiguration:
+          $ref: '#/components/schemas/LambdaConfiguration'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        loginConfiguration:
+          $ref: '#/components/schemas/LoginConfiguration'
+        multiFactorConfiguration:
+          $ref: '#/components/schemas/ApplicationMultiFactorConfiguration'
+        name:
+          type: string
+        oauthConfiguration:
+          $ref: '#/components/schemas/OAuth2Configuration'
+        passwordlessConfiguration:
+          $ref: '#/components/schemas/PasswordlessConfiguration'
+        phoneConfiguration:
+          $ref: '#/components/schemas/ApplicationPhoneConfiguration'
+        registrationConfiguration:
+          $ref: '#/components/schemas/RegistrationConfiguration'
+        registrationDeletePolicy:
+          $ref: '#/components/schemas/ApplicationRegistrationDeletePolicy'
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApplicationRole'
+        samlv2Configuration:
+          $ref: '#/components/schemas/SAMLv2Configuration'
+        scopes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApplicationOAuthScope'
+        state:
+          $ref: '#/components/schemas/ObjectState'
+        tenantId:
+          type: string
+          format: uuid
+        themeId:
+          type: string
+          format: uuid
+        universalConfiguration:
+          $ref: '#/components/schemas/UniversalApplicationConfiguration'
+        unverified:
+          $ref: '#/components/schemas/RegistrationUnverifiedOptions'
+        verificationEmailTemplateId:
+          type: string
+          format: uuid
+        verificationStrategy:
+          $ref: '#/components/schemas/VerificationStrategy'
+        verifyRegistration:
+          type: boolean
+        webAuthnConfiguration:
+          $ref: '#/components/schemas/ApplicationWebAuthnConfiguration'
+    ApplicationOAuthScope:
+      description: A custom OAuth scope for a specific application.
+      type: object
+      properties:
+        applicationId:
+          type: string
+          format: uuid
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        defaultConsentDetail:
+          type: string
+        defaultConsentMessage:
+          type: string
+        description:
+          type: string
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        name:
+          type: string
+        required:
+          type: boolean
+    ApplicationOAuthScopeResponse:
+      description: The Application Scope API response.
+      type: object
+      properties:
+        scope:
+          $ref: '#/components/schemas/ApplicationOAuthScope'
+    ApplicationSearchCriteria:
+      description: Search criteria for Applications
+      type: object
+      properties:
+        name:
+          type: string
+        state:
+          $ref: '#/components/schemas/ObjectState'
+        tenantId:
+          type: string
+          format: uuid
+        universal:
+          type: boolean
+        numberOfResults:
+          type: integer
+        orderBy:
+          type: string
+        startRow:
+          type: integer
+    ProofKeyForCodeExchangePolicy:
+      description: ''
+      type: string
+      enum:
+      - Required
+      - NotRequired
+      - NotRequiredWhenUsingClientAuthentication
+    RefreshTokenRevocationPolicy:
+      description: ''
+      type: object
+      properties:
+        onLoginPrevented:
+          type: boolean
+        onMultiFactorEnable:
+          type: boolean
+        onOneTimeTokenReuse:
+          type: boolean
+        onPasswordChanged:
+          type: boolean
+    ProvidedScopePolicy:
+      description: The handling policy for scopes provided by FusionAuth
+      type: object
+      properties:
+        address:
+          $ref: '#/components/schemas/Requirable'
+        email:
+          $ref: '#/components/schemas/Requirable'
+        phone:
+          $ref: '#/components/schemas/Requirable'
+        profile:
+          $ref: '#/components/schemas/Requirable'
+    ApplicationPhoneConfiguration:
+      description: Hold application phone configuration for template overrides.
+      type: object
+      properties:
+        forgotPasswordTemplateId:
+          type: string
+          format: uuid
+        identityUpdateTemplateId:
+          type: string
+          format: uuid
+        loginIdInUseOnCreateTemplateId:
+          type: string
+          format: uuid
+        loginIdInUseOnUpdateTemplateId:
+          type: string
+          format: uuid
+        loginNewDeviceTemplateId:
+          type: string
+          format: uuid
+        loginSuspiciousTemplateId:
+          type: string
+          format: uuid
+        passwordResetSuccessTemplateId:
+          type: string
+          format: uuid
+        passwordUpdateTemplateId:
+          type: string
+          format: uuid
+        passwordlessTemplateId:
+          type: string
+          format: uuid
+        setPasswordTemplateId:
+          type: string
+          format: uuid
+        twoFactorMethodAddTemplateId:
+          type: string
+          format: uuid
+        twoFactorMethodRemoveTemplateId:
+          type: string
+          format: uuid
+        verificationCompleteTemplateId:
+          type: string
+          format: uuid
+        verificationTemplateId:
+          type: string
+          format: uuid
+    CanonicalizationMethod:
+      description: XML canonicalization method enumeration. This is used for the IdP and SP side of FusionAuth SAML.
+      type: string
+      enum:
+      - exclusive
+      - exclusive_with_comments
+      - inclusive
+      - inclusive_with_comments
+    SAMLv2SingleLogout:
+      type: object
+      properties:
+        keyId:
+          type: string
+          format: uuid
+        url:
+          type: string
+          format: URI
+        xmlSignatureC14nMethod:
+          $ref: '#/components/schemas/CanonicalizationMethod'
+        enabled:
+          type: boolean
+    XMLSignatureLocation:
+      type: string
+      enum:
+      - Assertion
+      - Response
+    RefreshTokenUsagePolicy:
+      description: ''
+      type: string
+      enum:
+      - Reusable
+      - OneTimeUse
+    UsernameModeration:
+      type: object
+      properties:
+        applicationId:
+          type: string
+          format: uuid
+        enabled:
+          type: boolean
+    ApplicationSearchResponse:
+      description: Application search response
+      type: object
+      properties:
+        applications:
+          type: array
+          items:
+            $ref: '#/components/schemas/Application'
+        total:
+          type: integer
+          format: int64
+        expandable:
+          type: array
+          items:
+            type: string
+    PasswordlessStrategy:
+      description: ''
+      type: string
+      enum:
+      - ClickableLink
+      - FormField
+    ApplicationExternalIdentifierConfiguration:
+      description: ''
+      type: object
+      properties:
+        twoFactorTrustIdTimeToLiveInSeconds:
+          type: integer
+    JWTConfiguration:
+      description: JWT Configuration. A JWT Configuration for an Application may not be active if it is using the global configuration, the configuration  may be <code>enabled = false<code>.
+      type: object
+      properties:
+        accessTokenKeyId:
+          type: string
+          format: uuid
+        idTokenKeyId:
+          type: string
+          format: uuid
+        refreshTokenExpirationPolicy:
+          $ref: '#/components/schemas/RefreshTokenExpirationPolicy'
+        refreshTokenOneTimeUseConfiguration:
+          $ref: '#/components/schemas/RefreshTokenOneTimeUseConfiguration'
+        refreshTokenRevocationPolicy:
+          $ref: '#/components/schemas/RefreshTokenRevocationPolicy'
+        refreshTokenSlidingWindowConfiguration:
+          $ref: '#/components/schemas/RefreshTokenSlidingWindowConfiguration'
+        refreshTokenTimeToLiveInMinutes:
+          type: integer
+        refreshTokenUsagePolicy:
+          $ref: '#/components/schemas/RefreshTokenUsagePolicy'
+        timeToLiveInSeconds:
+          type: integer
+        enabled:
+          type: boolean
+    SAMLv2IdPInitiatedLoginConfiguration:
+      description: IdP Initiated login configuration
+      type: object
+      properties:
+        nameIdFormat:
+          type: string
+        enabled:
+          type: boolean
+    UnknownScopePolicy:
+      description: Policy for handling unknown OAuth scopes in the request
+      type: string
+      enum:
+      - Allow
+      - Remove
+      - Reject
+    EventInfo:
+      description: Information about a user event (login, register, etc) that helps identify the source of the event (location, device type, OS, etc).
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        deviceDescription:
+          type: string
+        deviceName:
+          type: string
+        deviceType:
+          type: string
+        ipAddress:
+          type: string
+        location:
+          $ref: '#/components/schemas/Location'
+        os:
+          type: string
+        userAgent:
+          type: string
+    TimeBasedDeletePolicy:
+      description: A policy for deleting Users based upon some external criteria.
+      type: object
+      properties:
+        enabledInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        numberOfDaysToRetain:
+          type: integer
+        enabled:
+          type: boolean
+    AuthenticationTokenConfiguration:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+    RegistrationConfiguration:
+      type: object
+      properties:
+        birthDate:
+          $ref: '#/components/schemas/Requirable'
+        completeRegistration:
+          type: boolean
+        confirmPassword:
+          type: boolean
+        firstName:
+          $ref: '#/components/schemas/Requirable'
+        formId:
+          type: string
+          format: uuid
+        fullName:
+          $ref: '#/components/schemas/Requirable'
+        lastName:
+          $ref: '#/components/schemas/Requirable'
+        loginIdType:
+          $ref: '#/components/schemas/LoginIdType'
+        middleName:
+          $ref: '#/components/schemas/Requirable'
+        mobilePhone:
+          $ref: '#/components/schemas/Requirable'
+        preferredLanguages:
+          $ref: '#/components/schemas/Requirable'
+        type:
+          $ref: '#/components/schemas/RegistrationType'
+        enabled:
+          type: boolean
+    SAMLv2Logout:
+      type: object
+      properties:
+        behavior:
+          $ref: '#/components/schemas/SAMLLogoutBehavior'
+        defaultVerificationKeyId:
+          type: string
+          format: uuid
+        keyId:
+          type: string
+          format: uuid
+        requireSignedRequests:
+          type: boolean
+        singleLogout:
+          $ref: '#/components/schemas/SAMLv2SingleLogout'
+        xmlSignatureC14nMethod:
+          $ref: '#/components/schemas/CanonicalizationMethod'
+    ApplicationRole:
+      description: A role given to a user for a specific application.
+      type: object
+      properties:
+        description:
+          type: string
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        isDefault:
+          type: boolean
+        isSuperRole:
+          type: boolean
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        name:
+          type: string
+    MultiFactorLoginPolicy:
+      description: ''
+      type: string
+      enum:
+      - Disabled
+      - Enabled
+      - Required
+    MultiFactorEmailTemplate:
+      type: object
+      properties:
+        templateId:
+          type: string
+          format: uuid
+    Location:
+      description: Location information. Useful for IP addresses and other displayable data objects.
+      type: object
+      properties:
+        city:
+          type: string
+        country:
+          type: string
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        region:
+          type: string
+        zipcode:
+          type: string
+        displayString:
+          type: string
+    OAuthConfigurationResponse:
+      description: ''
+      type: object
+      properties:
+        httpSessionMaxInactiveInterval:
+          type: integer
+        logoutURL:
+          type: string
+          format: URI
+        oauthConfiguration:
+          $ref: '#/components/schemas/OAuth2Configuration'
+    LogoutBehavior:
+      description: ''
+      type: string
+      enum:
+      - RedirectOnly
+      - AllApplications
+    ClientAuthenticationPolicy:
+      description: ''
+      type: string
+      enum:
+      - Required
+      - NotRequired
+      - NotRequiredWhenUsingPKCE
+    SelfServiceFormConfiguration:
+      description: ''
+      type: object
+      properties:
+        requireCurrentPasswordOnPasswordChange:
+          type: boolean
+    MultiFactorVoiceTemplate:
+      type: object
+      properties:
+        templateId:
+          type: string
+          format: uuid
+    ApplicationRegistrationDeletePolicy:
+      description: A Application-level policy for deleting Users.
+      type: object
+      properties:
+        unverified:
+          $ref: '#/components/schemas/TimeBasedDeletePolicy'
+    UnverifiedBehavior:
+      description: ''
+      type: string
+      enum:
+      - Allow
+      - Gated
+    ObjectState:
+      description: ''
+      type: string
+      enum:
+      - Active
+      - Inactive
+      - PendingDelete
+    ApplicationSearchRequest:
+      description: Search request for Applications
+      type: object
+      properties:
+        search:
+          $ref: '#/components/schemas/ApplicationSearchCriteria'
+        expand:
+          type: array
+          items:
+            type: string
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    OAuthScopeHandlingPolicy:
+      description: Controls the policy for whether OAuth workflows will more strictly adhere to the OAuth and OIDC specification  or run in backwards compatibility mode.
+      type: string
+      enum:
+      - Compatibility
+      - Strict
+    ApplicationWebAuthnWorkflowConfiguration:
+      description: ''
+      type: object
+      properties:
+        enabled:
+          type: boolean
+    SAMLv2Configuration:
+      type: object
+      properties:
+        assertionEncryptionConfiguration:
+          $ref: '#/components/schemas/SAMLv2AssertionEncryptionConfiguration'
+        audience:
+          type: string
+        authorizedRedirectURLs:
+          type: array
+          items:
+            type: string
+            format: URI
+        debug:
+          type: boolean
+        defaultVerificationKeyId:
+          type: string
+          format: uuid
+        initiatedLogin:
+          $ref: '#/components/schemas/SAMLv2IdPInitiatedLoginConfiguration'
+        issuer:
+          type: string
+        keyId:
+          type: string
+          format: uuid
+        loginHintConfiguration:
+          $ref: '#/components/schemas/LoginHintConfiguration'
+        logout:
+          $ref: '#/components/schemas/SAMLv2Logout'
+        logoutURL:
+          type: string
+          format: URI
+        requireSignedRequests:
+          type: boolean
+        xmlSignatureC14nMethod:
+          $ref: '#/components/schemas/CanonicalizationMethod'
+        xmlSignatureLocation:
+          $ref: '#/components/schemas/XMLSignatureLocation'
+        callbackURL:
+          type: string
+          format: URI
+        enabled:
+          type: boolean
+    LoginConfiguration:
+      type: object
+      properties:
+        allowTokenRefresh:
+          type: boolean
+        generateRefreshTokens:
+          type: boolean
+        requireAuthentication:
+          type: boolean
+    LoginIdType:
+      description: This is separate from IdentityType.
+      type: string
+      enum:
+      - email
+      - phoneNumber
+      - username
+    UniversalApplicationConfiguration:
+      description: ''
+      type: object
+      properties:
+        universal:
+          type: boolean
+    SAMLv2AssertionEncryptionConfiguration:
+      type: object
+      properties:
+        digestAlgorithm:
+          type: string
+        encryptionAlgorithm:
+          type: string
+        keyLocation:
+          type: string
+        keyTransportAlgorithm:
+          type: string
+        keyTransportEncryptionKeyId:
+          type: string
+          format: uuid
+        maskGenerationFunction:
+          type: string
+        enabled:
+          type: boolean
+    RefreshTokenExpirationPolicy:
+      description: ''
+      type: string
+      enum:
+      - Fixed
+      - SlidingWindow
+      - SlidingWindowWithMaximumLifetime
+    SAMLLogoutBehavior:
+      type: string
+      enum:
+      - AllParticipants
+      - OnlyOriginator
+    Oauth2AuthorizedURLValidationPolicy:
+      description: ''
+      type: string
+      enum:
+      - AllowWildcards
+      - ExactMatch
+    OAuth2Configuration:
+      description: ''
+      type: object
+      properties:
+        authorizedOriginURLs:
+          type: array
+          items:
+            type: string
+            format: URI
+        authorizedRedirectURLs:
+          type: array
+          items:
+            type: string
+            format: URI
+        authorizedURLValidationPolicy:
+          $ref: '#/components/schemas/Oauth2AuthorizedURLValidationPolicy'
+        clientAuthenticationPolicy:
+          $ref: '#/components/schemas/ClientAuthenticationPolicy'
+        clientId:
+          type: string
+        clientSecret:
+          type: string
+        consentMode:
+          $ref: '#/components/schemas/OAuthScopeConsentMode'
+        debug:
+          type: boolean
+        deviceVerificationURL:
+          type: string
+          format: URI
+        enabledGrants:
+          type: array
+          uniqueItems: true
+          items: {}
+        generateRefreshTokens:
+          type: boolean
+        logoutBehavior:
+          $ref: '#/components/schemas/LogoutBehavior'
+        logoutURL:
+          type: string
+          format: URI
+        proofKeyForCodeExchangePolicy:
+          $ref: '#/components/schemas/ProofKeyForCodeExchangePolicy'
+        providedScopePolicy:
+          $ref: '#/components/schemas/ProvidedScopePolicy'
+        relationship:
+          $ref: '#/components/schemas/OAuthApplicationRelationship'
+        requireClientAuthentication:
+          type: boolean
+        requireRegistration:
+          type: boolean
+        scopeHandlingPolicy:
+          $ref: '#/components/schemas/OAuthScopeHandlingPolicy'
+        unknownScopePolicy:
+          $ref: '#/components/schemas/UnknownScopePolicy'
+    ApplicationFormConfiguration:
+      description: ''
+      type: object
+      properties:
+        adminRegistrationFormId:
+          type: string
+          format: uuid
+        selfServiceFormConfiguration:
+          $ref: '#/components/schemas/SelfServiceFormConfiguration'
+        selfServiceFormId:
+          type: string
+          format: uuid
+    LoginHintConfiguration:
+      description: ''
+      type: object
+      properties:
+        parameterName:
+          type: string
+        enabled:
+          type: boolean
+    ApplicationOAuthScopeRequest:
+      description: The Application Scope API request object.
+      type: object
+      properties:
+        scope:
+          $ref: '#/components/schemas/ApplicationOAuthScope'
+    ApplicationResponse:
+      description: The Application API response.
+      type: object
+      properties:
+        application:
+          $ref: '#/components/schemas/Application'
+        applications:
+          type: array
+          items:
+            $ref: '#/components/schemas/Application'
+        role:
+          $ref: '#/components/schemas/ApplicationRole'
+    ApplicationWebAuthnConfiguration:
+      description: Application-level configuration for WebAuthn
+      type: object
+      properties:
+        bootstrapWorkflow:
+          $ref: '#/components/schemas/ApplicationWebAuthnWorkflowConfiguration'
+        reauthenticationWorkflow:
+          $ref: '#/components/schemas/ApplicationWebAuthnWorkflowConfiguration'
+        enabled:
+          type: boolean
+    VerificationStrategy:
+      description: ''
+      type: string
+      enum:
+      - ClickableLink
+      - FormField
+    ApplicationMultiFactorConfiguration:
+      description: ''
+      type: object
+      properties:
+        email:
+          $ref: '#/components/schemas/MultiFactorEmailTemplate'
+        loginPolicy:
+          $ref: '#/components/schemas/MultiFactorLoginPolicy'
+        sms:
+          $ref: '#/components/schemas/MultiFactorSMSTemplate'
+        trustPolicy:
+          $ref: '#/components/schemas/ApplicationMultiFactorTrustPolicy'
+        voice:
+          $ref: '#/components/schemas/MultiFactorVoiceTemplate'
+    RegistrationType:
+      type: string
+      enum:
+      - basic
+      - advanced
+    ApplicationMultiFactorTrustPolicy:
+      description: ''
+      type: string
+      enum:
+      - Any
+      - This
+      - None
+    ApplicationAccessControlConfiguration:
+      description: ''
+      type: object
+      properties:
+        uiIPAccessControlListId:
+          type: string
+          format: uuid
+    RegistrationUnverifiedOptions:
+      description: ''
+      type: object
+      properties:
+        behavior:
+          $ref: '#/components/schemas/UnverifiedBehavior'
+    OAuthApplicationRelationship:
+      description: The application's relationship to the authorization server. First-party applications will be granted implicit permission for requested scopes.  Third-party applications will use the {@link OAuthScopeConsentMode} policy.
+      type: string
+      enum:
+      - FirstParty
+      - ThirdParty
+    Requirable:
+      description: Something that can be required and thus also optional. This currently extends Enableable because anything that is  requiredoptional is almost always enableable as well.
+      type: object
+      properties:
+        required:
+          type: boolean
+        enabled:
+          type: boolean
+    OAuthScopeConsentMode:
+      description: Controls the policy for requesting user permission to grant access to requested scopes during an OAuth workflow  for a third-party application.
+      type: string
+      enum:
+      - AlwaysPrompt
+      - RememberDecision
+      - NeverPrompt
+    RefreshTokenSlidingWindowConfiguration:
+      description: ''
+      type: object
+      properties:
+        maximumTimeToLiveInMinutes:
+          type: integer
+    RefreshTokenOneTimeUseConfiguration:
+      description: Refresh token one-time use configuration. This configuration is utilized when the usage policy is  configured for one-time use.
+      type: object
+      properties:
+        gracePeriodInSeconds:
+          type: integer
+    PasswordlessConfiguration:
+      type: object
+      properties:
+        emailLoginStrategy:
+          $ref: '#/components/schemas/PasswordlessStrategy'
+        phoneLoginStrategy:
+          $ref: '#/components/schemas/PasswordlessStrategy'
+        enabled:
+          type: boolean
+    MultiFactorSMSTemplate:
+      type: object
+      properties:
+        templateId:
+          type: string
+          format: uuid
+    ApplicationEmailConfiguration:
+      type: object
+      properties:
+        emailUpdateEmailTemplateId:
+          type: string
+          format: uuid
+        emailVerificationEmailTemplateId:
+          type: string
+          format: uuid
+        emailVerifiedEmailTemplateId:
+          type: string
+          format: uuid
+        forgotPasswordEmailTemplateId:
+          type: string
+          format: uuid
+        loginIdInUseOnCreateEmailTemplateId:
+          type: string
+          format: uuid
+        loginIdInUseOnUpdateEmailTemplateId:
+          type: string
+          format: uuid
+        loginNewDeviceEmailTemplateId:
+          type: string
+          format: uuid
+        loginSuspiciousEmailTemplateId:
+          type: string
+          format: uuid
+        passwordResetSuccessEmailTemplateId:
+          type: string
+          format: uuid
+        passwordUpdateEmailTemplateId:
+          type: string
+          format: uuid
+        passwordlessEmailTemplateId:
+          type: string
+          format: uuid
+        setPasswordEmailTemplateId:
+          type: string
+          format: uuid
+        twoFactorMethodAddEmailTemplateId:
+          type: string
+          format: uuid
+        twoFactorMethodRemoveEmailTemplateId:
+          type: string
+          format: uuid
+    CleanSpeakConfiguration:
+      description: CleanSpeak configuration at the system and application level.
+      type: object
+      properties:
+        apiKey:
+          type: string
+        applicationIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+        url:
+          type: string
+          format: URI
+        usernameModeration:
+          $ref: '#/components/schemas/UsernameModeration'
+        enabled:
+          type: boolean
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      name: Authorization
+      in: header
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

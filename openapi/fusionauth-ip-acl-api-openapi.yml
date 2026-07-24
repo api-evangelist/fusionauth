@@ -1,0 +1,321 @@
+openapi: 3.0.3
+info:
+  version: 1.66.0
+  title: FusionAuth Api Key Ip Acl API
+  description: This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.
+  license:
+    name: Apache2
+servers:
+- url: http://localhost:9011
+- url: https://sandbox.fusionauth.io
+security:
+- ApiKeyAuth: []
+tags:
+- name: Ip Acl
+paths:
+  /api/ip-acl:
+    post:
+      description: Creates an IP Access Control List. You can optionally specify an Id on this create request, if one is not provided one will be generated.
+      operationId: createIPAccessControlList
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IPAccessControlListRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IPAccessControlListResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Ip Acl
+  /api/ip-acl/search:
+    post:
+      description: Searches the IP Access Control Lists with the specified criteria and pagination.
+      operationId: searchIPAccessControlListsWithId
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IPAccessControlListSearchRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IPAccessControlListSearchResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Ip Acl
+  /api/ip-acl/{accessControlListId}:
+    post:
+      description: Creates an IP Access Control List. You can optionally specify an Id on this create request, if one is not provided one will be generated.
+      operationId: createIPAccessControlListWithId
+      parameters:
+      - name: accessControlListId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id for the IP Access Control List. If not provided a secure random UUID will be generated.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IPAccessControlListRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IPAccessControlListResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Ip Acl
+    patch:
+      description: Update the IP Access Control List with the given Id.
+      operationId: patchIPAccessControlListWithId
+      parameters:
+      - name: accessControlListId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the IP Access Control List to patch.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IPAccessControlListRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IPAccessControlListResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Ip Acl
+    put:
+      description: Updates the IP Access Control List with the given Id.
+      operationId: updateIPAccessControlListWithId
+      parameters:
+      - name: accessControlListId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the IP Access Control List to update.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IPAccessControlListRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IPAccessControlListResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Ip Acl
+  /api/ip-acl/{ipAccessControlListId}:
+    delete:
+      description: Deletes the IP Access Control List for the given Id.
+      operationId: deleteIPAccessControlListWithId
+      parameters:
+      - name: ipAccessControlListId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the IP Access Control List to delete.
+      responses:
+        '200':
+          description: Success
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Ip Acl
+    get:
+      description: Retrieves the IP Access Control List with the given Id.
+      operationId: retrieveIPAccessControlListWithId
+      parameters:
+      - name: ipAccessControlListId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the IP Access Control List.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IPAccessControlListResponse'
+        default:
+          description: Error
+      tags:
+      - Ip Acl
+components:
+  schemas:
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    IPAccessControlListSearchRequest:
+      description: Search request for IP ACLs .
+      type: object
+      properties:
+        search:
+          $ref: '#/components/schemas/IPAccessControlListSearchCriteria'
+    IPAccessControlEntry:
+      description: ''
+      type: object
+      properties:
+        action:
+          $ref: '#/components/schemas/IPAccessControlEntryAction'
+        endIPAddress:
+          type: string
+        startIPAddress:
+          type: string
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    IPAccessControlEntryAction:
+      description: ''
+      type: string
+      enum:
+      - Allow
+      - Block
+    IPAccessControlListResponse:
+      description: ''
+      type: object
+      properties:
+        ipAccessControlList:
+          $ref: '#/components/schemas/IPAccessControlList'
+        ipAccessControlLists:
+          type: array
+          items:
+            $ref: '#/components/schemas/IPAccessControlList'
+    IPAccessControlList:
+      description: ''
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/IPAccessControlEntry'
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        name:
+          type: string
+    IPAccessControlListSearchResponse:
+      description: ''
+      type: object
+      properties:
+        ipAccessControlLists:
+          type: array
+          items:
+            $ref: '#/components/schemas/IPAccessControlList'
+        total:
+          type: integer
+          format: int64
+    IPAccessControlListRequest:
+      description: ''
+      type: object
+      properties:
+        ipAccessControlList:
+          $ref: '#/components/schemas/IPAccessControlList'
+    IPAccessControlListSearchCriteria:
+      description: ''
+      type: object
+      properties:
+        name:
+          type: string
+        numberOfResults:
+          type: integer
+        orderBy:
+          type: string
+        startRow:
+          type: integer
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      name: Authorization
+      in: header
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

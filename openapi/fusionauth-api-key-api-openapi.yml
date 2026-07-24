@@ -1,0 +1,279 @@
+openapi: 3.0.3
+info:
+  version: 1.66.0
+  title: FusionAuth Api Key API
+  description: This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.
+  license:
+    name: Apache2
+servers:
+- url: http://localhost:9011
+- url: https://sandbox.fusionauth.io
+security:
+- ApiKeyAuth: []
+tags:
+- name: Api Key
+paths:
+  /api/api-key:
+    post:
+      description: Creates an API key. You can optionally specify a unique Id for the key, if not provided one will be generated. an API key can only be created with equal or lesser authority. An API key cannot create another API key unless it is granted  to that API key.  If an API key is locked to a tenant, it can only create API Keys for that same tenant.
+      operationId: createAPIKey
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/APIKeyRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIKeyResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Api Key
+  /api/api-key/{keyId}:
+    post:
+      description: Creates an API key. You can optionally specify a unique Id for the key, if not provided one will be generated. an API key can only be created with equal or lesser authority. An API key cannot create another API key unless it is granted  to that API key.  If an API key is locked to a tenant, it can only create API Keys for that same tenant.
+      operationId: createAPIKeyWithId
+      parameters:
+      - name: keyId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The unique Id of the API key. If not provided a secure random Id will be generated.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/APIKeyRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIKeyResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Api Key
+    delete:
+      description: Deletes the API key for the given Id.
+      operationId: deleteAPIKeyWithId
+      parameters:
+      - name: keyId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the authentication API key to delete.
+      responses:
+        '200':
+          description: Success
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Api Key
+    patch:
+      description: Updates an API key with the given Id.
+      operationId: patchAPIKeyWithId
+      parameters:
+      - name: keyId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the API key. If not provided a secure random api key will be generated.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/APIKeyRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIKeyResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Api Key
+    get:
+      description: Retrieves an authentication API key for the given Id.
+      operationId: retrieveAPIKeyWithId
+      parameters:
+      - name: keyId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the API key to retrieve.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIKeyResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Api Key
+    put:
+      description: Updates an API key with the given Id.
+      operationId: updateAPIKeyWithId
+      parameters:
+      - name: keyId
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The Id of the API key to update.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/APIKeyRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIKeyResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Api Key
+components:
+  schemas:
+    APIKeyMetaData:
+      type: object
+      properties:
+        attributes:
+          type: object
+          additionalProperties:
+            type: string
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    APIKeyResponse:
+      description: Authentication key response object.
+      type: object
+      properties:
+        apiKey:
+          $ref: '#/components/schemas/APIKey'
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    APIKeyPermissions:
+      type: object
+      properties:
+        endpoints:
+          type: object
+          additionalProperties:
+            type: array
+            uniqueItems: true
+            items: {}
+    APIKey:
+      description: domain POJO to represent AuthenticationKey
+      type: object
+      properties:
+        expirationInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        ipAccessControlListId:
+          type: string
+          format: uuid
+        key:
+          type: string
+        keyManager:
+          type: boolean
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        metaData:
+          $ref: '#/components/schemas/APIKeyMetaData'
+        name:
+          type: string
+        permissions:
+          $ref: '#/components/schemas/APIKeyPermissions'
+        retrievable:
+          type: boolean
+        tenantId:
+          type: string
+          format: uuid
+    APIKeyRequest:
+      description: Authentication key request object.
+      type: object
+      properties:
+        apiKey:
+          $ref: '#/components/schemas/APIKey'
+        sourceKeyId:
+          type: string
+          format: uuid
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      name: Authorization
+      in: header
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

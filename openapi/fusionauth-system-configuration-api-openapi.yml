@@ -1,0 +1,254 @@
+openapi: 3.0.3
+info:
+  version: 1.66.0
+  title: FusionAuth Api Key System Configuration API
+  description: This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.
+  license:
+    name: Apache2
+servers:
+- url: http://localhost:9011
+- url: https://sandbox.fusionauth.io
+security:
+- ApiKeyAuth: []
+tags:
+- name: System Configuration
+paths:
+  /api/system-configuration:
+    patch:
+      description: Updates, via PATCH, the system configuration.
+      operationId: patchSystemConfigurationWithId
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SystemConfigurationRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SystemConfigurationResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - System Configuration
+    put:
+      description: Updates the system configuration.
+      operationId: updateSystemConfigurationWithId
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SystemConfigurationRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SystemConfigurationResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - System Configuration
+components:
+  schemas:
+    SystemConfiguration:
+      description: ''
+      type: object
+      properties:
+        auditLogConfiguration:
+          $ref: '#/components/schemas/AuditLogConfiguration'
+        corsConfiguration:
+          $ref: '#/components/schemas/CORSConfiguration'
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        eventLogConfiguration:
+          $ref: '#/components/schemas/EventLogConfiguration'
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        loginRecordConfiguration:
+          $ref: '#/components/schemas/LoginRecordConfiguration'
+        reportTimezone:
+          $ref: '#/components/schemas/ZoneId'
+        trustedProxyConfiguration:
+          $ref: '#/components/schemas/SystemTrustedProxyConfiguration'
+        uiConfiguration:
+          $ref: '#/components/schemas/UIConfiguration'
+        usageDataConfiguration:
+          $ref: '#/components/schemas/UsageDataConfiguration'
+        webhookEventLogConfiguration:
+          $ref: '#/components/schemas/WebhookEventLogConfiguration'
+    WebhookEventLogConfiguration:
+      description: The system configuration for Webhook Event Log data.
+      type: object
+      properties:
+        delete:
+          $ref: '#/components/schemas/DeleteConfiguration'
+        enabled:
+          type: boolean
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    SystemTrustedProxyConfiguration:
+      description: ''
+      type: object
+      properties:
+        trustPolicy:
+          $ref: '#/components/schemas/SystemTrustedProxyConfigurationPolicy'
+        trusted:
+          type: array
+          items:
+            type: string
+    HTTPMethod:
+      description: ''
+      type: string
+      enum:
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      - HEAD
+      - OPTIONS
+      - PATCH
+    EventLogConfiguration:
+      type: object
+      properties:
+        numberToRetain:
+          type: integer
+    AuditLogConfiguration:
+      type: object
+      properties:
+        delete:
+          $ref: '#/components/schemas/DeleteConfiguration'
+    SystemConfigurationResponse:
+      description: Response for the system configuration API.
+      type: object
+      properties:
+        systemConfiguration:
+          $ref: '#/components/schemas/SystemConfiguration'
+    SystemTrustedProxyConfigurationPolicy:
+      description: ''
+      type: string
+      enum:
+      - All
+      - OnlyConfigured
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    LoginRecordConfiguration:
+      type: object
+      properties:
+        delete:
+          $ref: '#/components/schemas/DeleteConfiguration'
+    SystemConfigurationRequest:
+      description: Request for the system configuration API.
+      type: object
+      properties:
+        systemConfiguration:
+          $ref: '#/components/schemas/SystemConfiguration'
+    ZoneId:
+      description: Timezone Identifier
+      example: America/Denver
+      pattern: ^w+/w+$
+      type: string
+    UIConfiguration:
+      type: object
+      properties:
+        headerColor:
+          type: string
+        logoURL:
+          type: string
+        menuFontColor:
+          type: string
+    UsageDataConfiguration:
+      description: Config for Usage Data  Stats
+      type: object
+      properties:
+        numberOfDaysToRetain:
+          type: integer
+        enabled:
+          type: boolean
+    DeleteConfiguration:
+      type: object
+      properties:
+        numberOfDaysToRetain:
+          type: integer
+        enabled:
+          type: boolean
+    CORSConfiguration:
+      description: ''
+      type: object
+      properties:
+        allowCredentials:
+          type: boolean
+        allowedHeaders:
+          type: array
+          items:
+            type: string
+        allowedMethods:
+          type: array
+          items:
+            $ref: '#/components/schemas/HTTPMethod'
+        allowedOrigins:
+          type: array
+          items:
+            type: string
+            format: URI
+        debug:
+          type: boolean
+        exposedHeaders:
+          type: array
+          items:
+            type: string
+        preflightMaxAgeInSeconds:
+          type: integer
+        enabled:
+          type: boolean
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      name: Authorization
+      in: header
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

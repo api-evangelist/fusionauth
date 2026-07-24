@@ -1,0 +1,318 @@
+openapi: 3.0.3
+info:
+  version: 1.66.0
+  title: FusionAuth Api Key Tenant Manager API
+  description: This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.
+  license:
+    name: Apache2
+servers:
+- url: http://localhost:9011
+- url: https://sandbox.fusionauth.io
+security:
+- ApiKeyAuth: []
+tags:
+- name: Tenant Manager
+paths:
+  /api/tenant-manager:
+    patch:
+      description: Updates, via PATCH, the Tenant Manager configuration.
+      operationId: patchTenantManagerConfigurationWithId
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TenantManagerConfigurationRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantManagerConfigurationResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Tenant Manager
+    put:
+      description: Updates the Tenant Manager configuration.
+      operationId: updateTenantManagerConfigurationWithId
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TenantManagerConfigurationRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantManagerConfigurationResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Tenant Manager
+  /api/tenant-manager/identity-provider/{type}:
+    post:
+      description: Creates a tenant manager identity provider type configuration for the given identity provider type.
+      operationId: createTenantManagerIdentityProviderTypeConfigurationWithId
+      parameters:
+      - name: type
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The type of the identity provider.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TenantManagerIdentityProviderTypeConfigurationRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantManagerIdentityProviderTypeConfigurationResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Tenant Manager
+    delete:
+      description: Deletes the tenant manager identity provider type configuration for the given identity provider type.
+      operationId: deleteTenantManagerIdentityProviderTypeConfigurationWithId
+      parameters:
+      - name: type
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The type of the identity provider.
+      responses:
+        '200':
+          description: Success
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Tenant Manager
+    patch:
+      description: Patches the tenant manager identity provider type configuration for the given identity provider type.
+      operationId: patchTenantManagerIdentityProviderTypeConfigurationWithId
+      parameters:
+      - name: type
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The type of the identity provider.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TenantManagerIdentityProviderTypeConfigurationRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantManagerIdentityProviderTypeConfigurationResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Tenant Manager
+    put:
+      description: Updates the tenant manager identity provider type configuration for the given identity provider type.
+      operationId: updateTenantManagerIdentityProviderTypeConfigurationWithId
+      parameters:
+      - name: type
+        in: path
+        schema:
+          type: string
+        required: true
+        description: The type of the identity provider.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TenantManagerIdentityProviderTypeConfigurationRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantManagerIdentityProviderTypeConfigurationResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+      - Tenant Manager
+components:
+  schemas:
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    TenantManagerApplicationConfiguration:
+      description: Tenant Manager application configuration.
+      type: object
+      properties:
+        applicationId:
+          type: string
+          format: uuid
+    IdentityProviderLinkingStrategy:
+      description: The IdP behavior when no user link has been made yet.
+      type: string
+      enum:
+      - CreatePendingLink
+      - Disabled
+      - LinkAnonymously
+      - LinkByEmail
+      - LinkByEmailForExistingUser
+      - LinkByUsername
+      - LinkByUsernameForExistingUser
+      - Unsupported
+    TenantManagerIdentityProviderTypeConfigurationResponse:
+      description: The Tenant Manager IdP type configuration response object
+      type: object
+      properties:
+        typeConfiguration:
+          $ref: '#/components/schemas/TenantManagerIdentityProviderTypeConfiguration'
+    TenantManagerConfiguration:
+      description: Configuration object for the Tenant Manager.
+      type: object
+      properties:
+        applicationConfigurations:
+          type: array
+          items:
+            $ref: '#/components/schemas/TenantManagerApplicationConfiguration'
+        attributeFormId:
+          type: string
+          format: uuid
+        brandName:
+          type: string
+        identityProviderTypeConfigurations:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/TenantManagerIdentityProviderTypeConfiguration'
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+    TenantManagerConfigurationResponse:
+      description: The Tenant Manager configuration response object
+      type: object
+      properties:
+        tenantManagerConfiguration:
+          $ref: '#/components/schemas/TenantManagerConfiguration'
+    IdentityProviderType:
+      description: ''
+      type: string
+      enum:
+      - Apple
+      - EpicGames
+      - ExternalJWT
+      - Facebook
+      - Google
+      - HYPR
+      - LinkedIn
+      - Nintendo
+      - OpenIDConnect
+      - SAMLv2
+      - SAMLv2IdPInitiated
+      - SonyPSN
+      - Steam
+      - Twitch
+      - Twitter
+      - Xbox
+    TenantManagerIdentityProviderTypeConfiguration:
+      description: Configuration object for identity provider types allowed in Tenant Manager
+      type: object
+      properties:
+        defaultAttributeMappings:
+          type: object
+          additionalProperties:
+            type: string
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        linkingStrategy:
+          $ref: '#/components/schemas/IdentityProviderLinkingStrategy'
+        type:
+          $ref: '#/components/schemas/IdentityProviderType'
+        enabled:
+          type: boolean
+    TenantManagerConfigurationRequest:
+      description: The Tenant Manager configuration request object
+      type: object
+      properties:
+        tenantManagerConfiguration:
+          $ref: '#/components/schemas/TenantManagerConfiguration'
+    TenantManagerIdentityProviderTypeConfigurationRequest:
+      description: The Tenant Manager IdP type configuration request object
+      type: object
+      properties:
+        typeConfiguration:
+          $ref: '#/components/schemas/TenantManagerIdentityProviderTypeConfiguration'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      name: Authorization
+      in: header
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
