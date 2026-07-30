@@ -7,7 +7,20 @@ description: >-
   multi-factor authentication, single sign-on, OAuth2 and OpenID Connect, and
   user management capabilities through a comprehensive REST API and
   self-hostable identity service.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/fusionauth.png
 tags:
   - Authentication
   - Authorization
@@ -25,29 +38,524 @@ url: >-
   https://raw.githubusercontent.com/api-evangelist/fusionauth/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-  - aid: fusionauth:fusionauth
-    name: FusionAuth API
-    description: >-
-      The FusionAuth API exposes the platform's complete authentication,
-      authorization, user management, OAuth2/OIDC, multi-factor, tenant,
-      application, and administrative surface as a REST API. An upstream
-      OpenAPI 3.0 specification is published and maintained by FusionAuth.
-    humanURL: https://fusionauth.io/docs/
-    baseURL: https://sandbox.fusionauth.io
-    tags:
-      - Authentication
-      - Authorization
-      - Identity
-      - CIAM
-      - OAuth
-      - OpenID Connect
-    properties:
-      - type: Documentation
-        url: https://fusionauth.io/docs/apis/
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/FusionAuth/fusionauth-openapi/main/openapi.yaml
-      - type: SDKs
-        url: https://fusionauth.io/docs/sdks/
+- aid: fusionauth:fusionauth-api-key-api
+  name: FusionAuth Api Key API
+  description: The Api Key API from FusionAuth — 2 operation(s) for api key.
+  humanURL: https://fusionauth.io/docs/
+  baseURL: https://sandbox.fusionauth.io
+  tags:
+  - Api Key
+  properties:
+  - type: OpenAPI
+    url: openapi/fusionauth-api-key-api-openapi.yml
+  - type: Documentation
+    url: https://fusionauth.io/docs/apis/
+  - type: SDKs
+    url: https://fusionauth.io/docs/sdks/
+- aid: fusionauth:fusionauth-application-api
+  name: FusionAuth Application API
+  description: The Application API from FusionAuth — 8 operation(s) for application.
+  humanURL: https://fusionauth.io/docs/
+  baseURL: https://sandbox.fusionauth.io
+  tags:
+  - Application
+  properties:
+  - type: OpenAPI
+    url: openapi/fusionauth-application-api-openapi.yml
+  - type: Documentation
+    url: https://fusionauth.io/docs/apis/
+  - type: SDKs
+    url: https://fusionauth.io/docs/sdks/
+- aid: fusionauth:fusionauth-connector-api
+  name: FusionAuth Connector API
+  description: The Connector API from FusionAuth — 2 operation(s) for connector.
+  humanURL: https://fusionauth.io/docs/
+  baseURL: https://sandbox.fusionauth.io
+  tags:
+  - Connector
+  properties:
+  - type: OpenAPI
+    url: openapi/fusionauth-connector-api-openapi.yml
+  - type: Documentation
+    url: https://fusionauth.io/docs/apis/
+  - type: SDKs
+    url: https://fusionauth.io/docs/sdks/
+- aid: fusionauth:fusionauth-consent-api
+  name: FusionAuth Consent API
+  description: The Consent API from FusionAuth — 3 operation(s) for consent.
+  humanURL: https://fusionauth.io/docs/
+  baseURL: https://sandbox.fusionauth.io
+  tags:
+  - Consent
+  properties:
+  - type: OpenAPI
+    url: openapi/fusionauth-consent-api-openapi.yml
+  - type: Documentation
+    url: https://fusionauth.io/docs/apis/
+  - type: SDKs
+    url: https://fusionauth.io/docs/sdks/
+- aid: fusionauth:fusionauth-email-api
+  name: FusionAuth Email API
+  description: The Email API from FusionAuth — 5 operation(s) for email.
+  humanURL: https://fusionauth.io/docs/
+  baseURL: https://sandbox.fusionauth.io
+  tags:
+  - Email
+  properties:
+  - type: OpenAPI
+    url: openapi/fusionauth-email-api-openapi.yml
+  - type: Documentation
+    url: https://fusionauth.io/docs/apis/
+  - type: SDKs
+    url: https://fusionauth.io/docs/sdks/
+- aid: fusionauth:fusionauth-entity-api
+  name: FusionAuth Entity API
+  description: The Entity API from FusionAuth — 10 operation(s) for entity.
+  humanURL: https://fusionauth.io/docs/
+  baseURL: https://sandbox.fusionauth.io
+  tags:
+  - Entity
+  properties:
+  - type: OpenAPI
+    url: openapi/fusionauth-entity-api-openapi.yml
+  - type: Documentation
+    url: https://fusionauth.io/docs/apis/
+  - type: SDKs
+    url: https://fusionauth.io/docs/sdks/
+- aid: fusionauth:fusionauth-form-api
+  name: FusionAuth Form API
+  description: The Form API from FusionAuth — 4 operation(s) for form.
+  humanURL: https://fusionauth.io/docs/
+  baseURL: https://sandbox.fusionauth.io
+  tags:
+  - Form
+  properties:
+  - type: OpenAPI
+    url: openapi/fusionauth-form-api-openapi.yml
+  - type: Documentation
+    url: https://fusionauth.io/docs/apis/
+  - type: SDKs
+    url: https://fusionauth.io/docs/sdks/
+- aid: fusionauth:fusionauth-group-api
+  name: FusionAuth Group API
+  description: The Group API from FusionAuth — 5 operation(s) for group.
+  humanURL: https://fusionauth.io/docs/
+  baseURL: https://sandbox.fusionauth.io
+  tags:
+  - Group
+  properties:
+  - type: OpenAPI
+    url: openapi/fusionauth-group-api-openapi.yml
+  - type: Documentation
+    url: https://fusionauth.io/docs/apis/
+  - type: SDKs
+    url: https://fusionauth.io/docs/sdks/
+- aid: fusionauth:fusionauth-health-api
+  name: FusionAuth Health API
+  description: The Health API from FusionAuth — 1 operation(s) for health.
+  humanURL: https://fusionauth.io/docs/
+  baseURL: https://sandbox.fusionauth.io
+  tags:
+  - Health
+  properties:
+  - type: OpenAPI
+    url: openapi/fusionauth-health-api-openapi.yml
+  - type: Documentation
+    url: https://fusionauth.io/docs/apis/
+  - type: SDKs
+    url: https://fusionauth.io/docs/sdks/
+- aid: fusionauth:fusionauth-identity-api
+  name: FusionAuth Identity API
+  description: The Identity API from FusionAuth — 4 operation(s) for identity.
+  humanURL: https://fusionauth.io/docs/
+  baseURL: https://sandbox.fusionauth.io
+  tags:
+  - Identity
+  properties:
+  - type: OpenAPI
+    url: openapi/fusionauth-identity-api-openapi.yml
+  - type: Documentation
+    url: https://fusionauth.io/docs/apis/
+  - type: SDKs
+    url: https://fusionauth.io/docs/sdks/
+- aid: fusionauth:fusionauth-identity-provider-api
+  name: FusionAuth Identity Provider API
+  description: The Identity Provider API from FusionAuth — 9 operation(s) for identity provider.
+  humanURL: https://fusionauth.io/docs/
+  baseURL: https://sandbox.fusionauth.io
+  tags:
+  - Identity Provider
+  properties:
+  - type: OpenAPI
+    url: openapi/fusionauth-identity-provider-api-openapi.yml
+  - type: Documentation
+    url: https://fusionauth.io/docs/apis/
+  - type: SDKs
+    url: https://fusionauth.io/docs/sdks/
+- aid: fusionauth:fusionauth-integration-api
+  name: FusionAuth Integration API
+  description: The Integration API from FusionAuth — 1 operation(s) for integration.
+  humanURL: https://fusionauth.io/docs/
+  baseURL: https://sandbox.fusionauth.io
+  tags:
+  - Integration
+  properties:
+  - type: OpenAPI
+    url: openapi/fusionauth-integration-api-openapi.yml
+  - type: Documentation
+    url: https://fusionauth.io/docs/apis/
+  - type: SDKs
+    url: https://fusionauth.io/docs/sdks/
+- aid: fusionauth:fusionauth-ip-acl-api
+  name: FusionAuth Ip Acl API
+  description: The Ip Acl API from FusionAuth — 4 operation(s) for ip acl.
+  humanURL: https://fusionauth.io/docs/
+  baseURL: https://sandbox.fusionauth.io
+  tags:
+  - Ip Acl
+  properties:
+  - type: OpenAPI
+    url: openapi/fusionauth-ip-acl-api-openapi.yml
+  - type: Documentation
+    url: https://fusionauth.io/docs/apis/
+  - type: SDKs
+    url: https://fusionauth.io/docs/sdks/
+- aid: fusionauth:fusionauth-jwt-api
+  name: FusionAuth Jwt API
+  description: The Jwt API from FusionAuth — 7 operation(s) for jwt.
+  humanURL: https://fusionauth.io/docs/
+  baseURL: https://sandbox.fusionauth.io
+  tags:
+  - Jwt
+  properties:
+  - type: OpenAPI
+    url: openapi/fusionauth-jwt-api-openapi.yml
+  - type: Documentation
+    url: https://fusionauth.io/docs/apis/
+  - type: SDKs
+    url: https://fusionauth.io/docs/sdks/
+- aid: fusionauth:fusionauth-key-api
+  name: FusionAuth Key API
+  description: The Key API from FusionAuth — 7 operation(s) for key.
+  humanURL: https://fusionauth.io/docs/
+  baseURL: https://sandbox.fusionauth.io
+  tags:
+  - Key
+  properties:
+  - type: OpenAPI
+    url: openapi/fusionauth-key-api-openapi.yml
+  - type: Documentation
+    url: https://fusionauth.io/docs/apis/
+  - type: SDKs
+    url: https://fusionauth.io/docs/sdks/
+- aid: fusionauth:fusionauth-lambda-api
+  name: FusionAuth Lambda API
+  description: The Lambda API from FusionAuth — 3 operation(s) for lambda.
+  humanURL: https://fusionauth.io/docs/
+  baseURL: https://sandbox.fusionauth.io
+  tags:
+  - Lambda
+  properties:
+  - type: OpenAPI
+    url: openapi/fusionauth-lambda-api-openapi.yml
+  - type: Documentation
+    url: https://fusionauth.io/docs/apis/
+  - type: SDKs
+    url: https://fusionauth.io/docs/sdks/
+- aid: fusionauth:fusionauth-login-api
+  name: FusionAuth Login API
+  description: The Login API from FusionAuth — 2 operation(s) for login.
+  humanURL: https://fusionauth.io/docs/
+  baseURL: https://sandbox.fusionauth.io
+  tags:
+  - Login
+  properties:
+  - type: OpenAPI
+    url: openapi/fusionauth-login-api-openapi.yml
+  - type: Documentation
+    url: https://fusionauth.io/docs/apis/
+  - type: SDKs
+    url: https://fusionauth.io/docs/sdks/
+- aid: fusionauth:fusionauth-logout-api
+  name: FusionAuth Logout API
+  description: The Logout API from FusionAuth — 1 operation(s) for logout.
+  humanURL: https://fusionauth.io/docs/
+  baseURL: https://sandbox.fusionauth.io
+  tags:
+  - Logout
+  properties:
+  - type: OpenAPI
+    url: openapi/fusionauth-logout-api-openapi.yml
+  - type: Documentation
+    url: https://fusionauth.io/docs/apis/
+  - type: SDKs
+    url: https://fusionauth.io/docs/sdks/
+- aid: fusionauth:fusionauth-message-api
+  name: FusionAuth Message API
+  description: The Message API from FusionAuth — 3 operation(s) for message.
+  humanURL: https://fusionauth.io/docs/
+  baseURL: https://sandbox.fusionauth.io
+  tags:
+  - Message
+  properties:
+  - type: OpenAPI
+    url: openapi/fusionauth-message-api-openapi.yml
+  - type: Documentation
+    url: https://fusionauth.io/docs/apis/
+  - type: SDKs
+    url: https://fusionauth.io/docs/sdks/
+- aid: fusionauth:fusionauth-messenger-api
+  name: FusionAuth Messenger API
+  description: The Messenger API from FusionAuth — 2 operation(s) for messenger.
+  humanURL: https://fusionauth.io/docs/
+  baseURL: https://sandbox.fusionauth.io
+  tags:
+  - Messenger
+  properties:
+  - type: OpenAPI
+    url: openapi/fusionauth-messenger-api-openapi.yml
+  - type: Documentation
+    url: https://fusionauth.io/docs/apis/
+  - type: SDKs
+    url: https://fusionauth.io/docs/sdks/
+- aid: fusionauth:fusionauth-oauth2-api
+  name: FusionAuth Oauth2 API
+  description: The Oauth2 API from FusionAuth — 7 operation(s) for oauth2.
+  humanURL: https://fusionauth.io/docs/
+  baseURL: https://sandbox.fusionauth.io
+  tags:
+  - Oauth2
+  properties:
+  - type: OpenAPI
+    url: openapi/fusionauth-oauth2-api-openapi.yml
+  - type: Documentation
+    url: https://fusionauth.io/docs/apis/
+  - type: SDKs
+    url: https://fusionauth.io/docs/sdks/
+- aid: fusionauth:fusionauth-passwordless-api
+  name: FusionAuth Passwordless API
+  description: The Passwordless API from FusionAuth — 3 operation(s) for passwordless.
+  humanURL: https://fusionauth.io/docs/
+  baseURL: https://sandbox.fusionauth.io
+  tags:
+  - Passwordless
+  properties:
+  - type: OpenAPI
+    url: openapi/fusionauth-passwordless-api-openapi.yml
+  - type: Documentation
+    url: https://fusionauth.io/docs/apis/
+  - type: SDKs
+    url: https://fusionauth.io/docs/sdks/
+- aid: fusionauth:fusionauth-reactor-api
+  name: FusionAuth Reactor API
+  description: The Reactor API from FusionAuth — 2 operation(s) for reactor.
+  humanURL: https://fusionauth.io/docs/
+  baseURL: https://sandbox.fusionauth.io
+  tags:
+  - Reactor
+  properties:
+  - type: OpenAPI
+    url: openapi/fusionauth-reactor-api-openapi.yml
+  - type: Documentation
+    url: https://fusionauth.io/docs/apis/
+  - type: SDKs
+    url: https://fusionauth.io/docs/sdks/
+- aid: fusionauth:fusionauth-report-api
+  name: FusionAuth Report API
+  description: The Report API from FusionAuth — 5 operation(s) for report.
+  humanURL: https://fusionauth.io/docs/
+  baseURL: https://sandbox.fusionauth.io
+  tags:
+  - Report
+  properties:
+  - type: OpenAPI
+    url: openapi/fusionauth-report-api-openapi.yml
+  - type: Documentation
+    url: https://fusionauth.io/docs/apis/
+  - type: SDKs
+    url: https://fusionauth.io/docs/sdks/
+- aid: fusionauth:fusionauth-status-api
+  name: FusionAuth Status API
+  description: The Status API from FusionAuth — 1 operation(s) for status.
+  humanURL: https://fusionauth.io/docs/
+  baseURL: https://sandbox.fusionauth.io
+  tags:
+  - Status
+  properties:
+  - type: OpenAPI
+    url: openapi/fusionauth-status-api-openapi.yml
+  - type: Documentation
+    url: https://fusionauth.io/docs/apis/
+  - type: SDKs
+    url: https://fusionauth.io/docs/sdks/
+- aid: fusionauth:fusionauth-system-api
+  name: FusionAuth System API
+  description: The System API from FusionAuth — 11 operation(s) for system.
+  humanURL: https://fusionauth.io/docs/
+  baseURL: https://sandbox.fusionauth.io
+  tags:
+  - System
+  properties:
+  - type: OpenAPI
+    url: openapi/fusionauth-system-api-openapi.yml
+  - type: Documentation
+    url: https://fusionauth.io/docs/apis/
+  - type: SDKs
+    url: https://fusionauth.io/docs/sdks/
+- aid: fusionauth:fusionauth-system-configuration-api
+  name: FusionAuth System Configuration API
+  description: The System Configuration API from FusionAuth — 1 operation(s) for system configuration.
+  humanURL: https://fusionauth.io/docs/
+  baseURL: https://sandbox.fusionauth.io
+  tags:
+  - System Configuration
+  properties:
+  - type: OpenAPI
+    url: openapi/fusionauth-system-configuration-api-openapi.yml
+  - type: Documentation
+    url: https://fusionauth.io/docs/apis/
+  - type: SDKs
+    url: https://fusionauth.io/docs/sdks/
+- aid: fusionauth:fusionauth-tenant-api
+  name: FusionAuth Tenant API
+  description: The Tenant API from FusionAuth — 5 operation(s) for tenant.
+  humanURL: https://fusionauth.io/docs/
+  baseURL: https://sandbox.fusionauth.io
+  tags:
+  - Tenant
+  properties:
+  - type: OpenAPI
+    url: openapi/fusionauth-tenant-api-openapi.yml
+  - type: Documentation
+    url: https://fusionauth.io/docs/apis/
+  - type: SDKs
+    url: https://fusionauth.io/docs/sdks/
+- aid: fusionauth:fusionauth-tenant-manager-api
+  name: FusionAuth Tenant Manager API
+  description: The Tenant Manager API from FusionAuth — 2 operation(s) for tenant manager.
+  humanURL: https://fusionauth.io/docs/
+  baseURL: https://sandbox.fusionauth.io
+  tags:
+  - Tenant Manager
+  properties:
+  - type: OpenAPI
+    url: openapi/fusionauth-tenant-manager-api-openapi.yml
+  - type: Documentation
+    url: https://fusionauth.io/docs/apis/
+  - type: SDKs
+    url: https://fusionauth.io/docs/sdks/
+- aid: fusionauth:fusionauth-theme-api
+  name: FusionAuth Theme API
+  description: The Theme API from FusionAuth — 3 operation(s) for theme.
+  humanURL: https://fusionauth.io/docs/
+  baseURL: https://sandbox.fusionauth.io
+  tags:
+  - Theme
+  properties:
+  - type: OpenAPI
+    url: openapi/fusionauth-theme-api-openapi.yml
+  - type: Documentation
+    url: https://fusionauth.io/docs/apis/
+  - type: SDKs
+    url: https://fusionauth.io/docs/sdks/
+- aid: fusionauth:fusionauth-two-factor-api
+  name: FusionAuth Two Factor API
+  description: The Two Factor API from FusionAuth — 7 operation(s) for two factor.
+  humanURL: https://fusionauth.io/docs/
+  baseURL: https://sandbox.fusionauth.io
+  tags:
+  - Two Factor
+  properties:
+  - type: OpenAPI
+    url: openapi/fusionauth-two-factor-api-openapi.yml
+  - type: Documentation
+    url: https://fusionauth.io/docs/apis/
+  - type: SDKs
+    url: https://fusionauth.io/docs/sdks/
+- aid: fusionauth:fusionauth-user-action-api
+  name: FusionAuth User Action API
+  description: The User Action API from FusionAuth — 2 operation(s) for user action.
+  humanURL: https://fusionauth.io/docs/
+  baseURL: https://sandbox.fusionauth.io
+  tags:
+  - User Action
+  properties:
+  - type: OpenAPI
+    url: openapi/fusionauth-user-action-api-openapi.yml
+  - type: Documentation
+    url: https://fusionauth.io/docs/apis/
+  - type: SDKs
+    url: https://fusionauth.io/docs/sdks/
+- aid: fusionauth:fusionauth-user-action-reason-api
+  name: FusionAuth User Action Reason API
+  description: The User Action Reason API from FusionAuth — 2 operation(s) for user action reason.
+  humanURL: https://fusionauth.io/docs/
+  baseURL: https://sandbox.fusionauth.io
+  tags:
+  - User Action Reason
+  properties:
+  - type: OpenAPI
+    url: openapi/fusionauth-user-action-reason-api-openapi.yml
+  - type: Documentation
+    url: https://fusionauth.io/docs/apis/
+  - type: SDKs
+    url: https://fusionauth.io/docs/sdks/
+- aid: fusionauth:fusionauth-user-api
+  name: FusionAuth User API
+  description: The User API from FusionAuth — 29 operation(s) for user.
+  humanURL: https://fusionauth.io/docs/
+  baseURL: https://sandbox.fusionauth.io
+  tags:
+  - User
+  properties:
+  - type: OpenAPI
+    url: openapi/fusionauth-user-api-openapi.yml
+  - type: Documentation
+    url: https://fusionauth.io/docs/apis/
+  - type: SDKs
+    url: https://fusionauth.io/docs/sdks/
+- aid: fusionauth:fusionauth-webauthn-api
+  name: FusionAuth Webauthn API
+  description: The Webauthn API from FusionAuth — 8 operation(s) for webauthn.
+  humanURL: https://fusionauth.io/docs/
+  baseURL: https://sandbox.fusionauth.io
+  tags:
+  - Webauthn
+  properties:
+  - type: OpenAPI
+    url: openapi/fusionauth-webauthn-api-openapi.yml
+  - type: Documentation
+    url: https://fusionauth.io/docs/apis/
+  - type: SDKs
+    url: https://fusionauth.io/docs/sdks/
+- aid: fusionauth:fusionauth-webhook-api
+  name: FusionAuth Webhook API
+  description: The Webhook API from FusionAuth — 3 operation(s) for webhook.
+  humanURL: https://fusionauth.io/docs/
+  baseURL: https://sandbox.fusionauth.io
+  tags:
+  - Webhook
+  properties:
+  - type: OpenAPI
+    url: openapi/fusionauth-webhook-api-openapi.yml
+  - type: Documentation
+    url: https://fusionauth.io/docs/apis/
+  - type: SDKs
+    url: https://fusionauth.io/docs/sdks/
+- aid: fusionauth:fusionauth-well-known-api
+  name: FusionAuth .well Known API
+  description: The .well Known API from FusionAuth — 2 operation(s) for .well known.
+  humanURL: https://fusionauth.io/docs/
+  baseURL: https://sandbox.fusionauth.io
+  tags:
+  - .well Known
+  properties:
+  - type: OpenAPI
+    url: openapi/fusionauth-well-known-api-openapi.yml
+  - type: Documentation
+    url: https://fusionauth.io/docs/apis/
+  - type: SDKs
+    url: https://fusionauth.io/docs/sdks/
 common:
   - type: AgenticAccess
     url: agentic-access/fusionauth-agentic-access.yml
