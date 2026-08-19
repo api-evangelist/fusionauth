@@ -1,0 +1,608 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FusionAuth Api Key Entity API",
+    "version": "1.66.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Entity",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "createEntity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/entity",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an Entity. You can optionally specify an Id for the Entity. If not provided one will be generated."
+        },
+        {
+          "info": {
+            "name": "searchEntityGrantsWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/entity/grant/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Searches Entity Grants with the specified criteria and pagination."
+        },
+        {
+          "info": {
+            "name": "searchEntitiesByIdsWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/entity/search",
+            "params": [
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "The entity ids to search for."
+              }
+            ]
+          },
+          "docs": "Retrieves the entities for the given Ids. If any Id is invalid, it is ignored."
+        },
+        {
+          "info": {
+            "name": "searchEntitiesWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/entity/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Searches entities with the specified criteria and pagination."
+        },
+        {
+          "info": {
+            "name": "createEntityType",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/entity/type",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a Entity Type. You can optionally specify an Id for the Entity Type, if not provided one will be generated."
+        },
+        {
+          "info": {
+            "name": "searchEntityTypesWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/entity/type/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Searches the entity types with the specified criteria and pagination."
+        },
+        {
+          "info": {
+            "name": "retrieveEntityTypeWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/entity/type/:entityTypeId",
+            "params": [
+              {
+                "name": "entityTypeId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the Entity Type."
+              }
+            ]
+          },
+          "docs": "Retrieves the Entity Type for the given Id."
+        },
+        {
+          "info": {
+            "name": "createEntityTypeWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/entity/type/:entityTypeId",
+            "params": [
+              {
+                "name": "entityTypeId",
+                "value": "",
+                "type": "path",
+                "description": "The Id for the Entity Type. If not provided a secure random UUID will be generated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a Entity Type. You can optionally specify an Id for the Entity Type, if not provided one will be generated."
+        },
+        {
+          "info": {
+            "name": "updateEntityTypeWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:9011/api/entity/type/:entityTypeId",
+            "params": [
+              {
+                "name": "entityTypeId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the Entity Type to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the Entity Type with the given Id."
+        },
+        {
+          "info": {
+            "name": "patchEntityTypeWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:9011/api/entity/type/:entityTypeId",
+            "params": [
+              {
+                "name": "entityTypeId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the Entity Type to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates, via PATCH, the Entity Type with the given Id."
+        },
+        {
+          "info": {
+            "name": "deleteEntityTypeWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:9011/api/entity/type/:entityTypeId",
+            "params": [
+              {
+                "name": "entityTypeId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the Entity Type to delete."
+              }
+            ]
+          },
+          "docs": "Deletes the Entity Type for the given Id."
+        },
+        {
+          "info": {
+            "name": "createEntityTypePermission",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/entity/type/:entityTypeId/permission",
+            "params": [
+              {
+                "name": "entityTypeId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the entity type to create the permission on."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new permission for an entity type. You must specify the Id of the entity type you are creating the permission for. You can optionally specify an Id for the permission inside the EntityTypePermission object itself, if not provided one will be generated."
+        },
+        {
+          "info": {
+            "name": "createEntityTypePermissionWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/entity/type/:entityTypeId/permission/:permissionId",
+            "params": [
+              {
+                "name": "entityTypeId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the entity type to create the permission on."
+              },
+              {
+                "name": "permissionId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the permission. If not provided a secure random UUID will be generated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new permission for an entity type. You must specify the Id of the entity type you are creating the permission for. You can optionally specify an Id for the permission inside the EntityTypePermission object itself, if not provided one will be generated."
+        },
+        {
+          "info": {
+            "name": "updateEntityTypePermissionWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:9011/api/entity/type/:entityTypeId/permission/:permissionId",
+            "params": [
+              {
+                "name": "entityTypeId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the entityType that the permission belongs to."
+              },
+              {
+                "name": "permissionId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the permission to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the permission with the given Id for the entity type."
+        },
+        {
+          "info": {
+            "name": "patchEntityTypePermissionWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:9011/api/entity/type/:entityTypeId/permission/:permissionId",
+            "params": [
+              {
+                "name": "entityTypeId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the entityType that the permission belongs to."
+              },
+              {
+                "name": "permissionId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the permission to patch."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Patches the permission with the given Id for the entity type."
+        },
+        {
+          "info": {
+            "name": "deleteEntityTypePermissionWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:9011/api/entity/type/:entityTypeId/permission/:permissionId",
+            "params": [
+              {
+                "name": "entityTypeId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the entityType the the permission belongs to."
+              },
+              {
+                "name": "permissionId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the permission to delete."
+              }
+            ]
+          },
+          "docs": "Hard deletes a permission. This is a dangerous operation and should not be used in most circumstances. This permanently removes the given permission from all grants that had it."
+        },
+        {
+          "info": {
+            "name": "retrieveEntityWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/entity/:entityId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "entityId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the Entity."
+              }
+            ]
+          },
+          "docs": "Retrieves the Entity for the given Id."
+        },
+        {
+          "info": {
+            "name": "createEntityWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/entity/:entityId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "entityId",
+                "value": "",
+                "type": "path",
+                "description": "The Id for the Entity. If not provided a secure random UUID will be generated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an Entity. You can optionally specify an Id for the Entity. If not provided one will be generated."
+        },
+        {
+          "info": {
+            "name": "updateEntityWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:9011/api/entity/:entityId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "entityId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the Entity to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the Entity with the given Id."
+        },
+        {
+          "info": {
+            "name": "patchEntityWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:9011/api/entity/:entityId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "entityId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the Entity Type to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates, via PATCH, the Entity with the given Id."
+        },
+        {
+          "info": {
+            "name": "deleteEntityWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:9011/api/entity/:entityId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "entityId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the Entity to delete."
+              }
+            ]
+          },
+          "docs": "Deletes the Entity for the given Id."
+        },
+        {
+          "info": {
+            "name": "retrieveEntityGrantWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/entity/:entityId/grant",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "recipientEntityId",
+                "value": "",
+                "type": "query",
+                "description": "The Id of the Entity that the Entity Grant is for."
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "query",
+                "description": "The Id of the User that the Entity Grant is for."
+              },
+              {
+                "name": "entityId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the Entity."
+              }
+            ]
+          },
+          "docs": "Retrieves an Entity Grant for the given Entity and User/Entity."
+        },
+        {
+          "info": {
+            "name": "upsertEntityGrantWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/entity/:entityId/grant",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "entityId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the Entity that the User/Entity is being granted access to."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates or updates an Entity Grant. This is when a User/Entity is granted permissions to an Entity."
+        },
+        {
+          "info": {
+            "name": "deleteEntityGrantWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:9011/api/entity/:entityId/grant",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "recipientEntityId",
+                "value": "",
+                "type": "query",
+                "description": "The Id of the Entity that the Entity Grant is for."
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "query",
+                "description": "The Id of the User that the Entity Grant is for."
+              },
+              {
+                "name": "entityId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the Entity that the Entity Grant is being deleted for."
+              }
+            ]
+          },
+          "docs": "Deletes an Entity Grant for the given User or Entity."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

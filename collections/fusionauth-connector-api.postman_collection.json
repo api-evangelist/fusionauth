@@ -1,0 +1,1036 @@
+{
+  "item": [
+    {
+      "id": "b8179bea-f3a6-41b0-9743-7a647332306b",
+      "name": "Connector",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c089622d-ce13-4a03-8dce-6d90aaae8f85",
+          "name": "create Connector",
+          "request": {
+            "name": "create Connector",
+            "description": {
+              "content": "Creates a connector.  You can optionally specify an Id for the connector, if not provided one will be generated.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "connector"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"connector\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"debug\": \"<boolean>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "83788518-a822-4673-8cd9-a54290e2af2d",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "connector"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connector\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"debug\": \"<boolean>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"connector\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"debug\": \"<boolean>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\"\n  },\n  \"connectors\": [\n    {\n      \"data\": {\n        \"key_0\": \"<object>\"\n      },\n      \"debug\": \"<boolean>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\",\n        \"key_2\": \"<object>\"\n      },\n      \"debug\": \"<boolean>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aa1c8202-3298-4ca5-ab01-4f67bf43c4ee",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "connector"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connector\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"debug\": \"<boolean>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b3e94f33-17dd-49aa-8f37-1babf20c8952",
+          "name": "create Connector With Id",
+          "request": {
+            "name": "create Connector With Id",
+            "description": {
+              "content": "Creates a connector.  You can optionally specify an Id for the connector, if not provided one will be generated.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "connector",
+                ":connectorId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "connectorId",
+                  "description": "(Required) The Id for the connector. If not provided a secure random UUID will be generated."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"connector\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"debug\": \"<boolean>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b9dd1a3c-c42d-41c1-a71f-198b5397347a",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "connector",
+                    ":connectorId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connectorId",
+                      "description": "(Required) The Id for the connector. If not provided a secure random UUID will be generated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connector\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"debug\": \"<boolean>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"connector\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"debug\": \"<boolean>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\"\n  },\n  \"connectors\": [\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\",\n        \"key_2\": \"<object>\",\n        \"key_3\": \"<object>\"\n      },\n      \"debug\": \"<boolean>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"debug\": \"<boolean>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ec68b1fd-f696-4c25-96ea-9bac078413aa",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "connector",
+                    ":connectorId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connectorId",
+                      "description": "(Required) The Id for the connector. If not provided a secure random UUID will be generated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connector\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"debug\": \"<boolean>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ea4683c1-e33c-4751-9cfe-efecba815a4d",
+          "name": "delete Connector With Id",
+          "request": {
+            "name": "delete Connector With Id",
+            "description": {
+              "content": "Deletes the connector for the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "connector",
+                ":connectorId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "connectorId",
+                  "description": "(Required) The Id of the connector to delete."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f213f8bd-7257-438f-8fd1-e1a2e74b6874",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "connector",
+                    ":connectorId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connectorId",
+                      "description": "(Required) The Id of the connector to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "37834009-891c-4397-85d9-14c703a29860",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "connector",
+                    ":connectorId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connectorId",
+                      "description": "(Required) The Id of the connector to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fd6ffa21-d853-411f-91ce-7e6830dca627",
+          "name": "patch Connector With Id",
+          "request": {
+            "name": "patch Connector With Id",
+            "description": {
+              "content": "Updates, via PATCH, the connector with the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "connector",
+                ":connectorId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "connectorId",
+                  "description": "(Required) The Id of the connector to update."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"connector\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"debug\": \"<boolean>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "423a3320-2f7d-42c7-9527-69ef7ab6f036",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "connector",
+                    ":connectorId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connectorId",
+                      "description": "(Required) The Id of the connector to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connector\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"debug\": \"<boolean>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"connector\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"debug\": \"<boolean>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\"\n  },\n  \"connectors\": [\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\",\n        \"key_2\": \"<object>\",\n        \"key_3\": \"<object>\"\n      },\n      \"debug\": \"<boolean>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"debug\": \"<boolean>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03fdcf1f-1488-4944-80e9-cbc76ed1e344",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "connector",
+                    ":connectorId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connectorId",
+                      "description": "(Required) The Id of the connector to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connector\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"debug\": \"<boolean>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5f56aa3d-6a51-46d0-a8bc-480927418bce",
+          "name": "retrieve Connector With Id",
+          "request": {
+            "name": "retrieve Connector With Id",
+            "description": {
+              "content": "Retrieves the connector with the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "connector",
+                ":connectorId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "connectorId",
+                  "description": "(Required) The Id of the connector."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "da4d3b60-06dc-4e41-a61d-aff48e702b5d",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "connector",
+                    ":connectorId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connectorId",
+                      "description": "(Required) The Id of the connector."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"connector\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"debug\": \"<boolean>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\"\n  },\n  \"connectors\": [\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\",\n        \"key_2\": \"<object>\",\n        \"key_3\": \"<object>\"\n      },\n      \"debug\": \"<boolean>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"debug\": \"<boolean>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1afc32ba-9a3b-4d3e-a882-659fd1bd5ae4",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "connector",
+                    ":connectorId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connectorId",
+                      "description": "(Required) The Id of the connector."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1fc27967-90ed-4a42-b376-8f4ecc152c5d",
+          "name": "update Connector With Id",
+          "request": {
+            "name": "update Connector With Id",
+            "description": {
+              "content": "Updates the connector with the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "connector",
+                ":connectorId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "connectorId",
+                  "description": "(Required) The Id of the connector to update."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"connector\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"debug\": \"<boolean>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e9bdc6ee-10d1-4b9c-90e2-737079b7219a",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "connector",
+                    ":connectorId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connectorId",
+                      "description": "(Required) The Id of the connector to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connector\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"debug\": \"<boolean>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"connector\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"debug\": \"<boolean>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\"\n  },\n  \"connectors\": [\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\",\n        \"key_2\": \"<object>\",\n        \"key_3\": \"<object>\"\n      },\n      \"debug\": \"<boolean>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"debug\": \"<boolean>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "83382745-2779-44dc-95db-aaffe95f88bf",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "connector",
+                    ":connectorId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connectorId",
+                      "description": "(Required) The Id of the connector to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connector\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"debug\": \"<boolean>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:9011",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ed29b71c-0fa4-4498-97cc-b9e5ce38f00d",
+    "name": "FusionAuth Api Key Connector API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,163 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FusionAuth Api Key Theme API",
+    "version": "1.66.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Theme",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "createTheme",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/theme",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a Theme. You can optionally specify an Id for the theme, if not provided one will be generated."
+        },
+        {
+          "info": {
+            "name": "searchThemesWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/theme/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Searches themes with the specified criteria and pagination."
+        },
+        {
+          "info": {
+            "name": "retrieveThemeWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/theme/:themeId",
+            "params": [
+              {
+                "name": "themeId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the theme."
+              }
+            ]
+          },
+          "docs": "Retrieves the theme for the given Id."
+        },
+        {
+          "info": {
+            "name": "createThemeWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/theme/:themeId",
+            "params": [
+              {
+                "name": "themeId",
+                "value": "",
+                "type": "path",
+                "description": "The Id for the theme. If not provided a secure random UUID will be generated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a Theme. You can optionally specify an Id for the theme, if not provided one will be generated."
+        },
+        {
+          "info": {
+            "name": "updateThemeWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:9011/api/theme/:themeId",
+            "params": [
+              {
+                "name": "themeId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the theme to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the theme with the given Id."
+        },
+        {
+          "info": {
+            "name": "patchThemeWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:9011/api/theme/:themeId",
+            "params": [
+              {
+                "name": "themeId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the theme to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates, via PATCH, the theme with the given Id."
+        },
+        {
+          "info": {
+            "name": "deleteThemeWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:9011/api/theme/:themeId",
+            "params": [
+              {
+                "name": "themeId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the theme to delete."
+              }
+            ]
+          },
+          "docs": "Deletes the theme for the given Id."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

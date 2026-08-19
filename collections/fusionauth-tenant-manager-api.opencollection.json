@@ -1,0 +1,144 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FusionAuth Api Key Tenant Manager API",
+    "version": "1.66.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tenant Manager",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "updateTenantManagerConfigurationWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:9011/api/tenant-manager",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the Tenant Manager configuration."
+        },
+        {
+          "info": {
+            "name": "patchTenantManagerConfigurationWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:9011/api/tenant-manager",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates, via PATCH, the Tenant Manager configuration."
+        },
+        {
+          "info": {
+            "name": "createTenantManagerIdentityProviderTypeConfigurationWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/tenant-manager/identity-provider/:type",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "The type of the identity provider."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a tenant manager identity provider type configuration for the given identity provider type."
+        },
+        {
+          "info": {
+            "name": "updateTenantManagerIdentityProviderTypeConfigurationWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:9011/api/tenant-manager/identity-provider/:type",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "The type of the identity provider."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the tenant manager identity provider type configuration for the given identity provider type."
+        },
+        {
+          "info": {
+            "name": "patchTenantManagerIdentityProviderTypeConfigurationWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:9011/api/tenant-manager/identity-provider/:type",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "The type of the identity provider."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Patches the tenant manager identity provider type configuration for the given identity provider type."
+        },
+        {
+          "info": {
+            "name": "deleteTenantManagerIdentityProviderTypeConfigurationWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:9011/api/tenant-manager/identity-provider/:type",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "The type of the identity provider."
+              }
+            ]
+          },
+          "docs": "Deletes the tenant manager identity provider type configuration for the given identity provider type."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

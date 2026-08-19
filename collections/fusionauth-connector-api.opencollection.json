@@ -1,0 +1,148 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FusionAuth Api Key Connector API",
+    "version": "1.66.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Connector",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "createConnector",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/connector",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a connector.  You can optionally specify an Id for the connector, if not provided one will be generated."
+        },
+        {
+          "info": {
+            "name": "retrieveConnectorWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/connector/:connectorId",
+            "params": [
+              {
+                "name": "connectorId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the connector."
+              }
+            ]
+          },
+          "docs": "Retrieves the connector with the given Id."
+        },
+        {
+          "info": {
+            "name": "createConnectorWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/connector/:connectorId",
+            "params": [
+              {
+                "name": "connectorId",
+                "value": "",
+                "type": "path",
+                "description": "The Id for the connector. If not provided a secure random UUID will be generated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a connector.  You can optionally specify an Id for the connector, if not provided one will be generated."
+        },
+        {
+          "info": {
+            "name": "updateConnectorWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:9011/api/connector/:connectorId",
+            "params": [
+              {
+                "name": "connectorId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the connector to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the connector with the given Id."
+        },
+        {
+          "info": {
+            "name": "patchConnectorWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:9011/api/connector/:connectorId",
+            "params": [
+              {
+                "name": "connectorId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the connector to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates, via PATCH, the connector with the given Id."
+        },
+        {
+          "info": {
+            "name": "deleteConnectorWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:9011/api/connector/:connectorId",
+            "params": [
+              {
+                "name": "connectorId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the connector to delete."
+              }
+            ]
+          },
+          "docs": "Deletes the connector for the given Id."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

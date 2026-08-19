@@ -1,0 +1,1481 @@
+{
+  "item": [
+    {
+      "id": "a7e3e915-a6fc-4abc-9c2c-b1259b0f0c11",
+      "name": "Key",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "617d11f6-551b-4c57-b220-d3006318d0f4",
+          "name": "retrieve Keys With Id",
+          "request": {
+            "name": "retrieve Keys With Id",
+            "description": {
+              "content": "Retrieves all the keys.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "key"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a69af0d0-b730-44b0-b43f-eb92f7adc25c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key\": {\n    \"algorithm\": \"HS512\",\n    \"certificate\": \"string\",\n    \"certificateInformation\": {\n      \"issuer\": \"string\",\n      \"md5Fingerprint\": \"string\",\n      \"serialNumber\": \"string\",\n      \"sha1Fingerprint\": \"string\",\n      \"sha1Thumbprint\": \"string\",\n      \"sha256Fingerprint\": \"string\",\n      \"sha256Thumbprint\": \"string\",\n      \"subject\": \"string\",\n      \"validFrom\": 4358,\n      \"validTo\": 9105\n    },\n    \"expirationInstant\": 1611,\n    \"hasPrivateKey\": true,\n    \"id\": \"9ea375c6-3c17-fb76-a8e3-e5a15fcd85b3\",\n    \"insertInstant\": 897,\n    \"issuer\": \"string\",\n    \"kid\": \"string\",\n    \"lastUpdateInstant\": 8874,\n    \"length\": 6716,\n    \"name\": \"string\",\n    \"privateKey\": \"string\",\n    \"publicKey\": \"string\",\n    \"secret\": \"string\",\n    \"type\": \"RSA\"\n  },\n  \"keys\": [\n    {\n      \"algorithm\": \"ES256\",\n      \"certificate\": \"string\",\n      \"certificateInformation\": {\n        \"issuer\": \"string\",\n        \"md5Fingerprint\": \"string\",\n        \"serialNumber\": \"string\",\n        \"sha1Fingerprint\": \"string\",\n        \"sha1Thumbprint\": \"string\",\n        \"sha256Fingerprint\": \"string\",\n        \"sha256Thumbprint\": \"string\",\n        \"subject\": \"string\",\n        \"validFrom\": 9892,\n        \"validTo\": 7587\n      },\n      \"expirationInstant\": 8280,\n      \"hasPrivateKey\": true,\n      \"id\": \"c976b6ab-428e-164d-fb82-f0f964a828eb\",\n      \"insertInstant\": 184,\n      \"issuer\": \"string\",\n      \"kid\": \"string\",\n      \"lastUpdateInstant\": 4958,\n      \"length\": 1411,\n      \"name\": \"string\",\n      \"privateKey\": \"string\",\n      \"publicKey\": \"string\",\n      \"secret\": \"string\",\n      \"type\": \"Secret\"\n    },\n    {\n      \"algorithm\": \"HS384\",\n      \"certificate\": \"string\",\n      \"certificateInformation\": {\n        \"issuer\": \"string\",\n        \"md5Fingerprint\": \"string\",\n        \"serialNumber\": \"string\",\n        \"sha1Fingerprint\": \"string\",\n        \"sha1Thumbprint\": \"string\",\n        \"sha256Fingerprint\": \"string\",\n        \"sha256Thumbprint\": \"string\",\n        \"subject\": \"string\",\n        \"validFrom\": 8024,\n        \"validTo\": 4383\n      },\n      \"expirationInstant\": 9578,\n      \"hasPrivateKey\": false,\n      \"id\": \"6a87f9fd-b8d7-c6cb-2ee0-eb4f1174841e\",\n      \"insertInstant\": 9814,\n      \"issuer\": \"string\",\n      \"kid\": \"string\",\n      \"lastUpdateInstant\": 6618,\n      \"length\": 8455,\n      \"name\": \"string\",\n      \"privateKey\": \"string\",\n      \"publicKey\": \"string\",\n      \"secret\": \"string\",\n      \"type\": \"EC\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "299c2d20-5acf-4296-866f-bf636b966c87",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "820ec79d-9fe9-43f6-a023-7da52aeec8f5",
+          "name": "generate Key",
+          "request": {
+            "name": "generate Key",
+            "description": {
+              "content": "Generate a new RSA or EC key pair or an HMAC secret.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "key",
+                "generate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key\": {\n    \"algorithm\": \"<string>\",\n    \"certificate\": \"<string>\",\n    \"certificateInformation\": {\n      \"issuer\": \"<string>\",\n      \"md5Fingerprint\": \"<string>\",\n      \"serialNumber\": \"<string>\",\n      \"sha1Fingerprint\": \"<string>\",\n      \"sha1Thumbprint\": \"<string>\",\n      \"sha256Fingerprint\": \"<string>\",\n      \"sha256Thumbprint\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"validFrom\": \"<long>\",\n      \"validTo\": \"<long>\"\n    },\n    \"expirationInstant\": \"<long>\",\n    \"hasPrivateKey\": \"<boolean>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"issuer\": \"<string>\",\n    \"kid\": \"<string>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"length\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"privateKey\": \"<string>\",\n    \"publicKey\": \"<string>\",\n    \"secret\": \"<string>\",\n    \"type\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "97e7bc99-3b97-4fbb-ae7b-cd9d65a7d56d",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "key",
+                    "generate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key\": {\n    \"algorithm\": \"<string>\",\n    \"certificate\": \"<string>\",\n    \"certificateInformation\": {\n      \"issuer\": \"<string>\",\n      \"md5Fingerprint\": \"<string>\",\n      \"serialNumber\": \"<string>\",\n      \"sha1Fingerprint\": \"<string>\",\n      \"sha1Thumbprint\": \"<string>\",\n      \"sha256Fingerprint\": \"<string>\",\n      \"sha256Thumbprint\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"validFrom\": \"<long>\",\n      \"validTo\": \"<long>\"\n    },\n    \"expirationInstant\": \"<long>\",\n    \"hasPrivateKey\": \"<boolean>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"issuer\": \"<string>\",\n    \"kid\": \"<string>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"length\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"privateKey\": \"<string>\",\n    \"publicKey\": \"<string>\",\n    \"secret\": \"<string>\",\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key\": {\n    \"algorithm\": \"<string>\",\n    \"certificate\": \"<string>\",\n    \"certificateInformation\": {\n      \"issuer\": \"<string>\",\n      \"md5Fingerprint\": \"<string>\",\n      \"serialNumber\": \"<string>\",\n      \"sha1Fingerprint\": \"<string>\",\n      \"sha1Thumbprint\": \"<string>\",\n      \"sha256Fingerprint\": \"<string>\",\n      \"sha256Thumbprint\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"validFrom\": \"<long>\",\n      \"validTo\": \"<long>\"\n    },\n    \"expirationInstant\": \"<long>\",\n    \"hasPrivateKey\": \"<boolean>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"issuer\": \"<string>\",\n    \"kid\": \"<string>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"length\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"privateKey\": \"<string>\",\n    \"publicKey\": \"<string>\",\n    \"secret\": \"<string>\",\n    \"type\": \"<string>\"\n  },\n  \"keys\": [\n    {\n      \"algorithm\": \"<string>\",\n      \"certificate\": \"<string>\",\n      \"certificateInformation\": {\n        \"issuer\": \"<string>\",\n        \"md5Fingerprint\": \"<string>\",\n        \"serialNumber\": \"<string>\",\n        \"sha1Fingerprint\": \"<string>\",\n        \"sha1Thumbprint\": \"<string>\",\n        \"sha256Fingerprint\": \"<string>\",\n        \"sha256Thumbprint\": \"<string>\",\n        \"subject\": \"<string>\",\n        \"validFrom\": \"<long>\",\n        \"validTo\": \"<long>\"\n      },\n      \"expirationInstant\": \"<long>\",\n      \"hasPrivateKey\": \"<boolean>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"issuer\": \"<string>\",\n      \"kid\": \"<string>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"length\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"privateKey\": \"<string>\",\n      \"publicKey\": \"<string>\",\n      \"secret\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"algorithm\": \"<string>\",\n      \"certificate\": \"<string>\",\n      \"certificateInformation\": {\n        \"issuer\": \"<string>\",\n        \"md5Fingerprint\": \"<string>\",\n        \"serialNumber\": \"<string>\",\n        \"sha1Fingerprint\": \"<string>\",\n        \"sha1Thumbprint\": \"<string>\",\n        \"sha256Fingerprint\": \"<string>\",\n        \"sha256Thumbprint\": \"<string>\",\n        \"subject\": \"<string>\",\n        \"validFrom\": \"<long>\",\n        \"validTo\": \"<long>\"\n      },\n      \"expirationInstant\": \"<long>\",\n      \"hasPrivateKey\": \"<boolean>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"issuer\": \"<string>\",\n      \"kid\": \"<string>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"length\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"privateKey\": \"<string>\",\n      \"publicKey\": \"<string>\",\n      \"secret\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8c18d786-ec4c-4a5b-ba73-8208ef36faf7",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "key",
+                    "generate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key\": {\n    \"algorithm\": \"<string>\",\n    \"certificate\": \"<string>\",\n    \"certificateInformation\": {\n      \"issuer\": \"<string>\",\n      \"md5Fingerprint\": \"<string>\",\n      \"serialNumber\": \"<string>\",\n      \"sha1Fingerprint\": \"<string>\",\n      \"sha1Thumbprint\": \"<string>\",\n      \"sha256Fingerprint\": \"<string>\",\n      \"sha256Thumbprint\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"validFrom\": \"<long>\",\n      \"validTo\": \"<long>\"\n    },\n    \"expirationInstant\": \"<long>\",\n    \"hasPrivateKey\": \"<boolean>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"issuer\": \"<string>\",\n    \"kid\": \"<string>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"length\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"privateKey\": \"<string>\",\n    \"publicKey\": \"<string>\",\n    \"secret\": \"<string>\",\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "48a0e857-b4b2-4107-b974-dbc2bbe3865e",
+          "name": "generate Key With Id",
+          "request": {
+            "name": "generate Key With Id",
+            "description": {
+              "content": "Generate a new RSA or EC key pair or an HMAC secret.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "key",
+                "generate",
+                ":keyId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "keyId",
+                  "description": "(Required) The Id for the key. If not provided a secure random UUID will be generated."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key\": {\n    \"algorithm\": \"<string>\",\n    \"certificate\": \"<string>\",\n    \"certificateInformation\": {\n      \"issuer\": \"<string>\",\n      \"md5Fingerprint\": \"<string>\",\n      \"serialNumber\": \"<string>\",\n      \"sha1Fingerprint\": \"<string>\",\n      \"sha1Thumbprint\": \"<string>\",\n      \"sha256Fingerprint\": \"<string>\",\n      \"sha256Thumbprint\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"validFrom\": \"<long>\",\n      \"validTo\": \"<long>\"\n    },\n    \"expirationInstant\": \"<long>\",\n    \"hasPrivateKey\": \"<boolean>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"issuer\": \"<string>\",\n    \"kid\": \"<string>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"length\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"privateKey\": \"<string>\",\n    \"publicKey\": \"<string>\",\n    \"secret\": \"<string>\",\n    \"type\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "97fbb061-e37d-46c6-9e59-0c0232f5e9f4",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "key",
+                    "generate",
+                    ":keyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "keyId",
+                      "description": "(Required) The Id for the key. If not provided a secure random UUID will be generated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key\": {\n    \"algorithm\": \"<string>\",\n    \"certificate\": \"<string>\",\n    \"certificateInformation\": {\n      \"issuer\": \"<string>\",\n      \"md5Fingerprint\": \"<string>\",\n      \"serialNumber\": \"<string>\",\n      \"sha1Fingerprint\": \"<string>\",\n      \"sha1Thumbprint\": \"<string>\",\n      \"sha256Fingerprint\": \"<string>\",\n      \"sha256Thumbprint\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"validFrom\": \"<long>\",\n      \"validTo\": \"<long>\"\n    },\n    \"expirationInstant\": \"<long>\",\n    \"hasPrivateKey\": \"<boolean>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"issuer\": \"<string>\",\n    \"kid\": \"<string>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"length\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"privateKey\": \"<string>\",\n    \"publicKey\": \"<string>\",\n    \"secret\": \"<string>\",\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key\": {\n    \"algorithm\": \"<string>\",\n    \"certificate\": \"<string>\",\n    \"certificateInformation\": {\n      \"issuer\": \"<string>\",\n      \"md5Fingerprint\": \"<string>\",\n      \"serialNumber\": \"<string>\",\n      \"sha1Fingerprint\": \"<string>\",\n      \"sha1Thumbprint\": \"<string>\",\n      \"sha256Fingerprint\": \"<string>\",\n      \"sha256Thumbprint\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"validFrom\": \"<long>\",\n      \"validTo\": \"<long>\"\n    },\n    \"expirationInstant\": \"<long>\",\n    \"hasPrivateKey\": \"<boolean>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"issuer\": \"<string>\",\n    \"kid\": \"<string>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"length\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"privateKey\": \"<string>\",\n    \"publicKey\": \"<string>\",\n    \"secret\": \"<string>\",\n    \"type\": \"<string>\"\n  },\n  \"keys\": [\n    {\n      \"algorithm\": \"<string>\",\n      \"certificate\": \"<string>\",\n      \"certificateInformation\": {\n        \"issuer\": \"<string>\",\n        \"md5Fingerprint\": \"<string>\",\n        \"serialNumber\": \"<string>\",\n        \"sha1Fingerprint\": \"<string>\",\n        \"sha1Thumbprint\": \"<string>\",\n        \"sha256Fingerprint\": \"<string>\",\n        \"sha256Thumbprint\": \"<string>\",\n        \"subject\": \"<string>\",\n        \"validFrom\": \"<long>\",\n        \"validTo\": \"<long>\"\n      },\n      \"expirationInstant\": \"<long>\",\n      \"hasPrivateKey\": \"<boolean>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"issuer\": \"<string>\",\n      \"kid\": \"<string>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"length\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"privateKey\": \"<string>\",\n      \"publicKey\": \"<string>\",\n      \"secret\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"algorithm\": \"<string>\",\n      \"certificate\": \"<string>\",\n      \"certificateInformation\": {\n        \"issuer\": \"<string>\",\n        \"md5Fingerprint\": \"<string>\",\n        \"serialNumber\": \"<string>\",\n        \"sha1Fingerprint\": \"<string>\",\n        \"sha1Thumbprint\": \"<string>\",\n        \"sha256Fingerprint\": \"<string>\",\n        \"sha256Thumbprint\": \"<string>\",\n        \"subject\": \"<string>\",\n        \"validFrom\": \"<long>\",\n        \"validTo\": \"<long>\"\n      },\n      \"expirationInstant\": \"<long>\",\n      \"hasPrivateKey\": \"<boolean>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"issuer\": \"<string>\",\n      \"kid\": \"<string>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"length\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"privateKey\": \"<string>\",\n      \"publicKey\": \"<string>\",\n      \"secret\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9dbdcbb1-45a0-4440-b2fb-4996b0c1f574",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "key",
+                    "generate",
+                    ":keyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "keyId",
+                      "description": "(Required) The Id for the key. If not provided a secure random UUID will be generated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key\": {\n    \"algorithm\": \"<string>\",\n    \"certificate\": \"<string>\",\n    \"certificateInformation\": {\n      \"issuer\": \"<string>\",\n      \"md5Fingerprint\": \"<string>\",\n      \"serialNumber\": \"<string>\",\n      \"sha1Fingerprint\": \"<string>\",\n      \"sha1Thumbprint\": \"<string>\",\n      \"sha256Fingerprint\": \"<string>\",\n      \"sha256Thumbprint\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"validFrom\": \"<long>\",\n      \"validTo\": \"<long>\"\n    },\n    \"expirationInstant\": \"<long>\",\n    \"hasPrivateKey\": \"<boolean>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"issuer\": \"<string>\",\n    \"kid\": \"<string>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"length\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"privateKey\": \"<string>\",\n    \"publicKey\": \"<string>\",\n    \"secret\": \"<string>\",\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf760b4e-e435-40d8-8a44-e61458b4f0f0",
+          "name": "import Key",
+          "request": {
+            "name": "import Key",
+            "description": {
+              "content": "Import an existing RSA or EC key pair or an HMAC secret.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "key",
+                "import"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key\": {\n    \"algorithm\": \"<string>\",\n    \"certificate\": \"<string>\",\n    \"certificateInformation\": {\n      \"issuer\": \"<string>\",\n      \"md5Fingerprint\": \"<string>\",\n      \"serialNumber\": \"<string>\",\n      \"sha1Fingerprint\": \"<string>\",\n      \"sha1Thumbprint\": \"<string>\",\n      \"sha256Fingerprint\": \"<string>\",\n      \"sha256Thumbprint\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"validFrom\": \"<long>\",\n      \"validTo\": \"<long>\"\n    },\n    \"expirationInstant\": \"<long>\",\n    \"hasPrivateKey\": \"<boolean>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"issuer\": \"<string>\",\n    \"kid\": \"<string>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"length\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"privateKey\": \"<string>\",\n    \"publicKey\": \"<string>\",\n    \"secret\": \"<string>\",\n    \"type\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2e671ac2-6f48-43f4-8110-6a53a0f1857a",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "key",
+                    "import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key\": {\n    \"algorithm\": \"<string>\",\n    \"certificate\": \"<string>\",\n    \"certificateInformation\": {\n      \"issuer\": \"<string>\",\n      \"md5Fingerprint\": \"<string>\",\n      \"serialNumber\": \"<string>\",\n      \"sha1Fingerprint\": \"<string>\",\n      \"sha1Thumbprint\": \"<string>\",\n      \"sha256Fingerprint\": \"<string>\",\n      \"sha256Thumbprint\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"validFrom\": \"<long>\",\n      \"validTo\": \"<long>\"\n    },\n    \"expirationInstant\": \"<long>\",\n    \"hasPrivateKey\": \"<boolean>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"issuer\": \"<string>\",\n    \"kid\": \"<string>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"length\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"privateKey\": \"<string>\",\n    \"publicKey\": \"<string>\",\n    \"secret\": \"<string>\",\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key\": {\n    \"algorithm\": \"<string>\",\n    \"certificate\": \"<string>\",\n    \"certificateInformation\": {\n      \"issuer\": \"<string>\",\n      \"md5Fingerprint\": \"<string>\",\n      \"serialNumber\": \"<string>\",\n      \"sha1Fingerprint\": \"<string>\",\n      \"sha1Thumbprint\": \"<string>\",\n      \"sha256Fingerprint\": \"<string>\",\n      \"sha256Thumbprint\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"validFrom\": \"<long>\",\n      \"validTo\": \"<long>\"\n    },\n    \"expirationInstant\": \"<long>\",\n    \"hasPrivateKey\": \"<boolean>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"issuer\": \"<string>\",\n    \"kid\": \"<string>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"length\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"privateKey\": \"<string>\",\n    \"publicKey\": \"<string>\",\n    \"secret\": \"<string>\",\n    \"type\": \"<string>\"\n  },\n  \"keys\": [\n    {\n      \"algorithm\": \"<string>\",\n      \"certificate\": \"<string>\",\n      \"certificateInformation\": {\n        \"issuer\": \"<string>\",\n        \"md5Fingerprint\": \"<string>\",\n        \"serialNumber\": \"<string>\",\n        \"sha1Fingerprint\": \"<string>\",\n        \"sha1Thumbprint\": \"<string>\",\n        \"sha256Fingerprint\": \"<string>\",\n        \"sha256Thumbprint\": \"<string>\",\n        \"subject\": \"<string>\",\n        \"validFrom\": \"<long>\",\n        \"validTo\": \"<long>\"\n      },\n      \"expirationInstant\": \"<long>\",\n      \"hasPrivateKey\": \"<boolean>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"issuer\": \"<string>\",\n      \"kid\": \"<string>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"length\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"privateKey\": \"<string>\",\n      \"publicKey\": \"<string>\",\n      \"secret\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"algorithm\": \"<string>\",\n      \"certificate\": \"<string>\",\n      \"certificateInformation\": {\n        \"issuer\": \"<string>\",\n        \"md5Fingerprint\": \"<string>\",\n        \"serialNumber\": \"<string>\",\n        \"sha1Fingerprint\": \"<string>\",\n        \"sha1Thumbprint\": \"<string>\",\n        \"sha256Fingerprint\": \"<string>\",\n        \"sha256Thumbprint\": \"<string>\",\n        \"subject\": \"<string>\",\n        \"validFrom\": \"<long>\",\n        \"validTo\": \"<long>\"\n      },\n      \"expirationInstant\": \"<long>\",\n      \"hasPrivateKey\": \"<boolean>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"issuer\": \"<string>\",\n      \"kid\": \"<string>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"length\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"privateKey\": \"<string>\",\n      \"publicKey\": \"<string>\",\n      \"secret\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c320aa59-26d1-4bca-914c-71acb4a5a1bc",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "key",
+                    "import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key\": {\n    \"algorithm\": \"<string>\",\n    \"certificate\": \"<string>\",\n    \"certificateInformation\": {\n      \"issuer\": \"<string>\",\n      \"md5Fingerprint\": \"<string>\",\n      \"serialNumber\": \"<string>\",\n      \"sha1Fingerprint\": \"<string>\",\n      \"sha1Thumbprint\": \"<string>\",\n      \"sha256Fingerprint\": \"<string>\",\n      \"sha256Thumbprint\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"validFrom\": \"<long>\",\n      \"validTo\": \"<long>\"\n    },\n    \"expirationInstant\": \"<long>\",\n    \"hasPrivateKey\": \"<boolean>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"issuer\": \"<string>\",\n    \"kid\": \"<string>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"length\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"privateKey\": \"<string>\",\n    \"publicKey\": \"<string>\",\n    \"secret\": \"<string>\",\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "244e62a9-4731-411b-8ce0-ee9086e9b66a",
+          "name": "import Key With Id",
+          "request": {
+            "name": "import Key With Id",
+            "description": {
+              "content": "Import an existing RSA or EC key pair or an HMAC secret.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "key",
+                "import",
+                ":keyId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "keyId",
+                  "description": "(Required) The Id for the key. If not provided a secure random UUID will be generated."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key\": {\n    \"algorithm\": \"<string>\",\n    \"certificate\": \"<string>\",\n    \"certificateInformation\": {\n      \"issuer\": \"<string>\",\n      \"md5Fingerprint\": \"<string>\",\n      \"serialNumber\": \"<string>\",\n      \"sha1Fingerprint\": \"<string>\",\n      \"sha1Thumbprint\": \"<string>\",\n      \"sha256Fingerprint\": \"<string>\",\n      \"sha256Thumbprint\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"validFrom\": \"<long>\",\n      \"validTo\": \"<long>\"\n    },\n    \"expirationInstant\": \"<long>\",\n    \"hasPrivateKey\": \"<boolean>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"issuer\": \"<string>\",\n    \"kid\": \"<string>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"length\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"privateKey\": \"<string>\",\n    \"publicKey\": \"<string>\",\n    \"secret\": \"<string>\",\n    \"type\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bf49b628-4509-4ff1-b855-270fd27683aa",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "key",
+                    "import",
+                    ":keyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "keyId",
+                      "description": "(Required) The Id for the key. If not provided a secure random UUID will be generated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key\": {\n    \"algorithm\": \"<string>\",\n    \"certificate\": \"<string>\",\n    \"certificateInformation\": {\n      \"issuer\": \"<string>\",\n      \"md5Fingerprint\": \"<string>\",\n      \"serialNumber\": \"<string>\",\n      \"sha1Fingerprint\": \"<string>\",\n      \"sha1Thumbprint\": \"<string>\",\n      \"sha256Fingerprint\": \"<string>\",\n      \"sha256Thumbprint\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"validFrom\": \"<long>\",\n      \"validTo\": \"<long>\"\n    },\n    \"expirationInstant\": \"<long>\",\n    \"hasPrivateKey\": \"<boolean>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"issuer\": \"<string>\",\n    \"kid\": \"<string>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"length\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"privateKey\": \"<string>\",\n    \"publicKey\": \"<string>\",\n    \"secret\": \"<string>\",\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key\": {\n    \"algorithm\": \"<string>\",\n    \"certificate\": \"<string>\",\n    \"certificateInformation\": {\n      \"issuer\": \"<string>\",\n      \"md5Fingerprint\": \"<string>\",\n      \"serialNumber\": \"<string>\",\n      \"sha1Fingerprint\": \"<string>\",\n      \"sha1Thumbprint\": \"<string>\",\n      \"sha256Fingerprint\": \"<string>\",\n      \"sha256Thumbprint\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"validFrom\": \"<long>\",\n      \"validTo\": \"<long>\"\n    },\n    \"expirationInstant\": \"<long>\",\n    \"hasPrivateKey\": \"<boolean>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"issuer\": \"<string>\",\n    \"kid\": \"<string>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"length\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"privateKey\": \"<string>\",\n    \"publicKey\": \"<string>\",\n    \"secret\": \"<string>\",\n    \"type\": \"<string>\"\n  },\n  \"keys\": [\n    {\n      \"algorithm\": \"<string>\",\n      \"certificate\": \"<string>\",\n      \"certificateInformation\": {\n        \"issuer\": \"<string>\",\n        \"md5Fingerprint\": \"<string>\",\n        \"serialNumber\": \"<string>\",\n        \"sha1Fingerprint\": \"<string>\",\n        \"sha1Thumbprint\": \"<string>\",\n        \"sha256Fingerprint\": \"<string>\",\n        \"sha256Thumbprint\": \"<string>\",\n        \"subject\": \"<string>\",\n        \"validFrom\": \"<long>\",\n        \"validTo\": \"<long>\"\n      },\n      \"expirationInstant\": \"<long>\",\n      \"hasPrivateKey\": \"<boolean>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"issuer\": \"<string>\",\n      \"kid\": \"<string>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"length\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"privateKey\": \"<string>\",\n      \"publicKey\": \"<string>\",\n      \"secret\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"algorithm\": \"<string>\",\n      \"certificate\": \"<string>\",\n      \"certificateInformation\": {\n        \"issuer\": \"<string>\",\n        \"md5Fingerprint\": \"<string>\",\n        \"serialNumber\": \"<string>\",\n        \"sha1Fingerprint\": \"<string>\",\n        \"sha1Thumbprint\": \"<string>\",\n        \"sha256Fingerprint\": \"<string>\",\n        \"sha256Thumbprint\": \"<string>\",\n        \"subject\": \"<string>\",\n        \"validFrom\": \"<long>\",\n        \"validTo\": \"<long>\"\n      },\n      \"expirationInstant\": \"<long>\",\n      \"hasPrivateKey\": \"<boolean>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"issuer\": \"<string>\",\n      \"kid\": \"<string>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"length\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"privateKey\": \"<string>\",\n      \"publicKey\": \"<string>\",\n      \"secret\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "01607f35-d407-46d0-b4cf-0987b48c1eb9",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "key",
+                    "import",
+                    ":keyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "keyId",
+                      "description": "(Required) The Id for the key. If not provided a secure random UUID will be generated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key\": {\n    \"algorithm\": \"<string>\",\n    \"certificate\": \"<string>\",\n    \"certificateInformation\": {\n      \"issuer\": \"<string>\",\n      \"md5Fingerprint\": \"<string>\",\n      \"serialNumber\": \"<string>\",\n      \"sha1Fingerprint\": \"<string>\",\n      \"sha1Thumbprint\": \"<string>\",\n      \"sha256Fingerprint\": \"<string>\",\n      \"sha256Thumbprint\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"validFrom\": \"<long>\",\n      \"validTo\": \"<long>\"\n    },\n    \"expirationInstant\": \"<long>\",\n    \"hasPrivateKey\": \"<boolean>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"issuer\": \"<string>\",\n    \"kid\": \"<string>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"length\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"privateKey\": \"<string>\",\n    \"publicKey\": \"<string>\",\n    \"secret\": \"<string>\",\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d60ba3a1-4a65-4226-b96e-7370e5636990",
+          "name": "search Keys With Id",
+          "request": {
+            "name": "search Keys With Id",
+            "description": {
+              "content": "Searches keys with the specified criteria and pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "key",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"search\": {\n    \"algorithm\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"numberOfResults\": \"<integer>\",\n    \"orderBy\": \"<string>\",\n    \"startRow\": \"<integer>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "07acbd9e-dd51-4f9c-87df-b798b696c4c8",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "key",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"search\": {\n    \"algorithm\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"numberOfResults\": \"<integer>\",\n    \"orderBy\": \"<string>\",\n    \"startRow\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"keys\": [\n    {\n      \"algorithm\": \"<string>\",\n      \"certificate\": \"<string>\",\n      \"certificateInformation\": {\n        \"issuer\": \"<string>\",\n        \"md5Fingerprint\": \"<string>\",\n        \"serialNumber\": \"<string>\",\n        \"sha1Fingerprint\": \"<string>\",\n        \"sha1Thumbprint\": \"<string>\",\n        \"sha256Fingerprint\": \"<string>\",\n        \"sha256Thumbprint\": \"<string>\",\n        \"subject\": \"<string>\",\n        \"validFrom\": \"<long>\",\n        \"validTo\": \"<long>\"\n      },\n      \"expirationInstant\": \"<long>\",\n      \"hasPrivateKey\": \"<boolean>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"issuer\": \"<string>\",\n      \"kid\": \"<string>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"length\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"privateKey\": \"<string>\",\n      \"publicKey\": \"<string>\",\n      \"secret\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"algorithm\": \"<string>\",\n      \"certificate\": \"<string>\",\n      \"certificateInformation\": {\n        \"issuer\": \"<string>\",\n        \"md5Fingerprint\": \"<string>\",\n        \"serialNumber\": \"<string>\",\n        \"sha1Fingerprint\": \"<string>\",\n        \"sha1Thumbprint\": \"<string>\",\n        \"sha256Fingerprint\": \"<string>\",\n        \"sha256Thumbprint\": \"<string>\",\n        \"subject\": \"<string>\",\n        \"validFrom\": \"<long>\",\n        \"validTo\": \"<long>\"\n      },\n      \"expirationInstant\": \"<long>\",\n      \"hasPrivateKey\": \"<boolean>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"issuer\": \"<string>\",\n      \"kid\": \"<string>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"length\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"privateKey\": \"<string>\",\n      \"publicKey\": \"<string>\",\n      \"secret\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"total\": 5253\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3115d3ab-7fe8-4371-b3a1-da11f3ea64d8",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "key",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"search\": {\n    \"algorithm\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"numberOfResults\": \"<integer>\",\n    \"orderBy\": \"<string>\",\n    \"startRow\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9af52d5d-1620-4ce8-9887-bbe235fde3a5",
+          "name": "delete Key With Id",
+          "request": {
+            "name": "delete Key With Id",
+            "description": {
+              "content": "Deletes the key for the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "key",
+                ":keyId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "keyId",
+                  "description": "(Required) The Id of the key to delete."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "45a8ffe6-92ec-454b-9741-fb32b3820346",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "key",
+                    ":keyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "keyId",
+                      "description": "(Required) The Id of the key to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "540d7af9-602a-46b0-92fa-8801ae844c39",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "key",
+                    ":keyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "keyId",
+                      "description": "(Required) The Id of the key to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0b1db3d2-9b0e-4577-a016-bc0e4fe5d4cb",
+          "name": "retrieve Key With Id",
+          "request": {
+            "name": "retrieve Key With Id",
+            "description": {
+              "content": "Retrieves the key for the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "key",
+                ":keyId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "keyId",
+                  "description": "(Required) The Id of the key."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "384d8a9a-38a4-4ff9-a591-595954fe3fc5",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "key",
+                    ":keyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "keyId",
+                      "description": "(Required) The Id of the key."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key\": {\n    \"algorithm\": \"<string>\",\n    \"certificate\": \"<string>\",\n    \"certificateInformation\": {\n      \"issuer\": \"<string>\",\n      \"md5Fingerprint\": \"<string>\",\n      \"serialNumber\": \"<string>\",\n      \"sha1Fingerprint\": \"<string>\",\n      \"sha1Thumbprint\": \"<string>\",\n      \"sha256Fingerprint\": \"<string>\",\n      \"sha256Thumbprint\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"validFrom\": \"<long>\",\n      \"validTo\": \"<long>\"\n    },\n    \"expirationInstant\": \"<long>\",\n    \"hasPrivateKey\": \"<boolean>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"issuer\": \"<string>\",\n    \"kid\": \"<string>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"length\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"privateKey\": \"<string>\",\n    \"publicKey\": \"<string>\",\n    \"secret\": \"<string>\",\n    \"type\": \"<string>\"\n  },\n  \"keys\": [\n    {\n      \"algorithm\": \"<string>\",\n      \"certificate\": \"<string>\",\n      \"certificateInformation\": {\n        \"issuer\": \"<string>\",\n        \"md5Fingerprint\": \"<string>\",\n        \"serialNumber\": \"<string>\",\n        \"sha1Fingerprint\": \"<string>\",\n        \"sha1Thumbprint\": \"<string>\",\n        \"sha256Fingerprint\": \"<string>\",\n        \"sha256Thumbprint\": \"<string>\",\n        \"subject\": \"<string>\",\n        \"validFrom\": \"<long>\",\n        \"validTo\": \"<long>\"\n      },\n      \"expirationInstant\": \"<long>\",\n      \"hasPrivateKey\": \"<boolean>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"issuer\": \"<string>\",\n      \"kid\": \"<string>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"length\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"privateKey\": \"<string>\",\n      \"publicKey\": \"<string>\",\n      \"secret\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"algorithm\": \"<string>\",\n      \"certificate\": \"<string>\",\n      \"certificateInformation\": {\n        \"issuer\": \"<string>\",\n        \"md5Fingerprint\": \"<string>\",\n        \"serialNumber\": \"<string>\",\n        \"sha1Fingerprint\": \"<string>\",\n        \"sha1Thumbprint\": \"<string>\",\n        \"sha256Fingerprint\": \"<string>\",\n        \"sha256Thumbprint\": \"<string>\",\n        \"subject\": \"<string>\",\n        \"validFrom\": \"<long>\",\n        \"validTo\": \"<long>\"\n      },\n      \"expirationInstant\": \"<long>\",\n      \"hasPrivateKey\": \"<boolean>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"issuer\": \"<string>\",\n      \"kid\": \"<string>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"length\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"privateKey\": \"<string>\",\n      \"publicKey\": \"<string>\",\n      \"secret\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1b2adef3-3c50-4b13-b32b-c5c6ece0a06c",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "key",
+                    ":keyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "keyId",
+                      "description": "(Required) The Id of the key."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4fc168dd-bf4c-46e7-9de6-8af0d455f347",
+          "name": "update Key With Id",
+          "request": {
+            "name": "update Key With Id",
+            "description": {
+              "content": "Updates the key with the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "key",
+                ":keyId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "keyId",
+                  "description": "(Required) The Id of the key to update."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key\": {\n    \"algorithm\": \"<string>\",\n    \"certificate\": \"<string>\",\n    \"certificateInformation\": {\n      \"issuer\": \"<string>\",\n      \"md5Fingerprint\": \"<string>\",\n      \"serialNumber\": \"<string>\",\n      \"sha1Fingerprint\": \"<string>\",\n      \"sha1Thumbprint\": \"<string>\",\n      \"sha256Fingerprint\": \"<string>\",\n      \"sha256Thumbprint\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"validFrom\": \"<long>\",\n      \"validTo\": \"<long>\"\n    },\n    \"expirationInstant\": \"<long>\",\n    \"hasPrivateKey\": \"<boolean>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"issuer\": \"<string>\",\n    \"kid\": \"<string>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"length\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"privateKey\": \"<string>\",\n    \"publicKey\": \"<string>\",\n    \"secret\": \"<string>\",\n    \"type\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cf275955-4b77-4118-96e1-ecf256d2eaca",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "key",
+                    ":keyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "keyId",
+                      "description": "(Required) The Id of the key to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key\": {\n    \"algorithm\": \"<string>\",\n    \"certificate\": \"<string>\",\n    \"certificateInformation\": {\n      \"issuer\": \"<string>\",\n      \"md5Fingerprint\": \"<string>\",\n      \"serialNumber\": \"<string>\",\n      \"sha1Fingerprint\": \"<string>\",\n      \"sha1Thumbprint\": \"<string>\",\n      \"sha256Fingerprint\": \"<string>\",\n      \"sha256Thumbprint\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"validFrom\": \"<long>\",\n      \"validTo\": \"<long>\"\n    },\n    \"expirationInstant\": \"<long>\",\n    \"hasPrivateKey\": \"<boolean>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"issuer\": \"<string>\",\n    \"kid\": \"<string>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"length\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"privateKey\": \"<string>\",\n    \"publicKey\": \"<string>\",\n    \"secret\": \"<string>\",\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key\": {\n    \"algorithm\": \"<string>\",\n    \"certificate\": \"<string>\",\n    \"certificateInformation\": {\n      \"issuer\": \"<string>\",\n      \"md5Fingerprint\": \"<string>\",\n      \"serialNumber\": \"<string>\",\n      \"sha1Fingerprint\": \"<string>\",\n      \"sha1Thumbprint\": \"<string>\",\n      \"sha256Fingerprint\": \"<string>\",\n      \"sha256Thumbprint\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"validFrom\": \"<long>\",\n      \"validTo\": \"<long>\"\n    },\n    \"expirationInstant\": \"<long>\",\n    \"hasPrivateKey\": \"<boolean>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"issuer\": \"<string>\",\n    \"kid\": \"<string>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"length\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"privateKey\": \"<string>\",\n    \"publicKey\": \"<string>\",\n    \"secret\": \"<string>\",\n    \"type\": \"<string>\"\n  },\n  \"keys\": [\n    {\n      \"algorithm\": \"<string>\",\n      \"certificate\": \"<string>\",\n      \"certificateInformation\": {\n        \"issuer\": \"<string>\",\n        \"md5Fingerprint\": \"<string>\",\n        \"serialNumber\": \"<string>\",\n        \"sha1Fingerprint\": \"<string>\",\n        \"sha1Thumbprint\": \"<string>\",\n        \"sha256Fingerprint\": \"<string>\",\n        \"sha256Thumbprint\": \"<string>\",\n        \"subject\": \"<string>\",\n        \"validFrom\": \"<long>\",\n        \"validTo\": \"<long>\"\n      },\n      \"expirationInstant\": \"<long>\",\n      \"hasPrivateKey\": \"<boolean>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"issuer\": \"<string>\",\n      \"kid\": \"<string>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"length\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"privateKey\": \"<string>\",\n      \"publicKey\": \"<string>\",\n      \"secret\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"algorithm\": \"<string>\",\n      \"certificate\": \"<string>\",\n      \"certificateInformation\": {\n        \"issuer\": \"<string>\",\n        \"md5Fingerprint\": \"<string>\",\n        \"serialNumber\": \"<string>\",\n        \"sha1Fingerprint\": \"<string>\",\n        \"sha1Thumbprint\": \"<string>\",\n        \"sha256Fingerprint\": \"<string>\",\n        \"sha256Thumbprint\": \"<string>\",\n        \"subject\": \"<string>\",\n        \"validFrom\": \"<long>\",\n        \"validTo\": \"<long>\"\n      },\n      \"expirationInstant\": \"<long>\",\n      \"hasPrivateKey\": \"<boolean>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"issuer\": \"<string>\",\n      \"kid\": \"<string>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"length\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"privateKey\": \"<string>\",\n      \"publicKey\": \"<string>\",\n      \"secret\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "84aabac6-021d-4109-82f2-cd6718c3970a",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "key",
+                    ":keyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "keyId",
+                      "description": "(Required) The Id of the key to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key\": {\n    \"algorithm\": \"<string>\",\n    \"certificate\": \"<string>\",\n    \"certificateInformation\": {\n      \"issuer\": \"<string>\",\n      \"md5Fingerprint\": \"<string>\",\n      \"serialNumber\": \"<string>\",\n      \"sha1Fingerprint\": \"<string>\",\n      \"sha1Thumbprint\": \"<string>\",\n      \"sha256Fingerprint\": \"<string>\",\n      \"sha256Thumbprint\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"validFrom\": \"<long>\",\n      \"validTo\": \"<long>\"\n    },\n    \"expirationInstant\": \"<long>\",\n    \"hasPrivateKey\": \"<boolean>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"issuer\": \"<string>\",\n    \"kid\": \"<string>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"length\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"privateKey\": \"<string>\",\n    \"publicKey\": \"<string>\",\n    \"secret\": \"<string>\",\n    \"type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:9011",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "64b7c08b-9998-455f-896b-4bb002804955",
+    "name": "FusionAuth Api Key API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.",
+      "type": "text/plain"
+    }
+  }
+}

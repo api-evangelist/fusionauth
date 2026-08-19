@@ -1,0 +1,1613 @@
+{
+  "item": [
+    {
+      "id": "b3a5d592-a015-4ec5-9946-5d461ab6e2c9",
+      "name": "Jwt",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "da8d9e66-4457-459f-8733-52d996e94ff0",
+          "name": "issue JWT With Id",
+          "request": {
+            "name": "issue JWT With Id",
+            "description": {
+              "content": "Issue a new access token (JWT) for the requested Application after ensuring the provided JWT is valid. A valid access token is properly signed and not expired. <p> This API may be used in an SSO configuration to issue new tokens for another application after the user has obtained a valid token from authentication.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "jwt",
+                "issue"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "applicationId",
+                  "value": "<string>",
+                  "description": "The Application Id for which you are requesting a new access token be issued."
+                },
+                {
+                  "disabled": false,
+                  "key": "refreshToken",
+                  "value": "<string>",
+                  "description": "An existing refresh token used to request a refresh token in addition to a JWT in the response. <p>The target application represented by the applicationId request parameter must have refresh tokens enabled in order to receive a refresh token in the response.</p>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "cb54790a-ebed-46ad-bb5c-491e50bfbbba",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "jwt",
+                    "issue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "applicationId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "refreshToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"refreshToken\": \"string\",\n  \"token\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "784f0cce-fc23-4739-8738-b2e0c69ca06c",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "jwt",
+                    "issue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "applicationId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "refreshToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "71cc323b-0549-4e7b-b77c-abe5929f3610",
+          "name": "retrieve Jwt Public Key",
+          "request": {
+            "name": "retrieve Jwt Public Key",
+            "description": {
+              "content": "Retrieves the Public Key configured for verifying the JSON Web Tokens (JWT) issued by the Login API by the Application Id. OR Retrieves the Public Key configured for verifying JSON Web Tokens (JWT) by the key Id (kid).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "jwt",
+                "public-key"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "applicationId",
+                  "value": "<string>",
+                  "description": "The Id of the Application for which this key is used."
+                },
+                {
+                  "disabled": false,
+                  "key": "keyId",
+                  "value": "<string>",
+                  "description": "The Id of the public key (kid)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5984ad62-e69f-4aa3-ba72-53efebd99c45",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "jwt",
+                    "public-key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "applicationId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "keyId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"publicKey\": \"string\",\n  \"publicKeys\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cd742485-147c-4a61-95c7-44fd8da7a606",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "jwt",
+                    "public-key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "applicationId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "keyId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c77ff8c6-5914-4e17-89cb-07104f1056a1",
+          "name": "reconcile JWT With Id",
+          "request": {
+            "name": "reconcile JWT With Id",
+            "description": {
+              "content": "Reconcile a User to FusionAuth using JWT issued from another Identity Provider.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "jwt",
+                "reconcile"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"connectionTestId\": \"<string>\",\n  \"data\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"identityProviderId\": \"<uuid>\",\n  \"noLink\": \"<boolean>\",\n  \"encodedJWT\": \"<string>\",\n  \"applicationId\": \"<uuid>\",\n  \"ipAddress\": \"<string>\",\n  \"metaData\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"device\": {\n      \"description\": \"<string>\",\n      \"lastAccessedAddress\": \"<string>\",\n      \"lastAccessedInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  },\n  \"newDevice\": \"<boolean>\",\n  \"noJWT\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5769590a-37a1-4c2b-98bb-ff1d2008b581",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "jwt",
+                    "reconcile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectionTestId\": \"<string>\",\n  \"data\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"identityProviderId\": \"<uuid>\",\n  \"noLink\": \"<boolean>\",\n  \"encodedJWT\": \"<string>\",\n  \"applicationId\": \"<uuid>\",\n  \"ipAddress\": \"<string>\",\n  \"metaData\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"device\": {\n      \"description\": \"<string>\",\n      \"lastAccessedAddress\": \"<string>\",\n      \"lastAccessedInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  },\n  \"newDevice\": \"<boolean>\",\n  \"noJWT\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"actions\": [\n    {\n      \"actionId\": \"76fa79d3-4942-a1d1-4998-7da50871dd5a\",\n      \"actionerUserId\": \"53d7b473-27ba-b83b-f2a5-90bebc18707e\",\n      \"expiry\": \"<long>\",\n      \"localizedName\": \"string\",\n      \"localizedOption\": \"string\",\n      \"localizedReason\": \"string\",\n      \"name\": \"string\",\n      \"option\": \"string\",\n      \"reason\": \"string\",\n      \"reasonCode\": \"string\"\n    },\n    {\n      \"actionId\": \"d9b8e524-31d7-e38b-e2c0-aaa4370dbad6\",\n      \"actionerUserId\": \"c10ba82e-6337-2ea5-ed16-81200c5602b0\",\n      \"expiry\": \"<long>\",\n      \"localizedName\": \"string\",\n      \"localizedOption\": \"string\",\n      \"localizedReason\": \"string\",\n      \"name\": \"string\",\n      \"option\": \"string\",\n      \"reason\": \"string\",\n      \"reasonCode\": \"string\"\n    }\n  ],\n  \"changePasswordId\": \"string\",\n  \"changePasswordReason\": \"Administrative\",\n  \"configurableMethods\": [\n    \"string\",\n    \"string\"\n  ],\n  \"emailVerificationId\": \"string\",\n  \"identityVerificationId\": \"string\",\n  \"methods\": [\n    {\n      \"authenticator\": {\n        \"algorithm\": \"HmacSHA256\",\n        \"codeLength\": 4356,\n        \"timeStep\": 4616\n      },\n      \"email\": \"string\",\n      \"id\": \"string\",\n      \"lastUsed\": false,\n      \"method\": \"string\",\n      \"mobilePhone\": \"string\",\n      \"secret\": \"string\"\n    },\n    {\n      \"authenticator\": {\n        \"algorithm\": \"HmacSHA512\",\n        \"codeLength\": 8387,\n        \"timeStep\": 6121\n      },\n      \"email\": \"string\",\n      \"id\": \"string\",\n      \"lastUsed\": false,\n      \"method\": \"string\",\n      \"mobilePhone\": \"string\",\n      \"secret\": \"string\"\n    }\n  ],\n  \"pendingIdPLinkId\": \"string\",\n  \"refreshToken\": \"string\",\n  \"refreshTokenId\": \"920a1dc9-2231-70f7-ab0d-e1a7b8c9350f\",\n  \"registrationVerificationId\": \"string\",\n  \"state\": {\n    \"key_0\": {}\n  },\n  \"token\": \"string\",\n  \"tokenExpirationInstant\": \"<long>\",\n  \"trustToken\": \"string\",\n  \"twoFactorId\": \"string\",\n  \"twoFactorTrustId\": \"string\",\n  \"user\": {\n    \"preferredLanguages\": [\n      \"en_US\",\n      \"en_US\"\n    ],\n    \"active\": false,\n    \"birthDate\": \"2007-12-03\",\n    \"cleanSpeakId\": \"7722e03f-fd9c-5447-af39-562100b90700\",\n    \"data\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"email\": \"string\",\n    \"expiry\": \"<long>\",\n    \"firstName\": \"string\",\n    \"fullName\": \"string\",\n    \"imageUrl\": \"string\",\n    \"insertInstant\": \"<long>\",\n    \"lastName\": \"string\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"middleName\": \"string\",\n    \"mobilePhone\": \"string\",\n    \"parentEmail\": \"string\",\n    \"phoneNumber\": \"string\",\n    \"tenantId\": \"9321ff28-d26e-2a51-d21c-33239659d14d\",\n    \"timezone\": \"wwwwwwwwww/wwwwww\",\n    \"twoFactor\": {\n      \"methods\": [\n        {\n          \"authenticator\": {\n            \"algorithm\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"codeLength\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"timeStep\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"email\": \"string\",\n          \"id\": \"string\",\n          \"lastUsed\": false,\n          \"method\": \"string\",\n          \"mobilePhone\": \"string\",\n          \"secret\": \"string\"\n        },\n        {\n          \"authenticator\": {\n            \"algorithm\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"codeLength\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"timeStep\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"email\": \"string\",\n          \"id\": \"string\",\n          \"lastUsed\": true,\n          \"method\": \"string\",\n          \"mobilePhone\": \"string\",\n          \"secret\": \"string\"\n        }\n      ],\n      \"recoveryCodes\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"memberships\": [\n      {\n        \"data\": {\n          \"key_0\": {},\n          \"key_1\": {}\n        },\n        \"groupId\": \"029fcc2d-7763-2dfe-2226-333129edd5fd\",\n        \"id\": \"daec2ab5-6e54-1a1e-4bee-77462df57209\",\n        \"insertInstant\": \"<long>\",\n        \"userId\": \"64fd0de1-7b22-b195-6fb7-4444d13c5d91\"\n      },\n      {\n        \"data\": {\n          \"key_0\": {},\n          \"key_1\": {}\n        },\n        \"groupId\": \"e1abac28-e3f0-1310-d125-427c3d7da660\",\n        \"id\": \"5561016b-d18e-8d52-c724-d8fab23feb03\",\n        \"insertInstant\": \"<long>\",\n        \"userId\": \"11b17eeb-5c42-91b6-f304-8f151ad88c57\"\n      }\n    ],\n    \"registrations\": [\n      {\n        \"data\": {\n          \"key_0\": {},\n          \"key_1\": {}\n        },\n        \"preferredLanguages\": [\n          \"en_US\",\n          \"en_US\"\n        ],\n        \"tokens\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\",\n          \"key_3\": \"string\"\n        },\n        \"applicationId\": \"d72ff4c0-97fd-7cfa-f4a3-491eeac50e2e\",\n        \"authenticationToken\": \"string\",\n        \"cleanSpeakId\": \"29900eb1-7d43-339f-16de-af3215593d47\",\n        \"id\": \"1880fa1b-bf97-39a5-ac2b-0b1882ce39fd\",\n        \"insertInstant\": \"<long>\",\n        \"lastLoginInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"timezone\": \"wwwwwwwwww/www\",\n        \"username\": \"string\",\n        \"usernameStatus\": \"PENDING\",\n        \"verified\": true,\n        \"verifiedInstant\": \"<long>\"\n      },\n      {\n        \"data\": {\n          \"key_0\": {}\n        },\n        \"preferredLanguages\": [\n          \"en_US\",\n          \"en_US\"\n        ],\n        \"tokens\": {\n          \"key_0\": \"string\"\n        },\n        \"applicationId\": \"9013a1d1-4c42-1a64-3289-9928cb0105ff\",\n        \"authenticationToken\": \"string\",\n        \"cleanSpeakId\": \"6d54ccea-4ed1-0a8b-8092-d699a1c8885e\",\n        \"id\": \"366ffc8c-6a9e-165c-528a-f51124cc82c4\",\n        \"insertInstant\": \"<long>\",\n        \"lastLoginInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"timezone\": \"wwwww/wwwwwwww\",\n        \"username\": \"string\",\n        \"usernameStatus\": \"REJECTED\",\n        \"verified\": false,\n        \"verifiedInstant\": \"<long>\"\n      }\n    ],\n    \"identities\": [\n      {\n        \"displayValue\": \"string\",\n        \"insertInstant\": \"<long>\",\n        \"lastLoginInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"moderationStatus\": \"REJECTED\",\n        \"primary\": true,\n        \"type\": {\n          \"name\": \"string\"\n        },\n        \"value\": \"string\",\n        \"verified\": true,\n        \"verifiedInstant\": \"<long>\",\n        \"verifiedReason\": \"Implicit\"\n      },\n      {\n        \"displayValue\": \"string\",\n        \"insertInstant\": \"<long>\",\n        \"lastLoginInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"moderationStatus\": \"REJECTED\",\n        \"primary\": true,\n        \"type\": {\n          \"name\": \"string\"\n        },\n        \"value\": \"string\",\n        \"verified\": false,\n        \"verifiedInstant\": \"<long>\",\n        \"verifiedReason\": \"Completed\"\n      }\n    ],\n    \"breachedPasswordLastCheckedInstant\": \"<long>\",\n    \"breachedPasswordStatus\": \"None\",\n    \"connectorId\": \"be7ef5b5-a97d-6a27-e441-f10fee34b43b\",\n    \"encryptionScheme\": \"string\",\n    \"factor\": 9728,\n    \"id\": \"68d24ed4-dcf7-a962-7d81-d5b683b1703e\",\n    \"lastLoginInstant\": \"<long>\",\n    \"password\": \"string\",\n    \"passwordChangeReason\": \"Validation\",\n    \"passwordChangeRequired\": true,\n    \"passwordLastUpdateInstant\": \"<long>\",\n    \"salt\": \"string\",\n    \"uniqueUsername\": \"string\",\n    \"username\": \"string\",\n    \"usernameStatus\": \"ACTIVE\",\n    \"verified\": true,\n    \"verifiedInstant\": \"<long>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ff165088-7df6-495d-b136-0a8b931612a5",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "jwt",
+                    "reconcile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectionTestId\": \"<string>\",\n  \"data\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"identityProviderId\": \"<uuid>\",\n  \"noLink\": \"<boolean>\",\n  \"encodedJWT\": \"<string>\",\n  \"applicationId\": \"<uuid>\",\n  \"ipAddress\": \"<string>\",\n  \"metaData\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"device\": {\n      \"description\": \"<string>\",\n      \"lastAccessedAddress\": \"<string>\",\n      \"lastAccessedInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  },\n  \"newDevice\": \"<boolean>\",\n  \"noJWT\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5ebf89a6-7a53-4f05-b5e8-95afd48ccbc9",
+          "name": "exchange Refresh Token For JWT With Id",
+          "request": {
+            "name": "exchange Refresh Token For JWT With Id",
+            "description": {
+              "content": "Exchange a refresh token for a new JWT.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "jwt",
+                "refresh"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"refreshToken\": \"<string>\",\n  \"timeToLiveInSeconds\": \"<integer>\",\n  \"token\": \"<string>\",\n  \"eventInfo\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"deviceDescription\": \"<string>\",\n    \"deviceName\": \"<string>\",\n    \"deviceType\": \"<string>\",\n    \"ipAddress\": \"<string>\",\n    \"location\": {\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\",\n      \"region\": \"<string>\",\n      \"zipcode\": \"<string>\",\n      \"displayString\": \"<string>\"\n    },\n    \"os\": \"<string>\",\n    \"userAgent\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c58de23e-5850-4df4-ace2-f365f114dd1d",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "jwt",
+                    "refresh"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"refreshToken\": \"<string>\",\n  \"timeToLiveInSeconds\": \"<integer>\",\n  \"token\": \"<string>\",\n  \"eventInfo\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"deviceDescription\": \"<string>\",\n    \"deviceName\": \"<string>\",\n    \"deviceType\": \"<string>\",\n    \"ipAddress\": \"<string>\",\n    \"location\": {\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\",\n      \"region\": \"<string>\",\n      \"zipcode\": \"<string>\",\n      \"displayString\": \"<string>\"\n    },\n    \"os\": \"<string>\",\n    \"userAgent\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"refreshToken\": \"string\",\n  \"refreshTokenId\": \"a4aa0b6d-c07a-75fd-9ce5-fc96ee98c727\",\n  \"token\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fe25a168-c9d5-445e-bfee-fb56c5d048f6",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "jwt",
+                    "refresh"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"refreshToken\": \"<string>\",\n  \"timeToLiveInSeconds\": \"<integer>\",\n  \"token\": \"<string>\",\n  \"eventInfo\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"deviceDescription\": \"<string>\",\n    \"deviceName\": \"<string>\",\n    \"deviceType\": \"<string>\",\n    \"ipAddress\": \"<string>\",\n    \"location\": {\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\",\n      \"region\": \"<string>\",\n      \"zipcode\": \"<string>\",\n      \"displayString\": \"<string>\"\n    },\n    \"os\": \"<string>\",\n    \"userAgent\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7894bef3-5af9-463c-97f6-c2295fc1cb6e",
+          "name": "retrieve Refresh Tokens With Id",
+          "request": {
+            "name": "retrieve Refresh Tokens With Id",
+            "description": {
+              "content": "Retrieves the refresh tokens that belong to the user with the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "jwt",
+                "refresh"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "userId",
+                  "value": "<string>",
+                  "description": "The Id of the user."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eb02734b-037c-4ca4-8e39-0f7482dace85",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "jwt",
+                    "refresh"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"refreshToken\": {\n    \"applicationId\": \"c795d193-75ab-7fd9-6d29-fa142ab9b2ed\",\n    \"data\": {\n      \"key_0\": {}\n    },\n    \"id\": \"9d7aceed-da62-b918-43cf-71d60a595ff1\",\n    \"insertInstant\": \"<long>\",\n    \"metaData\": {\n      \"data\": {\n        \"key_0\": \"<object>\"\n      },\n      \"device\": {\n        \"description\": \"<string>\",\n        \"lastAccessedAddress\": \"<string>\",\n        \"lastAccessedInstant\": \"<long>\",\n        \"name\": \"<string>\",\n        \"type\": \"<string>\"\n      }\n    },\n    \"startInstant\": \"<long>\",\n    \"tenantId\": \"3c0e60a5-e815-28fb-eadc-9500797455b2\",\n    \"token\": \"string\",\n    \"userId\": \"62be52a4-2b89-3a43-8d9f-96b4da395ef4\"\n  },\n  \"refreshTokens\": [\n    {\n      \"applicationId\": \"1b23ed9a-d2d2-21db-c185-dae494e547d8\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"id\": \"4132f979-1f50-27ba-4d72-652c2c1d98a7\",\n      \"insertInstant\": \"<long>\",\n      \"metaData\": {\n        \"data\": {\n          \"key_0\": \"<object>\"\n        },\n        \"device\": {\n          \"description\": \"<string>\",\n          \"lastAccessedAddress\": \"<string>\",\n          \"lastAccessedInstant\": \"<long>\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      },\n      \"startInstant\": \"<long>\",\n      \"tenantId\": \"e2ae9522-af5e-2c3a-db35-3660b5ebb40a\",\n      \"token\": \"string\",\n      \"userId\": \"1363a1fa-511f-dea0-9d45-78d9b7f182e9\"\n    },\n    {\n      \"applicationId\": \"1da22b4c-f08a-eef8-a402-6030dc918c9c\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"id\": \"15be7484-24ce-c8e1-aa7e-3cc7f3aaf7fe\",\n      \"insertInstant\": \"<long>\",\n      \"metaData\": {\n        \"data\": {\n          \"key_0\": \"<object>\",\n          \"key_1\": \"<object>\",\n          \"key_2\": \"<object>\"\n        },\n        \"device\": {\n          \"description\": \"<string>\",\n          \"lastAccessedAddress\": \"<string>\",\n          \"lastAccessedInstant\": \"<long>\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      },\n      \"startInstant\": \"<long>\",\n      \"tenantId\": \"d12b56c2-da2b-79e9-57e7-ae4bff30882c\",\n      \"token\": \"string\",\n      \"userId\": \"585d54a7-75c5-2e8f-efb2-ab7bb5f8171d\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b185549a-8f28-41d1-8472-f323cfec87f4",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "jwt",
+                    "refresh"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b4e545ee-423c-4a62-bb7d-a99e23728753",
+          "name": "delete Jwt Refresh",
+          "request": {
+            "name": "delete Jwt Refresh",
+            "description": {
+              "content": "Revokes refresh tokens using the information in the JSON body. The handling for this method is the same as the revokeRefreshToken method and is based on the information you provide in the RefreshDeleteRequest object. See that method for additional information. OR Revoke all refresh tokens that belong to a user by user Id for a specific application by applicationId. OR Revoke all refresh tokens that belong to a user by user Id. OR Revoke all refresh tokens that belong to an application by applicationId. OR Revokes a single refresh token by using the actual refresh token value. This refresh token value is sensitive, so  be careful with this API request. OR Revokes refresh tokens.  Usage examples:   - Delete a single refresh token, pass in only the token.       revokeRefreshToken(token)    - Delete all refresh tokens for a user, pass in only the userId.       revokeRefreshToken(null, userId)    - Delete all refresh tokens for a user for a specific application, pass in both the userId and the applicationId.       revokeRefreshToken(null, userId, applicationId)    - Delete all refresh tokens for an application       revokeRefreshToken(null, null, applicationId)  Note: <code>null</code> may be handled differently depending upon the programming language.  See also: (method names may vary by language... but you'll figure it out)   - revokeRefreshTokenById  - revokeRefreshTokenByToken  - revokeRefreshTokensByUserId  - revokeRefreshTokensByApplicationId  - revokeRefreshTokensByUserIdForApplication",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "jwt",
+                "refresh"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "userId",
+                  "value": "<string>",
+                  "description": "The unique Id of the user that you want to delete all refresh tokens for."
+                },
+                {
+                  "disabled": false,
+                  "key": "applicationId",
+                  "value": "<string>",
+                  "description": "The unique Id of the application that you want to delete refresh tokens for."
+                },
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "The refresh token to delete."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"applicationId\": \"<uuid>\",\n  \"token\": \"<string>\",\n  \"userId\": \"<uuid>\",\n  \"eventInfo\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"deviceDescription\": \"<string>\",\n    \"deviceName\": \"<string>\",\n    \"deviceType\": \"<string>\",\n    \"ipAddress\": \"<string>\",\n    \"location\": {\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\",\n      \"region\": \"<string>\",\n      \"zipcode\": \"<string>\",\n      \"displayString\": \"<string>\"\n    },\n    \"os\": \"<string>\",\n    \"userAgent\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "da5c026a-43f6-487b-b457-d30c0d071eba",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "jwt",
+                    "refresh"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "applicationId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"applicationId\": \"<uuid>\",\n  \"token\": \"<string>\",\n  \"userId\": \"<uuid>\",\n  \"eventInfo\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"deviceDescription\": \"<string>\",\n    \"deviceName\": \"<string>\",\n    \"deviceType\": \"<string>\",\n    \"ipAddress\": \"<string>\",\n    \"location\": {\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\",\n      \"region\": \"<string>\",\n      \"zipcode\": \"<string>\",\n      \"displayString\": \"<string>\"\n    },\n    \"os\": \"<string>\",\n    \"userAgent\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c6e610fd-9974-4fe4-aed7-06b0f14fc4dc",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "jwt",
+                    "refresh"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "applicationId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"applicationId\": \"<uuid>\",\n  \"token\": \"<string>\",\n  \"userId\": \"<uuid>\",\n  \"eventInfo\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"deviceDescription\": \"<string>\",\n    \"deviceName\": \"<string>\",\n    \"deviceType\": \"<string>\",\n    \"ipAddress\": \"<string>\",\n    \"location\": {\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\",\n      \"region\": \"<string>\",\n      \"zipcode\": \"<string>\",\n      \"displayString\": \"<string>\"\n    },\n    \"os\": \"<string>\",\n    \"userAgent\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7c10134a-a218-4f70-9a55-bded34ba356a",
+          "name": "retrieve Refresh Token By Id With Id",
+          "request": {
+            "name": "retrieve Refresh Token By Id With Id",
+            "description": {
+              "content": "Retrieves a single refresh token by unique Id. This is not the same thing as the string value of the refresh token. If you have that, you already have what you need.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "jwt",
+                "refresh",
+                ":tokenId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tokenId",
+                  "description": "(Required) The Id of the token."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "88c20eef-1688-4193-8a57-48bedbc9d0e0",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "jwt",
+                    "refresh",
+                    ":tokenId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tokenId",
+                      "description": "(Required) The Id of the token."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"refreshToken\": {\n    \"applicationId\": \"3d7ce718-50ab-b9eb-10a3-23ae31f5f1a4\",\n    \"data\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"id\": \"079501c7-d96c-6413-b008-b52b26e6c9d4\",\n    \"insertInstant\": \"<long>\",\n    \"metaData\": {\n      \"data\": {\n        \"key_0\": \"<object>\"\n      },\n      \"device\": {\n        \"description\": \"<string>\",\n        \"lastAccessedAddress\": \"<string>\",\n        \"lastAccessedInstant\": \"<long>\",\n        \"name\": \"<string>\",\n        \"type\": \"<string>\"\n      }\n    },\n    \"startInstant\": \"<long>\",\n    \"tenantId\": \"6ce4579f-8867-56ba-5869-43abe13c9bcb\",\n    \"token\": \"string\",\n    \"userId\": \"06a28d16-cf87-b823-8128-71245d93c008\"\n  },\n  \"refreshTokens\": [\n    {\n      \"applicationId\": \"50e13fa0-bb44-cf9a-f489-dee4692a3215\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"id\": \"f04cc034-1f8c-6e98-87a2-9c5c804f866d\",\n      \"insertInstant\": \"<long>\",\n      \"metaData\": {\n        \"data\": {\n          \"key_0\": \"<object>\"\n        },\n        \"device\": {\n          \"description\": \"<string>\",\n          \"lastAccessedAddress\": \"<string>\",\n          \"lastAccessedInstant\": \"<long>\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      },\n      \"startInstant\": \"<long>\",\n      \"tenantId\": \"e3d2eeaf-090e-0642-84aa-d47b2445af7b\",\n      \"token\": \"string\",\n      \"userId\": \"27794284-0f16-7a86-2687-83e094ef7915\"\n    },\n    {\n      \"applicationId\": \"11f2c3ca-6e97-ee32-787f-b63a6b8f12e9\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"id\": \"ff6404a6-6bca-a292-438b-ac1e211acba4\",\n      \"insertInstant\": \"<long>\",\n      \"metaData\": {\n        \"data\": {\n          \"key_0\": \"<object>\"\n        },\n        \"device\": {\n          \"description\": \"<string>\",\n          \"lastAccessedAddress\": \"<string>\",\n          \"lastAccessedInstant\": \"<long>\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      },\n      \"startInstant\": \"<long>\",\n      \"tenantId\": \"b07d5443-6167-3349-d0f5-b85e69581eb5\",\n      \"token\": \"string\",\n      \"userId\": \"dc2049e6-77b4-d686-cb84-10a9407bc720\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c01a48e8-89e7-4518-96a0-6983a616a8bd",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "jwt",
+                    "refresh",
+                    ":tokenId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tokenId",
+                      "description": "(Required) The Id of the token."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2ce4851c-5985-49ee-be9f-bb3f348140c9",
+          "name": "revoke Refresh Token By Id With Id",
+          "request": {
+            "name": "revoke Refresh Token By Id With Id",
+            "description": {
+              "content": "Revokes a single refresh token by the unique Id. The unique Id is not sensitive as it cannot be used to obtain another JWT.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "jwt",
+                "refresh",
+                ":tokenId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tokenId",
+                  "description": "(Required) The unique Id of the token to delete."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "03c607e8-9f18-479e-b370-f8891be6d931",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "jwt",
+                    "refresh",
+                    ":tokenId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tokenId",
+                      "description": "(Required) The unique Id of the token to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ed7565b3-c8dd-4115-918f-3d1cd82e3f39",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "jwt",
+                    "refresh",
+                    ":tokenId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tokenId",
+                      "description": "(Required) The unique Id of the token to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2537786e-394d-4d8a-9fde-467cb1d31211",
+          "name": "validate JWT With Id",
+          "request": {
+            "name": "validate JWT With Id",
+            "description": {
+              "content": "Validates the provided JWT (encoded JWT string) to ensure the token is valid. A valid access token is properly signed and not expired. <p> This API may be used to verify the JWT as well as decode the encoded JWT into human readable identity claims.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "jwt",
+                "validate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2c7820bf-381f-43b0-a6e7-7fe97608d8d9",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "jwt",
+                    "validate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jwt\": {\n    \"aud\": {},\n    \"exp\": \"<long>\",\n    \"iat\": \"<long>\",\n    \"iss\": \"string\",\n    \"nbf\": \"<long>\",\n    \"otherClaims\": {\n      \"key_0\": {}\n    },\n    \"sub\": \"string\",\n    \"jti\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "239e9c09-6fdc-418b-8169-1eeb0b42f764",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "jwt",
+                    "validate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9472af30-22ce-4d9a-b22b-a09ee4e3abf2",
+          "name": "vend JWT With Id",
+          "request": {
+            "name": "vend JWT With Id",
+            "description": {
+              "content": "It's a JWT vending machine!  Issue a new access token (JWT) with the provided claims in the request. This JWT is not scoped to a tenant or user, it is a free form  token that will contain what claims you provide. <p> The iat, exp and jti claims will be added by FusionAuth, all other claims must be provided by the caller.  If a TTL is not provided in the request, the TTL will be retrieved from the default Tenant or the Tenant specified on the request either  by way of the X-FusionAuth-TenantId request header, or a tenant scoped API key.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "jwt",
+                "vend"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"claims\": {\n    \"key_0\": \"<object>\"\n  },\n  \"keyId\": \"<uuid>\",\n  \"timeToLiveInSeconds\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "83621bb1-ce63-4599-9041-2de9b4f01d8a",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "jwt",
+                    "vend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"claims\": {\n    \"key_0\": \"<object>\",\n    \"key_1\": \"<object>\"\n  },\n  \"keyId\": \"<uuid>\",\n  \"timeToLiveInSeconds\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"token\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "892533cc-c5d6-498b-82b2-95166292f59a",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "jwt",
+                    "vend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"claims\": {\n    \"key_0\": \"<object>\",\n    \"key_1\": \"<object>\"\n  },\n  \"keyId\": \"<uuid>\",\n  \"timeToLiveInSeconds\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:9011",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5f6819a5-1285-4665-962d-d21aa2f7ecb4",
+    "name": "FusionAuth Api Key Jwt API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.",
+      "type": "text/plain"
+    }
+  }
+}

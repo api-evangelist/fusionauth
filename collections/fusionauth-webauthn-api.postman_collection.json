@@ -1,0 +1,1563 @@
+{
+  "item": [
+    {
+      "id": "165a17c7-2185-40f8-9fbd-e2b65f5048cb",
+      "name": "Webauthn",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "467a5145-cb8f-407c-931e-11aed420e9f6",
+          "name": "delete Web Authn Credentials For User With Id",
+          "request": {
+            "name": "delete Web Authn Credentials For User With Id",
+            "description": {
+              "content": "Deletes all of the WebAuthn credentials for the given User Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "webauthn"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "userId",
+                  "value": "<string>",
+                  "description": "The unique Id of the User to delete WebAuthn passkeys for."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d55c91f8-9c19-4d10-8699-e7743ea68e9b",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "webauthn"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3aa0a0fb-3672-4422-ace8-5aa934da23fd",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "webauthn"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d9811be3-073a-4658-9bb0-f44f7ef05507",
+          "name": "retrieve Web Authn Credentials For User With Id",
+          "request": {
+            "name": "retrieve Web Authn Credentials For User With Id",
+            "description": {
+              "content": "Retrieves all WebAuthn credentials for the given user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "webauthn"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "userId",
+                  "value": "<string>",
+                  "description": "The user's ID."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "83162f6f-f699-4885-917f-9c65a4434884",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "webauthn"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"credential\": {\n    \"algorithm\": \"PS256\",\n    \"attestationType\": \"self\",\n    \"authenticatorSupportsUserVerification\": true,\n    \"credentialId\": \"string\",\n    \"data\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"discoverable\": true,\n    \"displayName\": \"string\",\n    \"id\": \"e1493fab-3a18-3a87-a982-b58057ffa932\",\n    \"insertInstant\": 4072,\n    \"lastUseInstant\": 193,\n    \"name\": \"string\",\n    \"publicKey\": \"string\",\n    \"relyingPartyId\": \"string\",\n    \"signCount\": 5963,\n    \"tenantId\": \"840e52ef-f4f8-cccf-af46-91273c8f733d\",\n    \"transports\": [\n      \"string\",\n      \"string\"\n    ],\n    \"userAgent\": \"string\",\n    \"userId\": \"9c2f34b8-33a6-45c9-fbc9-068630fc9cde\"\n  },\n  \"credentials\": [\n    {\n      \"algorithm\": \"ES384\",\n      \"attestationType\": \"none\",\n      \"authenticatorSupportsUserVerification\": true,\n      \"credentialId\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"discoverable\": true,\n      \"displayName\": \"string\",\n      \"id\": \"a999f59c-dcad-574c-f19d-520583294bac\",\n      \"insertInstant\": 4156,\n      \"lastUseInstant\": 1559,\n      \"name\": \"string\",\n      \"publicKey\": \"string\",\n      \"relyingPartyId\": \"string\",\n      \"signCount\": 7016,\n      \"tenantId\": \"19c0ca7d-927f-6a9e-50fd-2ba2e5d825ca\",\n      \"transports\": [\n        \"string\",\n        \"string\"\n      ],\n      \"userAgent\": \"string\",\n      \"userId\": \"a6da044a-6e42-8210-4c4c-0d840a057b6a\"\n    },\n    {\n      \"algorithm\": \"ES384\",\n      \"attestationType\": \"attestationCa\",\n      \"authenticatorSupportsUserVerification\": true,\n      \"credentialId\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"discoverable\": true,\n      \"displayName\": \"string\",\n      \"id\": \"e9de8676-4501-9818-58ac-47a2c94ede92\",\n      \"insertInstant\": 305,\n      \"lastUseInstant\": 1576,\n      \"name\": \"string\",\n      \"publicKey\": \"string\",\n      \"relyingPartyId\": \"string\",\n      \"signCount\": 8404,\n      \"tenantId\": \"c2037ad3-ba3c-6abf-9a91-554c57c02195\",\n      \"transports\": [\n        \"string\",\n        \"string\"\n      ],\n      \"userAgent\": \"string\",\n      \"userId\": \"c841ec32-32d2-e68d-a79e-8eb74cd2e46a\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "309168ff-3397-4e66-ba86-0a00d3716e81",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "webauthn"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "88011ca6-f41b-4719-81ae-e02269e8385c",
+          "name": "complete Web Authn Assertion With Id",
+          "request": {
+            "name": "complete Web Authn Assertion With Id",
+            "description": {
+              "content": "Complete a WebAuthn authentication ceremony by validating the signature against the previously generated challenge without logging the user in",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "webauthn",
+                "assert"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"credential\": {\n    \"clientExtensionResults\": {\n      \"credProps\": {\n        \"rk\": \"<boolean>\"\n      }\n    },\n    \"id\": \"<string>\",\n    \"rpId\": \"<string>\",\n    \"response\": {\n      \"authenticatorData\": \"<string>\",\n      \"clientDataJSON\": \"<string>\",\n      \"signature\": \"<string>\",\n      \"userHandle\": \"<string>\"\n    },\n    \"type\": \"<string>\"\n  },\n  \"origin\": \"<string>\",\n  \"rpId\": \"<string>\",\n  \"twoFactorTrustId\": \"<string>\",\n  \"applicationId\": \"<uuid>\",\n  \"ipAddress\": \"<string>\",\n  \"metaData\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\"\n    },\n    \"device\": {\n      \"description\": \"<string>\",\n      \"lastAccessedAddress\": \"<string>\",\n      \"lastAccessedInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  },\n  \"newDevice\": \"<boolean>\",\n  \"noJWT\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0be74347-a3db-4ea9-a09c-c9be5da0dcb6",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "webauthn",
+                    "assert"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"credential\": {\n    \"clientExtensionResults\": {\n      \"credProps\": {\n        \"rk\": \"<boolean>\"\n      }\n    },\n    \"id\": \"<string>\",\n    \"rpId\": \"<string>\",\n    \"response\": {\n      \"authenticatorData\": \"<string>\",\n      \"clientDataJSON\": \"<string>\",\n      \"signature\": \"<string>\",\n      \"userHandle\": \"<string>\"\n    },\n    \"type\": \"<string>\"\n  },\n  \"origin\": \"<string>\",\n  \"rpId\": \"<string>\",\n  \"twoFactorTrustId\": \"<string>\",\n  \"applicationId\": \"<uuid>\",\n  \"ipAddress\": \"<string>\",\n  \"metaData\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"device\": {\n      \"description\": \"<string>\",\n      \"lastAccessedAddress\": \"<string>\",\n      \"lastAccessedInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  },\n  \"newDevice\": \"<boolean>\",\n  \"noJWT\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"credential\": {\n    \"algorithm\": \"RS384\",\n    \"attestationType\": \"anonymizationCa\",\n    \"authenticatorSupportsUserVerification\": true,\n    \"credentialId\": \"string\",\n    \"data\": {\n      \"key_0\": {}\n    },\n    \"discoverable\": true,\n    \"displayName\": \"string\",\n    \"id\": \"b6882a2f-a3a3-63d4-15c7-a547ba3963c5\",\n    \"insertInstant\": \"<long>\",\n    \"lastUseInstant\": \"<long>\",\n    \"name\": \"string\",\n    \"publicKey\": \"string\",\n    \"relyingPartyId\": \"string\",\n    \"signCount\": 6708,\n    \"tenantId\": \"f00fc27a-184d-6376-eff1-d125b42b3ce3\",\n    \"transports\": [\n      \"string\",\n      \"string\"\n    ],\n    \"userAgent\": \"string\",\n    \"userId\": \"a997e283-1a5d-3363-7d8e-02290d0fc243\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8acd3fa3-8333-4180-9cae-d472658d6aa0",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "webauthn",
+                    "assert"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"credential\": {\n    \"clientExtensionResults\": {\n      \"credProps\": {\n        \"rk\": \"<boolean>\"\n      }\n    },\n    \"id\": \"<string>\",\n    \"rpId\": \"<string>\",\n    \"response\": {\n      \"authenticatorData\": \"<string>\",\n      \"clientDataJSON\": \"<string>\",\n      \"signature\": \"<string>\",\n      \"userHandle\": \"<string>\"\n    },\n    \"type\": \"<string>\"\n  },\n  \"origin\": \"<string>\",\n  \"rpId\": \"<string>\",\n  \"twoFactorTrustId\": \"<string>\",\n  \"applicationId\": \"<uuid>\",\n  \"ipAddress\": \"<string>\",\n  \"metaData\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"device\": {\n      \"description\": \"<string>\",\n      \"lastAccessedAddress\": \"<string>\",\n      \"lastAccessedInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  },\n  \"newDevice\": \"<boolean>\",\n  \"noJWT\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "88a0be0a-5bee-4771-9303-bd3a9857e00e",
+          "name": "import Web Authn Credential With Id",
+          "request": {
+            "name": "import Web Authn Credential With Id",
+            "description": {
+              "content": "Import a WebAuthn credential",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "webauthn",
+                "import"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"credentials\": [\n    {\n      \"algorithm\": \"<string>\",\n      \"attestationType\": \"<string>\",\n      \"authenticatorSupportsUserVerification\": \"<boolean>\",\n      \"credentialId\": \"<string>\",\n      \"data\": {\n        \"key_0\": \"<object>\"\n      },\n      \"discoverable\": \"<boolean>\",\n      \"displayName\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUseInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"publicKey\": \"<string>\",\n      \"relyingPartyId\": \"<string>\",\n      \"signCount\": \"<integer>\",\n      \"tenantId\": \"<uuid>\",\n      \"transports\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"userAgent\": \"<string>\",\n      \"userId\": \"<uuid>\"\n    },\n    {\n      \"algorithm\": \"<string>\",\n      \"attestationType\": \"<string>\",\n      \"authenticatorSupportsUserVerification\": \"<boolean>\",\n      \"credentialId\": \"<string>\",\n      \"data\": {\n        \"key_0\": \"<object>\"\n      },\n      \"discoverable\": \"<boolean>\",\n      \"displayName\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUseInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"publicKey\": \"<string>\",\n      \"relyingPartyId\": \"<string>\",\n      \"signCount\": \"<integer>\",\n      \"tenantId\": \"<uuid>\",\n      \"transports\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"userAgent\": \"<string>\",\n      \"userId\": \"<uuid>\"\n    }\n  ],\n  \"validateDbConstraints\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c5a59912-a9c4-4ef2-80fe-cfdbbb83161f",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "webauthn",
+                    "import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"credentials\": [\n    {\n      \"algorithm\": \"<string>\",\n      \"attestationType\": \"<string>\",\n      \"authenticatorSupportsUserVerification\": \"<boolean>\",\n      \"credentialId\": \"<string>\",\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"discoverable\": \"<boolean>\",\n      \"displayName\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUseInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"publicKey\": \"<string>\",\n      \"relyingPartyId\": \"<string>\",\n      \"signCount\": \"<integer>\",\n      \"tenantId\": \"<uuid>\",\n      \"transports\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"userAgent\": \"<string>\",\n      \"userId\": \"<uuid>\"\n    },\n    {\n      \"algorithm\": \"<string>\",\n      \"attestationType\": \"<string>\",\n      \"authenticatorSupportsUserVerification\": \"<boolean>\",\n      \"credentialId\": \"<string>\",\n      \"data\": {\n        \"key_0\": \"<object>\"\n      },\n      \"discoverable\": \"<boolean>\",\n      \"displayName\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUseInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"publicKey\": \"<string>\",\n      \"relyingPartyId\": \"<string>\",\n      \"signCount\": \"<integer>\",\n      \"tenantId\": \"<uuid>\",\n      \"transports\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"userAgent\": \"<string>\",\n      \"userId\": \"<uuid>\"\n    }\n  ],\n  \"validateDbConstraints\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a974fdde-bfc1-46d7-afb6-ed7c8bf356b1",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "webauthn",
+                    "import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"credentials\": [\n    {\n      \"algorithm\": \"<string>\",\n      \"attestationType\": \"<string>\",\n      \"authenticatorSupportsUserVerification\": \"<boolean>\",\n      \"credentialId\": \"<string>\",\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"discoverable\": \"<boolean>\",\n      \"displayName\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUseInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"publicKey\": \"<string>\",\n      \"relyingPartyId\": \"<string>\",\n      \"signCount\": \"<integer>\",\n      \"tenantId\": \"<uuid>\",\n      \"transports\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"userAgent\": \"<string>\",\n      \"userId\": \"<uuid>\"\n    },\n    {\n      \"algorithm\": \"<string>\",\n      \"attestationType\": \"<string>\",\n      \"authenticatorSupportsUserVerification\": \"<boolean>\",\n      \"credentialId\": \"<string>\",\n      \"data\": {\n        \"key_0\": \"<object>\"\n      },\n      \"discoverable\": \"<boolean>\",\n      \"displayName\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUseInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"publicKey\": \"<string>\",\n      \"relyingPartyId\": \"<string>\",\n      \"signCount\": \"<integer>\",\n      \"tenantId\": \"<uuid>\",\n      \"transports\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"userAgent\": \"<string>\",\n      \"userId\": \"<uuid>\"\n    }\n  ],\n  \"validateDbConstraints\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "93da20d4-8b79-4d96-ac13-0821590660a5",
+          "name": "complete Web Authn Login With Id",
+          "request": {
+            "name": "complete Web Authn Login With Id",
+            "description": {
+              "content": "Complete a WebAuthn authentication ceremony by validating the signature against the previously generated challenge and then login the user in",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "webauthn",
+                "login"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"credential\": {\n    \"clientExtensionResults\": {\n      \"credProps\": {\n        \"rk\": \"<boolean>\"\n      }\n    },\n    \"id\": \"<string>\",\n    \"rpId\": \"<string>\",\n    \"response\": {\n      \"authenticatorData\": \"<string>\",\n      \"clientDataJSON\": \"<string>\",\n      \"signature\": \"<string>\",\n      \"userHandle\": \"<string>\"\n    },\n    \"type\": \"<string>\"\n  },\n  \"origin\": \"<string>\",\n  \"rpId\": \"<string>\",\n  \"twoFactorTrustId\": \"<string>\",\n  \"applicationId\": \"<uuid>\",\n  \"ipAddress\": \"<string>\",\n  \"metaData\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"device\": {\n      \"description\": \"<string>\",\n      \"lastAccessedAddress\": \"<string>\",\n      \"lastAccessedInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  },\n  \"newDevice\": \"<boolean>\",\n  \"noJWT\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a8e88896-9d74-46a1-80d0-f691c2329ea2",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "webauthn",
+                    "login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"credential\": {\n    \"clientExtensionResults\": {\n      \"credProps\": {\n        \"rk\": \"<boolean>\"\n      }\n    },\n    \"id\": \"<string>\",\n    \"rpId\": \"<string>\",\n    \"response\": {\n      \"authenticatorData\": \"<string>\",\n      \"clientDataJSON\": \"<string>\",\n      \"signature\": \"<string>\",\n      \"userHandle\": \"<string>\"\n    },\n    \"type\": \"<string>\"\n  },\n  \"origin\": \"<string>\",\n  \"rpId\": \"<string>\",\n  \"twoFactorTrustId\": \"<string>\",\n  \"applicationId\": \"<uuid>\",\n  \"ipAddress\": \"<string>\",\n  \"metaData\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"device\": {\n      \"description\": \"<string>\",\n      \"lastAccessedAddress\": \"<string>\",\n      \"lastAccessedInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  },\n  \"newDevice\": \"<boolean>\",\n  \"noJWT\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"actions\": [\n    {\n      \"actionId\": \"a0b56aa6-1e93-1d58-60d0-b13edb288fea\",\n      \"actionerUserId\": \"a02b2627-ca90-e436-c777-811e9de2a752\",\n      \"expiry\": \"<long>\",\n      \"localizedName\": \"string\",\n      \"localizedOption\": \"string\",\n      \"localizedReason\": \"string\",\n      \"name\": \"string\",\n      \"option\": \"string\",\n      \"reason\": \"string\",\n      \"reasonCode\": \"string\"\n    },\n    {\n      \"actionId\": \"695b49cb-8cd6-6aee-7cda-554c788c8a83\",\n      \"actionerUserId\": \"421ca621-7d6a-65c7-69c0-e5a018a22cd7\",\n      \"expiry\": \"<long>\",\n      \"localizedName\": \"string\",\n      \"localizedOption\": \"string\",\n      \"localizedReason\": \"string\",\n      \"name\": \"string\",\n      \"option\": \"string\",\n      \"reason\": \"string\",\n      \"reasonCode\": \"string\"\n    }\n  ],\n  \"changePasswordId\": \"string\",\n  \"changePasswordReason\": \"Expired\",\n  \"configurableMethods\": [\n    \"string\",\n    \"string\"\n  ],\n  \"emailVerificationId\": \"string\",\n  \"identityVerificationId\": \"string\",\n  \"methods\": [\n    {\n      \"authenticator\": {\n        \"algorithm\": \"HmacSHA512\",\n        \"codeLength\": 6729,\n        \"timeStep\": 3842\n      },\n      \"email\": \"string\",\n      \"id\": \"string\",\n      \"lastUsed\": false,\n      \"method\": \"string\",\n      \"mobilePhone\": \"string\",\n      \"secret\": \"string\"\n    },\n    {\n      \"authenticator\": {\n        \"algorithm\": \"HmacSHA1\",\n        \"codeLength\": 3018,\n        \"timeStep\": 5835\n      },\n      \"email\": \"string\",\n      \"id\": \"string\",\n      \"lastUsed\": true,\n      \"method\": \"string\",\n      \"mobilePhone\": \"string\",\n      \"secret\": \"string\"\n    }\n  ],\n  \"pendingIdPLinkId\": \"string\",\n  \"refreshToken\": \"string\",\n  \"refreshTokenId\": \"ea7e639c-3387-9b64-da38-6bb72c809f9e\",\n  \"registrationVerificationId\": \"string\",\n  \"state\": {\n    \"key_0\": {}\n  },\n  \"token\": \"string\",\n  \"tokenExpirationInstant\": \"<long>\",\n  \"trustToken\": \"string\",\n  \"twoFactorId\": \"string\",\n  \"twoFactorTrustId\": \"string\",\n  \"user\": {\n    \"preferredLanguages\": [\n      \"en_US\",\n      \"en_US\"\n    ],\n    \"active\": true,\n    \"birthDate\": \"2007-12-03\",\n    \"cleanSpeakId\": \"19e7e25e-8571-3af2-9f20-24ccfb0a452c\",\n    \"data\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {},\n      \"key_3\": {}\n    },\n    \"email\": \"string\",\n    \"expiry\": \"<long>\",\n    \"firstName\": \"string\",\n    \"fullName\": \"string\",\n    \"imageUrl\": \"string\",\n    \"insertInstant\": \"<long>\",\n    \"lastName\": \"string\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"middleName\": \"string\",\n    \"mobilePhone\": \"string\",\n    \"parentEmail\": \"string\",\n    \"phoneNumber\": \"string\",\n    \"tenantId\": \"d94e307e-6b66-5162-e795-ed5bba265b1a\",\n    \"timezone\": \"ww/wwwwww\",\n    \"twoFactor\": {\n      \"methods\": [\n        {\n          \"authenticator\": {\n            \"algorithm\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"codeLength\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"timeStep\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"email\": \"string\",\n          \"id\": \"string\",\n          \"lastUsed\": true,\n          \"method\": \"string\",\n          \"mobilePhone\": \"string\",\n          \"secret\": \"string\"\n        },\n        {\n          \"authenticator\": {\n            \"algorithm\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"codeLength\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"timeStep\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"email\": \"string\",\n          \"id\": \"string\",\n          \"lastUsed\": false,\n          \"method\": \"string\",\n          \"mobilePhone\": \"string\",\n          \"secret\": \"string\"\n        }\n      ],\n      \"recoveryCodes\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"memberships\": [\n      {\n        \"data\": {\n          \"key_0\": {},\n          \"key_1\": {},\n          \"key_2\": {}\n        },\n        \"groupId\": \"c85361da-2242-4fad-5ce7-37bd78095085\",\n        \"id\": \"55a82faa-899b-25b8-fddd-d52a556da1ca\",\n        \"insertInstant\": \"<long>\",\n        \"userId\": \"96f0ebe9-1ad7-6131-64fb-90582d04ad68\"\n      },\n      {\n        \"data\": {\n          \"key_0\": {}\n        },\n        \"groupId\": \"f430e6f4-cfb5-e1d8-fd2c-e3f4cc7a0a3f\",\n        \"id\": \"2f2dd057-bb81-360a-7b79-0f65e69af718\",\n        \"insertInstant\": \"<long>\",\n        \"userId\": \"02398c45-b0a2-51ee-4893-fa89bc35b0d7\"\n      }\n    ],\n    \"registrations\": [\n      {\n        \"data\": {\n          \"key_0\": {}\n        },\n        \"preferredLanguages\": [\n          \"en_US\",\n          \"en_US\"\n        ],\n        \"tokens\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"applicationId\": \"240f06e1-27e4-bb3b-d124-3a8821ee8c9f\",\n        \"authenticationToken\": \"string\",\n        \"cleanSpeakId\": \"5aac5b65-ea47-bb8f-9727-ca3aec672787\",\n        \"id\": \"329f90aa-e800-45d9-e9d5-d767d3e99b7a\",\n        \"insertInstant\": \"<long>\",\n        \"lastLoginInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"timezone\": \"wwwwwwww/wwwwwwwwww\",\n        \"username\": \"string\",\n        \"usernameStatus\": \"REJECTED\",\n        \"verified\": true,\n        \"verifiedInstant\": \"<long>\"\n      },\n      {\n        \"data\": {\n          \"key_0\": {}\n        },\n        \"preferredLanguages\": [\n          \"en_US\",\n          \"en_US\"\n        ],\n        \"tokens\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"applicationId\": \"63649546-de39-2c5e-9657-ac92ca8e788e\",\n        \"authenticationToken\": \"string\",\n        \"cleanSpeakId\": \"1feebd0e-2295-33c8-6926-3ecb9c2aba65\",\n        \"id\": \"51c06eaa-4014-b440-dac1-04c3234d9b53\",\n        \"insertInstant\": \"<long>\",\n        \"lastLoginInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"timezone\": \"wwwwwww/wwww\",\n        \"username\": \"string\",\n        \"usernameStatus\": \"PENDING\",\n        \"verified\": false,\n        \"verifiedInstant\": \"<long>\"\n      }\n    ],\n    \"identities\": [\n      {\n        \"displayValue\": \"string\",\n        \"insertInstant\": \"<long>\",\n        \"lastLoginInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"moderationStatus\": \"ACTIVE\",\n        \"primary\": true,\n        \"type\": {\n          \"name\": \"string\"\n        },\n        \"value\": \"string\",\n        \"verified\": true,\n        \"verifiedInstant\": \"<long>\",\n        \"verifiedReason\": \"Pending\"\n      },\n      {\n        \"displayValue\": \"string\",\n        \"insertInstant\": \"<long>\",\n        \"lastLoginInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"moderationStatus\": \"PENDING\",\n        \"primary\": true,\n        \"type\": {\n          \"name\": \"string\"\n        },\n        \"value\": \"string\",\n        \"verified\": false,\n        \"verifiedInstant\": \"<long>\",\n        \"verifiedReason\": \"Unverifiable\"\n      }\n    ],\n    \"breachedPasswordLastCheckedInstant\": \"<long>\",\n    \"breachedPasswordStatus\": \"SubAddressMatch\",\n    \"connectorId\": \"67524cd0-74e4-669a-9f8c-c4a7361cf957\",\n    \"encryptionScheme\": \"string\",\n    \"factor\": 4922,\n    \"id\": \"07f4fb5b-e542-7d16-f59c-c4976441858c\",\n    \"lastLoginInstant\": \"<long>\",\n    \"password\": \"string\",\n    \"passwordChangeReason\": \"Administrative\",\n    \"passwordChangeRequired\": false,\n    \"passwordLastUpdateInstant\": \"<long>\",\n    \"salt\": \"string\",\n    \"uniqueUsername\": \"string\",\n    \"username\": \"string\",\n    \"usernameStatus\": \"PENDING\",\n    \"verified\": true,\n    \"verifiedInstant\": \"<long>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7255c304-0019-4692-8deb-10609436ea20",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "webauthn",
+                    "login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"credential\": {\n    \"clientExtensionResults\": {\n      \"credProps\": {\n        \"rk\": \"<boolean>\"\n      }\n    },\n    \"id\": \"<string>\",\n    \"rpId\": \"<string>\",\n    \"response\": {\n      \"authenticatorData\": \"<string>\",\n      \"clientDataJSON\": \"<string>\",\n      \"signature\": \"<string>\",\n      \"userHandle\": \"<string>\"\n    },\n    \"type\": \"<string>\"\n  },\n  \"origin\": \"<string>\",\n  \"rpId\": \"<string>\",\n  \"twoFactorTrustId\": \"<string>\",\n  \"applicationId\": \"<uuid>\",\n  \"ipAddress\": \"<string>\",\n  \"metaData\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"device\": {\n      \"description\": \"<string>\",\n      \"lastAccessedAddress\": \"<string>\",\n      \"lastAccessedInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  },\n  \"newDevice\": \"<boolean>\",\n  \"noJWT\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "597d17ed-c84b-43df-94c0-c58d3bbc3415",
+          "name": "complete Web Authn Registration With Id",
+          "request": {
+            "name": "complete Web Authn Registration With Id",
+            "description": {
+              "content": "Complete a WebAuthn registration ceremony by validating the client request and saving the new credential",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "webauthn",
+                "register",
+                "complete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"credential\": {\n    \"clientExtensionResults\": {\n      \"credProps\": {\n        \"rk\": \"<boolean>\"\n      }\n    },\n    \"id\": \"<string>\",\n    \"rpId\": \"<string>\",\n    \"response\": {\n      \"attestationObject\": \"<string>\",\n      \"clientDataJSON\": \"<string>\"\n    },\n    \"transports\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"type\": \"<string>\"\n  },\n  \"origin\": \"<string>\",\n  \"rpId\": \"<string>\",\n  \"userId\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ebae268a-d102-48a2-b38a-4f24874bbf2b",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "webauthn",
+                    "register",
+                    "complete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"credential\": {\n    \"clientExtensionResults\": {\n      \"credProps\": {\n        \"rk\": \"<boolean>\"\n      }\n    },\n    \"id\": \"<string>\",\n    \"rpId\": \"<string>\",\n    \"response\": {\n      \"attestationObject\": \"<string>\",\n      \"clientDataJSON\": \"<string>\"\n    },\n    \"transports\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"type\": \"<string>\"\n  },\n  \"origin\": \"<string>\",\n  \"rpId\": \"<string>\",\n  \"userId\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"credential\": {\n    \"algorithm\": \"<string>\",\n    \"attestationType\": \"<string>\",\n    \"authenticatorSupportsUserVerification\": \"<boolean>\",\n    \"credentialId\": \"<string>\",\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"discoverable\": \"<boolean>\",\n    \"displayName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUseInstant\": \"<long>\",\n    \"name\": \"<string>\",\n    \"publicKey\": \"<string>\",\n    \"relyingPartyId\": \"<string>\",\n    \"signCount\": \"<integer>\",\n    \"tenantId\": \"<uuid>\",\n    \"transports\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"userAgent\": \"<string>\",\n    \"userId\": \"<uuid>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e836b49e-ef62-4afd-8e9c-5a5da5378182",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "webauthn",
+                    "register",
+                    "complete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"credential\": {\n    \"clientExtensionResults\": {\n      \"credProps\": {\n        \"rk\": \"<boolean>\"\n      }\n    },\n    \"id\": \"<string>\",\n    \"rpId\": \"<string>\",\n    \"response\": {\n      \"attestationObject\": \"<string>\",\n      \"clientDataJSON\": \"<string>\"\n    },\n    \"transports\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"type\": \"<string>\"\n  },\n  \"origin\": \"<string>\",\n  \"rpId\": \"<string>\",\n  \"userId\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "13357a1e-8c9a-44c6-8fb4-ebb3a0f724f9",
+          "name": "start Web Authn Registration With Id",
+          "request": {
+            "name": "start Web Authn Registration With Id",
+            "description": {
+              "content": "Start a WebAuthn registration ceremony by generating a new challenge for the user",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "webauthn",
+                "register",
+                "start"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"displayName\": \"<string>\",\n  \"name\": \"<string>\",\n  \"userAgent\": \"<string>\",\n  \"userId\": \"<uuid>\",\n  \"workflow\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cab19f5a-41ae-482d-bb35-7740877b3f53",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "webauthn",
+                    "register",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"displayName\": \"<string>\",\n  \"name\": \"<string>\",\n  \"userAgent\": \"<string>\",\n  \"userId\": \"<uuid>\",\n  \"workflow\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"options\": {\n    \"attestation\": \"direct\",\n    \"authenticatorSelection\": {\n      \"authenticatorAttachment\": \"crossPlatform\",\n      \"requireResidentKey\": true,\n      \"residentKey\": \"discouraged\",\n      \"userVerification\": \"preferred\"\n    },\n    \"challenge\": \"string\",\n    \"excludeCredentials\": [\n      {\n        \"id\": \"string\",\n        \"transports\": [\n          \"string\",\n          \"string\"\n        ],\n        \"type\": \"publicKey\"\n      },\n      {\n        \"id\": \"string\",\n        \"transports\": [\n          \"string\",\n          \"string\"\n        ],\n        \"type\": \"publicKey\"\n      }\n    ],\n    \"extensions\": {\n      \"credProps\": false\n    },\n    \"pubKeyCredParams\": [\n      {\n        \"alg\": \"<string>\",\n        \"type\": \"publicKey\"\n      },\n      {\n        \"alg\": \"<string>\",\n        \"type\": \"publicKey\"\n      }\n    ],\n    \"rp\": {\n      \"id\": \"string\",\n      \"name\": \"string\"\n    },\n    \"timeout\": 7594,\n    \"user\": {\n      \"displayName\": \"string\",\n      \"id\": \"string\",\n      \"name\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dd18a23b-1477-4ac8-af70-7088f78b04b0",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "webauthn",
+                    "register",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"displayName\": \"<string>\",\n  \"name\": \"<string>\",\n  \"userAgent\": \"<string>\",\n  \"userId\": \"<uuid>\",\n  \"workflow\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ce29ccfb-a0a9-4573-9816-19af8f8f0a78",
+          "name": "start Web Authn Login With Id",
+          "request": {
+            "name": "start Web Authn Login With Id",
+            "description": {
+              "content": "Start a WebAuthn authentication ceremony by generating a new challenge for the user",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "webauthn",
+                "start"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"applicationId\": \"<uuid>\",\n  \"credentialId\": \"<uuid>\",\n  \"loginId\": \"<string>\",\n  \"loginIdTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"state\": {\n    \"key_0\": \"<object>\"\n  },\n  \"userId\": \"<uuid>\",\n  \"workflow\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0e92a044-f648-4258-9b33-89f68a94a958",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "webauthn",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"applicationId\": \"<uuid>\",\n  \"credentialId\": \"<uuid>\",\n  \"loginId\": \"<string>\",\n  \"loginIdTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"state\": {\n    \"key_0\": \"<object>\"\n  },\n  \"userId\": \"<uuid>\",\n  \"workflow\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"options\": {\n    \"allowCredentials\": [\n      {\n        \"id\": \"string\",\n        \"transports\": [\n          \"string\",\n          \"string\"\n        ],\n        \"type\": \"publicKey\"\n      },\n      {\n        \"id\": \"string\",\n        \"transports\": [\n          \"string\",\n          \"string\"\n        ],\n        \"type\": \"publicKey\"\n      }\n    ],\n    \"challenge\": \"string\",\n    \"rpId\": \"string\",\n    \"timeout\": 5356,\n    \"userVerification\": \"preferred\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9f130b6a-a38a-4801-bda4-fa759cf99da3",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "webauthn",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"applicationId\": \"<uuid>\",\n  \"credentialId\": \"<uuid>\",\n  \"loginId\": \"<string>\",\n  \"loginIdTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"state\": {\n    \"key_0\": \"<object>\"\n  },\n  \"userId\": \"<uuid>\",\n  \"workflow\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "811ef3c4-3f76-41fe-9405-888ba79adbf2",
+          "name": "delete Web Authn Credential With Id",
+          "request": {
+            "name": "delete Web Authn Credential With Id",
+            "description": {
+              "content": "Deletes the WebAuthn credential for the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "webauthn",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The Id of the WebAuthn credential to delete."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b32f700f-d324-4753-9ad0-6e8d84e51537",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "webauthn",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The Id of the WebAuthn credential to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b9ae4b37-3e49-4f86-995f-78a5458df9f9",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "webauthn",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The Id of the WebAuthn credential to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6eff9320-29b0-40ef-bfa7-31f817e8b1b3",
+          "name": "retrieve Web Authn Credential With Id",
+          "request": {
+            "name": "retrieve Web Authn Credential With Id",
+            "description": {
+              "content": "Retrieves the WebAuthn credential for the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "webauthn",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The Id of the WebAuthn credential."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "01968ef7-a24e-4c50-a91b-f641ec9ab7ba",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "webauthn",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The Id of the WebAuthn credential."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"credential\": {\n    \"algorithm\": \"<string>\",\n    \"attestationType\": \"<string>\",\n    \"authenticatorSupportsUserVerification\": \"<boolean>\",\n    \"credentialId\": \"<string>\",\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"discoverable\": \"<boolean>\",\n    \"displayName\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUseInstant\": \"<long>\",\n    \"name\": \"<string>\",\n    \"publicKey\": \"<string>\",\n    \"relyingPartyId\": \"<string>\",\n    \"signCount\": \"<integer>\",\n    \"tenantId\": \"<uuid>\",\n    \"transports\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"userAgent\": \"<string>\",\n    \"userId\": \"<uuid>\"\n  },\n  \"credentials\": [\n    {\n      \"algorithm\": \"<string>\",\n      \"attestationType\": \"<string>\",\n      \"authenticatorSupportsUserVerification\": \"<boolean>\",\n      \"credentialId\": \"<string>\",\n      \"data\": {\n        \"key_0\": \"<object>\"\n      },\n      \"discoverable\": \"<boolean>\",\n      \"displayName\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUseInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"publicKey\": \"<string>\",\n      \"relyingPartyId\": \"<string>\",\n      \"signCount\": \"<integer>\",\n      \"tenantId\": \"<uuid>\",\n      \"transports\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"userAgent\": \"<string>\",\n      \"userId\": \"<uuid>\"\n    },\n    {\n      \"algorithm\": \"<string>\",\n      \"attestationType\": \"<string>\",\n      \"authenticatorSupportsUserVerification\": \"<boolean>\",\n      \"credentialId\": \"<string>\",\n      \"data\": {\n        \"key_0\": \"<object>\"\n      },\n      \"discoverable\": \"<boolean>\",\n      \"displayName\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUseInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"publicKey\": \"<string>\",\n      \"relyingPartyId\": \"<string>\",\n      \"signCount\": \"<integer>\",\n      \"tenantId\": \"<uuid>\",\n      \"transports\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"userAgent\": \"<string>\",\n      \"userId\": \"<uuid>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d7c0be2d-b593-4385-b243-7abe8bc951ed",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "webauthn",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The Id of the WebAuthn credential."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:9011",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9a757bca-37d5-40c7-9b5b-67c30a028ebe",
+    "name": "FusionAuth Api Key Webauthn API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.",
+      "type": "text/plain"
+    }
+  }
+}

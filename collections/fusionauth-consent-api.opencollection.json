@@ -1,0 +1,199 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FusionAuth Api Key Consent API",
+    "version": "1.66.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Consent",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "createConsent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/consent",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a user consent type. You can optionally specify an Id for the consent type, if not provided one will be generated."
+        },
+        {
+          "info": {
+            "name": "searchConsentsWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/consent/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Searches consents with the specified criteria and pagination."
+        },
+        {
+          "info": {
+            "name": "retrieveConsentWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/consent/:consentId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "consentId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the consent."
+              }
+            ]
+          },
+          "docs": "Retrieves the Consent for the given Id."
+        },
+        {
+          "info": {
+            "name": "createConsentWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/consent/:consentId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "consentId",
+                "value": "",
+                "type": "path",
+                "description": "The Id for the consent. If not provided a secure random UUID will be generated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a user consent type. You can optionally specify an Id for the consent type, if not provided one will be generated."
+        },
+        {
+          "info": {
+            "name": "updateConsentWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:9011/api/consent/:consentId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "consentId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the consent to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the consent with the given Id."
+        },
+        {
+          "info": {
+            "name": "patchConsentWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:9011/api/consent/:consentId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "consentId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the consent to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates, via PATCH, the consent with the given Id."
+        },
+        {
+          "info": {
+            "name": "deleteConsentWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:9011/api/consent/:consentId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "consentId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the consent to delete."
+              }
+            ]
+          },
+          "docs": "Deletes the consent for the given Id."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

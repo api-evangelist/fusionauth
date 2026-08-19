@@ -1,0 +1,1330 @@
+{
+  "item": [
+    {
+      "id": "6a26a245-90f7-4083-a7fa-24c2d6518a0f",
+      "name": "User Action",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "71600374-a000-45b8-99e4-990e588ae617",
+          "name": "create User Action",
+          "request": {
+            "name": "create User Action",
+            "description": {
+              "content": "Creates a user action. This action cannot be taken on a user until this call successfully returns. Anytime after that the user action can be applied to any user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "user-action"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                "key": "X-FusionAuth-TenantId",
+                "value": "<UUID>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userAction\": {\n    \"active\": \"<boolean>\",\n    \"cancelEmailTemplateId\": \"<uuid>\",\n    \"endEmailTemplateId\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"includeEmailInEventJSON\": \"<boolean>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedNames\": {},\n    \"modifyEmailTemplateId\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"options\": [\n      {\n        \"localizedNames\": {},\n        \"name\": \"<string>\"\n      },\n      {\n        \"localizedNames\": {},\n        \"name\": \"<string>\"\n      }\n    ],\n    \"preventLogin\": \"<boolean>\",\n    \"sendEndEvent\": \"<boolean>\",\n    \"startEmailTemplateId\": \"<uuid>\",\n    \"temporal\": \"<boolean>\",\n    \"transactionType\": \"<string>\",\n    \"userEmailingEnabled\": \"<boolean>\",\n    \"userNotificationsEnabled\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "455fdf12-b0b1-4af4-b7dd-98f7b31066d1",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "user-action"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userAction\": {\n    \"active\": \"<boolean>\",\n    \"cancelEmailTemplateId\": \"<uuid>\",\n    \"endEmailTemplateId\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"includeEmailInEventJSON\": \"<boolean>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedNames\": {},\n    \"modifyEmailTemplateId\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"options\": [\n      {\n        \"localizedNames\": {},\n        \"name\": \"<string>\"\n      },\n      {\n        \"localizedNames\": {},\n        \"name\": \"<string>\"\n      }\n    ],\n    \"preventLogin\": \"<boolean>\",\n    \"sendEndEvent\": \"<boolean>\",\n    \"startEmailTemplateId\": \"<uuid>\",\n    \"temporal\": \"<boolean>\",\n    \"transactionType\": \"<string>\",\n    \"userEmailingEnabled\": \"<boolean>\",\n    \"userNotificationsEnabled\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"userAction\": {\n    \"active\": \"<boolean>\",\n    \"cancelEmailTemplateId\": \"<uuid>\",\n    \"endEmailTemplateId\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"includeEmailInEventJSON\": \"<boolean>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedNames\": {},\n    \"modifyEmailTemplateId\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"options\": [\n      {\n        \"localizedNames\": {},\n        \"name\": \"<string>\"\n      },\n      {\n        \"localizedNames\": {},\n        \"name\": \"<string>\"\n      }\n    ],\n    \"preventLogin\": \"<boolean>\",\n    \"sendEndEvent\": \"<boolean>\",\n    \"startEmailTemplateId\": \"<uuid>\",\n    \"temporal\": \"<boolean>\",\n    \"transactionType\": \"<string>\",\n    \"userEmailingEnabled\": \"<boolean>\",\n    \"userNotificationsEnabled\": \"<boolean>\"\n  },\n  \"userActions\": [\n    {\n      \"active\": \"<boolean>\",\n      \"cancelEmailTemplateId\": \"<uuid>\",\n      \"endEmailTemplateId\": \"<uuid>\",\n      \"id\": \"<uuid>\",\n      \"includeEmailInEventJSON\": \"<boolean>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"localizedNames\": {},\n      \"modifyEmailTemplateId\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"options\": [\n        {\n          \"localizedNames\": {},\n          \"name\": \"<string>\"\n        },\n        {\n          \"localizedNames\": {},\n          \"name\": \"<string>\"\n        }\n      ],\n      \"preventLogin\": \"<boolean>\",\n      \"sendEndEvent\": \"<boolean>\",\n      \"startEmailTemplateId\": \"<uuid>\",\n      \"temporal\": \"<boolean>\",\n      \"transactionType\": \"<string>\",\n      \"userEmailingEnabled\": \"<boolean>\",\n      \"userNotificationsEnabled\": \"<boolean>\"\n    },\n    {\n      \"active\": \"<boolean>\",\n      \"cancelEmailTemplateId\": \"<uuid>\",\n      \"endEmailTemplateId\": \"<uuid>\",\n      \"id\": \"<uuid>\",\n      \"includeEmailInEventJSON\": \"<boolean>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"localizedNames\": {},\n      \"modifyEmailTemplateId\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"options\": [\n        {\n          \"localizedNames\": {},\n          \"name\": \"<string>\"\n        },\n        {\n          \"localizedNames\": {},\n          \"name\": \"<string>\"\n        }\n      ],\n      \"preventLogin\": \"<boolean>\",\n      \"sendEndEvent\": \"<boolean>\",\n      \"startEmailTemplateId\": \"<uuid>\",\n      \"temporal\": \"<boolean>\",\n      \"transactionType\": \"<string>\",\n      \"userEmailingEnabled\": \"<boolean>\",\n      \"userNotificationsEnabled\": \"<boolean>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "71b7fb76-1f6c-4ed4-b4c3-3a5c7db4f97a",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "user-action"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userAction\": {\n    \"active\": \"<boolean>\",\n    \"cancelEmailTemplateId\": \"<uuid>\",\n    \"endEmailTemplateId\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"includeEmailInEventJSON\": \"<boolean>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedNames\": {},\n    \"modifyEmailTemplateId\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"options\": [\n      {\n        \"localizedNames\": {},\n        \"name\": \"<string>\"\n      },\n      {\n        \"localizedNames\": {},\n        \"name\": \"<string>\"\n      }\n    ],\n    \"preventLogin\": \"<boolean>\",\n    \"sendEndEvent\": \"<boolean>\",\n    \"startEmailTemplateId\": \"<uuid>\",\n    \"temporal\": \"<boolean>\",\n    \"transactionType\": \"<string>\",\n    \"userEmailingEnabled\": \"<boolean>\",\n    \"userNotificationsEnabled\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "59a5f71f-832f-4c22-80b2-228833a70154",
+          "name": "retrieve User Action",
+          "request": {
+            "name": "retrieve User Action",
+            "description": {
+              "content": "Retrieves the user action for the given Id. If you pass in null for the Id, this will return all the user actions. OR Retrieves all the user actions that are currently inactive.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "user-action"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "inactive",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                "key": "X-FusionAuth-TenantId",
+                "value": "<UUID>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0ce44105-ae96-442e-bf46-fa7db4db226c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "user-action"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "inactive",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"userAction\": {\n    \"active\": \"<boolean>\",\n    \"cancelEmailTemplateId\": \"<uuid>\",\n    \"endEmailTemplateId\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"includeEmailInEventJSON\": \"<boolean>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedNames\": {},\n    \"modifyEmailTemplateId\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"options\": [\n      {\n        \"localizedNames\": {},\n        \"name\": \"<string>\"\n      },\n      {\n        \"localizedNames\": {},\n        \"name\": \"<string>\"\n      }\n    ],\n    \"preventLogin\": \"<boolean>\",\n    \"sendEndEvent\": \"<boolean>\",\n    \"startEmailTemplateId\": \"<uuid>\",\n    \"temporal\": \"<boolean>\",\n    \"transactionType\": \"<string>\",\n    \"userEmailingEnabled\": \"<boolean>\",\n    \"userNotificationsEnabled\": \"<boolean>\"\n  },\n  \"userActions\": [\n    {\n      \"active\": \"<boolean>\",\n      \"cancelEmailTemplateId\": \"<uuid>\",\n      \"endEmailTemplateId\": \"<uuid>\",\n      \"id\": \"<uuid>\",\n      \"includeEmailInEventJSON\": \"<boolean>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"localizedNames\": {},\n      \"modifyEmailTemplateId\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"options\": [\n        {\n          \"localizedNames\": {},\n          \"name\": \"<string>\"\n        },\n        {\n          \"localizedNames\": {},\n          \"name\": \"<string>\"\n        }\n      ],\n      \"preventLogin\": \"<boolean>\",\n      \"sendEndEvent\": \"<boolean>\",\n      \"startEmailTemplateId\": \"<uuid>\",\n      \"temporal\": \"<boolean>\",\n      \"transactionType\": \"<string>\",\n      \"userEmailingEnabled\": \"<boolean>\",\n      \"userNotificationsEnabled\": \"<boolean>\"\n    },\n    {\n      \"active\": \"<boolean>\",\n      \"cancelEmailTemplateId\": \"<uuid>\",\n      \"endEmailTemplateId\": \"<uuid>\",\n      \"id\": \"<uuid>\",\n      \"includeEmailInEventJSON\": \"<boolean>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"localizedNames\": {},\n      \"modifyEmailTemplateId\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"options\": [\n        {\n          \"localizedNames\": {},\n          \"name\": \"<string>\"\n        },\n        {\n          \"localizedNames\": {},\n          \"name\": \"<string>\"\n        }\n      ],\n      \"preventLogin\": \"<boolean>\",\n      \"sendEndEvent\": \"<boolean>\",\n      \"startEmailTemplateId\": \"<uuid>\",\n      \"temporal\": \"<boolean>\",\n      \"transactionType\": \"<string>\",\n      \"userEmailingEnabled\": \"<boolean>\",\n      \"userNotificationsEnabled\": \"<boolean>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "24b1fed6-3591-4639-8c2c-0f1f385591f3",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "user-action"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "inactive",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f06ae46c-3d67-4a25-96aa-4a18b069b206",
+          "name": "create User Action With Id",
+          "request": {
+            "name": "create User Action With Id",
+            "description": {
+              "content": "Creates a user action. This action cannot be taken on a user until this call successfully returns. Anytime after that the user action can be applied to any user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "user-action",
+                ":userActionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userActionId",
+                  "description": "(Required) The Id for the user action. If not provided a secure random UUID will be generated."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                "key": "X-FusionAuth-TenantId",
+                "value": "<UUID>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userAction\": {\n    \"active\": \"<boolean>\",\n    \"cancelEmailTemplateId\": \"<uuid>\",\n    \"endEmailTemplateId\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"includeEmailInEventJSON\": \"<boolean>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedNames\": {},\n    \"modifyEmailTemplateId\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"options\": [\n      {\n        \"localizedNames\": {},\n        \"name\": \"<string>\"\n      },\n      {\n        \"localizedNames\": {},\n        \"name\": \"<string>\"\n      }\n    ],\n    \"preventLogin\": \"<boolean>\",\n    \"sendEndEvent\": \"<boolean>\",\n    \"startEmailTemplateId\": \"<uuid>\",\n    \"temporal\": \"<boolean>\",\n    \"transactionType\": \"<string>\",\n    \"userEmailingEnabled\": \"<boolean>\",\n    \"userNotificationsEnabled\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4ab852a2-983b-4af9-9bef-e416f543de95",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "user-action",
+                    ":userActionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userActionId",
+                      "description": "(Required) The Id for the user action. If not provided a secure random UUID will be generated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userAction\": {\n    \"active\": \"<boolean>\",\n    \"cancelEmailTemplateId\": \"<uuid>\",\n    \"endEmailTemplateId\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"includeEmailInEventJSON\": \"<boolean>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedNames\": {},\n    \"modifyEmailTemplateId\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"options\": [\n      {\n        \"localizedNames\": {},\n        \"name\": \"<string>\"\n      },\n      {\n        \"localizedNames\": {},\n        \"name\": \"<string>\"\n      }\n    ],\n    \"preventLogin\": \"<boolean>\",\n    \"sendEndEvent\": \"<boolean>\",\n    \"startEmailTemplateId\": \"<uuid>\",\n    \"temporal\": \"<boolean>\",\n    \"transactionType\": \"<string>\",\n    \"userEmailingEnabled\": \"<boolean>\",\n    \"userNotificationsEnabled\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"userAction\": {\n    \"active\": \"<boolean>\",\n    \"cancelEmailTemplateId\": \"<uuid>\",\n    \"endEmailTemplateId\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"includeEmailInEventJSON\": \"<boolean>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedNames\": {},\n    \"modifyEmailTemplateId\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"options\": [\n      {\n        \"localizedNames\": {},\n        \"name\": \"<string>\"\n      },\n      {\n        \"localizedNames\": {},\n        \"name\": \"<string>\"\n      }\n    ],\n    \"preventLogin\": \"<boolean>\",\n    \"sendEndEvent\": \"<boolean>\",\n    \"startEmailTemplateId\": \"<uuid>\",\n    \"temporal\": \"<boolean>\",\n    \"transactionType\": \"<string>\",\n    \"userEmailingEnabled\": \"<boolean>\",\n    \"userNotificationsEnabled\": \"<boolean>\"\n  },\n  \"userActions\": [\n    {\n      \"active\": \"<boolean>\",\n      \"cancelEmailTemplateId\": \"<uuid>\",\n      \"endEmailTemplateId\": \"<uuid>\",\n      \"id\": \"<uuid>\",\n      \"includeEmailInEventJSON\": \"<boolean>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"localizedNames\": {},\n      \"modifyEmailTemplateId\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"options\": [\n        {\n          \"localizedNames\": {},\n          \"name\": \"<string>\"\n        },\n        {\n          \"localizedNames\": {},\n          \"name\": \"<string>\"\n        }\n      ],\n      \"preventLogin\": \"<boolean>\",\n      \"sendEndEvent\": \"<boolean>\",\n      \"startEmailTemplateId\": \"<uuid>\",\n      \"temporal\": \"<boolean>\",\n      \"transactionType\": \"<string>\",\n      \"userEmailingEnabled\": \"<boolean>\",\n      \"userNotificationsEnabled\": \"<boolean>\"\n    },\n    {\n      \"active\": \"<boolean>\",\n      \"cancelEmailTemplateId\": \"<uuid>\",\n      \"endEmailTemplateId\": \"<uuid>\",\n      \"id\": \"<uuid>\",\n      \"includeEmailInEventJSON\": \"<boolean>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"localizedNames\": {},\n      \"modifyEmailTemplateId\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"options\": [\n        {\n          \"localizedNames\": {},\n          \"name\": \"<string>\"\n        },\n        {\n          \"localizedNames\": {},\n          \"name\": \"<string>\"\n        }\n      ],\n      \"preventLogin\": \"<boolean>\",\n      \"sendEndEvent\": \"<boolean>\",\n      \"startEmailTemplateId\": \"<uuid>\",\n      \"temporal\": \"<boolean>\",\n      \"transactionType\": \"<string>\",\n      \"userEmailingEnabled\": \"<boolean>\",\n      \"userNotificationsEnabled\": \"<boolean>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fee2be4a-916f-4a83-aac6-8d247b3fd06a",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "user-action",
+                    ":userActionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userActionId",
+                      "description": "(Required) The Id for the user action. If not provided a secure random UUID will be generated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userAction\": {\n    \"active\": \"<boolean>\",\n    \"cancelEmailTemplateId\": \"<uuid>\",\n    \"endEmailTemplateId\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"includeEmailInEventJSON\": \"<boolean>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedNames\": {},\n    \"modifyEmailTemplateId\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"options\": [\n      {\n        \"localizedNames\": {},\n        \"name\": \"<string>\"\n      },\n      {\n        \"localizedNames\": {},\n        \"name\": \"<string>\"\n      }\n    ],\n    \"preventLogin\": \"<boolean>\",\n    \"sendEndEvent\": \"<boolean>\",\n    \"startEmailTemplateId\": \"<uuid>\",\n    \"temporal\": \"<boolean>\",\n    \"transactionType\": \"<string>\",\n    \"userEmailingEnabled\": \"<boolean>\",\n    \"userNotificationsEnabled\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "17a73c84-97e5-4b70-adcf-77f427a21f34",
+          "name": "delete User Action With Id",
+          "request": {
+            "name": "delete User Action With Id",
+            "description": {
+              "content": "Deletes the user action for the given Id. This permanently deletes the user action and also any history and logs of the action being applied to any users. OR Deactivates the user action with the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "user-action",
+                ":userActionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "hardDelete",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userActionId",
+                  "description": "(Required) The Id of the user action to delete."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                "key": "X-FusionAuth-TenantId",
+                "value": "<UUID>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0df2f6b2-cce2-4a17-8d83-6f9abb2402f4",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "user-action",
+                    ":userActionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "hardDelete",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userActionId",
+                      "description": "(Required) The Id of the user action to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e565f34e-d8bb-48e6-a4d8-568654838ef5",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "user-action",
+                    ":userActionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "hardDelete",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userActionId",
+                      "description": "(Required) The Id of the user action to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ca6a39e2-2c1f-4db2-9c95-c52113fd006a",
+          "name": "patch User Action With Id",
+          "request": {
+            "name": "patch User Action With Id",
+            "description": {
+              "content": "Updates, via PATCH, the user action with the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "user-action",
+                ":userActionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userActionId",
+                  "description": "(Required) The Id of the user action to update."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                "key": "X-FusionAuth-TenantId",
+                "value": "<UUID>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userAction\": {\n    \"active\": \"<boolean>\",\n    \"cancelEmailTemplateId\": \"<uuid>\",\n    \"endEmailTemplateId\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"includeEmailInEventJSON\": \"<boolean>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedNames\": {},\n    \"modifyEmailTemplateId\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"options\": [\n      {\n        \"localizedNames\": {},\n        \"name\": \"<string>\"\n      },\n      {\n        \"localizedNames\": {},\n        \"name\": \"<string>\"\n      }\n    ],\n    \"preventLogin\": \"<boolean>\",\n    \"sendEndEvent\": \"<boolean>\",\n    \"startEmailTemplateId\": \"<uuid>\",\n    \"temporal\": \"<boolean>\",\n    \"transactionType\": \"<string>\",\n    \"userEmailingEnabled\": \"<boolean>\",\n    \"userNotificationsEnabled\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5e8a53d3-fbf0-4c4e-ad8b-38449c17b91c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "user-action",
+                    ":userActionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userActionId",
+                      "description": "(Required) The Id of the user action to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userAction\": {\n    \"active\": \"<boolean>\",\n    \"cancelEmailTemplateId\": \"<uuid>\",\n    \"endEmailTemplateId\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"includeEmailInEventJSON\": \"<boolean>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedNames\": {},\n    \"modifyEmailTemplateId\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"options\": [\n      {\n        \"localizedNames\": {},\n        \"name\": \"<string>\"\n      },\n      {\n        \"localizedNames\": {},\n        \"name\": \"<string>\"\n      }\n    ],\n    \"preventLogin\": \"<boolean>\",\n    \"sendEndEvent\": \"<boolean>\",\n    \"startEmailTemplateId\": \"<uuid>\",\n    \"temporal\": \"<boolean>\",\n    \"transactionType\": \"<string>\",\n    \"userEmailingEnabled\": \"<boolean>\",\n    \"userNotificationsEnabled\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"userAction\": {\n    \"active\": \"<boolean>\",\n    \"cancelEmailTemplateId\": \"<uuid>\",\n    \"endEmailTemplateId\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"includeEmailInEventJSON\": \"<boolean>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedNames\": {},\n    \"modifyEmailTemplateId\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"options\": [\n      {\n        \"localizedNames\": {},\n        \"name\": \"<string>\"\n      },\n      {\n        \"localizedNames\": {},\n        \"name\": \"<string>\"\n      }\n    ],\n    \"preventLogin\": \"<boolean>\",\n    \"sendEndEvent\": \"<boolean>\",\n    \"startEmailTemplateId\": \"<uuid>\",\n    \"temporal\": \"<boolean>\",\n    \"transactionType\": \"<string>\",\n    \"userEmailingEnabled\": \"<boolean>\",\n    \"userNotificationsEnabled\": \"<boolean>\"\n  },\n  \"userActions\": [\n    {\n      \"active\": \"<boolean>\",\n      \"cancelEmailTemplateId\": \"<uuid>\",\n      \"endEmailTemplateId\": \"<uuid>\",\n      \"id\": \"<uuid>\",\n      \"includeEmailInEventJSON\": \"<boolean>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"localizedNames\": {},\n      \"modifyEmailTemplateId\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"options\": [\n        {\n          \"localizedNames\": {},\n          \"name\": \"<string>\"\n        },\n        {\n          \"localizedNames\": {},\n          \"name\": \"<string>\"\n        }\n      ],\n      \"preventLogin\": \"<boolean>\",\n      \"sendEndEvent\": \"<boolean>\",\n      \"startEmailTemplateId\": \"<uuid>\",\n      \"temporal\": \"<boolean>\",\n      \"transactionType\": \"<string>\",\n      \"userEmailingEnabled\": \"<boolean>\",\n      \"userNotificationsEnabled\": \"<boolean>\"\n    },\n    {\n      \"active\": \"<boolean>\",\n      \"cancelEmailTemplateId\": \"<uuid>\",\n      \"endEmailTemplateId\": \"<uuid>\",\n      \"id\": \"<uuid>\",\n      \"includeEmailInEventJSON\": \"<boolean>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"localizedNames\": {},\n      \"modifyEmailTemplateId\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"options\": [\n        {\n          \"localizedNames\": {},\n          \"name\": \"<string>\"\n        },\n        {\n          \"localizedNames\": {},\n          \"name\": \"<string>\"\n        }\n      ],\n      \"preventLogin\": \"<boolean>\",\n      \"sendEndEvent\": \"<boolean>\",\n      \"startEmailTemplateId\": \"<uuid>\",\n      \"temporal\": \"<boolean>\",\n      \"transactionType\": \"<string>\",\n      \"userEmailingEnabled\": \"<boolean>\",\n      \"userNotificationsEnabled\": \"<boolean>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c797e6ac-0a67-4e3f-a02d-9ddc3f062c70",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "user-action",
+                    ":userActionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userActionId",
+                      "description": "(Required) The Id of the user action to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userAction\": {\n    \"active\": \"<boolean>\",\n    \"cancelEmailTemplateId\": \"<uuid>\",\n    \"endEmailTemplateId\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"includeEmailInEventJSON\": \"<boolean>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedNames\": {},\n    \"modifyEmailTemplateId\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"options\": [\n      {\n        \"localizedNames\": {},\n        \"name\": \"<string>\"\n      },\n      {\n        \"localizedNames\": {},\n        \"name\": \"<string>\"\n      }\n    ],\n    \"preventLogin\": \"<boolean>\",\n    \"sendEndEvent\": \"<boolean>\",\n    \"startEmailTemplateId\": \"<uuid>\",\n    \"temporal\": \"<boolean>\",\n    \"transactionType\": \"<string>\",\n    \"userEmailingEnabled\": \"<boolean>\",\n    \"userNotificationsEnabled\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "543511fd-c3f3-45aa-9ca6-e18bcff50c32",
+          "name": "update User Action With Id",
+          "request": {
+            "name": "update User Action With Id",
+            "description": {
+              "content": "Updates the user action with the given Id. OR Reactivates the user action with the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "user-action",
+                ":userActionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "reactivate",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userActionId",
+                  "description": "(Required) The Id of the user action to update."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                "key": "X-FusionAuth-TenantId",
+                "value": "<UUID>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userAction\": {\n    \"active\": \"<boolean>\",\n    \"cancelEmailTemplateId\": \"<uuid>\",\n    \"endEmailTemplateId\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"includeEmailInEventJSON\": \"<boolean>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedNames\": {},\n    \"modifyEmailTemplateId\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"options\": [\n      {\n        \"localizedNames\": {},\n        \"name\": \"<string>\"\n      },\n      {\n        \"localizedNames\": {},\n        \"name\": \"<string>\"\n      }\n    ],\n    \"preventLogin\": \"<boolean>\",\n    \"sendEndEvent\": \"<boolean>\",\n    \"startEmailTemplateId\": \"<uuid>\",\n    \"temporal\": \"<boolean>\",\n    \"transactionType\": \"<string>\",\n    \"userEmailingEnabled\": \"<boolean>\",\n    \"userNotificationsEnabled\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dfd4e670-e76c-4b47-a4a9-f1ef12d4cf13",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "user-action",
+                    ":userActionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reactivate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userActionId",
+                      "description": "(Required) The Id of the user action to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userAction\": {\n    \"active\": \"<boolean>\",\n    \"cancelEmailTemplateId\": \"<uuid>\",\n    \"endEmailTemplateId\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"includeEmailInEventJSON\": \"<boolean>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedNames\": {},\n    \"modifyEmailTemplateId\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"options\": [\n      {\n        \"localizedNames\": {},\n        \"name\": \"<string>\"\n      },\n      {\n        \"localizedNames\": {},\n        \"name\": \"<string>\"\n      }\n    ],\n    \"preventLogin\": \"<boolean>\",\n    \"sendEndEvent\": \"<boolean>\",\n    \"startEmailTemplateId\": \"<uuid>\",\n    \"temporal\": \"<boolean>\",\n    \"transactionType\": \"<string>\",\n    \"userEmailingEnabled\": \"<boolean>\",\n    \"userNotificationsEnabled\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"userAction\": {\n    \"active\": \"<boolean>\",\n    \"cancelEmailTemplateId\": \"<uuid>\",\n    \"endEmailTemplateId\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"includeEmailInEventJSON\": \"<boolean>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedNames\": {},\n    \"modifyEmailTemplateId\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"options\": [\n      {\n        \"localizedNames\": {},\n        \"name\": \"<string>\"\n      },\n      {\n        \"localizedNames\": {},\n        \"name\": \"<string>\"\n      }\n    ],\n    \"preventLogin\": \"<boolean>\",\n    \"sendEndEvent\": \"<boolean>\",\n    \"startEmailTemplateId\": \"<uuid>\",\n    \"temporal\": \"<boolean>\",\n    \"transactionType\": \"<string>\",\n    \"userEmailingEnabled\": \"<boolean>\",\n    \"userNotificationsEnabled\": \"<boolean>\"\n  },\n  \"userActions\": [\n    {\n      \"active\": \"<boolean>\",\n      \"cancelEmailTemplateId\": \"<uuid>\",\n      \"endEmailTemplateId\": \"<uuid>\",\n      \"id\": \"<uuid>\",\n      \"includeEmailInEventJSON\": \"<boolean>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"localizedNames\": {},\n      \"modifyEmailTemplateId\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"options\": [\n        {\n          \"localizedNames\": {},\n          \"name\": \"<string>\"\n        },\n        {\n          \"localizedNames\": {},\n          \"name\": \"<string>\"\n        }\n      ],\n      \"preventLogin\": \"<boolean>\",\n      \"sendEndEvent\": \"<boolean>\",\n      \"startEmailTemplateId\": \"<uuid>\",\n      \"temporal\": \"<boolean>\",\n      \"transactionType\": \"<string>\",\n      \"userEmailingEnabled\": \"<boolean>\",\n      \"userNotificationsEnabled\": \"<boolean>\"\n    },\n    {\n      \"active\": \"<boolean>\",\n      \"cancelEmailTemplateId\": \"<uuid>\",\n      \"endEmailTemplateId\": \"<uuid>\",\n      \"id\": \"<uuid>\",\n      \"includeEmailInEventJSON\": \"<boolean>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"localizedNames\": {},\n      \"modifyEmailTemplateId\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"options\": [\n        {\n          \"localizedNames\": {},\n          \"name\": \"<string>\"\n        },\n        {\n          \"localizedNames\": {},\n          \"name\": \"<string>\"\n        }\n      ],\n      \"preventLogin\": \"<boolean>\",\n      \"sendEndEvent\": \"<boolean>\",\n      \"startEmailTemplateId\": \"<uuid>\",\n      \"temporal\": \"<boolean>\",\n      \"transactionType\": \"<string>\",\n      \"userEmailingEnabled\": \"<boolean>\",\n      \"userNotificationsEnabled\": \"<boolean>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f651d081-f3fe-4dee-95ed-6d5d5b1bc12e",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "user-action",
+                    ":userActionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reactivate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userActionId",
+                      "description": "(Required) The Id of the user action to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userAction\": {\n    \"active\": \"<boolean>\",\n    \"cancelEmailTemplateId\": \"<uuid>\",\n    \"endEmailTemplateId\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"includeEmailInEventJSON\": \"<boolean>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedNames\": {},\n    \"modifyEmailTemplateId\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"options\": [\n      {\n        \"localizedNames\": {},\n        \"name\": \"<string>\"\n      },\n      {\n        \"localizedNames\": {},\n        \"name\": \"<string>\"\n      }\n    ],\n    \"preventLogin\": \"<boolean>\",\n    \"sendEndEvent\": \"<boolean>\",\n    \"startEmailTemplateId\": \"<uuid>\",\n    \"temporal\": \"<boolean>\",\n    \"transactionType\": \"<string>\",\n    \"userEmailingEnabled\": \"<boolean>\",\n    \"userNotificationsEnabled\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bfffedf1-f8bc-49a6-bc4d-915010f16215",
+          "name": "retrieve User Action With Id",
+          "request": {
+            "name": "retrieve User Action With Id",
+            "description": {
+              "content": "Retrieves the user action for the given Id. If you pass in null for the Id, this will return all the user actions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "user-action",
+                ":userActionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userActionId",
+                  "description": "(Required) The Id of the user action."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                "key": "X-FusionAuth-TenantId",
+                "value": "<UUID>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4ad63b7e-3770-4ccc-bdce-4064f811c809",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "user-action",
+                    ":userActionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userActionId",
+                      "description": "(Required) The Id of the user action."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"userAction\": {\n    \"active\": \"<boolean>\",\n    \"cancelEmailTemplateId\": \"<uuid>\",\n    \"endEmailTemplateId\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"includeEmailInEventJSON\": \"<boolean>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedNames\": {},\n    \"modifyEmailTemplateId\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"options\": [\n      {\n        \"localizedNames\": {},\n        \"name\": \"<string>\"\n      },\n      {\n        \"localizedNames\": {},\n        \"name\": \"<string>\"\n      }\n    ],\n    \"preventLogin\": \"<boolean>\",\n    \"sendEndEvent\": \"<boolean>\",\n    \"startEmailTemplateId\": \"<uuid>\",\n    \"temporal\": \"<boolean>\",\n    \"transactionType\": \"<string>\",\n    \"userEmailingEnabled\": \"<boolean>\",\n    \"userNotificationsEnabled\": \"<boolean>\"\n  },\n  \"userActions\": [\n    {\n      \"active\": \"<boolean>\",\n      \"cancelEmailTemplateId\": \"<uuid>\",\n      \"endEmailTemplateId\": \"<uuid>\",\n      \"id\": \"<uuid>\",\n      \"includeEmailInEventJSON\": \"<boolean>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"localizedNames\": {},\n      \"modifyEmailTemplateId\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"options\": [\n        {\n          \"localizedNames\": {},\n          \"name\": \"<string>\"\n        },\n        {\n          \"localizedNames\": {},\n          \"name\": \"<string>\"\n        }\n      ],\n      \"preventLogin\": \"<boolean>\",\n      \"sendEndEvent\": \"<boolean>\",\n      \"startEmailTemplateId\": \"<uuid>\",\n      \"temporal\": \"<boolean>\",\n      \"transactionType\": \"<string>\",\n      \"userEmailingEnabled\": \"<boolean>\",\n      \"userNotificationsEnabled\": \"<boolean>\"\n    },\n    {\n      \"active\": \"<boolean>\",\n      \"cancelEmailTemplateId\": \"<uuid>\",\n      \"endEmailTemplateId\": \"<uuid>\",\n      \"id\": \"<uuid>\",\n      \"includeEmailInEventJSON\": \"<boolean>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"localizedNames\": {},\n      \"modifyEmailTemplateId\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"options\": [\n        {\n          \"localizedNames\": {},\n          \"name\": \"<string>\"\n        },\n        {\n          \"localizedNames\": {},\n          \"name\": \"<string>\"\n        }\n      ],\n      \"preventLogin\": \"<boolean>\",\n      \"sendEndEvent\": \"<boolean>\",\n      \"startEmailTemplateId\": \"<uuid>\",\n      \"temporal\": \"<boolean>\",\n      \"transactionType\": \"<string>\",\n      \"userEmailingEnabled\": \"<boolean>\",\n      \"userNotificationsEnabled\": \"<boolean>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "28e43cff-fd8c-41a0-addd-234f336c7f72",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "user-action",
+                    ":userActionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userActionId",
+                      "description": "(Required) The Id of the user action."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:9011",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e7bdb23d-75d1-4bed-9fb7-11444318b218",
+    "name": "FusionAuth Api Key User Action API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,601 @@
+{
+  "item": [
+    {
+      "id": "3cfbdab7-90d3-4ae3-bb3f-4551e54f0bb5",
+      "name": "Login",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2b8b35bf-5186-410e-aca8-d32d09f24ab9",
+          "name": "login With Id",
+          "request": {
+            "name": "login With Id",
+            "description": {
+              "content": "Authenticates a user to FusionAuth.   This API optionally requires an API key. See <code>Application.loginConfiguration.requireAuthentication</code>.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "login"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                "key": "X-FusionAuth-TenantId",
+                "value": "<UUID>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"loginId\": \"<string>\",\n  \"loginIdTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"oneTimePassword\": \"<string>\",\n  \"password\": \"<string>\",\n  \"twoFactorTrustId\": \"<string>\",\n  \"applicationId\": \"<uuid>\",\n  \"ipAddress\": \"<string>\",\n  \"metaData\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"device\": {\n      \"description\": \"<string>\",\n      \"lastAccessedAddress\": \"<string>\",\n      \"lastAccessedInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  },\n  \"newDevice\": \"<boolean>\",\n  \"noJWT\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ae7ae56c-efc7-4640-8abf-e1cfc27d3fc5",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"loginId\": \"<string>\",\n  \"loginIdTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"oneTimePassword\": \"<string>\",\n  \"password\": \"<string>\",\n  \"twoFactorTrustId\": \"<string>\",\n  \"applicationId\": \"<uuid>\",\n  \"ipAddress\": \"<string>\",\n  \"metaData\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"device\": {\n      \"description\": \"<string>\",\n      \"lastAccessedAddress\": \"<string>\",\n      \"lastAccessedInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  },\n  \"newDevice\": \"<boolean>\",\n  \"noJWT\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"actions\": [\n    {\n      \"actionId\": \"983d3ef1-38b1-1169-dec4-3b1975fa9394\",\n      \"actionerUserId\": \"798b5c48-e11d-cccf-c172-ddbb0a2238ad\",\n      \"expiry\": \"<long>\",\n      \"localizedName\": \"string\",\n      \"localizedOption\": \"string\",\n      \"localizedReason\": \"string\",\n      \"name\": \"string\",\n      \"option\": \"string\",\n      \"reason\": \"string\",\n      \"reasonCode\": \"string\"\n    },\n    {\n      \"actionId\": \"85e26667-bc6f-cba5-75f8-56569b792939\",\n      \"actionerUserId\": \"74c09713-876e-e51e-b79b-854ae7577809\",\n      \"expiry\": \"<long>\",\n      \"localizedName\": \"string\",\n      \"localizedOption\": \"string\",\n      \"localizedReason\": \"string\",\n      \"name\": \"string\",\n      \"option\": \"string\",\n      \"reason\": \"string\",\n      \"reasonCode\": \"string\"\n    }\n  ],\n  \"changePasswordId\": \"string\",\n  \"changePasswordReason\": \"Validation\",\n  \"configurableMethods\": [\n    \"string\",\n    \"string\"\n  ],\n  \"emailVerificationId\": \"string\",\n  \"identityVerificationId\": \"string\",\n  \"methods\": [\n    {\n      \"authenticator\": {\n        \"algorithm\": \"HmacSHA256\",\n        \"codeLength\": 3293,\n        \"timeStep\": 7153\n      },\n      \"email\": \"string\",\n      \"id\": \"string\",\n      \"lastUsed\": false,\n      \"method\": \"string\",\n      \"mobilePhone\": \"string\",\n      \"secret\": \"string\"\n    },\n    {\n      \"authenticator\": {\n        \"algorithm\": \"HmacSHA1\",\n        \"codeLength\": 3703,\n        \"timeStep\": 2771\n      },\n      \"email\": \"string\",\n      \"id\": \"string\",\n      \"lastUsed\": true,\n      \"method\": \"string\",\n      \"mobilePhone\": \"string\",\n      \"secret\": \"string\"\n    }\n  ],\n  \"pendingIdPLinkId\": \"string\",\n  \"refreshToken\": \"string\",\n  \"refreshTokenId\": \"e8ff5595-397d-4c41-f016-2752bf8a1ed2\",\n  \"registrationVerificationId\": \"string\",\n  \"state\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"token\": \"string\",\n  \"tokenExpirationInstant\": \"<long>\",\n  \"trustToken\": \"string\",\n  \"twoFactorId\": \"string\",\n  \"twoFactorTrustId\": \"string\",\n  \"user\": {\n    \"preferredLanguages\": [\n      \"en_US\",\n      \"en_US\"\n    ],\n    \"active\": false,\n    \"birthDate\": \"2007-12-03\",\n    \"cleanSpeakId\": \"71948d5b-bd74-009f-a597-b47d7b998ef2\",\n    \"data\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"email\": \"string\",\n    \"expiry\": \"<long>\",\n    \"firstName\": \"string\",\n    \"fullName\": \"string\",\n    \"imageUrl\": \"string\",\n    \"insertInstant\": \"<long>\",\n    \"lastName\": \"string\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"middleName\": \"string\",\n    \"mobilePhone\": \"string\",\n    \"parentEmail\": \"string\",\n    \"phoneNumber\": \"string\",\n    \"tenantId\": \"20710947-24b4-eb8c-f03b-a031818bd482\",\n    \"timezone\": \"wwwwwwwww/wwwwwww\",\n    \"twoFactor\": {\n      \"methods\": [\n        {\n          \"authenticator\": {\n            \"algorithm\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"codeLength\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"timeStep\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"email\": \"string\",\n          \"id\": \"string\",\n          \"lastUsed\": false,\n          \"method\": \"string\",\n          \"mobilePhone\": \"string\",\n          \"secret\": \"string\"\n        },\n        {\n          \"authenticator\": {\n            \"algorithm\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"codeLength\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"timeStep\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"email\": \"string\",\n          \"id\": \"string\",\n          \"lastUsed\": true,\n          \"method\": \"string\",\n          \"mobilePhone\": \"string\",\n          \"secret\": \"string\"\n        }\n      ],\n      \"recoveryCodes\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"memberships\": [\n      {\n        \"data\": {\n          \"key_0\": {}\n        },\n        \"groupId\": \"2f40ff6f-a897-8987-a208-5d8d5c58e694\",\n        \"id\": \"12e22f0f-c282-7df3-add1-85d5f64e3d4c\",\n        \"insertInstant\": \"<long>\",\n        \"userId\": \"cff2c63f-8789-6bfb-ae44-112b4b3c5d55\"\n      },\n      {\n        \"data\": {\n          \"key_0\": {},\n          \"key_1\": {}\n        },\n        \"groupId\": \"d1819f3a-ec5c-edf0-4a44-b4c0445ae109\",\n        \"id\": \"feb809d7-7503-5c59-13c8-3562c921d719\",\n        \"insertInstant\": \"<long>\",\n        \"userId\": \"a5601b64-e072-2d81-a16c-13071a56a1d3\"\n      }\n    ],\n    \"registrations\": [\n      {\n        \"data\": {\n          \"key_0\": {}\n        },\n        \"preferredLanguages\": [\n          \"en_US\",\n          \"en_US\"\n        ],\n        \"tokens\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"applicationId\": \"ca602eb7-a1dc-cc01-ac2f-91c4087d433a\",\n        \"authenticationToken\": \"string\",\n        \"cleanSpeakId\": \"05317c92-d046-d94a-f645-acf7cca63d04\",\n        \"id\": \"57659b43-c393-db6a-7318-a5434aada56c\",\n        \"insertInstant\": \"<long>\",\n        \"lastLoginInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"timezone\": \"wwwwwwwwwww/wwwwwww\",\n        \"username\": \"string\",\n        \"usernameStatus\": \"PENDING\",\n        \"verified\": true,\n        \"verifiedInstant\": \"<long>\"\n      },\n      {\n        \"data\": {\n          \"key_0\": {},\n          \"key_1\": {},\n          \"key_2\": {},\n          \"key_3\": {},\n          \"key_4\": {}\n        },\n        \"preferredLanguages\": [\n          \"en_US\",\n          \"en_US\"\n        ],\n        \"tokens\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\"\n        },\n        \"applicationId\": \"f1f5597a-412d-2199-5278-7cfe77ffd7c3\",\n        \"authenticationToken\": \"string\",\n        \"cleanSpeakId\": \"6b8d11f2-6078-2a14-4331-52d5f381f67e\",\n        \"id\": \"347bc643-23b3-f67f-9a30-29a35bd08cd2\",\n        \"insertInstant\": \"<long>\",\n        \"lastLoginInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"timezone\": \"w/wwwwwwwww\",\n        \"username\": \"string\",\n        \"usernameStatus\": \"ACTIVE\",\n        \"verified\": true,\n        \"verifiedInstant\": \"<long>\"\n      }\n    ],\n    \"identities\": [\n      {\n        \"displayValue\": \"string\",\n        \"insertInstant\": \"<long>\",\n        \"lastLoginInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"moderationStatus\": \"PENDING\",\n        \"primary\": false,\n        \"type\": {\n          \"name\": \"string\"\n        },\n        \"value\": \"string\",\n        \"verified\": true,\n        \"verifiedInstant\": \"<long>\",\n        \"verifiedReason\": \"Implicit\"\n      },\n      {\n        \"displayValue\": \"string\",\n        \"insertInstant\": \"<long>\",\n        \"lastLoginInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"moderationStatus\": \"PENDING\",\n        \"primary\": true,\n        \"type\": {\n          \"name\": \"string\"\n        },\n        \"value\": \"string\",\n        \"verified\": true,\n        \"verifiedInstant\": \"<long>\",\n        \"verifiedReason\": \"Skipped\"\n      }\n    ],\n    \"breachedPasswordLastCheckedInstant\": \"<long>\",\n    \"breachedPasswordStatus\": \"PasswordOnly\",\n    \"connectorId\": \"37338bb9-4477-c9cb-4311-f19d2b20aa6a\",\n    \"encryptionScheme\": \"string\",\n    \"factor\": 364,\n    \"id\": \"40855a2c-ac86-fe5a-b922-a2dc2f751fae\",\n    \"lastLoginInstant\": \"<long>\",\n    \"password\": \"string\",\n    \"passwordChangeReason\": \"Validation\",\n    \"passwordChangeRequired\": false,\n    \"passwordLastUpdateInstant\": \"<long>\",\n    \"salt\": \"string\",\n    \"uniqueUsername\": \"string\",\n    \"username\": \"string\",\n    \"usernameStatus\": \"PENDING\",\n    \"verified\": false,\n    \"verifiedInstant\": \"<long>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "75b1063e-98aa-48e7-a801-c1a1ac60b00e",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"loginId\": \"<string>\",\n  \"loginIdTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"oneTimePassword\": \"<string>\",\n  \"password\": \"<string>\",\n  \"twoFactorTrustId\": \"<string>\",\n  \"applicationId\": \"<uuid>\",\n  \"ipAddress\": \"<string>\",\n  \"metaData\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"device\": {\n      \"description\": \"<string>\",\n      \"lastAccessedAddress\": \"<string>\",\n      \"lastAccessedInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  },\n  \"newDevice\": \"<boolean>\",\n  \"noJWT\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "accc59db-5135-4afb-9bf2-8d4799b941fa",
+          "name": "login Ping With Request With Id",
+          "request": {
+            "name": "login Ping With Request With Id",
+            "description": {
+              "content": "Sends a ping to FusionAuth indicating that the user was automatically logged into an application. When using FusionAuth's SSO or your own, you should call this if the user is already logged in centrally, but accesses an application where they no longer have a session. This helps correctly track login counts, times and helps with reporting.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "login"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                "key": "X-FusionAuth-TenantId",
+                "value": "<UUID>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"<uuid>\",\n  \"applicationId\": \"<uuid>\",\n  \"ipAddress\": \"<string>\",\n  \"metaData\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"device\": {\n      \"description\": \"<string>\",\n      \"lastAccessedAddress\": \"<string>\",\n      \"lastAccessedInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  },\n  \"newDevice\": \"<boolean>\",\n  \"noJWT\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a493d7a3-2fc5-425b-8209-01bfd20f91f6",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"<uuid>\",\n  \"applicationId\": \"<uuid>\",\n  \"ipAddress\": \"<string>\",\n  \"metaData\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\",\n      \"key_3\": \"<object>\"\n    },\n    \"device\": {\n      \"description\": \"<string>\",\n      \"lastAccessedAddress\": \"<string>\",\n      \"lastAccessedInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  },\n  \"newDevice\": \"<boolean>\",\n  \"noJWT\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"actions\": [\n    {\n      \"actionId\": \"ad0ef5ce-73d7-5d95-8ad8-c796f790eb8a\",\n      \"actionerUserId\": \"cfb67e95-8558-be9f-e6ce-8f2ab0e36d24\",\n      \"expiry\": \"<long>\",\n      \"localizedName\": \"string\",\n      \"localizedOption\": \"string\",\n      \"localizedReason\": \"string\",\n      \"name\": \"string\",\n      \"option\": \"string\",\n      \"reason\": \"string\",\n      \"reasonCode\": \"string\"\n    },\n    {\n      \"actionId\": \"8a32d85e-73c5-bfb7-794c-f662d549af0c\",\n      \"actionerUserId\": \"cac51348-8bd6-3c0d-6eb8-faf89f34f731\",\n      \"expiry\": \"<long>\",\n      \"localizedName\": \"string\",\n      \"localizedOption\": \"string\",\n      \"localizedReason\": \"string\",\n      \"name\": \"string\",\n      \"option\": \"string\",\n      \"reason\": \"string\",\n      \"reasonCode\": \"string\"\n    }\n  ],\n  \"changePasswordId\": \"string\",\n  \"changePasswordReason\": \"Validation\",\n  \"configurableMethods\": [\n    \"string\",\n    \"string\"\n  ],\n  \"emailVerificationId\": \"string\",\n  \"identityVerificationId\": \"string\",\n  \"methods\": [\n    {\n      \"authenticator\": {\n        \"algorithm\": \"HmacSHA512\",\n        \"codeLength\": 6415,\n        \"timeStep\": 4726\n      },\n      \"email\": \"string\",\n      \"id\": \"string\",\n      \"lastUsed\": false,\n      \"method\": \"string\",\n      \"mobilePhone\": \"string\",\n      \"secret\": \"string\"\n    },\n    {\n      \"authenticator\": {\n        \"algorithm\": \"HmacSHA512\",\n        \"codeLength\": 5759,\n        \"timeStep\": 9779\n      },\n      \"email\": \"string\",\n      \"id\": \"string\",\n      \"lastUsed\": true,\n      \"method\": \"string\",\n      \"mobilePhone\": \"string\",\n      \"secret\": \"string\"\n    }\n  ],\n  \"pendingIdPLinkId\": \"string\",\n  \"refreshToken\": \"string\",\n  \"refreshTokenId\": \"0895d7d4-cddd-98c1-b67b-2f63961e2692\",\n  \"registrationVerificationId\": \"string\",\n  \"state\": {\n    \"key_0\": {}\n  },\n  \"token\": \"string\",\n  \"tokenExpirationInstant\": \"<long>\",\n  \"trustToken\": \"string\",\n  \"twoFactorId\": \"string\",\n  \"twoFactorTrustId\": \"string\",\n  \"user\": {\n    \"preferredLanguages\": [\n      \"en_US\",\n      \"en_US\"\n    ],\n    \"active\": false,\n    \"birthDate\": \"2007-12-03\",\n    \"cleanSpeakId\": \"a8660e73-3a2c-45ea-77a5-b5976917e91b\",\n    \"data\": {\n      \"key_0\": {}\n    },\n    \"email\": \"string\",\n    \"expiry\": \"<long>\",\n    \"firstName\": \"string\",\n    \"fullName\": \"string\",\n    \"imageUrl\": \"string\",\n    \"insertInstant\": \"<long>\",\n    \"lastName\": \"string\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"middleName\": \"string\",\n    \"mobilePhone\": \"string\",\n    \"parentEmail\": \"string\",\n    \"phoneNumber\": \"string\",\n    \"tenantId\": \"1a974bea-86c2-ac2f-8a4d-619be23667c5\",\n    \"timezone\": \"www/wwwww\",\n    \"twoFactor\": {\n      \"methods\": [\n        {\n          \"authenticator\": {\n            \"algorithm\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"codeLength\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"timeStep\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"email\": \"string\",\n          \"id\": \"string\",\n          \"lastUsed\": false,\n          \"method\": \"string\",\n          \"mobilePhone\": \"string\",\n          \"secret\": \"string\"\n        },\n        {\n          \"authenticator\": {\n            \"algorithm\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"codeLength\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"timeStep\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"email\": \"string\",\n          \"id\": \"string\",\n          \"lastUsed\": true,\n          \"method\": \"string\",\n          \"mobilePhone\": \"string\",\n          \"secret\": \"string\"\n        }\n      ],\n      \"recoveryCodes\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"memberships\": [\n      {\n        \"data\": {\n          \"key_0\": {},\n          \"key_1\": {},\n          \"key_2\": {}\n        },\n        \"groupId\": \"d5a11ffc-ab2b-f8e2-956c-535808f4085e\",\n        \"id\": \"64b68b6f-932d-2554-b490-218fea1388d7\",\n        \"insertInstant\": \"<long>\",\n        \"userId\": \"94e8dab8-8605-7cc4-eb8a-1d979f4140b1\"\n      },\n      {\n        \"data\": {\n          \"key_0\": {},\n          \"key_1\": {},\n          \"key_2\": {}\n        },\n        \"groupId\": \"177a73b7-8211-923c-c598-6096a6583152\",\n        \"id\": \"2a50f80d-d6f7-7145-d330-0a597a71f177\",\n        \"insertInstant\": \"<long>\",\n        \"userId\": \"39cc17b4-7986-7f85-3dcf-72f13c205c2e\"\n      }\n    ],\n    \"registrations\": [\n      {\n        \"data\": {\n          \"key_0\": {},\n          \"key_1\": {},\n          \"key_2\": {}\n        },\n        \"preferredLanguages\": [\n          \"en_US\",\n          \"en_US\"\n        ],\n        \"tokens\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\"\n        },\n        \"applicationId\": \"4f40ee45-44a2-7fd0-ae28-d3737c5421c6\",\n        \"authenticationToken\": \"string\",\n        \"cleanSpeakId\": \"f20d5780-597b-1d80-6db2-0a42c294ce05\",\n        \"id\": \"c04b3d24-477d-1094-57bd-3ddbfd72073e\",\n        \"insertInstant\": \"<long>\",\n        \"lastLoginInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"timezone\": \"wwwwwww/ww\",\n        \"username\": \"string\",\n        \"usernameStatus\": \"ACTIVE\",\n        \"verified\": false,\n        \"verifiedInstant\": \"<long>\"\n      },\n      {\n        \"data\": {\n          \"key_0\": {},\n          \"key_1\": {}\n        },\n        \"preferredLanguages\": [\n          \"en_US\",\n          \"en_US\"\n        ],\n        \"tokens\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\",\n          \"key_3\": \"string\"\n        },\n        \"applicationId\": \"9ce06d24-f816-0a0a-79b0-465f38d44ce8\",\n        \"authenticationToken\": \"string\",\n        \"cleanSpeakId\": \"3bb4545e-02e3-3ea5-d742-3de5f0fe7477\",\n        \"id\": \"30de5035-0118-37b2-6b48-9c22c455c01f\",\n        \"insertInstant\": \"<long>\",\n        \"lastLoginInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"timezone\": \"wwwwwww/wwwwww\",\n        \"username\": \"string\",\n        \"usernameStatus\": \"ACTIVE\",\n        \"verified\": true,\n        \"verifiedInstant\": \"<long>\"\n      }\n    ],\n    \"identities\": [\n      {\n        \"displayValue\": \"string\",\n        \"insertInstant\": \"<long>\",\n        \"lastLoginInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"moderationStatus\": \"ACTIVE\",\n        \"primary\": true,\n        \"type\": {\n          \"name\": \"string\"\n        },\n        \"value\": \"string\",\n        \"verified\": true,\n        \"verifiedInstant\": \"<long>\",\n        \"verifiedReason\": \"Disabled\"\n      },\n      {\n        \"displayValue\": \"string\",\n        \"insertInstant\": \"<long>\",\n        \"lastLoginInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"moderationStatus\": \"PENDING\",\n        \"primary\": false,\n        \"type\": {\n          \"name\": \"string\"\n        },\n        \"value\": \"string\",\n        \"verified\": true,\n        \"verifiedInstant\": \"<long>\",\n        \"verifiedReason\": \"Import\"\n      }\n    ],\n    \"breachedPasswordLastCheckedInstant\": \"<long>\",\n    \"breachedPasswordStatus\": \"SubAddressMatch\",\n    \"connectorId\": \"45739180-8b6d-ada5-d574-9c9449d1a4e3\",\n    \"encryptionScheme\": \"string\",\n    \"factor\": 8474,\n    \"id\": \"f92f6759-726a-4182-385e-508af4c4924d\",\n    \"lastLoginInstant\": \"<long>\",\n    \"password\": \"string\",\n    \"passwordChangeReason\": \"Breached\",\n    \"passwordChangeRequired\": false,\n    \"passwordLastUpdateInstant\": \"<long>\",\n    \"salt\": \"string\",\n    \"uniqueUsername\": \"string\",\n    \"username\": \"string\",\n    \"usernameStatus\": \"PENDING\",\n    \"verified\": false,\n    \"verifiedInstant\": \"<long>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ee996847-d003-4fda-95e7-588cff83fcc4",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"<uuid>\",\n  \"applicationId\": \"<uuid>\",\n  \"ipAddress\": \"<string>\",\n  \"metaData\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\",\n      \"key_3\": \"<object>\"\n    },\n    \"device\": {\n      \"description\": \"<string>\",\n      \"lastAccessedAddress\": \"<string>\",\n      \"lastAccessedInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  },\n  \"newDevice\": \"<boolean>\",\n  \"noJWT\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "defc8ce4-0d70-4070-860e-c9eef7633c49",
+          "name": "login Ping With Id",
+          "request": {
+            "name": "login Ping With Id",
+            "description": {
+              "content": "Sends a ping to FusionAuth indicating that the user was automatically logged into an application. When using FusionAuth's SSO or your own, you should call this if the user is already logged in centrally, but accesses an application where they no longer have a session. This helps correctly track login counts, times and helps with reporting.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "login",
+                ":userId",
+                ":applicationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "callerIPAddress",
+                  "value": "<string>",
+                  "description": "The IP address of the end-user that is logging in. If a null value is provided the IP address will be that of the client or last proxy that sent the request."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) The Id of the user that was logged in."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "applicationId",
+                  "description": "(Required) The Id of the application that they logged into."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                "key": "X-FusionAuth-TenantId",
+                "value": "<UUID>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5957b702-9d26-41b5-90db-ec20d571448f",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "login",
+                    ":userId",
+                    ":applicationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "callerIPAddress",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) The Id of the user that was logged in."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "applicationId",
+                      "description": "(Required) The Id of the application that they logged into."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"actions\": [\n    {\n      \"actionId\": \"ad0ef5ce-73d7-5d95-8ad8-c796f790eb8a\",\n      \"actionerUserId\": \"cfb67e95-8558-be9f-e6ce-8f2ab0e36d24\",\n      \"expiry\": \"<long>\",\n      \"localizedName\": \"string\",\n      \"localizedOption\": \"string\",\n      \"localizedReason\": \"string\",\n      \"name\": \"string\",\n      \"option\": \"string\",\n      \"reason\": \"string\",\n      \"reasonCode\": \"string\"\n    },\n    {\n      \"actionId\": \"8a32d85e-73c5-bfb7-794c-f662d549af0c\",\n      \"actionerUserId\": \"cac51348-8bd6-3c0d-6eb8-faf89f34f731\",\n      \"expiry\": \"<long>\",\n      \"localizedName\": \"string\",\n      \"localizedOption\": \"string\",\n      \"localizedReason\": \"string\",\n      \"name\": \"string\",\n      \"option\": \"string\",\n      \"reason\": \"string\",\n      \"reasonCode\": \"string\"\n    }\n  ],\n  \"changePasswordId\": \"string\",\n  \"changePasswordReason\": \"Validation\",\n  \"configurableMethods\": [\n    \"string\",\n    \"string\"\n  ],\n  \"emailVerificationId\": \"string\",\n  \"identityVerificationId\": \"string\",\n  \"methods\": [\n    {\n      \"authenticator\": {\n        \"algorithm\": \"HmacSHA512\",\n        \"codeLength\": 6415,\n        \"timeStep\": 4726\n      },\n      \"email\": \"string\",\n      \"id\": \"string\",\n      \"lastUsed\": false,\n      \"method\": \"string\",\n      \"mobilePhone\": \"string\",\n      \"secret\": \"string\"\n    },\n    {\n      \"authenticator\": {\n        \"algorithm\": \"HmacSHA512\",\n        \"codeLength\": 5759,\n        \"timeStep\": 9779\n      },\n      \"email\": \"string\",\n      \"id\": \"string\",\n      \"lastUsed\": true,\n      \"method\": \"string\",\n      \"mobilePhone\": \"string\",\n      \"secret\": \"string\"\n    }\n  ],\n  \"pendingIdPLinkId\": \"string\",\n  \"refreshToken\": \"string\",\n  \"refreshTokenId\": \"0895d7d4-cddd-98c1-b67b-2f63961e2692\",\n  \"registrationVerificationId\": \"string\",\n  \"state\": {\n    \"key_0\": {}\n  },\n  \"token\": \"string\",\n  \"tokenExpirationInstant\": \"<long>\",\n  \"trustToken\": \"string\",\n  \"twoFactorId\": \"string\",\n  \"twoFactorTrustId\": \"string\",\n  \"user\": {\n    \"preferredLanguages\": [\n      \"en_US\",\n      \"en_US\"\n    ],\n    \"active\": false,\n    \"birthDate\": \"2007-12-03\",\n    \"cleanSpeakId\": \"a8660e73-3a2c-45ea-77a5-b5976917e91b\",\n    \"data\": {\n      \"key_0\": {}\n    },\n    \"email\": \"string\",\n    \"expiry\": \"<long>\",\n    \"firstName\": \"string\",\n    \"fullName\": \"string\",\n    \"imageUrl\": \"string\",\n    \"insertInstant\": \"<long>\",\n    \"lastName\": \"string\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"middleName\": \"string\",\n    \"mobilePhone\": \"string\",\n    \"parentEmail\": \"string\",\n    \"phoneNumber\": \"string\",\n    \"tenantId\": \"1a974bea-86c2-ac2f-8a4d-619be23667c5\",\n    \"timezone\": \"www/wwwww\",\n    \"twoFactor\": {\n      \"methods\": [\n        {\n          \"authenticator\": {\n            \"algorithm\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"codeLength\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"timeStep\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"email\": \"string\",\n          \"id\": \"string\",\n          \"lastUsed\": false,\n          \"method\": \"string\",\n          \"mobilePhone\": \"string\",\n          \"secret\": \"string\"\n        },\n        {\n          \"authenticator\": {\n            \"algorithm\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"codeLength\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"timeStep\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"email\": \"string\",\n          \"id\": \"string\",\n          \"lastUsed\": true,\n          \"method\": \"string\",\n          \"mobilePhone\": \"string\",\n          \"secret\": \"string\"\n        }\n      ],\n      \"recoveryCodes\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"memberships\": [\n      {\n        \"data\": {\n          \"key_0\": {},\n          \"key_1\": {},\n          \"key_2\": {}\n        },\n        \"groupId\": \"d5a11ffc-ab2b-f8e2-956c-535808f4085e\",\n        \"id\": \"64b68b6f-932d-2554-b490-218fea1388d7\",\n        \"insertInstant\": \"<long>\",\n        \"userId\": \"94e8dab8-8605-7cc4-eb8a-1d979f4140b1\"\n      },\n      {\n        \"data\": {\n          \"key_0\": {},\n          \"key_1\": {},\n          \"key_2\": {}\n        },\n        \"groupId\": \"177a73b7-8211-923c-c598-6096a6583152\",\n        \"id\": \"2a50f80d-d6f7-7145-d330-0a597a71f177\",\n        \"insertInstant\": \"<long>\",\n        \"userId\": \"39cc17b4-7986-7f85-3dcf-72f13c205c2e\"\n      }\n    ],\n    \"registrations\": [\n      {\n        \"data\": {\n          \"key_0\": {},\n          \"key_1\": {},\n          \"key_2\": {}\n        },\n        \"preferredLanguages\": [\n          \"en_US\",\n          \"en_US\"\n        ],\n        \"tokens\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\"\n        },\n        \"applicationId\": \"4f40ee45-44a2-7fd0-ae28-d3737c5421c6\",\n        \"authenticationToken\": \"string\",\n        \"cleanSpeakId\": \"f20d5780-597b-1d80-6db2-0a42c294ce05\",\n        \"id\": \"c04b3d24-477d-1094-57bd-3ddbfd72073e\",\n        \"insertInstant\": \"<long>\",\n        \"lastLoginInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"timezone\": \"wwwwwww/ww\",\n        \"username\": \"string\",\n        \"usernameStatus\": \"ACTIVE\",\n        \"verified\": false,\n        \"verifiedInstant\": \"<long>\"\n      },\n      {\n        \"data\": {\n          \"key_0\": {},\n          \"key_1\": {}\n        },\n        \"preferredLanguages\": [\n          \"en_US\",\n          \"en_US\"\n        ],\n        \"tokens\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\",\n          \"key_3\": \"string\"\n        },\n        \"applicationId\": \"9ce06d24-f816-0a0a-79b0-465f38d44ce8\",\n        \"authenticationToken\": \"string\",\n        \"cleanSpeakId\": \"3bb4545e-02e3-3ea5-d742-3de5f0fe7477\",\n        \"id\": \"30de5035-0118-37b2-6b48-9c22c455c01f\",\n        \"insertInstant\": \"<long>\",\n        \"lastLoginInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"timezone\": \"wwwwwww/wwwwww\",\n        \"username\": \"string\",\n        \"usernameStatus\": \"ACTIVE\",\n        \"verified\": true,\n        \"verifiedInstant\": \"<long>\"\n      }\n    ],\n    \"identities\": [\n      {\n        \"displayValue\": \"string\",\n        \"insertInstant\": \"<long>\",\n        \"lastLoginInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"moderationStatus\": \"ACTIVE\",\n        \"primary\": true,\n        \"type\": {\n          \"name\": \"string\"\n        },\n        \"value\": \"string\",\n        \"verified\": true,\n        \"verifiedInstant\": \"<long>\",\n        \"verifiedReason\": \"Disabled\"\n      },\n      {\n        \"displayValue\": \"string\",\n        \"insertInstant\": \"<long>\",\n        \"lastLoginInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"moderationStatus\": \"PENDING\",\n        \"primary\": false,\n        \"type\": {\n          \"name\": \"string\"\n        },\n        \"value\": \"string\",\n        \"verified\": true,\n        \"verifiedInstant\": \"<long>\",\n        \"verifiedReason\": \"Import\"\n      }\n    ],\n    \"breachedPasswordLastCheckedInstant\": \"<long>\",\n    \"breachedPasswordStatus\": \"SubAddressMatch\",\n    \"connectorId\": \"45739180-8b6d-ada5-d574-9c9449d1a4e3\",\n    \"encryptionScheme\": \"string\",\n    \"factor\": 8474,\n    \"id\": \"f92f6759-726a-4182-385e-508af4c4924d\",\n    \"lastLoginInstant\": \"<long>\",\n    \"password\": \"string\",\n    \"passwordChangeReason\": \"Breached\",\n    \"passwordChangeRequired\": false,\n    \"passwordLastUpdateInstant\": \"<long>\",\n    \"salt\": \"string\",\n    \"uniqueUsername\": \"string\",\n    \"username\": \"string\",\n    \"usernameStatus\": \"PENDING\",\n    \"verified\": false,\n    \"verifiedInstant\": \"<long>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "35a9edaf-9d9d-44f5-b0b0-e858fc2fd2cd",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "login",
+                    ":userId",
+                    ":applicationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "callerIPAddress",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) The Id of the user that was logged in."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "applicationId",
+                      "description": "(Required) The Id of the application that they logged into."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:9011",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5a00fd8f-c642-4c7f-904c-30501c068a01",
+    "name": "FusionAuth Api Key Login API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.",
+      "type": "text/plain"
+    }
+  }
+}

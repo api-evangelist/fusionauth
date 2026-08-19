@@ -1,0 +1,52 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FusionAuth Api Key Reactor API",
+    "version": "1.66.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reactor",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "activateReactorWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/reactor",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Activates the FusionAuth Reactor using a license Id and optionally a license text (for air-gapped deployments)"
+        },
+        {
+          "info": {
+            "name": "retrieveReactorMetricsWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/reactor/metrics"
+          },
+          "docs": "Retrieves the FusionAuth Reactor metrics."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1164 @@
+{
+  "item": [
+    {
+      "id": "372e436a-9f46-409a-9e48-6018f7f8efc5",
+      "name": "Two Factor",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6eabaf98-b78c-4868-8470-1e44752b6c4c",
+          "name": "two Factor Login With Id",
+          "request": {
+            "name": "two Factor Login With Id",
+            "description": {
+              "content": "Complete login using a 2FA challenge",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "two-factor",
+                "login"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"<string>\",\n  \"trustComputer\": \"<boolean>\",\n  \"twoFactorId\": \"<string>\",\n  \"userId\": \"<uuid>\",\n  \"applicationId\": \"<uuid>\",\n  \"ipAddress\": \"<string>\",\n  \"metaData\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"device\": {\n      \"description\": \"<string>\",\n      \"lastAccessedAddress\": \"<string>\",\n      \"lastAccessedInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  },\n  \"newDevice\": \"<boolean>\",\n  \"noJWT\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f7530434-1a32-4f37-b7b7-4d1e3bc639da",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "two-factor",
+                    "login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"trustComputer\": \"<boolean>\",\n  \"twoFactorId\": \"<string>\",\n  \"userId\": \"<uuid>\",\n  \"applicationId\": \"<uuid>\",\n  \"ipAddress\": \"<string>\",\n  \"metaData\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\"\n    },\n    \"device\": {\n      \"description\": \"<string>\",\n      \"lastAccessedAddress\": \"<string>\",\n      \"lastAccessedInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  },\n  \"newDevice\": \"<boolean>\",\n  \"noJWT\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"actions\": [\n    {\n      \"actionId\": \"26e1bad7-ab81-0a17-6c99-a4e316603da8\",\n      \"actionerUserId\": \"bdc27dfa-1eca-81b8-3bed-09044e1f93b4\",\n      \"expiry\": \"<long>\",\n      \"localizedName\": \"string\",\n      \"localizedOption\": \"string\",\n      \"localizedReason\": \"string\",\n      \"name\": \"string\",\n      \"option\": \"string\",\n      \"reason\": \"string\",\n      \"reasonCode\": \"string\"\n    },\n    {\n      \"actionId\": \"4518d7e2-68a8-c90f-2dea-f45e40937664\",\n      \"actionerUserId\": \"3318c622-beab-8cda-aa7d-eeb8c1316e9a\",\n      \"expiry\": \"<long>\",\n      \"localizedName\": \"string\",\n      \"localizedOption\": \"string\",\n      \"localizedReason\": \"string\",\n      \"name\": \"string\",\n      \"option\": \"string\",\n      \"reason\": \"string\",\n      \"reasonCode\": \"string\"\n    }\n  ],\n  \"changePasswordId\": \"string\",\n  \"changePasswordReason\": \"Expired\",\n  \"configurableMethods\": [\n    \"string\",\n    \"string\"\n  ],\n  \"emailVerificationId\": \"string\",\n  \"identityVerificationId\": \"string\",\n  \"methods\": [\n    {\n      \"authenticator\": {\n        \"algorithm\": \"HmacSHA512\",\n        \"codeLength\": 1640,\n        \"timeStep\": 4195\n      },\n      \"email\": \"string\",\n      \"id\": \"string\",\n      \"lastUsed\": false,\n      \"method\": \"string\",\n      \"mobilePhone\": \"string\",\n      \"secret\": \"string\"\n    },\n    {\n      \"authenticator\": {\n        \"algorithm\": \"HmacSHA256\",\n        \"codeLength\": 7994,\n        \"timeStep\": 4972\n      },\n      \"email\": \"string\",\n      \"id\": \"string\",\n      \"lastUsed\": true,\n      \"method\": \"string\",\n      \"mobilePhone\": \"string\",\n      \"secret\": \"string\"\n    }\n  ],\n  \"pendingIdPLinkId\": \"string\",\n  \"refreshToken\": \"string\",\n  \"refreshTokenId\": \"c40c03f7-261b-855e-78a0-b216408b3dc6\",\n  \"registrationVerificationId\": \"string\",\n  \"state\": {\n    \"key_0\": {}\n  },\n  \"token\": \"string\",\n  \"tokenExpirationInstant\": \"<long>\",\n  \"trustToken\": \"string\",\n  \"twoFactorId\": \"string\",\n  \"twoFactorTrustId\": \"string\",\n  \"user\": {\n    \"preferredLanguages\": [\n      \"en_US\",\n      \"en_US\"\n    ],\n    \"active\": true,\n    \"birthDate\": \"2007-12-03\",\n    \"cleanSpeakId\": \"be10bc7e-1e04-533a-094f-4f8621befa69\",\n    \"data\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    },\n    \"email\": \"string\",\n    \"expiry\": \"<long>\",\n    \"firstName\": \"string\",\n    \"fullName\": \"string\",\n    \"imageUrl\": \"string\",\n    \"insertInstant\": \"<long>\",\n    \"lastName\": \"string\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"middleName\": \"string\",\n    \"mobilePhone\": \"string\",\n    \"parentEmail\": \"string\",\n    \"phoneNumber\": \"string\",\n    \"tenantId\": \"5e92d7ab-e9eb-96e8-c828-c6eb2fe54348\",\n    \"timezone\": \"wwww/wwwww\",\n    \"twoFactor\": {\n      \"methods\": [\n        {\n          \"authenticator\": {\n            \"algorithm\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"codeLength\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"timeStep\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"email\": \"string\",\n          \"id\": \"string\",\n          \"lastUsed\": true,\n          \"method\": \"string\",\n          \"mobilePhone\": \"string\",\n          \"secret\": \"string\"\n        },\n        {\n          \"authenticator\": {\n            \"algorithm\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"codeLength\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"timeStep\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"email\": \"string\",\n          \"id\": \"string\",\n          \"lastUsed\": false,\n          \"method\": \"string\",\n          \"mobilePhone\": \"string\",\n          \"secret\": \"string\"\n        }\n      ],\n      \"recoveryCodes\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"memberships\": [\n      {\n        \"data\": {\n          \"key_0\": {},\n          \"key_1\": {}\n        },\n        \"groupId\": \"160c1915-d56f-1b0a-d8a3-e9d3322df93b\",\n        \"id\": \"68bede87-9016-1f4c-6974-baaf7e260880\",\n        \"insertInstant\": \"<long>\",\n        \"userId\": \"b08f3582-951c-7ec3-2937-c447f47b1d07\"\n      },\n      {\n        \"data\": {\n          \"key_0\": {}\n        },\n        \"groupId\": \"f368a38f-73ad-8fae-bed8-941b0c53e328\",\n        \"id\": \"41002e47-96d1-13f4-13f4-9013ce8506de\",\n        \"insertInstant\": \"<long>\",\n        \"userId\": \"d0d796e5-0744-3e58-7e29-410c662e7217\"\n      }\n    ],\n    \"registrations\": [\n      {\n        \"data\": {\n          \"key_0\": {},\n          \"key_1\": {}\n        },\n        \"preferredLanguages\": [\n          \"en_US\",\n          \"en_US\"\n        ],\n        \"tokens\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\"\n        },\n        \"applicationId\": \"0f4a4571-adaa-33a2-2a9d-7f2939f7cc05\",\n        \"authenticationToken\": \"string\",\n        \"cleanSpeakId\": \"1f2cbd1c-16bf-f291-bb95-7b5fe185b046\",\n        \"id\": \"35ec58d4-d2ff-7d6a-71d2-f44cd1a663b4\",\n        \"insertInstant\": \"<long>\",\n        \"lastLoginInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"timezone\": \"w/wwwww\",\n        \"username\": \"string\",\n        \"usernameStatus\": \"PENDING\",\n        \"verified\": false,\n        \"verifiedInstant\": \"<long>\"\n      },\n      {\n        \"data\": {\n          \"key_0\": {},\n          \"key_1\": {},\n          \"key_2\": {}\n        },\n        \"preferredLanguages\": [\n          \"en_US\",\n          \"en_US\"\n        ],\n        \"tokens\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\",\n          \"key_3\": \"string\"\n        },\n        \"applicationId\": \"6e4b4395-03d9-b66e-e033-e49698084410\",\n        \"authenticationToken\": \"string\",\n        \"cleanSpeakId\": \"9dd8a634-fbc0-6998-54a0-525df92f8049\",\n        \"id\": \"54aad40d-f52c-5e58-9ea3-7e648a70b7e6\",\n        \"insertInstant\": \"<long>\",\n        \"lastLoginInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"timezone\": \"www/wwwwwwww\",\n        \"username\": \"string\",\n        \"usernameStatus\": \"REJECTED\",\n        \"verified\": false,\n        \"verifiedInstant\": \"<long>\"\n      }\n    ],\n    \"identities\": [\n      {\n        \"displayValue\": \"string\",\n        \"insertInstant\": \"<long>\",\n        \"lastLoginInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"moderationStatus\": \"PENDING\",\n        \"primary\": true,\n        \"type\": {\n          \"name\": \"string\"\n        },\n        \"value\": \"string\",\n        \"verified\": true,\n        \"verifiedInstant\": \"<long>\",\n        \"verifiedReason\": \"Completed\"\n      },\n      {\n        \"displayValue\": \"string\",\n        \"insertInstant\": \"<long>\",\n        \"lastLoginInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"moderationStatus\": \"REJECTED\",\n        \"primary\": false,\n        \"type\": {\n          \"name\": \"string\"\n        },\n        \"value\": \"string\",\n        \"verified\": false,\n        \"verifiedInstant\": \"<long>\",\n        \"verifiedReason\": \"Skipped\"\n      }\n    ],\n    \"breachedPasswordLastCheckedInstant\": \"<long>\",\n    \"breachedPasswordStatus\": \"CommonPassword\",\n    \"connectorId\": \"8b65aebd-bf23-2b99-c8b5-6120b21552ec\",\n    \"encryptionScheme\": \"string\",\n    \"factor\": 9277,\n    \"id\": \"c82fdcd0-ba67-d8f4-c222-a2fc3d79b5e9\",\n    \"lastLoginInstant\": \"<long>\",\n    \"password\": \"string\",\n    \"passwordChangeReason\": \"Breached\",\n    \"passwordChangeRequired\": false,\n    \"passwordLastUpdateInstant\": \"<long>\",\n    \"salt\": \"string\",\n    \"uniqueUsername\": \"string\",\n    \"username\": \"string\",\n    \"usernameStatus\": \"REJECTED\",\n    \"verified\": true,\n    \"verifiedInstant\": \"<long>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "af538350-834c-47cc-90e5-6c3d96c406d6",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "two-factor",
+                    "login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"trustComputer\": \"<boolean>\",\n  \"twoFactorId\": \"<string>\",\n  \"userId\": \"<uuid>\",\n  \"applicationId\": \"<uuid>\",\n  \"ipAddress\": \"<string>\",\n  \"metaData\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\"\n    },\n    \"device\": {\n      \"description\": \"<string>\",\n      \"lastAccessedAddress\": \"<string>\",\n      \"lastAccessedInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  },\n  \"newDevice\": \"<boolean>\",\n  \"noJWT\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "efeb7917-6de3-42ff-91eb-c792fd21369a",
+          "name": "generate Two Factor Secret Using JWT With Id",
+          "request": {
+            "name": "generate Two Factor Secret Using JWT With Id",
+            "description": {
+              "content": "Generate a Two Factor secret that can be used to enable Two Factor authentication for a User. The response will contain both the secret and a Base32 encoded form of the secret which can be shown to a User when using a 2 Step Authentication application such as Google Authenticator.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "two-factor",
+                "secret"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a33824e7-fd36-485b-9081-67bf1b7f1b89",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "two-factor",
+                    "secret"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"secret\": \"string\",\n  \"secretBase32Encoded\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a2a2a8d3-bf88-4803-b3a2-2d2fcc9495b0",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "two-factor",
+                    "secret"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b86acc03-8677-4fa3-b49a-3690a5458bff",
+          "name": "send Two Factor Code For Enable Disable With Id",
+          "request": {
+            "name": "send Two Factor Code For Enable Disable With Id",
+            "description": {
+              "content": "Send a Two Factor authentication code to assist in setting up Two Factor authentication or disabling.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "two-factor",
+                "send"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"applicationId\": \"<uuid>\",\n  \"email\": \"<string>\",\n  \"messageType\": \"<string>\",\n  \"method\": \"<string>\",\n  \"methodId\": \"<string>\",\n  \"mobilePhone\": \"<string>\",\n  \"userId\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8d28fc1a-f9d4-4a10-a72c-85ff9b1083b5",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "two-factor",
+                    "send"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"applicationId\": \"<uuid>\",\n  \"email\": \"<string>\",\n  \"messageType\": \"<string>\",\n  \"method\": \"<string>\",\n  \"methodId\": \"<string>\",\n  \"mobilePhone\": \"<string>\",\n  \"userId\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d9284b90-67f7-4d47-a164-4e35ff29e131",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "two-factor",
+                    "send"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"applicationId\": \"<uuid>\",\n  \"email\": \"<string>\",\n  \"messageType\": \"<string>\",\n  \"method\": \"<string>\",\n  \"methodId\": \"<string>\",\n  \"mobilePhone\": \"<string>\",\n  \"userId\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "363919e0-ee0d-41ec-b6a4-f46fdab8802b",
+          "name": "send Two Factor Code For Login Using Method With Id",
+          "request": {
+            "name": "send Two Factor Code For Login Using Method With Id",
+            "description": {
+              "content": "Send a Two Factor authentication code to allow the completion of Two Factor authentication.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "two-factor",
+                "send",
+                ":twoFactorId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "twoFactorId",
+                  "description": "(Required) The Id returned by the Login API necessary to complete Two Factor authentication."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"applicationId\": \"<uuid>\",\n  \"email\": \"<string>\",\n  \"messageType\": \"<string>\",\n  \"method\": \"<string>\",\n  \"methodId\": \"<string>\",\n  \"mobilePhone\": \"<string>\",\n  \"userId\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "82aed453-0a10-423f-9786-500d44dcce6f",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "two-factor",
+                    "send",
+                    ":twoFactorId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "twoFactorId",
+                      "description": "(Required) The Id returned by the Login API necessary to complete Two Factor authentication."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"applicationId\": \"<uuid>\",\n  \"email\": \"<string>\",\n  \"messageType\": \"<string>\",\n  \"method\": \"<string>\",\n  \"methodId\": \"<string>\",\n  \"mobilePhone\": \"<string>\",\n  \"userId\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3ef06468-0628-46e0-bd03-63f7ee008109",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "two-factor",
+                    "send",
+                    ":twoFactorId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "twoFactorId",
+                      "description": "(Required) The Id returned by the Login API necessary to complete Two Factor authentication."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"applicationId\": \"<uuid>\",\n  \"email\": \"<string>\",\n  \"messageType\": \"<string>\",\n  \"method\": \"<string>\",\n  \"methodId\": \"<string>\",\n  \"mobilePhone\": \"<string>\",\n  \"userId\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bec8bd02-64ea-4d95-b546-a955ab3fc1b7",
+          "name": "start Two Factor Login With Id",
+          "request": {
+            "name": "start Two Factor Login With Id",
+            "description": {
+              "content": "Start a Two-Factor login request by generating a two-factor identifier. This code can then be sent to the Two Factor Send  API (/api/two-factor/send)in order to send a one-time use code to a user. You can also use one-time use code returned  to send the code out-of-band. The Two-Factor login is completed by making a request to the Two-Factor Login  API (/api/two-factor/login). with the two-factor identifier and the one-time use code.  This API is intended to allow you to begin a Two-Factor login outside a normal login that originated from the Login API (/api/login).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "two-factor",
+                "start"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"applicationId\": \"<uuid>\",\n  \"code\": \"<string>\",\n  \"loginId\": \"<string>\",\n  \"loginIdTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"state\": {\n    \"key_0\": \"<object>\"\n  },\n  \"trustChallenge\": \"<string>\",\n  \"userId\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c297e72f-ad00-4926-8875-44346c87c8ee",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "two-factor",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"applicationId\": \"<uuid>\",\n  \"code\": \"<string>\",\n  \"loginId\": \"<string>\",\n  \"loginIdTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"state\": {\n    \"key_0\": \"<object>\",\n    \"key_1\": \"<object>\",\n    \"key_2\": \"<object>\"\n  },\n  \"trustChallenge\": \"<string>\",\n  \"userId\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"methods\": [\n    {\n      \"authenticator\": {\n        \"algorithm\": \"HmacSHA256\",\n        \"codeLength\": 126,\n        \"timeStep\": 3136\n      },\n      \"email\": \"string\",\n      \"id\": \"string\",\n      \"lastUsed\": true,\n      \"method\": \"string\",\n      \"mobilePhone\": \"string\",\n      \"secret\": \"string\"\n    },\n    {\n      \"authenticator\": {\n        \"algorithm\": \"HmacSHA256\",\n        \"codeLength\": 2166,\n        \"timeStep\": 2619\n      },\n      \"email\": \"string\",\n      \"id\": \"string\",\n      \"lastUsed\": false,\n      \"method\": \"string\",\n      \"mobilePhone\": \"string\",\n      \"secret\": \"string\"\n    }\n  ],\n  \"twoFactorId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cc756c90-0502-4a56-9561-dc42305f5e13",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "two-factor",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"applicationId\": \"<uuid>\",\n  \"code\": \"<string>\",\n  \"loginId\": \"<string>\",\n  \"loginIdTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"state\": {\n    \"key_0\": \"<object>\",\n    \"key_1\": \"<object>\",\n    \"key_2\": \"<object>\"\n  },\n  \"trustChallenge\": \"<string>\",\n  \"userId\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0c576066-df17-480d-82b2-41f56de16a7e",
+          "name": "retrieve Two Factor Status With Request With Id",
+          "request": {
+            "name": "retrieve Two Factor Status With Request With Id",
+            "description": {
+              "content": "Retrieve a user's two-factor status.  This can be used to see if a user will need to complete a two-factor challenge to complete a login, and optionally identify the state of the two-factor trust across various applications. This operation provides more payload options than retrieveTwoFactorStatus.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "two-factor",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"<uuid>\",\n  \"accessToken\": \"<string>\",\n  \"action\": \"<string>\",\n  \"applicationId\": \"<uuid>\",\n  \"twoFactorTrustId\": \"<string>\",\n  \"eventInfo\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"deviceDescription\": \"<string>\",\n    \"deviceName\": \"<string>\",\n    \"deviceType\": \"<string>\",\n    \"ipAddress\": \"<string>\",\n    \"location\": {\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\",\n      \"region\": \"<string>\",\n      \"zipcode\": \"<string>\",\n      \"displayString\": \"<string>\"\n    },\n    \"os\": \"<string>\",\n    \"userAgent\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "621b5c9e-bb3c-4101-a6bf-c88e66146ab9",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "two-factor",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"<uuid>\",\n  \"accessToken\": \"<string>\",\n  \"action\": \"<string>\",\n  \"applicationId\": \"<uuid>\",\n  \"twoFactorTrustId\": \"<string>\",\n  \"eventInfo\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"deviceDescription\": \"<string>\",\n    \"deviceName\": \"<string>\",\n    \"deviceType\": \"<string>\",\n    \"ipAddress\": \"<string>\",\n    \"location\": {\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\",\n      \"region\": \"<string>\",\n      \"zipcode\": \"<string>\",\n      \"displayString\": \"<string>\"\n    },\n    \"os\": \"<string>\",\n    \"userAgent\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"trusts\": [\n    {\n      \"applicationId\": \"6c42f7b8-82d0-79cb-26b4-955b847d3eda\",\n      \"expiration\": \"<long>\",\n      \"startInstant\": \"<long>\"\n    },\n    {\n      \"applicationId\": \"045e1018-8193-1b24-c809-ba5b76e74029\",\n      \"expiration\": \"<long>\",\n      \"startInstant\": \"<long>\"\n    }\n  ],\n  \"twoFactorTrustId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "83d01f69-bbe6-4734-8536-3667204e9a5a",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "two-factor",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"<uuid>\",\n  \"accessToken\": \"<string>\",\n  \"action\": \"<string>\",\n  \"applicationId\": \"<uuid>\",\n  \"twoFactorTrustId\": \"<string>\",\n  \"eventInfo\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"deviceDescription\": \"<string>\",\n    \"deviceName\": \"<string>\",\n    \"deviceType\": \"<string>\",\n    \"ipAddress\": \"<string>\",\n    \"location\": {\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\",\n      \"region\": \"<string>\",\n      \"zipcode\": \"<string>\",\n      \"displayString\": \"<string>\"\n    },\n    \"os\": \"<string>\",\n    \"userAgent\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bfcd74a3-7b78-4fd8-b7ba-681806e0f192",
+          "name": "retrieve Two Factor Status With Id",
+          "request": {
+            "name": "retrieve Two Factor Status With Id",
+            "description": {
+              "content": "Retrieve a user's two-factor status.  This can be used to see if a user will need to complete a two-factor challenge to complete a login, and optionally identify the state of the two-factor trust across various applications.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "two-factor",
+                "status",
+                ":twoFactorTrustId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "userId",
+                  "value": "<string>",
+                  "description": "The user Id to retrieve the Two-Factor status."
+                },
+                {
+                  "disabled": false,
+                  "key": "applicationId",
+                  "value": "<string>",
+                  "description": "The optional applicationId to verify."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "twoFactorTrustId",
+                  "description": "(Required) The optional two-factor trust Id to verify."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "93ff6bcb-58df-4485-9fbf-f715100a8ebb",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "two-factor",
+                    "status",
+                    ":twoFactorTrustId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "applicationId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "twoFactorTrustId",
+                      "description": "(Required) The optional two-factor trust Id to verify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"trusts\": [\n    {\n      \"applicationId\": \"bd57d793-8246-50e3-f253-a742186bce5d\",\n      \"expiration\": \"<long>\",\n      \"startInstant\": \"<long>\"\n    },\n    {\n      \"applicationId\": \"202ee0d5-fe71-30d8-2283-dfdef33bf213\",\n      \"expiration\": \"<long>\",\n      \"startInstant\": \"<long>\"\n    }\n  ],\n  \"twoFactorTrustId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1fbef426-782c-4e00-bdd8-d13ac9dad015",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "two-factor",
+                    "status",
+                    ":twoFactorTrustId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "applicationId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "twoFactorTrustId",
+                      "description": "(Required) The optional two-factor trust Id to verify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:9011",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a1a4dc06-d4f2-48a4-b588-a8115cc66196",
+    "name": "FusionAuth Api Key Two Factor API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.",
+      "type": "text/plain"
+    }
+  }
+}

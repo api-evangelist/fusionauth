@@ -1,0 +1,355 @@
+{
+  "item": [
+    {
+      "id": "97a0f8ed-e582-441c-b353-83c9fea51a8d",
+      "name": "Integration",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "193a70f5-69d9-485e-be73-328e6ef4d8b6",
+          "name": "patch Integrations With Id",
+          "request": {
+            "name": "patch Integrations With Id",
+            "description": {
+              "content": "Updates, via PATCH, the available integrations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "integration"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integrations\": {\n    \"cleanspeak\": {\n      \"apiKey\": \"<string>\",\n      \"applicationIds\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"url\": \"<URI>\",\n      \"usernameModeration\": {\n        \"applicationId\": \"<uuid>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"enabled\": \"<boolean>\"\n    },\n    \"kafka\": {\n      \"defaultTopic\": \"<string>\",\n      \"producer\": {\n        \"key_0\": \"<string>\"\n      },\n      \"enabled\": \"<boolean>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2c3461a6-6bf6-47f8-9677-8754665600bc",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "integration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integrations\": {\n    \"cleanspeak\": {\n      \"apiKey\": \"<string>\",\n      \"applicationIds\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"url\": \"<URI>\",\n      \"usernameModeration\": {\n        \"applicationId\": \"<uuid>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"enabled\": \"<boolean>\"\n    },\n    \"kafka\": {\n      \"defaultTopic\": \"<string>\",\n      \"producer\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\"\n      },\n      \"enabled\": \"<boolean>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"integrations\": {\n    \"cleanspeak\": {\n      \"apiKey\": \"<string>\",\n      \"applicationIds\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"url\": \"<URI>\",\n      \"usernameModeration\": {\n        \"applicationId\": \"<uuid>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"enabled\": \"<boolean>\"\n    },\n    \"kafka\": {\n      \"defaultTopic\": \"<string>\",\n      \"producer\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"enabled\": \"<boolean>\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "021d0273-41e1-44f0-96d7-70f024929dcd",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "integration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integrations\": {\n    \"cleanspeak\": {\n      \"apiKey\": \"<string>\",\n      \"applicationIds\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"url\": \"<URI>\",\n      \"usernameModeration\": {\n        \"applicationId\": \"<uuid>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"enabled\": \"<boolean>\"\n    },\n    \"kafka\": {\n      \"defaultTopic\": \"<string>\",\n      \"producer\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\"\n      },\n      \"enabled\": \"<boolean>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "56fdca67-d350-4b2a-9e72-4b7c9ac92769",
+          "name": "update Integrations With Id",
+          "request": {
+            "name": "update Integrations With Id",
+            "description": {
+              "content": "Updates the available integrations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "integration"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"integrations\": {\n    \"cleanspeak\": {\n      \"apiKey\": \"<string>\",\n      \"applicationIds\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"url\": \"<URI>\",\n      \"usernameModeration\": {\n        \"applicationId\": \"<uuid>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"enabled\": \"<boolean>\"\n    },\n    \"kafka\": {\n      \"defaultTopic\": \"<string>\",\n      \"producer\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"enabled\": \"<boolean>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3fcb6691-2fb3-4f38-83a0-f6f7f0852d18",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "integration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integrations\": {\n    \"cleanspeak\": {\n      \"apiKey\": \"<string>\",\n      \"applicationIds\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"url\": \"<URI>\",\n      \"usernameModeration\": {\n        \"applicationId\": \"<uuid>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"enabled\": \"<boolean>\"\n    },\n    \"kafka\": {\n      \"defaultTopic\": \"<string>\",\n      \"producer\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\"\n      },\n      \"enabled\": \"<boolean>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"integrations\": {\n    \"cleanspeak\": {\n      \"apiKey\": \"<string>\",\n      \"applicationIds\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"url\": \"<URI>\",\n      \"usernameModeration\": {\n        \"applicationId\": \"<uuid>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"enabled\": \"<boolean>\"\n    },\n    \"kafka\": {\n      \"defaultTopic\": \"<string>\",\n      \"producer\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"enabled\": \"<boolean>\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1e6b097b-3056-4006-b23a-66599a05d8b3",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "integration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"integrations\": {\n    \"cleanspeak\": {\n      \"apiKey\": \"<string>\",\n      \"applicationIds\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"url\": \"<URI>\",\n      \"usernameModeration\": {\n        \"applicationId\": \"<uuid>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"enabled\": \"<boolean>\"\n    },\n    \"kafka\": {\n      \"defaultTopic\": \"<string>\",\n      \"producer\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\"\n      },\n      \"enabled\": \"<boolean>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:9011",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0d2bfa15-cd22-447d-85e0-8846d6313a24",
+    "name": "FusionAuth Api Key Integration API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.",
+      "type": "text/plain"
+    }
+  }
+}

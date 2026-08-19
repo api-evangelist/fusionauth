@@ -1,0 +1,1192 @@
+{
+  "item": [
+    {
+      "id": "9771f015-e993-4bc9-b2b3-c0079eb37a60",
+      "name": "Ip Acl",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9cf493f6-070b-4c8b-be44-a77dfdd6ca43",
+          "name": "create IP Access Control List",
+          "request": {
+            "name": "create IP Access Control List",
+            "description": {
+              "content": "Creates an IP Access Control List. You can optionally specify an Id on this create request, if one is not provided one will be generated.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "ip-acl"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ipAccessControlList\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"entries\": [\n      {\n        \"action\": \"<string>\",\n        \"endIPAddress\": \"<string>\",\n        \"startIPAddress\": \"<string>\"\n      },\n      {\n        \"action\": \"<string>\",\n        \"endIPAddress\": \"<string>\",\n        \"startIPAddress\": \"<string>\"\n      }\n    ],\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "00e2a63c-6eb8-4156-8d54-6a1482c26ea0",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ip-acl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ipAccessControlList\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\"\n    },\n    \"entries\": [\n      {\n        \"action\": \"<string>\",\n        \"endIPAddress\": \"<string>\",\n        \"startIPAddress\": \"<string>\"\n      },\n      {\n        \"action\": \"<string>\",\n        \"endIPAddress\": \"<string>\",\n        \"startIPAddress\": \"<string>\"\n      }\n    ],\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ipAccessControlList\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"entries\": [\n      {\n        \"action\": \"<string>\",\n        \"endIPAddress\": \"<string>\",\n        \"startIPAddress\": \"<string>\"\n      },\n      {\n        \"action\": \"<string>\",\n        \"endIPAddress\": \"<string>\",\n        \"startIPAddress\": \"<string>\"\n      }\n    ],\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\"\n  },\n  \"ipAccessControlLists\": [\n    {\n      \"data\": {\n        \"key_0\": \"<object>\"\n      },\n      \"entries\": [\n        {\n          \"action\": \"<string>\",\n          \"endIPAddress\": \"<string>\",\n          \"startIPAddress\": \"<string>\"\n        },\n        {\n          \"action\": \"<string>\",\n          \"endIPAddress\": \"<string>\",\n          \"startIPAddress\": \"<string>\"\n        }\n      ],\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\",\n        \"key_2\": \"<object>\",\n        \"key_3\": \"<object>\",\n        \"key_4\": \"<object>\"\n      },\n      \"entries\": [\n        {\n          \"action\": \"<string>\",\n          \"endIPAddress\": \"<string>\",\n          \"startIPAddress\": \"<string>\"\n        },\n        {\n          \"action\": \"<string>\",\n          \"endIPAddress\": \"<string>\",\n          \"startIPAddress\": \"<string>\"\n        }\n      ],\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f8f282f1-3439-41e8-904c-1a796bc6d1d4",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ip-acl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ipAccessControlList\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\"\n    },\n    \"entries\": [\n      {\n        \"action\": \"<string>\",\n        \"endIPAddress\": \"<string>\",\n        \"startIPAddress\": \"<string>\"\n      },\n      {\n        \"action\": \"<string>\",\n        \"endIPAddress\": \"<string>\",\n        \"startIPAddress\": \"<string>\"\n      }\n    ],\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e76e7ffb-a062-4780-934a-333205e9adc7",
+          "name": "search IP Access Control Lists With Id",
+          "request": {
+            "name": "search IP Access Control Lists With Id",
+            "description": {
+              "content": "Searches the IP Access Control Lists with the specified criteria and pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "ip-acl",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"search\": {\n    \"name\": \"<string>\",\n    \"numberOfResults\": \"<integer>\",\n    \"orderBy\": \"<string>\",\n    \"startRow\": \"<integer>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cb0a3b91-ffdb-48b7-bfcd-226f41ee7e08",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ip-acl",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"search\": {\n    \"name\": \"<string>\",\n    \"numberOfResults\": \"<integer>\",\n    \"orderBy\": \"<string>\",\n    \"startRow\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ipAccessControlLists\": [\n    {\n      \"data\": {\n        \"key_0\": \"<object>\"\n      },\n      \"entries\": [\n        {\n          \"action\": \"<string>\",\n          \"endIPAddress\": \"<string>\",\n          \"startIPAddress\": \"<string>\"\n        },\n        {\n          \"action\": \"<string>\",\n          \"endIPAddress\": \"<string>\",\n          \"startIPAddress\": \"<string>\"\n        }\n      ],\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\",\n        \"key_2\": \"<object>\"\n      },\n      \"entries\": [\n        {\n          \"action\": \"<string>\",\n          \"endIPAddress\": \"<string>\",\n          \"startIPAddress\": \"<string>\"\n        },\n        {\n          \"action\": \"<string>\",\n          \"endIPAddress\": \"<string>\",\n          \"startIPAddress\": \"<string>\"\n        }\n      ],\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"total\": 2817\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6560d49c-49a4-4066-ba82-31e53e4af004",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ip-acl",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"search\": {\n    \"name\": \"<string>\",\n    \"numberOfResults\": \"<integer>\",\n    \"orderBy\": \"<string>\",\n    \"startRow\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3035b10e-62ff-4404-aaf8-6233af6bdb5c",
+          "name": "create IP Access Control List With Id",
+          "request": {
+            "name": "create IP Access Control List With Id",
+            "description": {
+              "content": "Creates an IP Access Control List. You can optionally specify an Id on this create request, if one is not provided one will be generated.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "ip-acl",
+                ":accessControlListId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accessControlListId",
+                  "description": "(Required) The Id for the IP Access Control List. If not provided a secure random UUID will be generated."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ipAccessControlList\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"entries\": [\n      {\n        \"action\": \"<string>\",\n        \"endIPAddress\": \"<string>\",\n        \"startIPAddress\": \"<string>\"\n      },\n      {\n        \"action\": \"<string>\",\n        \"endIPAddress\": \"<string>\",\n        \"startIPAddress\": \"<string>\"\n      }\n    ],\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2ab37dec-763c-44a2-95df-5a12d342bf29",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ip-acl",
+                    ":accessControlListId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accessControlListId",
+                      "description": "(Required) The Id for the IP Access Control List. If not provided a secure random UUID will be generated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ipAccessControlList\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\"\n    },\n    \"entries\": [\n      {\n        \"action\": \"<string>\",\n        \"endIPAddress\": \"<string>\",\n        \"startIPAddress\": \"<string>\"\n      },\n      {\n        \"action\": \"<string>\",\n        \"endIPAddress\": \"<string>\",\n        \"startIPAddress\": \"<string>\"\n      }\n    ],\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ipAccessControlList\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\"\n    },\n    \"entries\": [\n      {\n        \"action\": \"<string>\",\n        \"endIPAddress\": \"<string>\",\n        \"startIPAddress\": \"<string>\"\n      },\n      {\n        \"action\": \"<string>\",\n        \"endIPAddress\": \"<string>\",\n        \"startIPAddress\": \"<string>\"\n      }\n    ],\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\"\n  },\n  \"ipAccessControlLists\": [\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"entries\": [\n        {\n          \"action\": \"<string>\",\n          \"endIPAddress\": \"<string>\",\n          \"startIPAddress\": \"<string>\"\n        },\n        {\n          \"action\": \"<string>\",\n          \"endIPAddress\": \"<string>\",\n          \"startIPAddress\": \"<string>\"\n        }\n      ],\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\",\n        \"key_2\": \"<object>\",\n        \"key_3\": \"<object>\"\n      },\n      \"entries\": [\n        {\n          \"action\": \"<string>\",\n          \"endIPAddress\": \"<string>\",\n          \"startIPAddress\": \"<string>\"\n        },\n        {\n          \"action\": \"<string>\",\n          \"endIPAddress\": \"<string>\",\n          \"startIPAddress\": \"<string>\"\n        }\n      ],\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "95ff529b-a81d-41ae-8afb-02dc41922f2f",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ip-acl",
+                    ":accessControlListId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accessControlListId",
+                      "description": "(Required) The Id for the IP Access Control List. If not provided a secure random UUID will be generated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ipAccessControlList\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\"\n    },\n    \"entries\": [\n      {\n        \"action\": \"<string>\",\n        \"endIPAddress\": \"<string>\",\n        \"startIPAddress\": \"<string>\"\n      },\n      {\n        \"action\": \"<string>\",\n        \"endIPAddress\": \"<string>\",\n        \"startIPAddress\": \"<string>\"\n      }\n    ],\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "81eb59af-da0d-42f5-8110-7a46fe4e7f9d",
+          "name": "patch IP Access Control List With Id",
+          "request": {
+            "name": "patch IP Access Control List With Id",
+            "description": {
+              "content": "Update the IP Access Control List with the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "ip-acl",
+                ":accessControlListId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accessControlListId",
+                  "description": "(Required) The Id of the IP Access Control List to patch."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ipAccessControlList\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"entries\": [\n      {\n        \"action\": \"<string>\",\n        \"endIPAddress\": \"<string>\",\n        \"startIPAddress\": \"<string>\"\n      },\n      {\n        \"action\": \"<string>\",\n        \"endIPAddress\": \"<string>\",\n        \"startIPAddress\": \"<string>\"\n      }\n    ],\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "64735057-ec73-436c-a4b4-02c9623a3df5",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ip-acl",
+                    ":accessControlListId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accessControlListId",
+                      "description": "(Required) The Id of the IP Access Control List to patch."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ipAccessControlList\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\"\n    },\n    \"entries\": [\n      {\n        \"action\": \"<string>\",\n        \"endIPAddress\": \"<string>\",\n        \"startIPAddress\": \"<string>\"\n      },\n      {\n        \"action\": \"<string>\",\n        \"endIPAddress\": \"<string>\",\n        \"startIPAddress\": \"<string>\"\n      }\n    ],\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ipAccessControlList\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\"\n    },\n    \"entries\": [\n      {\n        \"action\": \"<string>\",\n        \"endIPAddress\": \"<string>\",\n        \"startIPAddress\": \"<string>\"\n      },\n      {\n        \"action\": \"<string>\",\n        \"endIPAddress\": \"<string>\",\n        \"startIPAddress\": \"<string>\"\n      }\n    ],\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\"\n  },\n  \"ipAccessControlLists\": [\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"entries\": [\n        {\n          \"action\": \"<string>\",\n          \"endIPAddress\": \"<string>\",\n          \"startIPAddress\": \"<string>\"\n        },\n        {\n          \"action\": \"<string>\",\n          \"endIPAddress\": \"<string>\",\n          \"startIPAddress\": \"<string>\"\n        }\n      ],\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\",\n        \"key_2\": \"<object>\",\n        \"key_3\": \"<object>\"\n      },\n      \"entries\": [\n        {\n          \"action\": \"<string>\",\n          \"endIPAddress\": \"<string>\",\n          \"startIPAddress\": \"<string>\"\n        },\n        {\n          \"action\": \"<string>\",\n          \"endIPAddress\": \"<string>\",\n          \"startIPAddress\": \"<string>\"\n        }\n      ],\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e016a9e2-1523-4e81-9b99-b4274ff959bd",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ip-acl",
+                    ":accessControlListId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accessControlListId",
+                      "description": "(Required) The Id of the IP Access Control List to patch."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ipAccessControlList\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\"\n    },\n    \"entries\": [\n      {\n        \"action\": \"<string>\",\n        \"endIPAddress\": \"<string>\",\n        \"startIPAddress\": \"<string>\"\n      },\n      {\n        \"action\": \"<string>\",\n        \"endIPAddress\": \"<string>\",\n        \"startIPAddress\": \"<string>\"\n      }\n    ],\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8508256b-208a-477f-8f10-0cbecaf741b4",
+          "name": "update IP Access Control List With Id",
+          "request": {
+            "name": "update IP Access Control List With Id",
+            "description": {
+              "content": "Updates the IP Access Control List with the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "ip-acl",
+                ":accessControlListId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accessControlListId",
+                  "description": "(Required) The Id of the IP Access Control List to update."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ipAccessControlList\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"entries\": [\n      {\n        \"action\": \"<string>\",\n        \"endIPAddress\": \"<string>\",\n        \"startIPAddress\": \"<string>\"\n      },\n      {\n        \"action\": \"<string>\",\n        \"endIPAddress\": \"<string>\",\n        \"startIPAddress\": \"<string>\"\n      }\n    ],\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "40a71ea3-af11-4d42-86bb-a6fe68dbc710",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ip-acl",
+                    ":accessControlListId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accessControlListId",
+                      "description": "(Required) The Id of the IP Access Control List to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ipAccessControlList\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\"\n    },\n    \"entries\": [\n      {\n        \"action\": \"<string>\",\n        \"endIPAddress\": \"<string>\",\n        \"startIPAddress\": \"<string>\"\n      },\n      {\n        \"action\": \"<string>\",\n        \"endIPAddress\": \"<string>\",\n        \"startIPAddress\": \"<string>\"\n      }\n    ],\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ipAccessControlList\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\"\n    },\n    \"entries\": [\n      {\n        \"action\": \"<string>\",\n        \"endIPAddress\": \"<string>\",\n        \"startIPAddress\": \"<string>\"\n      },\n      {\n        \"action\": \"<string>\",\n        \"endIPAddress\": \"<string>\",\n        \"startIPAddress\": \"<string>\"\n      }\n    ],\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\"\n  },\n  \"ipAccessControlLists\": [\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"entries\": [\n        {\n          \"action\": \"<string>\",\n          \"endIPAddress\": \"<string>\",\n          \"startIPAddress\": \"<string>\"\n        },\n        {\n          \"action\": \"<string>\",\n          \"endIPAddress\": \"<string>\",\n          \"startIPAddress\": \"<string>\"\n        }\n      ],\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\",\n        \"key_2\": \"<object>\",\n        \"key_3\": \"<object>\"\n      },\n      \"entries\": [\n        {\n          \"action\": \"<string>\",\n          \"endIPAddress\": \"<string>\",\n          \"startIPAddress\": \"<string>\"\n        },\n        {\n          \"action\": \"<string>\",\n          \"endIPAddress\": \"<string>\",\n          \"startIPAddress\": \"<string>\"\n        }\n      ],\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "631c7ed9-e5c2-4f3f-911a-f0d1756b8bb5",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ip-acl",
+                    ":accessControlListId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accessControlListId",
+                      "description": "(Required) The Id of the IP Access Control List to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ipAccessControlList\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\"\n    },\n    \"entries\": [\n      {\n        \"action\": \"<string>\",\n        \"endIPAddress\": \"<string>\",\n        \"startIPAddress\": \"<string>\"\n      },\n      {\n        \"action\": \"<string>\",\n        \"endIPAddress\": \"<string>\",\n        \"startIPAddress\": \"<string>\"\n      }\n    ],\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fcb27567-b917-4179-ad25-96116940b0db",
+          "name": "delete IP Access Control List With Id",
+          "request": {
+            "name": "delete IP Access Control List With Id",
+            "description": {
+              "content": "Deletes the IP Access Control List for the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "ip-acl",
+                ":ipAccessControlListId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ipAccessControlListId",
+                  "description": "(Required) The Id of the IP Access Control List to delete."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7bc6f21f-7611-469b-9515-ce0fb71aefa8",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ip-acl",
+                    ":ipAccessControlListId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ipAccessControlListId",
+                      "description": "(Required) The Id of the IP Access Control List to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f5ec1afb-7089-4248-ad9d-a89a4268d548",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ip-acl",
+                    ":ipAccessControlListId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ipAccessControlListId",
+                      "description": "(Required) The Id of the IP Access Control List to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0770bae8-96a0-403e-8efc-0ce3698242d2",
+          "name": "retrieve IP Access Control List With Id",
+          "request": {
+            "name": "retrieve IP Access Control List With Id",
+            "description": {
+              "content": "Retrieves the IP Access Control List with the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "ip-acl",
+                ":ipAccessControlListId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ipAccessControlListId",
+                  "description": "(Required) The Id of the IP Access Control List."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b6415b29-71a1-4c96-9ba3-5cf4d5d1d6a8",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ip-acl",
+                    ":ipAccessControlListId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ipAccessControlListId",
+                      "description": "(Required) The Id of the IP Access Control List."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ipAccessControlList\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\"\n    },\n    \"entries\": [\n      {\n        \"action\": \"<string>\",\n        \"endIPAddress\": \"<string>\",\n        \"startIPAddress\": \"<string>\"\n      },\n      {\n        \"action\": \"<string>\",\n        \"endIPAddress\": \"<string>\",\n        \"startIPAddress\": \"<string>\"\n      }\n    ],\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\"\n  },\n  \"ipAccessControlLists\": [\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"entries\": [\n        {\n          \"action\": \"<string>\",\n          \"endIPAddress\": \"<string>\",\n          \"startIPAddress\": \"<string>\"\n        },\n        {\n          \"action\": \"<string>\",\n          \"endIPAddress\": \"<string>\",\n          \"startIPAddress\": \"<string>\"\n        }\n      ],\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\",\n        \"key_2\": \"<object>\",\n        \"key_3\": \"<object>\"\n      },\n      \"entries\": [\n        {\n          \"action\": \"<string>\",\n          \"endIPAddress\": \"<string>\",\n          \"startIPAddress\": \"<string>\"\n        },\n        {\n          \"action\": \"<string>\",\n          \"endIPAddress\": \"<string>\",\n          \"startIPAddress\": \"<string>\"\n        }\n      ],\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a95b43c5-0fd7-46b8-98da-ee82e9576224",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ip-acl",
+                    ":ipAccessControlListId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ipAccessControlListId",
+                      "description": "(Required) The Id of the IP Access Control List."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:9011",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c108a74d-77f3-4d25-a218-d8031d061bf0",
+    "name": "FusionAuth Api Key Ip Acl API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.",
+      "type": "text/plain"
+    }
+  }
+}

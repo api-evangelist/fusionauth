@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FusionAuth Api Key Logout API",
+    "version": "1.66.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Logout",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "createLogout",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/logout",
+            "params": [
+              {
+                "name": "global",
+                "value": "",
+                "type": "query",
+                "description": "When this value is set to true all the refresh tokens issued to the owner of the provided token will be revoked."
+              },
+              {
+                "name": "refreshToken",
+                "value": "",
+                "type": "query",
+                "description": "The refresh_token as a request parameter instead of coming in via a cookie. If provided this takes precedence over the cookie."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The Logout API is intended to be used to remove the refresh token and access token cookies if they exist on the client and revoke the refresh token stored. This API takes the refresh token in the JSON body. OR The Logout API is intended to be used to remove the refresh token and access token cookies if they exist on the client and revoke the refresh token stored. This API does nothing if the request does not contain an access token or refresh token cookies."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

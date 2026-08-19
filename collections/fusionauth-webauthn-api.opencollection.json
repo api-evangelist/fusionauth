@@ -1,0 +1,192 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FusionAuth Api Key Webauthn API",
+    "version": "1.66.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Webauthn",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "retrieveWebAuthnCredentialsForUserWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/webauthn",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "query",
+                "description": "The user's ID."
+              }
+            ]
+          },
+          "docs": "Retrieves all WebAuthn credentials for the given user."
+        },
+        {
+          "info": {
+            "name": "deleteWebAuthnCredentialsForUserWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:9011/api/webauthn",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "query",
+                "description": "The unique Id of the User to delete WebAuthn passkeys for."
+              }
+            ]
+          },
+          "docs": "Deletes all of the WebAuthn credentials for the given User Id."
+        },
+        {
+          "info": {
+            "name": "completeWebAuthnAssertionWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/webauthn/assert",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Complete a WebAuthn authentication ceremony by validating the signature against the previously generated challenge without logging the user in"
+        },
+        {
+          "info": {
+            "name": "importWebAuthnCredentialWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/webauthn/import",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Import a WebAuthn credential"
+        },
+        {
+          "info": {
+            "name": "completeWebAuthnLoginWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/webauthn/login",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Complete a WebAuthn authentication ceremony by validating the signature against the previously generated challenge and then login the user in"
+        },
+        {
+          "info": {
+            "name": "completeWebAuthnRegistrationWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/webauthn/register/complete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Complete a WebAuthn registration ceremony by validating the client request and saving the new credential"
+        },
+        {
+          "info": {
+            "name": "startWebAuthnRegistrationWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/webauthn/register/start",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Start a WebAuthn registration ceremony by generating a new challenge for the user"
+        },
+        {
+          "info": {
+            "name": "startWebAuthnLoginWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/webauthn/start",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Start a WebAuthn authentication ceremony by generating a new challenge for the user"
+        },
+        {
+          "info": {
+            "name": "retrieveWebAuthnCredentialWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/webauthn/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the WebAuthn credential."
+              }
+            ]
+          },
+          "docs": "Retrieves the WebAuthn credential for the given Id."
+        },
+        {
+          "info": {
+            "name": "deleteWebAuthnCredentialWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:9011/api/webauthn/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the WebAuthn credential to delete."
+              }
+            ]
+          },
+          "docs": "Deletes the WebAuthn credential for the given Id."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

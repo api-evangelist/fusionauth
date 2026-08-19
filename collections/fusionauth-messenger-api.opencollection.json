@@ -1,0 +1,148 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FusionAuth Api Key Messenger API",
+    "version": "1.66.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Messenger",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "createMessenger",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/messenger",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a messenger.  You can optionally specify an Id for the messenger, if not provided one will be generated."
+        },
+        {
+          "info": {
+            "name": "retrieveMessengerWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/messenger/:messengerId",
+            "params": [
+              {
+                "name": "messengerId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the messenger."
+              }
+            ]
+          },
+          "docs": "Retrieves the messenger with the given Id."
+        },
+        {
+          "info": {
+            "name": "createMessengerWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/messenger/:messengerId",
+            "params": [
+              {
+                "name": "messengerId",
+                "value": "",
+                "type": "path",
+                "description": "The Id for the messenger. If not provided a secure random UUID will be generated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a messenger.  You can optionally specify an Id for the messenger, if not provided one will be generated."
+        },
+        {
+          "info": {
+            "name": "updateMessengerWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:9011/api/messenger/:messengerId",
+            "params": [
+              {
+                "name": "messengerId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the messenger to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the messenger with the given Id."
+        },
+        {
+          "info": {
+            "name": "patchMessengerWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:9011/api/messenger/:messengerId",
+            "params": [
+              {
+                "name": "messengerId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the messenger to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates, via PATCH, the messenger with the given Id."
+        },
+        {
+          "info": {
+            "name": "deleteMessengerWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:9011/api/messenger/:messengerId",
+            "params": [
+              {
+                "name": "messengerId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the messenger to delete."
+              }
+            ]
+          },
+          "docs": "Deletes the messenger for the given Id."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1300 @@
+{
+  "item": [
+    {
+      "id": "6202b3c1-b688-4290-8db6-10a64d1e981f",
+      "name": "Consent",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f70d9c9b-853c-41fb-8597-0ad932cb9e39",
+          "name": "create Consent",
+          "request": {
+            "name": "create Consent",
+            "description": {
+              "content": "Creates a user consent type. You can optionally specify an Id for the consent type, if not provided one will be generated.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "consent"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                "key": "X-FusionAuth-TenantId",
+                "value": "<UUID>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"consent\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"consentEmailTemplateId\": \"<uuid>\",\n    \"countryMinimumAgeForSelfConsent\": {},\n    \"defaultMinimumAgeForSelfConsent\": \"<integer>\",\n    \"emailPlus\": {\n      \"emailTemplateId\": \"<uuid>\",\n      \"maximumTimeToSendEmailInHours\": \"<integer>\",\n      \"minimumTimeToSendEmailInHours\": \"<integer>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"multipleValuesAllowed\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"values\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e0d36ae1-6e60-4deb-ba9c-ed66c047cfdf",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "consent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"consent\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"consentEmailTemplateId\": \"<uuid>\",\n    \"countryMinimumAgeForSelfConsent\": {},\n    \"defaultMinimumAgeForSelfConsent\": \"<integer>\",\n    \"emailPlus\": {\n      \"emailTemplateId\": \"<uuid>\",\n      \"maximumTimeToSendEmailInHours\": \"<integer>\",\n      \"minimumTimeToSendEmailInHours\": \"<integer>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"multipleValuesAllowed\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"values\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"consent\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"consentEmailTemplateId\": \"<uuid>\",\n    \"countryMinimumAgeForSelfConsent\": {},\n    \"defaultMinimumAgeForSelfConsent\": \"<integer>\",\n    \"emailPlus\": {\n      \"emailTemplateId\": \"<uuid>\",\n      \"maximumTimeToSendEmailInHours\": \"<integer>\",\n      \"minimumTimeToSendEmailInHours\": \"<integer>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"multipleValuesAllowed\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"values\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"consents\": [\n    {\n      \"data\": {\n        \"key_0\": \"<object>\"\n      },\n      \"consentEmailTemplateId\": \"<uuid>\",\n      \"countryMinimumAgeForSelfConsent\": {},\n      \"defaultMinimumAgeForSelfConsent\": \"<integer>\",\n      \"emailPlus\": {\n        \"emailTemplateId\": \"<uuid>\",\n        \"maximumTimeToSendEmailInHours\": \"<integer>\",\n        \"minimumTimeToSendEmailInHours\": \"<integer>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"multipleValuesAllowed\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"data\": {\n        \"key_0\": \"<object>\"\n      },\n      \"consentEmailTemplateId\": \"<uuid>\",\n      \"countryMinimumAgeForSelfConsent\": {},\n      \"defaultMinimumAgeForSelfConsent\": \"<integer>\",\n      \"emailPlus\": {\n        \"emailTemplateId\": \"<uuid>\",\n        \"maximumTimeToSendEmailInHours\": \"<integer>\",\n        \"minimumTimeToSendEmailInHours\": \"<integer>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"multipleValuesAllowed\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "600732ab-b906-487f-969b-0525e095218b",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "consent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"consent\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"consentEmailTemplateId\": \"<uuid>\",\n    \"countryMinimumAgeForSelfConsent\": {},\n    \"defaultMinimumAgeForSelfConsent\": \"<integer>\",\n    \"emailPlus\": {\n      \"emailTemplateId\": \"<uuid>\",\n      \"maximumTimeToSendEmailInHours\": \"<integer>\",\n      \"minimumTimeToSendEmailInHours\": \"<integer>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"multipleValuesAllowed\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"values\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {},\n        \"key_4\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "21326388-8b64-4244-bb56-22afd79239b7",
+          "name": "search Consents With Id",
+          "request": {
+            "name": "search Consents With Id",
+            "description": {
+              "content": "Searches consents with the specified criteria and pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "consent",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"search\": {\n    \"name\": \"<string>\",\n    \"numberOfResults\": \"<integer>\",\n    \"orderBy\": \"<string>\",\n    \"startRow\": \"<integer>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "af29285e-7300-47c8-9e9e-2b3669967d9b",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "consent",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"search\": {\n    \"name\": \"<string>\",\n    \"numberOfResults\": \"<integer>\",\n    \"orderBy\": \"<string>\",\n    \"startRow\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"consents\": [\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"consentEmailTemplateId\": \"<uuid>\",\n      \"countryMinimumAgeForSelfConsent\": {},\n      \"defaultMinimumAgeForSelfConsent\": \"<integer>\",\n      \"emailPlus\": {\n        \"emailTemplateId\": \"<uuid>\",\n        \"maximumTimeToSendEmailInHours\": \"<integer>\",\n        \"minimumTimeToSendEmailInHours\": \"<integer>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"multipleValuesAllowed\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"data\": {\n        \"key_0\": \"<object>\"\n      },\n      \"consentEmailTemplateId\": \"<uuid>\",\n      \"countryMinimumAgeForSelfConsent\": {},\n      \"defaultMinimumAgeForSelfConsent\": \"<integer>\",\n      \"emailPlus\": {\n        \"emailTemplateId\": \"<uuid>\",\n        \"maximumTimeToSendEmailInHours\": \"<integer>\",\n        \"minimumTimeToSendEmailInHours\": \"<integer>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"multipleValuesAllowed\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"total\": 9576\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "80ea04cd-0ad4-458d-ab58-955eb8361b45",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "consent",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"search\": {\n    \"name\": \"<string>\",\n    \"numberOfResults\": \"<integer>\",\n    \"orderBy\": \"<string>\",\n    \"startRow\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f53995b1-9d9d-4dc7-8a4b-dee0e9f606d1",
+          "name": "create Consent With Id",
+          "request": {
+            "name": "create Consent With Id",
+            "description": {
+              "content": "Creates a user consent type. You can optionally specify an Id for the consent type, if not provided one will be generated.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "consent",
+                ":consentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "consentId",
+                  "description": "(Required) The Id for the consent. If not provided a secure random UUID will be generated."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                "key": "X-FusionAuth-TenantId",
+                "value": "<UUID>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"consent\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"consentEmailTemplateId\": \"<uuid>\",\n    \"countryMinimumAgeForSelfConsent\": {},\n    \"defaultMinimumAgeForSelfConsent\": \"<integer>\",\n    \"emailPlus\": {\n      \"emailTemplateId\": \"<uuid>\",\n      \"maximumTimeToSendEmailInHours\": \"<integer>\",\n      \"minimumTimeToSendEmailInHours\": \"<integer>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"multipleValuesAllowed\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"values\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0959f29e-5900-4338-b0a2-8c86c6faba32",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "consent",
+                    ":consentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "consentId",
+                      "description": "(Required) The Id for the consent. If not provided a secure random UUID will be generated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"consent\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"consentEmailTemplateId\": \"<uuid>\",\n    \"countryMinimumAgeForSelfConsent\": {},\n    \"defaultMinimumAgeForSelfConsent\": \"<integer>\",\n    \"emailPlus\": {\n      \"emailTemplateId\": \"<uuid>\",\n      \"maximumTimeToSendEmailInHours\": \"<integer>\",\n      \"minimumTimeToSendEmailInHours\": \"<integer>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"multipleValuesAllowed\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"values\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"consent\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\",\n      \"key_3\": \"<object>\",\n      \"key_4\": \"<object>\"\n    },\n    \"consentEmailTemplateId\": \"<uuid>\",\n    \"countryMinimumAgeForSelfConsent\": {},\n    \"defaultMinimumAgeForSelfConsent\": \"<integer>\",\n    \"emailPlus\": {\n      \"emailTemplateId\": \"<uuid>\",\n      \"maximumTimeToSendEmailInHours\": \"<integer>\",\n      \"minimumTimeToSendEmailInHours\": \"<integer>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"multipleValuesAllowed\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"values\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"consents\": [\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\",\n        \"key_2\": \"<object>\",\n        \"key_3\": \"<object>\"\n      },\n      \"consentEmailTemplateId\": \"<uuid>\",\n      \"countryMinimumAgeForSelfConsent\": {},\n      \"defaultMinimumAgeForSelfConsent\": \"<integer>\",\n      \"emailPlus\": {\n        \"emailTemplateId\": \"<uuid>\",\n        \"maximumTimeToSendEmailInHours\": \"<integer>\",\n        \"minimumTimeToSendEmailInHours\": \"<integer>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"multipleValuesAllowed\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"consentEmailTemplateId\": \"<uuid>\",\n      \"countryMinimumAgeForSelfConsent\": {},\n      \"defaultMinimumAgeForSelfConsent\": \"<integer>\",\n      \"emailPlus\": {\n        \"emailTemplateId\": \"<uuid>\",\n        \"maximumTimeToSendEmailInHours\": \"<integer>\",\n        \"minimumTimeToSendEmailInHours\": \"<integer>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"multipleValuesAllowed\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "83fb7438-4529-464e-a11e-a05a12709c13",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "consent",
+                    ":consentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "consentId",
+                      "description": "(Required) The Id for the consent. If not provided a secure random UUID will be generated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"consent\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"consentEmailTemplateId\": \"<uuid>\",\n    \"countryMinimumAgeForSelfConsent\": {},\n    \"defaultMinimumAgeForSelfConsent\": \"<integer>\",\n    \"emailPlus\": {\n      \"emailTemplateId\": \"<uuid>\",\n      \"maximumTimeToSendEmailInHours\": \"<integer>\",\n      \"minimumTimeToSendEmailInHours\": \"<integer>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"multipleValuesAllowed\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"values\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6c9c64a8-06db-4214-9b28-567eede5f5bd",
+          "name": "delete Consent With Id",
+          "request": {
+            "name": "delete Consent With Id",
+            "description": {
+              "content": "Deletes the consent for the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "consent",
+                ":consentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "consentId",
+                  "description": "(Required) The Id of the consent to delete."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                "key": "X-FusionAuth-TenantId",
+                "value": "<UUID>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7298afff-9081-4fba-ab98-b461f768f27c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "consent",
+                    ":consentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "consentId",
+                      "description": "(Required) The Id of the consent to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "90906abd-c104-42e2-a61a-cc87ba602ed4",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "consent",
+                    ":consentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "consentId",
+                      "description": "(Required) The Id of the consent to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ea52b6ce-e72c-4337-abca-5f1ebff4d249",
+          "name": "patch Consent With Id",
+          "request": {
+            "name": "patch Consent With Id",
+            "description": {
+              "content": "Updates, via PATCH, the consent with the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "consent",
+                ":consentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "consentId",
+                  "description": "(Required) The Id of the consent to update."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                "key": "X-FusionAuth-TenantId",
+                "value": "<UUID>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"consent\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"consentEmailTemplateId\": \"<uuid>\",\n    \"countryMinimumAgeForSelfConsent\": {},\n    \"defaultMinimumAgeForSelfConsent\": \"<integer>\",\n    \"emailPlus\": {\n      \"emailTemplateId\": \"<uuid>\",\n      \"maximumTimeToSendEmailInHours\": \"<integer>\",\n      \"minimumTimeToSendEmailInHours\": \"<integer>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"multipleValuesAllowed\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"values\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "83c43812-2fa1-414a-bfb4-193d85177190",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "consent",
+                    ":consentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "consentId",
+                      "description": "(Required) The Id of the consent to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"consent\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"consentEmailTemplateId\": \"<uuid>\",\n    \"countryMinimumAgeForSelfConsent\": {},\n    \"defaultMinimumAgeForSelfConsent\": \"<integer>\",\n    \"emailPlus\": {\n      \"emailTemplateId\": \"<uuid>\",\n      \"maximumTimeToSendEmailInHours\": \"<integer>\",\n      \"minimumTimeToSendEmailInHours\": \"<integer>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"multipleValuesAllowed\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"values\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"consent\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\",\n      \"key_3\": \"<object>\",\n      \"key_4\": \"<object>\"\n    },\n    \"consentEmailTemplateId\": \"<uuid>\",\n    \"countryMinimumAgeForSelfConsent\": {},\n    \"defaultMinimumAgeForSelfConsent\": \"<integer>\",\n    \"emailPlus\": {\n      \"emailTemplateId\": \"<uuid>\",\n      \"maximumTimeToSendEmailInHours\": \"<integer>\",\n      \"minimumTimeToSendEmailInHours\": \"<integer>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"multipleValuesAllowed\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"values\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"consents\": [\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\",\n        \"key_2\": \"<object>\",\n        \"key_3\": \"<object>\"\n      },\n      \"consentEmailTemplateId\": \"<uuid>\",\n      \"countryMinimumAgeForSelfConsent\": {},\n      \"defaultMinimumAgeForSelfConsent\": \"<integer>\",\n      \"emailPlus\": {\n        \"emailTemplateId\": \"<uuid>\",\n        \"maximumTimeToSendEmailInHours\": \"<integer>\",\n        \"minimumTimeToSendEmailInHours\": \"<integer>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"multipleValuesAllowed\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"consentEmailTemplateId\": \"<uuid>\",\n      \"countryMinimumAgeForSelfConsent\": {},\n      \"defaultMinimumAgeForSelfConsent\": \"<integer>\",\n      \"emailPlus\": {\n        \"emailTemplateId\": \"<uuid>\",\n        \"maximumTimeToSendEmailInHours\": \"<integer>\",\n        \"minimumTimeToSendEmailInHours\": \"<integer>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"multipleValuesAllowed\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9945ec52-cc33-463f-9b0a-de5250299893",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "consent",
+                    ":consentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "consentId",
+                      "description": "(Required) The Id of the consent to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"consent\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"consentEmailTemplateId\": \"<uuid>\",\n    \"countryMinimumAgeForSelfConsent\": {},\n    \"defaultMinimumAgeForSelfConsent\": \"<integer>\",\n    \"emailPlus\": {\n      \"emailTemplateId\": \"<uuid>\",\n      \"maximumTimeToSendEmailInHours\": \"<integer>\",\n      \"minimumTimeToSendEmailInHours\": \"<integer>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"multipleValuesAllowed\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"values\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8ed8dade-87cd-4f8f-89f4-c4f33167c3e9",
+          "name": "retrieve Consent With Id",
+          "request": {
+            "name": "retrieve Consent With Id",
+            "description": {
+              "content": "Retrieves the Consent for the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "consent",
+                ":consentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "consentId",
+                  "description": "(Required) The Id of the consent."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                "key": "X-FusionAuth-TenantId",
+                "value": "<UUID>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0a6d58c1-e214-4eea-95d6-bb9e99d412d8",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "consent",
+                    ":consentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "consentId",
+                      "description": "(Required) The Id of the consent."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"consent\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\",\n      \"key_3\": \"<object>\",\n      \"key_4\": \"<object>\"\n    },\n    \"consentEmailTemplateId\": \"<uuid>\",\n    \"countryMinimumAgeForSelfConsent\": {},\n    \"defaultMinimumAgeForSelfConsent\": \"<integer>\",\n    \"emailPlus\": {\n      \"emailTemplateId\": \"<uuid>\",\n      \"maximumTimeToSendEmailInHours\": \"<integer>\",\n      \"minimumTimeToSendEmailInHours\": \"<integer>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"multipleValuesAllowed\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"values\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"consents\": [\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\",\n        \"key_2\": \"<object>\",\n        \"key_3\": \"<object>\"\n      },\n      \"consentEmailTemplateId\": \"<uuid>\",\n      \"countryMinimumAgeForSelfConsent\": {},\n      \"defaultMinimumAgeForSelfConsent\": \"<integer>\",\n      \"emailPlus\": {\n        \"emailTemplateId\": \"<uuid>\",\n        \"maximumTimeToSendEmailInHours\": \"<integer>\",\n        \"minimumTimeToSendEmailInHours\": \"<integer>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"multipleValuesAllowed\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"consentEmailTemplateId\": \"<uuid>\",\n      \"countryMinimumAgeForSelfConsent\": {},\n      \"defaultMinimumAgeForSelfConsent\": \"<integer>\",\n      \"emailPlus\": {\n        \"emailTemplateId\": \"<uuid>\",\n        \"maximumTimeToSendEmailInHours\": \"<integer>\",\n        \"minimumTimeToSendEmailInHours\": \"<integer>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"multipleValuesAllowed\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ba50624-b020-4578-9d29-790e2a2656f7",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "consent",
+                    ":consentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "consentId",
+                      "description": "(Required) The Id of the consent."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fce67016-09b6-4e4c-86aa-05ed768dd934",
+          "name": "update Consent With Id",
+          "request": {
+            "name": "update Consent With Id",
+            "description": {
+              "content": "Updates the consent with the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "consent",
+                ":consentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "consentId",
+                  "description": "(Required) The Id of the consent to update."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                "key": "X-FusionAuth-TenantId",
+                "value": "<UUID>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"consent\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"consentEmailTemplateId\": \"<uuid>\",\n    \"countryMinimumAgeForSelfConsent\": {},\n    \"defaultMinimumAgeForSelfConsent\": \"<integer>\",\n    \"emailPlus\": {\n      \"emailTemplateId\": \"<uuid>\",\n      \"maximumTimeToSendEmailInHours\": \"<integer>\",\n      \"minimumTimeToSendEmailInHours\": \"<integer>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"multipleValuesAllowed\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"values\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "07300b2c-1a26-49fa-82af-8a590f90bc99",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "consent",
+                    ":consentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "consentId",
+                      "description": "(Required) The Id of the consent to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"consent\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"consentEmailTemplateId\": \"<uuid>\",\n    \"countryMinimumAgeForSelfConsent\": {},\n    \"defaultMinimumAgeForSelfConsent\": \"<integer>\",\n    \"emailPlus\": {\n      \"emailTemplateId\": \"<uuid>\",\n      \"maximumTimeToSendEmailInHours\": \"<integer>\",\n      \"minimumTimeToSendEmailInHours\": \"<integer>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"multipleValuesAllowed\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"values\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"consent\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\",\n      \"key_3\": \"<object>\",\n      \"key_4\": \"<object>\"\n    },\n    \"consentEmailTemplateId\": \"<uuid>\",\n    \"countryMinimumAgeForSelfConsent\": {},\n    \"defaultMinimumAgeForSelfConsent\": \"<integer>\",\n    \"emailPlus\": {\n      \"emailTemplateId\": \"<uuid>\",\n      \"maximumTimeToSendEmailInHours\": \"<integer>\",\n      \"minimumTimeToSendEmailInHours\": \"<integer>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"multipleValuesAllowed\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"values\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"consents\": [\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\",\n        \"key_2\": \"<object>\",\n        \"key_3\": \"<object>\"\n      },\n      \"consentEmailTemplateId\": \"<uuid>\",\n      \"countryMinimumAgeForSelfConsent\": {},\n      \"defaultMinimumAgeForSelfConsent\": \"<integer>\",\n      \"emailPlus\": {\n        \"emailTemplateId\": \"<uuid>\",\n        \"maximumTimeToSendEmailInHours\": \"<integer>\",\n        \"minimumTimeToSendEmailInHours\": \"<integer>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"multipleValuesAllowed\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"consentEmailTemplateId\": \"<uuid>\",\n      \"countryMinimumAgeForSelfConsent\": {},\n      \"defaultMinimumAgeForSelfConsent\": \"<integer>\",\n      \"emailPlus\": {\n        \"emailTemplateId\": \"<uuid>\",\n        \"maximumTimeToSendEmailInHours\": \"<integer>\",\n        \"minimumTimeToSendEmailInHours\": \"<integer>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"multipleValuesAllowed\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "37b5af30-cfb4-47e1-9596-72cbf9e7ef61",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "consent",
+                    ":consentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "consentId",
+                      "description": "(Required) The Id of the consent to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"consent\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"consentEmailTemplateId\": \"<uuid>\",\n    \"countryMinimumAgeForSelfConsent\": {},\n    \"defaultMinimumAgeForSelfConsent\": \"<integer>\",\n    \"emailPlus\": {\n      \"emailTemplateId\": \"<uuid>\",\n      \"maximumTimeToSendEmailInHours\": \"<integer>\",\n      \"minimumTimeToSendEmailInHours\": \"<integer>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"multipleValuesAllowed\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"values\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:9011",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "510d49ce-aae2-4b30-90fe-5cfaf11e8938",
+    "name": "FusionAuth Api Key Consent API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.",
+      "type": "text/plain"
+    }
+  }
+}

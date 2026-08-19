@@ -1,0 +1,174 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FusionAuth Api Key Message API",
+    "version": "1.66.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Message",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "retrieveMessageTemplate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/message/template"
+          },
+          "docs": "Retrieves the message template for the given Id. If you don't specify the Id, this will return all the message templates."
+        },
+        {
+          "info": {
+            "name": "createMessageTemplate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/message/template",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an message template. You can optionally specify an Id for the template, if not provided one will be generated."
+        },
+        {
+          "info": {
+            "name": "retrieveMessageTemplatePreviewWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/message/template/preview",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a preview of the message template provided in the request, normalized to a given locale."
+        },
+        {
+          "info": {
+            "name": "retrieveMessageTemplateWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/message/template/:messageTemplateId",
+            "params": [
+              {
+                "name": "messageTemplateId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the message template."
+              }
+            ]
+          },
+          "docs": "Retrieves the message template for the given Id. If you don't specify the Id, this will return all the message templates."
+        },
+        {
+          "info": {
+            "name": "createMessageTemplateWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/message/template/:messageTemplateId",
+            "params": [
+              {
+                "name": "messageTemplateId",
+                "value": "",
+                "type": "path",
+                "description": "The Id for the template. If not provided a secure random UUID will be generated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an message template. You can optionally specify an Id for the template, if not provided one will be generated."
+        },
+        {
+          "info": {
+            "name": "updateMessageTemplateWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:9011/api/message/template/:messageTemplateId",
+            "params": [
+              {
+                "name": "messageTemplateId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the message template to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the message template with the given Id."
+        },
+        {
+          "info": {
+            "name": "patchMessageTemplateWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:9011/api/message/template/:messageTemplateId",
+            "params": [
+              {
+                "name": "messageTemplateId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the message template to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates, via PATCH, the message template with the given Id."
+        },
+        {
+          "info": {
+            "name": "deleteMessageTemplateWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:9011/api/message/template/:messageTemplateId",
+            "params": [
+              {
+                "name": "messageTemplateId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the message template to delete."
+              }
+            ]
+          },
+          "docs": "Deletes the message template for the given Id."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

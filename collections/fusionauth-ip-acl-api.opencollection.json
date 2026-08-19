@@ -1,0 +1,163 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FusionAuth Api Key Ip Acl API",
+    "version": "1.66.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Ip Acl",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "createIPAccessControlList",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/ip-acl",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an IP Access Control List. You can optionally specify an Id on this create request, if one is not provided one will be generated."
+        },
+        {
+          "info": {
+            "name": "searchIPAccessControlListsWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/ip-acl/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Searches the IP Access Control Lists with the specified criteria and pagination."
+        },
+        {
+          "info": {
+            "name": "createIPAccessControlListWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/ip-acl/:accessControlListId",
+            "params": [
+              {
+                "name": "accessControlListId",
+                "value": "",
+                "type": "path",
+                "description": "The Id for the IP Access Control List. If not provided a secure random UUID will be generated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an IP Access Control List. You can optionally specify an Id on this create request, if one is not provided one will be generated."
+        },
+        {
+          "info": {
+            "name": "updateIPAccessControlListWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:9011/api/ip-acl/:accessControlListId",
+            "params": [
+              {
+                "name": "accessControlListId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the IP Access Control List to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the IP Access Control List with the given Id."
+        },
+        {
+          "info": {
+            "name": "patchIPAccessControlListWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:9011/api/ip-acl/:accessControlListId",
+            "params": [
+              {
+                "name": "accessControlListId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the IP Access Control List to patch."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the IP Access Control List with the given Id."
+        },
+        {
+          "info": {
+            "name": "retrieveIPAccessControlListWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/ip-acl/:ipAccessControlListId",
+            "params": [
+              {
+                "name": "ipAccessControlListId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the IP Access Control List."
+              }
+            ]
+          },
+          "docs": "Retrieves the IP Access Control List with the given Id."
+        },
+        {
+          "info": {
+            "name": "deleteIPAccessControlListWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:9011/api/ip-acl/:ipAccessControlListId",
+            "params": [
+              {
+                "name": "ipAccessControlListId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the IP Access Control List to delete."
+              }
+            ]
+          },
+          "docs": "Deletes the IP Access Control List for the given Id."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

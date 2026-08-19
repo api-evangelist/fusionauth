@@ -1,0 +1,1196 @@
+{
+  "item": [
+    {
+      "id": "3fe31010-2177-4083-ad68-0b19567c0946",
+      "name": "Theme",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "af98541f-20b6-4553-a138-e68c100d9199",
+          "name": "create Theme",
+          "request": {
+            "name": "create Theme",
+            "description": {
+              "content": "Creates a Theme. You can optionally specify an Id for the theme, if not provided one will be generated.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "theme"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sourceThemeId\": \"<uuid>\",\n  \"theme\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"defaultMessages\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedMessages\": {},\n    \"name\": \"<string>\",\n    \"stylesheet\": \"<string>\",\n    \"templates\": {\n      \"accountEdit\": \"<string>\",\n      \"accountIndex\": \"<string>\",\n      \"accountTwoFactorDisable\": \"<string>\",\n      \"accountTwoFactorEnable\": \"<string>\",\n      \"accountTwoFactorIndex\": \"<string>\",\n      \"accountWebAuthnAdd\": \"<string>\",\n      \"accountWebAuthnDelete\": \"<string>\",\n      \"accountWebAuthnIndex\": \"<string>\",\n      \"confirmationRequired\": \"<string>\",\n      \"emailComplete\": \"<string>\",\n      \"emailSent\": \"<string>\",\n      \"emailVerificationRequired\": \"<string>\",\n      \"emailVerify\": \"<string>\",\n      \"helpers\": \"<string>\",\n      \"index\": \"<string>\",\n      \"oauth2Authorize\": \"<string>\",\n      \"oauth2AuthorizedNotRegistered\": \"<string>\",\n      \"oauth2ChildRegistrationNotAllowed\": \"<string>\",\n      \"oauth2ChildRegistrationNotAllowedComplete\": \"<string>\",\n      \"oauth2CompleteRegistration\": \"<string>\",\n      \"oauth2Consent\": \"<string>\",\n      \"oauth2Device\": \"<string>\",\n      \"oauth2DeviceComplete\": \"<string>\",\n      \"oauth2Error\": \"<string>\",\n      \"oauth2Logout\": \"<string>\",\n      \"oauth2Passwordless\": \"<string>\",\n      \"oauth2Register\": \"<string>\",\n      \"oauth2StartIdPLink\": \"<string>\",\n      \"oauth2TwoFactor\": \"<string>\",\n      \"oauth2TwoFactorEnable\": \"<string>\",\n      \"oauth2TwoFactorEnableComplete\": \"<string>\",\n      \"oauth2TwoFactorMethods\": \"<string>\",\n      \"oauth2Wait\": \"<string>\",\n      \"oauth2WebAuthn\": \"<string>\",\n      \"oauth2WebAuthnReauth\": \"<string>\",\n      \"oauth2WebAuthnReauthEnable\": \"<string>\",\n      \"passwordChange\": \"<string>\",\n      \"passwordComplete\": \"<string>\",\n      \"passwordForgot\": \"<string>\",\n      \"passwordSent\": \"<string>\",\n      \"phoneComplete\": \"<string>\",\n      \"phoneSent\": \"<string>\",\n      \"phoneVerificationRequired\": \"<string>\",\n      \"phoneVerify\": \"<string>\",\n      \"registrationComplete\": \"<string>\",\n      \"registrationSent\": \"<string>\",\n      \"registrationVerificationRequired\": \"<string>\",\n      \"registrationVerify\": \"<string>\",\n      \"samlv2Logout\": \"<string>\",\n      \"unauthorized\": \"<string>\",\n      \"emailSend\": \"<string>\",\n      \"registrationSend\": \"<string>\"\n    },\n    \"type\": \"<string>\",\n    \"variables\": {\n      \"alertBackgroundColor\": \"<string>\",\n      \"alertFontColor\": \"<string>\",\n      \"backgroundImageURL\": \"<URI>\",\n      \"backgroundSize\": \"<string>\",\n      \"borderRadius\": \"<string>\",\n      \"deleteButtonColor\": \"<string>\",\n      \"deleteButtonFocusColor\": \"<string>\",\n      \"deleteButtonTextColor\": \"<string>\",\n      \"deleteButtonTextFocusColor\": \"<string>\",\n      \"errorFontColor\": \"<string>\",\n      \"errorIconColor\": \"<string>\",\n      \"favicons\": [\n        {\n          \"href\": \"<URI>\",\n          \"rel\": \"<string>\",\n          \"sizes\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"href\": \"<URI>\",\n          \"rel\": \"<string>\",\n          \"sizes\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"fontColor\": \"<string>\",\n      \"fontFamily\": \"<string>\",\n      \"footerDisplay\": \"<boolean>\",\n      \"iconBackgroundColor\": \"<string>\",\n      \"iconColor\": \"<string>\",\n      \"infoIconColor\": \"<string>\",\n      \"inputBackgroundColor\": \"<string>\",\n      \"inputIconColor\": \"<string>\",\n      \"inputTextColor\": \"<string>\",\n      \"linkTextColor\": \"<string>\",\n      \"linkTextFocusColor\": \"<string>\",\n      \"logoImageSize\": \"<string>\",\n      \"logoImageURL\": \"<URI>\",\n      \"monoFontColor\": \"<string>\",\n      \"monoFontFamily\": \"<string>\",\n      \"pageBackgroundColor\": \"<string>\",\n      \"panelBackgroundColor\": \"<string>\",\n      \"primaryButtonColor\": \"<string>\",\n      \"primaryButtonFocusColor\": \"<string>\",\n      \"primaryButtonTextColor\": \"<string>\",\n      \"primaryButtonTextFocusColor\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dbf46cd9-51c0-43dd-94c8-1cb060e89b54",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "theme"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourceThemeId\": \"<uuid>\",\n  \"theme\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\"\n    },\n    \"defaultMessages\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedMessages\": {},\n    \"name\": \"<string>\",\n    \"stylesheet\": \"<string>\",\n    \"templates\": {\n      \"accountEdit\": \"<string>\",\n      \"accountIndex\": \"<string>\",\n      \"accountTwoFactorDisable\": \"<string>\",\n      \"accountTwoFactorEnable\": \"<string>\",\n      \"accountTwoFactorIndex\": \"<string>\",\n      \"accountWebAuthnAdd\": \"<string>\",\n      \"accountWebAuthnDelete\": \"<string>\",\n      \"accountWebAuthnIndex\": \"<string>\",\n      \"confirmationRequired\": \"<string>\",\n      \"emailComplete\": \"<string>\",\n      \"emailSent\": \"<string>\",\n      \"emailVerificationRequired\": \"<string>\",\n      \"emailVerify\": \"<string>\",\n      \"helpers\": \"<string>\",\n      \"index\": \"<string>\",\n      \"oauth2Authorize\": \"<string>\",\n      \"oauth2AuthorizedNotRegistered\": \"<string>\",\n      \"oauth2ChildRegistrationNotAllowed\": \"<string>\",\n      \"oauth2ChildRegistrationNotAllowedComplete\": \"<string>\",\n      \"oauth2CompleteRegistration\": \"<string>\",\n      \"oauth2Consent\": \"<string>\",\n      \"oauth2Device\": \"<string>\",\n      \"oauth2DeviceComplete\": \"<string>\",\n      \"oauth2Error\": \"<string>\",\n      \"oauth2Logout\": \"<string>\",\n      \"oauth2Passwordless\": \"<string>\",\n      \"oauth2Register\": \"<string>\",\n      \"oauth2StartIdPLink\": \"<string>\",\n      \"oauth2TwoFactor\": \"<string>\",\n      \"oauth2TwoFactorEnable\": \"<string>\",\n      \"oauth2TwoFactorEnableComplete\": \"<string>\",\n      \"oauth2TwoFactorMethods\": \"<string>\",\n      \"oauth2Wait\": \"<string>\",\n      \"oauth2WebAuthn\": \"<string>\",\n      \"oauth2WebAuthnReauth\": \"<string>\",\n      \"oauth2WebAuthnReauthEnable\": \"<string>\",\n      \"passwordChange\": \"<string>\",\n      \"passwordComplete\": \"<string>\",\n      \"passwordForgot\": \"<string>\",\n      \"passwordSent\": \"<string>\",\n      \"phoneComplete\": \"<string>\",\n      \"phoneSent\": \"<string>\",\n      \"phoneVerificationRequired\": \"<string>\",\n      \"phoneVerify\": \"<string>\",\n      \"registrationComplete\": \"<string>\",\n      \"registrationSent\": \"<string>\",\n      \"registrationVerificationRequired\": \"<string>\",\n      \"registrationVerify\": \"<string>\",\n      \"samlv2Logout\": \"<string>\",\n      \"unauthorized\": \"<string>\",\n      \"emailSend\": \"<string>\",\n      \"registrationSend\": \"<string>\"\n    },\n    \"type\": \"<string>\",\n    \"variables\": {\n      \"alertBackgroundColor\": \"<string>\",\n      \"alertFontColor\": \"<string>\",\n      \"backgroundImageURL\": \"<URI>\",\n      \"backgroundSize\": \"<string>\",\n      \"borderRadius\": \"<string>\",\n      \"deleteButtonColor\": \"<string>\",\n      \"deleteButtonFocusColor\": \"<string>\",\n      \"deleteButtonTextColor\": \"<string>\",\n      \"deleteButtonTextFocusColor\": \"<string>\",\n      \"errorFontColor\": \"<string>\",\n      \"errorIconColor\": \"<string>\",\n      \"favicons\": [\n        {\n          \"href\": \"<URI>\",\n          \"rel\": \"<string>\",\n          \"sizes\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"href\": \"<URI>\",\n          \"rel\": \"<string>\",\n          \"sizes\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"fontColor\": \"<string>\",\n      \"fontFamily\": \"<string>\",\n      \"footerDisplay\": \"<boolean>\",\n      \"iconBackgroundColor\": \"<string>\",\n      \"iconColor\": \"<string>\",\n      \"infoIconColor\": \"<string>\",\n      \"inputBackgroundColor\": \"<string>\",\n      \"inputIconColor\": \"<string>\",\n      \"inputTextColor\": \"<string>\",\n      \"linkTextColor\": \"<string>\",\n      \"linkTextFocusColor\": \"<string>\",\n      \"logoImageSize\": \"<string>\",\n      \"logoImageURL\": \"<URI>\",\n      \"monoFontColor\": \"<string>\",\n      \"monoFontFamily\": \"<string>\",\n      \"pageBackgroundColor\": \"<string>\",\n      \"panelBackgroundColor\": \"<string>\",\n      \"primaryButtonColor\": \"<string>\",\n      \"primaryButtonFocusColor\": \"<string>\",\n      \"primaryButtonTextColor\": \"<string>\",\n      \"primaryButtonTextFocusColor\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"theme\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"defaultMessages\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedMessages\": {},\n    \"name\": \"<string>\",\n    \"stylesheet\": \"<string>\",\n    \"templates\": {\n      \"accountEdit\": \"<string>\",\n      \"accountIndex\": \"<string>\",\n      \"accountTwoFactorDisable\": \"<string>\",\n      \"accountTwoFactorEnable\": \"<string>\",\n      \"accountTwoFactorIndex\": \"<string>\",\n      \"accountWebAuthnAdd\": \"<string>\",\n      \"accountWebAuthnDelete\": \"<string>\",\n      \"accountWebAuthnIndex\": \"<string>\",\n      \"confirmationRequired\": \"<string>\",\n      \"emailComplete\": \"<string>\",\n      \"emailSent\": \"<string>\",\n      \"emailVerificationRequired\": \"<string>\",\n      \"emailVerify\": \"<string>\",\n      \"helpers\": \"<string>\",\n      \"index\": \"<string>\",\n      \"oauth2Authorize\": \"<string>\",\n      \"oauth2AuthorizedNotRegistered\": \"<string>\",\n      \"oauth2ChildRegistrationNotAllowed\": \"<string>\",\n      \"oauth2ChildRegistrationNotAllowedComplete\": \"<string>\",\n      \"oauth2CompleteRegistration\": \"<string>\",\n      \"oauth2Consent\": \"<string>\",\n      \"oauth2Device\": \"<string>\",\n      \"oauth2DeviceComplete\": \"<string>\",\n      \"oauth2Error\": \"<string>\",\n      \"oauth2Logout\": \"<string>\",\n      \"oauth2Passwordless\": \"<string>\",\n      \"oauth2Register\": \"<string>\",\n      \"oauth2StartIdPLink\": \"<string>\",\n      \"oauth2TwoFactor\": \"<string>\",\n      \"oauth2TwoFactorEnable\": \"<string>\",\n      \"oauth2TwoFactorEnableComplete\": \"<string>\",\n      \"oauth2TwoFactorMethods\": \"<string>\",\n      \"oauth2Wait\": \"<string>\",\n      \"oauth2WebAuthn\": \"<string>\",\n      \"oauth2WebAuthnReauth\": \"<string>\",\n      \"oauth2WebAuthnReauthEnable\": \"<string>\",\n      \"passwordChange\": \"<string>\",\n      \"passwordComplete\": \"<string>\",\n      \"passwordForgot\": \"<string>\",\n      \"passwordSent\": \"<string>\",\n      \"phoneComplete\": \"<string>\",\n      \"phoneSent\": \"<string>\",\n      \"phoneVerificationRequired\": \"<string>\",\n      \"phoneVerify\": \"<string>\",\n      \"registrationComplete\": \"<string>\",\n      \"registrationSent\": \"<string>\",\n      \"registrationVerificationRequired\": \"<string>\",\n      \"registrationVerify\": \"<string>\",\n      \"samlv2Logout\": \"<string>\",\n      \"unauthorized\": \"<string>\",\n      \"emailSend\": \"<string>\",\n      \"registrationSend\": \"<string>\"\n    },\n    \"type\": \"<string>\",\n    \"variables\": {\n      \"alertBackgroundColor\": \"<string>\",\n      \"alertFontColor\": \"<string>\",\n      \"backgroundImageURL\": \"<URI>\",\n      \"backgroundSize\": \"<string>\",\n      \"borderRadius\": \"<string>\",\n      \"deleteButtonColor\": \"<string>\",\n      \"deleteButtonFocusColor\": \"<string>\",\n      \"deleteButtonTextColor\": \"<string>\",\n      \"deleteButtonTextFocusColor\": \"<string>\",\n      \"errorFontColor\": \"<string>\",\n      \"errorIconColor\": \"<string>\",\n      \"favicons\": [\n        {\n          \"href\": \"<URI>\",\n          \"rel\": \"<string>\",\n          \"sizes\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"href\": \"<URI>\",\n          \"rel\": \"<string>\",\n          \"sizes\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"fontColor\": \"<string>\",\n      \"fontFamily\": \"<string>\",\n      \"footerDisplay\": \"<boolean>\",\n      \"iconBackgroundColor\": \"<string>\",\n      \"iconColor\": \"<string>\",\n      \"infoIconColor\": \"<string>\",\n      \"inputBackgroundColor\": \"<string>\",\n      \"inputIconColor\": \"<string>\",\n      \"inputTextColor\": \"<string>\",\n      \"linkTextColor\": \"<string>\",\n      \"linkTextFocusColor\": \"<string>\",\n      \"logoImageSize\": \"<string>\",\n      \"logoImageURL\": \"<URI>\",\n      \"monoFontColor\": \"<string>\",\n      \"monoFontFamily\": \"<string>\",\n      \"pageBackgroundColor\": \"<string>\",\n      \"panelBackgroundColor\": \"<string>\",\n      \"primaryButtonColor\": \"<string>\",\n      \"primaryButtonFocusColor\": \"<string>\",\n      \"primaryButtonTextColor\": \"<string>\",\n      \"primaryButtonTextFocusColor\": \"<string>\"\n    }\n  },\n  \"themes\": [\n    {\n      \"data\": {\n        \"key_0\": \"<object>\"\n      },\n      \"defaultMessages\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"localizedMessages\": {},\n      \"name\": \"<string>\",\n      \"stylesheet\": \"<string>\",\n      \"templates\": {\n        \"accountEdit\": \"<string>\",\n        \"accountIndex\": \"<string>\",\n        \"accountTwoFactorDisable\": \"<string>\",\n        \"accountTwoFactorEnable\": \"<string>\",\n        \"accountTwoFactorIndex\": \"<string>\",\n        \"accountWebAuthnAdd\": \"<string>\",\n        \"accountWebAuthnDelete\": \"<string>\",\n        \"accountWebAuthnIndex\": \"<string>\",\n        \"confirmationRequired\": \"<string>\",\n        \"emailComplete\": \"<string>\",\n        \"emailSent\": \"<string>\",\n        \"emailVerificationRequired\": \"<string>\",\n        \"emailVerify\": \"<string>\",\n        \"helpers\": \"<string>\",\n        \"index\": \"<string>\",\n        \"oauth2Authorize\": \"<string>\",\n        \"oauth2AuthorizedNotRegistered\": \"<string>\",\n        \"oauth2ChildRegistrationNotAllowed\": \"<string>\",\n        \"oauth2ChildRegistrationNotAllowedComplete\": \"<string>\",\n        \"oauth2CompleteRegistration\": \"<string>\",\n        \"oauth2Consent\": \"<string>\",\n        \"oauth2Device\": \"<string>\",\n        \"oauth2DeviceComplete\": \"<string>\",\n        \"oauth2Error\": \"<string>\",\n        \"oauth2Logout\": \"<string>\",\n        \"oauth2Passwordless\": \"<string>\",\n        \"oauth2Register\": \"<string>\",\n        \"oauth2StartIdPLink\": \"<string>\",\n        \"oauth2TwoFactor\": \"<string>\",\n        \"oauth2TwoFactorEnable\": \"<string>\",\n        \"oauth2TwoFactorEnableComplete\": \"<string>\",\n        \"oauth2TwoFactorMethods\": \"<string>\",\n        \"oauth2Wait\": \"<string>\",\n        \"oauth2WebAuthn\": \"<string>\",\n        \"oauth2WebAuthnReauth\": \"<string>\",\n        \"oauth2WebAuthnReauthEnable\": \"<string>\",\n        \"passwordChange\": \"<string>\",\n        \"passwordComplete\": \"<string>\",\n        \"passwordForgot\": \"<string>\",\n        \"passwordSent\": \"<string>\",\n        \"phoneComplete\": \"<string>\",\n        \"phoneSent\": \"<string>\",\n        \"phoneVerificationRequired\": \"<string>\",\n        \"phoneVerify\": \"<string>\",\n        \"registrationComplete\": \"<string>\",\n        \"registrationSent\": \"<string>\",\n        \"registrationVerificationRequired\": \"<string>\",\n        \"registrationVerify\": \"<string>\",\n        \"samlv2Logout\": \"<string>\",\n        \"unauthorized\": \"<string>\",\n        \"emailSend\": \"<string>\",\n        \"registrationSend\": \"<string>\"\n      },\n      \"type\": \"<string>\",\n      \"variables\": {\n        \"alertBackgroundColor\": \"<string>\",\n        \"alertFontColor\": \"<string>\",\n        \"backgroundImageURL\": \"<URI>\",\n        \"backgroundSize\": \"<string>\",\n        \"borderRadius\": \"<string>\",\n        \"deleteButtonColor\": \"<string>\",\n        \"deleteButtonFocusColor\": \"<string>\",\n        \"deleteButtonTextColor\": \"<string>\",\n        \"deleteButtonTextFocusColor\": \"<string>\",\n        \"errorFontColor\": \"<string>\",\n        \"errorIconColor\": \"<string>\",\n        \"favicons\": [\n          {\n            \"href\": \"<URI>\",\n            \"rel\": \"<string>\",\n            \"sizes\": \"<string>\",\n            \"type\": \"<string>\"\n          },\n          {\n            \"href\": \"<URI>\",\n            \"rel\": \"<string>\",\n            \"sizes\": \"<string>\",\n            \"type\": \"<string>\"\n          }\n        ],\n        \"fontColor\": \"<string>\",\n        \"fontFamily\": \"<string>\",\n        \"footerDisplay\": \"<boolean>\",\n        \"iconBackgroundColor\": \"<string>\",\n        \"iconColor\": \"<string>\",\n        \"infoIconColor\": \"<string>\",\n        \"inputBackgroundColor\": \"<string>\",\n        \"inputIconColor\": \"<string>\",\n        \"inputTextColor\": \"<string>\",\n        \"linkTextColor\": \"<string>\",\n        \"linkTextFocusColor\": \"<string>\",\n        \"logoImageSize\": \"<string>\",\n        \"logoImageURL\": \"<URI>\",\n        \"monoFontColor\": \"<string>\",\n        \"monoFontFamily\": \"<string>\",\n        \"pageBackgroundColor\": \"<string>\",\n        \"panelBackgroundColor\": \"<string>\",\n        \"primaryButtonColor\": \"<string>\",\n        \"primaryButtonFocusColor\": \"<string>\",\n        \"primaryButtonTextColor\": \"<string>\",\n        \"primaryButtonTextFocusColor\": \"<string>\"\n      }\n    },\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\",\n        \"key_2\": \"<object>\"\n      },\n      \"defaultMessages\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"localizedMessages\": {},\n      \"name\": \"<string>\",\n      \"stylesheet\": \"<string>\",\n      \"templates\": {\n        \"accountEdit\": \"<string>\",\n        \"accountIndex\": \"<string>\",\n        \"accountTwoFactorDisable\": \"<string>\",\n        \"accountTwoFactorEnable\": \"<string>\",\n        \"accountTwoFactorIndex\": \"<string>\",\n        \"accountWebAuthnAdd\": \"<string>\",\n        \"accountWebAuthnDelete\": \"<string>\",\n        \"accountWebAuthnIndex\": \"<string>\",\n        \"confirmationRequired\": \"<string>\",\n        \"emailComplete\": \"<string>\",\n        \"emailSent\": \"<string>\",\n        \"emailVerificationRequired\": \"<string>\",\n        \"emailVerify\": \"<string>\",\n        \"helpers\": \"<string>\",\n        \"index\": \"<string>\",\n        \"oauth2Authorize\": \"<string>\",\n        \"oauth2AuthorizedNotRegistered\": \"<string>\",\n        \"oauth2ChildRegistrationNotAllowed\": \"<string>\",\n        \"oauth2ChildRegistrationNotAllowedComplete\": \"<string>\",\n        \"oauth2CompleteRegistration\": \"<string>\",\n        \"oauth2Consent\": \"<string>\",\n        \"oauth2Device\": \"<string>\",\n        \"oauth2DeviceComplete\": \"<string>\",\n        \"oauth2Error\": \"<string>\",\n        \"oauth2Logout\": \"<string>\",\n        \"oauth2Passwordless\": \"<string>\",\n        \"oauth2Register\": \"<string>\",\n        \"oauth2StartIdPLink\": \"<string>\",\n        \"oauth2TwoFactor\": \"<string>\",\n        \"oauth2TwoFactorEnable\": \"<string>\",\n        \"oauth2TwoFactorEnableComplete\": \"<string>\",\n        \"oauth2TwoFactorMethods\": \"<string>\",\n        \"oauth2Wait\": \"<string>\",\n        \"oauth2WebAuthn\": \"<string>\",\n        \"oauth2WebAuthnReauth\": \"<string>\",\n        \"oauth2WebAuthnReauthEnable\": \"<string>\",\n        \"passwordChange\": \"<string>\",\n        \"passwordComplete\": \"<string>\",\n        \"passwordForgot\": \"<string>\",\n        \"passwordSent\": \"<string>\",\n        \"phoneComplete\": \"<string>\",\n        \"phoneSent\": \"<string>\",\n        \"phoneVerificationRequired\": \"<string>\",\n        \"phoneVerify\": \"<string>\",\n        \"registrationComplete\": \"<string>\",\n        \"registrationSent\": \"<string>\",\n        \"registrationVerificationRequired\": \"<string>\",\n        \"registrationVerify\": \"<string>\",\n        \"samlv2Logout\": \"<string>\",\n        \"unauthorized\": \"<string>\",\n        \"emailSend\": \"<string>\",\n        \"registrationSend\": \"<string>\"\n      },\n      \"type\": \"<string>\",\n      \"variables\": {\n        \"alertBackgroundColor\": \"<string>\",\n        \"alertFontColor\": \"<string>\",\n        \"backgroundImageURL\": \"<URI>\",\n        \"backgroundSize\": \"<string>\",\n        \"borderRadius\": \"<string>\",\n        \"deleteButtonColor\": \"<string>\",\n        \"deleteButtonFocusColor\": \"<string>\",\n        \"deleteButtonTextColor\": \"<string>\",\n        \"deleteButtonTextFocusColor\": \"<string>\",\n        \"errorFontColor\": \"<string>\",\n        \"errorIconColor\": \"<string>\",\n        \"favicons\": [\n          {\n            \"href\": \"<URI>\",\n            \"rel\": \"<string>\",\n            \"sizes\": \"<string>\",\n            \"type\": \"<string>\"\n          },\n          {\n            \"href\": \"<URI>\",\n            \"rel\": \"<string>\",\n            \"sizes\": \"<string>\",\n            \"type\": \"<string>\"\n          }\n        ],\n        \"fontColor\": \"<string>\",\n        \"fontFamily\": \"<string>\",\n        \"footerDisplay\": \"<boolean>\",\n        \"iconBackgroundColor\": \"<string>\",\n        \"iconColor\": \"<string>\",\n        \"infoIconColor\": \"<string>\",\n        \"inputBackgroundColor\": \"<string>\",\n        \"inputIconColor\": \"<string>\",\n        \"inputTextColor\": \"<string>\",\n        \"linkTextColor\": \"<string>\",\n        \"linkTextFocusColor\": \"<string>\",\n        \"logoImageSize\": \"<string>\",\n        \"logoImageURL\": \"<URI>\",\n        \"monoFontColor\": \"<string>\",\n        \"monoFontFamily\": \"<string>\",\n        \"pageBackgroundColor\": \"<string>\",\n        \"panelBackgroundColor\": \"<string>\",\n        \"primaryButtonColor\": \"<string>\",\n        \"primaryButtonFocusColor\": \"<string>\",\n        \"primaryButtonTextColor\": \"<string>\",\n        \"primaryButtonTextFocusColor\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6fb1d8ba-3eb2-4a17-86ca-1a2017bb7e30",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "theme"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourceThemeId\": \"<uuid>\",\n  \"theme\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\"\n    },\n    \"defaultMessages\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedMessages\": {},\n    \"name\": \"<string>\",\n    \"stylesheet\": \"<string>\",\n    \"templates\": {\n      \"accountEdit\": \"<string>\",\n      \"accountIndex\": \"<string>\",\n      \"accountTwoFactorDisable\": \"<string>\",\n      \"accountTwoFactorEnable\": \"<string>\",\n      \"accountTwoFactorIndex\": \"<string>\",\n      \"accountWebAuthnAdd\": \"<string>\",\n      \"accountWebAuthnDelete\": \"<string>\",\n      \"accountWebAuthnIndex\": \"<string>\",\n      \"confirmationRequired\": \"<string>\",\n      \"emailComplete\": \"<string>\",\n      \"emailSent\": \"<string>\",\n      \"emailVerificationRequired\": \"<string>\",\n      \"emailVerify\": \"<string>\",\n      \"helpers\": \"<string>\",\n      \"index\": \"<string>\",\n      \"oauth2Authorize\": \"<string>\",\n      \"oauth2AuthorizedNotRegistered\": \"<string>\",\n      \"oauth2ChildRegistrationNotAllowed\": \"<string>\",\n      \"oauth2ChildRegistrationNotAllowedComplete\": \"<string>\",\n      \"oauth2CompleteRegistration\": \"<string>\",\n      \"oauth2Consent\": \"<string>\",\n      \"oauth2Device\": \"<string>\",\n      \"oauth2DeviceComplete\": \"<string>\",\n      \"oauth2Error\": \"<string>\",\n      \"oauth2Logout\": \"<string>\",\n      \"oauth2Passwordless\": \"<string>\",\n      \"oauth2Register\": \"<string>\",\n      \"oauth2StartIdPLink\": \"<string>\",\n      \"oauth2TwoFactor\": \"<string>\",\n      \"oauth2TwoFactorEnable\": \"<string>\",\n      \"oauth2TwoFactorEnableComplete\": \"<string>\",\n      \"oauth2TwoFactorMethods\": \"<string>\",\n      \"oauth2Wait\": \"<string>\",\n      \"oauth2WebAuthn\": \"<string>\",\n      \"oauth2WebAuthnReauth\": \"<string>\",\n      \"oauth2WebAuthnReauthEnable\": \"<string>\",\n      \"passwordChange\": \"<string>\",\n      \"passwordComplete\": \"<string>\",\n      \"passwordForgot\": \"<string>\",\n      \"passwordSent\": \"<string>\",\n      \"phoneComplete\": \"<string>\",\n      \"phoneSent\": \"<string>\",\n      \"phoneVerificationRequired\": \"<string>\",\n      \"phoneVerify\": \"<string>\",\n      \"registrationComplete\": \"<string>\",\n      \"registrationSent\": \"<string>\",\n      \"registrationVerificationRequired\": \"<string>\",\n      \"registrationVerify\": \"<string>\",\n      \"samlv2Logout\": \"<string>\",\n      \"unauthorized\": \"<string>\",\n      \"emailSend\": \"<string>\",\n      \"registrationSend\": \"<string>\"\n    },\n    \"type\": \"<string>\",\n    \"variables\": {\n      \"alertBackgroundColor\": \"<string>\",\n      \"alertFontColor\": \"<string>\",\n      \"backgroundImageURL\": \"<URI>\",\n      \"backgroundSize\": \"<string>\",\n      \"borderRadius\": \"<string>\",\n      \"deleteButtonColor\": \"<string>\",\n      \"deleteButtonFocusColor\": \"<string>\",\n      \"deleteButtonTextColor\": \"<string>\",\n      \"deleteButtonTextFocusColor\": \"<string>\",\n      \"errorFontColor\": \"<string>\",\n      \"errorIconColor\": \"<string>\",\n      \"favicons\": [\n        {\n          \"href\": \"<URI>\",\n          \"rel\": \"<string>\",\n          \"sizes\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"href\": \"<URI>\",\n          \"rel\": \"<string>\",\n          \"sizes\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"fontColor\": \"<string>\",\n      \"fontFamily\": \"<string>\",\n      \"footerDisplay\": \"<boolean>\",\n      \"iconBackgroundColor\": \"<string>\",\n      \"iconColor\": \"<string>\",\n      \"infoIconColor\": \"<string>\",\n      \"inputBackgroundColor\": \"<string>\",\n      \"inputIconColor\": \"<string>\",\n      \"inputTextColor\": \"<string>\",\n      \"linkTextColor\": \"<string>\",\n      \"linkTextFocusColor\": \"<string>\",\n      \"logoImageSize\": \"<string>\",\n      \"logoImageURL\": \"<URI>\",\n      \"monoFontColor\": \"<string>\",\n      \"monoFontFamily\": \"<string>\",\n      \"pageBackgroundColor\": \"<string>\",\n      \"panelBackgroundColor\": \"<string>\",\n      \"primaryButtonColor\": \"<string>\",\n      \"primaryButtonFocusColor\": \"<string>\",\n      \"primaryButtonTextColor\": \"<string>\",\n      \"primaryButtonTextFocusColor\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aa236778-86e8-4cb2-b6b4-dfcf1eb82a23",
+          "name": "search Themes With Id",
+          "request": {
+            "name": "search Themes With Id",
+            "description": {
+              "content": "Searches themes with the specified criteria and pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "theme",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"search\": {\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"numberOfResults\": \"<integer>\",\n    \"orderBy\": \"<string>\",\n    \"startRow\": \"<integer>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6872a162-1be1-4c49-9bcf-6e53f2e51709",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "theme",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"search\": {\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"numberOfResults\": \"<integer>\",\n    \"orderBy\": \"<string>\",\n    \"startRow\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"themes\": [\n    {\n      \"data\": {\n        \"key_0\": \"<object>\"\n      },\n      \"defaultMessages\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"localizedMessages\": {},\n      \"name\": \"<string>\",\n      \"stylesheet\": \"<string>\",\n      \"templates\": {\n        \"accountEdit\": \"<string>\",\n        \"accountIndex\": \"<string>\",\n        \"accountTwoFactorDisable\": \"<string>\",\n        \"accountTwoFactorEnable\": \"<string>\",\n        \"accountTwoFactorIndex\": \"<string>\",\n        \"accountWebAuthnAdd\": \"<string>\",\n        \"accountWebAuthnDelete\": \"<string>\",\n        \"accountWebAuthnIndex\": \"<string>\",\n        \"confirmationRequired\": \"<string>\",\n        \"emailComplete\": \"<string>\",\n        \"emailSent\": \"<string>\",\n        \"emailVerificationRequired\": \"<string>\",\n        \"emailVerify\": \"<string>\",\n        \"helpers\": \"<string>\",\n        \"index\": \"<string>\",\n        \"oauth2Authorize\": \"<string>\",\n        \"oauth2AuthorizedNotRegistered\": \"<string>\",\n        \"oauth2ChildRegistrationNotAllowed\": \"<string>\",\n        \"oauth2ChildRegistrationNotAllowedComplete\": \"<string>\",\n        \"oauth2CompleteRegistration\": \"<string>\",\n        \"oauth2Consent\": \"<string>\",\n        \"oauth2Device\": \"<string>\",\n        \"oauth2DeviceComplete\": \"<string>\",\n        \"oauth2Error\": \"<string>\",\n        \"oauth2Logout\": \"<string>\",\n        \"oauth2Passwordless\": \"<string>\",\n        \"oauth2Register\": \"<string>\",\n        \"oauth2StartIdPLink\": \"<string>\",\n        \"oauth2TwoFactor\": \"<string>\",\n        \"oauth2TwoFactorEnable\": \"<string>\",\n        \"oauth2TwoFactorEnableComplete\": \"<string>\",\n        \"oauth2TwoFactorMethods\": \"<string>\",\n        \"oauth2Wait\": \"<string>\",\n        \"oauth2WebAuthn\": \"<string>\",\n        \"oauth2WebAuthnReauth\": \"<string>\",\n        \"oauth2WebAuthnReauthEnable\": \"<string>\",\n        \"passwordChange\": \"<string>\",\n        \"passwordComplete\": \"<string>\",\n        \"passwordForgot\": \"<string>\",\n        \"passwordSent\": \"<string>\",\n        \"phoneComplete\": \"<string>\",\n        \"phoneSent\": \"<string>\",\n        \"phoneVerificationRequired\": \"<string>\",\n        \"phoneVerify\": \"<string>\",\n        \"registrationComplete\": \"<string>\",\n        \"registrationSent\": \"<string>\",\n        \"registrationVerificationRequired\": \"<string>\",\n        \"registrationVerify\": \"<string>\",\n        \"samlv2Logout\": \"<string>\",\n        \"unauthorized\": \"<string>\",\n        \"emailSend\": \"<string>\",\n        \"registrationSend\": \"<string>\"\n      },\n      \"type\": \"<string>\",\n      \"variables\": {\n        \"alertBackgroundColor\": \"<string>\",\n        \"alertFontColor\": \"<string>\",\n        \"backgroundImageURL\": \"<URI>\",\n        \"backgroundSize\": \"<string>\",\n        \"borderRadius\": \"<string>\",\n        \"deleteButtonColor\": \"<string>\",\n        \"deleteButtonFocusColor\": \"<string>\",\n        \"deleteButtonTextColor\": \"<string>\",\n        \"deleteButtonTextFocusColor\": \"<string>\",\n        \"errorFontColor\": \"<string>\",\n        \"errorIconColor\": \"<string>\",\n        \"favicons\": [\n          {\n            \"href\": \"<URI>\",\n            \"rel\": \"<string>\",\n            \"sizes\": \"<string>\",\n            \"type\": \"<string>\"\n          },\n          {\n            \"href\": \"<URI>\",\n            \"rel\": \"<string>\",\n            \"sizes\": \"<string>\",\n            \"type\": \"<string>\"\n          }\n        ],\n        \"fontColor\": \"<string>\",\n        \"fontFamily\": \"<string>\",\n        \"footerDisplay\": \"<boolean>\",\n        \"iconBackgroundColor\": \"<string>\",\n        \"iconColor\": \"<string>\",\n        \"infoIconColor\": \"<string>\",\n        \"inputBackgroundColor\": \"<string>\",\n        \"inputIconColor\": \"<string>\",\n        \"inputTextColor\": \"<string>\",\n        \"linkTextColor\": \"<string>\",\n        \"linkTextFocusColor\": \"<string>\",\n        \"logoImageSize\": \"<string>\",\n        \"logoImageURL\": \"<URI>\",\n        \"monoFontColor\": \"<string>\",\n        \"monoFontFamily\": \"<string>\",\n        \"pageBackgroundColor\": \"<string>\",\n        \"panelBackgroundColor\": \"<string>\",\n        \"primaryButtonColor\": \"<string>\",\n        \"primaryButtonFocusColor\": \"<string>\",\n        \"primaryButtonTextColor\": \"<string>\",\n        \"primaryButtonTextFocusColor\": \"<string>\"\n      }\n    },\n    {\n      \"data\": {\n        \"key_0\": \"<object>\"\n      },\n      \"defaultMessages\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"localizedMessages\": {},\n      \"name\": \"<string>\",\n      \"stylesheet\": \"<string>\",\n      \"templates\": {\n        \"accountEdit\": \"<string>\",\n        \"accountIndex\": \"<string>\",\n        \"accountTwoFactorDisable\": \"<string>\",\n        \"accountTwoFactorEnable\": \"<string>\",\n        \"accountTwoFactorIndex\": \"<string>\",\n        \"accountWebAuthnAdd\": \"<string>\",\n        \"accountWebAuthnDelete\": \"<string>\",\n        \"accountWebAuthnIndex\": \"<string>\",\n        \"confirmationRequired\": \"<string>\",\n        \"emailComplete\": \"<string>\",\n        \"emailSent\": \"<string>\",\n        \"emailVerificationRequired\": \"<string>\",\n        \"emailVerify\": \"<string>\",\n        \"helpers\": \"<string>\",\n        \"index\": \"<string>\",\n        \"oauth2Authorize\": \"<string>\",\n        \"oauth2AuthorizedNotRegistered\": \"<string>\",\n        \"oauth2ChildRegistrationNotAllowed\": \"<string>\",\n        \"oauth2ChildRegistrationNotAllowedComplete\": \"<string>\",\n        \"oauth2CompleteRegistration\": \"<string>\",\n        \"oauth2Consent\": \"<string>\",\n        \"oauth2Device\": \"<string>\",\n        \"oauth2DeviceComplete\": \"<string>\",\n        \"oauth2Error\": \"<string>\",\n        \"oauth2Logout\": \"<string>\",\n        \"oauth2Passwordless\": \"<string>\",\n        \"oauth2Register\": \"<string>\",\n        \"oauth2StartIdPLink\": \"<string>\",\n        \"oauth2TwoFactor\": \"<string>\",\n        \"oauth2TwoFactorEnable\": \"<string>\",\n        \"oauth2TwoFactorEnableComplete\": \"<string>\",\n        \"oauth2TwoFactorMethods\": \"<string>\",\n        \"oauth2Wait\": \"<string>\",\n        \"oauth2WebAuthn\": \"<string>\",\n        \"oauth2WebAuthnReauth\": \"<string>\",\n        \"oauth2WebAuthnReauthEnable\": \"<string>\",\n        \"passwordChange\": \"<string>\",\n        \"passwordComplete\": \"<string>\",\n        \"passwordForgot\": \"<string>\",\n        \"passwordSent\": \"<string>\",\n        \"phoneComplete\": \"<string>\",\n        \"phoneSent\": \"<string>\",\n        \"phoneVerificationRequired\": \"<string>\",\n        \"phoneVerify\": \"<string>\",\n        \"registrationComplete\": \"<string>\",\n        \"registrationSent\": \"<string>\",\n        \"registrationVerificationRequired\": \"<string>\",\n        \"registrationVerify\": \"<string>\",\n        \"samlv2Logout\": \"<string>\",\n        \"unauthorized\": \"<string>\",\n        \"emailSend\": \"<string>\",\n        \"registrationSend\": \"<string>\"\n      },\n      \"type\": \"<string>\",\n      \"variables\": {\n        \"alertBackgroundColor\": \"<string>\",\n        \"alertFontColor\": \"<string>\",\n        \"backgroundImageURL\": \"<URI>\",\n        \"backgroundSize\": \"<string>\",\n        \"borderRadius\": \"<string>\",\n        \"deleteButtonColor\": \"<string>\",\n        \"deleteButtonFocusColor\": \"<string>\",\n        \"deleteButtonTextColor\": \"<string>\",\n        \"deleteButtonTextFocusColor\": \"<string>\",\n        \"errorFontColor\": \"<string>\",\n        \"errorIconColor\": \"<string>\",\n        \"favicons\": [\n          {\n            \"href\": \"<URI>\",\n            \"rel\": \"<string>\",\n            \"sizes\": \"<string>\",\n            \"type\": \"<string>\"\n          },\n          {\n            \"href\": \"<URI>\",\n            \"rel\": \"<string>\",\n            \"sizes\": \"<string>\",\n            \"type\": \"<string>\"\n          }\n        ],\n        \"fontColor\": \"<string>\",\n        \"fontFamily\": \"<string>\",\n        \"footerDisplay\": \"<boolean>\",\n        \"iconBackgroundColor\": \"<string>\",\n        \"iconColor\": \"<string>\",\n        \"infoIconColor\": \"<string>\",\n        \"inputBackgroundColor\": \"<string>\",\n        \"inputIconColor\": \"<string>\",\n        \"inputTextColor\": \"<string>\",\n        \"linkTextColor\": \"<string>\",\n        \"linkTextFocusColor\": \"<string>\",\n        \"logoImageSize\": \"<string>\",\n        \"logoImageURL\": \"<URI>\",\n        \"monoFontColor\": \"<string>\",\n        \"monoFontFamily\": \"<string>\",\n        \"pageBackgroundColor\": \"<string>\",\n        \"panelBackgroundColor\": \"<string>\",\n        \"primaryButtonColor\": \"<string>\",\n        \"primaryButtonFocusColor\": \"<string>\",\n        \"primaryButtonTextColor\": \"<string>\",\n        \"primaryButtonTextFocusColor\": \"<string>\"\n      }\n    }\n  ],\n  \"total\": 8582\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9983e05d-d010-4bc6-b943-32f308c57086",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "theme",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"search\": {\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"numberOfResults\": \"<integer>\",\n    \"orderBy\": \"<string>\",\n    \"startRow\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d6fa212d-0635-464e-8ebc-53480d09265f",
+          "name": "create Theme With Id",
+          "request": {
+            "name": "create Theme With Id",
+            "description": {
+              "content": "Creates a Theme. You can optionally specify an Id for the theme, if not provided one will be generated.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "theme",
+                ":themeId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "themeId",
+                  "description": "(Required) The Id for the theme. If not provided a secure random UUID will be generated."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sourceThemeId\": \"<uuid>\",\n  \"theme\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\",\n      \"key_3\": \"<object>\"\n    },\n    \"defaultMessages\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedMessages\": {},\n    \"name\": \"<string>\",\n    \"stylesheet\": \"<string>\",\n    \"templates\": {\n      \"accountEdit\": \"<string>\",\n      \"accountIndex\": \"<string>\",\n      \"accountTwoFactorDisable\": \"<string>\",\n      \"accountTwoFactorEnable\": \"<string>\",\n      \"accountTwoFactorIndex\": \"<string>\",\n      \"accountWebAuthnAdd\": \"<string>\",\n      \"accountWebAuthnDelete\": \"<string>\",\n      \"accountWebAuthnIndex\": \"<string>\",\n      \"confirmationRequired\": \"<string>\",\n      \"emailComplete\": \"<string>\",\n      \"emailSent\": \"<string>\",\n      \"emailVerificationRequired\": \"<string>\",\n      \"emailVerify\": \"<string>\",\n      \"helpers\": \"<string>\",\n      \"index\": \"<string>\",\n      \"oauth2Authorize\": \"<string>\",\n      \"oauth2AuthorizedNotRegistered\": \"<string>\",\n      \"oauth2ChildRegistrationNotAllowed\": \"<string>\",\n      \"oauth2ChildRegistrationNotAllowedComplete\": \"<string>\",\n      \"oauth2CompleteRegistration\": \"<string>\",\n      \"oauth2Consent\": \"<string>\",\n      \"oauth2Device\": \"<string>\",\n      \"oauth2DeviceComplete\": \"<string>\",\n      \"oauth2Error\": \"<string>\",\n      \"oauth2Logout\": \"<string>\",\n      \"oauth2Passwordless\": \"<string>\",\n      \"oauth2Register\": \"<string>\",\n      \"oauth2StartIdPLink\": \"<string>\",\n      \"oauth2TwoFactor\": \"<string>\",\n      \"oauth2TwoFactorEnable\": \"<string>\",\n      \"oauth2TwoFactorEnableComplete\": \"<string>\",\n      \"oauth2TwoFactorMethods\": \"<string>\",\n      \"oauth2Wait\": \"<string>\",\n      \"oauth2WebAuthn\": \"<string>\",\n      \"oauth2WebAuthnReauth\": \"<string>\",\n      \"oauth2WebAuthnReauthEnable\": \"<string>\",\n      \"passwordChange\": \"<string>\",\n      \"passwordComplete\": \"<string>\",\n      \"passwordForgot\": \"<string>\",\n      \"passwordSent\": \"<string>\",\n      \"phoneComplete\": \"<string>\",\n      \"phoneSent\": \"<string>\",\n      \"phoneVerificationRequired\": \"<string>\",\n      \"phoneVerify\": \"<string>\",\n      \"registrationComplete\": \"<string>\",\n      \"registrationSent\": \"<string>\",\n      \"registrationVerificationRequired\": \"<string>\",\n      \"registrationVerify\": \"<string>\",\n      \"samlv2Logout\": \"<string>\",\n      \"unauthorized\": \"<string>\",\n      \"emailSend\": \"<string>\",\n      \"registrationSend\": \"<string>\"\n    },\n    \"type\": \"<string>\",\n    \"variables\": {\n      \"alertBackgroundColor\": \"<string>\",\n      \"alertFontColor\": \"<string>\",\n      \"backgroundImageURL\": \"<URI>\",\n      \"backgroundSize\": \"<string>\",\n      \"borderRadius\": \"<string>\",\n      \"deleteButtonColor\": \"<string>\",\n      \"deleteButtonFocusColor\": \"<string>\",\n      \"deleteButtonTextColor\": \"<string>\",\n      \"deleteButtonTextFocusColor\": \"<string>\",\n      \"errorFontColor\": \"<string>\",\n      \"errorIconColor\": \"<string>\",\n      \"favicons\": [\n        {\n          \"href\": \"<URI>\",\n          \"rel\": \"<string>\",\n          \"sizes\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"href\": \"<URI>\",\n          \"rel\": \"<string>\",\n          \"sizes\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"fontColor\": \"<string>\",\n      \"fontFamily\": \"<string>\",\n      \"footerDisplay\": \"<boolean>\",\n      \"iconBackgroundColor\": \"<string>\",\n      \"iconColor\": \"<string>\",\n      \"infoIconColor\": \"<string>\",\n      \"inputBackgroundColor\": \"<string>\",\n      \"inputIconColor\": \"<string>\",\n      \"inputTextColor\": \"<string>\",\n      \"linkTextColor\": \"<string>\",\n      \"linkTextFocusColor\": \"<string>\",\n      \"logoImageSize\": \"<string>\",\n      \"logoImageURL\": \"<URI>\",\n      \"monoFontColor\": \"<string>\",\n      \"monoFontFamily\": \"<string>\",\n      \"pageBackgroundColor\": \"<string>\",\n      \"panelBackgroundColor\": \"<string>\",\n      \"primaryButtonColor\": \"<string>\",\n      \"primaryButtonFocusColor\": \"<string>\",\n      \"primaryButtonTextColor\": \"<string>\",\n      \"primaryButtonTextFocusColor\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cf7bf2e0-d748-464d-99f2-7f5d88908d21",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "theme",
+                    ":themeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "themeId",
+                      "description": "(Required) The Id for the theme. If not provided a secure random UUID will be generated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourceThemeId\": \"<uuid>\",\n  \"theme\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\"\n    },\n    \"defaultMessages\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedMessages\": {},\n    \"name\": \"<string>\",\n    \"stylesheet\": \"<string>\",\n    \"templates\": {\n      \"accountEdit\": \"<string>\",\n      \"accountIndex\": \"<string>\",\n      \"accountTwoFactorDisable\": \"<string>\",\n      \"accountTwoFactorEnable\": \"<string>\",\n      \"accountTwoFactorIndex\": \"<string>\",\n      \"accountWebAuthnAdd\": \"<string>\",\n      \"accountWebAuthnDelete\": \"<string>\",\n      \"accountWebAuthnIndex\": \"<string>\",\n      \"confirmationRequired\": \"<string>\",\n      \"emailComplete\": \"<string>\",\n      \"emailSent\": \"<string>\",\n      \"emailVerificationRequired\": \"<string>\",\n      \"emailVerify\": \"<string>\",\n      \"helpers\": \"<string>\",\n      \"index\": \"<string>\",\n      \"oauth2Authorize\": \"<string>\",\n      \"oauth2AuthorizedNotRegistered\": \"<string>\",\n      \"oauth2ChildRegistrationNotAllowed\": \"<string>\",\n      \"oauth2ChildRegistrationNotAllowedComplete\": \"<string>\",\n      \"oauth2CompleteRegistration\": \"<string>\",\n      \"oauth2Consent\": \"<string>\",\n      \"oauth2Device\": \"<string>\",\n      \"oauth2DeviceComplete\": \"<string>\",\n      \"oauth2Error\": \"<string>\",\n      \"oauth2Logout\": \"<string>\",\n      \"oauth2Passwordless\": \"<string>\",\n      \"oauth2Register\": \"<string>\",\n      \"oauth2StartIdPLink\": \"<string>\",\n      \"oauth2TwoFactor\": \"<string>\",\n      \"oauth2TwoFactorEnable\": \"<string>\",\n      \"oauth2TwoFactorEnableComplete\": \"<string>\",\n      \"oauth2TwoFactorMethods\": \"<string>\",\n      \"oauth2Wait\": \"<string>\",\n      \"oauth2WebAuthn\": \"<string>\",\n      \"oauth2WebAuthnReauth\": \"<string>\",\n      \"oauth2WebAuthnReauthEnable\": \"<string>\",\n      \"passwordChange\": \"<string>\",\n      \"passwordComplete\": \"<string>\",\n      \"passwordForgot\": \"<string>\",\n      \"passwordSent\": \"<string>\",\n      \"phoneComplete\": \"<string>\",\n      \"phoneSent\": \"<string>\",\n      \"phoneVerificationRequired\": \"<string>\",\n      \"phoneVerify\": \"<string>\",\n      \"registrationComplete\": \"<string>\",\n      \"registrationSent\": \"<string>\",\n      \"registrationVerificationRequired\": \"<string>\",\n      \"registrationVerify\": \"<string>\",\n      \"samlv2Logout\": \"<string>\",\n      \"unauthorized\": \"<string>\",\n      \"emailSend\": \"<string>\",\n      \"registrationSend\": \"<string>\"\n    },\n    \"type\": \"<string>\",\n    \"variables\": {\n      \"alertBackgroundColor\": \"<string>\",\n      \"alertFontColor\": \"<string>\",\n      \"backgroundImageURL\": \"<URI>\",\n      \"backgroundSize\": \"<string>\",\n      \"borderRadius\": \"<string>\",\n      \"deleteButtonColor\": \"<string>\",\n      \"deleteButtonFocusColor\": \"<string>\",\n      \"deleteButtonTextColor\": \"<string>\",\n      \"deleteButtonTextFocusColor\": \"<string>\",\n      \"errorFontColor\": \"<string>\",\n      \"errorIconColor\": \"<string>\",\n      \"favicons\": [\n        {\n          \"href\": \"<URI>\",\n          \"rel\": \"<string>\",\n          \"sizes\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"href\": \"<URI>\",\n          \"rel\": \"<string>\",\n          \"sizes\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"fontColor\": \"<string>\",\n      \"fontFamily\": \"<string>\",\n      \"footerDisplay\": \"<boolean>\",\n      \"iconBackgroundColor\": \"<string>\",\n      \"iconColor\": \"<string>\",\n      \"infoIconColor\": \"<string>\",\n      \"inputBackgroundColor\": \"<string>\",\n      \"inputIconColor\": \"<string>\",\n      \"inputTextColor\": \"<string>\",\n      \"linkTextColor\": \"<string>\",\n      \"linkTextFocusColor\": \"<string>\",\n      \"logoImageSize\": \"<string>\",\n      \"logoImageURL\": \"<URI>\",\n      \"monoFontColor\": \"<string>\",\n      \"monoFontFamily\": \"<string>\",\n      \"pageBackgroundColor\": \"<string>\",\n      \"panelBackgroundColor\": \"<string>\",\n      \"primaryButtonColor\": \"<string>\",\n      \"primaryButtonFocusColor\": \"<string>\",\n      \"primaryButtonTextColor\": \"<string>\",\n      \"primaryButtonTextFocusColor\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"theme\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\",\n      \"key_3\": \"<object>\"\n    },\n    \"defaultMessages\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedMessages\": {},\n    \"name\": \"<string>\",\n    \"stylesheet\": \"<string>\",\n    \"templates\": {\n      \"accountEdit\": \"<string>\",\n      \"accountIndex\": \"<string>\",\n      \"accountTwoFactorDisable\": \"<string>\",\n      \"accountTwoFactorEnable\": \"<string>\",\n      \"accountTwoFactorIndex\": \"<string>\",\n      \"accountWebAuthnAdd\": \"<string>\",\n      \"accountWebAuthnDelete\": \"<string>\",\n      \"accountWebAuthnIndex\": \"<string>\",\n      \"confirmationRequired\": \"<string>\",\n      \"emailComplete\": \"<string>\",\n      \"emailSent\": \"<string>\",\n      \"emailVerificationRequired\": \"<string>\",\n      \"emailVerify\": \"<string>\",\n      \"helpers\": \"<string>\",\n      \"index\": \"<string>\",\n      \"oauth2Authorize\": \"<string>\",\n      \"oauth2AuthorizedNotRegistered\": \"<string>\",\n      \"oauth2ChildRegistrationNotAllowed\": \"<string>\",\n      \"oauth2ChildRegistrationNotAllowedComplete\": \"<string>\",\n      \"oauth2CompleteRegistration\": \"<string>\",\n      \"oauth2Consent\": \"<string>\",\n      \"oauth2Device\": \"<string>\",\n      \"oauth2DeviceComplete\": \"<string>\",\n      \"oauth2Error\": \"<string>\",\n      \"oauth2Logout\": \"<string>\",\n      \"oauth2Passwordless\": \"<string>\",\n      \"oauth2Register\": \"<string>\",\n      \"oauth2StartIdPLink\": \"<string>\",\n      \"oauth2TwoFactor\": \"<string>\",\n      \"oauth2TwoFactorEnable\": \"<string>\",\n      \"oauth2TwoFactorEnableComplete\": \"<string>\",\n      \"oauth2TwoFactorMethods\": \"<string>\",\n      \"oauth2Wait\": \"<string>\",\n      \"oauth2WebAuthn\": \"<string>\",\n      \"oauth2WebAuthnReauth\": \"<string>\",\n      \"oauth2WebAuthnReauthEnable\": \"<string>\",\n      \"passwordChange\": \"<string>\",\n      \"passwordComplete\": \"<string>\",\n      \"passwordForgot\": \"<string>\",\n      \"passwordSent\": \"<string>\",\n      \"phoneComplete\": \"<string>\",\n      \"phoneSent\": \"<string>\",\n      \"phoneVerificationRequired\": \"<string>\",\n      \"phoneVerify\": \"<string>\",\n      \"registrationComplete\": \"<string>\",\n      \"registrationSent\": \"<string>\",\n      \"registrationVerificationRequired\": \"<string>\",\n      \"registrationVerify\": \"<string>\",\n      \"samlv2Logout\": \"<string>\",\n      \"unauthorized\": \"<string>\",\n      \"emailSend\": \"<string>\",\n      \"registrationSend\": \"<string>\"\n    },\n    \"type\": \"<string>\",\n    \"variables\": {\n      \"alertBackgroundColor\": \"<string>\",\n      \"alertFontColor\": \"<string>\",\n      \"backgroundImageURL\": \"<URI>\",\n      \"backgroundSize\": \"<string>\",\n      \"borderRadius\": \"<string>\",\n      \"deleteButtonColor\": \"<string>\",\n      \"deleteButtonFocusColor\": \"<string>\",\n      \"deleteButtonTextColor\": \"<string>\",\n      \"deleteButtonTextFocusColor\": \"<string>\",\n      \"errorFontColor\": \"<string>\",\n      \"errorIconColor\": \"<string>\",\n      \"favicons\": [\n        {\n          \"href\": \"<URI>\",\n          \"rel\": \"<string>\",\n          \"sizes\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"href\": \"<URI>\",\n          \"rel\": \"<string>\",\n          \"sizes\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"fontColor\": \"<string>\",\n      \"fontFamily\": \"<string>\",\n      \"footerDisplay\": \"<boolean>\",\n      \"iconBackgroundColor\": \"<string>\",\n      \"iconColor\": \"<string>\",\n      \"infoIconColor\": \"<string>\",\n      \"inputBackgroundColor\": \"<string>\",\n      \"inputIconColor\": \"<string>\",\n      \"inputTextColor\": \"<string>\",\n      \"linkTextColor\": \"<string>\",\n      \"linkTextFocusColor\": \"<string>\",\n      \"logoImageSize\": \"<string>\",\n      \"logoImageURL\": \"<URI>\",\n      \"monoFontColor\": \"<string>\",\n      \"monoFontFamily\": \"<string>\",\n      \"pageBackgroundColor\": \"<string>\",\n      \"panelBackgroundColor\": \"<string>\",\n      \"primaryButtonColor\": \"<string>\",\n      \"primaryButtonFocusColor\": \"<string>\",\n      \"primaryButtonTextColor\": \"<string>\",\n      \"primaryButtonTextFocusColor\": \"<string>\"\n    }\n  },\n  \"themes\": [\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"defaultMessages\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"localizedMessages\": {},\n      \"name\": \"<string>\",\n      \"stylesheet\": \"<string>\",\n      \"templates\": {\n        \"accountEdit\": \"<string>\",\n        \"accountIndex\": \"<string>\",\n        \"accountTwoFactorDisable\": \"<string>\",\n        \"accountTwoFactorEnable\": \"<string>\",\n        \"accountTwoFactorIndex\": \"<string>\",\n        \"accountWebAuthnAdd\": \"<string>\",\n        \"accountWebAuthnDelete\": \"<string>\",\n        \"accountWebAuthnIndex\": \"<string>\",\n        \"confirmationRequired\": \"<string>\",\n        \"emailComplete\": \"<string>\",\n        \"emailSent\": \"<string>\",\n        \"emailVerificationRequired\": \"<string>\",\n        \"emailVerify\": \"<string>\",\n        \"helpers\": \"<string>\",\n        \"index\": \"<string>\",\n        \"oauth2Authorize\": \"<string>\",\n        \"oauth2AuthorizedNotRegistered\": \"<string>\",\n        \"oauth2ChildRegistrationNotAllowed\": \"<string>\",\n        \"oauth2ChildRegistrationNotAllowedComplete\": \"<string>\",\n        \"oauth2CompleteRegistration\": \"<string>\",\n        \"oauth2Consent\": \"<string>\",\n        \"oauth2Device\": \"<string>\",\n        \"oauth2DeviceComplete\": \"<string>\",\n        \"oauth2Error\": \"<string>\",\n        \"oauth2Logout\": \"<string>\",\n        \"oauth2Passwordless\": \"<string>\",\n        \"oauth2Register\": \"<string>\",\n        \"oauth2StartIdPLink\": \"<string>\",\n        \"oauth2TwoFactor\": \"<string>\",\n        \"oauth2TwoFactorEnable\": \"<string>\",\n        \"oauth2TwoFactorEnableComplete\": \"<string>\",\n        \"oauth2TwoFactorMethods\": \"<string>\",\n        \"oauth2Wait\": \"<string>\",\n        \"oauth2WebAuthn\": \"<string>\",\n        \"oauth2WebAuthnReauth\": \"<string>\",\n        \"oauth2WebAuthnReauthEnable\": \"<string>\",\n        \"passwordChange\": \"<string>\",\n        \"passwordComplete\": \"<string>\",\n        \"passwordForgot\": \"<string>\",\n        \"passwordSent\": \"<string>\",\n        \"phoneComplete\": \"<string>\",\n        \"phoneSent\": \"<string>\",\n        \"phoneVerificationRequired\": \"<string>\",\n        \"phoneVerify\": \"<string>\",\n        \"registrationComplete\": \"<string>\",\n        \"registrationSent\": \"<string>\",\n        \"registrationVerificationRequired\": \"<string>\",\n        \"registrationVerify\": \"<string>\",\n        \"samlv2Logout\": \"<string>\",\n        \"unauthorized\": \"<string>\",\n        \"emailSend\": \"<string>\",\n        \"registrationSend\": \"<string>\"\n      },\n      \"type\": \"<string>\",\n      \"variables\": {\n        \"alertBackgroundColor\": \"<string>\",\n        \"alertFontColor\": \"<string>\",\n        \"backgroundImageURL\": \"<URI>\",\n        \"backgroundSize\": \"<string>\",\n        \"borderRadius\": \"<string>\",\n        \"deleteButtonColor\": \"<string>\",\n        \"deleteButtonFocusColor\": \"<string>\",\n        \"deleteButtonTextColor\": \"<string>\",\n        \"deleteButtonTextFocusColor\": \"<string>\",\n        \"errorFontColor\": \"<string>\",\n        \"errorIconColor\": \"<string>\",\n        \"favicons\": [\n          {\n            \"href\": \"<URI>\",\n            \"rel\": \"<string>\",\n            \"sizes\": \"<string>\",\n            \"type\": \"<string>\"\n          },\n          {\n            \"href\": \"<URI>\",\n            \"rel\": \"<string>\",\n            \"sizes\": \"<string>\",\n            \"type\": \"<string>\"\n          }\n        ],\n        \"fontColor\": \"<string>\",\n        \"fontFamily\": \"<string>\",\n        \"footerDisplay\": \"<boolean>\",\n        \"iconBackgroundColor\": \"<string>\",\n        \"iconColor\": \"<string>\",\n        \"infoIconColor\": \"<string>\",\n        \"inputBackgroundColor\": \"<string>\",\n        \"inputIconColor\": \"<string>\",\n        \"inputTextColor\": \"<string>\",\n        \"linkTextColor\": \"<string>\",\n        \"linkTextFocusColor\": \"<string>\",\n        \"logoImageSize\": \"<string>\",\n        \"logoImageURL\": \"<URI>\",\n        \"monoFontColor\": \"<string>\",\n        \"monoFontFamily\": \"<string>\",\n        \"pageBackgroundColor\": \"<string>\",\n        \"panelBackgroundColor\": \"<string>\",\n        \"primaryButtonColor\": \"<string>\",\n        \"primaryButtonFocusColor\": \"<string>\",\n        \"primaryButtonTextColor\": \"<string>\",\n        \"primaryButtonTextFocusColor\": \"<string>\"\n      }\n    },\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"defaultMessages\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"localizedMessages\": {},\n      \"name\": \"<string>\",\n      \"stylesheet\": \"<string>\",\n      \"templates\": {\n        \"accountEdit\": \"<string>\",\n        \"accountIndex\": \"<string>\",\n        \"accountTwoFactorDisable\": \"<string>\",\n        \"accountTwoFactorEnable\": \"<string>\",\n        \"accountTwoFactorIndex\": \"<string>\",\n        \"accountWebAuthnAdd\": \"<string>\",\n        \"accountWebAuthnDelete\": \"<string>\",\n        \"accountWebAuthnIndex\": \"<string>\",\n        \"confirmationRequired\": \"<string>\",\n        \"emailComplete\": \"<string>\",\n        \"emailSent\": \"<string>\",\n        \"emailVerificationRequired\": \"<string>\",\n        \"emailVerify\": \"<string>\",\n        \"helpers\": \"<string>\",\n        \"index\": \"<string>\",\n        \"oauth2Authorize\": \"<string>\",\n        \"oauth2AuthorizedNotRegistered\": \"<string>\",\n        \"oauth2ChildRegistrationNotAllowed\": \"<string>\",\n        \"oauth2ChildRegistrationNotAllowedComplete\": \"<string>\",\n        \"oauth2CompleteRegistration\": \"<string>\",\n        \"oauth2Consent\": \"<string>\",\n        \"oauth2Device\": \"<string>\",\n        \"oauth2DeviceComplete\": \"<string>\",\n        \"oauth2Error\": \"<string>\",\n        \"oauth2Logout\": \"<string>\",\n        \"oauth2Passwordless\": \"<string>\",\n        \"oauth2Register\": \"<string>\",\n        \"oauth2StartIdPLink\": \"<string>\",\n        \"oauth2TwoFactor\": \"<string>\",\n        \"oauth2TwoFactorEnable\": \"<string>\",\n        \"oauth2TwoFactorEnableComplete\": \"<string>\",\n        \"oauth2TwoFactorMethods\": \"<string>\",\n        \"oauth2Wait\": \"<string>\",\n        \"oauth2WebAuthn\": \"<string>\",\n        \"oauth2WebAuthnReauth\": \"<string>\",\n        \"oauth2WebAuthnReauthEnable\": \"<string>\",\n        \"passwordChange\": \"<string>\",\n        \"passwordComplete\": \"<string>\",\n        \"passwordForgot\": \"<string>\",\n        \"passwordSent\": \"<string>\",\n        \"phoneComplete\": \"<string>\",\n        \"phoneSent\": \"<string>\",\n        \"phoneVerificationRequired\": \"<string>\",\n        \"phoneVerify\": \"<string>\",\n        \"registrationComplete\": \"<string>\",\n        \"registrationSent\": \"<string>\",\n        \"registrationVerificationRequired\": \"<string>\",\n        \"registrationVerify\": \"<string>\",\n        \"samlv2Logout\": \"<string>\",\n        \"unauthorized\": \"<string>\",\n        \"emailSend\": \"<string>\",\n        \"registrationSend\": \"<string>\"\n      },\n      \"type\": \"<string>\",\n      \"variables\": {\n        \"alertBackgroundColor\": \"<string>\",\n        \"alertFontColor\": \"<string>\",\n        \"backgroundImageURL\": \"<URI>\",\n        \"backgroundSize\": \"<string>\",\n        \"borderRadius\": \"<string>\",\n        \"deleteButtonColor\": \"<string>\",\n        \"deleteButtonFocusColor\": \"<string>\",\n        \"deleteButtonTextColor\": \"<string>\",\n        \"deleteButtonTextFocusColor\": \"<string>\",\n        \"errorFontColor\": \"<string>\",\n        \"errorIconColor\": \"<string>\",\n        \"favicons\": [\n          {\n            \"href\": \"<URI>\",\n            \"rel\": \"<string>\",\n            \"sizes\": \"<string>\",\n            \"type\": \"<string>\"\n          },\n          {\n            \"href\": \"<URI>\",\n            \"rel\": \"<string>\",\n            \"sizes\": \"<string>\",\n            \"type\": \"<string>\"\n          }\n        ],\n        \"fontColor\": \"<string>\",\n        \"fontFamily\": \"<string>\",\n        \"footerDisplay\": \"<boolean>\",\n        \"iconBackgroundColor\": \"<string>\",\n        \"iconColor\": \"<string>\",\n        \"infoIconColor\": \"<string>\",\n        \"inputBackgroundColor\": \"<string>\",\n        \"inputIconColor\": \"<string>\",\n        \"inputTextColor\": \"<string>\",\n        \"linkTextColor\": \"<string>\",\n        \"linkTextFocusColor\": \"<string>\",\n        \"logoImageSize\": \"<string>\",\n        \"logoImageURL\": \"<URI>\",\n        \"monoFontColor\": \"<string>\",\n        \"monoFontFamily\": \"<string>\",\n        \"pageBackgroundColor\": \"<string>\",\n        \"panelBackgroundColor\": \"<string>\",\n        \"primaryButtonColor\": \"<string>\",\n        \"primaryButtonFocusColor\": \"<string>\",\n        \"primaryButtonTextColor\": \"<string>\",\n        \"primaryButtonTextFocusColor\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "68de1ee2-2b70-4a07-85ee-92cc7c02231d",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "theme",
+                    ":themeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "themeId",
+                      "description": "(Required) The Id for the theme. If not provided a secure random UUID will be generated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourceThemeId\": \"<uuid>\",\n  \"theme\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\"\n    },\n    \"defaultMessages\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedMessages\": {},\n    \"name\": \"<string>\",\n    \"stylesheet\": \"<string>\",\n    \"templates\": {\n      \"accountEdit\": \"<string>\",\n      \"accountIndex\": \"<string>\",\n      \"accountTwoFactorDisable\": \"<string>\",\n      \"accountTwoFactorEnable\": \"<string>\",\n      \"accountTwoFactorIndex\": \"<string>\",\n      \"accountWebAuthnAdd\": \"<string>\",\n      \"accountWebAuthnDelete\": \"<string>\",\n      \"accountWebAuthnIndex\": \"<string>\",\n      \"confirmationRequired\": \"<string>\",\n      \"emailComplete\": \"<string>\",\n      \"emailSent\": \"<string>\",\n      \"emailVerificationRequired\": \"<string>\",\n      \"emailVerify\": \"<string>\",\n      \"helpers\": \"<string>\",\n      \"index\": \"<string>\",\n      \"oauth2Authorize\": \"<string>\",\n      \"oauth2AuthorizedNotRegistered\": \"<string>\",\n      \"oauth2ChildRegistrationNotAllowed\": \"<string>\",\n      \"oauth2ChildRegistrationNotAllowedComplete\": \"<string>\",\n      \"oauth2CompleteRegistration\": \"<string>\",\n      \"oauth2Consent\": \"<string>\",\n      \"oauth2Device\": \"<string>\",\n      \"oauth2DeviceComplete\": \"<string>\",\n      \"oauth2Error\": \"<string>\",\n      \"oauth2Logout\": \"<string>\",\n      \"oauth2Passwordless\": \"<string>\",\n      \"oauth2Register\": \"<string>\",\n      \"oauth2StartIdPLink\": \"<string>\",\n      \"oauth2TwoFactor\": \"<string>\",\n      \"oauth2TwoFactorEnable\": \"<string>\",\n      \"oauth2TwoFactorEnableComplete\": \"<string>\",\n      \"oauth2TwoFactorMethods\": \"<string>\",\n      \"oauth2Wait\": \"<string>\",\n      \"oauth2WebAuthn\": \"<string>\",\n      \"oauth2WebAuthnReauth\": \"<string>\",\n      \"oauth2WebAuthnReauthEnable\": \"<string>\",\n      \"passwordChange\": \"<string>\",\n      \"passwordComplete\": \"<string>\",\n      \"passwordForgot\": \"<string>\",\n      \"passwordSent\": \"<string>\",\n      \"phoneComplete\": \"<string>\",\n      \"phoneSent\": \"<string>\",\n      \"phoneVerificationRequired\": \"<string>\",\n      \"phoneVerify\": \"<string>\",\n      \"registrationComplete\": \"<string>\",\n      \"registrationSent\": \"<string>\",\n      \"registrationVerificationRequired\": \"<string>\",\n      \"registrationVerify\": \"<string>\",\n      \"samlv2Logout\": \"<string>\",\n      \"unauthorized\": \"<string>\",\n      \"emailSend\": \"<string>\",\n      \"registrationSend\": \"<string>\"\n    },\n    \"type\": \"<string>\",\n    \"variables\": {\n      \"alertBackgroundColor\": \"<string>\",\n      \"alertFontColor\": \"<string>\",\n      \"backgroundImageURL\": \"<URI>\",\n      \"backgroundSize\": \"<string>\",\n      \"borderRadius\": \"<string>\",\n      \"deleteButtonColor\": \"<string>\",\n      \"deleteButtonFocusColor\": \"<string>\",\n      \"deleteButtonTextColor\": \"<string>\",\n      \"deleteButtonTextFocusColor\": \"<string>\",\n      \"errorFontColor\": \"<string>\",\n      \"errorIconColor\": \"<string>\",\n      \"favicons\": [\n        {\n          \"href\": \"<URI>\",\n          \"rel\": \"<string>\",\n          \"sizes\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"href\": \"<URI>\",\n          \"rel\": \"<string>\",\n          \"sizes\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"fontColor\": \"<string>\",\n      \"fontFamily\": \"<string>\",\n      \"footerDisplay\": \"<boolean>\",\n      \"iconBackgroundColor\": \"<string>\",\n      \"iconColor\": \"<string>\",\n      \"infoIconColor\": \"<string>\",\n      \"inputBackgroundColor\": \"<string>\",\n      \"inputIconColor\": \"<string>\",\n      \"inputTextColor\": \"<string>\",\n      \"linkTextColor\": \"<string>\",\n      \"linkTextFocusColor\": \"<string>\",\n      \"logoImageSize\": \"<string>\",\n      \"logoImageURL\": \"<URI>\",\n      \"monoFontColor\": \"<string>\",\n      \"monoFontFamily\": \"<string>\",\n      \"pageBackgroundColor\": \"<string>\",\n      \"panelBackgroundColor\": \"<string>\",\n      \"primaryButtonColor\": \"<string>\",\n      \"primaryButtonFocusColor\": \"<string>\",\n      \"primaryButtonTextColor\": \"<string>\",\n      \"primaryButtonTextFocusColor\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ff9c6bbd-7a8b-4614-91da-2c0143143ff6",
+          "name": "delete Theme With Id",
+          "request": {
+            "name": "delete Theme With Id",
+            "description": {
+              "content": "Deletes the theme for the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "theme",
+                ":themeId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "themeId",
+                  "description": "(Required) The Id of the theme to delete."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "80b24d96-c04a-4f96-be60-00ac87184958",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "theme",
+                    ":themeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "themeId",
+                      "description": "(Required) The Id of the theme to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ddc7047b-b42f-4136-ac12-66b2a39f9dc0",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "theme",
+                    ":themeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "themeId",
+                      "description": "(Required) The Id of the theme to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5e55f47d-aebf-4f83-b906-7f709f99ae0d",
+          "name": "patch Theme With Id",
+          "request": {
+            "name": "patch Theme With Id",
+            "description": {
+              "content": "Updates, via PATCH, the theme with the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "theme",
+                ":themeId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "themeId",
+                  "description": "(Required) The Id of the theme to update."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sourceThemeId\": \"<uuid>\",\n  \"theme\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\",\n      \"key_3\": \"<object>\"\n    },\n    \"defaultMessages\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedMessages\": {},\n    \"name\": \"<string>\",\n    \"stylesheet\": \"<string>\",\n    \"templates\": {\n      \"accountEdit\": \"<string>\",\n      \"accountIndex\": \"<string>\",\n      \"accountTwoFactorDisable\": \"<string>\",\n      \"accountTwoFactorEnable\": \"<string>\",\n      \"accountTwoFactorIndex\": \"<string>\",\n      \"accountWebAuthnAdd\": \"<string>\",\n      \"accountWebAuthnDelete\": \"<string>\",\n      \"accountWebAuthnIndex\": \"<string>\",\n      \"confirmationRequired\": \"<string>\",\n      \"emailComplete\": \"<string>\",\n      \"emailSent\": \"<string>\",\n      \"emailVerificationRequired\": \"<string>\",\n      \"emailVerify\": \"<string>\",\n      \"helpers\": \"<string>\",\n      \"index\": \"<string>\",\n      \"oauth2Authorize\": \"<string>\",\n      \"oauth2AuthorizedNotRegistered\": \"<string>\",\n      \"oauth2ChildRegistrationNotAllowed\": \"<string>\",\n      \"oauth2ChildRegistrationNotAllowedComplete\": \"<string>\",\n      \"oauth2CompleteRegistration\": \"<string>\",\n      \"oauth2Consent\": \"<string>\",\n      \"oauth2Device\": \"<string>\",\n      \"oauth2DeviceComplete\": \"<string>\",\n      \"oauth2Error\": \"<string>\",\n      \"oauth2Logout\": \"<string>\",\n      \"oauth2Passwordless\": \"<string>\",\n      \"oauth2Register\": \"<string>\",\n      \"oauth2StartIdPLink\": \"<string>\",\n      \"oauth2TwoFactor\": \"<string>\",\n      \"oauth2TwoFactorEnable\": \"<string>\",\n      \"oauth2TwoFactorEnableComplete\": \"<string>\",\n      \"oauth2TwoFactorMethods\": \"<string>\",\n      \"oauth2Wait\": \"<string>\",\n      \"oauth2WebAuthn\": \"<string>\",\n      \"oauth2WebAuthnReauth\": \"<string>\",\n      \"oauth2WebAuthnReauthEnable\": \"<string>\",\n      \"passwordChange\": \"<string>\",\n      \"passwordComplete\": \"<string>\",\n      \"passwordForgot\": \"<string>\",\n      \"passwordSent\": \"<string>\",\n      \"phoneComplete\": \"<string>\",\n      \"phoneSent\": \"<string>\",\n      \"phoneVerificationRequired\": \"<string>\",\n      \"phoneVerify\": \"<string>\",\n      \"registrationComplete\": \"<string>\",\n      \"registrationSent\": \"<string>\",\n      \"registrationVerificationRequired\": \"<string>\",\n      \"registrationVerify\": \"<string>\",\n      \"samlv2Logout\": \"<string>\",\n      \"unauthorized\": \"<string>\",\n      \"emailSend\": \"<string>\",\n      \"registrationSend\": \"<string>\"\n    },\n    \"type\": \"<string>\",\n    \"variables\": {\n      \"alertBackgroundColor\": \"<string>\",\n      \"alertFontColor\": \"<string>\",\n      \"backgroundImageURL\": \"<URI>\",\n      \"backgroundSize\": \"<string>\",\n      \"borderRadius\": \"<string>\",\n      \"deleteButtonColor\": \"<string>\",\n      \"deleteButtonFocusColor\": \"<string>\",\n      \"deleteButtonTextColor\": \"<string>\",\n      \"deleteButtonTextFocusColor\": \"<string>\",\n      \"errorFontColor\": \"<string>\",\n      \"errorIconColor\": \"<string>\",\n      \"favicons\": [\n        {\n          \"href\": \"<URI>\",\n          \"rel\": \"<string>\",\n          \"sizes\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"href\": \"<URI>\",\n          \"rel\": \"<string>\",\n          \"sizes\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"fontColor\": \"<string>\",\n      \"fontFamily\": \"<string>\",\n      \"footerDisplay\": \"<boolean>\",\n      \"iconBackgroundColor\": \"<string>\",\n      \"iconColor\": \"<string>\",\n      \"infoIconColor\": \"<string>\",\n      \"inputBackgroundColor\": \"<string>\",\n      \"inputIconColor\": \"<string>\",\n      \"inputTextColor\": \"<string>\",\n      \"linkTextColor\": \"<string>\",\n      \"linkTextFocusColor\": \"<string>\",\n      \"logoImageSize\": \"<string>\",\n      \"logoImageURL\": \"<URI>\",\n      \"monoFontColor\": \"<string>\",\n      \"monoFontFamily\": \"<string>\",\n      \"pageBackgroundColor\": \"<string>\",\n      \"panelBackgroundColor\": \"<string>\",\n      \"primaryButtonColor\": \"<string>\",\n      \"primaryButtonFocusColor\": \"<string>\",\n      \"primaryButtonTextColor\": \"<string>\",\n      \"primaryButtonTextFocusColor\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1c479826-d8a3-44e5-a22d-79a7dba79d6d",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "theme",
+                    ":themeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "themeId",
+                      "description": "(Required) The Id of the theme to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourceThemeId\": \"<uuid>\",\n  \"theme\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\"\n    },\n    \"defaultMessages\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedMessages\": {},\n    \"name\": \"<string>\",\n    \"stylesheet\": \"<string>\",\n    \"templates\": {\n      \"accountEdit\": \"<string>\",\n      \"accountIndex\": \"<string>\",\n      \"accountTwoFactorDisable\": \"<string>\",\n      \"accountTwoFactorEnable\": \"<string>\",\n      \"accountTwoFactorIndex\": \"<string>\",\n      \"accountWebAuthnAdd\": \"<string>\",\n      \"accountWebAuthnDelete\": \"<string>\",\n      \"accountWebAuthnIndex\": \"<string>\",\n      \"confirmationRequired\": \"<string>\",\n      \"emailComplete\": \"<string>\",\n      \"emailSent\": \"<string>\",\n      \"emailVerificationRequired\": \"<string>\",\n      \"emailVerify\": \"<string>\",\n      \"helpers\": \"<string>\",\n      \"index\": \"<string>\",\n      \"oauth2Authorize\": \"<string>\",\n      \"oauth2AuthorizedNotRegistered\": \"<string>\",\n      \"oauth2ChildRegistrationNotAllowed\": \"<string>\",\n      \"oauth2ChildRegistrationNotAllowedComplete\": \"<string>\",\n      \"oauth2CompleteRegistration\": \"<string>\",\n      \"oauth2Consent\": \"<string>\",\n      \"oauth2Device\": \"<string>\",\n      \"oauth2DeviceComplete\": \"<string>\",\n      \"oauth2Error\": \"<string>\",\n      \"oauth2Logout\": \"<string>\",\n      \"oauth2Passwordless\": \"<string>\",\n      \"oauth2Register\": \"<string>\",\n      \"oauth2StartIdPLink\": \"<string>\",\n      \"oauth2TwoFactor\": \"<string>\",\n      \"oauth2TwoFactorEnable\": \"<string>\",\n      \"oauth2TwoFactorEnableComplete\": \"<string>\",\n      \"oauth2TwoFactorMethods\": \"<string>\",\n      \"oauth2Wait\": \"<string>\",\n      \"oauth2WebAuthn\": \"<string>\",\n      \"oauth2WebAuthnReauth\": \"<string>\",\n      \"oauth2WebAuthnReauthEnable\": \"<string>\",\n      \"passwordChange\": \"<string>\",\n      \"passwordComplete\": \"<string>\",\n      \"passwordForgot\": \"<string>\",\n      \"passwordSent\": \"<string>\",\n      \"phoneComplete\": \"<string>\",\n      \"phoneSent\": \"<string>\",\n      \"phoneVerificationRequired\": \"<string>\",\n      \"phoneVerify\": \"<string>\",\n      \"registrationComplete\": \"<string>\",\n      \"registrationSent\": \"<string>\",\n      \"registrationVerificationRequired\": \"<string>\",\n      \"registrationVerify\": \"<string>\",\n      \"samlv2Logout\": \"<string>\",\n      \"unauthorized\": \"<string>\",\n      \"emailSend\": \"<string>\",\n      \"registrationSend\": \"<string>\"\n    },\n    \"type\": \"<string>\",\n    \"variables\": {\n      \"alertBackgroundColor\": \"<string>\",\n      \"alertFontColor\": \"<string>\",\n      \"backgroundImageURL\": \"<URI>\",\n      \"backgroundSize\": \"<string>\",\n      \"borderRadius\": \"<string>\",\n      \"deleteButtonColor\": \"<string>\",\n      \"deleteButtonFocusColor\": \"<string>\",\n      \"deleteButtonTextColor\": \"<string>\",\n      \"deleteButtonTextFocusColor\": \"<string>\",\n      \"errorFontColor\": \"<string>\",\n      \"errorIconColor\": \"<string>\",\n      \"favicons\": [\n        {\n          \"href\": \"<URI>\",\n          \"rel\": \"<string>\",\n          \"sizes\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"href\": \"<URI>\",\n          \"rel\": \"<string>\",\n          \"sizes\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"fontColor\": \"<string>\",\n      \"fontFamily\": \"<string>\",\n      \"footerDisplay\": \"<boolean>\",\n      \"iconBackgroundColor\": \"<string>\",\n      \"iconColor\": \"<string>\",\n      \"infoIconColor\": \"<string>\",\n      \"inputBackgroundColor\": \"<string>\",\n      \"inputIconColor\": \"<string>\",\n      \"inputTextColor\": \"<string>\",\n      \"linkTextColor\": \"<string>\",\n      \"linkTextFocusColor\": \"<string>\",\n      \"logoImageSize\": \"<string>\",\n      \"logoImageURL\": \"<URI>\",\n      \"monoFontColor\": \"<string>\",\n      \"monoFontFamily\": \"<string>\",\n      \"pageBackgroundColor\": \"<string>\",\n      \"panelBackgroundColor\": \"<string>\",\n      \"primaryButtonColor\": \"<string>\",\n      \"primaryButtonFocusColor\": \"<string>\",\n      \"primaryButtonTextColor\": \"<string>\",\n      \"primaryButtonTextFocusColor\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"theme\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\",\n      \"key_3\": \"<object>\"\n    },\n    \"defaultMessages\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedMessages\": {},\n    \"name\": \"<string>\",\n    \"stylesheet\": \"<string>\",\n    \"templates\": {\n      \"accountEdit\": \"<string>\",\n      \"accountIndex\": \"<string>\",\n      \"accountTwoFactorDisable\": \"<string>\",\n      \"accountTwoFactorEnable\": \"<string>\",\n      \"accountTwoFactorIndex\": \"<string>\",\n      \"accountWebAuthnAdd\": \"<string>\",\n      \"accountWebAuthnDelete\": \"<string>\",\n      \"accountWebAuthnIndex\": \"<string>\",\n      \"confirmationRequired\": \"<string>\",\n      \"emailComplete\": \"<string>\",\n      \"emailSent\": \"<string>\",\n      \"emailVerificationRequired\": \"<string>\",\n      \"emailVerify\": \"<string>\",\n      \"helpers\": \"<string>\",\n      \"index\": \"<string>\",\n      \"oauth2Authorize\": \"<string>\",\n      \"oauth2AuthorizedNotRegistered\": \"<string>\",\n      \"oauth2ChildRegistrationNotAllowed\": \"<string>\",\n      \"oauth2ChildRegistrationNotAllowedComplete\": \"<string>\",\n      \"oauth2CompleteRegistration\": \"<string>\",\n      \"oauth2Consent\": \"<string>\",\n      \"oauth2Device\": \"<string>\",\n      \"oauth2DeviceComplete\": \"<string>\",\n      \"oauth2Error\": \"<string>\",\n      \"oauth2Logout\": \"<string>\",\n      \"oauth2Passwordless\": \"<string>\",\n      \"oauth2Register\": \"<string>\",\n      \"oauth2StartIdPLink\": \"<string>\",\n      \"oauth2TwoFactor\": \"<string>\",\n      \"oauth2TwoFactorEnable\": \"<string>\",\n      \"oauth2TwoFactorEnableComplete\": \"<string>\",\n      \"oauth2TwoFactorMethods\": \"<string>\",\n      \"oauth2Wait\": \"<string>\",\n      \"oauth2WebAuthn\": \"<string>\",\n      \"oauth2WebAuthnReauth\": \"<string>\",\n      \"oauth2WebAuthnReauthEnable\": \"<string>\",\n      \"passwordChange\": \"<string>\",\n      \"passwordComplete\": \"<string>\",\n      \"passwordForgot\": \"<string>\",\n      \"passwordSent\": \"<string>\",\n      \"phoneComplete\": \"<string>\",\n      \"phoneSent\": \"<string>\",\n      \"phoneVerificationRequired\": \"<string>\",\n      \"phoneVerify\": \"<string>\",\n      \"registrationComplete\": \"<string>\",\n      \"registrationSent\": \"<string>\",\n      \"registrationVerificationRequired\": \"<string>\",\n      \"registrationVerify\": \"<string>\",\n      \"samlv2Logout\": \"<string>\",\n      \"unauthorized\": \"<string>\",\n      \"emailSend\": \"<string>\",\n      \"registrationSend\": \"<string>\"\n    },\n    \"type\": \"<string>\",\n    \"variables\": {\n      \"alertBackgroundColor\": \"<string>\",\n      \"alertFontColor\": \"<string>\",\n      \"backgroundImageURL\": \"<URI>\",\n      \"backgroundSize\": \"<string>\",\n      \"borderRadius\": \"<string>\",\n      \"deleteButtonColor\": \"<string>\",\n      \"deleteButtonFocusColor\": \"<string>\",\n      \"deleteButtonTextColor\": \"<string>\",\n      \"deleteButtonTextFocusColor\": \"<string>\",\n      \"errorFontColor\": \"<string>\",\n      \"errorIconColor\": \"<string>\",\n      \"favicons\": [\n        {\n          \"href\": \"<URI>\",\n          \"rel\": \"<string>\",\n          \"sizes\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"href\": \"<URI>\",\n          \"rel\": \"<string>\",\n          \"sizes\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"fontColor\": \"<string>\",\n      \"fontFamily\": \"<string>\",\n      \"footerDisplay\": \"<boolean>\",\n      \"iconBackgroundColor\": \"<string>\",\n      \"iconColor\": \"<string>\",\n      \"infoIconColor\": \"<string>\",\n      \"inputBackgroundColor\": \"<string>\",\n      \"inputIconColor\": \"<string>\",\n      \"inputTextColor\": \"<string>\",\n      \"linkTextColor\": \"<string>\",\n      \"linkTextFocusColor\": \"<string>\",\n      \"logoImageSize\": \"<string>\",\n      \"logoImageURL\": \"<URI>\",\n      \"monoFontColor\": \"<string>\",\n      \"monoFontFamily\": \"<string>\",\n      \"pageBackgroundColor\": \"<string>\",\n      \"panelBackgroundColor\": \"<string>\",\n      \"primaryButtonColor\": \"<string>\",\n      \"primaryButtonFocusColor\": \"<string>\",\n      \"primaryButtonTextColor\": \"<string>\",\n      \"primaryButtonTextFocusColor\": \"<string>\"\n    }\n  },\n  \"themes\": [\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"defaultMessages\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"localizedMessages\": {},\n      \"name\": \"<string>\",\n      \"stylesheet\": \"<string>\",\n      \"templates\": {\n        \"accountEdit\": \"<string>\",\n        \"accountIndex\": \"<string>\",\n        \"accountTwoFactorDisable\": \"<string>\",\n        \"accountTwoFactorEnable\": \"<string>\",\n        \"accountTwoFactorIndex\": \"<string>\",\n        \"accountWebAuthnAdd\": \"<string>\",\n        \"accountWebAuthnDelete\": \"<string>\",\n        \"accountWebAuthnIndex\": \"<string>\",\n        \"confirmationRequired\": \"<string>\",\n        \"emailComplete\": \"<string>\",\n        \"emailSent\": \"<string>\",\n        \"emailVerificationRequired\": \"<string>\",\n        \"emailVerify\": \"<string>\",\n        \"helpers\": \"<string>\",\n        \"index\": \"<string>\",\n        \"oauth2Authorize\": \"<string>\",\n        \"oauth2AuthorizedNotRegistered\": \"<string>\",\n        \"oauth2ChildRegistrationNotAllowed\": \"<string>\",\n        \"oauth2ChildRegistrationNotAllowedComplete\": \"<string>\",\n        \"oauth2CompleteRegistration\": \"<string>\",\n        \"oauth2Consent\": \"<string>\",\n        \"oauth2Device\": \"<string>\",\n        \"oauth2DeviceComplete\": \"<string>\",\n        \"oauth2Error\": \"<string>\",\n        \"oauth2Logout\": \"<string>\",\n        \"oauth2Passwordless\": \"<string>\",\n        \"oauth2Register\": \"<string>\",\n        \"oauth2StartIdPLink\": \"<string>\",\n        \"oauth2TwoFactor\": \"<string>\",\n        \"oauth2TwoFactorEnable\": \"<string>\",\n        \"oauth2TwoFactorEnableComplete\": \"<string>\",\n        \"oauth2TwoFactorMethods\": \"<string>\",\n        \"oauth2Wait\": \"<string>\",\n        \"oauth2WebAuthn\": \"<string>\",\n        \"oauth2WebAuthnReauth\": \"<string>\",\n        \"oauth2WebAuthnReauthEnable\": \"<string>\",\n        \"passwordChange\": \"<string>\",\n        \"passwordComplete\": \"<string>\",\n        \"passwordForgot\": \"<string>\",\n        \"passwordSent\": \"<string>\",\n        \"phoneComplete\": \"<string>\",\n        \"phoneSent\": \"<string>\",\n        \"phoneVerificationRequired\": \"<string>\",\n        \"phoneVerify\": \"<string>\",\n        \"registrationComplete\": \"<string>\",\n        \"registrationSent\": \"<string>\",\n        \"registrationVerificationRequired\": \"<string>\",\n        \"registrationVerify\": \"<string>\",\n        \"samlv2Logout\": \"<string>\",\n        \"unauthorized\": \"<string>\",\n        \"emailSend\": \"<string>\",\n        \"registrationSend\": \"<string>\"\n      },\n      \"type\": \"<string>\",\n      \"variables\": {\n        \"alertBackgroundColor\": \"<string>\",\n        \"alertFontColor\": \"<string>\",\n        \"backgroundImageURL\": \"<URI>\",\n        \"backgroundSize\": \"<string>\",\n        \"borderRadius\": \"<string>\",\n        \"deleteButtonColor\": \"<string>\",\n        \"deleteButtonFocusColor\": \"<string>\",\n        \"deleteButtonTextColor\": \"<string>\",\n        \"deleteButtonTextFocusColor\": \"<string>\",\n        \"errorFontColor\": \"<string>\",\n        \"errorIconColor\": \"<string>\",\n        \"favicons\": [\n          {\n            \"href\": \"<URI>\",\n            \"rel\": \"<string>\",\n            \"sizes\": \"<string>\",\n            \"type\": \"<string>\"\n          },\n          {\n            \"href\": \"<URI>\",\n            \"rel\": \"<string>\",\n            \"sizes\": \"<string>\",\n            \"type\": \"<string>\"\n          }\n        ],\n        \"fontColor\": \"<string>\",\n        \"fontFamily\": \"<string>\",\n        \"footerDisplay\": \"<boolean>\",\n        \"iconBackgroundColor\": \"<string>\",\n        \"iconColor\": \"<string>\",\n        \"infoIconColor\": \"<string>\",\n        \"inputBackgroundColor\": \"<string>\",\n        \"inputIconColor\": \"<string>\",\n        \"inputTextColor\": \"<string>\",\n        \"linkTextColor\": \"<string>\",\n        \"linkTextFocusColor\": \"<string>\",\n        \"logoImageSize\": \"<string>\",\n        \"logoImageURL\": \"<URI>\",\n        \"monoFontColor\": \"<string>\",\n        \"monoFontFamily\": \"<string>\",\n        \"pageBackgroundColor\": \"<string>\",\n        \"panelBackgroundColor\": \"<string>\",\n        \"primaryButtonColor\": \"<string>\",\n        \"primaryButtonFocusColor\": \"<string>\",\n        \"primaryButtonTextColor\": \"<string>\",\n        \"primaryButtonTextFocusColor\": \"<string>\"\n      }\n    },\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"defaultMessages\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"localizedMessages\": {},\n      \"name\": \"<string>\",\n      \"stylesheet\": \"<string>\",\n      \"templates\": {\n        \"accountEdit\": \"<string>\",\n        \"accountIndex\": \"<string>\",\n        \"accountTwoFactorDisable\": \"<string>\",\n        \"accountTwoFactorEnable\": \"<string>\",\n        \"accountTwoFactorIndex\": \"<string>\",\n        \"accountWebAuthnAdd\": \"<string>\",\n        \"accountWebAuthnDelete\": \"<string>\",\n        \"accountWebAuthnIndex\": \"<string>\",\n        \"confirmationRequired\": \"<string>\",\n        \"emailComplete\": \"<string>\",\n        \"emailSent\": \"<string>\",\n        \"emailVerificationRequired\": \"<string>\",\n        \"emailVerify\": \"<string>\",\n        \"helpers\": \"<string>\",\n        \"index\": \"<string>\",\n        \"oauth2Authorize\": \"<string>\",\n        \"oauth2AuthorizedNotRegistered\": \"<string>\",\n        \"oauth2ChildRegistrationNotAllowed\": \"<string>\",\n        \"oauth2ChildRegistrationNotAllowedComplete\": \"<string>\",\n        \"oauth2CompleteRegistration\": \"<string>\",\n        \"oauth2Consent\": \"<string>\",\n        \"oauth2Device\": \"<string>\",\n        \"oauth2DeviceComplete\": \"<string>\",\n        \"oauth2Error\": \"<string>\",\n        \"oauth2Logout\": \"<string>\",\n        \"oauth2Passwordless\": \"<string>\",\n        \"oauth2Register\": \"<string>\",\n        \"oauth2StartIdPLink\": \"<string>\",\n        \"oauth2TwoFactor\": \"<string>\",\n        \"oauth2TwoFactorEnable\": \"<string>\",\n        \"oauth2TwoFactorEnableComplete\": \"<string>\",\n        \"oauth2TwoFactorMethods\": \"<string>\",\n        \"oauth2Wait\": \"<string>\",\n        \"oauth2WebAuthn\": \"<string>\",\n        \"oauth2WebAuthnReauth\": \"<string>\",\n        \"oauth2WebAuthnReauthEnable\": \"<string>\",\n        \"passwordChange\": \"<string>\",\n        \"passwordComplete\": \"<string>\",\n        \"passwordForgot\": \"<string>\",\n        \"passwordSent\": \"<string>\",\n        \"phoneComplete\": \"<string>\",\n        \"phoneSent\": \"<string>\",\n        \"phoneVerificationRequired\": \"<string>\",\n        \"phoneVerify\": \"<string>\",\n        \"registrationComplete\": \"<string>\",\n        \"registrationSent\": \"<string>\",\n        \"registrationVerificationRequired\": \"<string>\",\n        \"registrationVerify\": \"<string>\",\n        \"samlv2Logout\": \"<string>\",\n        \"unauthorized\": \"<string>\",\n        \"emailSend\": \"<string>\",\n        \"registrationSend\": \"<string>\"\n      },\n      \"type\": \"<string>\",\n      \"variables\": {\n        \"alertBackgroundColor\": \"<string>\",\n        \"alertFontColor\": \"<string>\",\n        \"backgroundImageURL\": \"<URI>\",\n        \"backgroundSize\": \"<string>\",\n        \"borderRadius\": \"<string>\",\n        \"deleteButtonColor\": \"<string>\",\n        \"deleteButtonFocusColor\": \"<string>\",\n        \"deleteButtonTextColor\": \"<string>\",\n        \"deleteButtonTextFocusColor\": \"<string>\",\n        \"errorFontColor\": \"<string>\",\n        \"errorIconColor\": \"<string>\",\n        \"favicons\": [\n          {\n            \"href\": \"<URI>\",\n            \"rel\": \"<string>\",\n            \"sizes\": \"<string>\",\n            \"type\": \"<string>\"\n          },\n          {\n            \"href\": \"<URI>\",\n            \"rel\": \"<string>\",\n            \"sizes\": \"<string>\",\n            \"type\": \"<string>\"\n          }\n        ],\n        \"fontColor\": \"<string>\",\n        \"fontFamily\": \"<string>\",\n        \"footerDisplay\": \"<boolean>\",\n        \"iconBackgroundColor\": \"<string>\",\n        \"iconColor\": \"<string>\",\n        \"infoIconColor\": \"<string>\",\n        \"inputBackgroundColor\": \"<string>\",\n        \"inputIconColor\": \"<string>\",\n        \"inputTextColor\": \"<string>\",\n        \"linkTextColor\": \"<string>\",\n        \"linkTextFocusColor\": \"<string>\",\n        \"logoImageSize\": \"<string>\",\n        \"logoImageURL\": \"<URI>\",\n        \"monoFontColor\": \"<string>\",\n        \"monoFontFamily\": \"<string>\",\n        \"pageBackgroundColor\": \"<string>\",\n        \"panelBackgroundColor\": \"<string>\",\n        \"primaryButtonColor\": \"<string>\",\n        \"primaryButtonFocusColor\": \"<string>\",\n        \"primaryButtonTextColor\": \"<string>\",\n        \"primaryButtonTextFocusColor\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "67e93838-3e0b-414f-bc78-57cec2b63239",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "theme",
+                    ":themeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "themeId",
+                      "description": "(Required) The Id of the theme to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourceThemeId\": \"<uuid>\",\n  \"theme\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\"\n    },\n    \"defaultMessages\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedMessages\": {},\n    \"name\": \"<string>\",\n    \"stylesheet\": \"<string>\",\n    \"templates\": {\n      \"accountEdit\": \"<string>\",\n      \"accountIndex\": \"<string>\",\n      \"accountTwoFactorDisable\": \"<string>\",\n      \"accountTwoFactorEnable\": \"<string>\",\n      \"accountTwoFactorIndex\": \"<string>\",\n      \"accountWebAuthnAdd\": \"<string>\",\n      \"accountWebAuthnDelete\": \"<string>\",\n      \"accountWebAuthnIndex\": \"<string>\",\n      \"confirmationRequired\": \"<string>\",\n      \"emailComplete\": \"<string>\",\n      \"emailSent\": \"<string>\",\n      \"emailVerificationRequired\": \"<string>\",\n      \"emailVerify\": \"<string>\",\n      \"helpers\": \"<string>\",\n      \"index\": \"<string>\",\n      \"oauth2Authorize\": \"<string>\",\n      \"oauth2AuthorizedNotRegistered\": \"<string>\",\n      \"oauth2ChildRegistrationNotAllowed\": \"<string>\",\n      \"oauth2ChildRegistrationNotAllowedComplete\": \"<string>\",\n      \"oauth2CompleteRegistration\": \"<string>\",\n      \"oauth2Consent\": \"<string>\",\n      \"oauth2Device\": \"<string>\",\n      \"oauth2DeviceComplete\": \"<string>\",\n      \"oauth2Error\": \"<string>\",\n      \"oauth2Logout\": \"<string>\",\n      \"oauth2Passwordless\": \"<string>\",\n      \"oauth2Register\": \"<string>\",\n      \"oauth2StartIdPLink\": \"<string>\",\n      \"oauth2TwoFactor\": \"<string>\",\n      \"oauth2TwoFactorEnable\": \"<string>\",\n      \"oauth2TwoFactorEnableComplete\": \"<string>\",\n      \"oauth2TwoFactorMethods\": \"<string>\",\n      \"oauth2Wait\": \"<string>\",\n      \"oauth2WebAuthn\": \"<string>\",\n      \"oauth2WebAuthnReauth\": \"<string>\",\n      \"oauth2WebAuthnReauthEnable\": \"<string>\",\n      \"passwordChange\": \"<string>\",\n      \"passwordComplete\": \"<string>\",\n      \"passwordForgot\": \"<string>\",\n      \"passwordSent\": \"<string>\",\n      \"phoneComplete\": \"<string>\",\n      \"phoneSent\": \"<string>\",\n      \"phoneVerificationRequired\": \"<string>\",\n      \"phoneVerify\": \"<string>\",\n      \"registrationComplete\": \"<string>\",\n      \"registrationSent\": \"<string>\",\n      \"registrationVerificationRequired\": \"<string>\",\n      \"registrationVerify\": \"<string>\",\n      \"samlv2Logout\": \"<string>\",\n      \"unauthorized\": \"<string>\",\n      \"emailSend\": \"<string>\",\n      \"registrationSend\": \"<string>\"\n    },\n    \"type\": \"<string>\",\n    \"variables\": {\n      \"alertBackgroundColor\": \"<string>\",\n      \"alertFontColor\": \"<string>\",\n      \"backgroundImageURL\": \"<URI>\",\n      \"backgroundSize\": \"<string>\",\n      \"borderRadius\": \"<string>\",\n      \"deleteButtonColor\": \"<string>\",\n      \"deleteButtonFocusColor\": \"<string>\",\n      \"deleteButtonTextColor\": \"<string>\",\n      \"deleteButtonTextFocusColor\": \"<string>\",\n      \"errorFontColor\": \"<string>\",\n      \"errorIconColor\": \"<string>\",\n      \"favicons\": [\n        {\n          \"href\": \"<URI>\",\n          \"rel\": \"<string>\",\n          \"sizes\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"href\": \"<URI>\",\n          \"rel\": \"<string>\",\n          \"sizes\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"fontColor\": \"<string>\",\n      \"fontFamily\": \"<string>\",\n      \"footerDisplay\": \"<boolean>\",\n      \"iconBackgroundColor\": \"<string>\",\n      \"iconColor\": \"<string>\",\n      \"infoIconColor\": \"<string>\",\n      \"inputBackgroundColor\": \"<string>\",\n      \"inputIconColor\": \"<string>\",\n      \"inputTextColor\": \"<string>\",\n      \"linkTextColor\": \"<string>\",\n      \"linkTextFocusColor\": \"<string>\",\n      \"logoImageSize\": \"<string>\",\n      \"logoImageURL\": \"<URI>\",\n      \"monoFontColor\": \"<string>\",\n      \"monoFontFamily\": \"<string>\",\n      \"pageBackgroundColor\": \"<string>\",\n      \"panelBackgroundColor\": \"<string>\",\n      \"primaryButtonColor\": \"<string>\",\n      \"primaryButtonFocusColor\": \"<string>\",\n      \"primaryButtonTextColor\": \"<string>\",\n      \"primaryButtonTextFocusColor\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9b9a42e2-b6cc-4eb1-b861-5f9b571611ef",
+          "name": "retrieve Theme With Id",
+          "request": {
+            "name": "retrieve Theme With Id",
+            "description": {
+              "content": "Retrieves the theme for the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "theme",
+                ":themeId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "themeId",
+                  "description": "(Required) The Id of the theme."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "166825ff-0b6d-4ee3-b79c-facce5069bee",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "theme",
+                    ":themeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "themeId",
+                      "description": "(Required) The Id of the theme."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"theme\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\",\n      \"key_3\": \"<object>\"\n    },\n    \"defaultMessages\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedMessages\": {},\n    \"name\": \"<string>\",\n    \"stylesheet\": \"<string>\",\n    \"templates\": {\n      \"accountEdit\": \"<string>\",\n      \"accountIndex\": \"<string>\",\n      \"accountTwoFactorDisable\": \"<string>\",\n      \"accountTwoFactorEnable\": \"<string>\",\n      \"accountTwoFactorIndex\": \"<string>\",\n      \"accountWebAuthnAdd\": \"<string>\",\n      \"accountWebAuthnDelete\": \"<string>\",\n      \"accountWebAuthnIndex\": \"<string>\",\n      \"confirmationRequired\": \"<string>\",\n      \"emailComplete\": \"<string>\",\n      \"emailSent\": \"<string>\",\n      \"emailVerificationRequired\": \"<string>\",\n      \"emailVerify\": \"<string>\",\n      \"helpers\": \"<string>\",\n      \"index\": \"<string>\",\n      \"oauth2Authorize\": \"<string>\",\n      \"oauth2AuthorizedNotRegistered\": \"<string>\",\n      \"oauth2ChildRegistrationNotAllowed\": \"<string>\",\n      \"oauth2ChildRegistrationNotAllowedComplete\": \"<string>\",\n      \"oauth2CompleteRegistration\": \"<string>\",\n      \"oauth2Consent\": \"<string>\",\n      \"oauth2Device\": \"<string>\",\n      \"oauth2DeviceComplete\": \"<string>\",\n      \"oauth2Error\": \"<string>\",\n      \"oauth2Logout\": \"<string>\",\n      \"oauth2Passwordless\": \"<string>\",\n      \"oauth2Register\": \"<string>\",\n      \"oauth2StartIdPLink\": \"<string>\",\n      \"oauth2TwoFactor\": \"<string>\",\n      \"oauth2TwoFactorEnable\": \"<string>\",\n      \"oauth2TwoFactorEnableComplete\": \"<string>\",\n      \"oauth2TwoFactorMethods\": \"<string>\",\n      \"oauth2Wait\": \"<string>\",\n      \"oauth2WebAuthn\": \"<string>\",\n      \"oauth2WebAuthnReauth\": \"<string>\",\n      \"oauth2WebAuthnReauthEnable\": \"<string>\",\n      \"passwordChange\": \"<string>\",\n      \"passwordComplete\": \"<string>\",\n      \"passwordForgot\": \"<string>\",\n      \"passwordSent\": \"<string>\",\n      \"phoneComplete\": \"<string>\",\n      \"phoneSent\": \"<string>\",\n      \"phoneVerificationRequired\": \"<string>\",\n      \"phoneVerify\": \"<string>\",\n      \"registrationComplete\": \"<string>\",\n      \"registrationSent\": \"<string>\",\n      \"registrationVerificationRequired\": \"<string>\",\n      \"registrationVerify\": \"<string>\",\n      \"samlv2Logout\": \"<string>\",\n      \"unauthorized\": \"<string>\",\n      \"emailSend\": \"<string>\",\n      \"registrationSend\": \"<string>\"\n    },\n    \"type\": \"<string>\",\n    \"variables\": {\n      \"alertBackgroundColor\": \"<string>\",\n      \"alertFontColor\": \"<string>\",\n      \"backgroundImageURL\": \"<URI>\",\n      \"backgroundSize\": \"<string>\",\n      \"borderRadius\": \"<string>\",\n      \"deleteButtonColor\": \"<string>\",\n      \"deleteButtonFocusColor\": \"<string>\",\n      \"deleteButtonTextColor\": \"<string>\",\n      \"deleteButtonTextFocusColor\": \"<string>\",\n      \"errorFontColor\": \"<string>\",\n      \"errorIconColor\": \"<string>\",\n      \"favicons\": [\n        {\n          \"href\": \"<URI>\",\n          \"rel\": \"<string>\",\n          \"sizes\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"href\": \"<URI>\",\n          \"rel\": \"<string>\",\n          \"sizes\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"fontColor\": \"<string>\",\n      \"fontFamily\": \"<string>\",\n      \"footerDisplay\": \"<boolean>\",\n      \"iconBackgroundColor\": \"<string>\",\n      \"iconColor\": \"<string>\",\n      \"infoIconColor\": \"<string>\",\n      \"inputBackgroundColor\": \"<string>\",\n      \"inputIconColor\": \"<string>\",\n      \"inputTextColor\": \"<string>\",\n      \"linkTextColor\": \"<string>\",\n      \"linkTextFocusColor\": \"<string>\",\n      \"logoImageSize\": \"<string>\",\n      \"logoImageURL\": \"<URI>\",\n      \"monoFontColor\": \"<string>\",\n      \"monoFontFamily\": \"<string>\",\n      \"pageBackgroundColor\": \"<string>\",\n      \"panelBackgroundColor\": \"<string>\",\n      \"primaryButtonColor\": \"<string>\",\n      \"primaryButtonFocusColor\": \"<string>\",\n      \"primaryButtonTextColor\": \"<string>\",\n      \"primaryButtonTextFocusColor\": \"<string>\"\n    }\n  },\n  \"themes\": [\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"defaultMessages\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"localizedMessages\": {},\n      \"name\": \"<string>\",\n      \"stylesheet\": \"<string>\",\n      \"templates\": {\n        \"accountEdit\": \"<string>\",\n        \"accountIndex\": \"<string>\",\n        \"accountTwoFactorDisable\": \"<string>\",\n        \"accountTwoFactorEnable\": \"<string>\",\n        \"accountTwoFactorIndex\": \"<string>\",\n        \"accountWebAuthnAdd\": \"<string>\",\n        \"accountWebAuthnDelete\": \"<string>\",\n        \"accountWebAuthnIndex\": \"<string>\",\n        \"confirmationRequired\": \"<string>\",\n        \"emailComplete\": \"<string>\",\n        \"emailSent\": \"<string>\",\n        \"emailVerificationRequired\": \"<string>\",\n        \"emailVerify\": \"<string>\",\n        \"helpers\": \"<string>\",\n        \"index\": \"<string>\",\n        \"oauth2Authorize\": \"<string>\",\n        \"oauth2AuthorizedNotRegistered\": \"<string>\",\n        \"oauth2ChildRegistrationNotAllowed\": \"<string>\",\n        \"oauth2ChildRegistrationNotAllowedComplete\": \"<string>\",\n        \"oauth2CompleteRegistration\": \"<string>\",\n        \"oauth2Consent\": \"<string>\",\n        \"oauth2Device\": \"<string>\",\n        \"oauth2DeviceComplete\": \"<string>\",\n        \"oauth2Error\": \"<string>\",\n        \"oauth2Logout\": \"<string>\",\n        \"oauth2Passwordless\": \"<string>\",\n        \"oauth2Register\": \"<string>\",\n        \"oauth2StartIdPLink\": \"<string>\",\n        \"oauth2TwoFactor\": \"<string>\",\n        \"oauth2TwoFactorEnable\": \"<string>\",\n        \"oauth2TwoFactorEnableComplete\": \"<string>\",\n        \"oauth2TwoFactorMethods\": \"<string>\",\n        \"oauth2Wait\": \"<string>\",\n        \"oauth2WebAuthn\": \"<string>\",\n        \"oauth2WebAuthnReauth\": \"<string>\",\n        \"oauth2WebAuthnReauthEnable\": \"<string>\",\n        \"passwordChange\": \"<string>\",\n        \"passwordComplete\": \"<string>\",\n        \"passwordForgot\": \"<string>\",\n        \"passwordSent\": \"<string>\",\n        \"phoneComplete\": \"<string>\",\n        \"phoneSent\": \"<string>\",\n        \"phoneVerificationRequired\": \"<string>\",\n        \"phoneVerify\": \"<string>\",\n        \"registrationComplete\": \"<string>\",\n        \"registrationSent\": \"<string>\",\n        \"registrationVerificationRequired\": \"<string>\",\n        \"registrationVerify\": \"<string>\",\n        \"samlv2Logout\": \"<string>\",\n        \"unauthorized\": \"<string>\",\n        \"emailSend\": \"<string>\",\n        \"registrationSend\": \"<string>\"\n      },\n      \"type\": \"<string>\",\n      \"variables\": {\n        \"alertBackgroundColor\": \"<string>\",\n        \"alertFontColor\": \"<string>\",\n        \"backgroundImageURL\": \"<URI>\",\n        \"backgroundSize\": \"<string>\",\n        \"borderRadius\": \"<string>\",\n        \"deleteButtonColor\": \"<string>\",\n        \"deleteButtonFocusColor\": \"<string>\",\n        \"deleteButtonTextColor\": \"<string>\",\n        \"deleteButtonTextFocusColor\": \"<string>\",\n        \"errorFontColor\": \"<string>\",\n        \"errorIconColor\": \"<string>\",\n        \"favicons\": [\n          {\n            \"href\": \"<URI>\",\n            \"rel\": \"<string>\",\n            \"sizes\": \"<string>\",\n            \"type\": \"<string>\"\n          },\n          {\n            \"href\": \"<URI>\",\n            \"rel\": \"<string>\",\n            \"sizes\": \"<string>\",\n            \"type\": \"<string>\"\n          }\n        ],\n        \"fontColor\": \"<string>\",\n        \"fontFamily\": \"<string>\",\n        \"footerDisplay\": \"<boolean>\",\n        \"iconBackgroundColor\": \"<string>\",\n        \"iconColor\": \"<string>\",\n        \"infoIconColor\": \"<string>\",\n        \"inputBackgroundColor\": \"<string>\",\n        \"inputIconColor\": \"<string>\",\n        \"inputTextColor\": \"<string>\",\n        \"linkTextColor\": \"<string>\",\n        \"linkTextFocusColor\": \"<string>\",\n        \"logoImageSize\": \"<string>\",\n        \"logoImageURL\": \"<URI>\",\n        \"monoFontColor\": \"<string>\",\n        \"monoFontFamily\": \"<string>\",\n        \"pageBackgroundColor\": \"<string>\",\n        \"panelBackgroundColor\": \"<string>\",\n        \"primaryButtonColor\": \"<string>\",\n        \"primaryButtonFocusColor\": \"<string>\",\n        \"primaryButtonTextColor\": \"<string>\",\n        \"primaryButtonTextFocusColor\": \"<string>\"\n      }\n    },\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"defaultMessages\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"localizedMessages\": {},\n      \"name\": \"<string>\",\n      \"stylesheet\": \"<string>\",\n      \"templates\": {\n        \"accountEdit\": \"<string>\",\n        \"accountIndex\": \"<string>\",\n        \"accountTwoFactorDisable\": \"<string>\",\n        \"accountTwoFactorEnable\": \"<string>\",\n        \"accountTwoFactorIndex\": \"<string>\",\n        \"accountWebAuthnAdd\": \"<string>\",\n        \"accountWebAuthnDelete\": \"<string>\",\n        \"accountWebAuthnIndex\": \"<string>\",\n        \"confirmationRequired\": \"<string>\",\n        \"emailComplete\": \"<string>\",\n        \"emailSent\": \"<string>\",\n        \"emailVerificationRequired\": \"<string>\",\n        \"emailVerify\": \"<string>\",\n        \"helpers\": \"<string>\",\n        \"index\": \"<string>\",\n        \"oauth2Authorize\": \"<string>\",\n        \"oauth2AuthorizedNotRegistered\": \"<string>\",\n        \"oauth2ChildRegistrationNotAllowed\": \"<string>\",\n        \"oauth2ChildRegistrationNotAllowedComplete\": \"<string>\",\n        \"oauth2CompleteRegistration\": \"<string>\",\n        \"oauth2Consent\": \"<string>\",\n        \"oauth2Device\": \"<string>\",\n        \"oauth2DeviceComplete\": \"<string>\",\n        \"oauth2Error\": \"<string>\",\n        \"oauth2Logout\": \"<string>\",\n        \"oauth2Passwordless\": \"<string>\",\n        \"oauth2Register\": \"<string>\",\n        \"oauth2StartIdPLink\": \"<string>\",\n        \"oauth2TwoFactor\": \"<string>\",\n        \"oauth2TwoFactorEnable\": \"<string>\",\n        \"oauth2TwoFactorEnableComplete\": \"<string>\",\n        \"oauth2TwoFactorMethods\": \"<string>\",\n        \"oauth2Wait\": \"<string>\",\n        \"oauth2WebAuthn\": \"<string>\",\n        \"oauth2WebAuthnReauth\": \"<string>\",\n        \"oauth2WebAuthnReauthEnable\": \"<string>\",\n        \"passwordChange\": \"<string>\",\n        \"passwordComplete\": \"<string>\",\n        \"passwordForgot\": \"<string>\",\n        \"passwordSent\": \"<string>\",\n        \"phoneComplete\": \"<string>\",\n        \"phoneSent\": \"<string>\",\n        \"phoneVerificationRequired\": \"<string>\",\n        \"phoneVerify\": \"<string>\",\n        \"registrationComplete\": \"<string>\",\n        \"registrationSent\": \"<string>\",\n        \"registrationVerificationRequired\": \"<string>\",\n        \"registrationVerify\": \"<string>\",\n        \"samlv2Logout\": \"<string>\",\n        \"unauthorized\": \"<string>\",\n        \"emailSend\": \"<string>\",\n        \"registrationSend\": \"<string>\"\n      },\n      \"type\": \"<string>\",\n      \"variables\": {\n        \"alertBackgroundColor\": \"<string>\",\n        \"alertFontColor\": \"<string>\",\n        \"backgroundImageURL\": \"<URI>\",\n        \"backgroundSize\": \"<string>\",\n        \"borderRadius\": \"<string>\",\n        \"deleteButtonColor\": \"<string>\",\n        \"deleteButtonFocusColor\": \"<string>\",\n        \"deleteButtonTextColor\": \"<string>\",\n        \"deleteButtonTextFocusColor\": \"<string>\",\n        \"errorFontColor\": \"<string>\",\n        \"errorIconColor\": \"<string>\",\n        \"favicons\": [\n          {\n            \"href\": \"<URI>\",\n            \"rel\": \"<string>\",\n            \"sizes\": \"<string>\",\n            \"type\": \"<string>\"\n          },\n          {\n            \"href\": \"<URI>\",\n            \"rel\": \"<string>\",\n            \"sizes\": \"<string>\",\n            \"type\": \"<string>\"\n          }\n        ],\n        \"fontColor\": \"<string>\",\n        \"fontFamily\": \"<string>\",\n        \"footerDisplay\": \"<boolean>\",\n        \"iconBackgroundColor\": \"<string>\",\n        \"iconColor\": \"<string>\",\n        \"infoIconColor\": \"<string>\",\n        \"inputBackgroundColor\": \"<string>\",\n        \"inputIconColor\": \"<string>\",\n        \"inputTextColor\": \"<string>\",\n        \"linkTextColor\": \"<string>\",\n        \"linkTextFocusColor\": \"<string>\",\n        \"logoImageSize\": \"<string>\",\n        \"logoImageURL\": \"<URI>\",\n        \"monoFontColor\": \"<string>\",\n        \"monoFontFamily\": \"<string>\",\n        \"pageBackgroundColor\": \"<string>\",\n        \"panelBackgroundColor\": \"<string>\",\n        \"primaryButtonColor\": \"<string>\",\n        \"primaryButtonFocusColor\": \"<string>\",\n        \"primaryButtonTextColor\": \"<string>\",\n        \"primaryButtonTextFocusColor\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b68025a2-efab-4c88-9d3f-676671810679",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "theme",
+                    ":themeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "themeId",
+                      "description": "(Required) The Id of the theme."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "180264e7-bd8b-457f-91c3-c9aac36fcb49",
+          "name": "update Theme With Id",
+          "request": {
+            "name": "update Theme With Id",
+            "description": {
+              "content": "Updates the theme with the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "theme",
+                ":themeId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "themeId",
+                  "description": "(Required) The Id of the theme to update."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sourceThemeId\": \"<uuid>\",\n  \"theme\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\",\n      \"key_3\": \"<object>\"\n    },\n    \"defaultMessages\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedMessages\": {},\n    \"name\": \"<string>\",\n    \"stylesheet\": \"<string>\",\n    \"templates\": {\n      \"accountEdit\": \"<string>\",\n      \"accountIndex\": \"<string>\",\n      \"accountTwoFactorDisable\": \"<string>\",\n      \"accountTwoFactorEnable\": \"<string>\",\n      \"accountTwoFactorIndex\": \"<string>\",\n      \"accountWebAuthnAdd\": \"<string>\",\n      \"accountWebAuthnDelete\": \"<string>\",\n      \"accountWebAuthnIndex\": \"<string>\",\n      \"confirmationRequired\": \"<string>\",\n      \"emailComplete\": \"<string>\",\n      \"emailSent\": \"<string>\",\n      \"emailVerificationRequired\": \"<string>\",\n      \"emailVerify\": \"<string>\",\n      \"helpers\": \"<string>\",\n      \"index\": \"<string>\",\n      \"oauth2Authorize\": \"<string>\",\n      \"oauth2AuthorizedNotRegistered\": \"<string>\",\n      \"oauth2ChildRegistrationNotAllowed\": \"<string>\",\n      \"oauth2ChildRegistrationNotAllowedComplete\": \"<string>\",\n      \"oauth2CompleteRegistration\": \"<string>\",\n      \"oauth2Consent\": \"<string>\",\n      \"oauth2Device\": \"<string>\",\n      \"oauth2DeviceComplete\": \"<string>\",\n      \"oauth2Error\": \"<string>\",\n      \"oauth2Logout\": \"<string>\",\n      \"oauth2Passwordless\": \"<string>\",\n      \"oauth2Register\": \"<string>\",\n      \"oauth2StartIdPLink\": \"<string>\",\n      \"oauth2TwoFactor\": \"<string>\",\n      \"oauth2TwoFactorEnable\": \"<string>\",\n      \"oauth2TwoFactorEnableComplete\": \"<string>\",\n      \"oauth2TwoFactorMethods\": \"<string>\",\n      \"oauth2Wait\": \"<string>\",\n      \"oauth2WebAuthn\": \"<string>\",\n      \"oauth2WebAuthnReauth\": \"<string>\",\n      \"oauth2WebAuthnReauthEnable\": \"<string>\",\n      \"passwordChange\": \"<string>\",\n      \"passwordComplete\": \"<string>\",\n      \"passwordForgot\": \"<string>\",\n      \"passwordSent\": \"<string>\",\n      \"phoneComplete\": \"<string>\",\n      \"phoneSent\": \"<string>\",\n      \"phoneVerificationRequired\": \"<string>\",\n      \"phoneVerify\": \"<string>\",\n      \"registrationComplete\": \"<string>\",\n      \"registrationSent\": \"<string>\",\n      \"registrationVerificationRequired\": \"<string>\",\n      \"registrationVerify\": \"<string>\",\n      \"samlv2Logout\": \"<string>\",\n      \"unauthorized\": \"<string>\",\n      \"emailSend\": \"<string>\",\n      \"registrationSend\": \"<string>\"\n    },\n    \"type\": \"<string>\",\n    \"variables\": {\n      \"alertBackgroundColor\": \"<string>\",\n      \"alertFontColor\": \"<string>\",\n      \"backgroundImageURL\": \"<URI>\",\n      \"backgroundSize\": \"<string>\",\n      \"borderRadius\": \"<string>\",\n      \"deleteButtonColor\": \"<string>\",\n      \"deleteButtonFocusColor\": \"<string>\",\n      \"deleteButtonTextColor\": \"<string>\",\n      \"deleteButtonTextFocusColor\": \"<string>\",\n      \"errorFontColor\": \"<string>\",\n      \"errorIconColor\": \"<string>\",\n      \"favicons\": [\n        {\n          \"href\": \"<URI>\",\n          \"rel\": \"<string>\",\n          \"sizes\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"href\": \"<URI>\",\n          \"rel\": \"<string>\",\n          \"sizes\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"fontColor\": \"<string>\",\n      \"fontFamily\": \"<string>\",\n      \"footerDisplay\": \"<boolean>\",\n      \"iconBackgroundColor\": \"<string>\",\n      \"iconColor\": \"<string>\",\n      \"infoIconColor\": \"<string>\",\n      \"inputBackgroundColor\": \"<string>\",\n      \"inputIconColor\": \"<string>\",\n      \"inputTextColor\": \"<string>\",\n      \"linkTextColor\": \"<string>\",\n      \"linkTextFocusColor\": \"<string>\",\n      \"logoImageSize\": \"<string>\",\n      \"logoImageURL\": \"<URI>\",\n      \"monoFontColor\": \"<string>\",\n      \"monoFontFamily\": \"<string>\",\n      \"pageBackgroundColor\": \"<string>\",\n      \"panelBackgroundColor\": \"<string>\",\n      \"primaryButtonColor\": \"<string>\",\n      \"primaryButtonFocusColor\": \"<string>\",\n      \"primaryButtonTextColor\": \"<string>\",\n      \"primaryButtonTextFocusColor\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "07fc7f10-64b5-4b6b-acce-01d53a2d0f59",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "theme",
+                    ":themeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "themeId",
+                      "description": "(Required) The Id of the theme to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourceThemeId\": \"<uuid>\",\n  \"theme\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\"\n    },\n    \"defaultMessages\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedMessages\": {},\n    \"name\": \"<string>\",\n    \"stylesheet\": \"<string>\",\n    \"templates\": {\n      \"accountEdit\": \"<string>\",\n      \"accountIndex\": \"<string>\",\n      \"accountTwoFactorDisable\": \"<string>\",\n      \"accountTwoFactorEnable\": \"<string>\",\n      \"accountTwoFactorIndex\": \"<string>\",\n      \"accountWebAuthnAdd\": \"<string>\",\n      \"accountWebAuthnDelete\": \"<string>\",\n      \"accountWebAuthnIndex\": \"<string>\",\n      \"confirmationRequired\": \"<string>\",\n      \"emailComplete\": \"<string>\",\n      \"emailSent\": \"<string>\",\n      \"emailVerificationRequired\": \"<string>\",\n      \"emailVerify\": \"<string>\",\n      \"helpers\": \"<string>\",\n      \"index\": \"<string>\",\n      \"oauth2Authorize\": \"<string>\",\n      \"oauth2AuthorizedNotRegistered\": \"<string>\",\n      \"oauth2ChildRegistrationNotAllowed\": \"<string>\",\n      \"oauth2ChildRegistrationNotAllowedComplete\": \"<string>\",\n      \"oauth2CompleteRegistration\": \"<string>\",\n      \"oauth2Consent\": \"<string>\",\n      \"oauth2Device\": \"<string>\",\n      \"oauth2DeviceComplete\": \"<string>\",\n      \"oauth2Error\": \"<string>\",\n      \"oauth2Logout\": \"<string>\",\n      \"oauth2Passwordless\": \"<string>\",\n      \"oauth2Register\": \"<string>\",\n      \"oauth2StartIdPLink\": \"<string>\",\n      \"oauth2TwoFactor\": \"<string>\",\n      \"oauth2TwoFactorEnable\": \"<string>\",\n      \"oauth2TwoFactorEnableComplete\": \"<string>\",\n      \"oauth2TwoFactorMethods\": \"<string>\",\n      \"oauth2Wait\": \"<string>\",\n      \"oauth2WebAuthn\": \"<string>\",\n      \"oauth2WebAuthnReauth\": \"<string>\",\n      \"oauth2WebAuthnReauthEnable\": \"<string>\",\n      \"passwordChange\": \"<string>\",\n      \"passwordComplete\": \"<string>\",\n      \"passwordForgot\": \"<string>\",\n      \"passwordSent\": \"<string>\",\n      \"phoneComplete\": \"<string>\",\n      \"phoneSent\": \"<string>\",\n      \"phoneVerificationRequired\": \"<string>\",\n      \"phoneVerify\": \"<string>\",\n      \"registrationComplete\": \"<string>\",\n      \"registrationSent\": \"<string>\",\n      \"registrationVerificationRequired\": \"<string>\",\n      \"registrationVerify\": \"<string>\",\n      \"samlv2Logout\": \"<string>\",\n      \"unauthorized\": \"<string>\",\n      \"emailSend\": \"<string>\",\n      \"registrationSend\": \"<string>\"\n    },\n    \"type\": \"<string>\",\n    \"variables\": {\n      \"alertBackgroundColor\": \"<string>\",\n      \"alertFontColor\": \"<string>\",\n      \"backgroundImageURL\": \"<URI>\",\n      \"backgroundSize\": \"<string>\",\n      \"borderRadius\": \"<string>\",\n      \"deleteButtonColor\": \"<string>\",\n      \"deleteButtonFocusColor\": \"<string>\",\n      \"deleteButtonTextColor\": \"<string>\",\n      \"deleteButtonTextFocusColor\": \"<string>\",\n      \"errorFontColor\": \"<string>\",\n      \"errorIconColor\": \"<string>\",\n      \"favicons\": [\n        {\n          \"href\": \"<URI>\",\n          \"rel\": \"<string>\",\n          \"sizes\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"href\": \"<URI>\",\n          \"rel\": \"<string>\",\n          \"sizes\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"fontColor\": \"<string>\",\n      \"fontFamily\": \"<string>\",\n      \"footerDisplay\": \"<boolean>\",\n      \"iconBackgroundColor\": \"<string>\",\n      \"iconColor\": \"<string>\",\n      \"infoIconColor\": \"<string>\",\n      \"inputBackgroundColor\": \"<string>\",\n      \"inputIconColor\": \"<string>\",\n      \"inputTextColor\": \"<string>\",\n      \"linkTextColor\": \"<string>\",\n      \"linkTextFocusColor\": \"<string>\",\n      \"logoImageSize\": \"<string>\",\n      \"logoImageURL\": \"<URI>\",\n      \"monoFontColor\": \"<string>\",\n      \"monoFontFamily\": \"<string>\",\n      \"pageBackgroundColor\": \"<string>\",\n      \"panelBackgroundColor\": \"<string>\",\n      \"primaryButtonColor\": \"<string>\",\n      \"primaryButtonFocusColor\": \"<string>\",\n      \"primaryButtonTextColor\": \"<string>\",\n      \"primaryButtonTextFocusColor\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"theme\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\",\n      \"key_3\": \"<object>\"\n    },\n    \"defaultMessages\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedMessages\": {},\n    \"name\": \"<string>\",\n    \"stylesheet\": \"<string>\",\n    \"templates\": {\n      \"accountEdit\": \"<string>\",\n      \"accountIndex\": \"<string>\",\n      \"accountTwoFactorDisable\": \"<string>\",\n      \"accountTwoFactorEnable\": \"<string>\",\n      \"accountTwoFactorIndex\": \"<string>\",\n      \"accountWebAuthnAdd\": \"<string>\",\n      \"accountWebAuthnDelete\": \"<string>\",\n      \"accountWebAuthnIndex\": \"<string>\",\n      \"confirmationRequired\": \"<string>\",\n      \"emailComplete\": \"<string>\",\n      \"emailSent\": \"<string>\",\n      \"emailVerificationRequired\": \"<string>\",\n      \"emailVerify\": \"<string>\",\n      \"helpers\": \"<string>\",\n      \"index\": \"<string>\",\n      \"oauth2Authorize\": \"<string>\",\n      \"oauth2AuthorizedNotRegistered\": \"<string>\",\n      \"oauth2ChildRegistrationNotAllowed\": \"<string>\",\n      \"oauth2ChildRegistrationNotAllowedComplete\": \"<string>\",\n      \"oauth2CompleteRegistration\": \"<string>\",\n      \"oauth2Consent\": \"<string>\",\n      \"oauth2Device\": \"<string>\",\n      \"oauth2DeviceComplete\": \"<string>\",\n      \"oauth2Error\": \"<string>\",\n      \"oauth2Logout\": \"<string>\",\n      \"oauth2Passwordless\": \"<string>\",\n      \"oauth2Register\": \"<string>\",\n      \"oauth2StartIdPLink\": \"<string>\",\n      \"oauth2TwoFactor\": \"<string>\",\n      \"oauth2TwoFactorEnable\": \"<string>\",\n      \"oauth2TwoFactorEnableComplete\": \"<string>\",\n      \"oauth2TwoFactorMethods\": \"<string>\",\n      \"oauth2Wait\": \"<string>\",\n      \"oauth2WebAuthn\": \"<string>\",\n      \"oauth2WebAuthnReauth\": \"<string>\",\n      \"oauth2WebAuthnReauthEnable\": \"<string>\",\n      \"passwordChange\": \"<string>\",\n      \"passwordComplete\": \"<string>\",\n      \"passwordForgot\": \"<string>\",\n      \"passwordSent\": \"<string>\",\n      \"phoneComplete\": \"<string>\",\n      \"phoneSent\": \"<string>\",\n      \"phoneVerificationRequired\": \"<string>\",\n      \"phoneVerify\": \"<string>\",\n      \"registrationComplete\": \"<string>\",\n      \"registrationSent\": \"<string>\",\n      \"registrationVerificationRequired\": \"<string>\",\n      \"registrationVerify\": \"<string>\",\n      \"samlv2Logout\": \"<string>\",\n      \"unauthorized\": \"<string>\",\n      \"emailSend\": \"<string>\",\n      \"registrationSend\": \"<string>\"\n    },\n    \"type\": \"<string>\",\n    \"variables\": {\n      \"alertBackgroundColor\": \"<string>\",\n      \"alertFontColor\": \"<string>\",\n      \"backgroundImageURL\": \"<URI>\",\n      \"backgroundSize\": \"<string>\",\n      \"borderRadius\": \"<string>\",\n      \"deleteButtonColor\": \"<string>\",\n      \"deleteButtonFocusColor\": \"<string>\",\n      \"deleteButtonTextColor\": \"<string>\",\n      \"deleteButtonTextFocusColor\": \"<string>\",\n      \"errorFontColor\": \"<string>\",\n      \"errorIconColor\": \"<string>\",\n      \"favicons\": [\n        {\n          \"href\": \"<URI>\",\n          \"rel\": \"<string>\",\n          \"sizes\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"href\": \"<URI>\",\n          \"rel\": \"<string>\",\n          \"sizes\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"fontColor\": \"<string>\",\n      \"fontFamily\": \"<string>\",\n      \"footerDisplay\": \"<boolean>\",\n      \"iconBackgroundColor\": \"<string>\",\n      \"iconColor\": \"<string>\",\n      \"infoIconColor\": \"<string>\",\n      \"inputBackgroundColor\": \"<string>\",\n      \"inputIconColor\": \"<string>\",\n      \"inputTextColor\": \"<string>\",\n      \"linkTextColor\": \"<string>\",\n      \"linkTextFocusColor\": \"<string>\",\n      \"logoImageSize\": \"<string>\",\n      \"logoImageURL\": \"<URI>\",\n      \"monoFontColor\": \"<string>\",\n      \"monoFontFamily\": \"<string>\",\n      \"pageBackgroundColor\": \"<string>\",\n      \"panelBackgroundColor\": \"<string>\",\n      \"primaryButtonColor\": \"<string>\",\n      \"primaryButtonFocusColor\": \"<string>\",\n      \"primaryButtonTextColor\": \"<string>\",\n      \"primaryButtonTextFocusColor\": \"<string>\"\n    }\n  },\n  \"themes\": [\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"defaultMessages\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"localizedMessages\": {},\n      \"name\": \"<string>\",\n      \"stylesheet\": \"<string>\",\n      \"templates\": {\n        \"accountEdit\": \"<string>\",\n        \"accountIndex\": \"<string>\",\n        \"accountTwoFactorDisable\": \"<string>\",\n        \"accountTwoFactorEnable\": \"<string>\",\n        \"accountTwoFactorIndex\": \"<string>\",\n        \"accountWebAuthnAdd\": \"<string>\",\n        \"accountWebAuthnDelete\": \"<string>\",\n        \"accountWebAuthnIndex\": \"<string>\",\n        \"confirmationRequired\": \"<string>\",\n        \"emailComplete\": \"<string>\",\n        \"emailSent\": \"<string>\",\n        \"emailVerificationRequired\": \"<string>\",\n        \"emailVerify\": \"<string>\",\n        \"helpers\": \"<string>\",\n        \"index\": \"<string>\",\n        \"oauth2Authorize\": \"<string>\",\n        \"oauth2AuthorizedNotRegistered\": \"<string>\",\n        \"oauth2ChildRegistrationNotAllowed\": \"<string>\",\n        \"oauth2ChildRegistrationNotAllowedComplete\": \"<string>\",\n        \"oauth2CompleteRegistration\": \"<string>\",\n        \"oauth2Consent\": \"<string>\",\n        \"oauth2Device\": \"<string>\",\n        \"oauth2DeviceComplete\": \"<string>\",\n        \"oauth2Error\": \"<string>\",\n        \"oauth2Logout\": \"<string>\",\n        \"oauth2Passwordless\": \"<string>\",\n        \"oauth2Register\": \"<string>\",\n        \"oauth2StartIdPLink\": \"<string>\",\n        \"oauth2TwoFactor\": \"<string>\",\n        \"oauth2TwoFactorEnable\": \"<string>\",\n        \"oauth2TwoFactorEnableComplete\": \"<string>\",\n        \"oauth2TwoFactorMethods\": \"<string>\",\n        \"oauth2Wait\": \"<string>\",\n        \"oauth2WebAuthn\": \"<string>\",\n        \"oauth2WebAuthnReauth\": \"<string>\",\n        \"oauth2WebAuthnReauthEnable\": \"<string>\",\n        \"passwordChange\": \"<string>\",\n        \"passwordComplete\": \"<string>\",\n        \"passwordForgot\": \"<string>\",\n        \"passwordSent\": \"<string>\",\n        \"phoneComplete\": \"<string>\",\n        \"phoneSent\": \"<string>\",\n        \"phoneVerificationRequired\": \"<string>\",\n        \"phoneVerify\": \"<string>\",\n        \"registrationComplete\": \"<string>\",\n        \"registrationSent\": \"<string>\",\n        \"registrationVerificationRequired\": \"<string>\",\n        \"registrationVerify\": \"<string>\",\n        \"samlv2Logout\": \"<string>\",\n        \"unauthorized\": \"<string>\",\n        \"emailSend\": \"<string>\",\n        \"registrationSend\": \"<string>\"\n      },\n      \"type\": \"<string>\",\n      \"variables\": {\n        \"alertBackgroundColor\": \"<string>\",\n        \"alertFontColor\": \"<string>\",\n        \"backgroundImageURL\": \"<URI>\",\n        \"backgroundSize\": \"<string>\",\n        \"borderRadius\": \"<string>\",\n        \"deleteButtonColor\": \"<string>\",\n        \"deleteButtonFocusColor\": \"<string>\",\n        \"deleteButtonTextColor\": \"<string>\",\n        \"deleteButtonTextFocusColor\": \"<string>\",\n        \"errorFontColor\": \"<string>\",\n        \"errorIconColor\": \"<string>\",\n        \"favicons\": [\n          {\n            \"href\": \"<URI>\",\n            \"rel\": \"<string>\",\n            \"sizes\": \"<string>\",\n            \"type\": \"<string>\"\n          },\n          {\n            \"href\": \"<URI>\",\n            \"rel\": \"<string>\",\n            \"sizes\": \"<string>\",\n            \"type\": \"<string>\"\n          }\n        ],\n        \"fontColor\": \"<string>\",\n        \"fontFamily\": \"<string>\",\n        \"footerDisplay\": \"<boolean>\",\n        \"iconBackgroundColor\": \"<string>\",\n        \"iconColor\": \"<string>\",\n        \"infoIconColor\": \"<string>\",\n        \"inputBackgroundColor\": \"<string>\",\n        \"inputIconColor\": \"<string>\",\n        \"inputTextColor\": \"<string>\",\n        \"linkTextColor\": \"<string>\",\n        \"linkTextFocusColor\": \"<string>\",\n        \"logoImageSize\": \"<string>\",\n        \"logoImageURL\": \"<URI>\",\n        \"monoFontColor\": \"<string>\",\n        \"monoFontFamily\": \"<string>\",\n        \"pageBackgroundColor\": \"<string>\",\n        \"panelBackgroundColor\": \"<string>\",\n        \"primaryButtonColor\": \"<string>\",\n        \"primaryButtonFocusColor\": \"<string>\",\n        \"primaryButtonTextColor\": \"<string>\",\n        \"primaryButtonTextFocusColor\": \"<string>\"\n      }\n    },\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"defaultMessages\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"localizedMessages\": {},\n      \"name\": \"<string>\",\n      \"stylesheet\": \"<string>\",\n      \"templates\": {\n        \"accountEdit\": \"<string>\",\n        \"accountIndex\": \"<string>\",\n        \"accountTwoFactorDisable\": \"<string>\",\n        \"accountTwoFactorEnable\": \"<string>\",\n        \"accountTwoFactorIndex\": \"<string>\",\n        \"accountWebAuthnAdd\": \"<string>\",\n        \"accountWebAuthnDelete\": \"<string>\",\n        \"accountWebAuthnIndex\": \"<string>\",\n        \"confirmationRequired\": \"<string>\",\n        \"emailComplete\": \"<string>\",\n        \"emailSent\": \"<string>\",\n        \"emailVerificationRequired\": \"<string>\",\n        \"emailVerify\": \"<string>\",\n        \"helpers\": \"<string>\",\n        \"index\": \"<string>\",\n        \"oauth2Authorize\": \"<string>\",\n        \"oauth2AuthorizedNotRegistered\": \"<string>\",\n        \"oauth2ChildRegistrationNotAllowed\": \"<string>\",\n        \"oauth2ChildRegistrationNotAllowedComplete\": \"<string>\",\n        \"oauth2CompleteRegistration\": \"<string>\",\n        \"oauth2Consent\": \"<string>\",\n        \"oauth2Device\": \"<string>\",\n        \"oauth2DeviceComplete\": \"<string>\",\n        \"oauth2Error\": \"<string>\",\n        \"oauth2Logout\": \"<string>\",\n        \"oauth2Passwordless\": \"<string>\",\n        \"oauth2Register\": \"<string>\",\n        \"oauth2StartIdPLink\": \"<string>\",\n        \"oauth2TwoFactor\": \"<string>\",\n        \"oauth2TwoFactorEnable\": \"<string>\",\n        \"oauth2TwoFactorEnableComplete\": \"<string>\",\n        \"oauth2TwoFactorMethods\": \"<string>\",\n        \"oauth2Wait\": \"<string>\",\n        \"oauth2WebAuthn\": \"<string>\",\n        \"oauth2WebAuthnReauth\": \"<string>\",\n        \"oauth2WebAuthnReauthEnable\": \"<string>\",\n        \"passwordChange\": \"<string>\",\n        \"passwordComplete\": \"<string>\",\n        \"passwordForgot\": \"<string>\",\n        \"passwordSent\": \"<string>\",\n        \"phoneComplete\": \"<string>\",\n        \"phoneSent\": \"<string>\",\n        \"phoneVerificationRequired\": \"<string>\",\n        \"phoneVerify\": \"<string>\",\n        \"registrationComplete\": \"<string>\",\n        \"registrationSent\": \"<string>\",\n        \"registrationVerificationRequired\": \"<string>\",\n        \"registrationVerify\": \"<string>\",\n        \"samlv2Logout\": \"<string>\",\n        \"unauthorized\": \"<string>\",\n        \"emailSend\": \"<string>\",\n        \"registrationSend\": \"<string>\"\n      },\n      \"type\": \"<string>\",\n      \"variables\": {\n        \"alertBackgroundColor\": \"<string>\",\n        \"alertFontColor\": \"<string>\",\n        \"backgroundImageURL\": \"<URI>\",\n        \"backgroundSize\": \"<string>\",\n        \"borderRadius\": \"<string>\",\n        \"deleteButtonColor\": \"<string>\",\n        \"deleteButtonFocusColor\": \"<string>\",\n        \"deleteButtonTextColor\": \"<string>\",\n        \"deleteButtonTextFocusColor\": \"<string>\",\n        \"errorFontColor\": \"<string>\",\n        \"errorIconColor\": \"<string>\",\n        \"favicons\": [\n          {\n            \"href\": \"<URI>\",\n            \"rel\": \"<string>\",\n            \"sizes\": \"<string>\",\n            \"type\": \"<string>\"\n          },\n          {\n            \"href\": \"<URI>\",\n            \"rel\": \"<string>\",\n            \"sizes\": \"<string>\",\n            \"type\": \"<string>\"\n          }\n        ],\n        \"fontColor\": \"<string>\",\n        \"fontFamily\": \"<string>\",\n        \"footerDisplay\": \"<boolean>\",\n        \"iconBackgroundColor\": \"<string>\",\n        \"iconColor\": \"<string>\",\n        \"infoIconColor\": \"<string>\",\n        \"inputBackgroundColor\": \"<string>\",\n        \"inputIconColor\": \"<string>\",\n        \"inputTextColor\": \"<string>\",\n        \"linkTextColor\": \"<string>\",\n        \"linkTextFocusColor\": \"<string>\",\n        \"logoImageSize\": \"<string>\",\n        \"logoImageURL\": \"<URI>\",\n        \"monoFontColor\": \"<string>\",\n        \"monoFontFamily\": \"<string>\",\n        \"pageBackgroundColor\": \"<string>\",\n        \"panelBackgroundColor\": \"<string>\",\n        \"primaryButtonColor\": \"<string>\",\n        \"primaryButtonFocusColor\": \"<string>\",\n        \"primaryButtonTextColor\": \"<string>\",\n        \"primaryButtonTextFocusColor\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb817853-79d0-437f-9676-c17b1d16bc9b",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "theme",
+                    ":themeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "themeId",
+                      "description": "(Required) The Id of the theme to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourceThemeId\": \"<uuid>\",\n  \"theme\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\"\n    },\n    \"defaultMessages\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedMessages\": {},\n    \"name\": \"<string>\",\n    \"stylesheet\": \"<string>\",\n    \"templates\": {\n      \"accountEdit\": \"<string>\",\n      \"accountIndex\": \"<string>\",\n      \"accountTwoFactorDisable\": \"<string>\",\n      \"accountTwoFactorEnable\": \"<string>\",\n      \"accountTwoFactorIndex\": \"<string>\",\n      \"accountWebAuthnAdd\": \"<string>\",\n      \"accountWebAuthnDelete\": \"<string>\",\n      \"accountWebAuthnIndex\": \"<string>\",\n      \"confirmationRequired\": \"<string>\",\n      \"emailComplete\": \"<string>\",\n      \"emailSent\": \"<string>\",\n      \"emailVerificationRequired\": \"<string>\",\n      \"emailVerify\": \"<string>\",\n      \"helpers\": \"<string>\",\n      \"index\": \"<string>\",\n      \"oauth2Authorize\": \"<string>\",\n      \"oauth2AuthorizedNotRegistered\": \"<string>\",\n      \"oauth2ChildRegistrationNotAllowed\": \"<string>\",\n      \"oauth2ChildRegistrationNotAllowedComplete\": \"<string>\",\n      \"oauth2CompleteRegistration\": \"<string>\",\n      \"oauth2Consent\": \"<string>\",\n      \"oauth2Device\": \"<string>\",\n      \"oauth2DeviceComplete\": \"<string>\",\n      \"oauth2Error\": \"<string>\",\n      \"oauth2Logout\": \"<string>\",\n      \"oauth2Passwordless\": \"<string>\",\n      \"oauth2Register\": \"<string>\",\n      \"oauth2StartIdPLink\": \"<string>\",\n      \"oauth2TwoFactor\": \"<string>\",\n      \"oauth2TwoFactorEnable\": \"<string>\",\n      \"oauth2TwoFactorEnableComplete\": \"<string>\",\n      \"oauth2TwoFactorMethods\": \"<string>\",\n      \"oauth2Wait\": \"<string>\",\n      \"oauth2WebAuthn\": \"<string>\",\n      \"oauth2WebAuthnReauth\": \"<string>\",\n      \"oauth2WebAuthnReauthEnable\": \"<string>\",\n      \"passwordChange\": \"<string>\",\n      \"passwordComplete\": \"<string>\",\n      \"passwordForgot\": \"<string>\",\n      \"passwordSent\": \"<string>\",\n      \"phoneComplete\": \"<string>\",\n      \"phoneSent\": \"<string>\",\n      \"phoneVerificationRequired\": \"<string>\",\n      \"phoneVerify\": \"<string>\",\n      \"registrationComplete\": \"<string>\",\n      \"registrationSent\": \"<string>\",\n      \"registrationVerificationRequired\": \"<string>\",\n      \"registrationVerify\": \"<string>\",\n      \"samlv2Logout\": \"<string>\",\n      \"unauthorized\": \"<string>\",\n      \"emailSend\": \"<string>\",\n      \"registrationSend\": \"<string>\"\n    },\n    \"type\": \"<string>\",\n    \"variables\": {\n      \"alertBackgroundColor\": \"<string>\",\n      \"alertFontColor\": \"<string>\",\n      \"backgroundImageURL\": \"<URI>\",\n      \"backgroundSize\": \"<string>\",\n      \"borderRadius\": \"<string>\",\n      \"deleteButtonColor\": \"<string>\",\n      \"deleteButtonFocusColor\": \"<string>\",\n      \"deleteButtonTextColor\": \"<string>\",\n      \"deleteButtonTextFocusColor\": \"<string>\",\n      \"errorFontColor\": \"<string>\",\n      \"errorIconColor\": \"<string>\",\n      \"favicons\": [\n        {\n          \"href\": \"<URI>\",\n          \"rel\": \"<string>\",\n          \"sizes\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"href\": \"<URI>\",\n          \"rel\": \"<string>\",\n          \"sizes\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"fontColor\": \"<string>\",\n      \"fontFamily\": \"<string>\",\n      \"footerDisplay\": \"<boolean>\",\n      \"iconBackgroundColor\": \"<string>\",\n      \"iconColor\": \"<string>\",\n      \"infoIconColor\": \"<string>\",\n      \"inputBackgroundColor\": \"<string>\",\n      \"inputIconColor\": \"<string>\",\n      \"inputTextColor\": \"<string>\",\n      \"linkTextColor\": \"<string>\",\n      \"linkTextFocusColor\": \"<string>\",\n      \"logoImageSize\": \"<string>\",\n      \"logoImageURL\": \"<URI>\",\n      \"monoFontColor\": \"<string>\",\n      \"monoFontFamily\": \"<string>\",\n      \"pageBackgroundColor\": \"<string>\",\n      \"panelBackgroundColor\": \"<string>\",\n      \"primaryButtonColor\": \"<string>\",\n      \"primaryButtonFocusColor\": \"<string>\",\n      \"primaryButtonTextColor\": \"<string>\",\n      \"primaryButtonTextFocusColor\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:9011",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "eab12f0c-2680-4394-a243-29aeaba61db8",
+    "name": "FusionAuth Api Key Theme API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.",
+      "type": "text/plain"
+    }
+  }
+}

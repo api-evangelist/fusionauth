@@ -1,0 +1,289 @@
+{
+  "item": [
+    {
+      "id": "09e94816-a573-4c67-a5ad-6ce9fb1d47bc",
+      "name": ".well Known",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "00e651be-9a5b-4576-9842-6bfadee63197",
+          "name": "retrieve Json Web Key Set With Id",
+          "request": {
+            "name": "retrieve Json Web Key Set With Id",
+            "description": {
+              "content": "Returns public keys used by FusionAuth to cryptographically verify JWTs using the JSON Web Key format.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ".well-known",
+                "jwks.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a9173641-283b-45b4-8f8e-5e3aaae5ade9",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ".well-known",
+                    "jwks.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"keys\": [\n    {\n      \"alg\": \"HS384\",\n      \"crv\": \"string\",\n      \"d\": \"string\",\n      \"dp\": \"string\",\n      \"dq\": \"string\",\n      \"e\": \"string\",\n      \"kid\": \"string\",\n      \"kty\": \"EC\",\n      \"n\": \"string\",\n      \"other\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"p\": \"string\",\n      \"q\": \"string\",\n      \"qi\": \"string\",\n      \"use\": \"string\",\n      \"x\": \"string\",\n      \"x5c\": [\n        \"string\",\n        \"string\"\n      ],\n      \"x5t\": \"string\",\n      \"x5t#S256\": \"string\",\n      \"y\": \"string\"\n    },\n    {\n      \"alg\": \"PS512\",\n      \"crv\": \"string\",\n      \"d\": \"string\",\n      \"dp\": \"string\",\n      \"dq\": \"string\",\n      \"e\": \"string\",\n      \"kid\": \"string\",\n      \"kty\": \"EC\",\n      \"n\": \"string\",\n      \"other\": {\n        \"key_0\": {}\n      },\n      \"p\": \"string\",\n      \"q\": \"string\",\n      \"qi\": \"string\",\n      \"use\": \"string\",\n      \"x\": \"string\",\n      \"x5c\": [\n        \"string\",\n        \"string\"\n      ],\n      \"x5t\": \"string\",\n      \"x5t#S256\": \"string\",\n      \"y\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6538b522-1962-4745-b696-ce3f19d32cf5",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ".well-known",
+                    "jwks.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7600e7ed-4e1d-4f33-802d-07e66d1a4e7b",
+          "name": "retrieve Open Id Configuration With Id",
+          "request": {
+            "name": "retrieve Open Id Configuration With Id",
+            "description": {
+              "content": "Returns the well known OpenID Configuration JSON document",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ".well-known",
+                "openid-configuration"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "20cbb7f4-b71a-4fbe-9bba-7d4c0460a278",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ".well-known",
+                    "openid-configuration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"authorization_endpoint\": \"string\",\n  \"backchannel_logout_supported\": false,\n  \"claims_supported\": [\n    \"string\",\n    \"string\"\n  ],\n  \"device_authorization_endpoint\": \"string\",\n  \"dpop_signing_alg_values_supported\": [\n    \"string\",\n    \"string\"\n  ],\n  \"end_session_endpoint\": \"string\",\n  \"frontchannel_logout_supported\": false,\n  \"grant_types_supported\": [\n    \"string\",\n    \"string\"\n  ],\n  \"id_token_signing_alg_values_supported\": [\n    \"string\",\n    \"string\"\n  ],\n  \"issuer\": \"string\",\n  \"jwks_uri\": \"string\",\n  \"response_modes_supported\": [\n    \"string\",\n    \"string\"\n  ],\n  \"response_types_supported\": [\n    \"string\",\n    \"string\"\n  ],\n  \"scopes_supported\": [\n    \"string\",\n    \"string\"\n  ],\n  \"subject_types_supported\": [\n    \"string\",\n    \"string\"\n  ],\n  \"token_endpoint\": \"string\",\n  \"token_endpoint_auth_methods_supported\": [\n    \"string\",\n    \"string\"\n  ],\n  \"userinfo_endpoint\": \"string\",\n  \"userinfo_signing_alg_values_supported\": [\n    \"string\",\n    \"string\"\n  ],\n  \"code_challenge_methods_supported\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dbe9ce2a-2e18-40dc-ab4b-72ec2f05241c",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ".well-known",
+                    "openid-configuration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:9011",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4737c8bf-1cf2-4aba-af66-ed5947ff11d9",
+    "name": "FusionAuth Api Key .well Known API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.",
+      "type": "text/plain"
+    }
+  }
+}

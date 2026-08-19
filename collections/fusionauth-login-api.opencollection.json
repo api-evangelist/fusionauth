@@ -1,0 +1,105 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FusionAuth Api Key Login API",
+    "version": "1.66.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Login",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "loginWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/login",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Authenticates a user to FusionAuth.   This API optionally requires an API key. See <code>Application.loginConfiguration.requireAuthentication</code>."
+        },
+        {
+          "info": {
+            "name": "loginPingWithRequestWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:9011/api/login",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends a ping to FusionAuth indicating that the user was automatically logged into an application. When using FusionAuth's SSO or your own, you should call this if the user is already logged in centrally, but accesses an application where they no longer have a session. This helps correctly track login counts, times and helps with reporting."
+        },
+        {
+          "info": {
+            "name": "loginPingWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:9011/api/login/:userId/:applicationId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "callerIPAddress",
+                "value": "",
+                "type": "query",
+                "description": "The IP address of the end-user that is logging in. If a null value is provided the IP address will be that of the client or last proxy that sent the request."
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the user that was logged in."
+              },
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the application that they logged into."
+              }
+            ]
+          },
+          "docs": "Sends a ping to FusionAuth indicating that the user was automatically logged into an application. When using FusionAuth's SSO or your own, you should call this if the user is already logged in centrally, but accesses an application where they no longer have a session. This helps correctly track login counts, times and helps with reporting."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

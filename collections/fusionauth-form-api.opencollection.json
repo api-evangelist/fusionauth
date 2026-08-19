@@ -1,0 +1,270 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FusionAuth Api Key Form API",
+    "version": "1.66.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Form",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "createForm",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/form",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a form.  You can optionally specify an Id for the form, if not provided one will be generated."
+        },
+        {
+          "info": {
+            "name": "createFormField",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/form/field",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a form field.  You can optionally specify an Id for the form, if not provided one will be generated."
+        },
+        {
+          "info": {
+            "name": "retrieveFormFieldWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/form/field/:fieldId",
+            "params": [
+              {
+                "name": "fieldId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the form field."
+              }
+            ]
+          },
+          "docs": "Retrieves the form field with the given Id."
+        },
+        {
+          "info": {
+            "name": "createFormFieldWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/form/field/:fieldId",
+            "params": [
+              {
+                "name": "fieldId",
+                "value": "",
+                "type": "path",
+                "description": "The Id for the form field. If not provided a secure random UUID will be generated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a form field.  You can optionally specify an Id for the form, if not provided one will be generated."
+        },
+        {
+          "info": {
+            "name": "updateFormFieldWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:9011/api/form/field/:fieldId",
+            "params": [
+              {
+                "name": "fieldId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the form field to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the form field with the given Id."
+        },
+        {
+          "info": {
+            "name": "patchFormFieldWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:9011/api/form/field/:fieldId",
+            "params": [
+              {
+                "name": "fieldId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the form field to patch."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Patches the form field with the given Id."
+        },
+        {
+          "info": {
+            "name": "deleteFormFieldWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:9011/api/form/field/:fieldId",
+            "params": [
+              {
+                "name": "fieldId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the form field to delete."
+              }
+            ]
+          },
+          "docs": "Deletes the form field for the given Id."
+        },
+        {
+          "info": {
+            "name": "retrieveFormWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/form/:formId",
+            "params": [
+              {
+                "name": "formId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the form."
+              }
+            ]
+          },
+          "docs": "Retrieves the form with the given Id."
+        },
+        {
+          "info": {
+            "name": "createFormWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/form/:formId",
+            "params": [
+              {
+                "name": "formId",
+                "value": "",
+                "type": "path",
+                "description": "The Id for the form. If not provided a secure random UUID will be generated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a form.  You can optionally specify an Id for the form, if not provided one will be generated."
+        },
+        {
+          "info": {
+            "name": "updateFormWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:9011/api/form/:formId",
+            "params": [
+              {
+                "name": "formId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the form to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the form with the given Id."
+        },
+        {
+          "info": {
+            "name": "patchFormWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:9011/api/form/:formId",
+            "params": [
+              {
+                "name": "formId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the form to patch."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Patches the form with the given Id."
+        },
+        {
+          "info": {
+            "name": "deleteFormWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:9011/api/form/:formId",
+            "params": [
+              {
+                "name": "formId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the form to delete."
+              }
+            ]
+          },
+          "docs": "Deletes the form for the given Id."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

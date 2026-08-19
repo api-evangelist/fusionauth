@@ -1,0 +1,1054 @@
+{
+  "item": [
+    {
+      "id": "accc02af-2102-4aec-8647-7c9cd62b1ec1",
+      "name": "Tenant Manager",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "81ecfc43-54b1-4b63-ab87-524becff8c8b",
+          "name": "patch Tenant Manager Configuration With Id",
+          "request": {
+            "name": "patch Tenant Manager Configuration With Id",
+            "description": {
+              "content": "Updates, via PATCH, the Tenant Manager configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "tenant-manager"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tenantManagerConfiguration\": {\n    \"applicationConfigurations\": [\n      {\n        \"applicationId\": \"<uuid>\"\n      },\n      {\n        \"applicationId\": \"<uuid>\"\n      }\n    ],\n    \"attributeFormId\": \"<uuid>\",\n    \"brandName\": \"<string>\",\n    \"identityProviderTypeConfigurations\": {\n      \"key_0\": {\n        \"defaultAttributeMappings\": {\n          \"key_0\": \"<string>\"\n        },\n        \"insertInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"linkingStrategy\": \"<string>\",\n        \"type\": \"<string>\",\n        \"enabled\": \"<boolean>\"\n      }\n    },\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e9826981-4ba4-4b8e-b152-e2c1e5cafe51",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "tenant-manager"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tenantManagerConfiguration\": {\n    \"applicationConfigurations\": [\n      {\n        \"applicationId\": \"<uuid>\"\n      },\n      {\n        \"applicationId\": \"<uuid>\"\n      }\n    ],\n    \"attributeFormId\": \"<uuid>\",\n    \"brandName\": \"<string>\",\n    \"identityProviderTypeConfigurations\": {\n      \"key_0\": {\n        \"defaultAttributeMappings\": {\n          \"key_0\": \"<string>\"\n        },\n        \"insertInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"linkingStrategy\": \"<string>\",\n        \"type\": \"<string>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"key_1\": {\n        \"defaultAttributeMappings\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        \"insertInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"linkingStrategy\": \"<string>\",\n        \"type\": \"<string>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"key_2\": {\n        \"defaultAttributeMappings\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\"\n        },\n        \"insertInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"linkingStrategy\": \"<string>\",\n        \"type\": \"<string>\",\n        \"enabled\": \"<boolean>\"\n      }\n    },\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tenantManagerConfiguration\": {\n    \"applicationConfigurations\": [\n      {\n        \"applicationId\": \"<uuid>\"\n      },\n      {\n        \"applicationId\": \"<uuid>\"\n      }\n    ],\n    \"attributeFormId\": \"<uuid>\",\n    \"brandName\": \"<string>\",\n    \"identityProviderTypeConfigurations\": {\n      \"key_0\": {\n        \"defaultAttributeMappings\": {\n          \"key_0\": \"<string>\"\n        },\n        \"insertInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"linkingStrategy\": \"<string>\",\n        \"type\": \"<string>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"key_1\": {\n        \"defaultAttributeMappings\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        \"insertInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"linkingStrategy\": \"<string>\",\n        \"type\": \"<string>\",\n        \"enabled\": \"<boolean>\"\n      }\n    },\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "06923060-eb55-4d33-91ee-86d830c5dc15",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "tenant-manager"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tenantManagerConfiguration\": {\n    \"applicationConfigurations\": [\n      {\n        \"applicationId\": \"<uuid>\"\n      },\n      {\n        \"applicationId\": \"<uuid>\"\n      }\n    ],\n    \"attributeFormId\": \"<uuid>\",\n    \"brandName\": \"<string>\",\n    \"identityProviderTypeConfigurations\": {\n      \"key_0\": {\n        \"defaultAttributeMappings\": {\n          \"key_0\": \"<string>\"\n        },\n        \"insertInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"linkingStrategy\": \"<string>\",\n        \"type\": \"<string>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"key_1\": {\n        \"defaultAttributeMappings\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        \"insertInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"linkingStrategy\": \"<string>\",\n        \"type\": \"<string>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"key_2\": {\n        \"defaultAttributeMappings\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\"\n        },\n        \"insertInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"linkingStrategy\": \"<string>\",\n        \"type\": \"<string>\",\n        \"enabled\": \"<boolean>\"\n      }\n    },\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e6e372d7-575b-4c74-8021-fb7c8b4ad509",
+          "name": "update Tenant Manager Configuration With Id",
+          "request": {
+            "name": "update Tenant Manager Configuration With Id",
+            "description": {
+              "content": "Updates the Tenant Manager configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "tenant-manager"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tenantManagerConfiguration\": {\n    \"applicationConfigurations\": [\n      {\n        \"applicationId\": \"<uuid>\"\n      },\n      {\n        \"applicationId\": \"<uuid>\"\n      }\n    ],\n    \"attributeFormId\": \"<uuid>\",\n    \"brandName\": \"<string>\",\n    \"identityProviderTypeConfigurations\": {\n      \"key_0\": {\n        \"defaultAttributeMappings\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        \"insertInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"linkingStrategy\": \"<string>\",\n        \"type\": \"<string>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"key_1\": {\n        \"defaultAttributeMappings\": {\n          \"key_0\": \"<string>\"\n        },\n        \"insertInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"linkingStrategy\": \"<string>\",\n        \"type\": \"<string>\",\n        \"enabled\": \"<boolean>\"\n      }\n    },\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b0bd2b43-a5d6-4b5b-8db0-ce66ea2b432d",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "tenant-manager"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tenantManagerConfiguration\": {\n    \"applicationConfigurations\": [\n      {\n        \"applicationId\": \"<uuid>\"\n      },\n      {\n        \"applicationId\": \"<uuid>\"\n      }\n    ],\n    \"attributeFormId\": \"<uuid>\",\n    \"brandName\": \"<string>\",\n    \"identityProviderTypeConfigurations\": {\n      \"key_0\": {\n        \"defaultAttributeMappings\": {\n          \"key_0\": \"<string>\"\n        },\n        \"insertInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"linkingStrategy\": \"<string>\",\n        \"type\": \"<string>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"key_1\": {\n        \"defaultAttributeMappings\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        \"insertInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"linkingStrategy\": \"<string>\",\n        \"type\": \"<string>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"key_2\": {\n        \"defaultAttributeMappings\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\"\n        },\n        \"insertInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"linkingStrategy\": \"<string>\",\n        \"type\": \"<string>\",\n        \"enabled\": \"<boolean>\"\n      }\n    },\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tenantManagerConfiguration\": {\n    \"applicationConfigurations\": [\n      {\n        \"applicationId\": \"<uuid>\"\n      },\n      {\n        \"applicationId\": \"<uuid>\"\n      }\n    ],\n    \"attributeFormId\": \"<uuid>\",\n    \"brandName\": \"<string>\",\n    \"identityProviderTypeConfigurations\": {\n      \"key_0\": {\n        \"defaultAttributeMappings\": {\n          \"key_0\": \"<string>\"\n        },\n        \"insertInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"linkingStrategy\": \"<string>\",\n        \"type\": \"<string>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"key_1\": {\n        \"defaultAttributeMappings\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        \"insertInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"linkingStrategy\": \"<string>\",\n        \"type\": \"<string>\",\n        \"enabled\": \"<boolean>\"\n      }\n    },\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "474dd7e4-fff0-4f35-bff8-5a8da4971e73",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "tenant-manager"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tenantManagerConfiguration\": {\n    \"applicationConfigurations\": [\n      {\n        \"applicationId\": \"<uuid>\"\n      },\n      {\n        \"applicationId\": \"<uuid>\"\n      }\n    ],\n    \"attributeFormId\": \"<uuid>\",\n    \"brandName\": \"<string>\",\n    \"identityProviderTypeConfigurations\": {\n      \"key_0\": {\n        \"defaultAttributeMappings\": {\n          \"key_0\": \"<string>\"\n        },\n        \"insertInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"linkingStrategy\": \"<string>\",\n        \"type\": \"<string>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"key_1\": {\n        \"defaultAttributeMappings\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        \"insertInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"linkingStrategy\": \"<string>\",\n        \"type\": \"<string>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"key_2\": {\n        \"defaultAttributeMappings\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\"\n        },\n        \"insertInstant\": \"<long>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"linkingStrategy\": \"<string>\",\n        \"type\": \"<string>\",\n        \"enabled\": \"<boolean>\"\n      }\n    },\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "490e5e1d-4879-40e9-8950-39c9e8f8a7ab",
+          "name": "create Tenant Manager Identity Provider Type Configuration With Id",
+          "request": {
+            "name": "create Tenant Manager Identity Provider Type Configuration With Id",
+            "description": {
+              "content": "Creates a tenant manager identity provider type configuration for the given identity provider type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "tenant-manager",
+                "identity-provider",
+                ":type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "type",
+                  "description": "(Required) The type of the identity provider."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"typeConfiguration\": {\n    \"defaultAttributeMappings\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"linkingStrategy\": \"<string>\",\n    \"type\": \"<string>\",\n    \"enabled\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b8a97033-d533-4521-8b08-3831e320125c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "tenant-manager",
+                    "identity-provider",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) The type of the identity provider."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"typeConfiguration\": {\n    \"defaultAttributeMappings\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\"\n    },\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"linkingStrategy\": \"<string>\",\n    \"type\": \"<string>\",\n    \"enabled\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"typeConfiguration\": {\n    \"defaultAttributeMappings\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\"\n    },\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"linkingStrategy\": \"<string>\",\n    \"type\": \"<string>\",\n    \"enabled\": \"<boolean>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9bf1163a-472f-4bd3-a72d-165b8ac30425",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "tenant-manager",
+                    "identity-provider",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) The type of the identity provider."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"typeConfiguration\": {\n    \"defaultAttributeMappings\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\"\n    },\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"linkingStrategy\": \"<string>\",\n    \"type\": \"<string>\",\n    \"enabled\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bda332e8-8dec-4c7c-9142-5c1a1088ccdb",
+          "name": "delete Tenant Manager Identity Provider Type Configuration With Id",
+          "request": {
+            "name": "delete Tenant Manager Identity Provider Type Configuration With Id",
+            "description": {
+              "content": "Deletes the tenant manager identity provider type configuration for the given identity provider type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "tenant-manager",
+                "identity-provider",
+                ":type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "type",
+                  "description": "(Required) The type of the identity provider."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "13c053e8-b3f0-4754-80e8-9f07696c7217",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "tenant-manager",
+                    "identity-provider",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) The type of the identity provider."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6f01d378-6652-4b5a-91d6-558a0c65b53e",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "tenant-manager",
+                    "identity-provider",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) The type of the identity provider."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "849b9125-3bc1-453f-b9dc-cd520d9b8782",
+          "name": "patch Tenant Manager Identity Provider Type Configuration With Id",
+          "request": {
+            "name": "patch Tenant Manager Identity Provider Type Configuration With Id",
+            "description": {
+              "content": "Patches the tenant manager identity provider type configuration for the given identity provider type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "tenant-manager",
+                "identity-provider",
+                ":type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "type",
+                  "description": "(Required) The type of the identity provider."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"typeConfiguration\": {\n    \"defaultAttributeMappings\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"linkingStrategy\": \"<string>\",\n    \"type\": \"<string>\",\n    \"enabled\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "676928a7-120e-46ed-9107-b87f11bde845",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "tenant-manager",
+                    "identity-provider",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) The type of the identity provider."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"typeConfiguration\": {\n    \"defaultAttributeMappings\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\"\n    },\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"linkingStrategy\": \"<string>\",\n    \"type\": \"<string>\",\n    \"enabled\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"typeConfiguration\": {\n    \"defaultAttributeMappings\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\"\n    },\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"linkingStrategy\": \"<string>\",\n    \"type\": \"<string>\",\n    \"enabled\": \"<boolean>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ea6343d5-6903-415c-a55d-6fa1e76b63f6",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "tenant-manager",
+                    "identity-provider",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) The type of the identity provider."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"typeConfiguration\": {\n    \"defaultAttributeMappings\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\"\n    },\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"linkingStrategy\": \"<string>\",\n    \"type\": \"<string>\",\n    \"enabled\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ae5e45f4-943c-4c0e-9322-f6217f728b92",
+          "name": "update Tenant Manager Identity Provider Type Configuration With Id",
+          "request": {
+            "name": "update Tenant Manager Identity Provider Type Configuration With Id",
+            "description": {
+              "content": "Updates the tenant manager identity provider type configuration for the given identity provider type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "tenant-manager",
+                "identity-provider",
+                ":type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "type",
+                  "description": "(Required) The type of the identity provider."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"typeConfiguration\": {\n    \"defaultAttributeMappings\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"linkingStrategy\": \"<string>\",\n    \"type\": \"<string>\",\n    \"enabled\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1443e152-5390-44c2-87d4-70d554f5ee66",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "tenant-manager",
+                    "identity-provider",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) The type of the identity provider."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"typeConfiguration\": {\n    \"defaultAttributeMappings\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\"\n    },\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"linkingStrategy\": \"<string>\",\n    \"type\": \"<string>\",\n    \"enabled\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"typeConfiguration\": {\n    \"defaultAttributeMappings\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\"\n    },\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"linkingStrategy\": \"<string>\",\n    \"type\": \"<string>\",\n    \"enabled\": \"<boolean>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6a9fb885-fdd8-4943-96b3-d5bfcccf6306",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "tenant-manager",
+                    "identity-provider",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) The type of the identity provider."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"typeConfiguration\": {\n    \"defaultAttributeMappings\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\"\n    },\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"linkingStrategy\": \"<string>\",\n    \"type\": \"<string>\",\n    \"enabled\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:9011",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "73b285c6-e48e-4879-bbbf-1d3e3aacd22b",
+    "name": "FusionAuth Api Key Tenant Manager API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.",
+      "type": "text/plain"
+    }
+  }
+}

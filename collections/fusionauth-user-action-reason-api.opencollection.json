@@ -1,0 +1,159 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FusionAuth Api Key User Action Reason API",
+    "version": "1.66.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User Action Reason",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "retrieveUserActionReason",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/user-action-reason"
+          },
+          "docs": "Retrieves the user action reason for the given Id. If you pass in null for the Id, this will return all the user action reasons."
+        },
+        {
+          "info": {
+            "name": "createUserActionReason",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/user-action-reason",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a user reason. This user action reason cannot be used when actioning a user until this call completes successfully. Anytime after that the user action reason can be used."
+        },
+        {
+          "info": {
+            "name": "retrieveUserActionReasonWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/user-action-reason/:userActionReasonId",
+            "params": [
+              {
+                "name": "userActionReasonId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the user action reason."
+              }
+            ]
+          },
+          "docs": "Retrieves the user action reason for the given Id. If you pass in null for the Id, this will return all the user action reasons."
+        },
+        {
+          "info": {
+            "name": "createUserActionReasonWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/user-action-reason/:userActionReasonId",
+            "params": [
+              {
+                "name": "userActionReasonId",
+                "value": "",
+                "type": "path",
+                "description": "The Id for the user action reason. If not provided a secure random UUID will be generated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a user reason. This user action reason cannot be used when actioning a user until this call completes successfully. Anytime after that the user action reason can be used."
+        },
+        {
+          "info": {
+            "name": "updateUserActionReasonWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:9011/api/user-action-reason/:userActionReasonId",
+            "params": [
+              {
+                "name": "userActionReasonId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the user action reason to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the user action reason with the given Id."
+        },
+        {
+          "info": {
+            "name": "patchUserActionReasonWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:9011/api/user-action-reason/:userActionReasonId",
+            "params": [
+              {
+                "name": "userActionReasonId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the user action reason to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates, via PATCH, the user action reason with the given Id."
+        },
+        {
+          "info": {
+            "name": "deleteUserActionReasonWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:9011/api/user-action-reason/:userActionReasonId",
+            "params": [
+              {
+                "name": "userActionReasonId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the user action reason to delete."
+              }
+            ]
+          },
+          "docs": "Deletes the user action reason for the given Id."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

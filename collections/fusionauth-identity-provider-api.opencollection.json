@@ -1,0 +1,379 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FusionAuth Api Key Identity Provider API",
+    "version": "1.66.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Identity Provider",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "retrieveIdentityProviderByTypeWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/identity-provider",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "The type of the identity provider."
+              }
+            ]
+          },
+          "docs": "Retrieves one or more identity provider for the given type. For types such as Google, Facebook, Twitter and LinkedIn, only a single  identity provider can exist. For types such as OpenID Connect and SAMLv2 more than one identity provider can be configured so this request  may return multiple identity providers."
+        },
+        {
+          "info": {
+            "name": "createIdentityProvider",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/identity-provider",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an identity provider. You can optionally specify an Id for the identity provider, if not provided one will be generated."
+        },
+        {
+          "info": {
+            "name": "retrieveIdentityProviderLink",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/identity-provider/link",
+            "params": [
+              {
+                "name": "identityProviderId",
+                "value": "",
+                "type": "query",
+                "description": "The unique Id of the identity provider. Specify this value to reduce the links returned to those for a particular IdP."
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "query",
+                "description": "The unique Id of the user."
+              },
+              {
+                "name": "identityProviderUserId",
+                "value": "",
+                "type": "query",
+                "description": "The unique Id of the user in the 3rd party identity provider."
+              }
+            ]
+          },
+          "docs": "Retrieve all Identity Provider users (links) for the user. Specify the optional identityProviderId to retrieve links for a particular IdP. OR Retrieve a single Identity Provider user (link)."
+        },
+        {
+          "info": {
+            "name": "createUserLinkWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/identity-provider/link",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Link an external user from a 3rd party identity provider to a FusionAuth user."
+        },
+        {
+          "info": {
+            "name": "deleteUserLinkWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:9011/api/identity-provider/link",
+            "params": [
+              {
+                "name": "identityProviderId",
+                "value": "",
+                "type": "query",
+                "description": "The unique Id of the identity provider."
+              },
+              {
+                "name": "identityProviderUserId",
+                "value": "",
+                "type": "query",
+                "description": "The unique Id of the user in the 3rd party identity provider to unlink."
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "query",
+                "description": "The unique Id of the FusionAuth user to unlink."
+              }
+            ]
+          },
+          "docs": "Remove an existing link that has been made from a 3rd party identity provider to a FusionAuth user."
+        },
+        {
+          "info": {
+            "name": "retrievePendingLinkWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/identity-provider/link/pending/:pendingLinkId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "query",
+                "description": "The optional userId. When provided additional meta-data will be provided to identify how many links if any the user already has."
+              },
+              {
+                "name": "pendingLinkId",
+                "value": "",
+                "type": "path",
+                "description": "The pending link Id."
+              }
+            ]
+          },
+          "docs": "Retrieve a pending identity provider link. This is useful to validate a pending link and retrieve meta-data about the identity provider link."
+        },
+        {
+          "info": {
+            "name": "identityProviderLoginWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/identity-provider/login",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Handles login via third-parties including Social login, external OAuth and OpenID Connect, and other login systems."
+        },
+        {
+          "info": {
+            "name": "retrieveIdentityProviderLookup",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/identity-provider/lookup",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "query",
+                "description": "The domain or email address to lookup."
+              },
+              {
+                "name": "tenantId",
+                "value": "",
+                "type": "query",
+                "description": "If provided, the API searches for an identity provider scoped to the corresponding tenant that manages the requested domain. If no result is found, the API then searches for global identity providers."
+              }
+            ]
+          },
+          "docs": "Retrieves the identity provider for the given domain and tenantId. A 200 response code indicates the domain is managed by a registered identity provider. A 404 indicates the domain is not managed. OR Retrieves any global identity providers for the given domain. A 200 response code indicates the domain is managed by a registered identity provider. A 404 indicates the domain is not managed."
+        },
+        {
+          "info": {
+            "name": "searchIdentityProvidersWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/identity-provider/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Searches identity providers with the specified criteria and pagination."
+        },
+        {
+          "info": {
+            "name": "startIdentityProviderLoginWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/identity-provider/start",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Begins a login request for a 3rd party login that requires user interaction such as HYPR."
+        },
+        {
+          "info": {
+            "name": "retrieveIdentityProviderConnectionTestResultsWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/identity-provider/test",
+            "params": [
+              {
+                "name": "connectionTestId",
+                "value": "",
+                "type": "query",
+                "description": "The connection test id to retrieve results for."
+              }
+            ]
+          },
+          "docs": "Retrieves the results for an identity provider connection test."
+        },
+        {
+          "info": {
+            "name": "startIdentityProviderConnectionTestWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/identity-provider/test",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Begins an identity provider connection test."
+        },
+        {
+          "info": {
+            "name": "retrieveIdentityProviderWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/identity-provider/:identityProviderId",
+            "params": [
+              {
+                "name": "identityProviderId",
+                "value": "",
+                "type": "path",
+                "description": "The identity provider Id."
+              }
+            ]
+          },
+          "docs": "Retrieves the identity provider for the given Id or all the identity providers if the Id is null."
+        },
+        {
+          "info": {
+            "name": "createIdentityProviderWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/identity-provider/:identityProviderId",
+            "params": [
+              {
+                "name": "identityProviderId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the identity provider. If not provided a secure random UUID will be generated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an identity provider. You can optionally specify an Id for the identity provider, if not provided one will be generated."
+        },
+        {
+          "info": {
+            "name": "updateIdentityProviderWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:9011/api/identity-provider/:identityProviderId",
+            "params": [
+              {
+                "name": "identityProviderId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the identity provider to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the identity provider with the given Id."
+        },
+        {
+          "info": {
+            "name": "patchIdentityProviderWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:9011/api/identity-provider/:identityProviderId",
+            "params": [
+              {
+                "name": "identityProviderId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the identity provider to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates, via PATCH, the identity provider with the given Id."
+        },
+        {
+          "info": {
+            "name": "deleteIdentityProviderWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:9011/api/identity-provider/:identityProviderId",
+            "params": [
+              {
+                "name": "identityProviderId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the identity provider to delete."
+              }
+            ]
+          },
+          "docs": "Deletes the identity provider for the given Id."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

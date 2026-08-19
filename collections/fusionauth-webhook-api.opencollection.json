@@ -1,0 +1,174 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FusionAuth Api Key Webhook API",
+    "version": "1.66.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Webhook",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "retrieveWebhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/webhook"
+          },
+          "docs": "Retrieves the webhook for the given Id. If you pass in null for the Id, this will return all the webhooks."
+        },
+        {
+          "info": {
+            "name": "createWebhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/webhook",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a webhook. You can optionally specify an Id for the webhook, if not provided one will be generated."
+        },
+        {
+          "info": {
+            "name": "searchWebhooksWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/webhook/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Searches webhooks with the specified criteria and pagination."
+        },
+        {
+          "info": {
+            "name": "retrieveWebhookWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/webhook/:webhookId",
+            "params": [
+              {
+                "name": "webhookId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the webhook."
+              }
+            ]
+          },
+          "docs": "Retrieves the webhook for the given Id. If you pass in null for the Id, this will return all the webhooks."
+        },
+        {
+          "info": {
+            "name": "createWebhookWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/webhook/:webhookId",
+            "params": [
+              {
+                "name": "webhookId",
+                "value": "",
+                "type": "path",
+                "description": "The Id for the webhook. If not provided a secure random UUID will be generated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a webhook. You can optionally specify an Id for the webhook, if not provided one will be generated."
+        },
+        {
+          "info": {
+            "name": "updateWebhookWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:9011/api/webhook/:webhookId",
+            "params": [
+              {
+                "name": "webhookId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the webhook to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the webhook with the given Id."
+        },
+        {
+          "info": {
+            "name": "patchWebhookWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:9011/api/webhook/:webhookId",
+            "params": [
+              {
+                "name": "webhookId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the webhook to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Patches the webhook with the given Id."
+        },
+        {
+          "info": {
+            "name": "deleteWebhookWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:9011/api/webhook/:webhookId",
+            "params": [
+              {
+                "name": "webhookId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the webhook to delete."
+              }
+            ]
+          },
+          "docs": "Deletes the webhook for the given Id."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,619 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FusionAuth Api Key Application API",
+    "version": "1.66.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Application",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "retrieveApplication",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/application",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "inactive",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves all the applications that are currently inactive. OR Retrieves the application for the given Id or all the applications if the Id is null."
+        },
+        {
+          "info": {
+            "name": "createApplication",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/application",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an application. You can optionally specify an Id for the application, if not provided one will be generated."
+        },
+        {
+          "info": {
+            "name": "searchApplicationsWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/application/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Searches applications with the specified criteria and pagination."
+        },
+        {
+          "info": {
+            "name": "retrieveApplicationWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/application/:applicationId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The application Id."
+              }
+            ]
+          },
+          "docs": "Retrieves the application for the given Id or all the applications if the Id is null."
+        },
+        {
+          "info": {
+            "name": "createApplicationWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/application/:applicationId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The Id to use for the application. If not provided a secure random UUID will be generated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an application. You can optionally specify an Id for the application, if not provided one will be generated."
+        },
+        {
+          "info": {
+            "name": "updateApplicationWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:9011/api/application/:applicationId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the application to update."
+              },
+              {
+                "name": "reactivate",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the application with the given Id. OR Reactivates the application with the given Id."
+        },
+        {
+          "info": {
+            "name": "patchApplicationWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:9011/api/application/:applicationId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the application to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates, via PATCH, the application with the given Id."
+        },
+        {
+          "info": {
+            "name": "deleteApplicationWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:9011/api/application/:applicationId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "hardDelete",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the application to delete."
+              }
+            ]
+          },
+          "docs": "Hard deletes an application. This is a dangerous operation and should not be used in most circumstances. This will delete the application, any registrations for that application, metrics and reports for the application, all the roles for the application, and any other data associated with the application. This operation could take a very long time, depending on the amount of data in your database. OR Deactivates the application with the given Id."
+        },
+        {
+          "info": {
+            "name": "retrieveOauthConfigurationWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/application/:applicationId/oauth-configuration",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the Application to retrieve OAuth configuration."
+              }
+            ]
+          },
+          "docs": "Retrieves the Oauth2 configuration for the application for the given Application Id."
+        },
+        {
+          "info": {
+            "name": "createApplicationRole",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/application/:applicationId/role",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the application to create the role on."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new role for an application. You must specify the Id of the application you are creating the role for. You can optionally specify an Id for the role inside the ApplicationRole object itself, if not provided one will be generated."
+        },
+        {
+          "info": {
+            "name": "createApplicationRoleWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/application/:applicationId/role/:roleId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the application to create the role on."
+              },
+              {
+                "name": "roleId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the role. If not provided a secure random UUID will be generated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new role for an application. You must specify the Id of the application you are creating the role for. You can optionally specify an Id for the role inside the ApplicationRole object itself, if not provided one will be generated."
+        },
+        {
+          "info": {
+            "name": "updateApplicationRoleWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:9011/api/application/:applicationId/role/:roleId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the application that the role belongs to."
+              },
+              {
+                "name": "roleId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the role to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the application role with the given Id for the application."
+        },
+        {
+          "info": {
+            "name": "patchApplicationRoleWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:9011/api/application/:applicationId/role/:roleId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the application that the role belongs to."
+              },
+              {
+                "name": "roleId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the role to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates, via PATCH, the application role with the given Id for the application."
+        },
+        {
+          "info": {
+            "name": "deleteApplicationRoleWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:9011/api/application/:applicationId/role/:roleId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the application that the role belongs to."
+              },
+              {
+                "name": "roleId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the role to delete."
+              }
+            ]
+          },
+          "docs": "Hard deletes an application role. This is a dangerous operation and should not be used in most circumstances. This permanently removes the given role from all users that had it."
+        },
+        {
+          "info": {
+            "name": "createOAuthScope",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/application/:applicationId/scope",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the application to create the OAuth scope on."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new custom OAuth scope for an application. You must specify the Id of the application you are creating the scope for. You can optionally specify an Id for the OAuth scope on the URL, if not provided one will be generated."
+        },
+        {
+          "info": {
+            "name": "retrieveOAuthScopeWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/application/:applicationId/scope/:scopeId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the application that the OAuth scope belongs to."
+              },
+              {
+                "name": "scopeId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the OAuth scope to retrieve."
+              }
+            ]
+          },
+          "docs": "Retrieves a custom OAuth scope."
+        },
+        {
+          "info": {
+            "name": "createOAuthScopeWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/application/:applicationId/scope/:scopeId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the application to create the OAuth scope on."
+              },
+              {
+                "name": "scopeId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the OAuth scope. If not provided a secure random UUID will be generated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new custom OAuth scope for an application. You must specify the Id of the application you are creating the scope for. You can optionally specify an Id for the OAuth scope on the URL, if not provided one will be generated."
+        },
+        {
+          "info": {
+            "name": "updateOAuthScopeWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:9011/api/application/:applicationId/scope/:scopeId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the application that the OAuth scope belongs to."
+              },
+              {
+                "name": "scopeId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the OAuth scope to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the OAuth scope with the given Id for the application."
+        },
+        {
+          "info": {
+            "name": "patchOAuthScopeWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:9011/api/application/:applicationId/scope/:scopeId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the application that the OAuth scope belongs to."
+              },
+              {
+                "name": "scopeId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the OAuth scope to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates, via PATCH, the custom OAuth scope with the given Id for the application."
+        },
+        {
+          "info": {
+            "name": "deleteOAuthScopeWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:9011/api/application/:applicationId/scope/:scopeId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the application that the OAuth scope belongs to."
+              },
+              {
+                "name": "scopeId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the OAuth scope to delete."
+              }
+            ]
+          },
+          "docs": "Hard deletes a custom OAuth scope. OAuth workflows that are still requesting the deleted OAuth scope may fail depending on the application's unknown scope policy."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,218 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FusionAuth Api Key User Action API",
+    "version": "1.66.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User Action",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "retrieveUserAction",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/user-action",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "inactive",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves the user action for the given Id. If you pass in null for the Id, this will return all the user actions. OR Retrieves all the user actions that are currently inactive."
+        },
+        {
+          "info": {
+            "name": "createUserAction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/user-action",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a user action. This action cannot be taken on a user until this call successfully returns. Anytime after that the user action can be applied to any user."
+        },
+        {
+          "info": {
+            "name": "retrieveUserActionWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/user-action/:userActionId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "userActionId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the user action."
+              }
+            ]
+          },
+          "docs": "Retrieves the user action for the given Id. If you pass in null for the Id, this will return all the user actions."
+        },
+        {
+          "info": {
+            "name": "createUserActionWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/user-action/:userActionId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "userActionId",
+                "value": "",
+                "type": "path",
+                "description": "The Id for the user action. If not provided a secure random UUID will be generated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a user action. This action cannot be taken on a user until this call successfully returns. Anytime after that the user action can be applied to any user."
+        },
+        {
+          "info": {
+            "name": "updateUserActionWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:9011/api/user-action/:userActionId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "userActionId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the user action to update."
+              },
+              {
+                "name": "reactivate",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the user action with the given Id. OR Reactivates the user action with the given Id."
+        },
+        {
+          "info": {
+            "name": "patchUserActionWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:9011/api/user-action/:userActionId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "userActionId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the user action to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates, via PATCH, the user action with the given Id."
+        },
+        {
+          "info": {
+            "name": "deleteUserActionWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:9011/api/user-action/:userActionId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "hardDelete",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "userActionId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the user action to delete."
+              }
+            ]
+          },
+          "docs": "Deletes the user action for the given Id. This permanently deletes the user action and also any history and logs of the action being applied to any users. OR Deactivates the user action with the given Id."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

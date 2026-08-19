@@ -1,0 +1,355 @@
+{
+  "item": [
+    {
+      "id": "201d0d82-a299-404c-b2f3-4261cdeb04f0",
+      "name": "System Configuration",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "43d1c65c-ac71-4c38-b403-cb22ab1297fa",
+          "name": "patch System Configuration With Id",
+          "request": {
+            "name": "patch System Configuration With Id",
+            "description": {
+              "content": "Updates, via PATCH, the system configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "system-configuration"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"systemConfiguration\": {\n    \"auditLogConfiguration\": {\n      \"delete\": {\n        \"numberOfDaysToRetain\": \"<integer>\",\n        \"enabled\": \"<boolean>\"\n      }\n    },\n    \"corsConfiguration\": {\n      \"allowCredentials\": \"<boolean>\",\n      \"allowedHeaders\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"allowedMethods\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"allowedOrigins\": [\n        \"<URI>\",\n        \"<URI>\"\n      ],\n      \"debug\": \"<boolean>\",\n      \"exposedHeaders\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"preflightMaxAgeInSeconds\": \"<integer>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"eventLogConfiguration\": {\n      \"numberToRetain\": \"<integer>\"\n    },\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"loginRecordConfiguration\": {\n      \"delete\": {\n        \"numberOfDaysToRetain\": \"<integer>\",\n        \"enabled\": \"<boolean>\"\n      }\n    },\n    \"reportTimezone\": \"<string>\",\n    \"trustedProxyConfiguration\": {\n      \"trustPolicy\": \"<string>\",\n      \"trusted\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"uiConfiguration\": {\n      \"headerColor\": \"<string>\",\n      \"logoURL\": \"<string>\",\n      \"menuFontColor\": \"<string>\"\n    },\n    \"usageDataConfiguration\": {\n      \"numberOfDaysToRetain\": \"<integer>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"webhookEventLogConfiguration\": {\n      \"delete\": {\n        \"numberOfDaysToRetain\": \"<integer>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"enabled\": \"<boolean>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "979f7da5-69b2-4d34-b853-82d8b15451ca",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "system-configuration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"systemConfiguration\": {\n    \"auditLogConfiguration\": {\n      \"delete\": {\n        \"numberOfDaysToRetain\": \"<integer>\",\n        \"enabled\": \"<boolean>\"\n      }\n    },\n    \"corsConfiguration\": {\n      \"allowCredentials\": \"<boolean>\",\n      \"allowedHeaders\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"allowedMethods\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"allowedOrigins\": [\n        \"<URI>\",\n        \"<URI>\"\n      ],\n      \"debug\": \"<boolean>\",\n      \"exposedHeaders\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"preflightMaxAgeInSeconds\": \"<integer>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"eventLogConfiguration\": {\n      \"numberToRetain\": \"<integer>\"\n    },\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"loginRecordConfiguration\": {\n      \"delete\": {\n        \"numberOfDaysToRetain\": \"<integer>\",\n        \"enabled\": \"<boolean>\"\n      }\n    },\n    \"reportTimezone\": \"<string>\",\n    \"trustedProxyConfiguration\": {\n      \"trustPolicy\": \"<string>\",\n      \"trusted\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"uiConfiguration\": {\n      \"headerColor\": \"<string>\",\n      \"logoURL\": \"<string>\",\n      \"menuFontColor\": \"<string>\"\n    },\n    \"usageDataConfiguration\": {\n      \"numberOfDaysToRetain\": \"<integer>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"webhookEventLogConfiguration\": {\n      \"delete\": {\n        \"numberOfDaysToRetain\": \"<integer>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"enabled\": \"<boolean>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"systemConfiguration\": {\n    \"auditLogConfiguration\": {\n      \"delete\": {\n        \"numberOfDaysToRetain\": \"<integer>\",\n        \"enabled\": \"<boolean>\"\n      }\n    },\n    \"corsConfiguration\": {\n      \"allowCredentials\": \"<boolean>\",\n      \"allowedHeaders\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"allowedMethods\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"allowedOrigins\": [\n        \"<URI>\",\n        \"<URI>\"\n      ],\n      \"debug\": \"<boolean>\",\n      \"exposedHeaders\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"preflightMaxAgeInSeconds\": \"<integer>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"eventLogConfiguration\": {\n      \"numberToRetain\": \"<integer>\"\n    },\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"loginRecordConfiguration\": {\n      \"delete\": {\n        \"numberOfDaysToRetain\": \"<integer>\",\n        \"enabled\": \"<boolean>\"\n      }\n    },\n    \"reportTimezone\": \"<string>\",\n    \"trustedProxyConfiguration\": {\n      \"trustPolicy\": \"<string>\",\n      \"trusted\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"uiConfiguration\": {\n      \"headerColor\": \"<string>\",\n      \"logoURL\": \"<string>\",\n      \"menuFontColor\": \"<string>\"\n    },\n    \"usageDataConfiguration\": {\n      \"numberOfDaysToRetain\": \"<integer>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"webhookEventLogConfiguration\": {\n      \"delete\": {\n        \"numberOfDaysToRetain\": \"<integer>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"enabled\": \"<boolean>\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4efbe8df-a2af-42e7-becb-afc8d73f14c2",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "system-configuration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"systemConfiguration\": {\n    \"auditLogConfiguration\": {\n      \"delete\": {\n        \"numberOfDaysToRetain\": \"<integer>\",\n        \"enabled\": \"<boolean>\"\n      }\n    },\n    \"corsConfiguration\": {\n      \"allowCredentials\": \"<boolean>\",\n      \"allowedHeaders\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"allowedMethods\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"allowedOrigins\": [\n        \"<URI>\",\n        \"<URI>\"\n      ],\n      \"debug\": \"<boolean>\",\n      \"exposedHeaders\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"preflightMaxAgeInSeconds\": \"<integer>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"eventLogConfiguration\": {\n      \"numberToRetain\": \"<integer>\"\n    },\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"loginRecordConfiguration\": {\n      \"delete\": {\n        \"numberOfDaysToRetain\": \"<integer>\",\n        \"enabled\": \"<boolean>\"\n      }\n    },\n    \"reportTimezone\": \"<string>\",\n    \"trustedProxyConfiguration\": {\n      \"trustPolicy\": \"<string>\",\n      \"trusted\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"uiConfiguration\": {\n      \"headerColor\": \"<string>\",\n      \"logoURL\": \"<string>\",\n      \"menuFontColor\": \"<string>\"\n    },\n    \"usageDataConfiguration\": {\n      \"numberOfDaysToRetain\": \"<integer>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"webhookEventLogConfiguration\": {\n      \"delete\": {\n        \"numberOfDaysToRetain\": \"<integer>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"enabled\": \"<boolean>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "858b156f-f9f4-4ba1-b298-47c8eee9856b",
+          "name": "update System Configuration With Id",
+          "request": {
+            "name": "update System Configuration With Id",
+            "description": {
+              "content": "Updates the system configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "system-configuration"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"systemConfiguration\": {\n    \"auditLogConfiguration\": {\n      \"delete\": {\n        \"numberOfDaysToRetain\": \"<integer>\",\n        \"enabled\": \"<boolean>\"\n      }\n    },\n    \"corsConfiguration\": {\n      \"allowCredentials\": \"<boolean>\",\n      \"allowedHeaders\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"allowedMethods\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"allowedOrigins\": [\n        \"<URI>\",\n        \"<URI>\"\n      ],\n      \"debug\": \"<boolean>\",\n      \"exposedHeaders\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"preflightMaxAgeInSeconds\": \"<integer>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\"\n    },\n    \"eventLogConfiguration\": {\n      \"numberToRetain\": \"<integer>\"\n    },\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"loginRecordConfiguration\": {\n      \"delete\": {\n        \"numberOfDaysToRetain\": \"<integer>\",\n        \"enabled\": \"<boolean>\"\n      }\n    },\n    \"reportTimezone\": \"<string>\",\n    \"trustedProxyConfiguration\": {\n      \"trustPolicy\": \"<string>\",\n      \"trusted\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"uiConfiguration\": {\n      \"headerColor\": \"<string>\",\n      \"logoURL\": \"<string>\",\n      \"menuFontColor\": \"<string>\"\n    },\n    \"usageDataConfiguration\": {\n      \"numberOfDaysToRetain\": \"<integer>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"webhookEventLogConfiguration\": {\n      \"delete\": {\n        \"numberOfDaysToRetain\": \"<integer>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"enabled\": \"<boolean>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bd5fa091-1b8d-4d30-908e-717e24692ce4",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "system-configuration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"systemConfiguration\": {\n    \"auditLogConfiguration\": {\n      \"delete\": {\n        \"numberOfDaysToRetain\": \"<integer>\",\n        \"enabled\": \"<boolean>\"\n      }\n    },\n    \"corsConfiguration\": {\n      \"allowCredentials\": \"<boolean>\",\n      \"allowedHeaders\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"allowedMethods\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"allowedOrigins\": [\n        \"<URI>\",\n        \"<URI>\"\n      ],\n      \"debug\": \"<boolean>\",\n      \"exposedHeaders\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"preflightMaxAgeInSeconds\": \"<integer>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"eventLogConfiguration\": {\n      \"numberToRetain\": \"<integer>\"\n    },\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"loginRecordConfiguration\": {\n      \"delete\": {\n        \"numberOfDaysToRetain\": \"<integer>\",\n        \"enabled\": \"<boolean>\"\n      }\n    },\n    \"reportTimezone\": \"<string>\",\n    \"trustedProxyConfiguration\": {\n      \"trustPolicy\": \"<string>\",\n      \"trusted\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"uiConfiguration\": {\n      \"headerColor\": \"<string>\",\n      \"logoURL\": \"<string>\",\n      \"menuFontColor\": \"<string>\"\n    },\n    \"usageDataConfiguration\": {\n      \"numberOfDaysToRetain\": \"<integer>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"webhookEventLogConfiguration\": {\n      \"delete\": {\n        \"numberOfDaysToRetain\": \"<integer>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"enabled\": \"<boolean>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"systemConfiguration\": {\n    \"auditLogConfiguration\": {\n      \"delete\": {\n        \"numberOfDaysToRetain\": \"<integer>\",\n        \"enabled\": \"<boolean>\"\n      }\n    },\n    \"corsConfiguration\": {\n      \"allowCredentials\": \"<boolean>\",\n      \"allowedHeaders\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"allowedMethods\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"allowedOrigins\": [\n        \"<URI>\",\n        \"<URI>\"\n      ],\n      \"debug\": \"<boolean>\",\n      \"exposedHeaders\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"preflightMaxAgeInSeconds\": \"<integer>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"eventLogConfiguration\": {\n      \"numberToRetain\": \"<integer>\"\n    },\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"loginRecordConfiguration\": {\n      \"delete\": {\n        \"numberOfDaysToRetain\": \"<integer>\",\n        \"enabled\": \"<boolean>\"\n      }\n    },\n    \"reportTimezone\": \"<string>\",\n    \"trustedProxyConfiguration\": {\n      \"trustPolicy\": \"<string>\",\n      \"trusted\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"uiConfiguration\": {\n      \"headerColor\": \"<string>\",\n      \"logoURL\": \"<string>\",\n      \"menuFontColor\": \"<string>\"\n    },\n    \"usageDataConfiguration\": {\n      \"numberOfDaysToRetain\": \"<integer>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"webhookEventLogConfiguration\": {\n      \"delete\": {\n        \"numberOfDaysToRetain\": \"<integer>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"enabled\": \"<boolean>\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fa6b4379-90a9-48fd-810a-6c4ad5ad5f7e",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "system-configuration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"systemConfiguration\": {\n    \"auditLogConfiguration\": {\n      \"delete\": {\n        \"numberOfDaysToRetain\": \"<integer>\",\n        \"enabled\": \"<boolean>\"\n      }\n    },\n    \"corsConfiguration\": {\n      \"allowCredentials\": \"<boolean>\",\n      \"allowedHeaders\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"allowedMethods\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"allowedOrigins\": [\n        \"<URI>\",\n        \"<URI>\"\n      ],\n      \"debug\": \"<boolean>\",\n      \"exposedHeaders\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"preflightMaxAgeInSeconds\": \"<integer>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"eventLogConfiguration\": {\n      \"numberToRetain\": \"<integer>\"\n    },\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"loginRecordConfiguration\": {\n      \"delete\": {\n        \"numberOfDaysToRetain\": \"<integer>\",\n        \"enabled\": \"<boolean>\"\n      }\n    },\n    \"reportTimezone\": \"<string>\",\n    \"trustedProxyConfiguration\": {\n      \"trustPolicy\": \"<string>\",\n      \"trusted\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"uiConfiguration\": {\n      \"headerColor\": \"<string>\",\n      \"logoURL\": \"<string>\",\n      \"menuFontColor\": \"<string>\"\n    },\n    \"usageDataConfiguration\": {\n      \"numberOfDaysToRetain\": \"<integer>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"webhookEventLogConfiguration\": {\n      \"delete\": {\n        \"numberOfDaysToRetain\": \"<integer>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"enabled\": \"<boolean>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:9011",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "93a7ca07-4e5d-485a-9f2a-c5b849e3f604",
+    "name": "FusionAuth Api Key System Configuration API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.",
+      "type": "text/plain"
+    }
+  }
+}

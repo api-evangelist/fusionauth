@@ -1,0 +1,221 @@
+{
+  "item": [
+    {
+      "id": "14632e67-3f23-4f1a-ad21-a1d12e3a1eba",
+      "name": "Logout",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0db17cdf-ea17-49d5-8e39-e004d5a72529",
+          "name": "create Logout",
+          "request": {
+            "name": "create Logout",
+            "description": {
+              "content": "The Logout API is intended to be used to remove the refresh token and access token cookies if they exist on the client and revoke the refresh token stored. This API takes the refresh token in the JSON body. OR The Logout API is intended to be used to remove the refresh token and access token cookies if they exist on the client and revoke the refresh token stored. This API does nothing if the request does not contain an access token or refresh token cookies.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "logout"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "global",
+                  "value": "<string>",
+                  "description": "When this value is set to true all the refresh tokens issued to the owner of the provided token will be revoked."
+                },
+                {
+                  "disabled": false,
+                  "key": "refreshToken",
+                  "value": "<string>",
+                  "description": "The refresh_token as a request parameter instead of coming in via a cookie. If provided this takes precedence over the cookie."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"global\": \"<boolean>\",\n  \"refreshToken\": \"<string>\",\n  \"eventInfo\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"deviceDescription\": \"<string>\",\n    \"deviceName\": \"<string>\",\n    \"deviceType\": \"<string>\",\n    \"ipAddress\": \"<string>\",\n    \"location\": {\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\",\n      \"region\": \"<string>\",\n      \"zipcode\": \"<string>\",\n      \"displayString\": \"<string>\"\n    },\n    \"os\": \"<string>\",\n    \"userAgent\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f57a9420-a469-4bb7-9e5b-cb87dd21e5d3",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "logout"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "global",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "refreshToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"global\": \"<boolean>\",\n  \"refreshToken\": \"<string>\",\n  \"eventInfo\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"deviceDescription\": \"<string>\",\n    \"deviceName\": \"<string>\",\n    \"deviceType\": \"<string>\",\n    \"ipAddress\": \"<string>\",\n    \"location\": {\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\",\n      \"region\": \"<string>\",\n      \"zipcode\": \"<string>\",\n      \"displayString\": \"<string>\"\n    },\n    \"os\": \"<string>\",\n    \"userAgent\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e256e31d-67b1-400d-ba6f-f4d2e576ccde",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "logout"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "global",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "refreshToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"global\": \"<boolean>\",\n  \"refreshToken\": \"<string>\",\n  \"eventInfo\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"deviceDescription\": \"<string>\",\n    \"deviceName\": \"<string>\",\n    \"deviceType\": \"<string>\",\n    \"ipAddress\": \"<string>\",\n    \"location\": {\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\",\n      \"region\": \"<string>\",\n      \"zipcode\": \"<string>\",\n      \"displayString\": \"<string>\"\n    },\n    \"os\": \"<string>\",\n    \"userAgent\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:9011",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "30afad3a-5f72-4641-b627-24195eb38e97",
+    "name": "FusionAuth Api Key Logout API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.",
+      "type": "text/plain"
+    }
+  }
+}

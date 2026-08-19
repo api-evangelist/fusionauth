@@ -1,0 +1,1927 @@
+{
+  "item": [
+    {
+      "id": "7fdb8d97-e56b-4c92-8959-c6911eca828c",
+      "name": "Group",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4f868fcb-dea2-4283-925f-4c1daaaf0d32",
+          "name": "create Group",
+          "request": {
+            "name": "create Group",
+            "description": {
+              "content": "Creates a group. You can optionally specify an Id for the group, if not provided one will be generated.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "group"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                "key": "X-FusionAuth-TenantId",
+                "value": "<UUID>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"group\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\",\n      \"key_3\": \"<object>\"\n    },\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\",\n    \"roles\": [\n      {\n        \"description\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"insertInstant\": \"<long>\",\n        \"isDefault\": \"<boolean>\",\n        \"isSuperRole\": \"<boolean>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"description\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"insertInstant\": \"<long>\",\n        \"isDefault\": \"<boolean>\",\n        \"isSuperRole\": \"<boolean>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"tenantId\": \"<uuid>\"\n  },\n  \"roleIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1a70156a-00a5-427f-b36d-1e95f5403ddf",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "group"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"group\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\",\n    \"roles\": [\n      {\n        \"description\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"insertInstant\": \"<long>\",\n        \"isDefault\": \"<boolean>\",\n        \"isSuperRole\": \"<boolean>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"description\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"insertInstant\": \"<long>\",\n        \"isDefault\": \"<boolean>\",\n        \"isSuperRole\": \"<boolean>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"tenantId\": \"<uuid>\"\n  },\n  \"roleIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"group\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\"\n    },\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\",\n    \"roles\": [\n      {\n        \"description\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"insertInstant\": \"<long>\",\n        \"isDefault\": \"<boolean>\",\n        \"isSuperRole\": \"<boolean>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"description\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"insertInstant\": \"<long>\",\n        \"isDefault\": \"<boolean>\",\n        \"isSuperRole\": \"<boolean>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"tenantId\": \"<uuid>\"\n  },\n  \"groups\": [\n    {\n      \"data\": {\n        \"key_0\": \"<object>\"\n      },\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"roles\": [\n        {\n          \"description\": \"<string>\",\n          \"id\": \"<uuid>\",\n          \"insertInstant\": \"<long>\",\n          \"isDefault\": \"<boolean>\",\n          \"isSuperRole\": \"<boolean>\",\n          \"lastUpdateInstant\": \"<long>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"description\": \"<string>\",\n          \"id\": \"<uuid>\",\n          \"insertInstant\": \"<long>\",\n          \"isDefault\": \"<boolean>\",\n          \"isSuperRole\": \"<boolean>\",\n          \"lastUpdateInstant\": \"<long>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"tenantId\": \"<uuid>\"\n    },\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"roles\": [\n        {\n          \"description\": \"<string>\",\n          \"id\": \"<uuid>\",\n          \"insertInstant\": \"<long>\",\n          \"isDefault\": \"<boolean>\",\n          \"isSuperRole\": \"<boolean>\",\n          \"lastUpdateInstant\": \"<long>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"description\": \"<string>\",\n          \"id\": \"<uuid>\",\n          \"insertInstant\": \"<long>\",\n          \"isDefault\": \"<boolean>\",\n          \"isSuperRole\": \"<boolean>\",\n          \"lastUpdateInstant\": \"<long>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"tenantId\": \"<uuid>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "22c9238f-1543-4539-b776-8dddbc09af3a",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "group"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"group\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\",\n    \"roles\": [\n      {\n        \"description\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"insertInstant\": \"<long>\",\n        \"isDefault\": \"<boolean>\",\n        \"isSuperRole\": \"<boolean>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"description\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"insertInstant\": \"<long>\",\n        \"isDefault\": \"<boolean>\",\n        \"isSuperRole\": \"<boolean>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"tenantId\": \"<uuid>\"\n  },\n  \"roleIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "518c164f-39f7-4de4-9eb5-4b58876be89f",
+          "name": "create Group Members With Id",
+          "request": {
+            "name": "create Group Members With Id",
+            "description": {
+              "content": "Creates a member in a group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "group",
+                "member"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"members\": [\n    {\n      \"data\": {\n        \"key_0\": \"<object>\"\n      },\n      \"groupId\": \"<uuid>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"userId\": \"<uuid>\"\n    },\n    {\n      \"data\": {\n        \"key_0\": \"<object>\"\n      },\n      \"groupId\": \"<uuid>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"userId\": \"<uuid>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a34542b8-9fd2-4630-b2bd-89cc961ca41d",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "group",
+                    "member"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"members\": [\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"groupId\": \"<uuid>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"userId\": \"<uuid>\"\n    },\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\",\n        \"key_2\": \"<object>\"\n      },\n      \"groupId\": \"<uuid>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"userId\": \"<uuid>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"members\": [\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\",\n        \"key_2\": \"<object>\"\n      },\n      \"groupId\": \"<uuid>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"userId\": \"<uuid>\"\n    },\n    {\n      \"data\": {\n        \"key_0\": \"<object>\"\n      },\n      \"groupId\": \"<uuid>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"userId\": \"<uuid>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6973f5cf-9d72-4712-aa5c-f4b030854f2f",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "group",
+                    "member"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"members\": [\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"groupId\": \"<uuid>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"userId\": \"<uuid>\"\n    },\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\",\n        \"key_2\": \"<object>\"\n      },\n      \"groupId\": \"<uuid>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"userId\": \"<uuid>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cd5af880-0b80-49d1-b88c-4db3b96fc370",
+          "name": "delete Group Members With Id",
+          "request": {
+            "name": "delete Group Members With Id",
+            "description": {
+              "content": "Removes users as members of a group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "group",
+                "member"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"memberIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"members\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "81d2daf4-4015-4ff8-9152-2f0fb21f6ad5",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "group",
+                    "member"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"memberIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"members\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fef8bbfc-ba4e-455b-8f84-b5cf76550ea3",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "group",
+                    "member"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"memberIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"members\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6b395ea5-887f-4583-8f13-094db2fc53bc",
+          "name": "update Group Members With Id",
+          "request": {
+            "name": "update Group Members With Id",
+            "description": {
+              "content": "Creates a member in a group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "group",
+                "member"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"members\": [\n    {\n      \"data\": {\n        \"key_0\": \"<object>\"\n      },\n      \"groupId\": \"<uuid>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"userId\": \"<uuid>\"\n    },\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\",\n        \"key_2\": \"<object>\"\n      },\n      \"groupId\": \"<uuid>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"userId\": \"<uuid>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1ccaa69b-5ed6-469b-8c98-48b998b01590",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "group",
+                    "member"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"members\": [\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"groupId\": \"<uuid>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"userId\": \"<uuid>\"\n    },\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\",\n        \"key_2\": \"<object>\"\n      },\n      \"groupId\": \"<uuid>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"userId\": \"<uuid>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"members\": [\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"groupId\": \"<uuid>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"userId\": \"<uuid>\"\n    },\n    {\n      \"data\": {\n        \"key_0\": \"<object>\"\n      },\n      \"groupId\": \"<uuid>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"userId\": \"<uuid>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6b3f05ca-448a-4ac8-ad7c-dcb90d8f9a3c",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "group",
+                    "member"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"members\": [\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"groupId\": \"<uuid>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"userId\": \"<uuid>\"\n    },\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\",\n        \"key_2\": \"<object>\"\n      },\n      \"groupId\": \"<uuid>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"userId\": \"<uuid>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f336d867-a2cb-4b62-a915-24b94cce804e",
+          "name": "search Group Members With Id",
+          "request": {
+            "name": "search Group Members With Id",
+            "description": {
+              "content": "Searches group members with the specified criteria and pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "group",
+                "member",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"search\": {\n    \"groupId\": \"<uuid>\",\n    \"tenantId\": \"<uuid>\",\n    \"userId\": \"<uuid>\",\n    \"numberOfResults\": \"<integer>\",\n    \"orderBy\": \"<string>\",\n    \"startRow\": \"<integer>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5233ea3b-c413-4911-a52f-9337fb59e565",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "group",
+                    "member",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"search\": {\n    \"groupId\": \"<uuid>\",\n    \"tenantId\": \"<uuid>\",\n    \"userId\": \"<uuid>\",\n    \"numberOfResults\": \"<integer>\",\n    \"orderBy\": \"<string>\",\n    \"startRow\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"members\": [\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\",\n        \"key_2\": \"<object>\",\n        \"key_3\": \"<object>\"\n      },\n      \"groupId\": \"<uuid>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"userId\": \"<uuid>\"\n    },\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"groupId\": \"<uuid>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"userId\": \"<uuid>\"\n    }\n  ],\n  \"total\": 5588\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0bd523b0-b698-4e19-8f94-56f76f8fd4ba",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "group",
+                    "member",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"search\": {\n    \"groupId\": \"<uuid>\",\n    \"tenantId\": \"<uuid>\",\n    \"userId\": \"<uuid>\",\n    \"numberOfResults\": \"<integer>\",\n    \"orderBy\": \"<string>\",\n    \"startRow\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2976f57f-b1b6-4cfe-93da-ebb4107cd6c5",
+          "name": "search Groups With Id",
+          "request": {
+            "name": "search Groups With Id",
+            "description": {
+              "content": "Searches groups with the specified criteria and pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "group",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"search\": {\n    \"name\": \"<string>\",\n    \"tenantId\": \"<uuid>\",\n    \"numberOfResults\": \"<integer>\",\n    \"orderBy\": \"<string>\",\n    \"startRow\": \"<integer>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "79c15c8a-597f-4991-8749-d876db35ab70",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "group",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"search\": {\n    \"name\": \"<string>\",\n    \"tenantId\": \"<uuid>\",\n    \"numberOfResults\": \"<integer>\",\n    \"orderBy\": \"<string>\",\n    \"startRow\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"groups\": [\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"roles\": [\n        {\n          \"description\": \"<string>\",\n          \"id\": \"<uuid>\",\n          \"insertInstant\": \"<long>\",\n          \"isDefault\": \"<boolean>\",\n          \"isSuperRole\": \"<boolean>\",\n          \"lastUpdateInstant\": \"<long>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"description\": \"<string>\",\n          \"id\": \"<uuid>\",\n          \"insertInstant\": \"<long>\",\n          \"isDefault\": \"<boolean>\",\n          \"isSuperRole\": \"<boolean>\",\n          \"lastUpdateInstant\": \"<long>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"tenantId\": \"<uuid>\"\n    },\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\",\n        \"key_2\": \"<object>\"\n      },\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"roles\": [\n        {\n          \"description\": \"<string>\",\n          \"id\": \"<uuid>\",\n          \"insertInstant\": \"<long>\",\n          \"isDefault\": \"<boolean>\",\n          \"isSuperRole\": \"<boolean>\",\n          \"lastUpdateInstant\": \"<long>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"description\": \"<string>\",\n          \"id\": \"<uuid>\",\n          \"insertInstant\": \"<long>\",\n          \"isDefault\": \"<boolean>\",\n          \"isSuperRole\": \"<boolean>\",\n          \"lastUpdateInstant\": \"<long>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"tenantId\": \"<uuid>\"\n    }\n  ],\n  \"total\": 9910\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1fc29244-49f7-46e7-bcf8-a51ab7c9a555",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "group",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"search\": {\n    \"name\": \"<string>\",\n    \"tenantId\": \"<uuid>\",\n    \"numberOfResults\": \"<integer>\",\n    \"orderBy\": \"<string>\",\n    \"startRow\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "75a3d5ee-d4c7-4756-b89e-7a7f18673e2d",
+          "name": "create Group With Id",
+          "request": {
+            "name": "create Group With Id",
+            "description": {
+              "content": "Creates a group. You can optionally specify an Id for the group, if not provided one will be generated.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "group",
+                ":groupId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupId",
+                  "description": "(Required) The Id for the group. If not provided a secure random UUID will be generated."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                "key": "X-FusionAuth-TenantId",
+                "value": "<UUID>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"group\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\",\n    \"roles\": [\n      {\n        \"description\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"insertInstant\": \"<long>\",\n        \"isDefault\": \"<boolean>\",\n        \"isSuperRole\": \"<boolean>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"description\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"insertInstant\": \"<long>\",\n        \"isDefault\": \"<boolean>\",\n        \"isSuperRole\": \"<boolean>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"tenantId\": \"<uuid>\"\n  },\n  \"roleIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7501e92b-07a7-4981-b40e-1b24551a17f1",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "group",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) The Id for the group. If not provided a secure random UUID will be generated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"group\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\",\n    \"roles\": [\n      {\n        \"description\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"insertInstant\": \"<long>\",\n        \"isDefault\": \"<boolean>\",\n        \"isSuperRole\": \"<boolean>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"description\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"insertInstant\": \"<long>\",\n        \"isDefault\": \"<boolean>\",\n        \"isSuperRole\": \"<boolean>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"tenantId\": \"<uuid>\"\n  },\n  \"roleIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"group\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\",\n    \"roles\": [\n      {\n        \"description\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"insertInstant\": \"<long>\",\n        \"isDefault\": \"<boolean>\",\n        \"isSuperRole\": \"<boolean>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"description\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"insertInstant\": \"<long>\",\n        \"isDefault\": \"<boolean>\",\n        \"isSuperRole\": \"<boolean>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"tenantId\": \"<uuid>\"\n  },\n  \"groups\": [\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"roles\": [\n        {\n          \"description\": \"<string>\",\n          \"id\": \"<uuid>\",\n          \"insertInstant\": \"<long>\",\n          \"isDefault\": \"<boolean>\",\n          \"isSuperRole\": \"<boolean>\",\n          \"lastUpdateInstant\": \"<long>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"description\": \"<string>\",\n          \"id\": \"<uuid>\",\n          \"insertInstant\": \"<long>\",\n          \"isDefault\": \"<boolean>\",\n          \"isSuperRole\": \"<boolean>\",\n          \"lastUpdateInstant\": \"<long>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"tenantId\": \"<uuid>\"\n    },\n    {\n      \"data\": {\n        \"key_0\": \"<object>\"\n      },\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"roles\": [\n        {\n          \"description\": \"<string>\",\n          \"id\": \"<uuid>\",\n          \"insertInstant\": \"<long>\",\n          \"isDefault\": \"<boolean>\",\n          \"isSuperRole\": \"<boolean>\",\n          \"lastUpdateInstant\": \"<long>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"description\": \"<string>\",\n          \"id\": \"<uuid>\",\n          \"insertInstant\": \"<long>\",\n          \"isDefault\": \"<boolean>\",\n          \"isSuperRole\": \"<boolean>\",\n          \"lastUpdateInstant\": \"<long>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"tenantId\": \"<uuid>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1dce4ffd-e306-4b55-b19e-500830eda7f3",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "group",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) The Id for the group. If not provided a secure random UUID will be generated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"group\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\",\n    \"roles\": [\n      {\n        \"description\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"insertInstant\": \"<long>\",\n        \"isDefault\": \"<boolean>\",\n        \"isSuperRole\": \"<boolean>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"description\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"insertInstant\": \"<long>\",\n        \"isDefault\": \"<boolean>\",\n        \"isSuperRole\": \"<boolean>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"tenantId\": \"<uuid>\"\n  },\n  \"roleIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "87a48852-0950-487c-ace3-9dae8dfdf0ed",
+          "name": "delete Group With Id",
+          "request": {
+            "name": "delete Group With Id",
+            "description": {
+              "content": "Deletes the group for the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "group",
+                ":groupId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupId",
+                  "description": "(Required) The Id of the group to delete."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                "key": "X-FusionAuth-TenantId",
+                "value": "<UUID>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "394c8931-3ace-4061-a77d-6f3071efb283",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "group",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) The Id of the group to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c8f642c0-d6fe-428b-a4ef-835af341b23c",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "group",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) The Id of the group to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a6c85b25-54f0-4b5c-af8e-3ef96ca9fedc",
+          "name": "patch Group With Id",
+          "request": {
+            "name": "patch Group With Id",
+            "description": {
+              "content": "Updates, via PATCH, the group with the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "group",
+                ":groupId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupId",
+                  "description": "(Required) The Id of the group to update."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                "key": "X-FusionAuth-TenantId",
+                "value": "<UUID>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"group\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\",\n    \"roles\": [\n      {\n        \"description\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"insertInstant\": \"<long>\",\n        \"isDefault\": \"<boolean>\",\n        \"isSuperRole\": \"<boolean>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"description\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"insertInstant\": \"<long>\",\n        \"isDefault\": \"<boolean>\",\n        \"isSuperRole\": \"<boolean>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"tenantId\": \"<uuid>\"\n  },\n  \"roleIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "933ab9cb-ba59-41fc-8029-e294aec7728f",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "group",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) The Id of the group to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"group\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\",\n    \"roles\": [\n      {\n        \"description\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"insertInstant\": \"<long>\",\n        \"isDefault\": \"<boolean>\",\n        \"isSuperRole\": \"<boolean>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"description\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"insertInstant\": \"<long>\",\n        \"isDefault\": \"<boolean>\",\n        \"isSuperRole\": \"<boolean>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"tenantId\": \"<uuid>\"\n  },\n  \"roleIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"group\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\",\n    \"roles\": [\n      {\n        \"description\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"insertInstant\": \"<long>\",\n        \"isDefault\": \"<boolean>\",\n        \"isSuperRole\": \"<boolean>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"description\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"insertInstant\": \"<long>\",\n        \"isDefault\": \"<boolean>\",\n        \"isSuperRole\": \"<boolean>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"tenantId\": \"<uuid>\"\n  },\n  \"groups\": [\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"roles\": [\n        {\n          \"description\": \"<string>\",\n          \"id\": \"<uuid>\",\n          \"insertInstant\": \"<long>\",\n          \"isDefault\": \"<boolean>\",\n          \"isSuperRole\": \"<boolean>\",\n          \"lastUpdateInstant\": \"<long>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"description\": \"<string>\",\n          \"id\": \"<uuid>\",\n          \"insertInstant\": \"<long>\",\n          \"isDefault\": \"<boolean>\",\n          \"isSuperRole\": \"<boolean>\",\n          \"lastUpdateInstant\": \"<long>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"tenantId\": \"<uuid>\"\n    },\n    {\n      \"data\": {\n        \"key_0\": \"<object>\"\n      },\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"roles\": [\n        {\n          \"description\": \"<string>\",\n          \"id\": \"<uuid>\",\n          \"insertInstant\": \"<long>\",\n          \"isDefault\": \"<boolean>\",\n          \"isSuperRole\": \"<boolean>\",\n          \"lastUpdateInstant\": \"<long>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"description\": \"<string>\",\n          \"id\": \"<uuid>\",\n          \"insertInstant\": \"<long>\",\n          \"isDefault\": \"<boolean>\",\n          \"isSuperRole\": \"<boolean>\",\n          \"lastUpdateInstant\": \"<long>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"tenantId\": \"<uuid>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "37ac733a-1a27-42a9-80ff-b68222da042f",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "group",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) The Id of the group to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"group\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\",\n    \"roles\": [\n      {\n        \"description\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"insertInstant\": \"<long>\",\n        \"isDefault\": \"<boolean>\",\n        \"isSuperRole\": \"<boolean>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"description\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"insertInstant\": \"<long>\",\n        \"isDefault\": \"<boolean>\",\n        \"isSuperRole\": \"<boolean>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"tenantId\": \"<uuid>\"\n  },\n  \"roleIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2d7e6002-4060-4d78-a8a7-842be3aeec15",
+          "name": "retrieve Group With Id",
+          "request": {
+            "name": "retrieve Group With Id",
+            "description": {
+              "content": "Retrieves the group for the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "group",
+                ":groupId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupId",
+                  "description": "(Required) The Id of the group."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                "key": "X-FusionAuth-TenantId",
+                "value": "<UUID>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "81f5721a-03d7-4c1f-b644-f6f3c58b00f0",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "group",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) The Id of the group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"group\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\",\n    \"roles\": [\n      {\n        \"description\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"insertInstant\": \"<long>\",\n        \"isDefault\": \"<boolean>\",\n        \"isSuperRole\": \"<boolean>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"description\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"insertInstant\": \"<long>\",\n        \"isDefault\": \"<boolean>\",\n        \"isSuperRole\": \"<boolean>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"tenantId\": \"<uuid>\"\n  },\n  \"groups\": [\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"roles\": [\n        {\n          \"description\": \"<string>\",\n          \"id\": \"<uuid>\",\n          \"insertInstant\": \"<long>\",\n          \"isDefault\": \"<boolean>\",\n          \"isSuperRole\": \"<boolean>\",\n          \"lastUpdateInstant\": \"<long>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"description\": \"<string>\",\n          \"id\": \"<uuid>\",\n          \"insertInstant\": \"<long>\",\n          \"isDefault\": \"<boolean>\",\n          \"isSuperRole\": \"<boolean>\",\n          \"lastUpdateInstant\": \"<long>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"tenantId\": \"<uuid>\"\n    },\n    {\n      \"data\": {\n        \"key_0\": \"<object>\"\n      },\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"roles\": [\n        {\n          \"description\": \"<string>\",\n          \"id\": \"<uuid>\",\n          \"insertInstant\": \"<long>\",\n          \"isDefault\": \"<boolean>\",\n          \"isSuperRole\": \"<boolean>\",\n          \"lastUpdateInstant\": \"<long>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"description\": \"<string>\",\n          \"id\": \"<uuid>\",\n          \"insertInstant\": \"<long>\",\n          \"isDefault\": \"<boolean>\",\n          \"isSuperRole\": \"<boolean>\",\n          \"lastUpdateInstant\": \"<long>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"tenantId\": \"<uuid>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "00c391f5-ecc6-4c6d-838e-9d72d0734d8b",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "group",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) The Id of the group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2d5ce0b2-5ed4-4273-b7f3-ed3e58fe05a1",
+          "name": "update Group With Id",
+          "request": {
+            "name": "update Group With Id",
+            "description": {
+              "content": "Updates the group with the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "group",
+                ":groupId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupId",
+                  "description": "(Required) The Id of the group to update."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                "key": "X-FusionAuth-TenantId",
+                "value": "<UUID>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"group\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\",\n    \"roles\": [\n      {\n        \"description\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"insertInstant\": \"<long>\",\n        \"isDefault\": \"<boolean>\",\n        \"isSuperRole\": \"<boolean>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"description\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"insertInstant\": \"<long>\",\n        \"isDefault\": \"<boolean>\",\n        \"isSuperRole\": \"<boolean>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"tenantId\": \"<uuid>\"\n  },\n  \"roleIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "99a86a3a-cd8a-4f46-93ea-f217e799b333",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "group",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) The Id of the group to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"group\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\",\n    \"roles\": [\n      {\n        \"description\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"insertInstant\": \"<long>\",\n        \"isDefault\": \"<boolean>\",\n        \"isSuperRole\": \"<boolean>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"description\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"insertInstant\": \"<long>\",\n        \"isDefault\": \"<boolean>\",\n        \"isSuperRole\": \"<boolean>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"tenantId\": \"<uuid>\"\n  },\n  \"roleIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"group\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\",\n    \"roles\": [\n      {\n        \"description\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"insertInstant\": \"<long>\",\n        \"isDefault\": \"<boolean>\",\n        \"isSuperRole\": \"<boolean>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"description\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"insertInstant\": \"<long>\",\n        \"isDefault\": \"<boolean>\",\n        \"isSuperRole\": \"<boolean>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"tenantId\": \"<uuid>\"\n  },\n  \"groups\": [\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"roles\": [\n        {\n          \"description\": \"<string>\",\n          \"id\": \"<uuid>\",\n          \"insertInstant\": \"<long>\",\n          \"isDefault\": \"<boolean>\",\n          \"isSuperRole\": \"<boolean>\",\n          \"lastUpdateInstant\": \"<long>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"description\": \"<string>\",\n          \"id\": \"<uuid>\",\n          \"insertInstant\": \"<long>\",\n          \"isDefault\": \"<boolean>\",\n          \"isSuperRole\": \"<boolean>\",\n          \"lastUpdateInstant\": \"<long>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"tenantId\": \"<uuid>\"\n    },\n    {\n      \"data\": {\n        \"key_0\": \"<object>\"\n      },\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"name\": \"<string>\",\n      \"roles\": [\n        {\n          \"description\": \"<string>\",\n          \"id\": \"<uuid>\",\n          \"insertInstant\": \"<long>\",\n          \"isDefault\": \"<boolean>\",\n          \"isSuperRole\": \"<boolean>\",\n          \"lastUpdateInstant\": \"<long>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"description\": \"<string>\",\n          \"id\": \"<uuid>\",\n          \"insertInstant\": \"<long>\",\n          \"isDefault\": \"<boolean>\",\n          \"isSuperRole\": \"<boolean>\",\n          \"lastUpdateInstant\": \"<long>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"tenantId\": \"<uuid>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c50225f2-2564-4712-92e8-260afd673dd6",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "group",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) The Id of the group to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"group\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"name\": \"<string>\",\n    \"roles\": [\n      {\n        \"description\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"insertInstant\": \"<long>\",\n        \"isDefault\": \"<boolean>\",\n        \"isSuperRole\": \"<boolean>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"description\": \"<string>\",\n        \"id\": \"<uuid>\",\n        \"insertInstant\": \"<long>\",\n        \"isDefault\": \"<boolean>\",\n        \"isSuperRole\": \"<boolean>\",\n        \"lastUpdateInstant\": \"<long>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"tenantId\": \"<uuid>\"\n  },\n  \"roleIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:9011",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d4b06e79-ac0b-4b5a-9e95-702759658c03",
+    "name": "FusionAuth Api Key Group API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.",
+      "type": "text/plain"
+    }
+  }
+}

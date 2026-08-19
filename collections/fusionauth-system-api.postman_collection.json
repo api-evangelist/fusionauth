@@ -1,0 +1,1736 @@
+{
+  "item": [
+    {
+      "id": "5ffbe15e-057e-472a-a787-774206dc888b",
+      "name": "System",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bd3230bd-35f3-43ee-9403-c48c96246ff4",
+          "name": "create Audit Log With Id",
+          "request": {
+            "name": "create Audit Log With Id",
+            "description": {
+              "content": "Creates an audit log with the message and user name (usually an email). Audit logs should be written anytime you make changes to the FusionAuth database. When using the FusionAuth App web interface, any changes are automatically written to the audit log. However, if you are accessing the API, you must write the audit logs yourself.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "system",
+                "audit-log"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"auditLog\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"id\": \"<long>\",\n    \"insertInstant\": \"<long>\",\n    \"insertUser\": \"<string>\",\n    \"message\": \"<string>\",\n    \"newValue\": \"<object>\",\n    \"oldValue\": \"<object>\",\n    \"reason\": \"<string>\",\n    \"tenantId\": \"<uuid>\"\n  },\n  \"eventInfo\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"deviceDescription\": \"<string>\",\n    \"deviceName\": \"<string>\",\n    \"deviceType\": \"<string>\",\n    \"ipAddress\": \"<string>\",\n    \"location\": {\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\",\n      \"region\": \"<string>\",\n      \"zipcode\": \"<string>\",\n      \"displayString\": \"<string>\"\n    },\n    \"os\": \"<string>\",\n    \"userAgent\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "53278dce-eaf8-4d60-8aca-8a3972bd97bc",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "system",
+                    "audit-log"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"auditLog\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"id\": \"<long>\",\n    \"insertInstant\": \"<long>\",\n    \"insertUser\": \"<string>\",\n    \"message\": \"<string>\",\n    \"newValue\": \"<object>\",\n    \"oldValue\": \"<object>\",\n    \"reason\": \"<string>\",\n    \"tenantId\": \"<uuid>\"\n  },\n  \"eventInfo\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"deviceDescription\": \"<string>\",\n    \"deviceName\": \"<string>\",\n    \"deviceType\": \"<string>\",\n    \"ipAddress\": \"<string>\",\n    \"location\": {\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\",\n      \"region\": \"<string>\",\n      \"zipcode\": \"<string>\",\n      \"displayString\": \"<string>\"\n    },\n    \"os\": \"<string>\",\n    \"userAgent\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"auditLog\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"id\": \"<long>\",\n    \"insertInstant\": \"<long>\",\n    \"insertUser\": \"<string>\",\n    \"message\": \"<string>\",\n    \"newValue\": \"<object>\",\n    \"oldValue\": \"<object>\",\n    \"reason\": \"<string>\",\n    \"tenantId\": \"<uuid>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "977b84c0-dafd-47fe-b963-f1af8766f176",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "system",
+                    "audit-log"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"auditLog\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"id\": \"<long>\",\n    \"insertInstant\": \"<long>\",\n    \"insertUser\": \"<string>\",\n    \"message\": \"<string>\",\n    \"newValue\": \"<object>\",\n    \"oldValue\": \"<object>\",\n    \"reason\": \"<string>\",\n    \"tenantId\": \"<uuid>\"\n  },\n  \"eventInfo\": {\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"deviceDescription\": \"<string>\",\n    \"deviceName\": \"<string>\",\n    \"deviceType\": \"<string>\",\n    \"ipAddress\": \"<string>\",\n    \"location\": {\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\",\n      \"region\": \"<string>\",\n      \"zipcode\": \"<string>\",\n      \"displayString\": \"<string>\"\n    },\n    \"os\": \"<string>\",\n    \"userAgent\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1347fad6-499d-4d33-b562-c2b949bc7cd1",
+          "name": "search Audit Logs With Id",
+          "request": {
+            "name": "search Audit Logs With Id",
+            "description": {
+              "content": "Searches the audit logs with the specified criteria and pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "system",
+                "audit-log",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"search\": {\n    \"end\": \"<long>\",\n    \"message\": \"<string>\",\n    \"newValue\": \"<string>\",\n    \"oldValue\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"start\": \"<long>\",\n    \"tenantId\": \"<uuid>\",\n    \"user\": \"<string>\",\n    \"numberOfResults\": \"<integer>\",\n    \"orderBy\": \"<string>\",\n    \"startRow\": \"<integer>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "376f0cf2-4e9a-4de2-b162-c8210f9924e1",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "system",
+                    "audit-log",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"search\": {\n    \"end\": \"<long>\",\n    \"message\": \"<string>\",\n    \"newValue\": \"<string>\",\n    \"oldValue\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"start\": \"<long>\",\n    \"tenantId\": \"<uuid>\",\n    \"user\": \"<string>\",\n    \"numberOfResults\": \"<integer>\",\n    \"orderBy\": \"<string>\",\n    \"startRow\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"auditLogs\": [\n    {\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"id\": \"<long>\",\n      \"insertInstant\": \"<long>\",\n      \"insertUser\": \"<string>\",\n      \"message\": \"<string>\",\n      \"newValue\": \"<object>\",\n      \"oldValue\": \"<object>\",\n      \"reason\": \"<string>\",\n      \"tenantId\": \"<uuid>\"\n    },\n    {\n      \"data\": {\n        \"key_0\": \"<object>\"\n      },\n      \"id\": \"<long>\",\n      \"insertInstant\": \"<long>\",\n      \"insertUser\": \"<string>\",\n      \"message\": \"<string>\",\n      \"newValue\": \"<object>\",\n      \"oldValue\": \"<object>\",\n      \"reason\": \"<string>\",\n      \"tenantId\": \"<uuid>\"\n    }\n  ],\n  \"total\": 5650\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b2071882-5b62-4b0c-8409-4a6cee9c7ecb",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "system",
+                    "audit-log",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"search\": {\n    \"end\": \"<long>\",\n    \"message\": \"<string>\",\n    \"newValue\": \"<string>\",\n    \"oldValue\": \"<string>\",\n    \"reason\": \"<string>\",\n    \"start\": \"<long>\",\n    \"tenantId\": \"<uuid>\",\n    \"user\": \"<string>\",\n    \"numberOfResults\": \"<integer>\",\n    \"orderBy\": \"<string>\",\n    \"startRow\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9de12f23-a73a-4d80-ae15-94c1603fe82c",
+          "name": "retrieve Audit Log With Id",
+          "request": {
+            "name": "retrieve Audit Log With Id",
+            "description": {
+              "content": "Retrieves a single audit log for the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "system",
+                "audit-log",
+                ":auditLogId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "auditLogId",
+                  "description": "(Required) The Id of the audit log to retrieve."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7e47e751-10b5-4ccf-82be-a4d9f51ae951",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "system",
+                    "audit-log",
+                    ":auditLogId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "auditLogId",
+                      "description": "(Required) The Id of the audit log to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"auditLog\": {\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"id\": \"<long>\",\n    \"insertInstant\": \"<long>\",\n    \"insertUser\": \"<string>\",\n    \"message\": \"<string>\",\n    \"newValue\": \"<object>\",\n    \"oldValue\": \"<object>\",\n    \"reason\": \"<string>\",\n    \"tenantId\": \"<uuid>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2053ca95-f461-428a-b8b7-03a0fae91a10",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "system",
+                    "audit-log",
+                    ":auditLogId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "auditLogId",
+                      "description": "(Required) The Id of the audit log to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fe257311-6cc5-42c7-9dd5-71ecb937da71",
+          "name": "search Event Logs With Id",
+          "request": {
+            "name": "search Event Logs With Id",
+            "description": {
+              "content": "Searches the event logs with the specified criteria and pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "system",
+                "event-log",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"search\": {\n    \"end\": \"<long>\",\n    \"message\": \"<string>\",\n    \"start\": \"<long>\",\n    \"type\": \"<string>\",\n    \"numberOfResults\": \"<integer>\",\n    \"orderBy\": \"<string>\",\n    \"startRow\": \"<integer>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c870a4e1-9fde-4a81-819d-792aea0cae07",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "system",
+                    "event-log",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"search\": {\n    \"end\": \"<long>\",\n    \"message\": \"<string>\",\n    \"start\": \"<long>\",\n    \"type\": \"<string>\",\n    \"numberOfResults\": \"<integer>\",\n    \"orderBy\": \"<string>\",\n    \"startRow\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"eventLogs\": [\n    {\n      \"id\": 7218,\n      \"insertInstant\": \"<long>\",\n      \"message\": \"string\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"id\": 5254,\n      \"insertInstant\": \"<long>\",\n      \"message\": \"string\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"total\": 339\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7e2dbdb9-036b-4297-9c60-05b803fbb804",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "system",
+                    "event-log",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"search\": {\n    \"end\": \"<long>\",\n    \"message\": \"<string>\",\n    \"start\": \"<long>\",\n    \"type\": \"<string>\",\n    \"numberOfResults\": \"<integer>\",\n    \"orderBy\": \"<string>\",\n    \"startRow\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c7c401cb-a2ac-4c6a-b056-5363b888c9f7",
+          "name": "retrieve Event Log With Id",
+          "request": {
+            "name": "retrieve Event Log With Id",
+            "description": {
+              "content": "Retrieves a single event log for the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "system",
+                "event-log",
+                ":eventLogId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "eventLogId",
+                  "description": "(Required) The Id of the event log to retrieve."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d790f4c3-a4be-4527-b76e-d1fcc24a9b63",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "system",
+                    "event-log",
+                    ":eventLogId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "eventLogId",
+                      "description": "(Required) The Id of the event log to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"eventLog\": {\n    \"id\": 4450,\n    \"insertInstant\": \"<long>\",\n    \"message\": \"string\",\n    \"type\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e3ac6487-04da-4492-85c6-5aa537b882e9",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "system",
+                    "event-log",
+                    ":eventLogId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "eventLogId",
+                      "description": "(Required) The Id of the event log to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5fb4e2be-0194-4789-bba9-1e8315543641",
+          "name": "search Login Records With Id",
+          "request": {
+            "name": "search Login Records With Id",
+            "description": {
+              "content": "Searches the login records with the specified criteria and pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "system",
+                "login-record",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"retrieveTotal\": \"<boolean>\",\n  \"search\": {\n    \"applicationId\": \"<uuid>\",\n    \"end\": \"<long>\",\n    \"start\": \"<long>\",\n    \"userId\": \"<uuid>\",\n    \"numberOfResults\": \"<integer>\",\n    \"orderBy\": \"<string>\",\n    \"startRow\": \"<integer>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "44bec52b-3606-4b9e-b5da-84d3c6623c8c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "system",
+                    "login-record",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"retrieveTotal\": \"<boolean>\",\n  \"search\": {\n    \"applicationId\": \"<uuid>\",\n    \"end\": \"<long>\",\n    \"start\": \"<long>\",\n    \"userId\": \"<uuid>\",\n    \"numberOfResults\": \"<integer>\",\n    \"orderBy\": \"<string>\",\n    \"startRow\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"logins\": [\n    {\n      \"applicationName\": \"string\",\n      \"location\": {\n        \"city\": \"<string>\",\n        \"country\": \"<string>\",\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\",\n        \"region\": \"<string>\",\n        \"zipcode\": \"<string>\",\n        \"displayString\": \"<string>\"\n      },\n      \"loginId\": \"string\",\n      \"loginIdType\": {\n        \"name\": \"string\"\n      },\n      \"applicationId\": \"081e791b-17a0-4400-0ad5-836295892f83\",\n      \"instant\": \"<long>\",\n      \"ipAddress\": \"string\",\n      \"userId\": \"6e1ce6c3-a313-1801-0745-54050d28954e\"\n    },\n    {\n      \"applicationName\": \"string\",\n      \"location\": {\n        \"city\": \"<string>\",\n        \"country\": \"<string>\",\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\",\n        \"region\": \"<string>\",\n        \"zipcode\": \"<string>\",\n        \"displayString\": \"<string>\"\n      },\n      \"loginId\": \"string\",\n      \"loginIdType\": {\n        \"name\": \"string\"\n      },\n      \"applicationId\": \"cd69b23f-8560-f67c-25ee-999a64548b77\",\n      \"instant\": \"<long>\",\n      \"ipAddress\": \"string\",\n      \"userId\": \"75b67f99-309e-76c0-642c-baf2011ebb62\"\n    }\n  ],\n  \"total\": 3596\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8cb3f156-47fb-4eab-87b4-ba9645825df3",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "system",
+                    "login-record",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"retrieveTotal\": \"<boolean>\",\n  \"search\": {\n    \"applicationId\": \"<uuid>\",\n    \"end\": \"<long>\",\n    \"start\": \"<long>\",\n    \"userId\": \"<uuid>\",\n    \"numberOfResults\": \"<integer>\",\n    \"orderBy\": \"<string>\",\n    \"startRow\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9534a1c8-cc56-44e4-8e5d-b0f2f88a5458",
+          "name": "reindex With Id",
+          "request": {
+            "name": "reindex With Id",
+            "description": {
+              "content": "Requests Elasticsearch to delete and rebuild the index for FusionAuth users or entities. Be very careful when running this request as it will  increase the CPU and I/O load on your database until the operation completes. Generally speaking you do not ever need to run this operation unless  instructed by FusionAuth support, or if you are migrating a database another system and you are not brining along the Elasticsearch index.   You have been warned.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "system",
+                "reindex"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"index\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "397792d4-c41c-427f-902d-422198511b41",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "system",
+                    "reindex"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"index\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e336e46b-294a-47ea-a465-f9b24e5b917e",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "system",
+                    "reindex"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"index\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "75788426-3d8b-4259-8d5a-6f3c0e5f3841",
+          "name": "retrieve Version With Id",
+          "request": {
+            "name": "retrieve Version With Id",
+            "description": {
+              "content": "Retrieves the FusionAuth version string.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "system",
+                "version"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d15b9efe-3705-4a30-a697-ef43ab80cb9c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "system",
+                    "version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "95f95f00-1f63-4721-acd3-a416407723ec",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "system",
+                    "version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "88d792c1-0934-4946-a238-e00c155eb48e",
+          "name": "retrieve Webhook Attempt Log With Id",
+          "request": {
+            "name": "retrieve Webhook Attempt Log With Id",
+            "description": {
+              "content": "Retrieves a single webhook attempt log for the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "system",
+                "webhook-attempt-log",
+                ":webhookAttemptLogId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "webhookAttemptLogId",
+                  "description": "(Required) The Id of the webhook attempt log to retrieve."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ab5280d0-3243-4586-8955-ef7143873444",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "system",
+                    "webhook-attempt-log",
+                    ":webhookAttemptLogId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "webhookAttemptLogId",
+                      "description": "(Required) The Id of the webhook attempt log to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"webhookAttemptLog\": {\n    \"data\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"endInstant\": \"<long>\",\n    \"id\": \"39712acf-9462-5f01-b61d-ec424d641b7c\",\n    \"startInstant\": \"<long>\",\n    \"webhookCallResponse\": {\n      \"exception\": \"string\",\n      \"statusCode\": 6077,\n      \"url\": \"string\"\n    },\n    \"webhookEventLogId\": \"3eb365dd-0797-ecab-6133-e35190beb25b\",\n    \"webhookId\": \"b45648fc-5be3-588c-8591-0241a34d2a8e\",\n    \"attemptResult\": \"Unknown\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "32f38061-8993-4fbc-89b0-f5841b0b3ea2",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "system",
+                    "webhook-attempt-log",
+                    ":webhookAttemptLogId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "webhookAttemptLogId",
+                      "description": "(Required) The Id of the webhook attempt log to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1d570b94-ba8b-4cf6-afcc-9d1612e2d82a",
+          "name": "search Webhook Event Logs With Id",
+          "request": {
+            "name": "search Webhook Event Logs With Id",
+            "description": {
+              "content": "Searches the webhook event logs with the specified criteria and pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "system",
+                "webhook-event-log",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"search\": {\n    \"end\": \"<long>\",\n    \"event\": \"<string>\",\n    \"eventResult\": \"<string>\",\n    \"eventType\": \"<string>\",\n    \"start\": \"<long>\",\n    \"numberOfResults\": \"<integer>\",\n    \"orderBy\": \"<string>\",\n    \"startRow\": \"<integer>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4ac92668-e3f3-4d41-8ea7-0b0985c38974",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "system",
+                    "webhook-event-log",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"search\": {\n    \"end\": \"<long>\",\n    \"event\": \"<string>\",\n    \"eventResult\": \"<string>\",\n    \"eventType\": \"<string>\",\n    \"start\": \"<long>\",\n    \"numberOfResults\": \"<integer>\",\n    \"orderBy\": \"<string>\",\n    \"startRow\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 4673,\n  \"webhookEventLogs\": [\n    {\n      \"attempts\": [\n        {\n          \"data\": {\n            \"key_0\": {}\n          },\n          \"endInstant\": \"<long>\",\n          \"id\": \"2d29f32b-7a68-1fa7-6eee-7d7769235031\",\n          \"startInstant\": \"<long>\",\n          \"webhookCallResponse\": {\n            \"exception\": \"string\",\n            \"statusCode\": 1241,\n            \"url\": \"string\"\n          },\n          \"webhookEventLogId\": \"76163833-b719-ecf7-c7fb-77786f5027f8\",\n          \"webhookId\": \"c0195a7f-9973-70b3-9a8e-5dc927884006\",\n          \"attemptResult\": \"Failure\"\n        },\n        {\n          \"data\": {\n            \"key_0\": {},\n            \"key_1\": {}\n          },\n          \"endInstant\": \"<long>\",\n          \"id\": \"c65d9470-fac3-09d3-1080-e626e4c32db9\",\n          \"startInstant\": \"<long>\",\n          \"webhookCallResponse\": {\n            \"exception\": \"string\",\n            \"statusCode\": 722,\n            \"url\": \"string\"\n          },\n          \"webhookEventLogId\": \"d50adce4-4723-f487-0732-da7d50d6ad86\",\n          \"webhookId\": \"059ab12b-b3d7-d7df-473b-1429c04f1c3d\",\n          \"attemptResult\": \"Success\"\n        }\n      ],\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"event\": {\n        \"event\": {\n          \"createInstant\": \"<long>\",\n          \"id\": \"c41a0c79-3469-fdf4-bfb7-227bfdd4a370\",\n          \"info\": {\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"deviceDescription\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"deviceName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"deviceType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ipAddress\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"location\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"os\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"userAgent\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"tenantId\": \"f927c1c9-1a7a-baff-4257-2ff37252fa4d\",\n          \"type\": \"<string>\"\n        }\n      },\n      \"eventResult\": \"<string>\",\n      \"eventType\": \"<string>\",\n      \"id\": \"5c206b37-15a5-33f7-0651-fa1980fbc854\",\n      \"insertInstant\": \"<long>\",\n      \"lastAttemptInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"linkedObjectId\": \"951a1b4c-32e4-1948-dc00-730e319d0f6d\",\n      \"sequence\": 5888,\n      \"failedAttempts\": 3967,\n      \"successfulAttempts\": 8065\n    },\n    {\n      \"attempts\": [\n        {\n          \"data\": {\n            \"key_0\": {}\n          },\n          \"endInstant\": \"<long>\",\n          \"id\": \"4b90d7e3-549c-9042-a458-64eb50425861\",\n          \"startInstant\": \"<long>\",\n          \"webhookCallResponse\": {\n            \"exception\": \"string\",\n            \"statusCode\": 8978,\n            \"url\": \"string\"\n          },\n          \"webhookEventLogId\": \"fdd8e6c1-9e6f-7316-9f53-b3dfae3a50b5\",\n          \"webhookId\": \"9720869f-1840-b5c6-9185-a6cf7d165f9a\",\n          \"attemptResult\": \"Unknown\"\n        },\n        {\n          \"data\": {\n            \"key_0\": {},\n            \"key_1\": {},\n            \"key_2\": {}\n          },\n          \"endInstant\": \"<long>\",\n          \"id\": \"879aadbf-4eac-6804-e80c-899c7eb50a53\",\n          \"startInstant\": \"<long>\",\n          \"webhookCallResponse\": {\n            \"exception\": \"string\",\n            \"statusCode\": 1205,\n            \"url\": \"string\"\n          },\n          \"webhookEventLogId\": \"d5bec46f-a9a9-2467-97d1-b26ce4bf1ef0\",\n          \"webhookId\": \"74458368-6e3d-65ad-7221-58297a39a086\",\n          \"attemptResult\": \"Unknown\"\n        }\n      ],\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"event\": {\n        \"event\": {\n          \"createInstant\": \"<long>\",\n          \"id\": \"ed9e2364-71b9-f383-b7ed-46dfef0a81ac\",\n          \"info\": {\n            \"data\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"deviceDescription\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"deviceName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"deviceType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ipAddress\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"location\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"os\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"userAgent\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"tenantId\": \"6c6c52e7-f535-4806-ed5e-c10ff434bd0e\",\n          \"type\": \"<string>\"\n        }\n      },\n      \"eventResult\": \"<string>\",\n      \"eventType\": \"<string>\",\n      \"id\": \"20f5d499-b273-e2ad-db45-8406e9020f9c\",\n      \"insertInstant\": \"<long>\",\n      \"lastAttemptInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"linkedObjectId\": \"44332cae-410e-b708-17f0-db6edada3290\",\n      \"sequence\": 8656,\n      \"failedAttempts\": 1344,\n      \"successfulAttempts\": 7550\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7809bb26-4f86-4a2c-9527-98c2ee206920",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "system",
+                    "webhook-event-log",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"search\": {\n    \"end\": \"<long>\",\n    \"event\": \"<string>\",\n    \"eventResult\": \"<string>\",\n    \"eventType\": \"<string>\",\n    \"start\": \"<long>\",\n    \"numberOfResults\": \"<integer>\",\n    \"orderBy\": \"<string>\",\n    \"startRow\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2a869e33-dfa4-443b-938f-584cd7544cb2",
+          "name": "retrieve Webhook Event Log With Id",
+          "request": {
+            "name": "retrieve Webhook Event Log With Id",
+            "description": {
+              "content": "Retrieves a single webhook event log for the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "system",
+                "webhook-event-log",
+                ":webhookEventLogId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "webhookEventLogId",
+                  "description": "(Required) The Id of the webhook event log to retrieve."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "48e80899-4a07-4a52-83a7-d9e29c804b7e",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "system",
+                    "webhook-event-log",
+                    ":webhookEventLogId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "webhookEventLogId",
+                      "description": "(Required) The Id of the webhook event log to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"webhookEventLog\": {\n    \"attempts\": [\n      {\n        \"data\": {\n          \"key_0\": {},\n          \"key_1\": {},\n          \"key_2\": {},\n          \"key_3\": {}\n        },\n        \"endInstant\": \"<long>\",\n        \"id\": \"a288ed37-eb4b-f7dd-c7db-5646f6f078f5\",\n        \"startInstant\": \"<long>\",\n        \"webhookCallResponse\": {\n          \"exception\": \"string\",\n          \"statusCode\": 8419,\n          \"url\": \"string\"\n        },\n        \"webhookEventLogId\": \"6cb06ead-f82f-f1db-3491-11fdfca186fd\",\n        \"webhookId\": \"0b42610a-4fb6-6602-c2b5-c386fc610e0b\",\n        \"attemptResult\": \"Success\"\n      },\n      {\n        \"data\": {\n          \"key_0\": {},\n          \"key_1\": {}\n        },\n        \"endInstant\": \"<long>\",\n        \"id\": \"5c677816-7dd5-ac04-f9ea-aa54ae7b4644\",\n        \"startInstant\": \"<long>\",\n        \"webhookCallResponse\": {\n          \"exception\": \"string\",\n          \"statusCode\": 8585,\n          \"url\": \"string\"\n        },\n        \"webhookEventLogId\": \"db490bfc-7714-aea8-a683-4b2141003fe9\",\n        \"webhookId\": \"45c4ab2c-6f3d-3f4c-e998-70cfb3bb6f93\",\n        \"attemptResult\": \"Unknown\"\n      }\n    ],\n    \"data\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {},\n      \"key_3\": {},\n      \"key_4\": {}\n    },\n    \"event\": {\n      \"event\": {\n        \"createInstant\": \"<long>\",\n        \"id\": \"f80b6de2-94dc-1bc0-5203-16882fdc5f62\",\n        \"info\": {\n          \"data\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"deviceDescription\": \"<string>\",\n          \"deviceName\": \"<string>\",\n          \"deviceType\": \"<string>\",\n          \"ipAddress\": \"<string>\",\n          \"location\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"os\": \"<string>\",\n          \"userAgent\": \"<string>\"\n        },\n        \"tenantId\": \"27ea4709-c8ca-a9c6-2717-12d562996de8\",\n        \"type\": \"<string>\"\n      }\n    },\n    \"eventResult\": \"<string>\",\n    \"eventType\": \"<string>\",\n    \"id\": \"856fae6e-2de1-5999-94dc-f33ef5c005cb\",\n    \"insertInstant\": \"<long>\",\n    \"lastAttemptInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"linkedObjectId\": \"6688e3b5-6378-c9e9-766e-caed95a8c704\",\n    \"sequence\": 6780,\n    \"failedAttempts\": 4277,\n    \"successfulAttempts\": 8078\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "393dea30-83ea-4502-815a-bccdae8a95c9",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "system",
+                    "webhook-event-log",
+                    ":webhookEventLogId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "webhookEventLogId",
+                      "description": "(Required) The Id of the webhook event log to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:9011",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "29922631-2370-426e-bac3-839066f18583",
+    "name": "FusionAuth Api Key System API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.",
+      "type": "text/plain"
+    }
+  }
+}

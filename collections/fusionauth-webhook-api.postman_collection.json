@@ -1,0 +1,1312 @@
+{
+  "item": [
+    {
+      "id": "85f33907-b201-4163-989a-2f9a61d4905b",
+      "name": "Webhook",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4de5beac-d4b1-4469-96e0-d0a26d412fff",
+          "name": "create Webhook",
+          "request": {
+            "name": "create Webhook",
+            "description": {
+              "content": "Creates a webhook. You can optionally specify an Id for the webhook, if not provided one will be generated.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "webhook"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"webhook\": {\n    \"connectTimeout\": \"<integer>\",\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\",\n      \"key_2\": \"<object>\"\n    },\n    \"description\": \"<string>\",\n    \"eventsEnabled\": {\n      \"key_0\": \"<boolean>\",\n      \"key_1\": \"<boolean>\"\n    },\n    \"global\": \"<boolean>\",\n    \"headers\": {},\n    \"httpAuthenticationPassword\": \"<string>\",\n    \"httpAuthenticationUsername\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"readTimeout\": \"<integer>\",\n    \"signatureConfiguration\": {\n      \"signingKeyId\": \"<uuid>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"sslCertificate\": \"<string>\",\n    \"sslCertificateKeyId\": \"<uuid>\",\n    \"tenantIds\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ],\n    \"url\": \"<URI>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "25777385-eb74-4667-ada1-0c85d4b86575",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"webhook\": {\n    \"connectTimeout\": \"<integer>\",\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"description\": \"<string>\",\n    \"eventsEnabled\": {\n      \"key_0\": \"<boolean>\",\n      \"key_1\": \"<boolean>\"\n    },\n    \"global\": \"<boolean>\",\n    \"headers\": {},\n    \"httpAuthenticationPassword\": \"<string>\",\n    \"httpAuthenticationUsername\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"readTimeout\": \"<integer>\",\n    \"signatureConfiguration\": {\n      \"signingKeyId\": \"<uuid>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"sslCertificate\": \"<string>\",\n    \"sslCertificateKeyId\": \"<uuid>\",\n    \"tenantIds\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ],\n    \"url\": \"<URI>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"webhook\": {\n    \"connectTimeout\": \"<integer>\",\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"description\": \"<string>\",\n    \"eventsEnabled\": {\n      \"key_0\": \"<boolean>\",\n      \"key_1\": \"<boolean>\"\n    },\n    \"global\": \"<boolean>\",\n    \"headers\": {},\n    \"httpAuthenticationPassword\": \"<string>\",\n    \"httpAuthenticationUsername\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"readTimeout\": \"<integer>\",\n    \"signatureConfiguration\": {\n      \"signingKeyId\": \"<uuid>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"sslCertificate\": \"<string>\",\n    \"sslCertificateKeyId\": \"<uuid>\",\n    \"tenantIds\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ],\n    \"url\": \"<URI>\"\n  },\n  \"webhooks\": [\n    {\n      \"connectTimeout\": \"<integer>\",\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\",\n        \"key_2\": \"<object>\",\n        \"key_3\": \"<object>\"\n      },\n      \"description\": \"<string>\",\n      \"eventsEnabled\": {\n        \"key_0\": \"<boolean>\"\n      },\n      \"global\": \"<boolean>\",\n      \"headers\": {},\n      \"httpAuthenticationPassword\": \"<string>\",\n      \"httpAuthenticationUsername\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"readTimeout\": \"<integer>\",\n      \"signatureConfiguration\": {\n        \"signingKeyId\": \"<uuid>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"sslCertificate\": \"<string>\",\n      \"sslCertificateKeyId\": \"<uuid>\",\n      \"tenantIds\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"url\": \"<URI>\"\n    },\n    {\n      \"connectTimeout\": \"<integer>\",\n      \"data\": {\n        \"key_0\": \"<object>\"\n      },\n      \"description\": \"<string>\",\n      \"eventsEnabled\": {\n        \"key_0\": \"<boolean>\",\n        \"key_1\": \"<boolean>\",\n        \"key_2\": \"<boolean>\",\n        \"key_3\": \"<boolean>\"\n      },\n      \"global\": \"<boolean>\",\n      \"headers\": {},\n      \"httpAuthenticationPassword\": \"<string>\",\n      \"httpAuthenticationUsername\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"readTimeout\": \"<integer>\",\n      \"signatureConfiguration\": {\n        \"signingKeyId\": \"<uuid>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"sslCertificate\": \"<string>\",\n      \"sslCertificateKeyId\": \"<uuid>\",\n      \"tenantIds\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"url\": \"<URI>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3675e5f6-a900-432e-9c3f-df7312004204",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"webhook\": {\n    \"connectTimeout\": \"<integer>\",\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"description\": \"<string>\",\n    \"eventsEnabled\": {\n      \"key_0\": \"<boolean>\",\n      \"key_1\": \"<boolean>\"\n    },\n    \"global\": \"<boolean>\",\n    \"headers\": {},\n    \"httpAuthenticationPassword\": \"<string>\",\n    \"httpAuthenticationUsername\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"readTimeout\": \"<integer>\",\n    \"signatureConfiguration\": {\n      \"signingKeyId\": \"<uuid>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"sslCertificate\": \"<string>\",\n    \"sslCertificateKeyId\": \"<uuid>\",\n    \"tenantIds\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ],\n    \"url\": \"<URI>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1f45fe3b-a3c4-4e37-9407-4f381471db1d",
+          "name": "retrieve Webhook",
+          "request": {
+            "name": "retrieve Webhook",
+            "description": {
+              "content": "Retrieves the webhook for the given Id. If you pass in null for the Id, this will return all the webhooks.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "webhook"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f5c4a7db-abad-4db6-b96b-c10cd29428d6",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"webhook\": {\n    \"connectTimeout\": \"<integer>\",\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"description\": \"<string>\",\n    \"eventsEnabled\": {\n      \"key_0\": \"<boolean>\",\n      \"key_1\": \"<boolean>\",\n      \"key_2\": \"<boolean>\",\n      \"key_3\": \"<boolean>\"\n    },\n    \"global\": \"<boolean>\",\n    \"headers\": {},\n    \"httpAuthenticationPassword\": \"<string>\",\n    \"httpAuthenticationUsername\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"readTimeout\": \"<integer>\",\n    \"signatureConfiguration\": {\n      \"signingKeyId\": \"<uuid>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"sslCertificate\": \"<string>\",\n    \"sslCertificateKeyId\": \"<uuid>\",\n    \"tenantIds\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ],\n    \"url\": \"<URI>\"\n  },\n  \"webhooks\": [\n    {\n      \"connectTimeout\": \"<integer>\",\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"description\": \"<string>\",\n      \"eventsEnabled\": {\n        \"key_0\": \"<boolean>\",\n        \"key_1\": \"<boolean>\"\n      },\n      \"global\": \"<boolean>\",\n      \"headers\": {},\n      \"httpAuthenticationPassword\": \"<string>\",\n      \"httpAuthenticationUsername\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"readTimeout\": \"<integer>\",\n      \"signatureConfiguration\": {\n        \"signingKeyId\": \"<uuid>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"sslCertificate\": \"<string>\",\n      \"sslCertificateKeyId\": \"<uuid>\",\n      \"tenantIds\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"url\": \"<URI>\"\n    },\n    {\n      \"connectTimeout\": \"<integer>\",\n      \"data\": {\n        \"key_0\": \"<object>\"\n      },\n      \"description\": \"<string>\",\n      \"eventsEnabled\": {\n        \"key_0\": \"<boolean>\",\n        \"key_1\": \"<boolean>\",\n        \"key_2\": \"<boolean>\"\n      },\n      \"global\": \"<boolean>\",\n      \"headers\": {},\n      \"httpAuthenticationPassword\": \"<string>\",\n      \"httpAuthenticationUsername\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"readTimeout\": \"<integer>\",\n      \"signatureConfiguration\": {\n        \"signingKeyId\": \"<uuid>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"sslCertificate\": \"<string>\",\n      \"sslCertificateKeyId\": \"<uuid>\",\n      \"tenantIds\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"url\": \"<URI>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "49e4679b-ddff-403b-8a44-4c1bdf921234",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "86f59d89-92f5-45be-b049-9006acfea101",
+          "name": "search Webhooks With Id",
+          "request": {
+            "name": "search Webhooks With Id",
+            "description": {
+              "content": "Searches webhooks with the specified criteria and pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "webhook",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"search\": {\n    \"description\": \"<string>\",\n    \"tenantId\": \"<uuid>\",\n    \"url\": \"<string>\",\n    \"numberOfResults\": \"<integer>\",\n    \"orderBy\": \"<string>\",\n    \"startRow\": \"<integer>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "32920bd2-85bf-4511-990c-de7325b3f382",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "webhook",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"search\": {\n    \"description\": \"<string>\",\n    \"tenantId\": \"<uuid>\",\n    \"url\": \"<string>\",\n    \"numberOfResults\": \"<integer>\",\n    \"orderBy\": \"<string>\",\n    \"startRow\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 9329,\n  \"webhooks\": [\n    {\n      \"connectTimeout\": \"<integer>\",\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"description\": \"<string>\",\n      \"eventsEnabled\": {\n        \"key_0\": \"<boolean>\"\n      },\n      \"global\": \"<boolean>\",\n      \"headers\": {},\n      \"httpAuthenticationPassword\": \"<string>\",\n      \"httpAuthenticationUsername\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"readTimeout\": \"<integer>\",\n      \"signatureConfiguration\": {\n        \"signingKeyId\": \"<uuid>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"sslCertificate\": \"<string>\",\n      \"sslCertificateKeyId\": \"<uuid>\",\n      \"tenantIds\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"url\": \"<URI>\"\n    },\n    {\n      \"connectTimeout\": \"<integer>\",\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"description\": \"<string>\",\n      \"eventsEnabled\": {\n        \"key_0\": \"<boolean>\"\n      },\n      \"global\": \"<boolean>\",\n      \"headers\": {},\n      \"httpAuthenticationPassword\": \"<string>\",\n      \"httpAuthenticationUsername\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"readTimeout\": \"<integer>\",\n      \"signatureConfiguration\": {\n        \"signingKeyId\": \"<uuid>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"sslCertificate\": \"<string>\",\n      \"sslCertificateKeyId\": \"<uuid>\",\n      \"tenantIds\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"url\": \"<URI>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3074662d-fabb-41a6-b425-bed4aa36c2a6",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "webhook",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"search\": {\n    \"description\": \"<string>\",\n    \"tenantId\": \"<uuid>\",\n    \"url\": \"<string>\",\n    \"numberOfResults\": \"<integer>\",\n    \"orderBy\": \"<string>\",\n    \"startRow\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "73f2c807-983f-4718-818d-dad2c0b2e254",
+          "name": "create Webhook With Id",
+          "request": {
+            "name": "create Webhook With Id",
+            "description": {
+              "content": "Creates a webhook. You can optionally specify an Id for the webhook, if not provided one will be generated.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "webhook",
+                ":webhookId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "webhookId",
+                  "description": "(Required) The Id for the webhook. If not provided a secure random UUID will be generated."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"webhook\": {\n    \"connectTimeout\": \"<integer>\",\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"description\": \"<string>\",\n    \"eventsEnabled\": {\n      \"key_0\": \"<boolean>\",\n      \"key_1\": \"<boolean>\",\n      \"key_2\": \"<boolean>\"\n    },\n    \"global\": \"<boolean>\",\n    \"headers\": {},\n    \"httpAuthenticationPassword\": \"<string>\",\n    \"httpAuthenticationUsername\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"readTimeout\": \"<integer>\",\n    \"signatureConfiguration\": {\n      \"signingKeyId\": \"<uuid>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"sslCertificate\": \"<string>\",\n    \"sslCertificateKeyId\": \"<uuid>\",\n    \"tenantIds\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ],\n    \"url\": \"<URI>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "83cb1bb5-03ca-4d1f-9cde-71f77005b078",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "webhook",
+                    ":webhookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "webhookId",
+                      "description": "(Required) The Id for the webhook. If not provided a secure random UUID will be generated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"webhook\": {\n    \"connectTimeout\": \"<integer>\",\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"description\": \"<string>\",\n    \"eventsEnabled\": {\n      \"key_0\": \"<boolean>\",\n      \"key_1\": \"<boolean>\"\n    },\n    \"global\": \"<boolean>\",\n    \"headers\": {},\n    \"httpAuthenticationPassword\": \"<string>\",\n    \"httpAuthenticationUsername\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"readTimeout\": \"<integer>\",\n    \"signatureConfiguration\": {\n      \"signingKeyId\": \"<uuid>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"sslCertificate\": \"<string>\",\n    \"sslCertificateKeyId\": \"<uuid>\",\n    \"tenantIds\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ],\n    \"url\": \"<URI>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"webhook\": {\n    \"connectTimeout\": \"<integer>\",\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"description\": \"<string>\",\n    \"eventsEnabled\": {\n      \"key_0\": \"<boolean>\",\n      \"key_1\": \"<boolean>\",\n      \"key_2\": \"<boolean>\",\n      \"key_3\": \"<boolean>\"\n    },\n    \"global\": \"<boolean>\",\n    \"headers\": {},\n    \"httpAuthenticationPassword\": \"<string>\",\n    \"httpAuthenticationUsername\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"readTimeout\": \"<integer>\",\n    \"signatureConfiguration\": {\n      \"signingKeyId\": \"<uuid>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"sslCertificate\": \"<string>\",\n    \"sslCertificateKeyId\": \"<uuid>\",\n    \"tenantIds\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ],\n    \"url\": \"<URI>\"\n  },\n  \"webhooks\": [\n    {\n      \"connectTimeout\": \"<integer>\",\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"description\": \"<string>\",\n      \"eventsEnabled\": {\n        \"key_0\": \"<boolean>\",\n        \"key_1\": \"<boolean>\"\n      },\n      \"global\": \"<boolean>\",\n      \"headers\": {},\n      \"httpAuthenticationPassword\": \"<string>\",\n      \"httpAuthenticationUsername\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"readTimeout\": \"<integer>\",\n      \"signatureConfiguration\": {\n        \"signingKeyId\": \"<uuid>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"sslCertificate\": \"<string>\",\n      \"sslCertificateKeyId\": \"<uuid>\",\n      \"tenantIds\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"url\": \"<URI>\"\n    },\n    {\n      \"connectTimeout\": \"<integer>\",\n      \"data\": {\n        \"key_0\": \"<object>\"\n      },\n      \"description\": \"<string>\",\n      \"eventsEnabled\": {\n        \"key_0\": \"<boolean>\",\n        \"key_1\": \"<boolean>\",\n        \"key_2\": \"<boolean>\"\n      },\n      \"global\": \"<boolean>\",\n      \"headers\": {},\n      \"httpAuthenticationPassword\": \"<string>\",\n      \"httpAuthenticationUsername\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"readTimeout\": \"<integer>\",\n      \"signatureConfiguration\": {\n        \"signingKeyId\": \"<uuid>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"sslCertificate\": \"<string>\",\n      \"sslCertificateKeyId\": \"<uuid>\",\n      \"tenantIds\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"url\": \"<URI>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0e391225-ba0a-4ace-b3f2-531b489ec646",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "webhook",
+                    ":webhookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "webhookId",
+                      "description": "(Required) The Id for the webhook. If not provided a secure random UUID will be generated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"webhook\": {\n    \"connectTimeout\": \"<integer>\",\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"description\": \"<string>\",\n    \"eventsEnabled\": {\n      \"key_0\": \"<boolean>\",\n      \"key_1\": \"<boolean>\"\n    },\n    \"global\": \"<boolean>\",\n    \"headers\": {},\n    \"httpAuthenticationPassword\": \"<string>\",\n    \"httpAuthenticationUsername\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"readTimeout\": \"<integer>\",\n    \"signatureConfiguration\": {\n      \"signingKeyId\": \"<uuid>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"sslCertificate\": \"<string>\",\n    \"sslCertificateKeyId\": \"<uuid>\",\n    \"tenantIds\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ],\n    \"url\": \"<URI>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3159255b-fda9-463b-9657-96aeb506207e",
+          "name": "delete Webhook With Id",
+          "request": {
+            "name": "delete Webhook With Id",
+            "description": {
+              "content": "Deletes the webhook for the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "webhook",
+                ":webhookId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "webhookId",
+                  "description": "(Required) The Id of the webhook to delete."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "538e481c-f0f0-4e40-833e-8d5b6a63b7c7",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "webhook",
+                    ":webhookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "webhookId",
+                      "description": "(Required) The Id of the webhook to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ff4c71c9-c46f-4690-a6e5-8891582670df",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "webhook",
+                    ":webhookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "webhookId",
+                      "description": "(Required) The Id of the webhook to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "97655dd5-a08b-4705-ad5c-c12530b09501",
+          "name": "patch Webhook With Id",
+          "request": {
+            "name": "patch Webhook With Id",
+            "description": {
+              "content": "Patches the webhook with the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "webhook",
+                ":webhookId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "webhookId",
+                  "description": "(Required) The Id of the webhook to update."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"webhook\": {\n    \"connectTimeout\": \"<integer>\",\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"description\": \"<string>\",\n    \"eventsEnabled\": {\n      \"key_0\": \"<boolean>\",\n      \"key_1\": \"<boolean>\",\n      \"key_2\": \"<boolean>\"\n    },\n    \"global\": \"<boolean>\",\n    \"headers\": {},\n    \"httpAuthenticationPassword\": \"<string>\",\n    \"httpAuthenticationUsername\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"readTimeout\": \"<integer>\",\n    \"signatureConfiguration\": {\n      \"signingKeyId\": \"<uuid>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"sslCertificate\": \"<string>\",\n    \"sslCertificateKeyId\": \"<uuid>\",\n    \"tenantIds\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ],\n    \"url\": \"<URI>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "75dd12f9-46a5-445d-9894-53e272786f03",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "webhook",
+                    ":webhookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "webhookId",
+                      "description": "(Required) The Id of the webhook to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"webhook\": {\n    \"connectTimeout\": \"<integer>\",\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"description\": \"<string>\",\n    \"eventsEnabled\": {\n      \"key_0\": \"<boolean>\",\n      \"key_1\": \"<boolean>\"\n    },\n    \"global\": \"<boolean>\",\n    \"headers\": {},\n    \"httpAuthenticationPassword\": \"<string>\",\n    \"httpAuthenticationUsername\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"readTimeout\": \"<integer>\",\n    \"signatureConfiguration\": {\n      \"signingKeyId\": \"<uuid>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"sslCertificate\": \"<string>\",\n    \"sslCertificateKeyId\": \"<uuid>\",\n    \"tenantIds\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ],\n    \"url\": \"<URI>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"webhook\": {\n    \"connectTimeout\": \"<integer>\",\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"description\": \"<string>\",\n    \"eventsEnabled\": {\n      \"key_0\": \"<boolean>\",\n      \"key_1\": \"<boolean>\",\n      \"key_2\": \"<boolean>\",\n      \"key_3\": \"<boolean>\"\n    },\n    \"global\": \"<boolean>\",\n    \"headers\": {},\n    \"httpAuthenticationPassword\": \"<string>\",\n    \"httpAuthenticationUsername\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"readTimeout\": \"<integer>\",\n    \"signatureConfiguration\": {\n      \"signingKeyId\": \"<uuid>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"sslCertificate\": \"<string>\",\n    \"sslCertificateKeyId\": \"<uuid>\",\n    \"tenantIds\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ],\n    \"url\": \"<URI>\"\n  },\n  \"webhooks\": [\n    {\n      \"connectTimeout\": \"<integer>\",\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"description\": \"<string>\",\n      \"eventsEnabled\": {\n        \"key_0\": \"<boolean>\",\n        \"key_1\": \"<boolean>\"\n      },\n      \"global\": \"<boolean>\",\n      \"headers\": {},\n      \"httpAuthenticationPassword\": \"<string>\",\n      \"httpAuthenticationUsername\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"readTimeout\": \"<integer>\",\n      \"signatureConfiguration\": {\n        \"signingKeyId\": \"<uuid>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"sslCertificate\": \"<string>\",\n      \"sslCertificateKeyId\": \"<uuid>\",\n      \"tenantIds\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"url\": \"<URI>\"\n    },\n    {\n      \"connectTimeout\": \"<integer>\",\n      \"data\": {\n        \"key_0\": \"<object>\"\n      },\n      \"description\": \"<string>\",\n      \"eventsEnabled\": {\n        \"key_0\": \"<boolean>\",\n        \"key_1\": \"<boolean>\",\n        \"key_2\": \"<boolean>\"\n      },\n      \"global\": \"<boolean>\",\n      \"headers\": {},\n      \"httpAuthenticationPassword\": \"<string>\",\n      \"httpAuthenticationUsername\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"readTimeout\": \"<integer>\",\n      \"signatureConfiguration\": {\n        \"signingKeyId\": \"<uuid>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"sslCertificate\": \"<string>\",\n      \"sslCertificateKeyId\": \"<uuid>\",\n      \"tenantIds\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"url\": \"<URI>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d870815d-31b3-46a9-b4f2-fc48f2c0448b",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "webhook",
+                    ":webhookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "webhookId",
+                      "description": "(Required) The Id of the webhook to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"webhook\": {\n    \"connectTimeout\": \"<integer>\",\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"description\": \"<string>\",\n    \"eventsEnabled\": {\n      \"key_0\": \"<boolean>\",\n      \"key_1\": \"<boolean>\"\n    },\n    \"global\": \"<boolean>\",\n    \"headers\": {},\n    \"httpAuthenticationPassword\": \"<string>\",\n    \"httpAuthenticationUsername\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"readTimeout\": \"<integer>\",\n    \"signatureConfiguration\": {\n      \"signingKeyId\": \"<uuid>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"sslCertificate\": \"<string>\",\n    \"sslCertificateKeyId\": \"<uuid>\",\n    \"tenantIds\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ],\n    \"url\": \"<URI>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "73a32236-e08d-417d-85f7-8a1a5932154e",
+          "name": "retrieve Webhook With Id",
+          "request": {
+            "name": "retrieve Webhook With Id",
+            "description": {
+              "content": "Retrieves the webhook for the given Id. If you pass in null for the Id, this will return all the webhooks.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "webhook",
+                ":webhookId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "webhookId",
+                  "description": "(Required) The Id of the webhook."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "767871b6-1ee3-4a5d-8742-55b28bba4aed",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "webhook",
+                    ":webhookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "webhookId",
+                      "description": "(Required) The Id of the webhook."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"webhook\": {\n    \"connectTimeout\": \"<integer>\",\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"description\": \"<string>\",\n    \"eventsEnabled\": {\n      \"key_0\": \"<boolean>\",\n      \"key_1\": \"<boolean>\",\n      \"key_2\": \"<boolean>\",\n      \"key_3\": \"<boolean>\"\n    },\n    \"global\": \"<boolean>\",\n    \"headers\": {},\n    \"httpAuthenticationPassword\": \"<string>\",\n    \"httpAuthenticationUsername\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"readTimeout\": \"<integer>\",\n    \"signatureConfiguration\": {\n      \"signingKeyId\": \"<uuid>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"sslCertificate\": \"<string>\",\n    \"sslCertificateKeyId\": \"<uuid>\",\n    \"tenantIds\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ],\n    \"url\": \"<URI>\"\n  },\n  \"webhooks\": [\n    {\n      \"connectTimeout\": \"<integer>\",\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"description\": \"<string>\",\n      \"eventsEnabled\": {\n        \"key_0\": \"<boolean>\",\n        \"key_1\": \"<boolean>\"\n      },\n      \"global\": \"<boolean>\",\n      \"headers\": {},\n      \"httpAuthenticationPassword\": \"<string>\",\n      \"httpAuthenticationUsername\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"readTimeout\": \"<integer>\",\n      \"signatureConfiguration\": {\n        \"signingKeyId\": \"<uuid>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"sslCertificate\": \"<string>\",\n      \"sslCertificateKeyId\": \"<uuid>\",\n      \"tenantIds\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"url\": \"<URI>\"\n    },\n    {\n      \"connectTimeout\": \"<integer>\",\n      \"data\": {\n        \"key_0\": \"<object>\"\n      },\n      \"description\": \"<string>\",\n      \"eventsEnabled\": {\n        \"key_0\": \"<boolean>\",\n        \"key_1\": \"<boolean>\",\n        \"key_2\": \"<boolean>\"\n      },\n      \"global\": \"<boolean>\",\n      \"headers\": {},\n      \"httpAuthenticationPassword\": \"<string>\",\n      \"httpAuthenticationUsername\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"readTimeout\": \"<integer>\",\n      \"signatureConfiguration\": {\n        \"signingKeyId\": \"<uuid>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"sslCertificate\": \"<string>\",\n      \"sslCertificateKeyId\": \"<uuid>\",\n      \"tenantIds\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"url\": \"<URI>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "97dd4d72-59d4-4320-b602-ee5c7723d7ca",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "webhook",
+                    ":webhookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "webhookId",
+                      "description": "(Required) The Id of the webhook."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a087b83c-286f-4398-8beb-3a77416317f4",
+          "name": "update Webhook With Id",
+          "request": {
+            "name": "update Webhook With Id",
+            "description": {
+              "content": "Updates the webhook with the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "webhook",
+                ":webhookId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "webhookId",
+                  "description": "(Required) The Id of the webhook to update."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"webhook\": {\n    \"connectTimeout\": \"<integer>\",\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"description\": \"<string>\",\n    \"eventsEnabled\": {\n      \"key_0\": \"<boolean>\",\n      \"key_1\": \"<boolean>\",\n      \"key_2\": \"<boolean>\"\n    },\n    \"global\": \"<boolean>\",\n    \"headers\": {},\n    \"httpAuthenticationPassword\": \"<string>\",\n    \"httpAuthenticationUsername\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"readTimeout\": \"<integer>\",\n    \"signatureConfiguration\": {\n      \"signingKeyId\": \"<uuid>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"sslCertificate\": \"<string>\",\n    \"sslCertificateKeyId\": \"<uuid>\",\n    \"tenantIds\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ],\n    \"url\": \"<URI>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0e0d0059-6a20-40f1-94b3-637d3e4eb559",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "webhook",
+                    ":webhookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "webhookId",
+                      "description": "(Required) The Id of the webhook to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"webhook\": {\n    \"connectTimeout\": \"<integer>\",\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"description\": \"<string>\",\n    \"eventsEnabled\": {\n      \"key_0\": \"<boolean>\",\n      \"key_1\": \"<boolean>\"\n    },\n    \"global\": \"<boolean>\",\n    \"headers\": {},\n    \"httpAuthenticationPassword\": \"<string>\",\n    \"httpAuthenticationUsername\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"readTimeout\": \"<integer>\",\n    \"signatureConfiguration\": {\n      \"signingKeyId\": \"<uuid>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"sslCertificate\": \"<string>\",\n    \"sslCertificateKeyId\": \"<uuid>\",\n    \"tenantIds\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ],\n    \"url\": \"<URI>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"webhook\": {\n    \"connectTimeout\": \"<integer>\",\n    \"data\": {\n      \"key_0\": \"<object>\"\n    },\n    \"description\": \"<string>\",\n    \"eventsEnabled\": {\n      \"key_0\": \"<boolean>\",\n      \"key_1\": \"<boolean>\",\n      \"key_2\": \"<boolean>\",\n      \"key_3\": \"<boolean>\"\n    },\n    \"global\": \"<boolean>\",\n    \"headers\": {},\n    \"httpAuthenticationPassword\": \"<string>\",\n    \"httpAuthenticationUsername\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"readTimeout\": \"<integer>\",\n    \"signatureConfiguration\": {\n      \"signingKeyId\": \"<uuid>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"sslCertificate\": \"<string>\",\n    \"sslCertificateKeyId\": \"<uuid>\",\n    \"tenantIds\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ],\n    \"url\": \"<URI>\"\n  },\n  \"webhooks\": [\n    {\n      \"connectTimeout\": \"<integer>\",\n      \"data\": {\n        \"key_0\": \"<object>\",\n        \"key_1\": \"<object>\"\n      },\n      \"description\": \"<string>\",\n      \"eventsEnabled\": {\n        \"key_0\": \"<boolean>\",\n        \"key_1\": \"<boolean>\"\n      },\n      \"global\": \"<boolean>\",\n      \"headers\": {},\n      \"httpAuthenticationPassword\": \"<string>\",\n      \"httpAuthenticationUsername\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"readTimeout\": \"<integer>\",\n      \"signatureConfiguration\": {\n        \"signingKeyId\": \"<uuid>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"sslCertificate\": \"<string>\",\n      \"sslCertificateKeyId\": \"<uuid>\",\n      \"tenantIds\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"url\": \"<URI>\"\n    },\n    {\n      \"connectTimeout\": \"<integer>\",\n      \"data\": {\n        \"key_0\": \"<object>\"\n      },\n      \"description\": \"<string>\",\n      \"eventsEnabled\": {\n        \"key_0\": \"<boolean>\",\n        \"key_1\": \"<boolean>\",\n        \"key_2\": \"<boolean>\"\n      },\n      \"global\": \"<boolean>\",\n      \"headers\": {},\n      \"httpAuthenticationPassword\": \"<string>\",\n      \"httpAuthenticationUsername\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"readTimeout\": \"<integer>\",\n      \"signatureConfiguration\": {\n        \"signingKeyId\": \"<uuid>\",\n        \"enabled\": \"<boolean>\"\n      },\n      \"sslCertificate\": \"<string>\",\n      \"sslCertificateKeyId\": \"<uuid>\",\n      \"tenantIds\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"url\": \"<URI>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "65519096-5b94-4f58-99fd-5228d3d81d68",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "webhook",
+                    ":webhookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "webhookId",
+                      "description": "(Required) The Id of the webhook to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"webhook\": {\n    \"connectTimeout\": \"<integer>\",\n    \"data\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    },\n    \"description\": \"<string>\",\n    \"eventsEnabled\": {\n      \"key_0\": \"<boolean>\",\n      \"key_1\": \"<boolean>\"\n    },\n    \"global\": \"<boolean>\",\n    \"headers\": {},\n    \"httpAuthenticationPassword\": \"<string>\",\n    \"httpAuthenticationUsername\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"readTimeout\": \"<integer>\",\n    \"signatureConfiguration\": {\n      \"signingKeyId\": \"<uuid>\",\n      \"enabled\": \"<boolean>\"\n    },\n    \"sslCertificate\": \"<string>\",\n    \"sslCertificateKeyId\": \"<uuid>\",\n    \"tenantIds\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ],\n    \"url\": \"<URI>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:9011",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "67030fd4-f995-44e7-89e0-72aca5369fc2",
+    "name": "FusionAuth Api Key Webhook API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.",
+      "type": "text/plain"
+    }
+  }
+}

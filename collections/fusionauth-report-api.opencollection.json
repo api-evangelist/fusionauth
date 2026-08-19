@@ -1,0 +1,187 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FusionAuth Api Key Report API",
+    "version": "1.66.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Report",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "retrieveDailyActiveReportWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/report/daily-active-user",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "query",
+                "description": "The application Id."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "The start instant as UTC milliseconds since Epoch."
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "The end instant as UTC milliseconds since Epoch."
+              }
+            ]
+          },
+          "docs": "Retrieves the daily active user report between the two instants. If you specify an application Id, it will only return the daily active counts for that application."
+        },
+        {
+          "info": {
+            "name": "retrieveReportLogin",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/report/login",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "query",
+                "description": "The application id."
+              },
+              {
+                "name": "loginId",
+                "value": "",
+                "type": "query",
+                "description": "The userId id."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "The start instant as UTC milliseconds since Epoch."
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "The end instant as UTC milliseconds since Epoch."
+              },
+              {
+                "name": "loginIdTypes",
+                "value": "",
+                "type": "query",
+                "description": "The identity types that FusionAuth will compare the loginId to."
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "query",
+                "description": "The userId Id."
+              }
+            ]
+          },
+          "docs": "Retrieves the login report between the two instants for a particular user by login Id, using specific loginIdTypes. If you specify an application id, it will only return the login counts for that application. OR Retrieves the login report between the two instants for a particular user by login Id. If you specify an application Id, it will only return the login counts for that application. OR Retrieves the login report between the two instants for a particular user by Id. If you specify an applic"
+        },
+        {
+          "info": {
+            "name": "retrieveMonthlyActiveReportWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/report/monthly-active-user",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "query",
+                "description": "The application Id."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "The start instant as UTC milliseconds since Epoch."
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "The end instant as UTC milliseconds since Epoch."
+              }
+            ]
+          },
+          "docs": "Retrieves the monthly active user report between the two instants. If you specify an application Id, it will only return the monthly active counts for that application."
+        },
+        {
+          "info": {
+            "name": "retrieveRegistrationReportWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/report/registration",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "query",
+                "description": "The application Id."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "The start instant as UTC milliseconds since Epoch."
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "The end instant as UTC milliseconds since Epoch."
+              }
+            ]
+          },
+          "docs": "Retrieves the registration report between the two instants. If you specify an application Id, it will only return the registration counts for that application."
+        },
+        {
+          "info": {
+            "name": "retrieveTotalReportWithExcludesWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/report/totals",
+            "params": [
+              {
+                "name": "excludes",
+                "value": "",
+                "type": "query",
+                "description": "List of fields to exclude in the response. Currently only allows applicationTotals."
+              }
+            ]
+          },
+          "docs": "Retrieves the totals report. This allows excluding applicationTotals from the report. An empty list will include the applicationTotals."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

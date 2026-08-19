@@ -1,0 +1,1040 @@
+{
+  "item": [
+    {
+      "id": "67f589bc-450a-471d-9644-63e2eac65518",
+      "name": "Api Key",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1de9209e-11e1-4dac-9da7-b3a95ce9c8e3",
+          "name": "create API Key",
+          "request": {
+            "name": "create API Key",
+            "description": {
+              "content": "Creates an API key. You can optionally specify a unique Id for the key, if not provided one will be generated. an API key can only be created with equal or lesser authority. An API key cannot create another API key unless it is granted  to that API key.  If an API key is locked to a tenant, it can only create API Keys for that same tenant.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "api-key"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"apiKey\": {\n    \"expirationInstant\": \"<long>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"ipAccessControlListId\": \"<uuid>\",\n    \"key\": \"<string>\",\n    \"keyManager\": \"<boolean>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"metaData\": {\n      \"attributes\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    },\n    \"name\": \"<string>\",\n    \"permissions\": {\n      \"endpoints\": {}\n    },\n    \"retrievable\": \"<boolean>\",\n    \"tenantId\": \"<uuid>\"\n  },\n  \"sourceKeyId\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d01590d8-3f11-404c-ba9d-41e8774e2272",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "api-key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"apiKey\": {\n    \"expirationInstant\": \"<long>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"ipAccessControlListId\": \"<uuid>\",\n    \"key\": \"<string>\",\n    \"keyManager\": \"<boolean>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"metaData\": {\n      \"attributes\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    },\n    \"name\": \"<string>\",\n    \"permissions\": {\n      \"endpoints\": {}\n    },\n    \"retrievable\": \"<boolean>\",\n    \"tenantId\": \"<uuid>\"\n  },\n  \"sourceKeyId\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"apiKey\": {\n    \"expirationInstant\": \"<long>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"ipAccessControlListId\": \"<uuid>\",\n    \"key\": \"<string>\",\n    \"keyManager\": \"<boolean>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"metaData\": {\n      \"attributes\": {\n        \"key_0\": \"<string>\"\n      }\n    },\n    \"name\": \"<string>\",\n    \"permissions\": {\n      \"endpoints\": {}\n    },\n    \"retrievable\": \"<boolean>\",\n    \"tenantId\": \"<uuid>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "af447fdb-6e30-4939-b045-e9c140e4edea",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "api-key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"apiKey\": {\n    \"expirationInstant\": \"<long>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"ipAccessControlListId\": \"<uuid>\",\n    \"key\": \"<string>\",\n    \"keyManager\": \"<boolean>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"metaData\": {\n      \"attributes\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    },\n    \"name\": \"<string>\",\n    \"permissions\": {\n      \"endpoints\": {}\n    },\n    \"retrievable\": \"<boolean>\",\n    \"tenantId\": \"<uuid>\"\n  },\n  \"sourceKeyId\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2e92982b-02dc-422e-bb4c-e101c2899a36",
+          "name": "create API Key With Id",
+          "request": {
+            "name": "create API Key With Id",
+            "description": {
+              "content": "Creates an API key. You can optionally specify a unique Id for the key, if not provided one will be generated. an API key can only be created with equal or lesser authority. An API key cannot create another API key unless it is granted  to that API key.  If an API key is locked to a tenant, it can only create API Keys for that same tenant.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "api-key",
+                ":keyId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "keyId",
+                  "description": "(Required) The unique Id of the API key. If not provided a secure random Id will be generated."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"apiKey\": {\n    \"expirationInstant\": \"<long>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"ipAccessControlListId\": \"<uuid>\",\n    \"key\": \"<string>\",\n    \"keyManager\": \"<boolean>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"metaData\": {\n      \"attributes\": {\n        \"key_0\": \"<string>\"\n      }\n    },\n    \"name\": \"<string>\",\n    \"permissions\": {\n      \"endpoints\": {}\n    },\n    \"retrievable\": \"<boolean>\",\n    \"tenantId\": \"<uuid>\"\n  },\n  \"sourceKeyId\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2cb6f191-3d55-4790-aeea-f818d3d1e9c5",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "api-key",
+                    ":keyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "keyId",
+                      "description": "(Required) The unique Id of the API key. If not provided a secure random Id will be generated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"apiKey\": {\n    \"expirationInstant\": \"<long>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"ipAccessControlListId\": \"<uuid>\",\n    \"key\": \"<string>\",\n    \"keyManager\": \"<boolean>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"metaData\": {\n      \"attributes\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    },\n    \"name\": \"<string>\",\n    \"permissions\": {\n      \"endpoints\": {}\n    },\n    \"retrievable\": \"<boolean>\",\n    \"tenantId\": \"<uuid>\"\n  },\n  \"sourceKeyId\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"apiKey\": {\n    \"expirationInstant\": \"<long>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"ipAccessControlListId\": \"<uuid>\",\n    \"key\": \"<string>\",\n    \"keyManager\": \"<boolean>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"metaData\": {\n      \"attributes\": {\n        \"key_0\": \"<string>\"\n      }\n    },\n    \"name\": \"<string>\",\n    \"permissions\": {\n      \"endpoints\": {}\n    },\n    \"retrievable\": \"<boolean>\",\n    \"tenantId\": \"<uuid>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e67a5043-653d-4d5d-adfb-d5090b4cf13c",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "api-key",
+                    ":keyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "keyId",
+                      "description": "(Required) The unique Id of the API key. If not provided a secure random Id will be generated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"apiKey\": {\n    \"expirationInstant\": \"<long>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"ipAccessControlListId\": \"<uuid>\",\n    \"key\": \"<string>\",\n    \"keyManager\": \"<boolean>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"metaData\": {\n      \"attributes\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    },\n    \"name\": \"<string>\",\n    \"permissions\": {\n      \"endpoints\": {}\n    },\n    \"retrievable\": \"<boolean>\",\n    \"tenantId\": \"<uuid>\"\n  },\n  \"sourceKeyId\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a8a5c40a-c8c9-4fd1-92da-e57e3f619812",
+          "name": "delete API Key With Id",
+          "request": {
+            "name": "delete API Key With Id",
+            "description": {
+              "content": "Deletes the API key for the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "api-key",
+                ":keyId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "keyId",
+                  "description": "(Required) The Id of the authentication API key to delete."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bf66162c-1c0a-42e0-9f4f-b1ede6f91c1e",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "api-key",
+                    ":keyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "keyId",
+                      "description": "(Required) The Id of the authentication API key to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "056f74c8-49c4-4c63-99a3-3e176d24e5ef",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "api-key",
+                    ":keyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "keyId",
+                      "description": "(Required) The Id of the authentication API key to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c3b1b375-0658-43a2-bd9f-2b6f6c4bed24",
+          "name": "patch API Key With Id",
+          "request": {
+            "name": "patch API Key With Id",
+            "description": {
+              "content": "Updates an API key with the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "api-key",
+                ":keyId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "keyId",
+                  "description": "(Required) The Id of the API key. If not provided a secure random api key will be generated."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"apiKey\": {\n    \"expirationInstant\": \"<long>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"ipAccessControlListId\": \"<uuid>\",\n    \"key\": \"<string>\",\n    \"keyManager\": \"<boolean>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"metaData\": {\n      \"attributes\": {\n        \"key_0\": \"<string>\"\n      }\n    },\n    \"name\": \"<string>\",\n    \"permissions\": {\n      \"endpoints\": {}\n    },\n    \"retrievable\": \"<boolean>\",\n    \"tenantId\": \"<uuid>\"\n  },\n  \"sourceKeyId\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "05ac61ed-a049-4e4b-b547-dc9f6c8dfc6e",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "api-key",
+                    ":keyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "keyId",
+                      "description": "(Required) The Id of the API key. If not provided a secure random api key will be generated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"apiKey\": {\n    \"expirationInstant\": \"<long>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"ipAccessControlListId\": \"<uuid>\",\n    \"key\": \"<string>\",\n    \"keyManager\": \"<boolean>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"metaData\": {\n      \"attributes\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    },\n    \"name\": \"<string>\",\n    \"permissions\": {\n      \"endpoints\": {}\n    },\n    \"retrievable\": \"<boolean>\",\n    \"tenantId\": \"<uuid>\"\n  },\n  \"sourceKeyId\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"apiKey\": {\n    \"expirationInstant\": \"<long>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"ipAccessControlListId\": \"<uuid>\",\n    \"key\": \"<string>\",\n    \"keyManager\": \"<boolean>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"metaData\": {\n      \"attributes\": {\n        \"key_0\": \"<string>\"\n      }\n    },\n    \"name\": \"<string>\",\n    \"permissions\": {\n      \"endpoints\": {}\n    },\n    \"retrievable\": \"<boolean>\",\n    \"tenantId\": \"<uuid>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e2a360f9-5362-46ae-8005-7bab6197a8ec",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "api-key",
+                    ":keyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "keyId",
+                      "description": "(Required) The Id of the API key. If not provided a secure random api key will be generated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"apiKey\": {\n    \"expirationInstant\": \"<long>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"ipAccessControlListId\": \"<uuid>\",\n    \"key\": \"<string>\",\n    \"keyManager\": \"<boolean>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"metaData\": {\n      \"attributes\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    },\n    \"name\": \"<string>\",\n    \"permissions\": {\n      \"endpoints\": {}\n    },\n    \"retrievable\": \"<boolean>\",\n    \"tenantId\": \"<uuid>\"\n  },\n  \"sourceKeyId\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fbbee7e7-feb4-4a6b-8b68-01162e08de5e",
+          "name": "retrieve API Key With Id",
+          "request": {
+            "name": "retrieve API Key With Id",
+            "description": {
+              "content": "Retrieves an authentication API key for the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "api-key",
+                ":keyId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "keyId",
+                  "description": "(Required) The Id of the API key to retrieve."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "17df529c-2e3d-4f2a-96c6-88ad8b317350",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "api-key",
+                    ":keyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "keyId",
+                      "description": "(Required) The Id of the API key to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"apiKey\": {\n    \"expirationInstant\": \"<long>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"ipAccessControlListId\": \"<uuid>\",\n    \"key\": \"<string>\",\n    \"keyManager\": \"<boolean>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"metaData\": {\n      \"attributes\": {\n        \"key_0\": \"<string>\"\n      }\n    },\n    \"name\": \"<string>\",\n    \"permissions\": {\n      \"endpoints\": {}\n    },\n    \"retrievable\": \"<boolean>\",\n    \"tenantId\": \"<uuid>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ba455aa3-5515-456f-9887-77b0a29b7e33",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "api-key",
+                    ":keyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "keyId",
+                      "description": "(Required) The Id of the API key to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "96027b13-c9ef-40f8-ade3-536b44eba613",
+          "name": "update API Key With Id",
+          "request": {
+            "name": "update API Key With Id",
+            "description": {
+              "content": "Updates an API key with the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "api-key",
+                ":keyId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "keyId",
+                  "description": "(Required) The Id of the API key to update."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"apiKey\": {\n    \"expirationInstant\": \"<long>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"ipAccessControlListId\": \"<uuid>\",\n    \"key\": \"<string>\",\n    \"keyManager\": \"<boolean>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"metaData\": {\n      \"attributes\": {\n        \"key_0\": \"<string>\"\n      }\n    },\n    \"name\": \"<string>\",\n    \"permissions\": {\n      \"endpoints\": {}\n    },\n    \"retrievable\": \"<boolean>\",\n    \"tenantId\": \"<uuid>\"\n  },\n  \"sourceKeyId\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a6284779-6777-4cec-b240-02502d533287",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "api-key",
+                    ":keyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "keyId",
+                      "description": "(Required) The Id of the API key to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"apiKey\": {\n    \"expirationInstant\": \"<long>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"ipAccessControlListId\": \"<uuid>\",\n    \"key\": \"<string>\",\n    \"keyManager\": \"<boolean>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"metaData\": {\n      \"attributes\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    },\n    \"name\": \"<string>\",\n    \"permissions\": {\n      \"endpoints\": {}\n    },\n    \"retrievable\": \"<boolean>\",\n    \"tenantId\": \"<uuid>\"\n  },\n  \"sourceKeyId\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"apiKey\": {\n    \"expirationInstant\": \"<long>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"ipAccessControlListId\": \"<uuid>\",\n    \"key\": \"<string>\",\n    \"keyManager\": \"<boolean>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"metaData\": {\n      \"attributes\": {\n        \"key_0\": \"<string>\"\n      }\n    },\n    \"name\": \"<string>\",\n    \"permissions\": {\n      \"endpoints\": {}\n    },\n    \"retrievable\": \"<boolean>\",\n    \"tenantId\": \"<uuid>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e28615f4-10d8-470b-aa69-6658239d4704",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "api-key",
+                    ":keyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "keyId",
+                      "description": "(Required) The Id of the API key to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"apiKey\": {\n    \"expirationInstant\": \"<long>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"ipAccessControlListId\": \"<uuid>\",\n    \"key\": \"<string>\",\n    \"keyManager\": \"<boolean>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"metaData\": {\n      \"attributes\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    },\n    \"name\": \"<string>\",\n    \"permissions\": {\n      \"endpoints\": {}\n    },\n    \"retrievable\": \"<boolean>\",\n    \"tenantId\": \"<uuid>\"\n  },\n  \"sourceKeyId\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:9011",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f1932243-8869-456e-8585-fc64cdfadc7f",
+    "name": "FusionAuth Api Key API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.",
+      "type": "text/plain"
+    }
+  }
+}

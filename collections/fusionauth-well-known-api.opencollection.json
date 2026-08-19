@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FusionAuth Api Key .well Known API",
+    "version": "1.66.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": ".well Known",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "retrieveJsonWebKeySetWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/.well-known/jwks.json"
+          },
+          "docs": "Returns public keys used by FusionAuth to cryptographically verify JWTs using the JSON Web Key format."
+        },
+        {
+          "info": {
+            "name": "retrieveOpenIdConfigurationWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/.well-known/openid-configuration"
+          },
+          "docs": "Returns the well known OpenID Configuration JSON document"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

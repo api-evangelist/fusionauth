@@ -1,0 +1,203 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FusionAuth Api Key System API",
+    "version": "1.66.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "System",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "createAuditLogWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/system/audit-log",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an audit log with the message and user name (usually an email). Audit logs should be written anytime you make changes to the FusionAuth database. When using the FusionAuth App web interface, any changes are automatically written to the audit log. However, if you are accessing the API, you must write the audit logs yourself."
+        },
+        {
+          "info": {
+            "name": "searchAuditLogsWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/system/audit-log/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Searches the audit logs with the specified criteria and pagination."
+        },
+        {
+          "info": {
+            "name": "retrieveAuditLogWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/system/audit-log/:auditLogId",
+            "params": [
+              {
+                "name": "auditLogId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the audit log to retrieve."
+              }
+            ]
+          },
+          "docs": "Retrieves a single audit log for the given Id."
+        },
+        {
+          "info": {
+            "name": "searchEventLogsWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/system/event-log/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Searches the event logs with the specified criteria and pagination."
+        },
+        {
+          "info": {
+            "name": "retrieveEventLogWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/system/event-log/:eventLogId",
+            "params": [
+              {
+                "name": "eventLogId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the event log to retrieve."
+              }
+            ]
+          },
+          "docs": "Retrieves a single event log for the given Id."
+        },
+        {
+          "info": {
+            "name": "searchLoginRecordsWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/system/login-record/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Searches the login records with the specified criteria and pagination."
+        },
+        {
+          "info": {
+            "name": "reindexWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/system/reindex",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Requests Elasticsearch to delete and rebuild the index for FusionAuth users or entities. Be very careful when running this request as it will  increase the CPU and I/O load on your database until the operation completes. Generally speaking you do not ever need to run this operation unless  instructed by FusionAuth support, or if you are migrating a database another system and you are not brining along the Elasticsearch index.   You have been warned."
+        },
+        {
+          "info": {
+            "name": "retrieveVersionWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/system/version"
+          },
+          "docs": "Retrieves the FusionAuth version string."
+        },
+        {
+          "info": {
+            "name": "retrieveWebhookAttemptLogWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/system/webhook-attempt-log/:webhookAttemptLogId",
+            "params": [
+              {
+                "name": "webhookAttemptLogId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the webhook attempt log to retrieve."
+              }
+            ]
+          },
+          "docs": "Retrieves a single webhook attempt log for the given Id."
+        },
+        {
+          "info": {
+            "name": "searchWebhookEventLogsWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/system/webhook-event-log/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Searches the webhook event logs with the specified criteria and pagination."
+        },
+        {
+          "info": {
+            "name": "retrieveWebhookEventLogWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/system/webhook-event-log/:webhookEventLogId",
+            "params": [
+              {
+                "name": "webhookEventLogId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the webhook event log to retrieve."
+              }
+            ]
+          },
+          "docs": "Retrieves a single webhook event log for the given Id."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

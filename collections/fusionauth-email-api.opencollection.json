@@ -1,0 +1,254 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FusionAuth Api Key Email API",
+    "version": "1.66.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Email",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "sendEmailWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/email/send/:emailTemplateId",
+            "params": [
+              {
+                "name": "emailTemplateId",
+                "value": "",
+                "type": "path",
+                "description": "The Id for the template."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send an email using an email template Id. You can optionally provide <code>requestData</code> to access key value pairs in the email template."
+        },
+        {
+          "info": {
+            "name": "retrieveEmailTemplate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/email/template",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Retrieves the email template for the given Id. If you don't specify the Id, this will return all the email templates."
+        },
+        {
+          "info": {
+            "name": "createEmailTemplate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/email/template",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an email template. You can optionally specify an Id for the template, if not provided one will be generated."
+        },
+        {
+          "info": {
+            "name": "retrieveEmailTemplatePreviewWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/email/template/preview",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a preview of the email template provided in the request. This allows you to preview an email template that hasn't been saved to the database yet. The entire email template does not need to be provided on the request. This will create the preview based on whatever is given."
+        },
+        {
+          "info": {
+            "name": "searchEmailTemplatesWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/email/template/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Searches email templates with the specified criteria and pagination."
+        },
+        {
+          "info": {
+            "name": "retrieveEmailTemplateWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/email/template/:emailTemplateId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "emailTemplateId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the email template."
+              }
+            ]
+          },
+          "docs": "Retrieves the email template for the given Id. If you don't specify the Id, this will return all the email templates."
+        },
+        {
+          "info": {
+            "name": "createEmailTemplateWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/email/template/:emailTemplateId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "emailTemplateId",
+                "value": "",
+                "type": "path",
+                "description": "The Id for the template. If not provided a secure random UUID will be generated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an email template. You can optionally specify an Id for the template, if not provided one will be generated."
+        },
+        {
+          "info": {
+            "name": "updateEmailTemplateWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:9011/api/email/template/:emailTemplateId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "emailTemplateId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the email template to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the email template with the given Id."
+        },
+        {
+          "info": {
+            "name": "patchEmailTemplateWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:9011/api/email/template/:emailTemplateId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "emailTemplateId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the email template to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates, via PATCH, the email template with the given Id."
+        },
+        {
+          "info": {
+            "name": "deleteEmailTemplateWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:9011/api/email/template/:emailTemplateId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "emailTemplateId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the email template to delete."
+              }
+            ]
+          },
+          "docs": "Deletes the email template for the given Id."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

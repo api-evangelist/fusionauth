@@ -1,0 +1,1804 @@
+{
+  "item": [
+    {
+      "id": "bab1f152-b4cc-47a5-9761-f94b37be0c14",
+      "name": "Email",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b103a20e-fc2c-497b-a063-d9e3e3b4912c",
+          "name": "send Email With Id",
+          "request": {
+            "name": "send Email With Id",
+            "description": {
+              "content": "Send an email using an email template Id. You can optionally provide <code>requestData</code> to access key value pairs in the email template.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "email",
+                "send",
+                ":emailTemplateId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "emailTemplateId",
+                  "description": "(Required) The Id for the template."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"applicationId\": \"<uuid>\",\n  \"bccAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"ccAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"preferredLanguages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"requestData\": {\n    \"key_0\": \"<object>\",\n    \"key_1\": \"<object>\",\n    \"key_2\": \"<object>\"\n  },\n  \"toAddresses\": [\n    {\n      \"address\": \"<string>\",\n      \"display\": \"<string>\"\n    },\n    {\n      \"address\": \"<string>\",\n      \"display\": \"<string>\"\n    }\n  ],\n  \"userIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c95c98bc-aa8c-4c98-a023-70ebdfc7675e",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "email",
+                    "send",
+                    ":emailTemplateId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "emailTemplateId",
+                      "description": "(Required) The Id for the template."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"applicationId\": \"<uuid>\",\n  \"bccAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"ccAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"preferredLanguages\": [\n    \"en_US\",\n    \"en_US\"\n  ],\n  \"requestData\": {\n    \"key_0\": \"<object>\",\n    \"key_1\": \"<object>\",\n    \"key_2\": \"<object>\",\n    \"key_3\": \"<object>\"\n  },\n  \"toAddresses\": [\n    {\n      \"address\": \"<string>\",\n      \"display\": \"<string>\"\n    },\n    {\n      \"address\": \"<string>\",\n      \"display\": \"<string>\"\n    }\n  ],\n  \"userIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"anonymousResults\": {\n    \"key_0\": {\n      \"parseErrors\": {\n        \"key_0\": \"string\"\n      },\n      \"renderErrors\": {\n        \"key_0\": \"string\"\n      }\n    },\n    \"key_1\": {\n      \"parseErrors\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\",\n        \"key_3\": \"string\",\n        \"key_4\": \"string\"\n      },\n      \"renderErrors\": {\n        \"key_0\": \"string\"\n      }\n    }\n  },\n  \"results\": {\n    \"key_0\": {\n      \"parseErrors\": {\n        \"key_0\": \"string\"\n      },\n      \"renderErrors\": {\n        \"key_0\": \"string\"\n      }\n    },\n    \"key_1\": {\n      \"parseErrors\": {\n        \"key_0\": \"string\"\n      },\n      \"renderErrors\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      }\n    },\n    \"key_2\": {\n      \"parseErrors\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"renderErrors\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "05685433-12cd-4ffa-9248-c5f70cc5a3c8",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "email",
+                    "send",
+                    ":emailTemplateId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "emailTemplateId",
+                      "description": "(Required) The Id for the template."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"applicationId\": \"<uuid>\",\n  \"bccAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"ccAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"preferredLanguages\": [\n    \"en_US\",\n    \"en_US\"\n  ],\n  \"requestData\": {\n    \"key_0\": \"<object>\",\n    \"key_1\": \"<object>\",\n    \"key_2\": \"<object>\",\n    \"key_3\": \"<object>\"\n  },\n  \"toAddresses\": [\n    {\n      \"address\": \"<string>\",\n      \"display\": \"<string>\"\n    },\n    {\n      \"address\": \"<string>\",\n      \"display\": \"<string>\"\n    }\n  ],\n  \"userIds\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c37e2f9f-9b00-4b79-9632-f59305ebb240",
+          "name": "create Email Template",
+          "request": {
+            "name": "create Email Template",
+            "description": {
+              "content": "Creates an email template. You can optionally specify an Id for the template, if not provided one will be generated.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "email",
+                "template"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                "key": "X-FusionAuth-TenantId",
+                "value": "<UUID>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"emailTemplate\": {\n    \"defaultFromName\": \"<string>\",\n    \"defaultHtmlTemplate\": \"<string>\",\n    \"defaultSubject\": \"<string>\",\n    \"defaultTextTemplate\": \"<string>\",\n    \"fromEmail\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedFromNames\": {},\n    \"localizedHtmlTemplates\": {},\n    \"localizedSubjects\": {},\n    \"localizedTextTemplates\": {},\n    \"name\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b0df01ff-e811-4dc6-b380-38fbecda3894",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "email",
+                    "template"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emailTemplate\": {\n    \"defaultFromName\": \"<string>\",\n    \"defaultHtmlTemplate\": \"<string>\",\n    \"defaultSubject\": \"<string>\",\n    \"defaultTextTemplate\": \"<string>\",\n    \"fromEmail\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedFromNames\": {},\n    \"localizedHtmlTemplates\": {},\n    \"localizedSubjects\": {},\n    \"localizedTextTemplates\": {},\n    \"name\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"emailTemplate\": {\n    \"defaultFromName\": \"<string>\",\n    \"defaultHtmlTemplate\": \"<string>\",\n    \"defaultSubject\": \"<string>\",\n    \"defaultTextTemplate\": \"<string>\",\n    \"fromEmail\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedFromNames\": {},\n    \"localizedHtmlTemplates\": {},\n    \"localizedSubjects\": {},\n    \"localizedTextTemplates\": {},\n    \"name\": \"<string>\"\n  },\n  \"emailTemplates\": [\n    {\n      \"defaultFromName\": \"<string>\",\n      \"defaultHtmlTemplate\": \"<string>\",\n      \"defaultSubject\": \"<string>\",\n      \"defaultTextTemplate\": \"<string>\",\n      \"fromEmail\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"localizedFromNames\": {},\n      \"localizedHtmlTemplates\": {},\n      \"localizedSubjects\": {},\n      \"localizedTextTemplates\": {},\n      \"name\": \"<string>\"\n    },\n    {\n      \"defaultFromName\": \"<string>\",\n      \"defaultHtmlTemplate\": \"<string>\",\n      \"defaultSubject\": \"<string>\",\n      \"defaultTextTemplate\": \"<string>\",\n      \"fromEmail\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"localizedFromNames\": {},\n      \"localizedHtmlTemplates\": {},\n      \"localizedSubjects\": {},\n      \"localizedTextTemplates\": {},\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ffa6f67-ec9e-43ae-ae89-46bf3db56d4b",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "email",
+                    "template"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emailTemplate\": {\n    \"defaultFromName\": \"<string>\",\n    \"defaultHtmlTemplate\": \"<string>\",\n    \"defaultSubject\": \"<string>\",\n    \"defaultTextTemplate\": \"<string>\",\n    \"fromEmail\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedFromNames\": {},\n    \"localizedHtmlTemplates\": {},\n    \"localizedSubjects\": {},\n    \"localizedTextTemplates\": {},\n    \"name\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fd220776-6304-42b8-9022-b9b1e979af7d",
+          "name": "retrieve Email Template",
+          "request": {
+            "name": "retrieve Email Template",
+            "description": {
+              "content": "Retrieves the email template for the given Id. If you don't specify the Id, this will return all the email templates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "email",
+                "template"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                "key": "X-FusionAuth-TenantId",
+                "value": "<UUID>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cc5a52ec-82dd-4408-bcc9-10785f154153",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "email",
+                    "template"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"emailTemplate\": {\n    \"defaultFromName\": \"<string>\",\n    \"defaultHtmlTemplate\": \"<string>\",\n    \"defaultSubject\": \"<string>\",\n    \"defaultTextTemplate\": \"<string>\",\n    \"fromEmail\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedFromNames\": {},\n    \"localizedHtmlTemplates\": {},\n    \"localizedSubjects\": {},\n    \"localizedTextTemplates\": {},\n    \"name\": \"<string>\"\n  },\n  \"emailTemplates\": [\n    {\n      \"defaultFromName\": \"<string>\",\n      \"defaultHtmlTemplate\": \"<string>\",\n      \"defaultSubject\": \"<string>\",\n      \"defaultTextTemplate\": \"<string>\",\n      \"fromEmail\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"localizedFromNames\": {},\n      \"localizedHtmlTemplates\": {},\n      \"localizedSubjects\": {},\n      \"localizedTextTemplates\": {},\n      \"name\": \"<string>\"\n    },\n    {\n      \"defaultFromName\": \"<string>\",\n      \"defaultHtmlTemplate\": \"<string>\",\n      \"defaultSubject\": \"<string>\",\n      \"defaultTextTemplate\": \"<string>\",\n      \"fromEmail\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"localizedFromNames\": {},\n      \"localizedHtmlTemplates\": {},\n      \"localizedSubjects\": {},\n      \"localizedTextTemplates\": {},\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8eb84814-af1b-477c-9c3e-66955a00e3e3",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "email",
+                    "template"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c1d63dd0-322d-429d-bef9-7f211d22cd2a",
+          "name": "retrieve Email Template Preview With Id",
+          "request": {
+            "name": "retrieve Email Template Preview With Id",
+            "description": {
+              "content": "Creates a preview of the email template provided in the request. This allows you to preview an email template that hasn't been saved to the database yet. The entire email template does not need to be provided on the request. This will create the preview based on whatever is given.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "email",
+                "template",
+                "preview"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"emailTemplate\": {\n    \"defaultFromName\": \"<string>\",\n    \"defaultHtmlTemplate\": \"<string>\",\n    \"defaultSubject\": \"<string>\",\n    \"defaultTextTemplate\": \"<string>\",\n    \"fromEmail\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedFromNames\": {},\n    \"localizedHtmlTemplates\": {},\n    \"localizedSubjects\": {},\n    \"localizedTextTemplates\": {},\n    \"name\": \"<string>\"\n  },\n  \"locale\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "724e1d5b-70b4-4e64-b1d2-652b910db358",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "email",
+                    "template",
+                    "preview"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emailTemplate\": {\n    \"defaultFromName\": \"<string>\",\n    \"defaultHtmlTemplate\": \"<string>\",\n    \"defaultSubject\": \"<string>\",\n    \"defaultTextTemplate\": \"<string>\",\n    \"fromEmail\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedFromNames\": {},\n    \"localizedHtmlTemplates\": {},\n    \"localizedSubjects\": {},\n    \"localizedTextTemplates\": {},\n    \"name\": \"<string>\"\n  },\n  \"locale\": \"en_US\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"email\": {\n    \"attachments\": [\n      {\n        \"attachment\": \"string\",\n        \"mime\": \"string\",\n        \"name\": \"string\"\n      },\n      {\n        \"attachment\": \"string\",\n        \"mime\": \"string\",\n        \"name\": \"string\"\n      }\n    ],\n    \"bcc\": [\n      {\n        \"address\": \"<string>\",\n        \"display\": \"<string>\"\n      },\n      {\n        \"address\": \"<string>\",\n        \"display\": \"<string>\"\n      }\n    ],\n    \"cc\": [\n      {\n        \"address\": \"<string>\",\n        \"display\": \"<string>\"\n      },\n      {\n        \"address\": \"<string>\",\n        \"display\": \"<string>\"\n      }\n    ],\n    \"from\": {\n      \"address\": \"<string>\",\n      \"display\": \"<string>\"\n    },\n    \"html\": \"string\",\n    \"replyTo\": {\n      \"address\": \"<string>\",\n      \"display\": \"<string>\"\n    },\n    \"subject\": \"string\",\n    \"text\": \"string\",\n    \"to\": [\n      {\n        \"address\": \"<string>\",\n        \"display\": \"<string>\"\n      },\n      {\n        \"address\": \"<string>\",\n        \"display\": \"<string>\"\n      }\n    ]\n  },\n  \"errors\": {\n    \"fieldErrors\": [\n      {\n        \"code\": \"string\",\n        \"data\": {\n          \"key_0\": {},\n          \"key_1\": {}\n        },\n        \"message\": \"string\"\n      },\n      {\n        \"code\": \"string\",\n        \"data\": {\n          \"key_0\": {},\n          \"key_1\": {}\n        },\n        \"message\": \"string\"\n      }\n    ],\n    \"generalErrors\": [\n      {\n        \"code\": \"string\",\n        \"data\": {\n          \"key_0\": {},\n          \"key_1\": {},\n          \"key_2\": {}\n        },\n        \"message\": \"string\"\n      },\n      {\n        \"code\": \"string\",\n        \"data\": {\n          \"key_0\": {}\n        },\n        \"message\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e00cc161-213c-498f-ba4e-5a6460f265da",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "email",
+                    "template",
+                    "preview"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emailTemplate\": {\n    \"defaultFromName\": \"<string>\",\n    \"defaultHtmlTemplate\": \"<string>\",\n    \"defaultSubject\": \"<string>\",\n    \"defaultTextTemplate\": \"<string>\",\n    \"fromEmail\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedFromNames\": {},\n    \"localizedHtmlTemplates\": {},\n    \"localizedSubjects\": {},\n    \"localizedTextTemplates\": {},\n    \"name\": \"<string>\"\n  },\n  \"locale\": \"en_US\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c0977e51-7740-48f9-865e-bcb60dcd0f71",
+          "name": "search Email Templates With Id",
+          "request": {
+            "name": "search Email Templates With Id",
+            "description": {
+              "content": "Searches email templates with the specified criteria and pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "email",
+                "template",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"search\": {\n    \"name\": \"<string>\",\n    \"numberOfResults\": \"<integer>\",\n    \"orderBy\": \"<string>\",\n    \"startRow\": \"<integer>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4715a794-4af9-46bd-a838-ba19d70918de",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "email",
+                    "template",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"search\": {\n    \"name\": \"<string>\",\n    \"numberOfResults\": \"<integer>\",\n    \"orderBy\": \"<string>\",\n    \"startRow\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"emailTemplates\": [\n    {\n      \"defaultFromName\": \"<string>\",\n      \"defaultHtmlTemplate\": \"<string>\",\n      \"defaultSubject\": \"<string>\",\n      \"defaultTextTemplate\": \"<string>\",\n      \"fromEmail\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"localizedFromNames\": {},\n      \"localizedHtmlTemplates\": {},\n      \"localizedSubjects\": {},\n      \"localizedTextTemplates\": {},\n      \"name\": \"<string>\"\n    },\n    {\n      \"defaultFromName\": \"<string>\",\n      \"defaultHtmlTemplate\": \"<string>\",\n      \"defaultSubject\": \"<string>\",\n      \"defaultTextTemplate\": \"<string>\",\n      \"fromEmail\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"localizedFromNames\": {},\n      \"localizedHtmlTemplates\": {},\n      \"localizedSubjects\": {},\n      \"localizedTextTemplates\": {},\n      \"name\": \"<string>\"\n    }\n  ],\n  \"total\": 7718\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "310cd1aa-1cef-41c4-8b60-e513a4184ab7",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "email",
+                    "template",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"search\": {\n    \"name\": \"<string>\",\n    \"numberOfResults\": \"<integer>\",\n    \"orderBy\": \"<string>\",\n    \"startRow\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "650442c3-ebbe-481c-a1e9-0264d052204d",
+          "name": "create Email Template With Id",
+          "request": {
+            "name": "create Email Template With Id",
+            "description": {
+              "content": "Creates an email template. You can optionally specify an Id for the template, if not provided one will be generated.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "email",
+                "template",
+                ":emailTemplateId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "emailTemplateId",
+                  "description": "(Required) The Id for the template. If not provided a secure random UUID will be generated."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                "key": "X-FusionAuth-TenantId",
+                "value": "<UUID>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"emailTemplate\": {\n    \"defaultFromName\": \"<string>\",\n    \"defaultHtmlTemplate\": \"<string>\",\n    \"defaultSubject\": \"<string>\",\n    \"defaultTextTemplate\": \"<string>\",\n    \"fromEmail\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedFromNames\": {},\n    \"localizedHtmlTemplates\": {},\n    \"localizedSubjects\": {},\n    \"localizedTextTemplates\": {},\n    \"name\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "be9c237b-5067-4db1-9ea7-8acf351c9dde",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "email",
+                    "template",
+                    ":emailTemplateId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "emailTemplateId",
+                      "description": "(Required) The Id for the template. If not provided a secure random UUID will be generated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emailTemplate\": {\n    \"defaultFromName\": \"<string>\",\n    \"defaultHtmlTemplate\": \"<string>\",\n    \"defaultSubject\": \"<string>\",\n    \"defaultTextTemplate\": \"<string>\",\n    \"fromEmail\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedFromNames\": {},\n    \"localizedHtmlTemplates\": {},\n    \"localizedSubjects\": {},\n    \"localizedTextTemplates\": {},\n    \"name\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"emailTemplate\": {\n    \"defaultFromName\": \"<string>\",\n    \"defaultHtmlTemplate\": \"<string>\",\n    \"defaultSubject\": \"<string>\",\n    \"defaultTextTemplate\": \"<string>\",\n    \"fromEmail\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedFromNames\": {},\n    \"localizedHtmlTemplates\": {},\n    \"localizedSubjects\": {},\n    \"localizedTextTemplates\": {},\n    \"name\": \"<string>\"\n  },\n  \"emailTemplates\": [\n    {\n      \"defaultFromName\": \"<string>\",\n      \"defaultHtmlTemplate\": \"<string>\",\n      \"defaultSubject\": \"<string>\",\n      \"defaultTextTemplate\": \"<string>\",\n      \"fromEmail\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"localizedFromNames\": {},\n      \"localizedHtmlTemplates\": {},\n      \"localizedSubjects\": {},\n      \"localizedTextTemplates\": {},\n      \"name\": \"<string>\"\n    },\n    {\n      \"defaultFromName\": \"<string>\",\n      \"defaultHtmlTemplate\": \"<string>\",\n      \"defaultSubject\": \"<string>\",\n      \"defaultTextTemplate\": \"<string>\",\n      \"fromEmail\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"localizedFromNames\": {},\n      \"localizedHtmlTemplates\": {},\n      \"localizedSubjects\": {},\n      \"localizedTextTemplates\": {},\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "36662035-52ab-4d54-aa29-0439e788bb6e",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "email",
+                    "template",
+                    ":emailTemplateId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "emailTemplateId",
+                      "description": "(Required) The Id for the template. If not provided a secure random UUID will be generated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emailTemplate\": {\n    \"defaultFromName\": \"<string>\",\n    \"defaultHtmlTemplate\": \"<string>\",\n    \"defaultSubject\": \"<string>\",\n    \"defaultTextTemplate\": \"<string>\",\n    \"fromEmail\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedFromNames\": {},\n    \"localizedHtmlTemplates\": {},\n    \"localizedSubjects\": {},\n    \"localizedTextTemplates\": {},\n    \"name\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e3346d97-47ba-483c-ba6b-fab535d34150",
+          "name": "delete Email Template With Id",
+          "request": {
+            "name": "delete Email Template With Id",
+            "description": {
+              "content": "Deletes the email template for the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "email",
+                "template",
+                ":emailTemplateId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "emailTemplateId",
+                  "description": "(Required) The Id of the email template to delete."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                "key": "X-FusionAuth-TenantId",
+                "value": "<UUID>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ae4d3e7a-e126-4218-a52e-40bd80ff8e2b",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "email",
+                    "template",
+                    ":emailTemplateId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "emailTemplateId",
+                      "description": "(Required) The Id of the email template to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "76319cce-8e88-47a7-93b2-aa15be532444",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "email",
+                    "template",
+                    ":emailTemplateId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "emailTemplateId",
+                      "description": "(Required) The Id of the email template to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "59997299-e55c-4cf1-bbcb-ba3449d1ada4",
+          "name": "patch Email Template With Id",
+          "request": {
+            "name": "patch Email Template With Id",
+            "description": {
+              "content": "Updates, via PATCH, the email template with the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "email",
+                "template",
+                ":emailTemplateId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "emailTemplateId",
+                  "description": "(Required) The Id of the email template to update."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                "key": "X-FusionAuth-TenantId",
+                "value": "<UUID>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"emailTemplate\": {\n    \"defaultFromName\": \"<string>\",\n    \"defaultHtmlTemplate\": \"<string>\",\n    \"defaultSubject\": \"<string>\",\n    \"defaultTextTemplate\": \"<string>\",\n    \"fromEmail\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedFromNames\": {},\n    \"localizedHtmlTemplates\": {},\n    \"localizedSubjects\": {},\n    \"localizedTextTemplates\": {},\n    \"name\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "34c55972-a1f6-4ebf-859a-00e99f2e505f",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "email",
+                    "template",
+                    ":emailTemplateId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "emailTemplateId",
+                      "description": "(Required) The Id of the email template to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emailTemplate\": {\n    \"defaultFromName\": \"<string>\",\n    \"defaultHtmlTemplate\": \"<string>\",\n    \"defaultSubject\": \"<string>\",\n    \"defaultTextTemplate\": \"<string>\",\n    \"fromEmail\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedFromNames\": {},\n    \"localizedHtmlTemplates\": {},\n    \"localizedSubjects\": {},\n    \"localizedTextTemplates\": {},\n    \"name\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"emailTemplate\": {\n    \"defaultFromName\": \"<string>\",\n    \"defaultHtmlTemplate\": \"<string>\",\n    \"defaultSubject\": \"<string>\",\n    \"defaultTextTemplate\": \"<string>\",\n    \"fromEmail\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedFromNames\": {},\n    \"localizedHtmlTemplates\": {},\n    \"localizedSubjects\": {},\n    \"localizedTextTemplates\": {},\n    \"name\": \"<string>\"\n  },\n  \"emailTemplates\": [\n    {\n      \"defaultFromName\": \"<string>\",\n      \"defaultHtmlTemplate\": \"<string>\",\n      \"defaultSubject\": \"<string>\",\n      \"defaultTextTemplate\": \"<string>\",\n      \"fromEmail\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"localizedFromNames\": {},\n      \"localizedHtmlTemplates\": {},\n      \"localizedSubjects\": {},\n      \"localizedTextTemplates\": {},\n      \"name\": \"<string>\"\n    },\n    {\n      \"defaultFromName\": \"<string>\",\n      \"defaultHtmlTemplate\": \"<string>\",\n      \"defaultSubject\": \"<string>\",\n      \"defaultTextTemplate\": \"<string>\",\n      \"fromEmail\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"localizedFromNames\": {},\n      \"localizedHtmlTemplates\": {},\n      \"localizedSubjects\": {},\n      \"localizedTextTemplates\": {},\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e7a065c6-14d5-4555-8fae-4e0fc9956a72",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "email",
+                    "template",
+                    ":emailTemplateId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "emailTemplateId",
+                      "description": "(Required) The Id of the email template to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emailTemplate\": {\n    \"defaultFromName\": \"<string>\",\n    \"defaultHtmlTemplate\": \"<string>\",\n    \"defaultSubject\": \"<string>\",\n    \"defaultTextTemplate\": \"<string>\",\n    \"fromEmail\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedFromNames\": {},\n    \"localizedHtmlTemplates\": {},\n    \"localizedSubjects\": {},\n    \"localizedTextTemplates\": {},\n    \"name\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "71be8971-9fff-40e4-a6f0-1fe235e23554",
+          "name": "retrieve Email Template With Id",
+          "request": {
+            "name": "retrieve Email Template With Id",
+            "description": {
+              "content": "Retrieves the email template for the given Id. If you don't specify the Id, this will return all the email templates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "email",
+                "template",
+                ":emailTemplateId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "emailTemplateId",
+                  "description": "(Required) The Id of the email template."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                "key": "X-FusionAuth-TenantId",
+                "value": "<UUID>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8bcb3a6f-e353-40fd-8634-29f83b74bcb1",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "email",
+                    "template",
+                    ":emailTemplateId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "emailTemplateId",
+                      "description": "(Required) The Id of the email template."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"emailTemplate\": {\n    \"defaultFromName\": \"<string>\",\n    \"defaultHtmlTemplate\": \"<string>\",\n    \"defaultSubject\": \"<string>\",\n    \"defaultTextTemplate\": \"<string>\",\n    \"fromEmail\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedFromNames\": {},\n    \"localizedHtmlTemplates\": {},\n    \"localizedSubjects\": {},\n    \"localizedTextTemplates\": {},\n    \"name\": \"<string>\"\n  },\n  \"emailTemplates\": [\n    {\n      \"defaultFromName\": \"<string>\",\n      \"defaultHtmlTemplate\": \"<string>\",\n      \"defaultSubject\": \"<string>\",\n      \"defaultTextTemplate\": \"<string>\",\n      \"fromEmail\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"localizedFromNames\": {},\n      \"localizedHtmlTemplates\": {},\n      \"localizedSubjects\": {},\n      \"localizedTextTemplates\": {},\n      \"name\": \"<string>\"\n    },\n    {\n      \"defaultFromName\": \"<string>\",\n      \"defaultHtmlTemplate\": \"<string>\",\n      \"defaultSubject\": \"<string>\",\n      \"defaultTextTemplate\": \"<string>\",\n      \"fromEmail\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"localizedFromNames\": {},\n      \"localizedHtmlTemplates\": {},\n      \"localizedSubjects\": {},\n      \"localizedTextTemplates\": {},\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7cd8b800-f9c2-4b5f-9835-c9310d90ed6e",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "email",
+                    "template",
+                    ":emailTemplateId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "emailTemplateId",
+                      "description": "(Required) The Id of the email template."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "95b209cb-218f-4288-aa32-95f1f63495c0",
+          "name": "update Email Template With Id",
+          "request": {
+            "name": "update Email Template With Id",
+            "description": {
+              "content": "Updates the email template with the given Id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "email",
+                "template",
+                ":emailTemplateId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "emailTemplateId",
+                  "description": "(Required) The Id of the email template to update."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                "key": "X-FusionAuth-TenantId",
+                "value": "<UUID>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"emailTemplate\": {\n    \"defaultFromName\": \"<string>\",\n    \"defaultHtmlTemplate\": \"<string>\",\n    \"defaultSubject\": \"<string>\",\n    \"defaultTextTemplate\": \"<string>\",\n    \"fromEmail\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedFromNames\": {},\n    \"localizedHtmlTemplates\": {},\n    \"localizedSubjects\": {},\n    \"localizedTextTemplates\": {},\n    \"name\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "35929b80-a839-4dea-a5f2-eb2d914e0c33",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "email",
+                    "template",
+                    ":emailTemplateId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "emailTemplateId",
+                      "description": "(Required) The Id of the email template to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emailTemplate\": {\n    \"defaultFromName\": \"<string>\",\n    \"defaultHtmlTemplate\": \"<string>\",\n    \"defaultSubject\": \"<string>\",\n    \"defaultTextTemplate\": \"<string>\",\n    \"fromEmail\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedFromNames\": {},\n    \"localizedHtmlTemplates\": {},\n    \"localizedSubjects\": {},\n    \"localizedTextTemplates\": {},\n    \"name\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"emailTemplate\": {\n    \"defaultFromName\": \"<string>\",\n    \"defaultHtmlTemplate\": \"<string>\",\n    \"defaultSubject\": \"<string>\",\n    \"defaultTextTemplate\": \"<string>\",\n    \"fromEmail\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedFromNames\": {},\n    \"localizedHtmlTemplates\": {},\n    \"localizedSubjects\": {},\n    \"localizedTextTemplates\": {},\n    \"name\": \"<string>\"\n  },\n  \"emailTemplates\": [\n    {\n      \"defaultFromName\": \"<string>\",\n      \"defaultHtmlTemplate\": \"<string>\",\n      \"defaultSubject\": \"<string>\",\n      \"defaultTextTemplate\": \"<string>\",\n      \"fromEmail\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"localizedFromNames\": {},\n      \"localizedHtmlTemplates\": {},\n      \"localizedSubjects\": {},\n      \"localizedTextTemplates\": {},\n      \"name\": \"<string>\"\n    },\n    {\n      \"defaultFromName\": \"<string>\",\n      \"defaultHtmlTemplate\": \"<string>\",\n      \"defaultSubject\": \"<string>\",\n      \"defaultTextTemplate\": \"<string>\",\n      \"fromEmail\": \"<string>\",\n      \"id\": \"<uuid>\",\n      \"insertInstant\": \"<long>\",\n      \"lastUpdateInstant\": \"<long>\",\n      \"localizedFromNames\": {},\n      \"localizedHtmlTemplates\": {},\n      \"localizedSubjects\": {},\n      \"localizedTextTemplates\": {},\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9878f854-1cd8-470c-bbd1-aaf5df3349ad",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "email",
+                    "template",
+                    ":emailTemplateId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "emailTemplateId",
+                      "description": "(Required) The Id of the email template to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped.",
+                    "key": "X-FusionAuth-TenantId",
+                    "value": "<UUID>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emailTemplate\": {\n    \"defaultFromName\": \"<string>\",\n    \"defaultHtmlTemplate\": \"<string>\",\n    \"defaultSubject\": \"<string>\",\n    \"defaultTextTemplate\": \"<string>\",\n    \"fromEmail\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"insertInstant\": \"<long>\",\n    \"lastUpdateInstant\": \"<long>\",\n    \"localizedFromNames\": {},\n    \"localizedHtmlTemplates\": {},\n    \"localizedSubjects\": {},\n    \"localizedTextTemplates\": {},\n    \"name\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fieldErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"message\": \"string\"\n    }\n  ],\n  \"generalErrors\": [\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"message\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"data\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:9011",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "205ced5c-4cdb-45ee-95bb-9efaedb47624",
+    "name": "FusionAuth Api Key Email API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.",
+      "type": "text/plain"
+    }
+  }
+}

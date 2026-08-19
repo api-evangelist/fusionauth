@@ -1,0 +1,1359 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FusionAuth Api Key User API",
+    "version": "1.66.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "retrieveUser",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/user",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "verificationId",
+                "value": "",
+                "type": "query",
+                "description": "The unique verification Id that has been set on the user object."
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "query",
+                "description": "The username of the user."
+              },
+              {
+                "name": "loginId",
+                "value": "",
+                "type": "query",
+                "description": "The email or username of the user."
+              },
+              {
+                "name": "loginIdTypes",
+                "value": "",
+                "type": "query",
+                "description": "The identity types that FusionAuth will compare the loginId to."
+              },
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "The email of the user."
+              },
+              {
+                "name": "changePasswordId",
+                "value": "",
+                "type": "query",
+                "description": "The unique change password Id that was sent via email or returned by the Forgot Password API."
+              }
+            ]
+          },
+          "docs": "Retrieves the user by a verificationId. The intended use of this API is to retrieve a user after the forgot password workflow has been initiated and you may not know the user's email or username. OR Retrieves the user for the given username. OR Retrieves the user for the loginId, using specific loginIdTypes. OR Retrieves the user for the loginId. The loginId can be either the username or the email. OR Retrieves the user for the given email. OR Retrieves the user by a change password Id. The inte"
+        },
+        {
+          "info": {
+            "name": "createUser",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/user",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a user. You can optionally specify an Id for the user, if not provided one will be generated."
+        },
+        {
+          "info": {
+            "name": "retrieveUserActioning",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/user/action",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "query",
+                "description": "The Id of the user to fetch the actions for."
+              },
+              {
+                "name": "active",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "preventingLogin",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves all the actions for the user with the given Id that are currently inactive. An inactive action means one that is time based and has been canceled or has expired, or is not time based. OR Retrieves all the actions for the user with the given Id that are currently active. An active action means one that is time based and has not been canceled, and has not ended. OR Retrieves all the actions for the user with the given Id that are currently preventing the User from logging in. OR Retrieve"
+        },
+        {
+          "info": {
+            "name": "actionUserWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/user/action",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Takes an action on a user. The user being actioned is called the \"actionee\" and the user taking the action is called the \"actioner\". Both user ids are required in the request object."
+        },
+        {
+          "info": {
+            "name": "retrieveActionWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/user/action/:actionId",
+            "params": [
+              {
+                "name": "actionId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the action to retrieve."
+              }
+            ]
+          },
+          "docs": "Retrieves a single action log (the log of a user action that was taken on a user previously) for the given Id."
+        },
+        {
+          "info": {
+            "name": "modifyActionWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:9011/api/user/action/:actionId",
+            "params": [
+              {
+                "name": "actionId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the action to modify. This is technically the user action log Id."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Modifies a temporal user action by changing the expiration of the action and optionally adding a comment to the action."
+        },
+        {
+          "info": {
+            "name": "cancelActionWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:9011/api/user/action/:actionId",
+            "params": [
+              {
+                "name": "actionId",
+                "value": "",
+                "type": "path",
+                "description": "The action Id of the action to cancel."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancels the user action."
+        },
+        {
+          "info": {
+            "name": "deleteUserBulk",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:9011/api/user/bulk",
+            "params": [
+              {
+                "name": "userIds",
+                "value": "",
+                "type": "query",
+                "description": "The ids of the users to deactivate."
+              },
+              {
+                "name": "dryRun",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "hardDelete",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deletes the users with the given Ids, or users matching the provided JSON query or queryString. The order of preference is Ids, query and then queryString, it is recommended to only provide one of the three for the request.  This method can be used to deactivate or permanently delete (hard-delete) users based upon the hardDelete boolean in the request body. Using the dryRun parameter you may also request the result of the action without actually deleting or deactivating any users. OR Deactivates"
+        },
+        {
+          "info": {
+            "name": "retrieveUserChangePassword",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/user/change-password",
+            "params": [
+              {
+                "name": "loginId",
+                "value": "",
+                "type": "query",
+                "description": "The loginId of the User that you intend to change the password for."
+              },
+              {
+                "name": "loginIdTypes",
+                "value": "",
+                "type": "query",
+                "description": "The identity types that FusionAuth will compare the loginId to."
+              },
+              {
+                "name": "ipAddress",
+                "value": "",
+                "type": "query",
+                "description": "IP address of the user changing their password. This is used for MFA risk assessment."
+              }
+            ]
+          },
+          "docs": "Check to see if the user must obtain a Trust Request Id in order to complete a change password request. When a user has enabled Two-Factor authentication, before you are allowed to use the Change Password API to change your password, you must obtain a Trust Request Id by completing a Two-Factor Step-Up authentication.  An HTTP status code of 400 with a general error code of [TrustTokenRequired] indicates that a Trust Token is required to make a POST request to this API. OR Check to see if the us"
+        },
+        {
+          "info": {
+            "name": "createUserChangePassword",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/user/change-password",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Changes a user's password using their access token (JWT) instead of the changePasswordId A common use case for this method will be if you want to allow the user to change their own password.  Remember to send refreshToken in the request body if you want to get a new refresh token when login using the returned oneTimePassword. OR Changes a user's password using their identity (loginId and password). Using a loginId instead of the changePasswordId bypasses the email verification and allows a passw"
+        },
+        {
+          "info": {
+            "name": "retrieveUserChangePasswordWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/user/change-password/:changePasswordId",
+            "params": [
+              {
+                "name": "ipAddress",
+                "value": "",
+                "type": "query",
+                "description": "IP address of the user changing their password. This is used for MFA risk assessment."
+              },
+              {
+                "name": "changePasswordId",
+                "value": "",
+                "type": "path",
+                "description": "The change password Id used to find the user. This value is generated by FusionAuth once the change password workflow has been initiated."
+              }
+            ]
+          },
+          "docs": "Check to see if the user must obtain a Trust Token Id in order to complete a change password request. When a user has enabled Two-Factor authentication, before you are allowed to use the Change Password API to change your password, you must obtain a Trust Token by completing a Two-Factor Step-Up authentication.  An HTTP status code of 400 with a general error code of [TrustTokenRequired] indicates that a Trust Token is required to make a POST request to this API. OR Check to see if the user must"
+        },
+        {
+          "info": {
+            "name": "changePasswordWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/user/change-password/:changePasswordId",
+            "params": [
+              {
+                "name": "changePasswordId",
+                "value": "",
+                "type": "path",
+                "description": "The change password Id used to find the user. This value is generated by FusionAuth once the change password workflow has been initiated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Changes a user's password using the change password Id. This usually occurs after an email has been sent to the user and they clicked on a link to reset their password.  As of version 1.32.2, prefer sending the changePasswordId in the request body. To do this, omit the first parameter, and set the value in the request body."
+        },
+        {
+          "info": {
+            "name": "commentOnUserWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/user/comment",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds a comment to the user's account."
+        },
+        {
+          "info": {
+            "name": "searchUserCommentsWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/user/comment/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Searches user comments with the specified criteria and pagination."
+        },
+        {
+          "info": {
+            "name": "retrieveUserCommentsWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/user/comment/:userId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the user."
+              }
+            ]
+          },
+          "docs": "Retrieves all the comments for the user with the given Id."
+        },
+        {
+          "info": {
+            "name": "retrieveUserConsentsWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/user/consent",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "query",
+                "description": "The User's Id"
+              }
+            ]
+          },
+          "docs": "Retrieves all the consents for a User."
+        },
+        {
+          "info": {
+            "name": "createUserConsent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/user/consent",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a single User consent."
+        },
+        {
+          "info": {
+            "name": "retrieveUserConsentWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/user/consent/:userConsentId",
+            "params": [
+              {
+                "name": "userConsentId",
+                "value": "",
+                "type": "path",
+                "description": "The User consent Id"
+              }
+            ]
+          },
+          "docs": "Retrieve a single User consent by Id."
+        },
+        {
+          "info": {
+            "name": "createUserConsentWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/user/consent/:userConsentId",
+            "params": [
+              {
+                "name": "userConsentId",
+                "value": "",
+                "type": "path",
+                "description": "The Id for the User consent. If not provided a secure random UUID will be generated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a single User consent."
+        },
+        {
+          "info": {
+            "name": "updateUserConsentWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:9011/api/user/consent/:userConsentId",
+            "params": [
+              {
+                "name": "userConsentId",
+                "value": "",
+                "type": "path",
+                "description": "The User Consent Id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a single User consent by Id."
+        },
+        {
+          "info": {
+            "name": "patchUserConsentWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:9011/api/user/consent/:userConsentId",
+            "params": [
+              {
+                "name": "userConsentId",
+                "value": "",
+                "type": "path",
+                "description": "The User Consent Id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates, via PATCH, a single User consent by Id."
+        },
+        {
+          "info": {
+            "name": "revokeUserConsentWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:9011/api/user/consent/:userConsentId",
+            "params": [
+              {
+                "name": "userConsentId",
+                "value": "",
+                "type": "path",
+                "description": "The User Consent Id"
+              }
+            ]
+          },
+          "docs": "Revokes a single User consent by Id."
+        },
+        {
+          "info": {
+            "name": "retrieveFamiliesWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/user/family",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "query",
+                "description": "The User's id"
+              }
+            ]
+          },
+          "docs": "Retrieves all the families that a user belongs to."
+        },
+        {
+          "info": {
+            "name": "createFamily",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/user/family",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a family with the user Id in the request as the owner and sole member of the family. You can optionally specify an Id for the family, if not provided one will be generated."
+        },
+        {
+          "info": {
+            "name": "retrievePendingChildrenWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/user/family/pending",
+            "params": [
+              {
+                "name": "parentEmail",
+                "value": "",
+                "type": "query",
+                "description": "The email of the parent."
+              }
+            ]
+          },
+          "docs": "Retrieves all the children for the given parent email address."
+        },
+        {
+          "info": {
+            "name": "sendFamilyRequestEmailWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/user/family/request",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends out an email to a parent that they need to register and create a family or need to log in and add a child to their existing family."
+        },
+        {
+          "info": {
+            "name": "retrieveFamilyMembersByFamilyIdWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/user/family/:familyId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "familyId",
+                "value": "",
+                "type": "path",
+                "description": "The unique Id of the Family."
+              }
+            ]
+          },
+          "docs": "Retrieves all the members of a family by the unique Family Id."
+        },
+        {
+          "info": {
+            "name": "createFamilyWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/user/family/:familyId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "familyId",
+                "value": "",
+                "type": "path",
+                "description": "The Id for the family. If not provided a secure random UUID will be generated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a family with the user Id in the request as the owner and sole member of the family. You can optionally specify an Id for the family, if not provided one will be generated."
+        },
+        {
+          "info": {
+            "name": "updateUserFamilyWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:9011/api/user/family/:familyId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "familyId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the family to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a family with a given Id. OR Adds a user to an existing family. The family Id must be specified."
+        },
+        {
+          "info": {
+            "name": "removeUserFromFamilyWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:9011/api/user/family/:familyId/:userId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "familyId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the family to remove the user from."
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the user to remove from the family."
+              }
+            ]
+          },
+          "docs": "Removes a user from the family with the given Id."
+        },
+        {
+          "info": {
+            "name": "forgotPasswordWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/user/forgot-password",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Begins the forgot password sequence, which kicks off an email to the user so that they can reset their password."
+        },
+        {
+          "info": {
+            "name": "importUsersWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/user/import",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Bulk imports users. This request performs minimal validation and runs batch inserts of users with the expectation that each user does not yet exist and each registration corresponds to an existing FusionAuth Application. This is done to increases the insert performance.  Therefore, if you encounter an error due to a database key violation, the response will likely offer a generic explanation. If you encounter an error, you may optionally enable additional validation to receive a JSON response bo"
+        },
+        {
+          "info": {
+            "name": "retrieveUserRecentLogin",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/user/recent-login",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "query",
+                "description": "The Id of the user."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial record. e.g. 0 is the last login, 100 will be the 100th most recent login."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "(Optional, defaults to 10) The number of records to retrieve."
+              }
+            ]
+          },
+          "docs": "Retrieves the last number of login records for a user. OR Retrieves the last number of login records."
+        },
+        {
+          "info": {
+            "name": "importRefreshTokensWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/user/refresh-token/import",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Bulk imports refresh tokens. This request performs minimal validation and runs batch inserts of refresh tokens with the expectation that each token represents a user that already exists and is registered for the corresponding FusionAuth Application. This is done to increases the insert performance.  Therefore, if you encounter an error due to a database key violation, the response will likely offer a generic explanation. If you encounter an error, you may optionally enable additional validation "
+        },
+        {
+          "info": {
+            "name": "register",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/user/registration",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Registers a user for an application. If you provide the User and the UserRegistration object on this request, it will create the user as well as register them for the application. This is called a Full Registration. However, if you only provide the UserRegistration object, then the user must already exist and they will be registered for the application. The user Id can also be provided and it will either be used to look up an existing user or it will be used for the newly created User."
+        },
+        {
+          "info": {
+            "name": "registerWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/user/registration/:userId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the user being registered for the application and optionally created."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Registers a user for an application. If you provide the User and the UserRegistration object on this request, it will create the user as well as register them for the application. This is called a Full Registration. However, if you only provide the UserRegistration object, then the user must already exist and they will be registered for the application. The user Id can also be provided and it will either be used to look up an existing user or it will be used for the newly created User."
+        },
+        {
+          "info": {
+            "name": "updateRegistrationWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:9011/api/user/registration/:userId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the user whose registration is going to be updated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the registration for the user with the given Id and the application defined in the request."
+        },
+        {
+          "info": {
+            "name": "patchRegistrationWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:9011/api/user/registration/:userId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the user whose registration is going to be updated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates, via PATCH, the registration for the user with the given Id and the application defined in the request."
+        },
+        {
+          "info": {
+            "name": "retrieveRegistrationWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/user/registration/:userId/:applicationId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the user."
+              },
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the application."
+              }
+            ]
+          },
+          "docs": "Retrieves the user registration for the user with the given Id and the given application Id."
+        },
+        {
+          "info": {
+            "name": "deleteUserRegistrationWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:9011/api/user/registration/:userId/:applicationId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the user whose registration is being deleted."
+              },
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the application to remove the registration for."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deletes the user registration for the given user and application along with the given JSON body that contains the event information. OR Deletes the user registration for the given user and application."
+        },
+        {
+          "info": {
+            "name": "searchUsersByIdsWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/user/search",
+            "params": [
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "The user Ids to search for."
+              }
+            ]
+          },
+          "docs": "Retrieves the users for the given Ids. If any Id is invalid, it is ignored."
+        },
+        {
+          "info": {
+            "name": "searchUsersByQueryWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/user/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves the users for the given search criteria and pagination."
+        },
+        {
+          "info": {
+            "name": "retrieveTwoFactorRecoveryCodesWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/user/two-factor/recovery-code/:userId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the user to retrieve Two Factor recovery codes."
+              }
+            ]
+          },
+          "docs": "Retrieve two-factor recovery codes for a user."
+        },
+        {
+          "info": {
+            "name": "generateTwoFactorRecoveryCodesWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/user/two-factor/recovery-code/:userId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the user to generate new Two Factor recovery codes."
+              }
+            ]
+          },
+          "docs": "Generate two-factor recovery codes for a user. Generating two-factor recovery codes will invalidate any existing recovery codes."
+        },
+        {
+          "info": {
+            "name": "enableTwoFactorWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/user/two-factor/:userId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the user to enable two-factor authentication."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enable two-factor authentication for a user."
+        },
+        {
+          "info": {
+            "name": "deleteUserTwoFactorWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:9011/api/user/two-factor/:userId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the User for which you're disabling two-factor authentication."
+              },
+              {
+                "name": "methodId",
+                "value": "",
+                "type": "query",
+                "description": "The two-factor method identifier you wish to disable"
+              },
+              {
+                "name": "code",
+                "value": "",
+                "type": "query",
+                "description": "The two-factor code used verify the the caller knows the two-factor secret."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Disable two-factor authentication for a user using a JSON body rather than URL parameters. OR Disable two-factor authentication for a user."
+        },
+        {
+          "info": {
+            "name": "createUserVerifyEmail",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/user/verify-email",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Administratively verify a user's email address. Use this method to bypass email verification for the user.  The request body will contain the userId to be verified. An API key is required when sending the userId in the request body. OR Confirms a user's email address.   The request body will contain the verificationId. You may also be required to send a one-time use code based upon your configuration. When  the tenant is configured to gate a user until their email address is verified, this proce"
+        },
+        {
+          "info": {
+            "name": "updateUserVerifyEmail",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:9011/api/user/verify-email",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "query",
+                "description": "The unique Application Id to used to resolve an application specific email template."
+              },
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "The email address of the user that needs a new verification email."
+              },
+              {
+                "name": "sendVerifyEmail",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Re-sends the verification email to the user. If the Application has configured a specific email template this will be used instead of the tenant configuration. OR Re-sends the verification email to the user. OR Generate a new Email Verification Id to be used with the Verify Email API. This API will not attempt to send an email to the User. This API may be used to collect the verificationId for use with a third party system."
+        },
+        {
+          "info": {
+            "name": "verifyUserRegistrationWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/user/verify-registration",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Confirms a user's registration.   The request body will contain the verificationId. You may also be required to send a one-time use code based upon your configuration. When  the application is configured to gate a user until their registration is verified, this procedures requires two values instead of one.  The verificationId is a high entropy value and the one-time use code is a low entropy value that is easily entered in a user interactive form. The  two values together are able to confirm a "
+        },
+        {
+          "info": {
+            "name": "updateUserVerifyRegistration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:9011/api/user/verify-registration",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "The email address of the user that needs a new verification email."
+              },
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "query",
+                "description": "The Id of the application to be verified."
+              },
+              {
+                "name": "sendVerifyPasswordEmail",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Re-sends the application registration verification email to the user. OR Generate a new Application Registration Verification Id to be used with the Verify Registration API. This API will not attempt to send an email to the User. This API may be used to collect the verificationId for use with a third party system."
+        },
+        {
+          "info": {
+            "name": "retrieveUserWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/user/:userId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the user."
+              }
+            ]
+          },
+          "docs": "Retrieves the user for the given Id."
+        },
+        {
+          "info": {
+            "name": "createUserWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/user/:userId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The Id for the user. If not provided a secure random UUID will be generated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a user. You can optionally specify an Id for the user, if not provided one will be generated."
+        },
+        {
+          "info": {
+            "name": "updateUserWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:9011/api/user/:userId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the user to update."
+              },
+              {
+                "name": "reactivate",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the user with the given Id. OR Reactivates the user with the given Id."
+        },
+        {
+          "info": {
+            "name": "patchUserWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:9011/api/user/:userId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the user to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates, via PATCH, the user with the given Id."
+        },
+        {
+          "info": {
+            "name": "deleteUserWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:9011/api/user/:userId",
+            "headers": [
+              {
+                "name": "X-FusionAuth-TenantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the user to delete (required)."
+              },
+              {
+                "name": "hardDelete",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deletes the user based on the given request (sent to the API as JSON). This permanently deletes all information, metrics, reports and data associated with the user. OR Deletes the user for the given Id. This permanently deletes all information, metrics, reports and data associated with the user. OR Deactivates the user with the given Id."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

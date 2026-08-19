@@ -1,0 +1,182 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FusionAuth Api Key Lambda API",
+    "version": "1.66.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Lambda",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "retrieveLambdasByTypeWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/lambda",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "The type of the lambda to return."
+              }
+            ]
+          },
+          "docs": "Retrieves all the lambdas for the provided type."
+        },
+        {
+          "info": {
+            "name": "createLambda",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/lambda",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a Lambda. You can optionally specify an Id for the lambda, if not provided one will be generated."
+        },
+        {
+          "info": {
+            "name": "searchLambdasWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/lambda/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Searches lambdas with the specified criteria and pagination."
+        },
+        {
+          "info": {
+            "name": "retrieveLambdaWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9011/api/lambda/:lambdaId",
+            "params": [
+              {
+                "name": "lambdaId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the lambda."
+              }
+            ]
+          },
+          "docs": "Retrieves the lambda for the given Id."
+        },
+        {
+          "info": {
+            "name": "createLambdaWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9011/api/lambda/:lambdaId",
+            "params": [
+              {
+                "name": "lambdaId",
+                "value": "",
+                "type": "path",
+                "description": "The Id for the lambda. If not provided a secure random UUID will be generated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a Lambda. You can optionally specify an Id for the lambda, if not provided one will be generated."
+        },
+        {
+          "info": {
+            "name": "updateLambdaWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:9011/api/lambda/:lambdaId",
+            "params": [
+              {
+                "name": "lambdaId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the lambda to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the lambda with the given Id."
+        },
+        {
+          "info": {
+            "name": "patchLambdaWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:9011/api/lambda/:lambdaId",
+            "params": [
+              {
+                "name": "lambdaId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the lambda to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates, via PATCH, the lambda with the given Id."
+        },
+        {
+          "info": {
+            "name": "deleteLambdaWithId",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:9011/api/lambda/:lambdaId",
+            "params": [
+              {
+                "name": "lambdaId",
+                "value": "",
+                "type": "path",
+                "description": "The Id of the lambda to delete."
+              }
+            ]
+          },
+          "docs": "Deletes the lambda for the given Id."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
