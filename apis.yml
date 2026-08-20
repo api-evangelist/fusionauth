@@ -26,6 +26,14 @@ tags:
   - Authorization
   - Identity
   - CIAM
+  - OpenID Connect
+  - Single Sign-On
+  - Multi-Factor Authentication
+tags_raw:
+  - Authentication
+  - Authorization
+  - Identity
+  - CIAM
   - OAuth
   - OpenID Connect
   - Single Sign-On
@@ -44,6 +52,8 @@ apis:
   humanURL: https://fusionauth.io/docs/
   baseURL: https://sandbox.fusionauth.io
   tags:
+  - APIKeys
+  tags_raw:
   - Api Key
   properties:
   - type: OpenAPI
@@ -226,6 +236,8 @@ apis:
   humanURL: https://fusionauth.io/docs/
   baseURL: https://sandbox.fusionauth.io
   tags:
+  - JWT
+  tags_raw:
   - Jwt
   properties:
   - type: OpenAPI
@@ -324,6 +336,8 @@ apis:
   humanURL: https://fusionauth.io/docs/
   baseURL: https://sandbox.fusionauth.io
   tags:
+  - Authentication
+  tags_raw:
   - Oauth2
   properties:
   - type: OpenAPI
@@ -520,6 +534,8 @@ apis:
   humanURL: https://fusionauth.io/docs/
   baseURL: https://sandbox.fusionauth.io
   tags:
+  - WebAuthn
+  tags_raw:
   - Webauthn
   properties:
   - type: OpenAPI
