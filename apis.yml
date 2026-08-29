@@ -7,6 +7,18 @@ description: >-
   multi-factor authentication, single sign-on, OAuth2 and OpenID Connect, and
   user management capabilities through a comprehensive REST API and
   self-hostable identity service.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
