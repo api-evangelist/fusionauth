@@ -1,0 +1,176 @@
+slug: fusionauth
+provider: FusionAuth
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 16
+edges:
+- tag: Login
+  spec_file: fusionauth-login-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.9
+  evidence: POST /api/login loginWithId; schemas LoginResponse, LoginPreventedResponse, AuthenticatorConfiguration
+  reason: User authentication operations are the definitional core of Identity & Access Management.
+- tag: Oauth2
+  spec_file: fusionauth-oauth2-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.9
+  evidence: POST /oauth2/token createToken; POST /oauth2/introspect; GET /oauth2/userinfo retrieveUserInfoFromAccessTokenWithId
+  reason: OAuth2/OIDC token issuance, introspection and userinfo are authentication and authorization
+    operations — core IAM.
+- tag: Passwordless
+  spec_file: fusionauth-passwordless-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.9
+  evidence: POST /api/passwordless/login passwordlessLoginWithId; POST /api/passwordless/send sendPasswordlessCodeWithId
+  reason: Passwordless authentication flows (magic link/code login) are authentication operations under
+    Identity & Access Management.
+- tag: Identity Provider
+  spec_file: fusionauth-identity-provider-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.85
+  evidence: POST /api/identity-provider/login identityProviderLoginWithId; schemas SAMLv2IdPInitiatedIdentityProvider,
+    OpenIdConnectApplicationConfiguration
+  reason: Configuration of external identity providers and federated login/linking is identity federation,
+    squarely Identity & Access Management. (Tenant Identity Federation was considered but this is the
+    vendor's own IdP config surface, not per-tenant SaaS federation.)
+- tag: Jwt
+  spec_file: fusionauth-jwt-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.85
+  evidence: GET /api/jwt/issue issueJWTWithId; POST /api/jwt/refresh exchangeRefreshTokenForJWTWithId;
+    DELETE revokeRefreshTokenByIdWithId
+  reason: Issuance, validation and revocation of access/refresh tokens is core authentication token management
+    under IAM.
+- tag: Tenant
+  spec_file: fusionauth-tenant-api-openapi.yml
+  capability_id: BC-4230.10
+  capability_id_l1: BC-4230
+  capability_name: Tenant Provisioning & Lifecycle
+  confidence: 0.85
+  evidence: POST /api/tenant  createTenant; DELETE /api/tenant/{tenantId}  deleteTenantWithId; POST /api/tenant/search  searchTenantsWithId
+  reason: Full CRUD and search over tenants of the multi-tenant identity service — creation, update and
+    decommissioning of tenants is tenant provisioning and lifecycle. Some overlap with tenant configuration
+    (TenantLoginConfiguration, PasswordValidationRules) but lifecycle operations dominate.
+- tag: Two Factor
+  spec_file: fusionauth-two-factor-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.85
+  evidence: POST /api/two-factor/login  twoFactorLoginWithId; GET /api/two-factor/secret  generateTwoFactorSecretUsingJWTWithId;
+    POST /api/two-factor/send  sendTwoFactorCodeForEnableDisableWithId
+  reason: 'Operations perform multi-factor authentication: starting a two-factor login, generating TOTP
+    secrets, sending codes and checking two-factor trust status. This is authentication/identity and access
+    management functionality.'
+- tag: Webauthn
+  spec_file: fusionauth-webauthn-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.82
+  evidence: POST /api/webauthn/register/start startWebAuthnRegistrationWithId; POST /api/webauthn/login
+    completeWebAuthnLoginWithId; schema WebAuthnCredentialResponse, UserTwoFactorConfiguration
+  reason: Operations register, store, assert and delete WebAuthn (passkey) credentials for users and complete
+    login — i.e. issuance and use of authentication credentials. FusionAuth's product is CIAM, so the
+    surface genuinely realises Identity & Access Management rather than being incidental API auth plumbing.
+- tag: Logout
+  spec_file: fusionauth-logout-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.8
+  evidence: POST /api/logout createLogout; schema LogoutRequest
+  reason: Session termination is part of the authentication/session lifecycle within IAM, though the surface
+    is a single operation.
+- tag: User
+  spec_file: fusionauth-user-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.78
+  evidence: POST /api/user  createUser; POST /api/user/change-password  createUserChangePassword; DELETE
+    /api/user/bulk  deleteUserBulk; schemas ForgotPasswordRequest, UserTwoFactorConfiguration
+  reason: User account lifecycle — create, retrieve, bulk delete, password change and forgot-password
+    flows — is identity and access management (joiners-movers-leavers, credentials). A CIAM reading as
+    customer data management is possible but the operations centre on credentials and account state.
+- tag: Application
+  spec_file: fusionauth-application-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.75
+  evidence: GET /api/application/{applicationId}/oauth-configuration retrieveOauthConfiguration; POST
+    /api/application/{applicationId}/role createApplicationRole; schemas LoginConfiguration, JWTConfiguration,
+    SAMLLogoutBehavior
+  reason: '''Application'' here is an OAuth/SAML relying party with login configuration and application
+    roles — i.e. registering clients and defining role-based access. That is Identity & Access Management,
+    not product or portfolio management.'
+- tag: Ip Acl
+  spec_file: fusionauth-ip-acl-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.75
+  evidence: POST /api/ip-acl createIPAccessControlList; schema IPAccessControlEntryAction, IPAccessControlList
+  reason: Management of IP access control lists governs who may access the system — an access control
+    mechanism within Identity & Access Management.
+- tag: Entity
+  spec_file: fusionauth-entity-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: POST /api/entity/type/{entityTypeId}/permission createEntityTypePermission; POST /api/entity/grant/search
+    searchEntityGrants; schemas EntityGrant, EntityTypePermission
+  reason: '''Entity'' is FusionAuth''s fine-grained authorization model: entity types, permissions and
+    grants between entities. Operations plainly perform authorization/access management, not legal-entity
+    governance despite the noun.'
+- tag: Group
+  spec_file: fusionauth-group-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: POST /api/group/member createGroupMembers; schemas GroupMember, ApplicationRole, MemberRequest
+  reason: Groups with member add/remove/search and attached application roles is group-based access assignment
+    in a CIAM platform — Identity & Access Management, not HR org structure.
+- tag: Key
+  spec_file: fusionauth-key-api-openapi.yml
+  capability_id: BC-620
+  capability_id_l1: BC-620
+  capability_name: Cybersecurity Management
+  confidence: 0.7
+  evidence: POST /api/key/generate generateKey; POST /api/key/import importKey; schemas KeyAlgorithm,
+    CertificateInformation
+  reason: Cryptographic key and certificate lifecycle management is a security control capability; too
+    narrow/technical to pin a specific L2, so L1 Cybersecurity Management only.
+- tag: Webhook
+  spec_file: fusionauth-webhook-api-openapi.yml
+  capability_id: BC-4270.80
+  capability_id_l1: BC-4270
+  capability_name: Webhook & Event Subscription Management
+  confidence: 0.7
+  evidence: POST /api/webhook createWebhook; PUT /api/webhook/{webhookId} updateWebhookWithId; schemas
+    Webhook, WebhookSignatureConfiguration, WebhookSearchCriteria
+  reason: Full CRUD plus search over webhook registrations with signature configuration — the lifecycle
+    of outbound event subscriptions the platform delivers to consumers. Maps to Webhook & Event Subscription
+    Management, though it is close to pure integration plumbing.

@@ -585,6 +585,9 @@ apis:
   - type: SDKs
     url: https://fusionauth.io/docs/sdks/
 common:
+  - type: CapabilityMap
+    url: capabilities/fusionauth-capability-edges.yml
+    name: FusionAuth Business Capability Map
   - type: AgenticAccess
     url: agentic-access/fusionauth-agentic-access.yml
   - type: TrustCenter
