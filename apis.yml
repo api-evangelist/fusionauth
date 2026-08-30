@@ -546,7 +546,7 @@ apis:
   humanURL: https://fusionauth.io/docs/
   baseURL: https://sandbox.fusionauth.io
   tags:
-  - WebAuthn
+  - Webauthn
   tags_raw:
   - Webauthn
   properties:
