@@ -343,22 +343,6 @@ apis:
     url: https://fusionauth.io/docs/apis/
   - type: SDKs
     url: https://fusionauth.io/docs/sdks/
-- aid: fusionauth:fusionauth-oauth2-api
-  name: FusionAuth Oauth2 API
-  description: The Oauth2 API from FusionAuth — 7 operation(s) for oauth2.
-  humanURL: https://fusionauth.io/docs/
-  baseURL: https://sandbox.fusionauth.io
-  tags:
-  - Authentication
-  tags_raw:
-  - Oauth2
-  properties:
-  - type: OpenAPI
-    url: openapi/fusionauth-oauth2-api-openapi.yml
-  - type: Documentation
-    url: https://fusionauth.io/docs/apis/
-  - type: SDKs
-    url: https://fusionauth.io/docs/sdks/
 - aid: fusionauth:fusionauth-passwordless-api
   name: FusionAuth Passwordless API
   description: The Passwordless API from FusionAuth — 3 operation(s) for passwordless.
@@ -581,6 +565,20 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/fusionauth-well-known-api-openapi.yml
+  - type: Documentation
+    url: https://fusionauth.io/docs/apis/
+  - type: SDKs
+    url: https://fusionauth.io/docs/sdks/
+- aid: fusionauth:fusionauth-oauth2-api
+  name: FusionAuth Oauth2 API
+  description: The Oauth2 API from FusionAuth — 7 operation(s) for oauth2.
+  humanURL: https://fusionauth.io/docs/
+  baseURL: https://sandbox.fusionauth.io
+  tags:
+  - Oauth2
+  properties:
+  - type: OpenAPI
+    url: openapi/fusionauth-oauth2-api-openapi.yml
   - type: Documentation
     url: https://fusionauth.io/docs/apis/
   - type: SDKs
