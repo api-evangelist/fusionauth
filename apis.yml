@@ -590,6 +590,8 @@ apis:
   - type: SDKs
     url: https://fusionauth.io/docs/sdks/
 common:
+  - type: RateLimits
+    url: rate-limits/fusionauth-rate-limits.yml
   - type: Plans
     url: plans/fusionauth-plans-pricing.yml
   - type: Website
