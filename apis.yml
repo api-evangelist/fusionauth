@@ -590,6 +590,8 @@ apis:
   - type: SDKs
     url: https://fusionauth.io/docs/sdks/
 common:
+  - type: Plans
+    url: plans/fusionauth-plans-pricing.yml
   - type: Website
     url: https://www.fusionauth.io/
   - type: CapabilityMap
