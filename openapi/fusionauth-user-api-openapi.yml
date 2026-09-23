@@ -1,8 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   version: 1.66.0
-  title: FusionAuth Api Key User API
-  description: This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.
+  title: FusionAuth User API
+  description: This is a FusionAuth server. Find out more at https://fusionauth.io. You need to set up an API key in the FusionAuth instance you are using to test out the API calls.
   license:
     name: Apache2
 servers:
@@ -45,6 +45,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Create user
+      x-summary-source: derived
     get:
       description: Retrieves the user by a verificationId. The intended use of this API is to retrieve a user after the forgot password workflow has been initiated and you may not know the user's email or username. OR Retrieves the user for the given username. OR Retrieves the user for the loginId, using specific loginIdTypes. OR Retrieves the user for the loginId. The loginId can be either the username or the email. OR Retrieves the user for the given email. OR Retrieves the user by a change password Id. The intended use of this API is to retrieve a user after the forgot password workflow has been initiated and you may not know the user's email or username.
       operationId: retrieveUser
@@ -103,6 +105,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Retrieve user
+      x-summary-source: derived
   /api/user/action:
     post:
       description: Takes an action on a user. The user being actioned is called the "actionee" and the user taking the action is called the "actioner". Both user ids are required in the request object.
@@ -128,6 +132,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Action user with id
+      x-summary-source: derived
     get:
       description: Retrieves all the actions for the user with the given Id that are currently inactive. An inactive action means one that is time based and has been canceled or has expired, or is not time based. OR Retrieves all the actions for the user with the given Id that are currently active. An active action means one that is time based and has not been canceled, and has not ended. OR Retrieves all the actions for the user with the given Id that are currently preventing the User from logging in. OR Retrieves all the actions for the user with the given Id. This will return all time based actions that are active, and inactive as well as non-time based actions.
       operationId: retrieveUserActioning
@@ -160,6 +166,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Retrieve user actioning
+      x-summary-source: derived
   /api/user/action/{actionId}:
     delete:
       description: Cancels the user action.
@@ -191,6 +199,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Cancel action with id
+      x-summary-source: derived
     put:
       description: Modifies a temporal user action by changing the expiration of the action and optionally adding a comment to the action.
       operationId: modifyActionWithId
@@ -221,6 +231,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Modify action with id
+      x-summary-source: derived
     get:
       description: Retrieves a single action log (the log of a user action that was taken on a user previously) for the given Id.
       operationId: retrieveActionWithId
@@ -246,9 +258,11 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Retrieve action with id
+      x-summary-source: derived
   /api/user/bulk:
     delete:
-      description: Deletes the users with the given Ids, or users matching the provided JSON query or queryString. The order of preference is Ids, query and then queryString, it is recommended to only provide one of the three for the request.  This method can be used to deactivate or permanently delete (hard-delete) users based upon the hardDelete boolean in the request body. Using the dryRun parameter you may also request the result of the action without actually deleting or deactivating any users. OR Deactivates the users with the given Ids.
+      description: Deletes the users with the given Ids, or users matching the provided JSON query or queryString. The order of preference is Ids, query and then queryString, it is recommended to only provide one of the three for the request. This method can be used to deactivate or permanently delete (hard-delete) users based upon the hardDelete boolean in the request body. Using the dryRun parameter you may also request the result of the action without actually deleting or deactivating any users. OR Deactivates the users with the given Ids.
       operationId: deleteUserBulk
       parameters:
       - name: userIds
@@ -284,9 +298,11 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Delete user bulk
+      x-summary-source: derived
   /api/user/change-password:
     post:
-      description: 'Changes a user''s password using their access token (JWT) instead of the changePasswordId A common use case for this method will be if you want to allow the user to change their own password.  Remember to send refreshToken in the request body if you want to get a new refresh token when login using the returned oneTimePassword. OR Changes a user''s password using their identity (loginId and password). Using a loginId instead of the changePasswordId bypasses the email verification and allows a password to be changed directly without first calling the #forgotPassword method.'
+      description: 'Changes a user''s password using their access token (JWT) instead of the changePasswordId A common use case for this method will be if you want to allow the user to change their own password. Remember to send refreshToken in the request body if you want to get a new refresh token when login using the returned oneTimePassword. OR Changes a user''s password using their identity (loginId and password). Using a loginId instead of the changePasswordId bypasses the email verification and allows a password to be changed directly without first calling the #forgotPassword method.'
       operationId: createUserChangePassword
       security:
       - BearerAuth: []
@@ -311,8 +327,10 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Create user change password
+      x-summary-source: derived
     get:
-      description: Check to see if the user must obtain a Trust Request Id in order to complete a change password request. When a user has enabled Two-Factor authentication, before you are allowed to use the Change Password API to change your password, you must obtain a Trust Request Id by completing a Two-Factor Step-Up authentication.  An HTTP status code of 400 with a general error code of [TrustTokenRequired] indicates that a Trust Token is required to make a POST request to this API. OR Check to see if the user must obtain a Trust Request Id in order to complete a change password request. When a user has enabled Two-Factor authentication, before you are allowed to use the Change Password API to change your password, you must obtain a Trust Request Id by completing a Two-Factor Step-Up authentication.  An HTTP status code of 400 with a general error code of [TrustTokenRequired] indicates that a Trust Token is required to make a POST request to this API. OR Check to see if the user must obtain a Trust Request Id in order to complete a change password request. When a user has enabled Two-Factor authentication, before you are allowed to use the Change Password API to change your password, you must obtain a Trust Request Id by completing a Two-Factor Step-Up authentication.  An HTTP status code of 400 with a general error code of [TrustTokenRequired] indicates that a Trust Token is required to make a POST request to this API. OR Check to see if the user must obtain a Trust Request Id in order to complete a change password request. When a user has enabled Two-Factor authentication, before you are allowed to use the Change Password API to change your password, you must obtain a Trust Request Id by completing a Two-Factor Step-Up authentication.  An HTTP status code of 400 with a general error code of [TrustTokenRequired] indicates that a Trust Token is required to make a POST request to this API. OR Check to see if the user must obtain a Trust Token Id in order to complete a change password request. When a user has enabled Two-Factor authentication, before you are allowed to use the Change Password API to change your password, you must obtain a Trust Token by completing a Two-Factor Step-Up authentication.  An HTTP status code of 400 with a general error code of [TrustTokenRequired] indicates that a Trust Token is required to make a POST request to this API. OR Check to see if the user must obtain a Trust Token Id in order to complete a change password request. When a user has enabled Two-Factor authentication, before you are allowed to use the Change Password API to change your password, you must obtain a Trust Token by completing a Two-Factor Step-Up authentication.  An HTTP status code of 400 with a general error code of [TrustTokenRequired] indicates that a Trust Token is required to make a POST request to this API.
+      description: Check to see if the user must obtain a Trust Request Id in order to complete a change password request. When a user has enabled Two-Factor authentication, before you are allowed to use the Change Password API to change your password, you must obtain a Trust Request Id by completing a Two-Factor Step-Up authentication. An HTTP status code of 400 with a general error code of [TrustTokenRequired] indicates that a Trust Token is required to make a POST request to this API. OR Check to see if the user must obtain a Trust Request Id in order to complete a change password request. When a user has enabled Two-Factor authentication, before you are allowed to use the Change Password API to change your password, you must obtain a Trust Request Id by completing a Two-Factor Step-Up authentication. An HTTP status code of 400 with a general error code of [TrustTokenRequired] indicates that a Trust Token is required to make a POST request to this API. OR Check to see if the user must obtain a Trust Request Id in order to complete a change password request. When a user has enabled Two-Factor authentication, before you are allowed to use the Change Password API to change your password, you must obtain a Trust Request Id by completing a Two-Factor Step-Up authentication. An HTTP status code of 400 with a general error code of [TrustTokenRequired] indicates that a Trust Token is required to make a POST request to this API. OR Check to see if the user must obtain a Trust Request Id in order to complete a change password request. When a user has enabled Two-Factor authentication, before you are allowed to use the Change Password API to change your password, you must obtain a Trust Request Id by completing a Two-Factor Step-Up authentication. An HTTP status code of 400 with a general error code of [TrustTokenRequired] indicates that a Trust Token is required to make a POST request to this API. OR Check to see if the user must obtain a Trust Token Id in order to complete a change password request. When a user has enabled Two-Factor authentication, before you are allowed to use the Change Password API to change your password, you must obtain a Trust Token by completing a Two-Factor Step-Up authentication. An HTTP status code of 400 with a general error code of [TrustTokenRequired] indicates that a Trust Token is required to make a POST request to this API. OR Check to see if the user must obtain a Trust Token Id in order to complete a change password request. When a user has enabled Two-Factor authentication, before you are allowed to use the Change Password API to change your password, you must obtain a Trust Token by completing a Two-Factor Step-Up authentication. An HTTP status code of 400 with a general error code of [TrustTokenRequired] indicates that a Trust Token is required to make a POST request to this API.
       operationId: retrieveUserChangePassword
       parameters:
       - name: loginId
@@ -343,9 +361,11 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Retrieve user change password
+      x-summary-source: derived
   /api/user/change-password/{changePasswordId}:
     post:
-      description: Changes a user's password using the change password Id. This usually occurs after an email has been sent to the user and they clicked on a link to reset their password.  As of version 1.32.2, prefer sending the changePasswordId in the request body. To do this, omit the first parameter, and set the value in the request body.
+      description: Changes a user's password using the change password Id. This usually occurs after an email has been sent to the user and they clicked on a link to reset their password. As of version 1.32.2, prefer sending the changePasswordId in the request body. To do this, omit the first parameter, and set the value in the request body.
       operationId: changePasswordWithId
       parameters:
       - name: changePasswordId
@@ -374,8 +394,10 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Change password with id
+      x-summary-source: derived
     get:
-      description: Check to see if the user must obtain a Trust Token Id in order to complete a change password request. When a user has enabled Two-Factor authentication, before you are allowed to use the Change Password API to change your password, you must obtain a Trust Token by completing a Two-Factor Step-Up authentication.  An HTTP status code of 400 with a general error code of [TrustTokenRequired] indicates that a Trust Token is required to make a POST request to this API. OR Check to see if the user must obtain a Trust Token Id in order to complete a change password request. When a user has enabled Two-Factor authentication, before you are allowed to use the Change Password API to change your password, you must obtain a Trust Token by completing a Two-Factor Step-Up authentication.  An HTTP status code of 400 with a general error code of [TrustTokenRequired] indicates that a Trust Token is required to make a POST request to this API.
+      description: Check to see if the user must obtain a Trust Token Id in order to complete a change password request. When a user has enabled Two-Factor authentication, before you are allowed to use the Change Password API to change your password, you must obtain a Trust Token by completing a Two-Factor Step-Up authentication. An HTTP status code of 400 with a general error code of [TrustTokenRequired] indicates that a Trust Token is required to make a POST request to this API. OR Check to see if the user must obtain a Trust Token Id in order to complete a change password request. When a user has enabled Two-Factor authentication, before you are allowed to use the Change Password API to change your password, you must obtain a Trust Token by completing a Two-Factor Step-Up authentication. An HTTP status code of 400 with a general error code of [TrustTokenRequired] indicates that a Trust Token is required to make a POST request to this API.
       operationId: retrieveUserChangePasswordWithId
       parameters:
       - name: ipAddress
@@ -400,6 +422,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Retrieve user change password with id
+      x-summary-source: derived
   /api/user/comment:
     post:
       description: Adds a comment to the user's account.
@@ -432,6 +456,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Comment on user with id
+      x-summary-source: derived
   /api/user/comment/search:
     post:
       description: Searches user comments with the specified criteria and pagination.
@@ -457,6 +483,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Search user comments with id
+      x-summary-source: derived
   /api/user/comment/{userId}:
     get:
       description: Retrieves all the comments for the user with the given Id.
@@ -490,6 +518,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Retrieve user comments with id
+      x-summary-source: derived
   /api/user/consent:
     post:
       description: Creates a single User consent.
@@ -515,6 +545,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Create user consent
+      x-summary-source: derived
     get:
       description: Retrieves all the consents for a User.
       operationId: retrieveUserConsentsWithId
@@ -535,6 +567,8 @@ paths:
           description: Error
       tags:
       - User
+      summary: Retrieve user consents with id
+      x-summary-source: derived
   /api/user/consent/{userConsentId}:
     post:
       description: Creates a single User consent.
@@ -566,6 +600,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Create user consent with id
+      x-summary-source: derived
     patch:
       description: Updates, via PATCH, a single User consent by Id.
       operationId: patchUserConsentWithId
@@ -596,6 +632,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Patch user consent with id
+      x-summary-source: derived
     get:
       description: Retrieve a single User consent by Id.
       operationId: retrieveUserConsentWithId
@@ -617,6 +655,8 @@ paths:
           description: Error
       tags:
       - User
+      summary: Retrieve user consent with id
+      x-summary-source: derived
     delete:
       description: Revokes a single User consent by Id.
       operationId: revokeUserConsentWithId
@@ -634,6 +674,8 @@ paths:
           description: Error
       tags:
       - User
+      summary: Revoke user consent with id
+      x-summary-source: derived
     put:
       description: Updates a single User consent by Id.
       operationId: updateUserConsentWithId
@@ -664,6 +706,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Update user consent with id
+      x-summary-source: derived
   /api/user/family:
     post:
       description: Creates a family with the user Id in the request as the owner and sole member of the family. You can optionally specify an Id for the family, if not provided one will be generated.
@@ -696,6 +740,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Create family
+      x-summary-source: derived
     get:
       description: Retrieves all the families that a user belongs to.
       operationId: retrieveFamiliesWithId
@@ -723,6 +769,8 @@ paths:
           description: Error
       tags:
       - User
+      summary: Retrieve families with id
+      x-summary-source: derived
   /api/user/family/pending:
     get:
       description: Retrieves all the children for the given parent email address.
@@ -748,6 +796,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Retrieve pending children with id
+      x-summary-source: derived
   /api/user/family/request:
     post:
       description: Sends out an email to a parent that they need to register and create a family or need to log in and add a child to their existing family.
@@ -769,6 +819,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Send family request email with id
+      x-summary-source: derived
   /api/user/family/{familyId}:
     put:
       description: Updates a family with a given Id. OR Adds a user to an existing family. The family Id must be specified.
@@ -807,6 +859,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Update user family with id
+      x-summary-source: derived
     post:
       description: Creates a family with the user Id in the request as the owner and sole member of the family. You can optionally specify an Id for the family, if not provided one will be generated.
       operationId: createFamilyWithId
@@ -844,6 +898,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Create family with id
+      x-summary-source: derived
     get:
       description: Retrieves all the members of a family by the unique Family Id.
       operationId: retrieveFamilyMembersByFamilyIdWithId
@@ -872,6 +928,8 @@ paths:
           description: Error
       tags:
       - User
+      summary: Retrieve family members by family id with id
+      x-summary-source: derived
   /api/user/family/{familyId}/{userId}:
     delete:
       description: Removes a user from the family with the given Id.
@@ -907,6 +965,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Remove user from family with id
+      x-summary-source: derived
   /api/user/forgot-password:
     post:
       description: Begins the forgot password sequence, which kicks off an email to the user so that they can reset their password.
@@ -932,9 +992,11 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Forgot password with id
+      x-summary-source: derived
   /api/user/import:
     post:
-      description: Bulk imports users. This request performs minimal validation and runs batch inserts of users with the expectation that each user does not yet exist and each registration corresponds to an existing FusionAuth Application. This is done to increases the insert performance.  Therefore, if you encounter an error due to a database key violation, the response will likely offer a generic explanation. If you encounter an error, you may optionally enable additional validation to receive a JSON response body with specific validation errors. This will slow the request down but will allow you to identify the cause of the failure. See the validateDbConstraints request parameter.
+      description: Bulk imports users. This request performs minimal validation and runs batch inserts of users with the expectation that each user does not yet exist and each registration corresponds to an existing FusionAuth Application. This is done to increases the insert performance. Therefore, if you encounter an error due to a database key violation, the response will likely offer a generic explanation. If you encounter an error, you may optionally enable additional validation to receive a JSON response body with specific validation errors. This will slow the request down but will allow you to identify the cause of the failure. See the validateDbConstraints request parameter.
       operationId: importUsersWithId
       parameters: []
       requestBody:
@@ -953,6 +1015,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Import users with id
+      x-summary-source: derived
   /api/user/recent-login:
     get:
       description: Retrieves the last number of login records for a user. OR Retrieves the last number of login records.
@@ -988,9 +1052,11 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Retrieve user recent login
+      x-summary-source: derived
   /api/user/refresh-token/import:
     post:
-      description: Bulk imports refresh tokens. This request performs minimal validation and runs batch inserts of refresh tokens with the expectation that each token represents a user that already exists and is registered for the corresponding FusionAuth Application. This is done to increases the insert performance.  Therefore, if you encounter an error due to a database key violation, the response will likely offer a generic explanation. If you encounter an error, you may optionally enable additional validation to receive a JSON response body with specific validation errors. This will slow the request down but will allow you to identify the cause of the failure. See the validateDbConstraints request parameter.
+      description: Bulk imports refresh tokens. This request performs minimal validation and runs batch inserts of refresh tokens with the expectation that each token represents a user that already exists and is registered for the corresponding FusionAuth Application. This is done to increases the insert performance. Therefore, if you encounter an error due to a database key violation, the response will likely offer a generic explanation. If you encounter an error, you may optionally enable additional validation to receive a JSON response body with specific validation errors. This will slow the request down but will allow you to identify the cause of the failure. See the validateDbConstraints request parameter.
       operationId: importRefreshTokensWithId
       parameters: []
       requestBody:
@@ -1009,6 +1075,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Import refresh tokens with id
+      x-summary-source: derived
   /api/user/registration:
     post:
       description: Registers a user for an application. If you provide the User and the UserRegistration object on this request, it will create the user as well as register them for the application. This is called a Full Registration. However, if you only provide the UserRegistration object, then the user must already exist and they will be registered for the application. The user Id can also be provided and it will either be used to look up an existing user or it will be used for the newly created User.
@@ -1041,6 +1109,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Register
+      x-summary-source: derived
   /api/user/registration/{userId}:
     patch:
       description: Updates, via PATCH, the registration for the user with the given Id and the application defined in the request.
@@ -1079,6 +1149,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Patch registration with id
+      x-summary-source: derived
     post:
       description: Registers a user for an application. If you provide the User and the UserRegistration object on this request, it will create the user as well as register them for the application. This is called a Full Registration. However, if you only provide the UserRegistration object, then the user must already exist and they will be registered for the application. The user Id can also be provided and it will either be used to look up an existing user or it will be used for the newly created User.
       operationId: registerWithId
@@ -1116,6 +1188,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Register with id
+      x-summary-source: derived
     put:
       description: Updates the registration for the user with the given Id and the application defined in the request.
       operationId: updateRegistrationWithId
@@ -1153,6 +1227,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Update registration with id
+      x-summary-source: derived
   /api/user/registration/{userId}/{applicationId}:
     delete:
       description: Deletes the user registration for the given user and application along with the given JSON body that contains the event information. OR Deletes the user registration for the given user and application.
@@ -1193,6 +1269,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Delete user registration with id
+      x-summary-source: derived
     get:
       description: Retrieves the user registration for the user with the given Id and the given application Id.
       operationId: retrieveRegistrationWithId
@@ -1231,6 +1309,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Retrieve registration with id
+      x-summary-source: derived
   /api/user/search:
     get:
       description: Retrieves the users for the given Ids. If any Id is invalid, it is ignored.
@@ -1256,6 +1336,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Search users by ids with id
+      x-summary-source: derived
     post:
       description: Retrieves the users for the given search criteria and pagination.
       operationId: searchUsersByQueryWithId
@@ -1280,6 +1362,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Search users by query with id
+      x-summary-source: derived
   /api/user/two-factor/recovery-code/{userId}:
     post:
       description: Generate two-factor recovery codes for a user. Generating two-factor recovery codes will invalidate any existing recovery codes.
@@ -1306,6 +1390,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Generate two factor recovery codes with id
+      x-summary-source: derived
     get:
       description: Retrieve two-factor recovery codes for a user.
       operationId: retrieveTwoFactorRecoveryCodesWithId
@@ -1331,6 +1417,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Retrieve two factor recovery codes with id
+      x-summary-source: derived
   /api/user/two-factor/{userId}:
     delete:
       description: Disable two-factor authentication for a user using a JSON body rather than URL parameters. OR Disable two-factor authentication for a user.
@@ -1368,6 +1456,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Delete user two factor with id
+      x-summary-source: derived
     post:
       description: Enable two-factor authentication for a user.
       operationId: enableTwoFactorWithId
@@ -1398,6 +1488,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Enable two factor with id
+      x-summary-source: derived
   /api/user/verify-email:
     put:
       description: Re-sends the verification email to the user. If the Application has configured a specific email template this will be used instead of the tenant configuration. OR Re-sends the verification email to the user. OR Generate a new Email Verification Id to be used with the Verify Email API. This API will not attempt to send an email to the User. This API may be used to collect the verificationId for use with a third party system.
@@ -1432,8 +1524,10 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Update user verify email
+      x-summary-source: derived
     post:
-      description: Administratively verify a user's email address. Use this method to bypass email verification for the user.  The request body will contain the userId to be verified. An API key is required when sending the userId in the request body. OR Confirms a user's email address.   The request body will contain the verificationId. You may also be required to send a one-time use code based upon your configuration. When  the tenant is configured to gate a user until their email address is verified, this procedures requires two values instead of one.  The verificationId is a high entropy value and the one-time use code is a low entropy value that is easily entered in a user interactive form. The  two values together are able to confirm a user's email address and mark the user's email address as verified.
+      description: Administratively verify a user's email address. Use this method to bypass email verification for the user. The request body will contain the userId to be verified. An API key is required when sending the userId in the request body. OR Confirms a user's email address. The request body will contain the verificationId. You may also be required to send a one-time use code based upon your configuration. When the tenant is configured to gate a user until their email address is verified, this procedures requires two values instead of one. The verificationId is a high entropy value and the one-time use code is a low entropy value that is easily entered in a user interactive form. The two values together are able to confirm a user's email address and mark the user's email address as verified.
       operationId: createUserVerifyEmail
       parameters: []
       requestBody:
@@ -1452,6 +1546,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Create user verify email
+      x-summary-source: derived
   /api/user/verify-registration:
     put:
       description: Re-sends the application registration verification email to the user. OR Generate a new Application Registration Verification Id to be used with the Verify Registration API. This API will not attempt to send an email to the User. This API may be used to collect the verificationId for use with a third party system.
@@ -1486,8 +1582,10 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Update user verify registration
+      x-summary-source: derived
     post:
-      description: Confirms a user's registration.   The request body will contain the verificationId. You may also be required to send a one-time use code based upon your configuration. When  the application is configured to gate a user until their registration is verified, this procedures requires two values instead of one.  The verificationId is a high entropy value and the one-time use code is a low entropy value that is easily entered in a user interactive form. The  two values together are able to confirm a user's registration and mark the user's registration as verified.
+      description: Confirms a user's registration. The request body will contain the verificationId. You may also be required to send a one-time use code based upon your configuration. When the application is configured to gate a user until their registration is verified, this procedures requires two values instead of one. The verificationId is a high entropy value and the one-time use code is a low entropy value that is easily entered in a user interactive form. The two values together are able to confirm a user's registration and mark the user's registration as verified.
       operationId: verifyUserRegistrationWithId
       parameters: []
       requestBody:
@@ -1506,6 +1604,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Verify user registration with id
+      x-summary-source: derived
   /api/user/{userId}:
     post:
       description: Creates a user. You can optionally specify an Id for the user, if not provided one will be generated.
@@ -1544,6 +1644,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Create user with id
+      x-summary-source: derived
     delete:
       description: Deletes the user based on the given request (sent to the API as JSON). This permanently deletes all information, metrics, reports and data associated with the user. OR Deletes the user for the given Id. This permanently deletes all information, metrics, reports and data associated with the user. OR Deactivates the user with the given Id.
       operationId: deleteUserWithId
@@ -1581,6 +1683,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Delete user with id
+      x-summary-source: derived
     patch:
       description: Updates, via PATCH, the user with the given Id.
       operationId: patchUserWithId
@@ -1618,6 +1722,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Patch user with id
+      x-summary-source: derived
     put:
       description: Updates the user with the given Id. OR Reactivates the user with the given Id.
       operationId: updateUserWithId
@@ -1659,6 +1765,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Update user with id
+      x-summary-source: derived
     get:
       description: Retrieves the user for the given Id.
       operationId: retrieveUserWithId
@@ -1691,8 +1799,448 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User
+      summary: Retrieve user with id
+      x-summary-source: derived
 components:
   schemas:
+    ChangePasswordResponse:
+      description: Change password response object.
+      type: object
+      properties:
+        oneTimePassword:
+          type: string
+        state:
+          type: object
+          additionalProperties:
+            type: object
+    UserRequest:
+      description: User API request object.
+      type: object
+      properties:
+        applicationId:
+          type: string
+          format: uuid
+        currentPassword:
+          type: string
+        disableDomainBlock:
+          type: boolean
+        sendSetPasswordEmail:
+          type: boolean
+        sendSetPasswordIdentityType:
+          $ref: '#/components/schemas/SendSetPasswordIdentityType'
+        skipVerification:
+          type: boolean
+        user:
+          $ref: '#/components/schemas/User'
+        verificationIds:
+          type: array
+          items:
+            type: string
+        eventInfo:
+          $ref: '#/components/schemas/EventInfo'
+    UserActionLog:
+      description: A log for an action that was taken on a User.
+      type: object
+      properties:
+        actioneeUserId:
+          type: string
+          format: uuid
+        actionerUserId:
+          type: string
+          format: uuid
+        applicationIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+        comment:
+          type: string
+        emailUserOnEnd:
+          type: boolean
+        endEventSent:
+          type: boolean
+        expiry:
+          $ref: '#/components/schemas/ZonedDateTime'
+        history:
+          $ref: '#/components/schemas/LogHistory'
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        localizedName:
+          type: string
+        localizedOption:
+          type: string
+        localizedReason:
+          type: string
+        name:
+          type: string
+        notifyUserOnEnd:
+          type: boolean
+        option:
+          type: string
+        reason:
+          type: string
+        reasonCode:
+          type: string
+        userActionId:
+          type: string
+          format: uuid
+    FamilyEmailRequest:
+      description: API request for sending out family requests to parent's.
+      type: object
+      properties:
+        parentEmail:
+          type: string
+    FamilyRequest:
+      description: API request for managing families and members.
+      type: object
+      properties:
+        familyMember:
+          $ref: '#/components/schemas/FamilyMember'
+    ActionResponse:
+      description: The user action response object.
+      type: object
+      properties:
+        action:
+          $ref: '#/components/schemas/UserActionLog'
+        actions:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserActionLog'
+    LogHistory:
+      description: A historical state of a user log event. Since events can be modified, this stores the historical state.
+      type: object
+      properties:
+        historyItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoryItem'
+    TOTPAlgorithm:
+      type: string
+      enum:
+      - HmacSHA1
+      - HmacSHA256
+      - HmacSHA512
+    RegistrationDeleteRequest:
+      description: Registration delete API request object.
+      type: object
+      properties:
+        eventInfo:
+          $ref: '#/components/schemas/EventInfo'
+    UserCommentResponse:
+      description: User Comment Response
+      type: object
+      properties:
+        userComment:
+          $ref: '#/components/schemas/UserComment'
+        userComments:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserComment'
+    SearchRequest:
+      description: Search API request.
+      type: object
+      properties:
+        search:
+          $ref: '#/components/schemas/UserSearchCriteria'
+        expand:
+          type: array
+          items:
+            type: string
+    Location:
+      description: Location information. Useful for IP addresses and other displayable data objects.
+      type: object
+      properties:
+        city:
+          type: string
+        country:
+          type: string
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        region:
+          type: string
+        zipcode:
+          type: string
+        displayString:
+          type: string
+    UserCommentSearchResponse:
+      description: User comment search response
+      type: object
+      properties:
+        total:
+          type: integer
+          format: int64
+        userComments:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserComment'
+    VerifyRegistrationResponse:
+      description: ''
+      type: object
+      properties:
+        oneTimeCode:
+          type: string
+        verificationId:
+          type: string
+    UserIdentity:
+      description: ''
+      type: object
+      properties:
+        displayValue:
+          type: string
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastLoginInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        moderationStatus:
+          $ref: '#/components/schemas/ContentStatus'
+        primary:
+          type: boolean
+        type:
+          $ref: '#/components/schemas/IdentityType'
+        value:
+          type: string
+        verified:
+          type: boolean
+        verifiedInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        verifiedReason:
+          $ref: '#/components/schemas/IdentityVerifiedReason'
+    Locale:
+      description: A Locale object represents a specific geographical, political, or cultural region.
+      example: en_US
+      type: string
+    LocalDate:
+      description: A date without a time-zone in the ISO-8601 calendar system, such as 2007-12-03.
+      example: '2007-12-03'
+      pattern: ^[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]$
+      type: string
+    ForgotPasswordRequest:
+      description: Forgot password request object.
+      type: object
+      properties:
+        applicationId:
+          type: string
+          format: uuid
+        changePasswordId:
+          type: string
+        loginId:
+          type: string
+        loginIdTypes:
+          type: array
+          items:
+            type: string
+        sendForgotPasswordEmail:
+          type: boolean
+        sendForgotPasswordMessage:
+          type: boolean
+        state:
+          type: object
+          additionalProperties:
+            type: object
+        email:
+          type: string
+        username:
+          type: string
+        eventInfo:
+          $ref: '#/components/schemas/EventInfo'
+    BreachedPasswordStatus:
+      description: ''
+      type: string
+      enum:
+      - None
+      - ExactMatch
+      - SubAddressMatch
+      - PasswordOnly
+      - CommonPassword
+    UserTwoFactorConfiguration:
+      description: ''
+      type: object
+      properties:
+        methods:
+          type: array
+          items:
+            $ref: '#/components/schemas/TwoFactorMethod'
+        recoveryCodes:
+          type: array
+          items:
+            type: string
+    UserCommentSearchRequest:
+      description: Search request for user comments
+      type: object
+      properties:
+        search:
+          $ref: '#/components/schemas/UserCommentSearchCriteria'
+    TwoFactorResponse:
+      description: ''
+      type: object
+      properties:
+        code:
+          type: string
+        recoveryCodes:
+          type: array
+          items:
+            type: string
+    VerifyRegistrationRequest:
+      description: ''
+      type: object
+      properties:
+        oneTimeCode:
+          type: string
+        verificationId:
+          type: string
+        eventInfo:
+          $ref: '#/components/schemas/EventInfo'
+    UserDeleteResponse:
+      description: User API bulk response object.
+      type: object
+      properties:
+        dryRun:
+          type: boolean
+        hardDelete:
+          type: boolean
+        total:
+          type: integer
+        userIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+    UserComment:
+      description: A log for an event that happened to a User.
+      type: object
+      properties:
+        comment:
+          type: string
+        commenterId:
+          type: string
+          format: uuid
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        userId:
+          type: string
+          format: uuid
+    ZoneId:
+      description: Timezone Identifier
+      example: America/Denver
+      pattern: ^w+/w+$
+      type: string
+    TwoFactorMethod:
+      description: ''
+      type: object
+      properties:
+        authenticator:
+          $ref: '#/components/schemas/AuthenticatorConfiguration'
+        email:
+          type: string
+        id:
+          type: string
+        lastUsed:
+          type: boolean
+        method:
+          type: string
+        mobilePhone:
+          type: string
+        secret:
+          type: string
+    PendingResponse:
+      description: ''
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+    ForgotPasswordResponse:
+      description: Forgot password response object.
+      type: object
+      properties:
+        changePasswordId:
+          type: string
+    FamilyMember:
+      description: Models a single family member.
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        owner:
+          type: boolean
+        role:
+          $ref: '#/components/schemas/FamilyRole'
+        userId:
+          type: string
+          format: uuid
+    SendSetPasswordIdentityType:
+      description: Used to indicate which identity type a password "request" might go to. It could be  used for send set passwords or send password resets.
+      type: string
+      enum:
+      - email
+      - phone
+      - doNotSend
+    UserCommentRequest:
+      description: ''
+      type: object
+      properties:
+        userComment:
+          $ref: '#/components/schemas/UserComment'
+    ActionRequest:
+      description: The user action request object.
+      type: object
+      properties:
+        action:
+          $ref: '#/components/schemas/ActionData'
+        broadcast:
+          type: boolean
+        eventInfo:
+          $ref: '#/components/schemas/EventInfo'
+    VerifyEmailRequest:
+      description: ''
+      type: object
+      properties:
+        oneTimeCode:
+          type: string
+        userId:
+          type: string
+          format: uuid
+        verificationId:
+          type: string
+        eventInfo:
+          $ref: '#/components/schemas/EventInfo'
+    VerificationId:
+      type: object
+      properties:
+        id:
+          type: string
+        oneTimeCode:
+          type: string
+        type:
+          $ref: '#/components/schemas/IdentityType'
+        value:
+          type: string
+    ContentStatus:
+      description: Status for content like usernames, profile attributes, etc.
+      type: string
+      enum:
+      - ACTIVE
+      - PENDING
+      - REJECTED
     ActionData:
       type: object
       properties:
@@ -1723,26 +2271,6 @@ components:
         userActionId:
           type: string
           format: uuid
-    Errors:
-      description: Standard error domain object that can also be used as the response from an API call.
-      type: object
-      properties:
-        fieldErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-        generalErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-    RecentLoginResponse:
-      description: Response for the user login report.
-      type: object
-      properties:
-        logins:
-          type: array
-          items:
-            $ref: '#/components/schemas/DisplayableRawLogin'
     SearchResponse:
       description: Search API response.
       type: object
@@ -1760,6 +2288,386 @@ components:
           type: array
           items:
             type: string
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    MetaData:
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        device:
+          $ref: '#/components/schemas/DeviceInfo'
+        scopes:
+          type: array
+          uniqueItems: true
+          items: {}
+    SortField:
+      description: ''
+      type: object
+      properties:
+        missing:
+          type: string
+        name:
+          type: string
+        order:
+          $ref: '#/components/schemas/Sort'
+    UserDeleteSingleRequest:
+      description: User API delete request object for a single user.
+      type: object
+      properties:
+        hardDelete:
+          type: boolean
+        eventInfo:
+          $ref: '#/components/schemas/EventInfo'
+    TwoFactorDisableRequest:
+      description: ''
+      type: object
+      properties:
+        applicationId:
+          type: string
+          format: uuid
+        code:
+          type: string
+        methodId:
+          type: string
+        eventInfo:
+          $ref: '#/components/schemas/EventInfo'
+    GroupMember:
+      description: A User's membership into a Group
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        groupId:
+          type: string
+          format: uuid
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        userId:
+          type: string
+          format: uuid
+    VerifyEmailResponse:
+      description: ''
+      type: object
+      properties:
+        oneTimeCode:
+          type: string
+        verificationId:
+          type: string
+    RegistrationRequest:
+      description: Registration API request object.
+      type: object
+      properties:
+        disableDomainBlock:
+          type: boolean
+        generateAuthenticationToken:
+          type: boolean
+        registration:
+          $ref: '#/components/schemas/UserRegistration'
+        sendSetPasswordEmail:
+          type: boolean
+        sendSetPasswordIdentityType:
+          $ref: '#/components/schemas/SendSetPasswordIdentityType'
+        skipRegistrationVerification:
+          type: boolean
+        skipVerification:
+          type: boolean
+        user:
+          $ref: '#/components/schemas/User'
+        verificationIds:
+          type: array
+          items:
+            type: string
+        eventInfo:
+          $ref: '#/components/schemas/EventInfo'
+    IdentityType:
+      description: Model identity types provided by FusionAuth.
+      type: object
+      properties:
+        name:
+          type: string
+    TwoFactorRequest:
+      description: ''
+      type: object
+      properties:
+        applicationId:
+          type: string
+          format: uuid
+        authenticatorId:
+          type: string
+        code:
+          type: string
+        email:
+          type: string
+        method:
+          type: string
+        mobilePhone:
+          type: string
+        secret:
+          type: string
+        secretBase32Encoded:
+          type: string
+        twoFactorId:
+          type: string
+        eventInfo:
+          $ref: '#/components/schemas/EventInfo'
+    RefreshToken:
+      description: Models a JWT Refresh Token.
+      type: object
+      properties:
+        applicationId:
+          type: string
+          format: uuid
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        metaData:
+          $ref: '#/components/schemas/MetaData'
+        startInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        tenantId:
+          type: string
+          format: uuid
+        token:
+          type: string
+        userId:
+          type: string
+          format: uuid
+    UserConsentRequest:
+      description: API response for User consent.
+      type: object
+      properties:
+        userConsent:
+          $ref: '#/components/schemas/UserConsent'
+    ImportRequest:
+      description: Import request.
+      type: object
+      properties:
+        encryptionScheme:
+          type: string
+        factor:
+          type: integer
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+        validateDbConstraints:
+          type: boolean
+        eventInfo:
+          $ref: '#/components/schemas/EventInfo'
+    ConsentStatus:
+      description: Models a consent.
+      type: string
+      enum:
+      - Active
+      - Revoked
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    DisplayableRawLogin:
+      description: A displayable raw login that includes application name and user loginId.
+      type: object
+      properties:
+        applicationName:
+          type: string
+        location:
+          $ref: '#/components/schemas/Location'
+        loginId:
+          type: string
+        loginIdType:
+          $ref: '#/components/schemas/IdentityType'
+        applicationId:
+          type: string
+          format: uuid
+        instant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        ipAddress:
+          type: string
+        userId:
+          type: string
+          format: uuid
+    EventInfo:
+      description: Information about a user event (login, register, etc) that helps identify the source of the event (location, device type, OS, etc).
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        deviceDescription:
+          type: string
+        deviceName:
+          type: string
+        deviceType:
+          type: string
+        ipAddress:
+          type: string
+        location:
+          $ref: '#/components/schemas/Location'
+        os:
+          type: string
+        userAgent:
+          type: string
+    FamilyRole:
+      type: string
+      enum:
+      - Child
+      - Teen
+      - Adult
+    RecentLoginResponse:
+      description: Response for the user login report.
+      type: object
+      properties:
+        logins:
+          type: array
+          items:
+            $ref: '#/components/schemas/DisplayableRawLogin'
+    DeviceInfo:
+      description: ''
+      type: object
+      properties:
+        description:
+          type: string
+        lastAccessedAddress:
+          type: string
+        lastAccessedInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        name:
+          type: string
+        type:
+          type: string
+    UserCommentSearchCriteria:
+      description: Search criteria for user comments.
+      type: object
+      properties:
+        comment:
+          type: string
+        commenterId:
+          type: string
+          format: uuid
+        tenantId:
+          type: string
+          format: uuid
+        userId:
+          type: string
+          format: uuid
+        numberOfResults:
+          type: integer
+        orderBy:
+          type: string
+        startRow:
+          type: integer
+    UserRegistration:
+      description: User registration information for a single application.
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        preferredLanguages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Locale'
+        tokens:
+          type: object
+          additionalProperties:
+            type: string
+        applicationId:
+          type: string
+          format: uuid
+        authenticationToken:
+          type: string
+        cleanSpeakId:
+          type: string
+          format: uuid
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastLoginInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        roles:
+          type: array
+          uniqueItems: true
+          items: {}
+        timezone:
+          $ref: '#/components/schemas/ZoneId'
+        username:
+          type: string
+        usernameStatus:
+          $ref: '#/components/schemas/ContentStatus'
+        verified:
+          type: boolean
+        verifiedInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+    Family:
+      description: Models a family grouping of users.
+      type: object
+      properties:
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/FamilyMember'
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+    HistoryItem:
+      type: object
+      properties:
+        actionerUserId:
+          type: string
+          format: uuid
+        comment:
+          type: string
+        createInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        expiry:
+          $ref: '#/components/schemas/ZonedDateTime'
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
     ChangePasswordRequest:
       description: Change password request object.
       type: object
@@ -1787,6 +2695,120 @@ components:
           type: string
         eventInfo:
           $ref: '#/components/schemas/EventInfo'
+    UserConsent:
+      description: Models a User consent.
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        consent:
+          $ref: '#/components/schemas/Consent'
+        consentId:
+          type: string
+          format: uuid
+        giverUserId:
+          type: string
+          format: uuid
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        status:
+          $ref: '#/components/schemas/ConsentStatus'
+        userId:
+          type: string
+          format: uuid
+        values:
+          type: array
+          items:
+            type: string
+    UserConsentResponse:
+      description: API response for User consent.
+      type: object
+      properties:
+        userConsent:
+          $ref: '#/components/schemas/UserConsent'
+        userConsents:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserConsent'
+    ChangePasswordReason:
+      description: ''
+      type: string
+      enum:
+      - Administrative
+      - Breached
+      - Expired
+      - Validation
+    UserSearchCriteria:
+      description: This class is the user query. It provides a build pattern as well as public fields for use on forms and in actions.
+      type: object
+      properties:
+        accurateTotal:
+          type: boolean
+        ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+        nextResults:
+          type: string
+        query:
+          type: string
+        queryString:
+          type: string
+        sortFields:
+          type: array
+          items:
+            $ref: '#/components/schemas/SortField'
+    TwoFactorRecoveryCodeResponse:
+      description: ''
+      type: object
+      properties:
+        recoveryCodes:
+          type: array
+          items:
+            type: string
+    RegistrationResponse:
+      description: Registration API request object.
+      type: object
+      properties:
+        refreshToken:
+          type: string
+        refreshTokenId:
+          type: string
+          format: uuid
+        registration:
+          $ref: '#/components/schemas/UserRegistration'
+        registrationVerificationId:
+          type: string
+        registrationVerificationOneTimeCode:
+          type: string
+        token:
+          type: string
+        tokenExpirationInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        user:
+          $ref: '#/components/schemas/User'
+        verificationIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/VerificationId'
+    RefreshTokenImportRequest:
+      description: Refresh Token Import request.
+      type: object
+      properties:
+        refreshTokens:
+          type: array
+          items:
+            $ref: '#/components/schemas/RefreshToken'
+        validateDbConstraints:
+          type: boolean
     EmailPlus:
       type: object
       properties:
@@ -1799,199 +2821,16 @@ components:
           type: integer
         enabled:
           type: boolean
-    ContentStatus:
-      description: Status for content like usernames, profile attributes, etc.
-      type: string
-      enum:
-      - ACTIVE
-      - PENDING
-      - REJECTED
-    TOTPAlgorithm:
-      type: string
-      enum:
-      - HmacSHA1
-      - HmacSHA256
-      - HmacSHA512
-    EventInfo:
-      description: Information about a user event (login, register, etc) that helps identify the source of the event (location, device type, OS, etc).
-      type: object
-      properties:
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        deviceDescription:
-          type: string
-        deviceName:
-          type: string
-        deviceType:
-          type: string
-        ipAddress:
-          type: string
-        location:
-          $ref: '#/components/schemas/Location'
-        os:
-          type: string
-        userAgent:
-          type: string
-    GroupMember:
-      description: A User's membership into a Group
-      type: object
-      properties:
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        groupId:
-          type: string
-          format: uuid
-        id:
-          type: string
-          format: uuid
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        userId:
-          type: string
-          format: uuid
-    UserDeleteResponse:
-      description: User API bulk response object.
-      type: object
-      properties:
-        dryRun:
-          type: boolean
-        hardDelete:
-          type: boolean
-        total:
-          type: integer
-        userIds:
-          type: array
-          items:
-            type: string
-            format: uuid
-    BreachedPasswordStatus:
-      description: ''
-      type: string
-      enum:
-      - None
-      - ExactMatch
-      - SubAddressMatch
-      - PasswordOnly
-      - CommonPassword
-    Location:
-      description: Location information. Useful for IP addresses and other displayable data objects.
-      type: object
-      properties:
-        city:
-          type: string
-        country:
-          type: string
-        latitude:
-          type: number
-          format: double
-        longitude:
-          type: number
-          format: double
-        region:
-          type: string
-        zipcode:
-          type: string
-        displayString:
-          type: string
-    RefreshTokenImportRequest:
-      description: Refresh Token Import request.
-      type: object
-      properties:
-        refreshTokens:
-          type: array
-          items:
-            $ref: '#/components/schemas/RefreshToken'
-        validateDbConstraints:
-          type: boolean
-    UserCommentSearchCriteria:
-      description: Search criteria for user comments.
-      type: object
-      properties:
-        comment:
-          type: string
-        commenterId:
-          type: string
-          format: uuid
-        tenantId:
-          type: string
-          format: uuid
-        userId:
-          type: string
-          format: uuid
-        numberOfResults:
-          type: integer
-        orderBy:
-          type: string
-        startRow:
-          type: integer
-    UserRequest:
-      description: User API request object.
-      type: object
-      properties:
-        applicationId:
-          type: string
-          format: uuid
-        currentPassword:
-          type: string
-        disableDomainBlock:
-          type: boolean
-        sendSetPasswordEmail:
-          type: boolean
-        sendSetPasswordIdentityType:
-          $ref: '#/components/schemas/SendSetPasswordIdentityType'
-        skipVerification:
-          type: boolean
-        user:
-          $ref: '#/components/schemas/User'
-        verificationIds:
-          type: array
-          items:
-            type: string
-        eventInfo:
-          $ref: '#/components/schemas/EventInfo'
-    ImportRequest:
-      description: Import request.
-      type: object
-      properties:
-        encryptionScheme:
-          type: string
-        factor:
-          type: integer
-        users:
-          type: array
-          items:
-            $ref: '#/components/schemas/User'
-        validateDbConstraints:
-          type: boolean
-        eventInfo:
-          $ref: '#/components/schemas/EventInfo'
-    VerifyEmailRequest:
+    AuthenticatorConfiguration:
       description: ''
       type: object
       properties:
-        oneTimeCode:
-          type: string
-        userId:
-          type: string
-          format: uuid
-        verificationId:
-          type: string
-        eventInfo:
-          $ref: '#/components/schemas/EventInfo'
-    FamilyResponse:
-      description: API response for managing families and members.
-      type: object
-      properties:
-        families:
-          type: array
-          items:
-            $ref: '#/components/schemas/Family'
-        family:
-          $ref: '#/components/schemas/Family'
+        algorithm:
+          $ref: '#/components/schemas/TOTPAlgorithm'
+        codeLength:
+          type: integer
+        timeStep:
+          type: integer
     UserResponse:
       description: User API response object.
       type: object
@@ -2018,170 +2857,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/VerificationId'
-    UserCommentResponse:
-      description: User Comment Response
-      type: object
-      properties:
-        userComment:
-          $ref: '#/components/schemas/UserComment'
-        userComments:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserComment'
-    UserConsentResponse:
-      description: API response for User consent.
-      type: object
-      properties:
-        userConsent:
-          $ref: '#/components/schemas/UserConsent'
-        userConsents:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserConsent'
-    DeviceInfo:
-      description: ''
-      type: object
-      properties:
-        description:
-          type: string
-        lastAccessedAddress:
-          type: string
-        lastAccessedInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        name:
-          type: string
-        type:
-          type: string
-    IdentityVerifiedReason:
-      description: Models the reason that {@link UserIdentity#verified} was set to true or false.
-      type: string
-      enum:
-      - Skipped
-      - Trusted
-      - Unverifiable
-      - Implicit
-      - Pending
-      - Completed
-      - Disabled
-      - Administrative
-      - Import
-    Sort:
-      description: ''
-      type: string
-      enum:
-      - asc
-      - desc
-    ForgotPasswordRequest:
-      description: Forgot password request object.
-      type: object
-      properties:
-        applicationId:
-          type: string
-          format: uuid
-        changePasswordId:
-          type: string
-        loginId:
-          type: string
-        loginIdTypes:
-          type: array
-          items:
-            type: string
-        sendForgotPasswordEmail:
-          type: boolean
-        sendForgotPasswordMessage:
-          type: boolean
-        state:
-          type: object
-          additionalProperties:
-            type: object
-        email:
-          type: string
-        username:
-          type: string
-        eventInfo:
-          $ref: '#/components/schemas/EventInfo'
-    UserDeleteRequest:
-      description: User API delete request object.
-      type: object
-      properties:
-        dryRun:
-          type: boolean
-        hardDelete:
-          type: boolean
-        limit:
-          type: integer
-        query:
-          type: string
-        queryString:
-          type: string
-        userIds:
-          type: array
-          items:
-            type: string
-            format: uuid
-        eventInfo:
-          $ref: '#/components/schemas/EventInfo'
-    ConsentStatus:
-      description: Models a consent.
-      type: string
-      enum:
-      - Active
-      - Revoked
-    Locale:
-      description: A Locale object represents a specific geographical, political, or cultural region.
-      example: en_US
-      type: string
-    ForgotPasswordResponse:
-      description: Forgot password response object.
-      type: object
-      properties:
-        changePasswordId:
-          type: string
-    TwoFactorDisableRequest:
-      description: ''
-      type: object
-      properties:
-        applicationId:
-          type: string
-          format: uuid
-        code:
-          type: string
-        methodId:
-          type: string
-        eventInfo:
-          $ref: '#/components/schemas/EventInfo'
-    AuthenticatorConfiguration:
-      description: ''
-      type: object
-      properties:
-        algorithm:
-          $ref: '#/components/schemas/TOTPAlgorithm'
-        codeLength:
-          type: integer
-        timeStep:
-          type: integer
-    RegistrationDeleteRequest:
-      description: Registration delete API request object.
-      type: object
-      properties:
-        eventInfo:
-          $ref: '#/components/schemas/EventInfo'
-    UserCommentSearchRequest:
-      description: Search request for user comments
-      type: object
-      properties:
-        search:
-          $ref: '#/components/schemas/UserCommentSearchCriteria'
-    ActionResponse:
-      description: The user action response object.
-      type: object
-      properties:
-        action:
-          $ref: '#/components/schemas/UserActionLog'
-        actions:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserActionLog'
     Consent:
       description: Models a consent.
       type: object
@@ -2214,14 +2889,45 @@ components:
           type: array
           items:
             type: string
-    ActionRequest:
-      description: The user action request object.
+    LocalizedIntegers:
+      description: Models a set of localized Integers that can be stored as JSON.
+      type: object
+      properties: {}
+    Sort:
+      description: ''
+      type: string
+      enum:
+      - asc
+      - desc
+    FamilyResponse:
+      description: API response for managing families and members.
       type: object
       properties:
-        action:
-          $ref: '#/components/schemas/ActionData'
-        broadcast:
+        families:
+          type: array
+          items:
+            $ref: '#/components/schemas/Family'
+        family:
+          $ref: '#/components/schemas/Family'
+    UserDeleteRequest:
+      description: User API delete request object.
+      type: object
+      properties:
+        dryRun:
           type: boolean
+        hardDelete:
+          type: boolean
+        limit:
+          type: integer
+        query:
+          type: string
+        queryString:
+          type: string
+        userIds:
+          type: array
+          items:
+            type: string
+            format: uuid
         eventInfo:
           $ref: '#/components/schemas/EventInfo'
     User:
@@ -2323,615 +3029,19 @@ components:
           type: boolean
         verifiedInstant:
           $ref: '#/components/schemas/ZonedDateTime'
-    FamilyRequest:
-      description: API request for managing families and members.
-      type: object
-      properties:
-        familyMember:
-          $ref: '#/components/schemas/FamilyMember'
-    RegistrationResponse:
-      description: Registration API request object.
-      type: object
-      properties:
-        refreshToken:
-          type: string
-        refreshTokenId:
-          type: string
-          format: uuid
-        registration:
-          $ref: '#/components/schemas/UserRegistration'
-        registrationVerificationId:
-          type: string
-        registrationVerificationOneTimeCode:
-          type: string
-        token:
-          type: string
-        tokenExpirationInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        user:
-          $ref: '#/components/schemas/User'
-        verificationIds:
-          type: array
-          items:
-            $ref: '#/components/schemas/VerificationId'
-    UserActionLog:
-      description: A log for an action that was taken on a User.
-      type: object
-      properties:
-        actioneeUserId:
-          type: string
-          format: uuid
-        actionerUserId:
-          type: string
-          format: uuid
-        applicationIds:
-          type: array
-          items:
-            type: string
-            format: uuid
-        comment:
-          type: string
-        emailUserOnEnd:
-          type: boolean
-        endEventSent:
-          type: boolean
-        expiry:
-          $ref: '#/components/schemas/ZonedDateTime'
-        history:
-          $ref: '#/components/schemas/LogHistory'
-        id:
-          type: string
-          format: uuid
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        localizedName:
-          type: string
-        localizedOption:
-          type: string
-        localizedReason:
-          type: string
-        name:
-          type: string
-        notifyUserOnEnd:
-          type: boolean
-        option:
-          type: string
-        reason:
-          type: string
-        reasonCode:
-          type: string
-        userActionId:
-          type: string
-          format: uuid
-    RefreshToken:
-      description: Models a JWT Refresh Token.
-      type: object
-      properties:
-        applicationId:
-          type: string
-          format: uuid
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        id:
-          type: string
-          format: uuid
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        metaData:
-          $ref: '#/components/schemas/MetaData'
-        startInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        tenantId:
-          type: string
-          format: uuid
-        token:
-          type: string
-        userId:
-          type: string
-          format: uuid
-    ZoneId:
-      description: Timezone Identifier
-      example: America/Denver
-      pattern: ^w+/w+$
-      type: string
-    TwoFactorMethod:
-      description: ''
-      type: object
-      properties:
-        authenticator:
-          $ref: '#/components/schemas/AuthenticatorConfiguration'
-        email:
-          type: string
-        id:
-          type: string
-        lastUsed:
-          type: boolean
-        method:
-          type: string
-        mobilePhone:
-          type: string
-        secret:
-          type: string
-    ZonedDateTime:
-      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
-      example: '1659380719000'
-      type: integer
-      format: int64
-    FamilyMember:
-      description: Models a single family member.
-      type: object
-      properties:
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        lastUpdateInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        owner:
-          type: boolean
-        role:
-          $ref: '#/components/schemas/FamilyRole'
-        userId:
-          type: string
-          format: uuid
-    TwoFactorRecoveryCodeResponse:
-      description: ''
-      type: object
-      properties:
-        recoveryCodes:
-          type: array
-          items:
-            type: string
-    LogHistory:
-      description: A historical state of a user log event. Since events can be modified, this stores the historical state.
-      type: object
-      properties:
-        historyItems:
-          type: array
-          items:
-            $ref: '#/components/schemas/HistoryItem'
-    LocalizedIntegers:
-      description: Models a set of localized Integers that can be stored as JSON.
-      type: object
-      properties: {}
-    UserCommentSearchResponse:
-      description: User comment search response
-      type: object
-      properties:
-        total:
-          type: integer
-          format: int64
-        userComments:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserComment'
-    UserRegistration:
-      description: User registration information for a single application.
-      type: object
-      properties:
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        preferredLanguages:
-          type: array
-          items:
-            $ref: '#/components/schemas/Locale'
-        tokens:
-          type: object
-          additionalProperties:
-            type: string
-        applicationId:
-          type: string
-          format: uuid
-        authenticationToken:
-          type: string
-        cleanSpeakId:
-          type: string
-          format: uuid
-        id:
-          type: string
-          format: uuid
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        lastLoginInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        lastUpdateInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        roles:
-          type: array
-          uniqueItems: true
-          items: {}
-        timezone:
-          $ref: '#/components/schemas/ZoneId'
-        username:
-          type: string
-        usernameStatus:
-          $ref: '#/components/schemas/ContentStatus'
-        verified:
-          type: boolean
-        verifiedInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-    FamilyEmailRequest:
-      description: API request for sending out family requests to parent's.
-      type: object
-      properties:
-        parentEmail:
-          type: string
-    UserComment:
-      description: A log for an event that happened to a User.
-      type: object
-      properties:
-        comment:
-          type: string
-        commenterId:
-          type: string
-          format: uuid
-        id:
-          type: string
-          format: uuid
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        userId:
-          type: string
-          format: uuid
-    UserConsentRequest:
-      description: API response for User consent.
-      type: object
-      properties:
-        userConsent:
-          $ref: '#/components/schemas/UserConsent'
-    UserIdentity:
-      description: ''
-      type: object
-      properties:
-        displayValue:
-          type: string
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        lastLoginInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        lastUpdateInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        moderationStatus:
-          $ref: '#/components/schemas/ContentStatus'
-        primary:
-          type: boolean
-        type:
-          $ref: '#/components/schemas/IdentityType'
-        value:
-          type: string
-        verified:
-          type: boolean
-        verifiedInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        verifiedReason:
-          $ref: '#/components/schemas/IdentityVerifiedReason'
-    TwoFactorResponse:
-      description: ''
-      type: object
-      properties:
-        code:
-          type: string
-        recoveryCodes:
-          type: array
-          items:
-            type: string
-    Error:
-      description: Defines an error.
-      type: object
-      properties:
-        code:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        message:
-          type: string
-    UserCommentRequest:
-      description: ''
-      type: object
-      properties:
-        userComment:
-          $ref: '#/components/schemas/UserComment'
-    IdentityType:
-      description: Model identity types provided by FusionAuth.
-      type: object
-      properties:
-        name:
-          type: string
-    SearchRequest:
-      description: Search API request.
-      type: object
-      properties:
-        search:
-          $ref: '#/components/schemas/UserSearchCriteria'
-        expand:
-          type: array
-          items:
-            type: string
-    SortField:
-      description: ''
-      type: object
-      properties:
-        missing:
-          type: string
-        name:
-          type: string
-        order:
-          $ref: '#/components/schemas/Sort'
-    UserSearchCriteria:
-      description: This class is the user query. It provides a build pattern as well as public fields for use on forms and in actions.
-      type: object
-      properties:
-        accurateTotal:
-          type: boolean
-        ids:
-          type: array
-          items:
-            type: string
-            format: uuid
-        nextResults:
-          type: string
-        query:
-          type: string
-        queryString:
-          type: string
-        sortFields:
-          type: array
-          items:
-            $ref: '#/components/schemas/SortField'
-    LocalDate:
-      description: A date without a time-zone in the ISO-8601 calendar system, such as 2007-12-03.
-      example: '2007-12-03'
-      pattern: ^[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]$
-      type: string
-    RegistrationRequest:
-      description: Registration API request object.
-      type: object
-      properties:
-        disableDomainBlock:
-          type: boolean
-        generateAuthenticationToken:
-          type: boolean
-        registration:
-          $ref: '#/components/schemas/UserRegistration'
-        sendSetPasswordEmail:
-          type: boolean
-        sendSetPasswordIdentityType:
-          $ref: '#/components/schemas/SendSetPasswordIdentityType'
-        skipRegistrationVerification:
-          type: boolean
-        skipVerification:
-          type: boolean
-        user:
-          $ref: '#/components/schemas/User'
-        verificationIds:
-          type: array
-          items:
-            type: string
-        eventInfo:
-          $ref: '#/components/schemas/EventInfo'
-    ChangePasswordResponse:
-      description: Change password response object.
-      type: object
-      properties:
-        oneTimePassword:
-          type: string
-        state:
-          type: object
-          additionalProperties:
-            type: object
-    MetaData:
-      type: object
-      properties:
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        device:
-          $ref: '#/components/schemas/DeviceInfo'
-        scopes:
-          type: array
-          uniqueItems: true
-          items: {}
-    UserTwoFactorConfiguration:
-      description: ''
-      type: object
-      properties:
-        methods:
-          type: array
-          items:
-            $ref: '#/components/schemas/TwoFactorMethod'
-        recoveryCodes:
-          type: array
-          items:
-            type: string
-    UserDeleteSingleRequest:
-      description: User API delete request object for a single user.
-      type: object
-      properties:
-        hardDelete:
-          type: boolean
-        eventInfo:
-          $ref: '#/components/schemas/EventInfo'
-    TwoFactorRequest:
-      description: ''
-      type: object
-      properties:
-        applicationId:
-          type: string
-          format: uuid
-        authenticatorId:
-          type: string
-        code:
-          type: string
-        email:
-          type: string
-        method:
-          type: string
-        mobilePhone:
-          type: string
-        secret:
-          type: string
-        secretBase32Encoded:
-          type: string
-        twoFactorId:
-          type: string
-        eventInfo:
-          $ref: '#/components/schemas/EventInfo'
-    UserConsent:
-      description: Models a User consent.
-      type: object
-      properties:
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        consent:
-          $ref: '#/components/schemas/Consent'
-        consentId:
-          type: string
-          format: uuid
-        giverUserId:
-          type: string
-          format: uuid
-        id:
-          type: string
-          format: uuid
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        lastUpdateInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        status:
-          $ref: '#/components/schemas/ConsentStatus'
-        userId:
-          type: string
-          format: uuid
-        values:
-          type: array
-          items:
-            type: string
-    VerifyRegistrationResponse:
-      description: ''
-      type: object
-      properties:
-        oneTimeCode:
-          type: string
-        verificationId:
-          type: string
-    DisplayableRawLogin:
-      description: A displayable raw login that includes application name and user loginId.
-      type: object
-      properties:
-        applicationName:
-          type: string
-        location:
-          $ref: '#/components/schemas/Location'
-        loginId:
-          type: string
-        loginIdType:
-          $ref: '#/components/schemas/IdentityType'
-        applicationId:
-          type: string
-          format: uuid
-        instant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        ipAddress:
-          type: string
-        userId:
-          type: string
-          format: uuid
-    VerificationId:
-      type: object
-      properties:
-        id:
-          type: string
-        oneTimeCode:
-          type: string
-        type:
-          $ref: '#/components/schemas/IdentityType'
-        value:
-          type: string
-    Family:
-      description: Models a family grouping of users.
-      type: object
-      properties:
-        members:
-          type: array
-          items:
-            $ref: '#/components/schemas/FamilyMember'
-        id:
-          type: string
-          format: uuid
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        lastUpdateInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-    PendingResponse:
-      description: ''
-      type: object
-      properties:
-        users:
-          type: array
-          items:
-            $ref: '#/components/schemas/User'
-    VerifyEmailResponse:
-      description: ''
-      type: object
-      properties:
-        oneTimeCode:
-          type: string
-        verificationId:
-          type: string
-    SendSetPasswordIdentityType:
-      description: Used to indicate which identity type a password "request" might go to. It could be  used for send set passwords or send password resets.
+    IdentityVerifiedReason:
+      description: Models the reason that {@link UserIdentity#verified} was set to true or false.
       type: string
       enum:
-      - email
-      - phone
-      - doNotSend
-    FamilyRole:
-      type: string
-      enum:
-      - Child
-      - Teen
-      - Adult
-    HistoryItem:
-      type: object
-      properties:
-        actionerUserId:
-          type: string
-          format: uuid
-        comment:
-          type: string
-        createInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        expiry:
-          $ref: '#/components/schemas/ZonedDateTime'
-    VerifyRegistrationRequest:
-      description: ''
-      type: object
-      properties:
-        oneTimeCode:
-          type: string
-        verificationId:
-          type: string
-        eventInfo:
-          $ref: '#/components/schemas/EventInfo'
-    ChangePasswordReason:
-      description: ''
-      type: string
-      enum:
+      - Skipped
+      - Trusted
+      - Unverifiable
+      - Implicit
+      - Pending
+      - Completed
+      - Disabled
       - Administrative
-      - Breached
-      - Expired
-      - Validation
+      - Import
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

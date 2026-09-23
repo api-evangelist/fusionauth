@@ -1,8 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   version: 1.66.0
-  title: FusionAuth Api Key System API
-  description: This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.
+  title: FusionAuth System API
+  description: This is a FusionAuth server. Find out more at https://fusionauth.io. You need to set up an API key in the FusionAuth instance you are using to test out the API calls.
   license:
     name: Apache2
 servers:
@@ -38,6 +38,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - System
+      summary: Create audit log with id
+      x-summary-source: derived
   /api/system/audit-log/search:
     post:
       description: Searches the audit logs with the specified criteria and pagination.
@@ -63,6 +65,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - System
+      summary: Search audit logs with id
+      x-summary-source: derived
   /api/system/audit-log/{auditLogId}:
     get:
       description: Retrieves a single audit log for the given Id.
@@ -89,6 +93,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - System
+      summary: Retrieve audit log with id
+      x-summary-source: derived
   /api/system/event-log/search:
     post:
       description: Searches the event logs with the specified criteria and pagination.
@@ -114,6 +120,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - System
+      summary: Search event logs with id
+      x-summary-source: derived
   /api/system/event-log/{eventLogId}:
     get:
       description: Retrieves a single event log for the given Id.
@@ -140,6 +148,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - System
+      summary: Retrieve event log with id
+      x-summary-source: derived
   /api/system/login-record/search:
     post:
       description: Searches the login records with the specified criteria and pagination.
@@ -165,9 +175,11 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - System
+      summary: Search login records with id
+      x-summary-source: derived
   /api/system/reindex:
     post:
-      description: Requests Elasticsearch to delete and rebuild the index for FusionAuth users or entities. Be very careful when running this request as it will  increase the CPU and I/O load on your database until the operation completes. Generally speaking you do not ever need to run this operation unless  instructed by FusionAuth support, or if you are migrating a database another system and you are not brining along the Elasticsearch index.   You have been warned.
+      description: Requests Elasticsearch to delete and rebuild the index for FusionAuth users or entities. Be very careful when running this request as it will increase the CPU and I/O load on your database until the operation completes. Generally speaking you do not ever need to run this operation unless instructed by FusionAuth support, or if you are migrating a database another system and you are not brining along the Elasticsearch index. You have been warned.
       operationId: reindexWithId
       parameters: []
       requestBody:
@@ -186,6 +198,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - System
+      summary: Reindex with id
+      x-summary-source: derived
   /api/system/version:
     get:
       description: Retrieves the FusionAuth version string.
@@ -206,6 +220,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - System
+      summary: Retrieve version with id
+      x-summary-source: derived
   /api/system/webhook-attempt-log/{webhookAttemptLogId}:
     get:
       description: Retrieves a single webhook attempt log for the given Id.
@@ -232,6 +248,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - System
+      summary: Retrieve webhook attempt log with id
+      x-summary-source: derived
   /api/system/webhook-event-log/search:
     post:
       description: Searches the webhook event logs with the specified criteria and pagination.
@@ -257,6 +275,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - System
+      summary: Search webhook event logs with id
+      x-summary-source: derived
   /api/system/webhook-event-log/{webhookEventLogId}:
     get:
       description: Retrieves a single webhook event log for the given Id.
@@ -283,108 +303,10 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - System
+      summary: Retrieve webhook event log with id
+      x-summary-source: derived
 components:
   schemas:
-    Errors:
-      description: Standard error domain object that can also be used as the response from an API call.
-      type: object
-      properties:
-        fieldErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-        generalErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-    ZonedDateTime:
-      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
-      example: '1659380719000'
-      type: integer
-      format: int64
-    WebhookEventLogSearchCriteria:
-      description: Search criteria for the webhook event log.
-      type: object
-      properties:
-        end:
-          $ref: '#/components/schemas/ZonedDateTime'
-        event:
-          type: string
-        eventResult:
-          $ref: '#/components/schemas/WebhookEventResult'
-        eventType:
-          $ref: '#/components/schemas/EventType'
-        start:
-          $ref: '#/components/schemas/ZonedDateTime'
-        numberOfResults:
-          type: integer
-        orderBy:
-          type: string
-        startRow:
-          type: integer
-    AuditLogResponse:
-      description: Audit log response.
-      type: object
-      properties:
-        auditLog:
-          $ref: '#/components/schemas/AuditLog'
-    WebhookEventLogSearchResponse:
-      description: Webhook event log search response.
-      type: object
-      properties:
-        total:
-          type: integer
-          format: int64
-        webhookEventLogs:
-          type: array
-          items:
-            $ref: '#/components/schemas/WebhookEventLog'
-    EventLog:
-      description: Event log used internally by FusionAuth to help developers debug hooks, Webhooks, email templates, etc.
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        message:
-          type: string
-        type:
-          $ref: '#/components/schemas/EventLogType'
-    AuditLogSearchResponse:
-      description: Audit log response.
-      type: object
-      properties:
-        auditLogs:
-          type: array
-          items:
-            $ref: '#/components/schemas/AuditLog'
-        total:
-          type: integer
-          format: int64
-    EventInfo:
-      description: Information about a user event (login, register, etc) that helps identify the source of the event (location, device type, OS, etc).
-      type: object
-      properties:
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        deviceDescription:
-          type: string
-        deviceName:
-          type: string
-        deviceType:
-          type: string
-        ipAddress:
-          type: string
-        location:
-          $ref: '#/components/schemas/Location'
-        os:
-          type: string
-        userAgent:
-          type: string
     EventLogType:
       description: Event Log Type
       type: string
@@ -392,89 +314,43 @@ components:
       - Information
       - Debug
       - Error
-    LoginRecordSearchCriteria:
-      description: ''
+    WebhookAttemptResult:
+      description: The possible states of an individual webhook attempt to a single endpoint.
+      type: string
+      enum:
+      - Success
+      - Failure
+      - Unknown
+    IdentityType:
+      description: Model identity types provided by FusionAuth.
       type: object
       properties:
-        applicationId:
+        name:
           type: string
-          format: uuid
-        end:
-          $ref: '#/components/schemas/ZonedDateTime'
-        start:
-          $ref: '#/components/schemas/ZonedDateTime'
-        userId:
-          type: string
-          format: uuid
-        numberOfResults:
-          type: integer
-        orderBy:
-          type: string
-        startRow:
-          type: integer
-    WebhookEventLogSearchRequest:
-      description: Webhook event log search request.
+    WebhookAttemptLogResponse:
+      description: Webhook attempt log response.
       type: object
       properties:
-        search:
-          $ref: '#/components/schemas/WebhookEventLogSearchCriteria'
-    Location:
-      description: Location information. Useful for IP addresses and other displayable data objects.
+        webhookAttemptLog:
+          $ref: '#/components/schemas/WebhookAttemptLog'
+    EventLogResponse:
+      description: Event log response.
       type: object
       properties:
-        city:
-          type: string
-        country:
-          type: string
-        latitude:
-          type: number
-          format: double
-        longitude:
-          type: number
-          format: double
-        region:
-          type: string
-        zipcode:
-          type: string
-        displayString:
-          type: string
-    EventRequest:
-      description: Container for the event information. This is the JSON that is sent from FusionAuth to webhooks.
+        eventLog:
+          $ref: '#/components/schemas/EventLog'
+    Error:
+      description: Defines an error.
       type: object
       properties:
-        event:
-          $ref: '#/components/schemas/BaseEvent'
-    WebhookEventLogResponse:
-      description: Webhook event log response.
-      type: object
-      properties:
-        webhookEventLog:
-          $ref: '#/components/schemas/WebhookEventLog'
-    WebhookAttemptLog:
-      description: A webhook call attempt log.
-      type: object
-      properties:
+        code:
+          type: string
         data:
           type: object
           additionalProperties:
             type: object
-        endInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        id:
+        message:
           type: string
-          format: uuid
-        startInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        webhookCallResponse:
-          $ref: '#/components/schemas/WebhookCallResponse'
-        webhookEventLogId:
-          type: string
-          format: uuid
-        webhookId:
-          type: string
-          format: uuid
-        attemptResult:
-          $ref: '#/components/schemas/WebhookAttemptResult'
     DisplayableRawLogin:
       description: A displayable raw login that includes application name and user loginId.
       type: object
@@ -497,96 +373,67 @@ components:
         userId:
           type: string
           format: uuid
-    WebhookEventLog:
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
       type: object
       properties:
-        attempts:
+        fieldErrors:
           type: array
           items:
-            $ref: '#/components/schemas/WebhookAttemptLog'
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    EventInfo:
+      description: Information about a user event (login, register, etc) that helps identify the source of the event (location, device type, OS, etc).
+      type: object
+      properties:
         data:
           type: object
           additionalProperties:
             type: object
-        event:
-          $ref: '#/components/schemas/EventRequest'
-        eventResult:
-          $ref: '#/components/schemas/WebhookEventResult'
-        eventType:
-          $ref: '#/components/schemas/EventType'
-        id:
+        deviceDescription:
           type: string
-          format: uuid
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        lastAttemptInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        lastUpdateInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        linkedObjectId:
+        deviceName:
           type: string
-          format: uuid
-        sequence:
-          type: integer
-          format: int64
-        failedAttempts:
-          type: integer
-        successfulAttempts:
-          type: integer
-    WebhookCallResponse:
-      description: A webhook call response.
+        deviceType:
+          type: string
+        ipAddress:
+          type: string
+        location:
+          $ref: '#/components/schemas/Location'
+        os:
+          type: string
+        userAgent:
+          type: string
+    Location:
+      description: Location information. Useful for IP addresses and other displayable data objects.
       type: object
       properties:
-        exception:
+        city:
           type: string
-        statusCode:
-          type: integer
-        url:
+        country:
           type: string
-          format: URI
-    EventLogSearchResponse:
-      description: Event log response.
-      type: object
-      properties:
-        eventLogs:
-          type: array
-          items:
-            $ref: '#/components/schemas/EventLog'
-        total:
-          type: integer
-          format: int64
-    Error:
-      description: Defines an error.
-      type: object
-      properties:
-        code:
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        region:
           type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        message:
+        zipcode:
           type: string
-    ReindexRequest:
-      description: Reindex API request
-      type: object
-      properties:
-        index:
+        displayString:
           type: string
-    IdentityType:
-      description: Model identity types provided by FusionAuth.
-      type: object
-      properties:
-        name:
-          type: string
-    AuditLogRequest:
-      description: ''
-      type: object
-      properties:
-        auditLog:
-          $ref: '#/components/schemas/AuditLog'
-        eventInfo:
-          $ref: '#/components/schemas/EventInfo'
+    WebhookEventResult:
+      description: The possible result states of a webhook event. This tracks the success of the overall webhook transaction according to the {@link TransactionType}  and configured webhooks.
+      type: string
+      enum:
+      - Failed
+      - Running
+      - Succeeded
     LoginRecordSearchRequest:
       description: ''
       type: object
@@ -595,65 +442,6 @@ components:
           type: boolean
         search:
           $ref: '#/components/schemas/LoginRecordSearchCriteria'
-    AuditLogSearchRequest:
-      description: ''
-      type: object
-      properties:
-        search:
-          $ref: '#/components/schemas/AuditLogSearchCriteria'
-    AuditLogSearchCriteria:
-      description: ''
-      type: object
-      properties:
-        end:
-          $ref: '#/components/schemas/ZonedDateTime'
-        message:
-          type: string
-        newValue:
-          type: string
-        oldValue:
-          type: string
-        reason:
-          type: string
-        start:
-          $ref: '#/components/schemas/ZonedDateTime'
-        tenantId:
-          type: string
-          format: uuid
-        user:
-          type: string
-        numberOfResults:
-          type: integer
-        orderBy:
-          type: string
-        startRow:
-          type: integer
-    EventLogSearchRequest:
-      description: ''
-      type: object
-      properties:
-        search:
-          $ref: '#/components/schemas/EventLogSearchCriteria'
-    WebhookEventResult:
-      description: The possible result states of a webhook event. This tracks the success of the overall webhook transaction according to the {@link TransactionType}  and configured webhooks.
-      type: string
-      enum:
-      - Failed
-      - Running
-      - Succeeded
-    EventLogResponse:
-      description: Event log response.
-      type: object
-      properties:
-        eventLog:
-          $ref: '#/components/schemas/EventLog'
-    WebhookAttemptResult:
-      description: The possible states of an individual webhook attempt to a single endpoint.
-      type: string
-      enum:
-      - Success
-      - Failure
-      - Unknown
     EventType:
       description: Models the event types that FusionAuth produces.
       type: string
@@ -713,6 +501,108 @@ components:
       - Test
       - UserIdentityVerified
       - UserIdentityUpdate
+    ReindexRequest:
+      description: Reindex API request
+      type: object
+      properties:
+        index:
+          type: string
+    AuditLogResponse:
+      description: Audit log response.
+      type: object
+      properties:
+        auditLog:
+          $ref: '#/components/schemas/AuditLog'
+    AuditLogSearchResponse:
+      description: Audit log response.
+      type: object
+      properties:
+        auditLogs:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuditLog'
+        total:
+          type: integer
+          format: int64
+    AuditLogSearchCriteria:
+      description: ''
+      type: object
+      properties:
+        end:
+          $ref: '#/components/schemas/ZonedDateTime'
+        message:
+          type: string
+        newValue:
+          type: string
+        oldValue:
+          type: string
+        reason:
+          type: string
+        start:
+          $ref: '#/components/schemas/ZonedDateTime'
+        tenantId:
+          type: string
+          format: uuid
+        user:
+          type: string
+        numberOfResults:
+          type: integer
+        orderBy:
+          type: string
+        startRow:
+          type: integer
+    AuditLogSearchRequest:
+      description: ''
+      type: object
+      properties:
+        search:
+          $ref: '#/components/schemas/AuditLogSearchCriteria'
+    LoginRecordSearchResponse:
+      description: A raw login record response
+      type: object
+      properties:
+        logins:
+          type: array
+          items:
+            $ref: '#/components/schemas/DisplayableRawLogin'
+        total:
+          type: integer
+          format: int64
+    EventLogSearchResponse:
+      description: Event log response.
+      type: object
+      properties:
+        eventLogs:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventLog'
+        total:
+          type: integer
+          format: int64
+    EventLog:
+      description: Event log used internally by FusionAuth to help developers debug hooks, Webhooks, email templates, etc.
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        message:
+          type: string
+        type:
+          $ref: '#/components/schemas/EventLogType'
+    WebhookEventLogSearchResponse:
+      description: Webhook event log search response.
+      type: object
+      properties:
+        total:
+          type: integer
+          format: int64
+        webhookEventLogs:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebhookEventLog'
     AuditLog:
       description: An audit log.
       type: object
@@ -739,12 +629,146 @@ components:
         tenantId:
           type: string
           format: uuid
-    WebhookAttemptLogResponse:
-      description: Webhook attempt log response.
+    WebhookCallResponse:
+      description: A webhook call response.
       type: object
       properties:
-        webhookAttemptLog:
-          $ref: '#/components/schemas/WebhookAttemptLog'
+        exception:
+          type: string
+        statusCode:
+          type: integer
+        url:
+          type: string
+          format: URI
+    WebhookEventLogSearchCriteria:
+      description: Search criteria for the webhook event log.
+      type: object
+      properties:
+        end:
+          $ref: '#/components/schemas/ZonedDateTime'
+        event:
+          type: string
+        eventResult:
+          $ref: '#/components/schemas/WebhookEventResult'
+        eventType:
+          $ref: '#/components/schemas/EventType'
+        start:
+          $ref: '#/components/schemas/ZonedDateTime'
+        numberOfResults:
+          type: integer
+        orderBy:
+          type: string
+        startRow:
+          type: integer
+    WebhookEventLog:
+      type: object
+      properties:
+        attempts:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebhookAttemptLog'
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        event:
+          $ref: '#/components/schemas/EventRequest'
+        eventResult:
+          $ref: '#/components/schemas/WebhookEventResult'
+        eventType:
+          $ref: '#/components/schemas/EventType'
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastAttemptInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        linkedObjectId:
+          type: string
+          format: uuid
+        sequence:
+          type: integer
+          format: int64
+        failedAttempts:
+          type: integer
+        successfulAttempts:
+          type: integer
+    VersionResponse:
+      description: ''
+      type: object
+      properties:
+        version:
+          type: string
+    WebhookAttemptLog:
+      description: A webhook call attempt log.
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        endInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        id:
+          type: string
+          format: uuid
+        startInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        webhookCallResponse:
+          $ref: '#/components/schemas/WebhookCallResponse'
+        webhookEventLogId:
+          type: string
+          format: uuid
+        webhookId:
+          type: string
+          format: uuid
+        attemptResult:
+          $ref: '#/components/schemas/WebhookAttemptResult'
+    BaseEvent:
+      description: Base class for all FusionAuth events.
+      type: object
+      properties:
+        createInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        id:
+          type: string
+          format: uuid
+        info:
+          $ref: '#/components/schemas/EventInfo'
+        tenantId:
+          type: string
+          format: uuid
+        type:
+          $ref: '#/components/schemas/EventType'
+    WebhookEventLogSearchRequest:
+      description: Webhook event log search request.
+      type: object
+      properties:
+        search:
+          $ref: '#/components/schemas/WebhookEventLogSearchCriteria'
+    LoginRecordSearchCriteria:
+      description: ''
+      type: object
+      properties:
+        applicationId:
+          type: string
+          format: uuid
+        end:
+          $ref: '#/components/schemas/ZonedDateTime'
+        start:
+          $ref: '#/components/schemas/ZonedDateTime'
+        userId:
+          type: string
+          format: uuid
+        numberOfResults:
+          type: integer
+        orderBy:
+          type: string
+        startRow:
+          type: integer
     EventLogSearchCriteria:
       description: Search criteria for the event log.
       type: object
@@ -763,39 +787,37 @@ components:
           type: string
         startRow:
           type: integer
-    VersionResponse:
+    WebhookEventLogResponse:
+      description: Webhook event log response.
+      type: object
+      properties:
+        webhookEventLog:
+          $ref: '#/components/schemas/WebhookEventLog'
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    EventRequest:
+      description: Container for the event information. This is the JSON that is sent from FusionAuth to webhooks.
+      type: object
+      properties:
+        event:
+          $ref: '#/components/schemas/BaseEvent'
+    EventLogSearchRequest:
       description: ''
       type: object
       properties:
-        version:
-          type: string
-    BaseEvent:
-      description: Base class for all FusionAuth events.
+        search:
+          $ref: '#/components/schemas/EventLogSearchCriteria'
+    AuditLogRequest:
+      description: ''
       type: object
       properties:
-        createInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        id:
-          type: string
-          format: uuid
-        info:
+        auditLog:
+          $ref: '#/components/schemas/AuditLog'
+        eventInfo:
           $ref: '#/components/schemas/EventInfo'
-        tenantId:
-          type: string
-          format: uuid
-        type:
-          $ref: '#/components/schemas/EventType'
-    LoginRecordSearchResponse:
-      description: A raw login record response
-      type: object
-      properties:
-        logins:
-          type: array
-          items:
-            $ref: '#/components/schemas/DisplayableRawLogin'
-        total:
-          type: integer
-          format: int64
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

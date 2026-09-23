@@ -1,8 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   version: 1.66.0
-  title: FusionAuth Api Key Connector API
-  description: This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.
+  title: FusionAuth Connector API
+  description: This is a FusionAuth server. Find out more at https://fusionauth.io. You need to set up an API key in the FusionAuth instance you are using to test out the API calls.
   license:
     name: Apache2
 servers:
@@ -15,7 +15,7 @@ tags:
 paths:
   /api/connector:
     post:
-      description: Creates a connector.  You can optionally specify an Id for the connector, if not provided one will be generated.
+      description: Creates a connector. You can optionally specify an Id for the connector, if not provided one will be generated.
       operationId: createConnector
       parameters: []
       requestBody:
@@ -38,9 +38,11 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Connector
+      summary: Create connector
+      x-summary-source: derived
   /api/connector/{connectorId}:
     post:
-      description: Creates a connector.  You can optionally specify an Id for the connector, if not provided one will be generated.
+      description: Creates a connector. You can optionally specify an Id for the connector, if not provided one will be generated.
       operationId: createConnectorWithId
       parameters:
       - name: connectorId
@@ -69,6 +71,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Connector
+      summary: Create connector with id
+      x-summary-source: derived
     delete:
       description: Deletes the connector for the given Id.
       operationId: deleteConnectorWithId
@@ -90,6 +94,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Connector
+      summary: Delete connector with id
+      x-summary-source: derived
     patch:
       description: Updates, via PATCH, the connector with the given Id.
       operationId: patchConnectorWithId
@@ -120,6 +126,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Connector
+      summary: Patch connector with id
+      x-summary-source: derived
     get:
       description: Retrieves the connector with the given Id.
       operationId: retrieveConnectorWithId
@@ -141,6 +149,8 @@ paths:
           description: Error
       tags:
       - Connector
+      summary: Retrieve connector with id
+      x-summary-source: derived
     put:
       description: Updates the connector with the given Id.
       operationId: updateConnectorWithId
@@ -171,6 +181,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Connector
+      summary: Update connector with id
+      x-summary-source: derived
 components:
   schemas:
     Errors:
@@ -185,6 +197,29 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Error'
+    ConnectorRequest:
+      description: ''
+      type: object
+      properties:
+        connector:
+          $ref: '#/components/schemas/BaseConnectorConfiguration'
+    ConnectorResponse:
+      description: ''
+      type: object
+      properties:
+        connector:
+          $ref: '#/components/schemas/BaseConnectorConfiguration'
+        connectors:
+          type: array
+          items:
+            $ref: '#/components/schemas/BaseConnectorConfiguration'
+    ConnectorType:
+      description: The types of connectors. This enum is stored as an ordinal on the <code>identities<code> table, order must be maintained.
+      type: string
+      enum:
+      - FusionAuth
+      - Generic
+      - LDAP
     ZonedDateTime:
       description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
       example: '1659380719000'
@@ -202,13 +237,6 @@ components:
             type: object
         message:
           type: string
-    ConnectorType:
-      description: The types of connectors. This enum is stored as an ordinal on the <code>identities<code> table, order must be maintained.
-      type: string
-      enum:
-      - FusionAuth
-      - Generic
-      - LDAP
     BaseConnectorConfiguration:
       description: Do not require a setter for 'type', it is defined by the concrete class and is not mutable
       type: object
@@ -230,22 +258,6 @@ components:
           type: string
         type:
           $ref: '#/components/schemas/ConnectorType'
-    ConnectorRequest:
-      description: ''
-      type: object
-      properties:
-        connector:
-          $ref: '#/components/schemas/BaseConnectorConfiguration'
-    ConnectorResponse:
-      description: ''
-      type: object
-      properties:
-        connector:
-          $ref: '#/components/schemas/BaseConnectorConfiguration'
-        connectors:
-          type: array
-          items:
-            $ref: '#/components/schemas/BaseConnectorConfiguration'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

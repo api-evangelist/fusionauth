@@ -1,8 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   version: 1.66.0
-  title: FusionAuth Api Key Webauthn API
-  description: This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.
+  title: FusionAuth Webauthn API
+  description: This is a FusionAuth server. Find out more at https://fusionauth.io. You need to set up an API key in the FusionAuth instance you are using to test out the API calls.
   license:
     name: Apache2
 servers:
@@ -34,6 +34,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Webauthn
+      summary: Delete web authn credentials for user with id
+      x-summary-source: derived
     get:
       description: Retrieves all WebAuthn credentials for the given user.
       operationId: retrieveWebAuthnCredentialsForUserWithId
@@ -58,6 +60,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Webauthn
+      summary: Retrieve web authn credentials for user with id
+      x-summary-source: derived
   /api/webauthn/assert:
     post:
       description: Complete a WebAuthn authentication ceremony by validating the signature against the previously generated challenge without logging the user in
@@ -83,6 +87,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Webauthn
+      summary: Complete web authn assertion with id
+      x-summary-source: derived
   /api/webauthn/import:
     post:
       description: Import a WebAuthn credential
@@ -104,6 +110,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Webauthn
+      summary: Import web authn credential with id
+      x-summary-source: derived
   /api/webauthn/login:
     post:
       description: Complete a WebAuthn authentication ceremony by validating the signature against the previously generated challenge and then login the user in
@@ -129,6 +137,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Webauthn
+      summary: Complete web authn login with id
+      x-summary-source: derived
   /api/webauthn/register/complete:
     post:
       description: Complete a WebAuthn registration ceremony by validating the client request and saving the new credential
@@ -154,6 +164,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Webauthn
+      summary: Complete web authn registration with id
+      x-summary-source: derived
   /api/webauthn/register/start:
     post:
       description: Start a WebAuthn registration ceremony by generating a new challenge for the user
@@ -179,6 +191,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Webauthn
+      summary: Start web authn registration with id
+      x-summary-source: derived
   /api/webauthn/start:
     post:
       description: Start a WebAuthn authentication ceremony by generating a new challenge for the user
@@ -204,6 +218,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Webauthn
+      summary: Start web authn login with id
+      x-summary-source: derived
   /api/webauthn/{id}:
     delete:
       description: Deletes the WebAuthn credential for the given Id.
@@ -226,6 +242,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Webauthn
+      summary: Delete web authn credential with id
+      x-summary-source: derived
     get:
       description: Retrieves the WebAuthn credential for the given Id.
       operationId: retrieveWebAuthnCredentialWithId
@@ -251,52 +269,55 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Webauthn
+      summary: Retrieve web authn credential with id
+      x-summary-source: derived
 components:
   schemas:
-    IdentityVerifiedReason:
-      description: Models the reason that {@link UserIdentity#verified} was set to true or false.
+    AuthenticatorAttachment:
+      description: Describes the <a href="https:www.w3.orgTRwebauthn-2#authenticator-attachment-modality">authenticator attachment modality<a>.
       type: string
       enum:
-      - Skipped
-      - Trusted
-      - Unverifiable
-      - Implicit
-      - Pending
-      - Completed
-      - Disabled
+      - platform
+      - crossPlatform
+    ChangePasswordReason:
+      description: ''
+      type: string
+      enum:
       - Administrative
-      - Import
-    Errors:
-      description: Standard error domain object that can also be used as the response from an API call.
+      - Breached
+      - Expired
+      - Validation
+    WebAuthnWorkflow:
+      description: Identifies the WebAuthn workflow. This will affect the parameters used for credential creation  and request based on the Tenant configuration.
+      type: string
+      enum:
+      - bootstrap
+      - general
+      - reauthentication
+    WebAuthnAuthenticatorRegistrationResponse:
+      description: The <i>authenticator's<i> response for the registration ceremony in its encoded format
       type: object
       properties:
-        fieldErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-        generalErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-    UserVerificationRequirement:
-      description: Used to express whether the Relying Party requires <a href="https:www.w3.orgTRwebauthn-2#user-verification">user verification<a> for the  current operation.
-      type: string
-      enum:
-      - required
-      - preferred
-      - discouraged
-    ZonedDateTime:
-      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
-      example: '1659380719000'
-      type: integer
-      format: int64
-    ResidentKeyRequirement:
-      description: Describes the Relying Party's requirements for <a href="https:www.w3.orgTRwebauthn-2#client-side-discoverable-credential">client-side  discoverable credentials<a> (formerly known as "resident keys")
-      type: string
-      enum:
-      - discouraged
-      - preferred
-      - required
+        attestationObject:
+          type: string
+        clientDataJSON:
+          type: string
+    PublicKeyCredentialUserEntity:
+      description: Supply additional information about the user account when creating a new credential
+      type: object
+      properties:
+        displayName:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+    IdentityType:
+      description: Model identity types provided by FusionAuth.
+      type: object
+      properties:
+        name:
+          type: string
     WebAuthnRegisterStartRequest:
       description: API request to start a WebAuthn registration ceremony
       type: object
@@ -312,230 +333,11 @@ components:
           format: uuid
         workflow:
           $ref: '#/components/schemas/WebAuthnWorkflow'
-    WebAuthnPublicKeyAuthenticationRequest:
-      description: Request to authenticate with WebAuthn
-      type: object
-      properties:
-        clientExtensionResults:
-          $ref: '#/components/schemas/WebAuthnExtensionsClientOutputs'
-        id:
-          type: string
-        rpId:
-          type: string
-        response:
-          $ref: '#/components/schemas/WebAuthnAuthenticatorAuthenticationResponse'
-        type:
-          type: string
-    WebAuthnCredentialResponse:
-      description: WebAuthn Credential API response
-      type: object
-      properties:
-        credential:
-          $ref: '#/components/schemas/WebAuthnCredential'
-        credentials:
-          type: array
-          items:
-            $ref: '#/components/schemas/WebAuthnCredential'
-    WebAuthnAssertResponse:
-      description: API response for completing WebAuthn assertion
-      type: object
-      properties:
-        credential:
-          $ref: '#/components/schemas/WebAuthnCredential'
-    Locale:
-      description: A Locale object represents a specific geographical, political, or cultural region.
-      example: en_US
-      type: string
-    WebAuthnAuthenticatorRegistrationResponse:
-      description: The <i>authenticator's<i> response for the registration ceremony in its encoded format
-      type: object
-      properties:
-        attestationObject:
-          type: string
-        clientDataJSON:
-          type: string
-    ContentStatus:
-      description: Status for content like usernames, profile attributes, etc.
+    PublicKeyCredentialType:
+      description: Defines valid credential types. This is an extension point in the WebAuthn spec. The only defined value at this time is "public-key"
       type: string
       enum:
-      - ACTIVE
-      - PENDING
-      - REJECTED
-    TOTPAlgorithm:
-      type: string
-      enum:
-      - HmacSHA1
-      - HmacSHA256
-      - HmacSHA512
-    MetaData:
-      type: object
-      properties:
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        device:
-          $ref: '#/components/schemas/DeviceInfo'
-        scopes:
-          type: array
-          uniqueItems: true
-          items: {}
-    UserRegistration:
-      description: User registration information for a single application.
-      type: object
-      properties:
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        preferredLanguages:
-          type: array
-          items:
-            $ref: '#/components/schemas/Locale'
-        tokens:
-          type: object
-          additionalProperties:
-            type: string
-        applicationId:
-          type: string
-          format: uuid
-        authenticationToken:
-          type: string
-        cleanSpeakId:
-          type: string
-          format: uuid
-        id:
-          type: string
-          format: uuid
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        lastLoginInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        lastUpdateInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        roles:
-          type: array
-          uniqueItems: true
-          items: {}
-        timezone:
-          $ref: '#/components/schemas/ZoneId'
-        username:
-          type: string
-        usernameStatus:
-          $ref: '#/components/schemas/ContentStatus'
-        verified:
-          type: boolean
-        verifiedInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-    AuthenticatorSelectionCriteria:
-      description: Used by the Relying Party to specify their requirements for authenticator attributes. Fields use the deprecated "resident key" terminology to refer  to client-side discoverable credentials to maintain backwards compatibility with WebAuthn Level 1.
-      type: object
-      properties:
-        authenticatorAttachment:
-          $ref: '#/components/schemas/AuthenticatorAttachment'
-        requireResidentKey:
-          type: boolean
-        residentKey:
-          $ref: '#/components/schemas/ResidentKeyRequirement'
-        userVerification:
-          $ref: '#/components/schemas/UserVerificationRequirement'
-    GroupMember:
-      description: A User's membership into a Group
-      type: object
-      properties:
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        groupId:
-          type: string
-          format: uuid
-        id:
-          type: string
-          format: uuid
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        userId:
-          type: string
-          format: uuid
-    PublicKeyCredentialDescriptor:
-      description: Contains attributes for the Relying Party to refer to an existing public key credential as an input parameter.
-      type: object
-      properties:
-        id:
-          type: string
-        transports:
-          type: array
-          items:
-            type: string
-        type:
-          $ref: '#/components/schemas/PublicKeyCredentialType'
-    UserTwoFactorConfiguration:
-      description: ''
-      type: object
-      properties:
-        methods:
-          type: array
-          items:
-            $ref: '#/components/schemas/TwoFactorMethod'
-        recoveryCodes:
-          type: array
-          items:
-            type: string
-    BreachedPasswordStatus:
-      description: ''
-      type: string
-      enum:
-      - None
-      - ExactMatch
-      - SubAddressMatch
-      - PasswordOnly
-      - CommonPassword
-    WebAuthnRegisterCompleteRequest:
-      description: Request to complete the WebAuthn registration ceremony for a new credential,.
-      type: object
-      properties:
-        credential:
-          $ref: '#/components/schemas/WebAuthnPublicKeyRegistrationRequest'
-        origin:
-          type: string
-        rpId:
-          type: string
-        userId:
-          type: string
-          format: uuid
-    AttestationConveyancePreference:
-      description: Used to communicate whether and how authenticator attestation should be delivered to the Relying Party
-      type: string
-      enum:
-      - none
-      - indirect
-      - direct
-      - enterprise
-    WebAuthnStartResponse:
-      description: API response for starting a WebAuthn authentication ceremony
-      type: object
-      properties:
-        options:
-          $ref: '#/components/schemas/PublicKeyCredentialRequestOptions'
-    AuthenticatorConfiguration:
-      description: ''
-      type: object
-      properties:
-        algorithm:
-          $ref: '#/components/schemas/TOTPAlgorithm'
-        codeLength:
-          type: integer
-        timeStep:
-          type: integer
-    PublicKeyCredentialParameters:
-      description: Supply information on credential type and algorithm to the <i>authenticator<i>.
-      type: object
-      properties:
-        alg:
-          $ref: '#/components/schemas/CoseAlgorithmIdentifier'
-        type:
-          $ref: '#/components/schemas/PublicKeyCredentialType'
+      - publicKey
     WebAuthnPublicKeyRegistrationRequest:
       description: Request to register a new public key with WebAuthn
       type: object
@@ -554,6 +356,204 @@ components:
             type: string
         type:
           type: string
+    WebAuthnRegisterCompleteRequest:
+      description: Request to complete the WebAuthn registration ceremony for a new credential,.
+      type: object
+      properties:
+        credential:
+          $ref: '#/components/schemas/WebAuthnPublicKeyRegistrationRequest'
+        origin:
+          type: string
+        rpId:
+          type: string
+        userId:
+          type: string
+          format: uuid
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    PublicKeyCredentialDescriptor:
+      description: Contains attributes for the Relying Party to refer to an existing public key credential as an input parameter.
+      type: object
+      properties:
+        id:
+          type: string
+        transports:
+          type: array
+          items:
+            type: string
+        type:
+          $ref: '#/components/schemas/PublicKeyCredentialType'
+    WebAuthnRegisterCompleteResponse:
+      description: API response for completing WebAuthn credential registration or assertion
+      type: object
+      properties:
+        credential:
+          $ref: '#/components/schemas/WebAuthnCredential'
+    LoginResponse:
+      description: ''
+      type: object
+      properties:
+        actions:
+          type: array
+          items:
+            $ref: '#/components/schemas/LoginPreventedResponse'
+        changePasswordId:
+          type: string
+        changePasswordReason:
+          $ref: '#/components/schemas/ChangePasswordReason'
+        configurableMethods:
+          type: array
+          items:
+            type: string
+        emailVerificationId:
+          type: string
+        identityVerificationId:
+          type: string
+        methods:
+          type: array
+          items:
+            $ref: '#/components/schemas/TwoFactorMethod'
+        pendingIdPLinkId:
+          type: string
+        refreshToken:
+          type: string
+        refreshTokenId:
+          type: string
+          format: uuid
+        registrationVerificationId:
+          type: string
+        state:
+          type: object
+          additionalProperties:
+            type: object
+        threatsDetected:
+          type: array
+          uniqueItems: true
+          items: {}
+        token:
+          type: string
+        tokenExpirationInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        trustToken:
+          type: string
+        twoFactorId:
+          type: string
+        twoFactorTrustId:
+          type: string
+        user:
+          $ref: '#/components/schemas/User'
+    TOTPAlgorithm:
+      type: string
+      enum:
+      - HmacSHA1
+      - HmacSHA256
+      - HmacSHA512
+    ContentStatus:
+      description: Status for content like usernames, profile attributes, etc.
+      type: string
+      enum:
+      - ACTIVE
+      - PENDING
+      - REJECTED
+    WebAuthnStartResponse:
+      description: API response for starting a WebAuthn authentication ceremony
+      type: object
+      properties:
+        options:
+          $ref: '#/components/schemas/PublicKeyCredentialRequestOptions'
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    WebAuthnAssertResponse:
+      description: API response for completing WebAuthn assertion
+      type: object
+      properties:
+        credential:
+          $ref: '#/components/schemas/WebAuthnCredential'
+    WebAuthnStartRequest:
+      description: API request to start a WebAuthn authentication ceremony
+      type: object
+      properties:
+        applicationId:
+          type: string
+          format: uuid
+        credentialId:
+          type: string
+          format: uuid
+        loginId:
+          type: string
+        loginIdTypes:
+          type: array
+          items:
+            type: string
+        state:
+          type: object
+          additionalProperties:
+            type: object
+        userId:
+          type: string
+          format: uuid
+        workflow:
+          $ref: '#/components/schemas/WebAuthnWorkflow'
+    AttestationType:
+      description: Used to indicate what type of attestation was included in the authenticator response for a given WebAuthn credential at the time it was created
+      type: string
+      enum:
+      - basic
+      - self
+      - attestationCa
+      - anonymizationCa
+      - none
+    AttestationConveyancePreference:
+      description: Used to communicate whether and how authenticator attestation should be delivered to the Relying Party
+      type: string
+      enum:
+      - none
+      - indirect
+      - direct
+      - enterprise
+    MetaData:
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        device:
+          $ref: '#/components/schemas/DeviceInfo'
+        scopes:
+          type: array
+          uniqueItems: true
+          items: {}
+    AuthenticatorConfiguration:
+      description: ''
+      type: object
+      properties:
+        algorithm:
+          $ref: '#/components/schemas/TOTPAlgorithm'
+        codeLength:
+          type: integer
+        timeStep:
+          type: integer
     WebAuthnCredential:
       description: A User's WebAuthnCredential. Contains all data required to complete WebAuthn authentication ceremonies.
       type: object
@@ -601,6 +601,32 @@ components:
         userId:
           type: string
           format: uuid
+    LoginPreventedResponse:
+      description: The summary of the action that is preventing login to be returned on the login response.
+      type: object
+      properties:
+        actionId:
+          type: string
+          format: uuid
+        actionerUserId:
+          type: string
+          format: uuid
+        expiry:
+          $ref: '#/components/schemas/ZonedDateTime'
+        localizedName:
+          type: string
+        localizedOption:
+          type: string
+        localizedReason:
+          type: string
+        name:
+          type: string
+        option:
+          type: string
+        reason:
+          type: string
+        reasonCode:
+          type: string
     UserIdentity:
       description: ''
       type: object
@@ -635,56 +661,277 @@ components:
           type: string
         name:
           type: string
-    WebAuthnRegisterCompleteResponse:
-      description: API response for completing WebAuthn credential registration or assertion
-      type: object
-      properties:
-        credential:
-          $ref: '#/components/schemas/WebAuthnCredential'
-    WebAuthnRegistrationExtensionOptions:
-      description: Options to request extensions during credential registration
+    Locale:
+      description: A Locale object represents a specific geographical, political, or cultural region.
+      example: en_US
+      type: string
+    WebAuthnExtensionsClientOutputs:
+      description: Contains extension output for requested extensions during a WebAuthn ceremony
       type: object
       properties:
         credProps:
-          type: boolean
-    PublicKeyCredentialType:
-      description: Defines valid credential types. This is an extension point in the WebAuthn spec. The only defined value at this time is "public-key"
+          $ref: '#/components/schemas/CredentialPropertiesOutput'
+    UserVerificationRequirement:
+      description: Used to express whether the Relying Party requires <a href="https:www.w3.orgTRwebauthn-2#user-verification">user verification<a> for the  current operation.
       type: string
       enum:
-      - publicKey
-    Error:
-      description: Defines an error.
+      - required
+      - preferred
+      - discouraged
+    PublicKeyCredentialParameters:
+      description: Supply information on credential type and algorithm to the <i>authenticator<i>.
       type: object
       properties:
-        code:
+        alg:
+          $ref: '#/components/schemas/CoseAlgorithmIdentifier'
+        type:
+          $ref: '#/components/schemas/PublicKeyCredentialType'
+    LocalDate:
+      description: A date without a time-zone in the ISO-8601 calendar system, such as 2007-12-03.
+      example: '2007-12-03'
+      pattern: ^[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]$
+      type: string
+    BreachedPasswordStatus:
+      description: ''
+      type: string
+      enum:
+      - None
+      - ExactMatch
+      - SubAddressMatch
+      - PasswordOnly
+      - CommonPassword
+    UserTwoFactorConfiguration:
+      description: ''
+      type: object
+      properties:
+        methods:
+          type: array
+          items:
+            $ref: '#/components/schemas/TwoFactorMethod'
+        recoveryCodes:
+          type: array
+          items:
+            type: string
+    WebAuthnAuthenticatorAuthenticationResponse:
+      description: The <i>authenticator's<i> response for the authentication ceremony in its encoded format
+      type: object
+      properties:
+        authenticatorData:
           type: string
+        clientDataJSON:
+          type: string
+        signature:
+          type: string
+        userHandle:
+          type: string
+    ResidentKeyRequirement:
+      description: Describes the Relying Party's requirements for <a href="https:www.w3.orgTRwebauthn-2#client-side-discoverable-credential">client-side  discoverable credentials<a> (formerly known as "resident keys")
+      type: string
+      enum:
+      - discouraged
+      - preferred
+      - required
+    WebAuthnPublicKeyAuthenticationRequest:
+      description: Request to authenticate with WebAuthn
+      type: object
+      properties:
+        clientExtensionResults:
+          $ref: '#/components/schemas/WebAuthnExtensionsClientOutputs'
+        id:
+          type: string
+        rpId:
+          type: string
+        response:
+          $ref: '#/components/schemas/WebAuthnAuthenticatorAuthenticationResponse'
+        type:
+          type: string
+    WebAuthnCredentialImportRequest:
+      description: API request to import an existing WebAuthn credential(s)
+      type: object
+      properties:
+        credentials:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebAuthnCredential'
+        validateDbConstraints:
+          type: boolean
+    GroupMember:
+      description: A User's membership into a Group
+      type: object
+      properties:
         data:
           type: object
           additionalProperties:
             type: object
-        message:
+        groupId:
           type: string
+          format: uuid
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        userId:
+          type: string
+          format: uuid
+    DeviceInfo:
+      description: ''
+      type: object
+      properties:
+        description:
+          type: string
+        lastAccessedAddress:
+          type: string
+        lastAccessedInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        name:
+          type: string
+        type:
+          type: string
+    ZoneId:
+      description: Timezone Identifier
+      example: America/Denver
+      pattern: ^w+/w+$
+      type: string
     CredentialPropertiesOutput:
       description: Contains the output for the {@code credProps} extension
       type: object
       properties:
         rk:
           type: boolean
-    IdentityType:
-      description: Model identity types provided by FusionAuth.
+    TwoFactorMethod:
+      description: ''
       type: object
       properties:
-        name:
+        authenticator:
+          $ref: '#/components/schemas/AuthenticatorConfiguration'
+        email:
           type: string
-    AttestationType:
-      description: Used to indicate what type of attestation was included in the authenticator response for a given WebAuthn credential at the time it was created
+        id:
+          type: string
+        lastUsed:
+          type: boolean
+        method:
+          type: string
+        mobilePhone:
+          type: string
+        secret:
+          type: string
+    UserRegistration:
+      description: User registration information for a single application.
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        preferredLanguages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Locale'
+        tokens:
+          type: object
+          additionalProperties:
+            type: string
+        applicationId:
+          type: string
+          format: uuid
+        authenticationToken:
+          type: string
+        cleanSpeakId:
+          type: string
+          format: uuid
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastLoginInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        roles:
+          type: array
+          uniqueItems: true
+          items: {}
+        timezone:
+          $ref: '#/components/schemas/ZoneId'
+        username:
+          type: string
+        usernameStatus:
+          $ref: '#/components/schemas/ContentStatus'
+        verified:
+          type: boolean
+        verifiedInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+    WebAuthnRegistrationExtensionOptions:
+      description: Options to request extensions during credential registration
+      type: object
+      properties:
+        credProps:
+          type: boolean
+    CoseAlgorithmIdentifier:
+      description: A number identifying a cryptographic algorithm. Values should be registered with the <a  href="https:www.iana.orgassignmentscosecose.xhtml#algorithms">IANA COSE Algorithms registry<a>
       type: string
       enum:
-      - basic
-      - self
-      - attestationCa
-      - anonymizationCa
-      - none
+      - ES256
+      - ES384
+      - ES512
+      - RS256
+      - RS384
+      - RS512
+      - PS256
+      - PS384
+      - PS512
+    PublicKeyCredentialCreationOptions:
+      description: Allows the Relying Party to specify desired attributes of a new credential.
+      type: object
+      properties:
+        attestation:
+          $ref: '#/components/schemas/AttestationConveyancePreference'
+        authenticatorSelection:
+          $ref: '#/components/schemas/AuthenticatorSelectionCriteria'
+        challenge:
+          type: string
+        excludeCredentials:
+          type: array
+          items:
+            $ref: '#/components/schemas/PublicKeyCredentialDescriptor'
+        extensions:
+          $ref: '#/components/schemas/WebAuthnRegistrationExtensionOptions'
+        pubKeyCredParams:
+          type: array
+          items:
+            $ref: '#/components/schemas/PublicKeyCredentialParameters'
+        rp:
+          $ref: '#/components/schemas/PublicKeyCredentialRelyingPartyEntity'
+        timeout:
+          type: integer
+          format: int64
+        user:
+          $ref: '#/components/schemas/PublicKeyCredentialUserEntity'
+    PublicKeyCredentialRequestOptions:
+      description: Provides the <i>authenticator<i> with the data it needs to generate an assertion.
+      type: object
+      properties:
+        allowCredentials:
+          type: array
+          items:
+            $ref: '#/components/schemas/PublicKeyCredentialDescriptor'
+        challenge:
+          type: string
+        rpId:
+          type: string
+        timeout:
+          type: integer
+          format: int64
+        userVerification:
+          $ref: '#/components/schemas/UserVerificationRequirement'
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
     User:
       description: The public, global view of a User. This object contains all global information about the user including birthdate, registration information  preferred languages, global attributes, etc.
       type: object
@@ -784,6 +1031,25 @@ components:
           type: boolean
         verifiedInstant:
           $ref: '#/components/schemas/ZonedDateTime'
+    IdentityVerifiedReason:
+      description: Models the reason that {@link UserIdentity#verified} was set to true or false.
+      type: string
+      enum:
+      - Skipped
+      - Trusted
+      - Unverifiable
+      - Implicit
+      - Pending
+      - Completed
+      - Disabled
+      - Administrative
+      - Import
+    WebAuthnRegisterStartResponse:
+      description: API response for starting a WebAuthn registration ceremony
+      type: object
+      properties:
+        options:
+          $ref: '#/components/schemas/PublicKeyCredentialCreationOptions'
     WebAuthnLoginRequest:
       description: Request to complete the WebAuthn registration ceremony
       type: object
@@ -807,274 +1073,28 @@ components:
           type: boolean
         noJWT:
           type: boolean
-    WebAuthnAuthenticatorAuthenticationResponse:
-      description: The <i>authenticator's<i> response for the authentication ceremony in its encoded format
+    AuthenticatorSelectionCriteria:
+      description: Used by the Relying Party to specify their requirements for authenticator attributes. Fields use the deprecated "resident key" terminology to refer  to client-side discoverable credentials to maintain backwards compatibility with WebAuthn Level 1.
       type: object
       properties:
-        authenticatorData:
-          type: string
-        clientDataJSON:
-          type: string
-        signature:
-          type: string
-        userHandle:
-          type: string
-    WebAuthnCredentialImportRequest:
-      description: API request to import an existing WebAuthn credential(s)
+        authenticatorAttachment:
+          $ref: '#/components/schemas/AuthenticatorAttachment'
+        requireResidentKey:
+          type: boolean
+        residentKey:
+          $ref: '#/components/schemas/ResidentKeyRequirement'
+        userVerification:
+          $ref: '#/components/schemas/UserVerificationRequirement'
+    WebAuthnCredentialResponse:
+      description: WebAuthn Credential API response
       type: object
       properties:
+        credential:
+          $ref: '#/components/schemas/WebAuthnCredential'
         credentials:
           type: array
           items:
             $ref: '#/components/schemas/WebAuthnCredential'
-        validateDbConstraints:
-          type: boolean
-    PublicKeyCredentialCreationOptions:
-      description: Allows the Relying Party to specify desired attributes of a new credential.
-      type: object
-      properties:
-        attestation:
-          $ref: '#/components/schemas/AttestationConveyancePreference'
-        authenticatorSelection:
-          $ref: '#/components/schemas/AuthenticatorSelectionCriteria'
-        challenge:
-          type: string
-        excludeCredentials:
-          type: array
-          items:
-            $ref: '#/components/schemas/PublicKeyCredentialDescriptor'
-        extensions:
-          $ref: '#/components/schemas/WebAuthnRegistrationExtensionOptions'
-        pubKeyCredParams:
-          type: array
-          items:
-            $ref: '#/components/schemas/PublicKeyCredentialParameters'
-        rp:
-          $ref: '#/components/schemas/PublicKeyCredentialRelyingPartyEntity'
-        timeout:
-          type: integer
-          format: int64
-        user:
-          $ref: '#/components/schemas/PublicKeyCredentialUserEntity'
-    LoginPreventedResponse:
-      description: The summary of the action that is preventing login to be returned on the login response.
-      type: object
-      properties:
-        actionId:
-          type: string
-          format: uuid
-        actionerUserId:
-          type: string
-          format: uuid
-        expiry:
-          $ref: '#/components/schemas/ZonedDateTime'
-        localizedName:
-          type: string
-        localizedOption:
-          type: string
-        localizedReason:
-          type: string
-        name:
-          type: string
-        option:
-          type: string
-        reason:
-          type: string
-        reasonCode:
-          type: string
-    WebAuthnExtensionsClientOutputs:
-      description: Contains extension output for requested extensions during a WebAuthn ceremony
-      type: object
-      properties:
-        credProps:
-          $ref: '#/components/schemas/CredentialPropertiesOutput'
-    AuthenticatorAttachment:
-      description: Describes the <a href="https:www.w3.orgTRwebauthn-2#authenticator-attachment-modality">authenticator attachment modality<a>.
-      type: string
-      enum:
-      - platform
-      - crossPlatform
-    WebAuthnRegisterStartResponse:
-      description: API response for starting a WebAuthn registration ceremony
-      type: object
-      properties:
-        options:
-          $ref: '#/components/schemas/PublicKeyCredentialCreationOptions'
-    PublicKeyCredentialRequestOptions:
-      description: Provides the <i>authenticator<i> with the data it needs to generate an assertion.
-      type: object
-      properties:
-        allowCredentials:
-          type: array
-          items:
-            $ref: '#/components/schemas/PublicKeyCredentialDescriptor'
-        challenge:
-          type: string
-        rpId:
-          type: string
-        timeout:
-          type: integer
-          format: int64
-        userVerification:
-          $ref: '#/components/schemas/UserVerificationRequirement'
-    CoseAlgorithmIdentifier:
-      description: A number identifying a cryptographic algorithm. Values should be registered with the <a  href="https:www.iana.orgassignmentscosecose.xhtml#algorithms">IANA COSE Algorithms registry<a>
-      type: string
-      enum:
-      - ES256
-      - ES384
-      - ES512
-      - RS256
-      - RS384
-      - RS512
-      - PS256
-      - PS384
-      - PS512
-    PublicKeyCredentialUserEntity:
-      description: Supply additional information about the user account when creating a new credential
-      type: object
-      properties:
-        displayName:
-          type: string
-        id:
-          type: string
-        name:
-          type: string
-    LocalDate:
-      description: A date without a time-zone in the ISO-8601 calendar system, such as 2007-12-03.
-      example: '2007-12-03'
-      pattern: ^[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]$
-      type: string
-    ZoneId:
-      description: Timezone Identifier
-      example: America/Denver
-      pattern: ^w+/w+$
-      type: string
-    WebAuthnWorkflow:
-      description: Identifies the WebAuthn workflow. This will affect the parameters used for credential creation  and request based on the Tenant configuration.
-      type: string
-      enum:
-      - bootstrap
-      - general
-      - reauthentication
-    DeviceInfo:
-      description: ''
-      type: object
-      properties:
-        description:
-          type: string
-        lastAccessedAddress:
-          type: string
-        lastAccessedInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        name:
-          type: string
-        type:
-          type: string
-    ChangePasswordReason:
-      description: ''
-      type: string
-      enum:
-      - Administrative
-      - Breached
-      - Expired
-      - Validation
-    TwoFactorMethod:
-      description: ''
-      type: object
-      properties:
-        authenticator:
-          $ref: '#/components/schemas/AuthenticatorConfiguration'
-        email:
-          type: string
-        id:
-          type: string
-        lastUsed:
-          type: boolean
-        method:
-          type: string
-        mobilePhone:
-          type: string
-        secret:
-          type: string
-    WebAuthnStartRequest:
-      description: API request to start a WebAuthn authentication ceremony
-      type: object
-      properties:
-        applicationId:
-          type: string
-          format: uuid
-        credentialId:
-          type: string
-          format: uuid
-        loginId:
-          type: string
-        loginIdTypes:
-          type: array
-          items:
-            type: string
-        state:
-          type: object
-          additionalProperties:
-            type: object
-        userId:
-          type: string
-          format: uuid
-        workflow:
-          $ref: '#/components/schemas/WebAuthnWorkflow'
-    LoginResponse:
-      description: ''
-      type: object
-      properties:
-        actions:
-          type: array
-          items:
-            $ref: '#/components/schemas/LoginPreventedResponse'
-        changePasswordId:
-          type: string
-        changePasswordReason:
-          $ref: '#/components/schemas/ChangePasswordReason'
-        configurableMethods:
-          type: array
-          items:
-            type: string
-        emailVerificationId:
-          type: string
-        identityVerificationId:
-          type: string
-        methods:
-          type: array
-          items:
-            $ref: '#/components/schemas/TwoFactorMethod'
-        pendingIdPLinkId:
-          type: string
-        refreshToken:
-          type: string
-        refreshTokenId:
-          type: string
-          format: uuid
-        registrationVerificationId:
-          type: string
-        state:
-          type: object
-          additionalProperties:
-            type: object
-        threatsDetected:
-          type: array
-          uniqueItems: true
-          items: {}
-        token:
-          type: string
-        tokenExpirationInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        trustToken:
-          type: string
-        twoFactorId:
-          type: string
-        twoFactorTrustId:
-          type: string
-        user:
-          $ref: '#/components/schemas/User'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

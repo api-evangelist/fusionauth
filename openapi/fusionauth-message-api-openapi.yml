@@ -1,8 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   version: 1.66.0
-  title: FusionAuth Api Key Message API
-  description: This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.
+  title: FusionAuth Message API
+  description: This is a FusionAuth server. Find out more at https://fusionauth.io. You need to set up an API key in the FusionAuth instance you are using to test out the API calls.
   license:
     name: Apache2
 servers:
@@ -38,6 +38,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Message
+      summary: Create message template
+      x-summary-source: derived
     get:
       description: Retrieves the message template for the given Id. If you don't specify the Id, this will return all the message templates.
       operationId: retrieveMessageTemplate
@@ -53,6 +55,8 @@ paths:
           description: Error
       tags:
       - Message
+      summary: Retrieve message template
+      x-summary-source: derived
   /api/message/template/preview:
     post:
       description: Creates a preview of the message template provided in the request, normalized to a given locale.
@@ -78,6 +82,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Message
+      summary: Retrieve message template preview with id
+      x-summary-source: derived
   /api/message/template/{messageTemplateId}:
     post:
       description: Creates an message template. You can optionally specify an Id for the template, if not provided one will be generated.
@@ -109,6 +115,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Message
+      summary: Create message template with id
+      x-summary-source: derived
     delete:
       description: Deletes the message template for the given Id.
       operationId: deleteMessageTemplateWithId
@@ -130,6 +138,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Message
+      summary: Delete message template with id
+      x-summary-source: derived
     patch:
       description: Updates, via PATCH, the message template with the given Id.
       operationId: patchMessageTemplateWithId
@@ -160,6 +170,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Message
+      summary: Patch message template with id
+      x-summary-source: derived
     get:
       description: Retrieves the message template for the given Id. If you don't specify the Id, this will return all the message templates.
       operationId: retrieveMessageTemplateWithId
@@ -181,6 +193,8 @@ paths:
           description: Error
       tags:
       - Message
+      summary: Retrieve message template with id
+      x-summary-source: derived
     put:
       description: Updates the message template with the given Id.
       operationId: updateMessageTemplateWithId
@@ -211,8 +225,24 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Message
+      summary: Update message template with id
+      x-summary-source: derived
 components:
   schemas:
+    PreviewMessageTemplateRequest:
+      description: ''
+      type: object
+      properties:
+        locale:
+          $ref: '#/components/schemas/Locale'
+        messageTemplate:
+          $ref: '#/components/schemas/MessageTemplate'
+    MessageType:
+      description: ''
+      type: string
+      enum:
+      - SMS
+      - Voice
     Errors:
       description: Standard error domain object that can also be used as the response from an API call.
       type: object
@@ -225,6 +255,26 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Error'
+    MessageTemplateResponse:
+      description: ''
+      type: object
+      properties:
+        messageTemplate:
+          $ref: '#/components/schemas/MessageTemplate'
+        messageTemplates:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageTemplate'
+    PreviewMessageTemplateResponse:
+      description: ''
+      type: object
+      properties:
+        errors:
+          $ref: '#/components/schemas/Errors'
+        message:
+          $ref: '#/components/schemas/SMSMessage'
+        previewMessage:
+          type: string
     MessageTemplate:
       description: Stores an message template used to distribute messages;
       type: object
@@ -267,24 +317,6 @@ components:
             type: object
         message:
           type: string
-    PreviewMessageTemplateResponse:
-      description: ''
-      type: object
-      properties:
-        errors:
-          $ref: '#/components/schemas/Errors'
-        message:
-          $ref: '#/components/schemas/SMSMessage'
-        previewMessage:
-          type: string
-    PreviewMessageTemplateRequest:
-      description: ''
-      type: object
-      properties:
-        locale:
-          $ref: '#/components/schemas/Locale'
-        messageTemplate:
-          $ref: '#/components/schemas/MessageTemplate'
     SMSMessage:
       description: ''
       type: object
@@ -293,26 +325,10 @@ components:
           type: string
         textMessage:
           type: string
-    MessageTemplateResponse:
-      description: ''
-      type: object
-      properties:
-        messageTemplate:
-          $ref: '#/components/schemas/MessageTemplate'
-        messageTemplates:
-          type: array
-          items:
-            $ref: '#/components/schemas/MessageTemplate'
     Locale:
       description: A Locale object represents a specific geographical, political, or cultural region.
       example: en_US
       type: string
-    MessageType:
-      description: ''
-      type: string
-      enum:
-      - SMS
-      - Voice
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

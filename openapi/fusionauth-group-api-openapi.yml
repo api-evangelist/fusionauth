@@ -1,8 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   version: 1.66.0
-  title: FusionAuth Api Key Group API
-  description: This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.
+  title: FusionAuth Group API
+  description: This is a FusionAuth server. Find out more at https://fusionauth.io. You need to set up an API key in the FusionAuth instance you are using to test out the API calls.
   license:
     name: Apache2
 servers:
@@ -45,6 +45,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Group
+      summary: Create group
+      x-summary-source: derived
   /api/group/member:
     post:
       description: Creates a member in a group.
@@ -70,6 +72,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Group
+      summary: Create group members with id
+      x-summary-source: derived
     delete:
       description: Removes users as members of a group.
       operationId: deleteGroupMembersWithId
@@ -90,6 +94,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Group
+      summary: Delete group members with id
+      x-summary-source: derived
     put:
       description: Creates a member in a group.
       operationId: updateGroupMembersWithId
@@ -114,6 +120,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Group
+      summary: Update group members with id
+      x-summary-source: derived
   /api/group/member/search:
     post:
       description: Searches group members with the specified criteria and pagination.
@@ -139,6 +147,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Group
+      summary: Search group members with id
+      x-summary-source: derived
   /api/group/search:
     post:
       description: Searches groups with the specified criteria and pagination.
@@ -164,6 +174,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Group
+      summary: Search groups with id
+      x-summary-source: derived
   /api/group/{groupId}:
     post:
       description: Creates a group. You can optionally specify an Id for the group, if not provided one will be generated.
@@ -202,6 +214,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Group
+      summary: Create group with id
+      x-summary-source: derived
     delete:
       description: Deletes the group for the given Id.
       operationId: deleteGroupWithId
@@ -230,6 +244,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Group
+      summary: Delete group with id
+      x-summary-source: derived
     patch:
       description: Updates, via PATCH, the group with the given Id.
       operationId: patchGroupWithId
@@ -267,6 +283,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Group
+      summary: Patch group with id
+      x-summary-source: derived
     get:
       description: Retrieves the group for the given Id.
       operationId: retrieveGroupWithId
@@ -299,6 +317,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Group
+      summary: Retrieve group with id
+      x-summary-source: derived
     put:
       description: Updates the group with the given Id.
       operationId: updateGroupWithId
@@ -336,44 +356,10 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Group
+      summary: Update group with id
+      x-summary-source: derived
 components:
   schemas:
-    Errors:
-      description: Standard error domain object that can also be used as the response from an API call.
-      type: object
-      properties:
-        fieldErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-        generalErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-    ZonedDateTime:
-      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
-      example: '1659380719000'
-      type: integer
-      format: int64
-    GroupMember:
-      description: A User's membership into a Group
-      type: object
-      properties:
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        groupId:
-          type: string
-          format: uuid
-        id:
-          type: string
-          format: uuid
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        userId:
-          type: string
-          format: uuid
     MemberDeleteRequest:
       description: Group Member Delete Request
       type: object
@@ -388,6 +374,51 @@ components:
           items:
             type: string
             format: uuid
+    MemberRequest:
+      description: Group Member Request
+      type: object
+      properties:
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupMember'
+    GroupSearchRequest:
+      description: Search request for Groups.
+      type: object
+      properties:
+        search:
+          $ref: '#/components/schemas/GroupSearchCriteria'
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    GroupMemberSearchCriteria:
+      description: Search criteria for Group Members
+      type: object
+      properties:
+        groupId:
+          type: string
+          format: uuid
+        tenantId:
+          type: string
+          format: uuid
+        userId:
+          type: string
+          format: uuid
+        numberOfResults:
+          type: integer
+        orderBy:
+          type: string
+        startRow:
+          type: integer
     GroupMemberSearchResponse:
       description: Search response for Group Members
       type: object
@@ -399,45 +430,42 @@ components:
         total:
           type: integer
           format: int64
-    MemberResponse:
-      description: Group Member Response
+    GroupResponse:
+      description: Group API response object.
       type: object
       properties:
-        members:
+        group:
+          $ref: '#/components/schemas/Group'
+        groups:
           type: array
           items:
-            $ref: '#/components/schemas/GroupMember'
-    Error:
-      description: Defines an error.
+            $ref: '#/components/schemas/Group'
+    GroupRequest:
+      description: Group API request object.
       type: object
       properties:
-        code:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        message:
-          type: string
-    ApplicationRole:
-      description: A role given to a user for a specific application.
+        group:
+          $ref: '#/components/schemas/Group'
+        roleIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+    GroupSearchCriteria:
+      description: Search criteria for Groups
       type: object
       properties:
-        description:
-          type: string
-        id:
-          type: string
-          format: uuid
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        isDefault:
-          type: boolean
-        isSuperRole:
-          type: boolean
-        lastUpdateInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
         name:
           type: string
+        tenantId:
+          type: string
+          format: uuid
+        numberOfResults:
+          type: integer
+        orderBy:
+          type: string
+        startRow:
+          type: integer
     Group:
       description: ''
       type: object
@@ -462,40 +490,48 @@ components:
         tenantId:
           type: string
           format: uuid
-    GroupSearchCriteria:
-      description: Search criteria for Groups
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    ApplicationRole:
+      description: A role given to a user for a specific application.
       type: object
       properties:
+        description:
+          type: string
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        isDefault:
+          type: boolean
+        isSuperRole:
+          type: boolean
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
         name:
           type: string
-        tenantId:
-          type: string
-          format: uuid
-        numberOfResults:
-          type: integer
-        orderBy:
-          type: string
-        startRow:
-          type: integer
-    GroupMemberSearchCriteria:
-      description: Search criteria for Group Members
+    Error:
+      description: Defines an error.
       type: object
       properties:
-        groupId:
+        code:
           type: string
-          format: uuid
-        tenantId:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
           type: string
-          format: uuid
-        userId:
-          type: string
-          format: uuid
-        numberOfResults:
-          type: integer
-        orderBy:
-          type: string
-        startRow:
-          type: integer
+    GroupMemberSearchRequest:
+      description: Search request for Group Members.
+      type: object
+      properties:
+        search:
+          $ref: '#/components/schemas/GroupMemberSearchCriteria'
     GroupSearchResponse:
       description: Search response for Groups
       type: object
@@ -507,47 +543,33 @@ components:
         total:
           type: integer
           format: int64
-    GroupRequest:
-      description: Group API request object.
+    GroupMember:
+      description: A User's membership into a Group
       type: object
       properties:
-        group:
-          $ref: '#/components/schemas/Group'
-        roleIds:
-          type: array
-          items:
-            type: string
-            format: uuid
-    MemberRequest:
-      description: Group Member Request
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        groupId:
+          type: string
+          format: uuid
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        userId:
+          type: string
+          format: uuid
+    MemberResponse:
+      description: Group Member Response
       type: object
       properties:
         members:
           type: array
           items:
             $ref: '#/components/schemas/GroupMember'
-    GroupResponse:
-      description: Group API response object.
-      type: object
-      properties:
-        group:
-          $ref: '#/components/schemas/Group'
-        groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/Group'
-    GroupMemberSearchRequest:
-      description: Search request for Group Members.
-      type: object
-      properties:
-        search:
-          $ref: '#/components/schemas/GroupMemberSearchCriteria'
-    GroupSearchRequest:
-      description: Search request for Groups.
-      type: object
-      properties:
-        search:
-          $ref: '#/components/schemas/GroupSearchCriteria'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

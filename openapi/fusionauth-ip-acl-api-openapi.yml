@@ -1,8 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   version: 1.66.0
-  title: FusionAuth Api Key Ip Acl API
-  description: This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.
+  title: FusionAuth Ip Acl API
+  description: This is a FusionAuth server. Find out more at https://fusionauth.io. You need to set up an API key in the FusionAuth instance you are using to test out the API calls.
   license:
     name: Apache2
 servers:
@@ -38,6 +38,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Ip Acl
+      summary: Create IP access control list
+      x-summary-source: derived
   /api/ip-acl/search:
     post:
       description: Searches the IP Access Control Lists with the specified criteria and pagination.
@@ -63,6 +65,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Ip Acl
+      summary: Search IP access control lists with id
+      x-summary-source: derived
   /api/ip-acl/{accessControlListId}:
     post:
       description: Creates an IP Access Control List. You can optionally specify an Id on this create request, if one is not provided one will be generated.
@@ -94,6 +98,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Ip Acl
+      summary: Create IP access control list with id
+      x-summary-source: derived
     patch:
       description: Update the IP Access Control List with the given Id.
       operationId: patchIPAccessControlListWithId
@@ -124,6 +130,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Ip Acl
+      summary: Patch IP access control list with id
+      x-summary-source: derived
     put:
       description: Updates the IP Access Control List with the given Id.
       operationId: updateIPAccessControlListWithId
@@ -154,6 +162,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Ip Acl
+      summary: Update IP access control list with id
+      x-summary-source: derived
   /api/ip-acl/{ipAccessControlListId}:
     delete:
       description: Deletes the IP Access Control List for the given Id.
@@ -176,6 +186,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Ip Acl
+      summary: Delete IP access control list with id
+      x-summary-source: derived
     get:
       description: Retrieves the IP Access Control List with the given Id.
       operationId: retrieveIPAccessControlListWithId
@@ -197,69 +209,16 @@ paths:
           description: Error
       tags:
       - Ip Acl
+      summary: Retrieve IP access control list with id
+      x-summary-source: derived
 components:
   schemas:
-    Errors:
-      description: Standard error domain object that can also be used as the response from an API call.
-      type: object
-      properties:
-        fieldErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-        generalErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-    ZonedDateTime:
-      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
-      example: '1659380719000'
-      type: integer
-      format: int64
-    IPAccessControlListSearchRequest:
-      description: Search request for IP ACLs .
-      type: object
-      properties:
-        search:
-          $ref: '#/components/schemas/IPAccessControlListSearchCriteria'
-    IPAccessControlEntry:
-      description: ''
-      type: object
-      properties:
-        action:
-          $ref: '#/components/schemas/IPAccessControlEntryAction'
-        endIPAddress:
-          type: string
-        startIPAddress:
-          type: string
-    Error:
-      description: Defines an error.
-      type: object
-      properties:
-        code:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        message:
-          type: string
-    IPAccessControlEntryAction:
-      description: ''
-      type: string
-      enum:
-      - Allow
-      - Block
-    IPAccessControlListResponse:
+    IPAccessControlListRequest:
       description: ''
       type: object
       properties:
         ipAccessControlList:
           $ref: '#/components/schemas/IPAccessControlList'
-        ipAccessControlLists:
-          type: array
-          items:
-            $ref: '#/components/schemas/IPAccessControlList'
     IPAccessControlList:
       description: ''
       type: object
@@ -281,23 +240,24 @@ components:
           $ref: '#/components/schemas/ZonedDateTime'
         name:
           type: string
-    IPAccessControlListSearchResponse:
-      description: ''
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
       type: object
       properties:
-        ipAccessControlLists:
+        fieldErrors:
           type: array
           items:
-            $ref: '#/components/schemas/IPAccessControlList'
-        total:
-          type: integer
-          format: int64
-    IPAccessControlListRequest:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    IPAccessControlEntryAction:
       description: ''
-      type: object
-      properties:
-        ipAccessControlList:
-          $ref: '#/components/schemas/IPAccessControlList'
+      type: string
+      enum:
+      - Allow
+      - Block
     IPAccessControlListSearchCriteria:
       description: ''
       type: object
@@ -310,6 +270,60 @@ components:
           type: string
         startRow:
           type: integer
+    IPAccessControlListSearchRequest:
+      description: Search request for IP ACLs .
+      type: object
+      properties:
+        search:
+          $ref: '#/components/schemas/IPAccessControlListSearchCriteria'
+    IPAccessControlListSearchResponse:
+      description: ''
+      type: object
+      properties:
+        ipAccessControlLists:
+          type: array
+          items:
+            $ref: '#/components/schemas/IPAccessControlList'
+        total:
+          type: integer
+          format: int64
+    IPAccessControlListResponse:
+      description: ''
+      type: object
+      properties:
+        ipAccessControlList:
+          $ref: '#/components/schemas/IPAccessControlList'
+        ipAccessControlLists:
+          type: array
+          items:
+            $ref: '#/components/schemas/IPAccessControlList'
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    IPAccessControlEntry:
+      description: ''
+      type: object
+      properties:
+        action:
+          $ref: '#/components/schemas/IPAccessControlEntryAction'
+        endIPAddress:
+          type: string
+        startIPAddress:
+          type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

@@ -1,8 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   version: 1.66.0
-  title: FusionAuth Api Key Form API
-  description: This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.
+  title: FusionAuth Form API
+  description: This is a FusionAuth server. Find out more at https://fusionauth.io. You need to set up an API key in the FusionAuth instance you are using to test out the API calls.
   license:
     name: Apache2
 servers:
@@ -15,7 +15,7 @@ tags:
 paths:
   /api/form:
     post:
-      description: Creates a form.  You can optionally specify an Id for the form, if not provided one will be generated.
+      description: Creates a form. You can optionally specify an Id for the form, if not provided one will be generated.
       operationId: createForm
       parameters: []
       requestBody:
@@ -38,9 +38,11 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Form
+      summary: Create form
+      x-summary-source: derived
   /api/form/field:
     post:
-      description: Creates a form field.  You can optionally specify an Id for the form, if not provided one will be generated.
+      description: Creates a form field. You can optionally specify an Id for the form, if not provided one will be generated.
       operationId: createFormField
       parameters: []
       requestBody:
@@ -63,9 +65,11 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Form
+      summary: Create form field
+      x-summary-source: derived
   /api/form/field/{fieldId}:
     post:
-      description: Creates a form field.  You can optionally specify an Id for the form, if not provided one will be generated.
+      description: Creates a form field. You can optionally specify an Id for the form, if not provided one will be generated.
       operationId: createFormFieldWithId
       parameters:
       - name: fieldId
@@ -94,6 +98,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Form
+      summary: Create form field with id
+      x-summary-source: derived
     delete:
       description: Deletes the form field for the given Id.
       operationId: deleteFormFieldWithId
@@ -115,6 +121,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Form
+      summary: Delete form field with id
+      x-summary-source: derived
     patch:
       description: Patches the form field with the given Id.
       operationId: patchFormFieldWithId
@@ -145,6 +153,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Form
+      summary: Patch form field with id
+      x-summary-source: derived
     get:
       description: Retrieves the form field with the given Id.
       operationId: retrieveFormFieldWithId
@@ -166,6 +176,8 @@ paths:
           description: Error
       tags:
       - Form
+      summary: Retrieve form field with id
+      x-summary-source: derived
     put:
       description: Updates the form field with the given Id.
       operationId: updateFormFieldWithId
@@ -196,9 +208,11 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Form
+      summary: Update form field with id
+      x-summary-source: derived
   /api/form/{formId}:
     post:
-      description: Creates a form.  You can optionally specify an Id for the form, if not provided one will be generated.
+      description: Creates a form. You can optionally specify an Id for the form, if not provided one will be generated.
       operationId: createFormWithId
       parameters:
       - name: formId
@@ -227,6 +241,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Form
+      summary: Create form with id
+      x-summary-source: derived
     delete:
       description: Deletes the form for the given Id.
       operationId: deleteFormWithId
@@ -248,6 +264,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Form
+      summary: Delete form with id
+      x-summary-source: derived
     patch:
       description: Patches the form with the given Id.
       operationId: patchFormWithId
@@ -278,6 +296,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Form
+      summary: Patch form with id
+      x-summary-source: derived
     get:
       description: Retrieves the form with the given Id.
       operationId: retrieveFormWithId
@@ -299,6 +319,8 @@ paths:
           description: Error
       tags:
       - Form
+      summary: Retrieve form with id
+      x-summary-source: derived
     put:
       description: Updates the form with the given Id.
       operationId: updateFormWithId
@@ -329,31 +351,50 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Form
+      summary: Update form with id
+      x-summary-source: derived
 components:
   schemas:
-    Form:
+    FormControl:
+      description: ''
+      type: string
+      enum:
+      - checkbox
+      - number
+      - password
+      - radio
+      - select
+      - textarea
+      - text
+    FormFieldValidator:
       description: ''
       type: object
       properties:
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        id:
+        expression:
           type: string
-          format: uuid
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        lastUpdateInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        name:
-          type: string
-        steps:
+        enabled:
+          type: boolean
+    FormFieldResponse:
+      description: Form field response.
+      type: object
+      properties:
+        field:
+          $ref: '#/components/schemas/FormField'
+        fields:
           type: array
           items:
-            $ref: '#/components/schemas/FormStep'
-        type:
-          $ref: '#/components/schemas/FormType'
+            $ref: '#/components/schemas/FormField'
+    FormDataType:
+      description: ''
+      type: string
+      enum:
+      - bool
+      - consent
+      - date
+      - email
+      - number
+      - phoneNumber
+      - string
     Errors:
       description: Standard error domain object that can also be used as the response from an API call.
       type: object
@@ -366,39 +407,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Error'
-    FormRequest:
-      description: Form response.
-      type: object
-      properties:
-        form:
-          $ref: '#/components/schemas/Form'
-    ZonedDateTime:
-      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
-      example: '1659380719000'
-      type: integer
-      format: int64
-    FormFieldRequest:
-      description: The FormField API request object.
-      type: object
-      properties:
-        field:
-          $ref: '#/components/schemas/FormField'
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FormField'
-    Error:
-      description: Defines an error.
-      type: object
-      properties:
-        code:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        message:
-          type: string
     FormField:
       description: ''
       type: object
@@ -437,61 +445,35 @@ components:
           $ref: '#/components/schemas/FormDataType'
         validator:
           $ref: '#/components/schemas/FormFieldValidator'
-    FormDataType:
-      description: ''
-      type: string
-      enum:
-      - bool
-      - consent
-      - date
-      - email
-      - number
-      - phoneNumber
-      - string
-    FormType:
-      description: ''
-      type: string
-      enum:
-      - registration
-      - adminRegistration
-      - adminUser
-      - selfServiceUser
-    FormFieldResponse:
-      description: Form field response.
+    FormRequest:
+      description: Form response.
       type: object
       properties:
-        field:
-          $ref: '#/components/schemas/FormField'
-        fields:
+        form:
+          $ref: '#/components/schemas/Form'
+    Form:
+      description: ''
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        name:
+          type: string
+        steps:
           type: array
           items:
-            $ref: '#/components/schemas/FormField'
-    FormControl:
-      description: ''
-      type: string
-      enum:
-      - checkbox
-      - number
-      - password
-      - radio
-      - select
-      - textarea
-      - text
-    FormFieldValidator:
-      description: ''
-      type: object
-      properties:
-        expression:
-          type: string
-        enabled:
-          type: boolean
-    FormStepType:
-      description: Denotes the type of form step. This is used to configure different behavior on form steps in the registration flow.
-      type: string
-      enum:
-      - collectData
-      - verifyEmail
-      - verifyPhoneNumber
+            $ref: '#/components/schemas/FormStep'
+        type:
+          $ref: '#/components/schemas/FormType'
     FormResponse:
       description: Form response.
       type: object
@@ -513,6 +495,48 @@ components:
             format: uuid
         type:
           $ref: '#/components/schemas/FormStepType'
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    FormFieldRequest:
+      description: The FormField API request object.
+      type: object
+      properties:
+        field:
+          $ref: '#/components/schemas/FormField'
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FormField'
+    FormStepType:
+      description: Denotes the type of form step. This is used to configure different behavior on form steps in the registration flow.
+      type: string
+      enum:
+      - collectData
+      - verifyEmail
+      - verifyPhoneNumber
+    FormType:
+      description: ''
+      type: string
+      enum:
+      - registration
+      - adminRegistration
+      - adminUser
+      - selfServiceUser
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

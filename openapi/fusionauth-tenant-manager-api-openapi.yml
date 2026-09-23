@@ -1,8 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   version: 1.66.0
-  title: FusionAuth Api Key Tenant Manager API
-  description: This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.
+  title: FusionAuth Tenant Manager API
+  description: This is a FusionAuth server. Find out more at https://fusionauth.io. You need to set up an API key in the FusionAuth instance you are using to test out the API calls.
   license:
     name: Apache2
 servers:
@@ -38,6 +38,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Tenant Manager
+      summary: Patch tenant manager configuration with id
+      x-summary-source: derived
     put:
       description: Updates the Tenant Manager configuration.
       operationId: updateTenantManagerConfigurationWithId
@@ -62,6 +64,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Tenant Manager
+      summary: Update tenant manager configuration with id
+      x-summary-source: derived
   /api/tenant-manager/identity-provider/{type}:
     post:
       description: Creates a tenant manager identity provider type configuration for the given identity provider type.
@@ -93,6 +97,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Tenant Manager
+      summary: Create tenant manager identity provider type configuration with id
+      x-summary-source: derived
     delete:
       description: Deletes the tenant manager identity provider type configuration for the given identity provider type.
       operationId: deleteTenantManagerIdentityProviderTypeConfigurationWithId
@@ -114,6 +120,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Tenant Manager
+      summary: Delete tenant manager identity provider type configuration with id
+      x-summary-source: derived
     patch:
       description: Patches the tenant manager identity provider type configuration for the given identity provider type.
       operationId: patchTenantManagerIdentityProviderTypeConfigurationWithId
@@ -144,6 +152,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Tenant Manager
+      summary: Patch tenant manager identity provider type configuration with id
+      x-summary-source: derived
     put:
       description: Updates the tenant manager identity provider type configuration for the given identity provider type.
       operationId: updateTenantManagerIdentityProviderTypeConfigurationWithId
@@ -174,62 +184,10 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Tenant Manager
+      summary: Update tenant manager identity provider type configuration with id
+      x-summary-source: derived
 components:
   schemas:
-    Errors:
-      description: Standard error domain object that can also be used as the response from an API call.
-      type: object
-      properties:
-        fieldErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-        generalErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-    ZonedDateTime:
-      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
-      example: '1659380719000'
-      type: integer
-      format: int64
-    Error:
-      description: Defines an error.
-      type: object
-      properties:
-        code:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        message:
-          type: string
-    TenantManagerApplicationConfiguration:
-      description: Tenant Manager application configuration.
-      type: object
-      properties:
-        applicationId:
-          type: string
-          format: uuid
-    IdentityProviderLinkingStrategy:
-      description: The IdP behavior when no user link has been made yet.
-      type: string
-      enum:
-      - CreatePendingLink
-      - Disabled
-      - LinkAnonymously
-      - LinkByEmail
-      - LinkByEmailForExistingUser
-      - LinkByUsername
-      - LinkByUsernameForExistingUser
-      - Unsupported
-    TenantManagerIdentityProviderTypeConfigurationResponse:
-      description: The Tenant Manager IdP type configuration response object
-      type: object
-      properties:
-        typeConfiguration:
-          $ref: '#/components/schemas/TenantManagerIdentityProviderTypeConfiguration'
     TenantManagerConfiguration:
       description: Configuration object for the Tenant Manager.
       type: object
@@ -251,12 +209,60 @@ components:
           $ref: '#/components/schemas/ZonedDateTime'
         lastUpdateInstant:
           $ref: '#/components/schemas/ZonedDateTime'
+    TenantManagerApplicationConfiguration:
+      description: Tenant Manager application configuration.
+      type: object
+      properties:
+        applicationId:
+          type: string
+          format: uuid
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
     TenantManagerConfigurationResponse:
       description: The Tenant Manager configuration response object
       type: object
       properties:
         tenantManagerConfiguration:
           $ref: '#/components/schemas/TenantManagerConfiguration'
+    TenantManagerIdentityProviderTypeConfigurationResponse:
+      description: The Tenant Manager IdP type configuration response object
+      type: object
+      properties:
+        typeConfiguration:
+          $ref: '#/components/schemas/TenantManagerIdentityProviderTypeConfiguration'
+    TenantManagerIdentityProviderTypeConfiguration:
+      description: Configuration object for identity provider types allowed in Tenant Manager
+      type: object
+      properties:
+        defaultAttributeMappings:
+          type: object
+          additionalProperties:
+            type: string
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        linkingStrategy:
+          $ref: '#/components/schemas/IdentityProviderLinkingStrategy'
+        type:
+          $ref: '#/components/schemas/IdentityProviderType'
+        enabled:
+          type: boolean
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
     IdentityProviderType:
       description: ''
       type: string
@@ -277,36 +283,42 @@ components:
       - Twitch
       - Twitter
       - Xbox
-    TenantManagerIdentityProviderTypeConfiguration:
-      description: Configuration object for identity provider types allowed in Tenant Manager
-      type: object
-      properties:
-        defaultAttributeMappings:
-          type: object
-          additionalProperties:
-            type: string
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        lastUpdateInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        linkingStrategy:
-          $ref: '#/components/schemas/IdentityProviderLinkingStrategy'
-        type:
-          $ref: '#/components/schemas/IdentityProviderType'
-        enabled:
-          type: boolean
-    TenantManagerConfigurationRequest:
-      description: The Tenant Manager configuration request object
-      type: object
-      properties:
-        tenantManagerConfiguration:
-          $ref: '#/components/schemas/TenantManagerConfiguration'
     TenantManagerIdentityProviderTypeConfigurationRequest:
       description: The Tenant Manager IdP type configuration request object
       type: object
       properties:
         typeConfiguration:
           $ref: '#/components/schemas/TenantManagerIdentityProviderTypeConfiguration'
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    IdentityProviderLinkingStrategy:
+      description: The IdP behavior when no user link has been made yet.
+      type: string
+      enum:
+      - CreatePendingLink
+      - Disabled
+      - LinkAnonymously
+      - LinkByEmail
+      - LinkByEmailForExistingUser
+      - LinkByUsername
+      - LinkByUsernameForExistingUser
+      - Unsupported
+    TenantManagerConfigurationRequest:
+      description: The Tenant Manager configuration request object
+      type: object
+      properties:
+        tenantManagerConfiguration:
+          $ref: '#/components/schemas/TenantManagerConfiguration'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

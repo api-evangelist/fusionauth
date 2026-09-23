@@ -1,8 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   version: 1.66.0
-  title: FusionAuth Api Key Webhook API
-  description: This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.
+  title: FusionAuth Webhook API
+  description: This is a FusionAuth server. Find out more at https://fusionauth.io. You need to set up an API key in the FusionAuth instance you are using to test out the API calls.
   license:
     name: Apache2
 servers:
@@ -38,6 +38,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Webhook
+      summary: Create webhook
+      x-summary-source: derived
     get:
       description: Retrieves the webhook for the given Id. If you pass in null for the Id, this will return all the webhooks.
       operationId: retrieveWebhook
@@ -53,6 +55,8 @@ paths:
           description: Error
       tags:
       - Webhook
+      summary: Retrieve webhook
+      x-summary-source: derived
   /api/webhook/search:
     post:
       description: Searches webhooks with the specified criteria and pagination.
@@ -78,6 +82,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Webhook
+      summary: Search webhooks with id
+      x-summary-source: derived
   /api/webhook/{webhookId}:
     post:
       description: Creates a webhook. You can optionally specify an Id for the webhook, if not provided one will be generated.
@@ -109,6 +115,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Webhook
+      summary: Create webhook with id
+      x-summary-source: derived
     delete:
       description: Deletes the webhook for the given Id.
       operationId: deleteWebhookWithId
@@ -130,6 +138,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Webhook
+      summary: Delete webhook with id
+      x-summary-source: derived
     patch:
       description: Patches the webhook with the given Id.
       operationId: patchWebhookWithId
@@ -160,6 +170,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Webhook
+      summary: Patch webhook with id
+      x-summary-source: derived
     get:
       description: Retrieves the webhook for the given Id. If you pass in null for the Id, this will return all the webhooks.
       operationId: retrieveWebhookWithId
@@ -181,6 +193,8 @@ paths:
           description: Error
       tags:
       - Webhook
+      summary: Retrieve webhook with id
+      x-summary-source: derived
     put:
       description: Updates the webhook with the given Id.
       operationId: updateWebhookWithId
@@ -211,8 +225,48 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Webhook
+      summary: Update webhook with id
+      x-summary-source: derived
 components:
   schemas:
+    WebhookResponse:
+      description: Webhook API response object.
+      type: object
+      properties:
+        webhook:
+          $ref: '#/components/schemas/Webhook'
+        webhooks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Webhook'
+    WebhookSearchResponse:
+      description: Webhook search response
+      type: object
+      properties:
+        total:
+          type: integer
+          format: int64
+        webhooks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Webhook'
+    WebhookSearchCriteria:
+      description: Search criteria for webhooks.
+      type: object
+      properties:
+        description:
+          type: string
+        tenantId:
+          type: string
+          format: uuid
+        url:
+          type: string
+        numberOfResults:
+          type: integer
+        orderBy:
+          type: string
+        startRow:
+          type: integer
     Errors:
       description: Standard error domain object that can also be used as the response from an API call.
       type: object
@@ -225,20 +279,17 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Error'
+    WebhookRequest:
+      description: Webhook API request object.
+      type: object
+      properties:
+        webhook:
+          $ref: '#/components/schemas/Webhook'
     ZonedDateTime:
       description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
       example: '1659380719000'
       type: integer
       format: int64
-    WebhookSignatureConfiguration:
-      description: Configuration for signing webhooks.
-      type: object
-      properties:
-        signingKeyId:
-          type: string
-          format: uuid
-        enabled:
-          type: boolean
     Webhook:
       description: A server where events are sent. This includes user action events and any other events sent by FusionAuth.
       type: object
@@ -299,16 +350,15 @@ components:
             type: object
         message:
           type: string
-    WebhookResponse:
-      description: Webhook API response object.
+    WebhookSignatureConfiguration:
+      description: Configuration for signing webhooks.
       type: object
       properties:
-        webhook:
-          $ref: '#/components/schemas/Webhook'
-        webhooks:
-          type: array
-          items:
-            $ref: '#/components/schemas/Webhook'
+        signingKeyId:
+          type: string
+          format: uuid
+        enabled:
+          type: boolean
     HTTPHeaders:
       description: Type for webhook headers.
       type: object
@@ -319,40 +369,6 @@ components:
       properties:
         search:
           $ref: '#/components/schemas/WebhookSearchCriteria'
-    WebhookSearchResponse:
-      description: Webhook search response
-      type: object
-      properties:
-        total:
-          type: integer
-          format: int64
-        webhooks:
-          type: array
-          items:
-            $ref: '#/components/schemas/Webhook'
-    WebhookSearchCriteria:
-      description: Search criteria for webhooks.
-      type: object
-      properties:
-        description:
-          type: string
-        tenantId:
-          type: string
-          format: uuid
-        url:
-          type: string
-        numberOfResults:
-          type: integer
-        orderBy:
-          type: string
-        startRow:
-          type: integer
-    WebhookRequest:
-      description: Webhook API request object.
-      type: object
-      properties:
-        webhook:
-          $ref: '#/components/schemas/Webhook'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

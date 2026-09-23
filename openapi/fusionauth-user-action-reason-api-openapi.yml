@@ -1,8 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   version: 1.66.0
-  title: FusionAuth Api Key User Action Reason API
-  description: This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.
+  title: FusionAuth User Action Reason API
+  description: This is a FusionAuth server. Find out more at https://fusionauth.io. You need to set up an API key in the FusionAuth instance you are using to test out the API calls.
   license:
     name: Apache2
 servers:
@@ -38,6 +38,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User Action Reason
+      summary: Create user action reason
+      x-summary-source: derived
     get:
       description: Retrieves the user action reason for the given Id. If you pass in null for the Id, this will return all the user action reasons.
       operationId: retrieveUserActionReason
@@ -53,6 +55,8 @@ paths:
           description: Error
       tags:
       - User Action Reason
+      summary: Retrieve user action reason
+      x-summary-source: derived
   /api/user-action-reason/{userActionReasonId}:
     post:
       description: Creates a user reason. This user action reason cannot be used when actioning a user until this call completes successfully. Anytime after that the user action reason can be used.
@@ -84,6 +88,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User Action Reason
+      summary: Create user action reason with id
+      x-summary-source: derived
     delete:
       description: Deletes the user action reason for the given Id.
       operationId: deleteUserActionReasonWithId
@@ -105,6 +111,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User Action Reason
+      summary: Delete user action reason with id
+      x-summary-source: derived
     patch:
       description: Updates, via PATCH, the user action reason with the given Id.
       operationId: patchUserActionReasonWithId
@@ -135,6 +143,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User Action Reason
+      summary: Patch user action reason with id
+      x-summary-source: derived
     get:
       description: Retrieves the user action reason for the given Id. If you pass in null for the Id, this will return all the user action reasons.
       operationId: retrieveUserActionReasonWithId
@@ -156,6 +166,8 @@ paths:
           description: Error
       tags:
       - User Action Reason
+      summary: Retrieve user action reason with id
+      x-summary-source: derived
     put:
       description: Updates the user action reason with the given Id.
       operationId: updateUserActionReasonWithId
@@ -186,6 +198,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - User Action Reason
+      summary: Update user action reason with id
+      x-summary-source: derived
 components:
   schemas:
     Errors:
@@ -200,27 +214,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Error'
-    ZonedDateTime:
-      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
-      example: '1659380719000'
-      type: integer
-      format: int64
-    LocalizedStrings:
-      description: Models a set of localized Strings that can be stored as JSON.
-      type: object
-      properties: {}
-    Error:
-      description: Defines an error.
-      type: object
-      properties:
-        code:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        message:
-          type: string
     UserActionReasonRequest:
       description: User Action Reason API request object.
       type: object
@@ -237,6 +230,27 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/UserActionReason'
+    LocalizedStrings:
+      description: Models a set of localized Strings that can be stored as JSON.
+      type: object
+      properties: {}
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
     UserActionReason:
       description: Models action reasons.
       type: object

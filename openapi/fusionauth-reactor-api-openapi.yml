@@ -1,8 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   version: 1.66.0
-  title: FusionAuth Api Key Reactor API
-  description: This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.
+  title: FusionAuth Reactor API
+  description: This is a FusionAuth server. Find out more at https://fusionauth.io. You need to set up an API key in the FusionAuth instance you are using to test out the API calls.
   license:
     name: Apache2
 servers:
@@ -34,6 +34,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Reactor
+      summary: Activate reactor with id
+      x-summary-source: derived
   /api/reactor/metrics:
     get:
       description: Retrieves the FusionAuth Reactor metrics.
@@ -50,8 +52,18 @@ paths:
           description: Error
       tags:
       - Reactor
+      summary: Retrieve reactor metrics with id
+      x-summary-source: derived
 components:
   schemas:
+    ReactorRequest:
+      description: Request for managing FusionAuth Reactor and licenses.
+      type: object
+      properties:
+        license:
+          type: string
+        licenseId:
+          type: string
     Errors:
       description: Standard error domain object that can also be used as the response from an API call.
       type: object
@@ -64,40 +76,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Error'
-    Error:
-      description: Defines an error.
-      type: object
-      properties:
-        code:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        message:
-          type: string
-    ReactorRequest:
-      description: Request for managing FusionAuth Reactor and licenses.
-      type: object
-      properties:
-        license:
-          type: string
-        licenseId:
-          type: string
-    ReactorMetrics:
-      description: ''
-      type: object
-      properties:
-        breachedPasswordMetrics:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/BreachedPasswordTenantMetric'
-    ReactorMetricsResponse:
-      description: ''
-      type: object
-      properties:
-        metrics:
-          $ref: '#/components/schemas/ReactorMetrics'
     BreachedPasswordTenantMetric:
       description: ''
       type: object
@@ -114,6 +92,32 @@ components:
           type: integer
         passwordsCheckedCount:
           type: integer
+    ReactorMetrics:
+      description: ''
+      type: object
+      properties:
+        breachedPasswordMetrics:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/BreachedPasswordTenantMetric'
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    ReactorMetricsResponse:
+      description: ''
+      type: object
+      properties:
+        metrics:
+          $ref: '#/components/schemas/ReactorMetrics'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

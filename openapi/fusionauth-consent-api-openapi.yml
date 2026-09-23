@@ -1,8 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   version: 1.66.0
-  title: FusionAuth Api Key Consent API
-  description: This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.
+  title: FusionAuth Consent API
+  description: This is a FusionAuth server. Find out more at https://fusionauth.io. You need to set up an API key in the FusionAuth instance you are using to test out the API calls.
   license:
     name: Apache2
 servers:
@@ -45,6 +45,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Consent
+      summary: Create consent
+      x-summary-source: derived
   /api/consent/search:
     post:
       description: Searches consents with the specified criteria and pagination.
@@ -70,6 +72,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Consent
+      summary: Search consents with id
+      x-summary-source: derived
   /api/consent/{consentId}:
     post:
       description: Creates a user consent type. You can optionally specify an Id for the consent type, if not provided one will be generated.
@@ -108,6 +112,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Consent
+      summary: Create consent with id
+      x-summary-source: derived
     delete:
       description: Deletes the consent for the given Id.
       operationId: deleteConsentWithId
@@ -136,6 +142,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Consent
+      summary: Delete consent with id
+      x-summary-source: derived
     patch:
       description: Updates, via PATCH, the consent with the given Id.
       operationId: patchConsentWithId
@@ -173,6 +181,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Consent
+      summary: Patch consent with id
+      x-summary-source: derived
     get:
       description: Retrieves the Consent for the given Id.
       operationId: retrieveConsentWithId
@@ -201,6 +211,8 @@ paths:
           description: Error
       tags:
       - Consent
+      summary: Retrieve consent with id
+      x-summary-source: derived
     put:
       description: Updates the consent with the given Id.
       operationId: updateConsentWithId
@@ -238,8 +250,21 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Consent
+      summary: Update consent with id
+      x-summary-source: derived
 components:
   schemas:
+    ConsentSearchResponse:
+      description: Consent search response
+      type: object
+      properties:
+        consents:
+          type: array
+          items:
+            $ref: '#/components/schemas/Consent'
+        total:
+          type: integer
+          format: int64
     Errors:
       description: Standard error domain object that can also be used as the response from an API call.
       type: object
@@ -252,23 +277,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Error'
-    ZonedDateTime:
-      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
-      example: '1659380719000'
-      type: integer
-      format: int64
-    Error:
-      description: Defines an error.
-      type: object
-      properties:
-        code:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        message:
-          type: string
     Consent:
       description: Models a consent.
       type: object
@@ -301,22 +309,6 @@ components:
           type: array
           items:
             type: string
-    ConsentResponse:
-      description: API response for consent.
-      type: object
-      properties:
-        consent:
-          $ref: '#/components/schemas/Consent'
-        consents:
-          type: array
-          items:
-            $ref: '#/components/schemas/Consent'
-    ConsentRequest:
-      description: API request for User consent types.
-      type: object
-      properties:
-        consent:
-          $ref: '#/components/schemas/Consent'
     ConsentSearchCriteria:
       description: Search criteria for Consents
       type: object
@@ -333,23 +325,12 @@ components:
       description: Models a set of localized Integers that can be stored as JSON.
       type: object
       properties: {}
-    ConsentSearchResponse:
-      description: Consent search response
+    ConsentRequest:
+      description: API request for User consent types.
       type: object
       properties:
-        consents:
-          type: array
-          items:
-            $ref: '#/components/schemas/Consent'
-        total:
-          type: integer
-          format: int64
-    ConsentSearchRequest:
-      description: Search request for Consents
-      type: object
-      properties:
-        search:
-          $ref: '#/components/schemas/ConsentSearchCriteria'
+        consent:
+          $ref: '#/components/schemas/Consent'
     EmailPlus:
       type: object
       properties:
@@ -362,6 +343,39 @@ components:
           type: integer
         enabled:
           type: boolean
+    ConsentResponse:
+      description: API response for consent.
+      type: object
+      properties:
+        consent:
+          $ref: '#/components/schemas/Consent'
+        consents:
+          type: array
+          items:
+            $ref: '#/components/schemas/Consent'
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    ConsentSearchRequest:
+      description: Search request for Consents
+      type: object
+      properties:
+        search:
+          $ref: '#/components/schemas/ConsentSearchCriteria'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

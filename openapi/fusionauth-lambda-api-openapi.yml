@@ -1,8 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   version: 1.66.0
-  title: FusionAuth Api Key Lambda API
-  description: This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.
+  title: FusionAuth Lambda API
+  description: This is a FusionAuth server. Find out more at https://fusionauth.io. You need to set up an API key in the FusionAuth instance you are using to test out the API calls.
   license:
     name: Apache2
 servers:
@@ -38,6 +38,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Lambda
+      summary: Create lambda
+      x-summary-source: derived
     get:
       description: Retrieves all the lambdas for the provided type.
       operationId: retrieveLambdasByTypeWithId
@@ -58,6 +60,8 @@ paths:
           description: Error
       tags:
       - Lambda
+      summary: Retrieve lambdas by type with id
+      x-summary-source: derived
   /api/lambda/search:
     post:
       description: Searches lambdas with the specified criteria and pagination.
@@ -83,6 +87,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Lambda
+      summary: Search lambdas with id
+      x-summary-source: derived
   /api/lambda/{lambdaId}:
     post:
       description: Creates a Lambda. You can optionally specify an Id for the lambda, if not provided one will be generated.
@@ -114,6 +120,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Lambda
+      summary: Create lambda with id
+      x-summary-source: derived
     delete:
       description: Deletes the lambda for the given Id.
       operationId: deleteLambdaWithId
@@ -135,6 +143,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Lambda
+      summary: Delete lambda with id
+      x-summary-source: derived
     patch:
       description: Updates, via PATCH, the lambda with the given Id.
       operationId: patchLambdaWithId
@@ -165,6 +175,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Lambda
+      summary: Patch lambda with id
+      x-summary-source: derived
     get:
       description: Retrieves the lambda for the given Id.
       operationId: retrieveLambdaWithId
@@ -190,6 +202,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Lambda
+      summary: Retrieve lambda with id
+      x-summary-source: derived
     put:
       description: Updates the lambda with the given Id.
       operationId: updateLambdaWithId
@@ -220,8 +234,55 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Lambda
+      summary: Update lambda with id
+      x-summary-source: derived
 components:
   schemas:
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    LambdaRequest:
+      description: Lambda API request object.
+      type: object
+      properties:
+        lambda:
+          $ref: '#/components/schemas/Lambda'
+    LambdaSearchResponse:
+      description: Lambda search response
+      type: object
+      properties:
+        lambdas:
+          type: array
+          items:
+            $ref: '#/components/schemas/Lambda'
+        total:
+          type: integer
+          format: int64
+    LambdaSearchRequest:
+      description: Search request for Lambdas
+      type: object
+      properties:
+        search:
+          $ref: '#/components/schemas/LambdaSearchCriteria'
+    LambdaResponse:
+      description: Lambda API response object.
+      type: object
+      properties:
+        lambda:
+          $ref: '#/components/schemas/Lambda'
+        lambdas:
+          type: array
+          items:
+            $ref: '#/components/schemas/Lambda'
     Lambda:
       description: A JavaScript lambda function that is executed during certain events inside FusionAuth.
       type: object
@@ -243,68 +304,6 @@ components:
           type: string
         type:
           $ref: '#/components/schemas/LambdaType'
-    Errors:
-      description: Standard error domain object that can also be used as the response from an API call.
-      type: object
-      properties:
-        fieldErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-        generalErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-    ZonedDateTime:
-      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
-      example: '1659380719000'
-      type: integer
-      format: int64
-    LambdaSearchRequest:
-      description: Search request for Lambdas
-      type: object
-      properties:
-        search:
-          $ref: '#/components/schemas/LambdaSearchCriteria'
-    Error:
-      description: Defines an error.
-      type: object
-      properties:
-        code:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        message:
-          type: string
-    LambdaEngineType:
-      description: ''
-      type: string
-      enum:
-      - GraalJS
-      - Nashorn
-    LambdaResponse:
-      description: Lambda API response object.
-      type: object
-      properties:
-        lambda:
-          $ref: '#/components/schemas/Lambda'
-        lambdas:
-          type: array
-          items:
-            $ref: '#/components/schemas/Lambda'
-    LambdaSearchResponse:
-      description: Lambda search response
-      type: object
-      properties:
-        lambdas:
-          type: array
-          items:
-            $ref: '#/components/schemas/Lambda'
-        total:
-          type: integer
-          format: int64
     LambdaType:
       description: The types of lambdas that indicate how they are invoked by FusionAuth.
       type: string
@@ -336,12 +335,29 @@ components:
       - UserInfoPopulate
       - LoginValidation
       - MFARequirement
-    LambdaRequest:
-      description: Lambda API request object.
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    Error:
+      description: Defines an error.
       type: object
       properties:
-        lambda:
-          $ref: '#/components/schemas/Lambda'
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    LambdaEngineType:
+      description: ''
+      type: string
+      enum:
+      - GraalJS
+      - Nashorn
     LambdaSearchCriteria:
       description: Search criteria for Lambdas
       type: object

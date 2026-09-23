@@ -1,8 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   version: 1.66.0
-  title: FusionAuth Api Key Report API
-  description: This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.
+  title: FusionAuth Report API
+  description: This is a FusionAuth server. Find out more at https://fusionauth.io. You need to set up an API key in the FusionAuth instance you are using to test out the API calls.
   license:
     name: Apache2
 servers:
@@ -48,6 +48,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Report
+      summary: Retrieve daily active report with id
+      x-summary-source: derived
   /api/report/login:
     get:
       description: Retrieves the login report between the two instants for a particular user by login Id, using specific loginIdTypes. If you specify an application id, it will only return the login counts for that application. OR Retrieves the login report between the two instants for a particular user by login Id. If you specify an application Id, it will only return the login counts for that application. OR Retrieves the login report between the two instants for a particular user by Id. If you specify an application Id, it will only return the login counts for that application. OR Retrieves the login report between the two instants. If you specify an application Id, it will only return the login counts for that application.
@@ -100,6 +102,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Report
+      summary: Retrieve report login
+      x-summary-source: derived
   /api/report/monthly-active-user:
     get:
       description: Retrieves the monthly active user report between the two instants. If you specify an application Id, it will only return the monthly active counts for that application.
@@ -135,6 +139,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Report
+      summary: Retrieve monthly active report with id
+      x-summary-source: derived
   /api/report/registration:
     get:
       description: Retrieves the registration report between the two instants. If you specify an application Id, it will only return the registration counts for that application.
@@ -170,6 +176,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Report
+      summary: Retrieve registration report with id
+      x-summary-source: derived
   /api/report/totals:
     get:
       description: Retrieves the totals report. This allows excluding applicationTotals from the report. An empty list will include the applicationTotals.
@@ -193,8 +201,21 @@ paths:
           description: Error
       tags:
       - Report
+      summary: Retrieve total report with excludes with id
+      x-summary-source: derived
 components:
   schemas:
+    RegistrationReportResponse:
+      description: Response for the registration report.
+      type: object
+      properties:
+        hourlyCounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Count'
+        total:
+          type: integer
+          format: int64
     Errors:
       description: Standard error domain object that can also be used as the response from an API call.
       type: object
@@ -207,6 +228,42 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Error'
+    TotalsReportResponse:
+      description: The response from the total report. This report stores the total numbers for each application.
+      type: object
+      properties:
+        applicationTotals:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/Totals'
+        globalRegistrations:
+          type: integer
+          format: int64
+        totalGlobalRegistrations:
+          type: integer
+          format: int64
+    MonthlyActiveUserReportResponse:
+      description: Response for the daily active user report.
+      type: object
+      properties:
+        monthlyActiveUsers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Count'
+        total:
+          type: integer
+          format: int64
+    LoginReportResponse:
+      description: Response for the login report.
+      type: object
+      properties:
+        hourlyCounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Count'
+        total:
+          type: integer
+          format: int64
     Totals:
       type: object
       properties:
@@ -242,42 +299,6 @@ components:
         total:
           type: integer
           format: int64
-    TotalsReportResponse:
-      description: The response from the total report. This report stores the total numbers for each application.
-      type: object
-      properties:
-        applicationTotals:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/Totals'
-        globalRegistrations:
-          type: integer
-          format: int64
-        totalGlobalRegistrations:
-          type: integer
-          format: int64
-    RegistrationReportResponse:
-      description: Response for the registration report.
-      type: object
-      properties:
-        hourlyCounts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Count'
-        total:
-          type: integer
-          format: int64
-    LoginReportResponse:
-      description: Response for the login report.
-      type: object
-      properties:
-        hourlyCounts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Count'
-        total:
-          type: integer
-          format: int64
     Count:
       description: ''
       type: object
@@ -286,17 +307,6 @@ components:
           type: integer
         interval:
           type: integer
-    MonthlyActiveUserReportResponse:
-      description: Response for the daily active user report.
-      type: object
-      properties:
-        monthlyActiveUsers:
-          type: array
-          items:
-            $ref: '#/components/schemas/Count'
-        total:
-          type: integer
-          format: int64
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

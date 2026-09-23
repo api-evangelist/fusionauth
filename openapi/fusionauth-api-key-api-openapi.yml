@@ -1,8 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   version: 1.66.0
   title: FusionAuth Api Key API
-  description: This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.
+  description: This is a FusionAuth server. Find out more at https://fusionauth.io. You need to set up an API key in the FusionAuth instance you are using to test out the API calls.
   license:
     name: Apache2
 servers:
@@ -11,11 +11,11 @@ servers:
 security:
 - ApiKeyAuth: []
 tags:
-- name: Api Key
+- name: API Key
 paths:
   /api/api-key:
     post:
-      description: Creates an API key. You can optionally specify a unique Id for the key, if not provided one will be generated. an API key can only be created with equal or lesser authority. An API key cannot create another API key unless it is granted  to that API key.  If an API key is locked to a tenant, it can only create API Keys for that same tenant.
+      description: Creates an API key. You can optionally specify a unique Id for the key, if not provided one will be generated. an API key can only be created with equal or lesser authority. An API key cannot create another API key unless it is granted to that API key. If an API key is locked to a tenant, it can only create API Keys for that same tenant.
       operationId: createAPIKey
       parameters: []
       requestBody:
@@ -37,10 +37,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Errors'
       tags:
-      - Api Key
+      - API Key
+      summary: Create API key
+      x-summary-source: derived
   /api/api-key/{keyId}:
     post:
-      description: Creates an API key. You can optionally specify a unique Id for the key, if not provided one will be generated. an API key can only be created with equal or lesser authority. An API key cannot create another API key unless it is granted  to that API key.  If an API key is locked to a tenant, it can only create API Keys for that same tenant.
+      description: Creates an API key. You can optionally specify a unique Id for the key, if not provided one will be generated. an API key can only be created with equal or lesser authority. An API key cannot create another API key unless it is granted to that API key. If an API key is locked to a tenant, it can only create API Keys for that same tenant.
       operationId: createAPIKeyWithId
       parameters:
       - name: keyId
@@ -68,7 +70,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/Errors'
       tags:
-      - Api Key
+      - API Key
+      summary: Create API key with id
+      x-summary-source: derived
     delete:
       description: Deletes the API key for the given Id.
       operationId: deleteAPIKeyWithId
@@ -89,7 +93,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/Errors'
       tags:
-      - Api Key
+      - API Key
+      summary: Delete API key with id
+      x-summary-source: derived
     patch:
       description: Updates an API key with the given Id.
       operationId: patchAPIKeyWithId
@@ -119,7 +125,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/Errors'
       tags:
-      - Api Key
+      - API Key
+      summary: Patch API key with id
+      x-summary-source: derived
     get:
       description: Retrieves an authentication API key for the given Id.
       operationId: retrieveAPIKeyWithId
@@ -144,7 +152,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/Errors'
       tags:
-      - Api Key
+      - API Key
+      summary: Retrieve API key with id
+      x-summary-source: derived
     put:
       description: Updates an API key with the given Id.
       operationId: updateAPIKeyWithId
@@ -174,16 +184,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/Errors'
       tags:
-      - Api Key
+      - API Key
+      summary: Update API key with id
+      x-summary-source: derived
 components:
   schemas:
-    APIKeyMetaData:
-      type: object
-      properties:
-        attributes:
-          type: object
-          additionalProperties:
-            type: string
     Errors:
       description: Standard error domain object that can also be used as the response from an API call.
       type: object
@@ -196,38 +201,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Error'
-    APIKeyResponse:
-      description: Authentication key response object.
+    APIKeyMetaData:
       type: object
       properties:
-        apiKey:
-          $ref: '#/components/schemas/APIKey'
-    ZonedDateTime:
-      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
-      example: '1659380719000'
-      type: integer
-      format: int64
-    Error:
-      description: Defines an error.
-      type: object
-      properties:
-        code:
-          type: string
-        data:
+        attributes:
           type: object
           additionalProperties:
-            type: object
-        message:
-          type: string
-    APIKeyPermissions:
-      type: object
-      properties:
-        endpoints:
-          type: object
-          additionalProperties:
-            type: array
-            uniqueItems: true
-            items: {}
+            type: string
     APIKey:
       description: domain POJO to represent AuthenticationKey
       type: object
@@ -268,6 +248,38 @@ components:
         sourceKeyId:
           type: string
           format: uuid
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    APIKeyResponse:
+      description: Authentication key response object.
+      type: object
+      properties:
+        apiKey:
+          $ref: '#/components/schemas/APIKey'
+    APIKeyPermissions:
+      type: object
+      properties:
+        endpoints:
+          type: object
+          additionalProperties:
+            type: array
+            uniqueItems: true
+            items: {}
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

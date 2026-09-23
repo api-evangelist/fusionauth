@@ -1,8 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   version: 1.66.0
-  title: FusionAuth Api Key API
-  description: This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.
+  title: FusionAuth Key API
+  description: This is a FusionAuth server. Find out more at https://fusionauth.io. You need to set up an API key in the FusionAuth instance you are using to test out the API calls.
   license:
     name: Apache2
 servers:
@@ -29,6 +29,8 @@ paths:
           description: Error
       tags:
       - Key
+      summary: Retrieve keys with id
+      x-summary-source: derived
   /api/key/generate:
     post:
       description: Generate a new RSA or EC key pair or an HMAC secret.
@@ -54,6 +56,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Key
+      summary: Generate key
+      x-summary-source: derived
   /api/key/generate/{keyId}:
     post:
       description: Generate a new RSA or EC key pair or an HMAC secret.
@@ -85,6 +89,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Key
+      summary: Generate key with id
+      x-summary-source: derived
   /api/key/import:
     post:
       description: Import an existing RSA or EC key pair or an HMAC secret.
@@ -110,6 +116,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Key
+      summary: Import key
+      x-summary-source: derived
   /api/key/import/{keyId}:
     post:
       description: Import an existing RSA or EC key pair or an HMAC secret.
@@ -141,6 +149,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Key
+      summary: Import key with id
+      x-summary-source: derived
   /api/key/search:
     post:
       description: Searches keys with the specified criteria and pagination.
@@ -166,6 +176,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Key
+      summary: Search keys with id
+      x-summary-source: derived
   /api/key/{keyId}:
     delete:
       description: Deletes the key for the given Id.
@@ -188,6 +200,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Key
+      summary: Delete key with id
+      x-summary-source: derived
     get:
       description: Retrieves the key for the given Id.
       operationId: retrieveKeyWithId
@@ -213,6 +227,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Key
+      summary: Retrieve key with id
+      x-summary-source: derived
     put:
       description: Updates the key with the given Id.
       operationId: updateKeyWithId
@@ -243,8 +259,46 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Key
+      summary: Update key with id
+      x-summary-source: derived
 components:
   schemas:
+    KeySearchRequest:
+      description: Search request for Keys
+      type: object
+      properties:
+        search:
+          $ref: '#/components/schemas/KeySearchCriteria'
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    KeyType:
+      type: string
+      enum:
+      - EC
+      - RSA
+      - HMAC
+      - OKP
+      - Secret
+    KeyResponse:
+      description: Key API response object.
+      type: object
+      properties:
+        key:
+          $ref: '#/components/schemas/Key'
+        keys:
+          type: array
+          items:
+            $ref: '#/components/schemas/Key'
     KeySearchCriteria:
       description: Search criteria for Keys
       type: object
@@ -261,29 +315,6 @@ components:
           type: string
         startRow:
           type: integer
-    Errors:
-      description: Standard error domain object that can also be used as the response from an API call.
-      type: object
-      properties:
-        fieldErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-        generalErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-    KeySearchResponse:
-      description: Key search response
-      type: object
-      properties:
-        keys:
-          type: array
-          items:
-            $ref: '#/components/schemas/Key'
-        total:
-          type: integer
-          format: int64
     ZonedDateTime:
       description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
       example: '1659380719000'
@@ -303,6 +334,12 @@ components:
       - RS512
       - Ed25519
       - None
+    KeyRequest:
+      description: Key API request object.
+      type: object
+      properties:
+        key:
+          $ref: '#/components/schemas/Key'
     Error:
       description: Defines an error.
       type: object
@@ -315,45 +352,6 @@ components:
             type: object
         message:
           type: string
-    CertificateInformation:
-      type: object
-      properties:
-        issuer:
-          type: string
-        md5Fingerprint:
-          type: string
-        serialNumber:
-          type: string
-        sha1Fingerprint:
-          type: string
-        sha1Thumbprint:
-          type: string
-        sha256Fingerprint:
-          type: string
-        sha256Thumbprint:
-          type: string
-        subject:
-          type: string
-        validFrom:
-          $ref: '#/components/schemas/ZonedDateTime'
-        validTo:
-          $ref: '#/components/schemas/ZonedDateTime'
-    KeySearchRequest:
-      description: Search request for Keys
-      type: object
-      properties:
-        search:
-          $ref: '#/components/schemas/KeySearchCriteria'
-    KeyResponse:
-      description: Key API response object.
-      type: object
-      properties:
-        key:
-          $ref: '#/components/schemas/Key'
-        keys:
-          type: array
-          items:
-            $ref: '#/components/schemas/Key'
     Key:
       description: Domain for a public key, key pair or an HMAC secret. This is used by KeyMaster to manage keys for JWTs, SAML, etc.
       type: object
@@ -391,20 +389,40 @@ components:
           type: string
         type:
           $ref: '#/components/schemas/KeyType'
-    KeyType:
-      type: string
-      enum:
-      - EC
-      - RSA
-      - HMAC
-      - OKP
-      - Secret
-    KeyRequest:
-      description: Key API request object.
+    KeySearchResponse:
+      description: Key search response
       type: object
       properties:
-        key:
-          $ref: '#/components/schemas/Key'
+        keys:
+          type: array
+          items:
+            $ref: '#/components/schemas/Key'
+        total:
+          type: integer
+          format: int64
+    CertificateInformation:
+      type: object
+      properties:
+        issuer:
+          type: string
+        md5Fingerprint:
+          type: string
+        serialNumber:
+          type: string
+        sha1Fingerprint:
+          type: string
+        sha1Thumbprint:
+          type: string
+        sha256Fingerprint:
+          type: string
+        sha256Thumbprint:
+          type: string
+        subject:
+          type: string
+        validFrom:
+          $ref: '#/components/schemas/ZonedDateTime'
+        validTo:
+          $ref: '#/components/schemas/ZonedDateTime'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

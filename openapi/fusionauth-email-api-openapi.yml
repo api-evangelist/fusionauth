@@ -1,8 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   version: 1.66.0
-  title: FusionAuth Api Key Email API
-  description: This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.
+  title: FusionAuth Email API
+  description: This is a FusionAuth server. Find out more at https://fusionauth.io. You need to set up an API key in the FusionAuth instance you are using to test out the API calls.
   license:
     name: Apache2
 servers:
@@ -15,7 +15,7 @@ tags:
 paths:
   /api/email/send/{emailTemplateId}:
     post:
-      description: Send an email using an email template Id. You can optionally provide <code>requestData</code> to access key value pairs in the email template.
+      description: Send an email using an email template Id. You can optionally provide requestData to access key value pairs in the email template.
       operationId: sendEmailWithId
       parameters:
       - name: emailTemplateId
@@ -44,6 +44,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Email
+      summary: Send email with id
+      x-summary-source: derived
   /api/email/template:
     post:
       description: Creates an email template. You can optionally specify an Id for the template, if not provided one will be generated.
@@ -76,6 +78,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Email
+      summary: Create email template
+      x-summary-source: derived
     get:
       description: Retrieves the email template for the given Id. If you don't specify the Id, this will return all the email templates.
       operationId: retrieveEmailTemplate
@@ -98,6 +102,8 @@ paths:
           description: Error
       tags:
       - Email
+      summary: Retrieve email template
+      x-summary-source: derived
   /api/email/template/preview:
     post:
       description: Creates a preview of the email template provided in the request. This allows you to preview an email template that hasn't been saved to the database yet. The entire email template does not need to be provided on the request. This will create the preview based on whatever is given.
@@ -123,6 +129,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Email
+      summary: Retrieve email template preview with id
+      x-summary-source: derived
   /api/email/template/search:
     post:
       description: Searches email templates with the specified criteria and pagination.
@@ -148,6 +156,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Email
+      summary: Search email templates with id
+      x-summary-source: derived
   /api/email/template/{emailTemplateId}:
     post:
       description: Creates an email template. You can optionally specify an Id for the template, if not provided one will be generated.
@@ -186,6 +196,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Email
+      summary: Create email template with id
+      x-summary-source: derived
     delete:
       description: Deletes the email template for the given Id.
       operationId: deleteEmailTemplateWithId
@@ -214,6 +226,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Email
+      summary: Delete email template with id
+      x-summary-source: derived
     patch:
       description: Updates, via PATCH, the email template with the given Id.
       operationId: patchEmailTemplateWithId
@@ -251,6 +265,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Email
+      summary: Patch email template with id
+      x-summary-source: derived
     get:
       description: Retrieves the email template for the given Id. If you don't specify the Id, this will return all the email templates.
       operationId: retrieveEmailTemplateWithId
@@ -279,6 +295,8 @@ paths:
           description: Error
       tags:
       - Email
+      summary: Retrieve email template with id
+      x-summary-source: derived
     put:
       description: Updates the email template with the given Id.
       operationId: updateEmailTemplateWithId
@@ -316,77 +334,30 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Email
+      summary: Update email template with id
+      x-summary-source: derived
 components:
   schemas:
-    Errors:
-      description: Standard error domain object that can also be used as the response from an API call.
-      type: object
-      properties:
-        fieldErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-        generalErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-    ZonedDateTime:
-      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
-      example: '1659380719000'
-      type: integer
-      format: int64
-    LocalizedStrings:
-      description: Models a set of localized Strings that can be stored as JSON.
-      type: object
-      properties: {}
-    SendResponse:
+    PreviewResponse:
       description: ''
       type: object
       properties:
-        anonymousResults:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/EmailTemplateErrors'
-        results:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/EmailTemplateErrors'
-    EmailTemplateResponse:
-      description: Email template response.
+        email:
+          $ref: '#/components/schemas/Email'
+        errors:
+          $ref: '#/components/schemas/Errors'
+    EmailTemplateSearchCriteria:
+      description: Search criteria for Email templates
       type: object
       properties:
-        emailTemplate:
-          $ref: '#/components/schemas/EmailTemplate'
-        emailTemplates:
-          type: array
-          items:
-            $ref: '#/components/schemas/EmailTemplate'
-    Locale:
-      description: A Locale object represents a specific geographical, political, or cultural region.
-      example: en_US
-      type: string
-    EmailTemplateSearchResponse:
-      description: Email template search response
-      type: object
-      properties:
-        emailTemplates:
-          type: array
-          items:
-            $ref: '#/components/schemas/EmailTemplate'
-        total:
-          type: integer
-          format: int64
-    Attachment:
-      description: This class is a simple attachment with a byte array, name and MIME type.
-      type: object
-      properties:
-        attachment:
-          type: string
-          format: binary
-        mime:
-          type: string
         name:
           type: string
+        numberOfResults:
+          type: integer
+        orderBy:
+          type: string
+        startRow:
+          type: integer
     SendRequest:
       description: ''
       type: object
@@ -419,33 +390,98 @@ components:
           items:
             type: string
             format: uuid
-    PreviewRequest:
-      description: ''
+    Attachment:
+      description: This class is a simple attachment with a byte array, name and MIME type.
+      type: object
+      properties:
+        attachment:
+          type: string
+          format: binary
+        mime:
+          type: string
+        name:
+          type: string
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    EmailTemplateSearchRequest:
+      description: Search request for email templates
+      type: object
+      properties:
+        search:
+          $ref: '#/components/schemas/EmailTemplateSearchCriteria'
+    EmailTemplateRequest:
+      description: Email template request.
       type: object
       properties:
         emailTemplate:
           $ref: '#/components/schemas/EmailTemplate'
-        locale:
-          $ref: '#/components/schemas/Locale'
-    EmailTemplateErrors:
-      type: object
-      properties:
-        parseErrors:
-          type: object
-          additionalProperties:
-            type: string
-        renderErrors:
-          type: object
-          additionalProperties:
-            type: string
-    PreviewResponse:
+    SendResponse:
       description: ''
       type: object
       properties:
-        email:
-          $ref: '#/components/schemas/Email'
-        errors:
-          $ref: '#/components/schemas/Errors'
+        anonymousResults:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/EmailTemplateErrors'
+        results:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/EmailTemplateErrors'
+    EmailTemplateSearchResponse:
+      description: Email template search response
+      type: object
+      properties:
+        emailTemplates:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailTemplate'
+        total:
+          type: integer
+          format: int64
+    Locale:
+      description: A Locale object represents a specific geographical, political, or cultural region.
+      example: en_US
+      type: string
+    EmailTemplateResponse:
+      description: Email template response.
+      type: object
+      properties:
+        emailTemplate:
+          $ref: '#/components/schemas/EmailTemplate'
+        emailTemplates:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailTemplate'
+    EmailAddress:
+      description: An email address.
+      type: object
+      properties:
+        address:
+          type: string
+        display:
+          type: string
     Email:
       description: This class is an abstraction of a simple email message.
       type: object
@@ -476,24 +512,25 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/EmailAddress'
-    Error:
-      description: Defines an error.
+    PreviewRequest:
+      description: ''
       type: object
       properties:
-        code:
-          type: string
-        data:
+        emailTemplate:
+          $ref: '#/components/schemas/EmailTemplate'
+        locale:
+          $ref: '#/components/schemas/Locale'
+    EmailTemplateErrors:
+      type: object
+      properties:
+        parseErrors:
           type: object
           additionalProperties:
-            type: object
-        message:
-          type: string
-    EmailTemplateSearchRequest:
-      description: Search request for email templates
-      type: object
-      properties:
-        search:
-          $ref: '#/components/schemas/EmailTemplateSearchCriteria'
+            type: string
+        renderErrors:
+          type: object
+          additionalProperties:
+            type: string
     EmailTemplate:
       description: Stores an email template used to send emails to users.
       type: object
@@ -525,32 +562,15 @@ components:
           $ref: '#/components/schemas/LocalizedStrings'
         name:
           type: string
-    EmailAddress:
-      description: An email address.
+    LocalizedStrings:
+      description: Models a set of localized Strings that can be stored as JSON.
       type: object
-      properties:
-        address:
-          type: string
-        display:
-          type: string
-    EmailTemplateRequest:
-      description: Email template request.
-      type: object
-      properties:
-        emailTemplate:
-          $ref: '#/components/schemas/EmailTemplate'
-    EmailTemplateSearchCriteria:
-      description: Search criteria for Email templates
-      type: object
-      properties:
-        name:
-          type: string
-        numberOfResults:
-          type: integer
-        orderBy:
-          type: string
-        startRow:
-          type: integer
+      properties: {}
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

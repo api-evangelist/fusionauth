@@ -1,8 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   version: 1.66.0
-  title: FusionAuth Api Key Entity API
-  description: This is a FusionAuth server. Find out more at [https://fusionauth.io](https://fusionauth.io). You need to [set up an API key](https://fusionauth.io/docs/v1/tech/apis/authentication#managing-api-keys) in the FusionAuth instance you are using to test out the API calls.
+  title: FusionAuth Entity API
+  description: This is a FusionAuth server. Find out more at https://fusionauth.io. You need to set up an API key in the FusionAuth instance you are using to test out the API calls.
   license:
     name: Apache2
 servers:
@@ -45,6 +45,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Entity
+      summary: Create entity
+      x-summary-source: derived
   /api/entity/grant/search:
     post:
       description: Searches Entity Grants with the specified criteria and pagination.
@@ -70,6 +72,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Entity
+      summary: Search entity grants with id
+      x-summary-source: derived
   /api/entity/search:
     post:
       description: Searches entities with the specified criteria and pagination.
@@ -95,6 +99,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Entity
+      summary: Search entities with id
+      x-summary-source: derived
     get:
       description: Retrieves the entities for the given Ids. If any Id is invalid, it is ignored.
       operationId: searchEntitiesByIdsWithId
@@ -119,6 +125,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Entity
+      summary: Search entities by ids with id
+      x-summary-source: derived
   /api/entity/type:
     post:
       description: Creates a Entity Type. You can optionally specify an Id for the Entity Type, if not provided one will be generated.
@@ -144,6 +152,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Entity
+      summary: Create entity type
+      x-summary-source: derived
   /api/entity/type/search:
     post:
       description: Searches the entity types with the specified criteria and pagination.
@@ -169,6 +179,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Entity
+      summary: Search entity types with id
+      x-summary-source: derived
   /api/entity/type/{entityTypeId}:
     post:
       description: Creates a Entity Type. You can optionally specify an Id for the Entity Type, if not provided one will be generated.
@@ -200,6 +212,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Entity
+      summary: Create entity type with id
+      x-summary-source: derived
     delete:
       description: Deletes the Entity Type for the given Id.
       operationId: deleteEntityTypeWithId
@@ -221,6 +235,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Entity
+      summary: Delete entity type with id
+      x-summary-source: derived
     patch:
       description: Updates, via PATCH, the Entity Type with the given Id.
       operationId: patchEntityTypeWithId
@@ -251,6 +267,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Entity
+      summary: Patch entity type with id
+      x-summary-source: derived
     get:
       description: Retrieves the Entity Type for the given Id.
       operationId: retrieveEntityTypeWithId
@@ -276,6 +294,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Entity
+      summary: Retrieve entity type with id
+      x-summary-source: derived
     put:
       description: Updates the Entity Type with the given Id.
       operationId: updateEntityTypeWithId
@@ -306,6 +326,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Entity
+      summary: Update entity type with id
+      x-summary-source: derived
   /api/entity/type/{entityTypeId}/permission:
     post:
       description: Creates a new permission for an entity type. You must specify the Id of the entity type you are creating the permission for. You can optionally specify an Id for the permission inside the EntityTypePermission object itself, if not provided one will be generated.
@@ -337,6 +359,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Entity
+      summary: Create entity type permission
+      x-summary-source: derived
   /api/entity/type/{entityTypeId}/permission/{permissionId}:
     post:
       description: Creates a new permission for an entity type. You must specify the Id of the entity type you are creating the permission for. You can optionally specify an Id for the permission inside the EntityTypePermission object itself, if not provided one will be generated.
@@ -374,6 +398,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Entity
+      summary: Create entity type permission with id
+      x-summary-source: derived
     delete:
       description: Hard deletes a permission. This is a dangerous operation and should not be used in most circumstances. This permanently removes the given permission from all grants that had it.
       operationId: deleteEntityTypePermissionWithId
@@ -401,6 +427,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Entity
+      summary: Delete entity type permission with id
+      x-summary-source: derived
     patch:
       description: Patches the permission with the given Id for the entity type.
       operationId: patchEntityTypePermissionWithId
@@ -437,6 +465,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Entity
+      summary: Patch entity type permission with id
+      x-summary-source: derived
     put:
       description: Updates the permission with the given Id for the entity type.
       operationId: updateEntityTypePermissionWithId
@@ -473,6 +503,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Entity
+      summary: Update entity type permission with id
+      x-summary-source: derived
   /api/entity/{entityId}:
     post:
       description: Creates an Entity. You can optionally specify an Id for the Entity. If not provided one will be generated.
@@ -511,6 +543,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Entity
+      summary: Create entity with id
+      x-summary-source: derived
     delete:
       description: Deletes the Entity for the given Id.
       operationId: deleteEntityWithId
@@ -539,6 +573,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Entity
+      summary: Delete entity with id
+      x-summary-source: derived
     patch:
       description: Updates, via PATCH, the Entity with the given Id.
       operationId: patchEntityWithId
@@ -576,6 +612,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Entity
+      summary: Patch entity with id
+      x-summary-source: derived
     get:
       description: Retrieves the Entity for the given Id.
       operationId: retrieveEntityWithId
@@ -608,6 +646,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Entity
+      summary: Retrieve entity with id
+      x-summary-source: derived
     put:
       description: Updates the Entity with the given Id.
       operationId: updateEntityWithId
@@ -645,6 +685,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Entity
+      summary: Update entity with id
+      x-summary-source: derived
   /api/entity/{entityId}/grant:
     delete:
       description: Deletes an Entity Grant for the given User or Entity.
@@ -684,6 +726,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Entity
+      summary: Delete entity grant with id
+      x-summary-source: derived
     get:
       description: Retrieves an Entity Grant for the given Entity and User/Entity.
       operationId: retrieveEntityGrantWithId
@@ -726,6 +770,8 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Entity
+      summary: Retrieve entity grant with id
+      x-summary-source: derived
     post:
       description: Creates or updates an Entity Grant. This is when a User/Entity is granted permissions to an Entity.
       operationId: upsertEntityGrantWithId
@@ -759,37 +805,22 @@ paths:
                 $ref: '#/components/schemas/Errors'
       tags:
       - Entity
+      summary: Upsert entity grant with id
+      x-summary-source: derived
 components:
   schemas:
-    Sort:
-      description: ''
-      type: string
-      enum:
-      - asc
-      - desc
-    Errors:
-      description: Standard error domain object that can also be used as the response from an API call.
+    EntityGrantRequest:
+      description: Entity grant API request object.
       type: object
       properties:
-        fieldErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-        generalErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-    ZonedDateTime:
-      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
-      example: '1659380719000'
-      type: integer
-      format: int64
-    EntityGrantSearchRequest:
-      description: Search request for entity grants.
+        grant:
+          $ref: '#/components/schemas/EntityGrant'
+    EntitySearchRequest:
+      description: Search request for entities
       type: object
       properties:
         search:
-          $ref: '#/components/schemas/EntityGrantSearchCriteria'
+          $ref: '#/components/schemas/EntitySearchCriteria'
     EntitySearchResponse:
       description: Search request for entities
       type: object
@@ -803,23 +834,18 @@ components:
         total:
           type: integer
           format: int64
-    EntityGrantSearchResponse:
-      description: Search request for entity grants.
+    Error:
+      description: Defines an error.
       type: object
       properties:
-        grants:
-          type: array
-          items:
-            $ref: '#/components/schemas/EntityGrant'
-        total:
-          type: integer
-          format: int64
-    EntityTypeSearchRequest:
-      description: Search request for entity types.
-      type: object
-      properties:
-        search:
-          $ref: '#/components/schemas/EntityTypeSearchCriteria'
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
     EntityTypeSearchCriteria:
       description: Search criteria for entity types.
       type: object
@@ -838,102 +864,6 @@ components:
       properties:
         entity:
           $ref: '#/components/schemas/Entity'
-    EntitySearchCriteria:
-      description: This class is the entity query. It provides a build pattern as well as public fields for use on forms and in actions.
-      type: object
-      properties:
-        accurateTotal:
-          type: boolean
-        ids:
-          type: array
-          items:
-            type: string
-            format: uuid
-        nextResults:
-          type: string
-        query:
-          type: string
-        queryString:
-          type: string
-        sortFields:
-          type: array
-          items:
-            $ref: '#/components/schemas/SortField'
-    EntityTypePermission:
-      description: Models a specific entity type permission. This permission can be granted to users or other entities.
-      type: object
-      properties:
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        description:
-          type: string
-        id:
-          type: string
-          format: uuid
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        isDefault:
-          type: boolean
-        lastUpdateInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        name:
-          type: string
-    EntityTypeResponse:
-      description: Entity Type API response object.
-      type: object
-      properties:
-        entityType:
-          $ref: '#/components/schemas/EntityType'
-        entityTypes:
-          type: array
-          items:
-            $ref: '#/components/schemas/EntityType'
-        permission:
-          $ref: '#/components/schemas/EntityTypePermission'
-    EntityGrantResponse:
-      description: Entity grant API response object.
-      type: object
-      properties:
-        grants:
-          type: array
-          items:
-            $ref: '#/components/schemas/EntityGrant'
-        grant:
-          $ref: '#/components/schemas/EntityGrant'
-    Error:
-      description: Defines an error.
-      type: object
-      properties:
-        code:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        message:
-          type: string
-    EntityTypeRequest:
-      description: Entity Type API request object.
-      type: object
-      properties:
-        entityType:
-          $ref: '#/components/schemas/EntityType'
-        permission:
-          $ref: '#/components/schemas/EntityTypePermission'
-    EntityResponse:
-      description: Entity API response object.
-      type: object
-      properties:
-        entity:
-          $ref: '#/components/schemas/Entity'
-    EntitySearchRequest:
-      description: Search request for entities
-      type: object
-      properties:
-        search:
-          $ref: '#/components/schemas/EntitySearchCriteria'
     Entity:
       description: Models an entity that a user can be granted permissions to. Or an entity that can be granted permissions to another entity.
       type: object
@@ -963,17 +893,57 @@ components:
           format: uuid
         type:
           $ref: '#/components/schemas/EntityType'
-    EntityJWTConfiguration:
-      description: JWT Configuration for entities.
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
       type: object
       properties:
-        accessTokenKeyId:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    EntityGrantSearchCriteria:
+      description: Search criteria for entity grants.
+      type: object
+      properties:
+        entityId:
           type: string
           format: uuid
-        timeToLiveInSeconds:
+        name:
+          type: string
+        userId:
+          type: string
+          format: uuid
+        numberOfResults:
           type: integer
-        enabled:
+        orderBy:
+          type: string
+        startRow:
+          type: integer
+    EntitySearchCriteria:
+      description: This class is the entity query. It provides a build pattern as well as public fields for use on forms and in actions.
+      type: object
+      properties:
+        accurateTotal:
           type: boolean
+        ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+        nextResults:
+          type: string
+        query:
+          type: string
+        queryString:
+          type: string
+        sortFields:
+          type: array
+          items:
+            $ref: '#/components/schemas/SortField'
     EntityTypeSearchResponse:
       description: Search response for entity types.
       type: object
@@ -985,12 +955,6 @@ components:
         total:
           type: integer
           format: int64
-    EntityGrantRequest:
-      description: Entity grant API request object.
-      type: object
-      properties:
-        grant:
-          $ref: '#/components/schemas/EntityGrant'
     SortField:
       description: ''
       type: object
@@ -1024,6 +988,108 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/EntityTypePermission'
+    EntityGrantResponse:
+      description: Entity grant API response object.
+      type: object
+      properties:
+        grants:
+          type: array
+          items:
+            $ref: '#/components/schemas/EntityGrant'
+        grant:
+          $ref: '#/components/schemas/EntityGrant'
+    EntityResponse:
+      description: Entity API response object.
+      type: object
+      properties:
+        entity:
+          $ref: '#/components/schemas/Entity'
+    EntityTypeSearchRequest:
+      description: Search request for entity types.
+      type: object
+      properties:
+        search:
+          $ref: '#/components/schemas/EntityTypeSearchCriteria'
+    Sort:
+      description: ''
+      type: string
+      enum:
+      - asc
+      - desc
+    EntityTypePermission:
+      description: Models a specific entity type permission. This permission can be granted to users or other entities.
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        description:
+          type: string
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        isDefault:
+          type: boolean
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        name:
+          type: string
+    EntityJWTConfiguration:
+      description: JWT Configuration for entities.
+      type: object
+      properties:
+        accessTokenKeyId:
+          type: string
+          format: uuid
+        timeToLiveInSeconds:
+          type: integer
+        enabled:
+          type: boolean
+    EntityTypeResponse:
+      description: Entity Type API response object.
+      type: object
+      properties:
+        entityType:
+          $ref: '#/components/schemas/EntityType'
+        entityTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/EntityType'
+        permission:
+          $ref: '#/components/schemas/EntityTypePermission'
+    EntityGrantSearchRequest:
+      description: Search request for entity grants.
+      type: object
+      properties:
+        search:
+          $ref: '#/components/schemas/EntityGrantSearchCriteria'
+    EntityGrantSearchResponse:
+      description: Search request for entity grants.
+      type: object
+      properties:
+        grants:
+          type: array
+          items:
+            $ref: '#/components/schemas/EntityGrant'
+        total:
+          type: integer
+          format: int64
+    EntityTypeRequest:
+      description: Entity Type API request object.
+      type: object
+      properties:
+        entityType:
+          $ref: '#/components/schemas/EntityType'
+        permission:
+          $ref: '#/components/schemas/EntityTypePermission'
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
     EntityGrant:
       description: A grant for an entity to a user or another entity.
       type: object
@@ -1051,24 +1117,6 @@ components:
         userId:
           type: string
           format: uuid
-    EntityGrantSearchCriteria:
-      description: Search criteria for entity grants.
-      type: object
-      properties:
-        entityId:
-          type: string
-          format: uuid
-        name:
-          type: string
-        userId:
-          type: string
-          format: uuid
-        numberOfResults:
-          type: integer
-        orderBy:
-          type: string
-        startRow:
-          type: integer
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
