@@ -56,26 +56,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ReactorRequest:
-      description: Request for managing FusionAuth Reactor and licenses.
-      type: object
-      properties:
-        license:
-          type: string
-        licenseId:
-          type: string
-    Errors:
-      description: Standard error domain object that can also be used as the response from an API call.
-      type: object
-      properties:
-        fieldErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-        generalErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
     BreachedPasswordTenantMetric:
       description: ''
       type: object
@@ -92,6 +72,14 @@ components:
           type: integer
         passwordsCheckedCount:
           type: integer
+    ReactorRequest:
+      description: Request for managing FusionAuth Reactor and licenses.
+      type: object
+      properties:
+        license:
+          type: string
+        licenseId:
+          type: string
     ReactorMetrics:
       description: ''
       type: object
@@ -100,6 +88,18 @@ components:
           type: object
           additionalProperties:
             $ref: '#/components/schemas/BreachedPasswordTenantMetric'
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
     Error:
       description: Defines an error.
       type: object

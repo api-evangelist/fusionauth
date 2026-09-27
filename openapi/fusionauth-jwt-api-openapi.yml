@@ -298,126 +298,119 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    RefreshToken:
-      description: Models a JWT Refresh Token.
-      type: object
-      properties:
-        applicationId:
-          type: string
-          format: uuid
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        id:
-          type: string
-          format: uuid
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        metaData:
-          $ref: '#/components/schemas/MetaData'
-        startInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        tenantId:
-          type: string
-          format: uuid
-        token:
-          type: string
-        userId:
-          type: string
-          format: uuid
-    ChangePasswordReason:
-      description: ''
-      type: string
-      enum:
-      - Administrative
-      - Breached
-      - Expired
-      - Validation
-    RefreshTokenRevokeRequest:
-      description: Request for the Refresh Token API to revoke a refresh token rather than using the URL parameters.
-      type: object
-      properties:
-        applicationId:
-          type: string
-          format: uuid
-        token:
-          type: string
-        userId:
-          type: string
-          format: uuid
-        eventInfo:
-          $ref: '#/components/schemas/EventInfo'
-    RefreshRequest:
-      description: ''
-      type: object
-      properties:
-        refreshToken:
-          type: string
-        timeToLiveInSeconds:
-          type: integer
-        token:
-          type: string
-        eventInfo:
-          $ref: '#/components/schemas/EventInfo'
-    JWTRefreshResponse:
-      description: API response for refreshing a JWT with a Refresh Token.  <p>  Using a different response object from RefreshTokenResponse because the retrieve response will return an object for refreshToken, and this is a  string.
-      type: object
-      properties:
-        refreshToken:
-          type: string
-        refreshTokenId:
-          type: string
-          format: uuid
-        token:
-          type: string
     JWTVendResponse:
       description: ''
       type: object
       properties:
         token:
           type: string
-    JWT:
-      description: 'JSON Web Token (JWT) as defined by RFC 7519.  <pre>  From RFC 7519 Section 1. Introduction:     The suggested pronunciation of JWT is the same as the English word "jot".  <pre>  The JWT is not Thread-Safe and should not be re-used.'
+    UserIdentity:
+      description: ''
       type: object
       properties:
-        aud:
-          type: object
-        exp:
-          $ref: '#/components/schemas/ZonedDateTime'
-        iat:
-          $ref: '#/components/schemas/ZonedDateTime'
-        iss:
+        displayValue:
           type: string
-        nbf:
+        insertInstant:
           $ref: '#/components/schemas/ZonedDateTime'
-        otherClaims:
-          type: object
-          additionalProperties:
-            type: object
-        sub:
+        lastLoginInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        moderationStatus:
+          $ref: '#/components/schemas/ContentStatus'
+        primary:
+          type: boolean
+        type:
+          $ref: '#/components/schemas/IdentityType'
+        value:
           type: string
-        jti:
-          type: string
-    Error:
-      description: Defines an error.
+        verified:
+          type: boolean
+        verifiedInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        verifiedReason:
+          $ref: '#/components/schemas/IdentityVerifiedReason'
+    BreachedPasswordStatus:
+      description: ''
+      type: string
+      enum:
+      - None
+      - ExactMatch
+      - SubAddressMatch
+      - PasswordOnly
+      - CommonPassword
+    GroupMember:
+      description: A User's membership into a Group
       type: object
       properties:
-        code:
-          type: string
         data:
           type: object
           additionalProperties:
             type: object
-        message:
+        groupId:
           type: string
-    IssueResponse:
+          format: uuid
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        userId:
+          type: string
+          format: uuid
+    AuthenticatorConfiguration:
       description: ''
       type: object
       properties:
-        refreshToken:
+        algorithm:
+          $ref: '#/components/schemas/TOTPAlgorithm'
+        codeLength:
+          type: integer
+        timeStep:
+          type: integer
+    IdentityVerifiedReason:
+      description: Models the reason that {@link UserIdentity#verified} was set to true or false.
+      type: string
+      enum:
+      - Skipped
+      - Trusted
+      - Unverifiable
+      - Implicit
+      - Pending
+      - Completed
+      - Disabled
+      - Administrative
+      - Import
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    LoginPreventedResponse:
+      description: The summary of the action that is preventing login to be returned on the login response.
+      type: object
+      properties:
+        actionId:
           type: string
-        token:
+          format: uuid
+        actionerUserId:
+          type: string
+          format: uuid
+        expiry:
+          $ref: '#/components/schemas/ZonedDateTime'
+        localizedName:
+          type: string
+        localizedOption:
+          type: string
+        localizedReason:
+          type: string
+        name:
+          type: string
+        option:
+          type: string
+        reason:
+          type: string
+        reasonCode:
           type: string
     LoginResponse:
       description: ''
@@ -472,19 +465,6 @@ components:
           type: string
         user:
           $ref: '#/components/schemas/User'
-    TOTPAlgorithm:
-      type: string
-      enum:
-      - HmacSHA1
-      - HmacSHA256
-      - HmacSHA512
-    ContentStatus:
-      description: Status for content like usernames, profile attributes, etc.
-      type: string
-      enum:
-      - ACTIVE
-      - PENDING
-      - REJECTED
     Errors:
       description: Standard error domain object that can also be used as the response from an API call.
       type: object
@@ -497,81 +477,60 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Error'
-    EventInfo:
-      description: Information about a user event (login, register, etc) that helps identify the source of the event (location, device type, OS, etc).
+    Error:
+      description: Defines an error.
       type: object
       properties:
+        code:
+          type: string
         data:
           type: object
           additionalProperties:
             type: object
-        deviceDescription:
+        message:
           type: string
-        deviceName:
-          type: string
-        deviceType:
-          type: string
-        ipAddress:
-          type: string
-        location:
-          $ref: '#/components/schemas/Location'
-        os:
-          type: string
-        userAgent:
-          type: string
-    Location:
-      description: Location information. Useful for IP addresses and other displayable data objects.
+    RefreshToken:
+      description: Models a JWT Refresh Token.
       type: object
       properties:
-        city:
+        applicationId:
           type: string
-        country:
-          type: string
-        latitude:
-          type: number
-          format: double
-        longitude:
-          type: number
-          format: double
-        region:
-          type: string
-        zipcode:
-          type: string
-        displayString:
-          type: string
-    RefreshTokenResponse:
-      description: API response for retrieving Refresh Tokens
-      type: object
-      properties:
-        refreshToken:
-          $ref: '#/components/schemas/RefreshToken'
-        refreshTokens:
-          type: array
-          items:
-            $ref: '#/components/schemas/RefreshToken'
-    MetaData:
-      type: object
-      properties:
+          format: uuid
         data:
           type: object
           additionalProperties:
             type: object
-        device:
-          $ref: '#/components/schemas/DeviceInfo'
-        scopes:
-          type: array
-          uniqueItems: true
-          items: {}
-    AuthenticatorConfiguration:
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        metaData:
+          $ref: '#/components/schemas/MetaData'
+        startInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        tenantId:
+          type: string
+          format: uuid
+        token:
+          type: string
+        userId:
+          type: string
+          format: uuid
+    ChangePasswordReason:
+      description: ''
+      type: string
+      enum:
+      - Administrative
+      - Breached
+      - Expired
+      - Validation
+    ValidateResponse:
       description: ''
       type: object
       properties:
-        algorithm:
-          $ref: '#/components/schemas/TOTPAlgorithm'
-        codeLength:
-          type: integer
-        timeStep:
-          type: integer
+        jwt:
+          $ref: '#/components/schemas/JWT'
     IdentityProviderLoginRequest:
       description: Login API request object used for login to third-party systems (i.e. Login with Facebook).
       type: object
@@ -600,42 +559,51 @@ components:
           type: boolean
         noJWT:
           type: boolean
-    PublicKeyResponse:
-      description: JWT Public Key Response Object
+    RefreshTokenResponse:
+      description: API response for retrieving Refresh Tokens
       type: object
       properties:
-        publicKey:
-          type: string
-        publicKeys:
-          type: object
-          additionalProperties:
-            type: string
-    LoginPreventedResponse:
-      description: The summary of the action that is preventing login to be returned on the login response.
+        refreshToken:
+          $ref: '#/components/schemas/RefreshToken'
+        refreshTokens:
+          type: array
+          items:
+            $ref: '#/components/schemas/RefreshToken'
+    IdentityType:
+      description: Model identity types provided by FusionAuth.
       type: object
       properties:
-        actionId:
-          type: string
-          format: uuid
-        actionerUserId:
-          type: string
-          format: uuid
-        expiry:
-          $ref: '#/components/schemas/ZonedDateTime'
-        localizedName:
-          type: string
-        localizedOption:
-          type: string
-        localizedReason:
-          type: string
         name:
           type: string
-        option:
+    EventInfo:
+      description: Information about a user event (login, register, etc) that helps identify the source of the event (location, device type, OS, etc).
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        deviceDescription:
           type: string
-        reason:
+        deviceName:
           type: string
-        reasonCode:
+        deviceType:
           type: string
+        ipAddress:
+          type: string
+        location:
+          $ref: '#/components/schemas/Location'
+        os:
+          type: string
+        userAgent:
+          type: string
+    ContentStatus:
+      description: Status for content like usernames, profile attributes, etc.
+      type: string
+      enum:
+      - ACTIVE
+      - PENDING
+      - REJECTED
     JWTVendRequest:
       description: ''
       type: object
@@ -649,124 +617,6 @@ components:
           format: uuid
         timeToLiveInSeconds:
           type: integer
-    UserIdentity:
-      description: ''
-      type: object
-      properties:
-        displayValue:
-          type: string
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        lastLoginInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        lastUpdateInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        moderationStatus:
-          $ref: '#/components/schemas/ContentStatus'
-        primary:
-          type: boolean
-        type:
-          $ref: '#/components/schemas/IdentityType'
-        value:
-          type: string
-        verified:
-          type: boolean
-        verifiedInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        verifiedReason:
-          $ref: '#/components/schemas/IdentityVerifiedReason'
-    Locale:
-      description: A Locale object represents a specific geographical, political, or cultural region.
-      example: en_US
-      type: string
-    ValidateResponse:
-      description: ''
-      type: object
-      properties:
-        jwt:
-          $ref: '#/components/schemas/JWT'
-    LocalDate:
-      description: A date without a time-zone in the ISO-8601 calendar system, such as 2007-12-03.
-      example: '2007-12-03'
-      pattern: ^[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]$
-      type: string
-    BreachedPasswordStatus:
-      description: ''
-      type: string
-      enum:
-      - None
-      - ExactMatch
-      - SubAddressMatch
-      - PasswordOnly
-      - CommonPassword
-    UserTwoFactorConfiguration:
-      description: ''
-      type: object
-      properties:
-        methods:
-          type: array
-          items:
-            $ref: '#/components/schemas/TwoFactorMethod'
-        recoveryCodes:
-          type: array
-          items:
-            type: string
-    GroupMember:
-      description: A User's membership into a Group
-      type: object
-      properties:
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        groupId:
-          type: string
-          format: uuid
-        id:
-          type: string
-          format: uuid
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        userId:
-          type: string
-          format: uuid
-    DeviceInfo:
-      description: ''
-      type: object
-      properties:
-        description:
-          type: string
-        lastAccessedAddress:
-          type: string
-        lastAccessedInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        name:
-          type: string
-        type:
-          type: string
-    ZoneId:
-      description: Timezone Identifier
-      example: America/Denver
-      pattern: ^w+/w+$
-      type: string
-    TwoFactorMethod:
-      description: ''
-      type: object
-      properties:
-        authenticator:
-          $ref: '#/components/schemas/AuthenticatorConfiguration'
-        email:
-          type: string
-        id:
-          type: string
-        lastUsed:
-          type: boolean
-        method:
-          type: string
-        mobilePhone:
-          type: string
-        secret:
-          type: string
     UserRegistration:
       description: User registration information for a single application.
       type: object
@@ -814,11 +664,170 @@ components:
           type: boolean
         verifiedInstant:
           $ref: '#/components/schemas/ZonedDateTime'
-    ZonedDateTime:
-      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
-      example: '1659380719000'
-      type: integer
-      format: int64
+    IssueResponse:
+      description: ''
+      type: object
+      properties:
+        refreshToken:
+          type: string
+        token:
+          type: string
+    JWT:
+      description: 'JSON Web Token (JWT) as defined by RFC 7519.  <pre>  From RFC 7519 Section 1. Introduction:     The suggested pronunciation of JWT is the same as the English word "jot".  <pre>  The JWT is not Thread-Safe and should not be re-used.'
+      type: object
+      properties:
+        aud:
+          type: object
+        exp:
+          $ref: '#/components/schemas/ZonedDateTime'
+        iat:
+          $ref: '#/components/schemas/ZonedDateTime'
+        iss:
+          type: string
+        nbf:
+          $ref: '#/components/schemas/ZonedDateTime'
+        otherClaims:
+          type: object
+          additionalProperties:
+            type: object
+        sub:
+          type: string
+        jti:
+          type: string
+    RefreshTokenRevokeRequest:
+      description: Request for the Refresh Token API to revoke a refresh token rather than using the URL parameters.
+      type: object
+      properties:
+        applicationId:
+          type: string
+          format: uuid
+        token:
+          type: string
+        userId:
+          type: string
+          format: uuid
+        eventInfo:
+          $ref: '#/components/schemas/EventInfo'
+    MetaData:
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        device:
+          $ref: '#/components/schemas/DeviceInfo'
+        scopes:
+          type: array
+          uniqueItems: true
+          items: {}
+    ZoneId:
+      description: Timezone Identifier
+      example: America/Denver
+      pattern: ^w+/w+$
+      type: string
+    Locale:
+      description: A Locale object represents a specific geographical, political, or cultural region.
+      example: en_US
+      type: string
+    UserTwoFactorConfiguration:
+      description: ''
+      type: object
+      properties:
+        methods:
+          type: array
+          items:
+            $ref: '#/components/schemas/TwoFactorMethod'
+        recoveryCodes:
+          type: array
+          items:
+            type: string
+    TOTPAlgorithm:
+      type: string
+      enum:
+      - HmacSHA1
+      - HmacSHA256
+      - HmacSHA512
+    Location:
+      description: Location information. Useful for IP addresses and other displayable data objects.
+      type: object
+      properties:
+        city:
+          type: string
+        country:
+          type: string
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        region:
+          type: string
+        zipcode:
+          type: string
+        displayString:
+          type: string
+    JWTRefreshResponse:
+      description: API response for refreshing a JWT with a Refresh Token.  <p>  Using a different response object from RefreshTokenResponse because the retrieve response will return an object for refreshToken, and this is a  string.
+      type: object
+      properties:
+        refreshToken:
+          type: string
+        refreshTokenId:
+          type: string
+          format: uuid
+        token:
+          type: string
+    DeviceInfo:
+      description: ''
+      type: object
+      properties:
+        description:
+          type: string
+        lastAccessedAddress:
+          type: string
+        lastAccessedInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        name:
+          type: string
+        type:
+          type: string
+    LocalDate:
+      description: A date without a time-zone in the ISO-8601 calendar system, such as 2007-12-03.
+      example: '2007-12-03'
+      pattern: ^[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]$
+      type: string
+    TwoFactorMethod:
+      description: ''
+      type: object
+      properties:
+        authenticator:
+          $ref: '#/components/schemas/AuthenticatorConfiguration'
+        email:
+          type: string
+        id:
+          type: string
+        lastUsed:
+          type: boolean
+        method:
+          type: string
+        mobilePhone:
+          type: string
+        secret:
+          type: string
+    RefreshRequest:
+      description: ''
+      type: object
+      properties:
+        refreshToken:
+          type: string
+        timeToLiveInSeconds:
+          type: integer
+        token:
+          type: string
+        eventInfo:
+          $ref: '#/components/schemas/EventInfo'
     User:
       description: The public, global view of a User. This object contains all global information about the user including birthdate, registration information  preferred languages, global attributes, etc.
       type: object
@@ -918,25 +927,16 @@ components:
           type: boolean
         verifiedInstant:
           $ref: '#/components/schemas/ZonedDateTime'
-    IdentityVerifiedReason:
-      description: Models the reason that {@link UserIdentity#verified} was set to true or false.
-      type: string
-      enum:
-      - Skipped
-      - Trusted
-      - Unverifiable
-      - Implicit
-      - Pending
-      - Completed
-      - Disabled
-      - Administrative
-      - Import
-    IdentityType:
-      description: Model identity types provided by FusionAuth.
+    PublicKeyResponse:
+      description: JWT Public Key Response Object
       type: object
       properties:
-        name:
+        publicKey:
           type: string
+        publicKeys:
+          type: object
+          additionalProperties:
+            type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

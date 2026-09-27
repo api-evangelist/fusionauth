@@ -125,6 +125,31 @@ components:
       - HMAC
       - OKP
       - Secret
+    Algorithm:
+      description: Available JSON Web Algorithms (JWA) as described in RFC 7518 available for this JWT implementation.
+      type: string
+      enum:
+      - ES256
+      - ES384
+      - ES512
+      - HS256
+      - HS384
+      - HS512
+      - PS256
+      - PS384
+      - PS512
+      - RS256
+      - RS384
+      - RS512
+      - none
+    JWKSResponse:
+      description: ''
+      type: object
+      properties:
+        keys:
+          type: array
+          items:
+            $ref: '#/components/schemas/JSONWebKey'
     JSONWebKey:
       description: A JSON Web Key as defined by <a href="https:tools.ietf.orghtmlrfc7517#section-4">RFC 7517 JSON Web Key (JWK)  Section 4<a> and <a href="https:tools.ietf.orghtmlrfc7518">RFC 7518 JSON Web Algorithms (JWA)<a>.
       type: object
@@ -171,31 +196,6 @@ components:
           type: string
         y:
           type: string
-    JWKSResponse:
-      description: ''
-      type: object
-      properties:
-        keys:
-          type: array
-          items:
-            $ref: '#/components/schemas/JSONWebKey'
-    Algorithm:
-      description: Available JSON Web Algorithms (JWA) as described in RFC 7518 available for this JWT implementation.
-      type: string
-      enum:
-      - ES256
-      - ES384
-      - ES512
-      - HS256
-      - HS384
-      - HS512
-      - PS256
-      - PS384
-      - PS512
-      - RS256
-      - RS384
-      - RS512
-      - none
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

@@ -213,12 +213,12 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    IPAccessControlListRequest:
+    IPAccessControlEntryAction:
       description: ''
-      type: object
-      properties:
-        ipAccessControlList:
-          $ref: '#/components/schemas/IPAccessControlList'
+      type: string
+      enum:
+      - Allow
+      - Block
     IPAccessControlList:
       description: ''
       type: object
@@ -240,6 +240,22 @@ components:
           $ref: '#/components/schemas/ZonedDateTime'
         name:
           type: string
+    IPAccessControlListResponse:
+      description: ''
+      type: object
+      properties:
+        ipAccessControlList:
+          $ref: '#/components/schemas/IPAccessControlList'
+        ipAccessControlLists:
+          type: array
+          items:
+            $ref: '#/components/schemas/IPAccessControlList'
+    IPAccessControlListRequest:
+      description: ''
+      type: object
+      properties:
+        ipAccessControlList:
+          $ref: '#/components/schemas/IPAccessControlList'
     Errors:
       description: Standard error domain object that can also be used as the response from an API call.
       type: object
@@ -252,12 +268,28 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Error'
-    IPAccessControlEntryAction:
+    IPAccessControlListSearchResponse:
       description: ''
-      type: string
-      enum:
-      - Allow
-      - Block
+      type: object
+      properties:
+        ipAccessControlLists:
+          type: array
+          items:
+            $ref: '#/components/schemas/IPAccessControlList'
+        total:
+          type: integer
+          format: int64
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    IPAccessControlListSearchRequest:
+      description: Search request for IP ACLs .
+      type: object
+      properties:
+        search:
+          $ref: '#/components/schemas/IPAccessControlListSearchCriteria'
     IPAccessControlListSearchCriteria:
       description: ''
       type: object
@@ -270,38 +302,6 @@ components:
           type: string
         startRow:
           type: integer
-    IPAccessControlListSearchRequest:
-      description: Search request for IP ACLs .
-      type: object
-      properties:
-        search:
-          $ref: '#/components/schemas/IPAccessControlListSearchCriteria'
-    IPAccessControlListSearchResponse:
-      description: ''
-      type: object
-      properties:
-        ipAccessControlLists:
-          type: array
-          items:
-            $ref: '#/components/schemas/IPAccessControlList'
-        total:
-          type: integer
-          format: int64
-    IPAccessControlListResponse:
-      description: ''
-      type: object
-      properties:
-        ipAccessControlList:
-          $ref: '#/components/schemas/IPAccessControlList'
-        ipAccessControlLists:
-          type: array
-          items:
-            $ref: '#/components/schemas/IPAccessControlList'
-    ZonedDateTime:
-      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
-      example: '1659380719000'
-      type: integer
-      format: int64
     Error:
       description: Defines an error.
       type: object

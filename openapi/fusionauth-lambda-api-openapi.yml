@@ -238,41 +238,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Errors:
-      description: Standard error domain object that can also be used as the response from an API call.
-      type: object
-      properties:
-        fieldErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-        generalErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-    LambdaRequest:
-      description: Lambda API request object.
-      type: object
-      properties:
-        lambda:
-          $ref: '#/components/schemas/Lambda'
-    LambdaSearchResponse:
-      description: Lambda search response
-      type: object
-      properties:
-        lambdas:
-          type: array
-          items:
-            $ref: '#/components/schemas/Lambda'
-        total:
-          type: integer
-          format: int64
-    LambdaSearchRequest:
-      description: Search request for Lambdas
-      type: object
-      properties:
-        search:
-          $ref: '#/components/schemas/LambdaSearchCriteria'
     LambdaResponse:
       description: Lambda API response object.
       type: object
@@ -283,27 +248,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Lambda'
-    Lambda:
-      description: A JavaScript lambda function that is executed during certain events inside FusionAuth.
-      type: object
-      properties:
-        body:
-          type: string
-        debug:
-          type: boolean
-        engineType:
-          $ref: '#/components/schemas/LambdaEngineType'
-        id:
-          type: string
-          format: uuid
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        lastUpdateInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        name:
-          type: string
-        type:
-          $ref: '#/components/schemas/LambdaType'
     LambdaType:
       description: The types of lambdas that indicate how they are invoked by FusionAuth.
       type: string
@@ -335,6 +279,30 @@ components:
       - UserInfoPopulate
       - LoginValidation
       - MFARequirement
+    LambdaSearchRequest:
+      description: Search request for Lambdas
+      type: object
+      properties:
+        search:
+          $ref: '#/components/schemas/LambdaSearchCriteria'
+    LambdaEngineType:
+      description: ''
+      type: string
+      enum:
+      - GraalJS
+      - Nashorn
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
     ZonedDateTime:
       description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
       example: '1659380719000'
@@ -352,12 +320,12 @@ components:
             type: object
         message:
           type: string
-    LambdaEngineType:
-      description: ''
-      type: string
-      enum:
-      - GraalJS
-      - Nashorn
+    LambdaRequest:
+      description: Lambda API request object.
+      type: object
+      properties:
+        lambda:
+          $ref: '#/components/schemas/Lambda'
     LambdaSearchCriteria:
       description: Search criteria for Lambdas
       type: object
@@ -374,6 +342,38 @@ components:
           type: string
         startRow:
           type: integer
+    Lambda:
+      description: A JavaScript lambda function that is executed during certain events inside FusionAuth.
+      type: object
+      properties:
+        body:
+          type: string
+        debug:
+          type: boolean
+        engineType:
+          $ref: '#/components/schemas/LambdaEngineType'
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/LambdaType'
+    LambdaSearchResponse:
+      description: Lambda search response
+      type: object
+      properties:
+        lambdas:
+          type: array
+          items:
+            $ref: '#/components/schemas/Lambda'
+        total:
+          type: integer
+          format: int64
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

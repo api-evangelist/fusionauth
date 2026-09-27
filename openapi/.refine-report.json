@@ -42,9 +42,7 @@
     "fusionauth-webauthn-api-openapi.yml",
     "fusionauth-webhook-api-openapi.yml"
   ],
-  "archived": [
-    "deleted 1 superseded output(s) from the previous generation"
-  ],
+  "archived": [],
   "errors": [],
   "warnings": [],
   "notes": [
@@ -409,8 +407,7 @@
     "fusionauth-openapi.yaml: declared missing tag: User Action Reason",
     "fusionauth-openapi.yaml: declared missing tag: Webauthn",
     "fusionauth-openapi.yaml: declared missing tag: Webhook",
-    "superseded outputs removed: fusionauth-o-auth2-api-openapi.yml",
-    "apis.yml register: written (+1 apis, 37 total)"
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "fusionauth-api-key-api-openapi.yml: previously refined output, superseded by openapi/_original/",
@@ -433,7 +430,7 @@
     "fusionauth-logout-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "fusionauth-message-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "fusionauth-messenger-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "fusionauth-o-auth2-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "fusionauth-oauth2-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "fusionauth-passwordless-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "fusionauth-reactor-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "fusionauth-report-api-openapi.yml: previously refined output, superseded by openapi/_original/",

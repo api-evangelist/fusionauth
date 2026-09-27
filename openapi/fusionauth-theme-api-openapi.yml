@@ -216,117 +216,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ThemeSearchResponse:
-      description: Search response for Themes
-      type: object
-      properties:
-        themes:
-          type: array
-          items:
-            $ref: '#/components/schemas/Theme'
-        total:
-          type: integer
-          format: int64
-    SimpleThemeVariables:
-      description: Theme object for values used in the css variables for simple themes.
-      type: object
-      properties:
-        alertBackgroundColor:
-          type: string
-        alertFontColor:
-          type: string
-        backgroundImageURL:
-          type: string
-          format: URI
-        backgroundSize:
-          type: string
-        borderRadius:
-          type: string
-        deleteButtonColor:
-          type: string
-        deleteButtonFocusColor:
-          type: string
-        deleteButtonTextColor:
-          type: string
-        deleteButtonTextFocusColor:
-          type: string
-        errorFontColor:
-          type: string
-        errorIconColor:
-          type: string
-        favicons:
-          type: array
-          items:
-            $ref: '#/components/schemas/Favicon'
-        fontColor:
-          type: string
-        fontFamily:
-          type: string
-        footerDisplay:
-          type: boolean
-        iconBackgroundColor:
-          type: string
-        iconColor:
-          type: string
-        infoIconColor:
-          type: string
-        inputBackgroundColor:
-          type: string
-        inputIconColor:
-          type: string
-        inputTextColor:
-          type: string
-        linkTextColor:
-          type: string
-        linkTextFocusColor:
-          type: string
-        logoImageSize:
-          type: string
-        logoImageURL:
-          type: string
-          format: URI
-        monoFontColor:
-          type: string
-        monoFontFamily:
-          type: string
-        pageBackgroundColor:
-          type: string
-        panelBackgroundColor:
-          type: string
-        primaryButtonColor:
-          type: string
-        primaryButtonFocusColor:
-          type: string
-        primaryButtonTextColor:
-          type: string
-        primaryButtonTextFocusColor:
-          type: string
-    ThemeType:
-      type: string
-      enum:
-      - advanced
-      - simple
-    Errors:
-      description: Standard error domain object that can also be used as the response from an API call.
-      type: object
-      properties:
-        fieldErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-        generalErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-    ThemeRequest:
-      description: Theme API request object.
-      type: object
-      properties:
-        sourceThemeId:
-          type: string
-          format: uuid
-        theme:
-          $ref: '#/components/schemas/Theme'
     ThemeSearchRequest:
       description: Search request for Themes.
       type: object
@@ -337,89 +226,6 @@ components:
       description: Models a set of localized Strings that can be stored as JSON.
       type: object
       properties: {}
-    Theme:
-      description: ''
-      type: object
-      properties:
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        defaultMessages:
-          type: string
-        id:
-          type: string
-          format: uuid
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        lastUpdateInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        localizedMessages:
-          $ref: '#/components/schemas/LocalizedStrings'
-        name:
-          type: string
-        stylesheet:
-          type: string
-        templates:
-          $ref: '#/components/schemas/Templates'
-        type:
-          $ref: '#/components/schemas/ThemeType'
-        variables:
-          $ref: '#/components/schemas/SimpleThemeVariables'
-    ThemeSearchCriteria:
-      description: Search criteria for themes
-      type: object
-      properties:
-        name:
-          type: string
-        type:
-          $ref: '#/components/schemas/ThemeType'
-        numberOfResults:
-          type: integer
-        orderBy:
-          type: string
-        startRow:
-          type: integer
-    Favicon:
-      description: Components of a Favicon in an HTML {@code <head>} element.
-      type: object
-      properties:
-        href:
-          type: string
-          format: URI
-        rel:
-          type: string
-        sizes:
-          type: string
-        type:
-          type: string
-    ZonedDateTime:
-      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
-      example: '1659380719000'
-      type: integer
-      format: int64
-    ThemeResponse:
-      description: Theme API response object.
-      type: object
-      properties:
-        theme:
-          $ref: '#/components/schemas/Theme'
-        themes:
-          type: array
-          items:
-            $ref: '#/components/schemas/Theme'
-    Error:
-      description: Defines an error.
-      type: object
-      properties:
-        code:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        message:
-          type: string
     Templates:
       type: object
       properties:
@@ -527,6 +333,200 @@ components:
           type: string
         registrationSend:
           type: string
+    ThemeResponse:
+      description: Theme API response object.
+      type: object
+      properties:
+        theme:
+          $ref: '#/components/schemas/Theme'
+        themes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Theme'
+    ThemeSearchResponse:
+      description: Search response for Themes
+      type: object
+      properties:
+        themes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Theme'
+        total:
+          type: integer
+          format: int64
+    Favicon:
+      description: Components of a Favicon in an HTML {@code <head>} element.
+      type: object
+      properties:
+        href:
+          type: string
+          format: URI
+        rel:
+          type: string
+        sizes:
+          type: string
+        type:
+          type: string
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    SimpleThemeVariables:
+      description: Theme object for values used in the css variables for simple themes.
+      type: object
+      properties:
+        alertBackgroundColor:
+          type: string
+        alertFontColor:
+          type: string
+        backgroundImageURL:
+          type: string
+          format: URI
+        backgroundSize:
+          type: string
+        borderRadius:
+          type: string
+        deleteButtonColor:
+          type: string
+        deleteButtonFocusColor:
+          type: string
+        deleteButtonTextColor:
+          type: string
+        deleteButtonTextFocusColor:
+          type: string
+        errorFontColor:
+          type: string
+        errorIconColor:
+          type: string
+        favicons:
+          type: array
+          items:
+            $ref: '#/components/schemas/Favicon'
+        fontColor:
+          type: string
+        fontFamily:
+          type: string
+        footerDisplay:
+          type: boolean
+        iconBackgroundColor:
+          type: string
+        iconColor:
+          type: string
+        infoIconColor:
+          type: string
+        inputBackgroundColor:
+          type: string
+        inputIconColor:
+          type: string
+        inputTextColor:
+          type: string
+        linkTextColor:
+          type: string
+        linkTextFocusColor:
+          type: string
+        logoImageSize:
+          type: string
+        logoImageURL:
+          type: string
+          format: URI
+        monoFontColor:
+          type: string
+        monoFontFamily:
+          type: string
+        pageBackgroundColor:
+          type: string
+        panelBackgroundColor:
+          type: string
+        primaryButtonColor:
+          type: string
+        primaryButtonFocusColor:
+          type: string
+        primaryButtonTextColor:
+          type: string
+        primaryButtonTextFocusColor:
+          type: string
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    ThemeType:
+      type: string
+      enum:
+      - advanced
+      - simple
+    Theme:
+      description: ''
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        defaultMessages:
+          type: string
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        localizedMessages:
+          $ref: '#/components/schemas/LocalizedStrings'
+        name:
+          type: string
+        stylesheet:
+          type: string
+        templates:
+          $ref: '#/components/schemas/Templates'
+        type:
+          $ref: '#/components/schemas/ThemeType'
+        variables:
+          $ref: '#/components/schemas/SimpleThemeVariables'
+    ThemeRequest:
+      description: Theme API request object.
+      type: object
+      properties:
+        sourceThemeId:
+          type: string
+          format: uuid
+        theme:
+          $ref: '#/components/schemas/Theme'
+    ThemeSearchCriteria:
+      description: Search criteria for themes
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/ThemeType'
+        numberOfResults:
+          type: integer
+        orderBy:
+          type: string
+        startRow:
+          type: integer
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

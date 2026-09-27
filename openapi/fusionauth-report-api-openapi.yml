@@ -205,6 +205,39 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    MonthlyActiveUserReportResponse:
+      description: Response for the daily active user report.
+      type: object
+      properties:
+        monthlyActiveUsers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Count'
+        total:
+          type: integer
+          format: int64
+    LoginReportResponse:
+      description: Response for the login report.
+      type: object
+      properties:
+        hourlyCounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Count'
+        total:
+          type: integer
+          format: int64
+    DailyActiveUserReportResponse:
+      description: Response for the daily active user report.
+      type: object
+      properties:
+        dailyActiveUsers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Count'
+        total:
+          type: integer
+          format: int64
     RegistrationReportResponse:
       description: Response for the registration report.
       type: object
@@ -228,6 +261,38 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Error'
+    Count:
+      description: ''
+      type: object
+      properties:
+        count:
+          type: integer
+        interval:
+          type: integer
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    Totals:
+      type: object
+      properties:
+        logins:
+          type: integer
+          format: int64
+        registrations:
+          type: integer
+          format: int64
+        totalRegistrations:
+          type: integer
+          format: int64
     TotalsReportResponse:
       description: The response from the total report. This report stores the total numbers for each application.
       type: object
@@ -242,71 +307,6 @@ components:
         totalGlobalRegistrations:
           type: integer
           format: int64
-    MonthlyActiveUserReportResponse:
-      description: Response for the daily active user report.
-      type: object
-      properties:
-        monthlyActiveUsers:
-          type: array
-          items:
-            $ref: '#/components/schemas/Count'
-        total:
-          type: integer
-          format: int64
-    LoginReportResponse:
-      description: Response for the login report.
-      type: object
-      properties:
-        hourlyCounts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Count'
-        total:
-          type: integer
-          format: int64
-    Totals:
-      type: object
-      properties:
-        logins:
-          type: integer
-          format: int64
-        registrations:
-          type: integer
-          format: int64
-        totalRegistrations:
-          type: integer
-          format: int64
-    Error:
-      description: Defines an error.
-      type: object
-      properties:
-        code:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        message:
-          type: string
-    DailyActiveUserReportResponse:
-      description: Response for the daily active user report.
-      type: object
-      properties:
-        dailyActiveUsers:
-          type: array
-          items:
-            $ref: '#/components/schemas/Count'
-        total:
-          type: integer
-          format: int64
-    Count:
-      description: ''
-      type: object
-      properties:
-        count:
-          type: integer
-        interval:
-          type: integer
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

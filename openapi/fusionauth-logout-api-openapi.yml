@@ -44,26 +44,16 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Location:
-      description: Location information. Useful for IP addresses and other displayable data objects.
+    LogoutRequest:
+      description: Request for the Logout API that can be used as an alternative to URL parameters.
       type: object
       properties:
-        city:
+        global:
+          type: boolean
+        refreshToken:
           type: string
-        country:
-          type: string
-        latitude:
-          type: number
-          format: double
-        longitude:
-          type: number
-          format: double
-        region:
-          type: string
-        zipcode:
-          type: string
-        displayString:
-          type: string
+        eventInfo:
+          $ref: '#/components/schemas/EventInfo'
     EventInfo:
       description: Information about a user event (login, register, etc) that helps identify the source of the event (location, device type, OS, etc).
       type: object
@@ -86,16 +76,26 @@ components:
           type: string
         userAgent:
           type: string
-    LogoutRequest:
-      description: Request for the Logout API that can be used as an alternative to URL parameters.
+    Location:
+      description: Location information. Useful for IP addresses and other displayable data objects.
       type: object
       properties:
-        global:
-          type: boolean
-        refreshToken:
+        city:
           type: string
-        eventInfo:
-          $ref: '#/components/schemas/EventInfo'
+        country:
+          type: string
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        region:
+          type: string
+        zipcode:
+          type: string
+        displayString:
+          type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

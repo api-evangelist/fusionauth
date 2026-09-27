@@ -68,6 +68,41 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    SystemConfiguration:
+      description: ''
+      type: object
+      properties:
+        auditLogConfiguration:
+          $ref: '#/components/schemas/AuditLogConfiguration'
+        corsConfiguration:
+          $ref: '#/components/schemas/CORSConfiguration'
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        eventLogConfiguration:
+          $ref: '#/components/schemas/EventLogConfiguration'
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        loginRecordConfiguration:
+          $ref: '#/components/schemas/LoginRecordConfiguration'
+        reportTimezone:
+          $ref: '#/components/schemas/ZoneId'
+        trustedProxyConfiguration:
+          $ref: '#/components/schemas/SystemTrustedProxyConfiguration'
+        uiConfiguration:
+          $ref: '#/components/schemas/UIConfiguration'
+        usageDataConfiguration:
+          $ref: '#/components/schemas/UsageDataConfiguration'
+        webhookEventLogConfiguration:
+          $ref: '#/components/schemas/WebhookEventLogConfiguration'
+    ZoneId:
+      description: Timezone Identifier
+      example: America/Denver
+      pattern: ^w+/w+$
+      type: string
     SystemTrustedProxyConfiguration:
       description: ''
       type: object
@@ -78,30 +113,31 @@ components:
           type: array
           items:
             type: string
-    Errors:
-      description: Standard error domain object that can also be used as the response from an API call.
+    SystemConfigurationRequest:
+      description: Request for the system configuration API.
       type: object
       properties:
-        fieldErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-        generalErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-    ZoneId:
-      description: Timezone Identifier
-      example: America/Denver
-      pattern: ^w+/w+$
-      type: string
-    DeleteConfiguration:
+        systemConfiguration:
+          $ref: '#/components/schemas/SystemConfiguration'
+    AuditLogConfiguration:
       type: object
       properties:
-        numberOfDaysToRetain:
+        delete:
+          $ref: '#/components/schemas/DeleteConfiguration'
+    EventLogConfiguration:
+      type: object
+      properties:
+        numberToRetain:
           type: integer
-        enabled:
-          type: boolean
+    UIConfiguration:
+      type: object
+      properties:
+        headerColor:
+          type: string
+        logoURL:
+          type: string
+        menuFontColor:
+          type: string
     CORSConfiguration:
       description: ''
       type: object
@@ -142,31 +178,23 @@ components:
       - HEAD
       - OPTIONS
       - PATCH
-    SystemConfigurationRequest:
-      description: Request for the system configuration API.
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
       type: object
       properties:
-        systemConfiguration:
-          $ref: '#/components/schemas/SystemConfiguration'
-    SystemConfigurationResponse:
-      description: Response for the system configuration API.
-      type: object
-      properties:
-        systemConfiguration:
-          $ref: '#/components/schemas/SystemConfiguration'
-    EventLogConfiguration:
-      type: object
-      properties:
-        numberToRetain:
-          type: integer
-    WebhookEventLogConfiguration:
-      description: The system configuration for Webhook Event Log data.
-      type: object
-      properties:
-        delete:
-          $ref: '#/components/schemas/DeleteConfiguration'
-        enabled:
-          type: boolean
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
     Error:
       description: Defines an error.
       type: object
@@ -179,15 +207,38 @@ components:
             type: object
         message:
           type: string
-    UIConfiguration:
+    WebhookEventLogConfiguration:
+      description: The system configuration for Webhook Event Log data.
       type: object
       properties:
-        headerColor:
-          type: string
-        logoURL:
-          type: string
-        menuFontColor:
-          type: string
+        delete:
+          $ref: '#/components/schemas/DeleteConfiguration'
+        enabled:
+          type: boolean
+    SystemConfigurationResponse:
+      description: Response for the system configuration API.
+      type: object
+      properties:
+        systemConfiguration:
+          $ref: '#/components/schemas/SystemConfiguration'
+    LoginRecordConfiguration:
+      type: object
+      properties:
+        delete:
+          $ref: '#/components/schemas/DeleteConfiguration'
+    DeleteConfiguration:
+      type: object
+      properties:
+        numberOfDaysToRetain:
+          type: integer
+        enabled:
+          type: boolean
+    SystemTrustedProxyConfigurationPolicy:
+      description: ''
+      type: string
+      enum:
+      - All
+      - OnlyConfigured
     UsageDataConfiguration:
       description: Config for Usage Data  Stats
       type: object
@@ -196,57 +247,6 @@ components:
           type: integer
         enabled:
           type: boolean
-    LoginRecordConfiguration:
-      type: object
-      properties:
-        delete:
-          $ref: '#/components/schemas/DeleteConfiguration'
-    AuditLogConfiguration:
-      type: object
-      properties:
-        delete:
-          $ref: '#/components/schemas/DeleteConfiguration'
-    ZonedDateTime:
-      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
-      example: '1659380719000'
-      type: integer
-      format: int64
-    SystemTrustedProxyConfigurationPolicy:
-      description: ''
-      type: string
-      enum:
-      - All
-      - OnlyConfigured
-    SystemConfiguration:
-      description: ''
-      type: object
-      properties:
-        auditLogConfiguration:
-          $ref: '#/components/schemas/AuditLogConfiguration'
-        corsConfiguration:
-          $ref: '#/components/schemas/CORSConfiguration'
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        eventLogConfiguration:
-          $ref: '#/components/schemas/EventLogConfiguration'
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        lastUpdateInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        loginRecordConfiguration:
-          $ref: '#/components/schemas/LoginRecordConfiguration'
-        reportTimezone:
-          $ref: '#/components/schemas/ZoneId'
-        trustedProxyConfiguration:
-          $ref: '#/components/schemas/SystemTrustedProxyConfiguration'
-        uiConfiguration:
-          $ref: '#/components/schemas/UIConfiguration'
-        usageDataConfiguration:
-          $ref: '#/components/schemas/UsageDataConfiguration'
-        webhookEventLogConfiguration:
-          $ref: '#/components/schemas/WebhookEventLogConfiguration'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

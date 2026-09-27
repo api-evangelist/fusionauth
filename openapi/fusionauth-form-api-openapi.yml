@@ -355,6 +355,16 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    FormResponse:
+      description: Form response.
+      type: object
+      properties:
+        form:
+          $ref: '#/components/schemas/Form'
+        forms:
+          type: array
+          items:
+            $ref: '#/components/schemas/Form'
     FormControl:
       description: ''
       type: string
@@ -366,14 +376,38 @@ components:
       - select
       - textarea
       - text
-    FormFieldValidator:
+    FormStepType:
+      description: Denotes the type of form step. This is used to configure different behavior on form steps in the registration flow.
+      type: string
+      enum:
+      - collectData
+      - verifyEmail
+      - verifyPhoneNumber
+    FormType:
+      description: ''
+      type: string
+      enum:
+      - registration
+      - adminRegistration
+      - adminUser
+      - selfServiceUser
+    FormStep:
       description: ''
       type: object
       properties:
-        expression:
-          type: string
-        enabled:
-          type: boolean
+        fields:
+          type: array
+          items:
+            type: string
+            format: uuid
+        type:
+          $ref: '#/components/schemas/FormStepType'
+    FormRequest:
+      description: Form response.
+      type: object
+      properties:
+        form:
+          $ref: '#/components/schemas/Form'
     FormFieldResponse:
       description: Form field response.
       type: object
@@ -395,18 +429,6 @@ components:
       - number
       - phoneNumber
       - string
-    Errors:
-      description: Standard error domain object that can also be used as the response from an API call.
-      type: object
-      properties:
-        fieldErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-        generalErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
     FormField:
       description: ''
       type: object
@@ -445,12 +467,35 @@ components:
           $ref: '#/components/schemas/FormDataType'
         validator:
           $ref: '#/components/schemas/FormFieldValidator'
-    FormRequest:
-      description: Form response.
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
       type: object
       properties:
-        form:
-          $ref: '#/components/schemas/Form'
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
     Form:
       description: ''
       type: object
@@ -474,44 +519,6 @@ components:
             $ref: '#/components/schemas/FormStep'
         type:
           $ref: '#/components/schemas/FormType'
-    FormResponse:
-      description: Form response.
-      type: object
-      properties:
-        form:
-          $ref: '#/components/schemas/Form'
-        forms:
-          type: array
-          items:
-            $ref: '#/components/schemas/Form'
-    FormStep:
-      description: ''
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            type: string
-            format: uuid
-        type:
-          $ref: '#/components/schemas/FormStepType'
-    ZonedDateTime:
-      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
-      example: '1659380719000'
-      type: integer
-      format: int64
-    Error:
-      description: Defines an error.
-      type: object
-      properties:
-        code:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        message:
-          type: string
     FormFieldRequest:
       description: The FormField API request object.
       type: object
@@ -522,21 +529,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/FormField'
-    FormStepType:
-      description: Denotes the type of form step. This is used to configure different behavior on form steps in the registration flow.
-      type: string
-      enum:
-      - collectData
-      - verifyEmail
-      - verifyPhoneNumber
-    FormType:
+    FormFieldValidator:
       description: ''
-      type: string
-      enum:
-      - registration
-      - adminRegistration
-      - adminUser
-      - selfServiceUser
+      type: object
+      properties:
+        expression:
+          type: string
+        enabled:
+          type: boolean
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

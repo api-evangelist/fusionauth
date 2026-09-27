@@ -263,24 +263,12 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    KeySearchRequest:
-      description: Search request for Keys
+    KeyRequest:
+      description: Key API request object.
       type: object
       properties:
-        search:
-          $ref: '#/components/schemas/KeySearchCriteria'
-    Errors:
-      description: Standard error domain object that can also be used as the response from an API call.
-      type: object
-      properties:
-        fieldErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-        generalErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
+        key:
+          $ref: '#/components/schemas/Key'
     KeyType:
       type: string
       enum:
@@ -289,69 +277,6 @@ components:
       - HMAC
       - OKP
       - Secret
-    KeyResponse:
-      description: Key API response object.
-      type: object
-      properties:
-        key:
-          $ref: '#/components/schemas/Key'
-        keys:
-          type: array
-          items:
-            $ref: '#/components/schemas/Key'
-    KeySearchCriteria:
-      description: Search criteria for Keys
-      type: object
-      properties:
-        algorithm:
-          $ref: '#/components/schemas/KeyAlgorithm'
-        name:
-          type: string
-        type:
-          $ref: '#/components/schemas/KeyType'
-        numberOfResults:
-          type: integer
-        orderBy:
-          type: string
-        startRow:
-          type: integer
-    ZonedDateTime:
-      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
-      example: '1659380719000'
-      type: integer
-      format: int64
-    KeyAlgorithm:
-      type: string
-      enum:
-      - ES256
-      - ES384
-      - ES512
-      - HS256
-      - HS384
-      - HS512
-      - RS256
-      - RS384
-      - RS512
-      - Ed25519
-      - None
-    KeyRequest:
-      description: Key API request object.
-      type: object
-      properties:
-        key:
-          $ref: '#/components/schemas/Key'
-    Error:
-      description: Defines an error.
-      type: object
-      properties:
-        code:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        message:
-          type: string
     Key:
       description: Domain for a public key, key pair or an HMAC secret. This is used by KeyMaster to manage keys for JWTs, SAML, etc.
       type: object
@@ -389,17 +314,75 @@ components:
           type: string
         type:
           $ref: '#/components/schemas/KeyType'
-    KeySearchResponse:
-      description: Key search response
+    KeySearchCriteria:
+      description: Search criteria for Keys
       type: object
       properties:
+        algorithm:
+          $ref: '#/components/schemas/KeyAlgorithm'
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/KeyType'
+        numberOfResults:
+          type: integer
+        orderBy:
+          type: string
+        startRow:
+          type: integer
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    KeyResponse:
+      description: Key API response object.
+      type: object
+      properties:
+        key:
+          $ref: '#/components/schemas/Key'
         keys:
           type: array
           items:
             $ref: '#/components/schemas/Key'
-        total:
-          type: integer
-          format: int64
+    KeyAlgorithm:
+      type: string
+      enum:
+      - ES256
+      - ES384
+      - ES512
+      - HS256
+      - HS384
+      - HS512
+      - RS256
+      - RS384
+      - RS512
+      - Ed25519
+      - None
     CertificateInformation:
       type: object
       properties:
@@ -423,6 +406,23 @@ components:
           $ref: '#/components/schemas/ZonedDateTime'
         validTo:
           $ref: '#/components/schemas/ZonedDateTime'
+    KeySearchRequest:
+      description: Search request for Keys
+      type: object
+      properties:
+        search:
+          $ref: '#/components/schemas/KeySearchCriteria'
+    KeySearchResponse:
+      description: Key search response
+      type: object
+      properties:
+        keys:
+          type: array
+          items:
+            $ref: '#/components/schemas/Key'
+        total:
+          type: integer
+          format: int64
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

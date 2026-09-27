@@ -42,6 +42,7 @@ tags:
   - OpenID Connect
   - SSO
   - Multi-Factor Authentication
+  - Identity Federation
 tags_raw:
   - Authentication
   - Authorization
@@ -51,6 +52,7 @@ tags_raw:
   - OpenID Connect
   - Single Sign-On
   - Multi-Factor Authentication
+  - Identity Federation
 created: '2024-09-26'
 modified: '2026-05-25'
 position: Consuming
