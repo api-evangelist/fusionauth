@@ -229,58 +229,11 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    HTTPHeaders:
-      description: Type for webhook headers.
-      type: object
-      properties: {}
-    WebhookSearchResponse:
-      description: Webhook search response
-      type: object
-      properties:
-        total:
-          type: integer
-          format: int64
-        webhooks:
-          type: array
-          items:
-            $ref: '#/components/schemas/Webhook'
-    WebhookSignatureConfiguration:
-      description: Configuration for signing webhooks.
-      type: object
-      properties:
-        signingKeyId:
-          type: string
-          format: uuid
-        enabled:
-          type: boolean
-    WebhookResponse:
-      description: Webhook API response object.
-      type: object
-      properties:
-        webhook:
-          $ref: '#/components/schemas/Webhook'
-        webhooks:
-          type: array
-          items:
-            $ref: '#/components/schemas/Webhook'
-    Errors:
-      description: Standard error domain object that can also be used as the response from an API call.
-      type: object
-      properties:
-        fieldErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-        generalErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-    WebhookSearchRequest:
-      description: Search request for webhooks
-      type: object
-      properties:
-        search:
-          $ref: '#/components/schemas/WebhookSearchCriteria'
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
     Error:
       description: Defines an error.
       type: object
@@ -293,17 +246,65 @@ components:
             type: object
         message:
           type: string
-    WebhookRequest:
-      description: Webhook API request object.
+    WebhookSignatureConfiguration:
+      description: Configuration for signing webhooks.
       type: object
       properties:
-        webhook:
-          $ref: '#/components/schemas/Webhook'
-    ZonedDateTime:
-      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
-      example: '1659380719000'
-      type: integer
-      format: int64
+        signingKeyId:
+          type: string
+          format: uuid
+        enabled:
+          type: boolean
+    WebhookSearchResponse:
+      description: Webhook search response
+      type: object
+      properties:
+        total:
+          type: integer
+          format: int64
+        webhooks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Webhook'
+    HTTPHeaders:
+      description: Type for webhook headers.
+      type: object
+      properties: {}
+    WebhookSearchRequest:
+      description: Search request for webhooks
+      type: object
+      properties:
+        search:
+          $ref: '#/components/schemas/WebhookSearchCriteria'
+    WebhookSearchCriteria:
+      description: Search criteria for webhooks.
+      type: object
+      properties:
+        description:
+          type: string
+        tenantId:
+          type: string
+          format: uuid
+        url:
+          type: string
+        numberOfResults:
+          type: integer
+        orderBy:
+          type: string
+        startRow:
+          type: integer
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
     Webhook:
       description: A server where events are sent. This includes user action events and any other events sent by FusionAuth.
       type: object
@@ -352,23 +353,22 @@ components:
         url:
           type: string
           format: URI
-    WebhookSearchCriteria:
-      description: Search criteria for webhooks.
+    WebhookRequest:
+      description: Webhook API request object.
       type: object
       properties:
-        description:
-          type: string
-        tenantId:
-          type: string
-          format: uuid
-        url:
-          type: string
-        numberOfResults:
-          type: integer
-        orderBy:
-          type: string
-        startRow:
-          type: integer
+        webhook:
+          $ref: '#/components/schemas/Webhook'
+    WebhookResponse:
+      description: Webhook API response object.
+      type: object
+      properties:
+        webhook:
+          $ref: '#/components/schemas/Webhook'
+        webhooks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Webhook'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

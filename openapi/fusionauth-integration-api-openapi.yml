@@ -68,6 +68,44 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    CleanSpeakConfiguration:
+      description: CleanSpeak configuration at the system and application level.
+      type: object
+      properties:
+        apiKey:
+          type: string
+        applicationIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+        url:
+          type: string
+          format: URI
+        usernameModeration:
+          $ref: '#/components/schemas/UsernameModeration'
+        enabled:
+          type: boolean
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    UsernameModeration:
+      type: object
+      properties:
+        applicationId:
+          type: string
+          format: uuid
+        enabled:
+          type: boolean
     IntegrationResponse:
       description: The Integration Response
       type: object
@@ -80,12 +118,16 @@ components:
       properties:
         integrations:
           $ref: '#/components/schemas/Integrations'
-    UsernameModeration:
+    KafkaConfiguration:
+      description: ''
       type: object
       properties:
-        applicationId:
+        defaultTopic:
           type: string
-          format: uuid
+        producer:
+          type: object
+          additionalProperties:
+            type: string
         enabled:
           type: boolean
     Errors:
@@ -108,48 +150,6 @@ components:
           $ref: '#/components/schemas/CleanSpeakConfiguration'
         kafka:
           $ref: '#/components/schemas/KafkaConfiguration'
-    Error:
-      description: Defines an error.
-      type: object
-      properties:
-        code:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        message:
-          type: string
-    CleanSpeakConfiguration:
-      description: CleanSpeak configuration at the system and application level.
-      type: object
-      properties:
-        apiKey:
-          type: string
-        applicationIds:
-          type: array
-          items:
-            type: string
-            format: uuid
-        url:
-          type: string
-          format: URI
-        usernameModeration:
-          $ref: '#/components/schemas/UsernameModeration'
-        enabled:
-          type: boolean
-    KafkaConfiguration:
-      description: ''
-      type: object
-      properties:
-        defaultTopic:
-          type: string
-        producer:
-          type: object
-          additionalProperties:
-            type: string
-        enabled:
-          type: boolean
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

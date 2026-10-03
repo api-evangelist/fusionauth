@@ -263,16 +263,58 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    LocalizedStrings:
-      description: Models a set of localized Strings that can be stored as JSON.
-      type: object
-      properties: {}
     UserActionRequest:
       description: User Action API request object.
       type: object
       properties:
         userAction:
           $ref: '#/components/schemas/UserAction'
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    UserActionOption:
+      description: Models content user action options.
+      type: object
+      properties:
+        localizedNames:
+          $ref: '#/components/schemas/LocalizedStrings'
+        name:
+          type: string
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    TransactionType:
+      description: The transaction types for Webhooks and other event systems within FusionAuth.
+      type: string
+      enum:
+      - None
+      - Any
+      - SimpleMajority
+      - SuperMajority
+      - AbsoluteMajority
     UserAction:
       description: An action that can be executed on a user (discipline or reward potentially).
       type: object
@@ -320,23 +362,6 @@ components:
           type: boolean
         userNotificationsEnabled:
           type: boolean
-    Errors:
-      description: Standard error domain object that can also be used as the response from an API call.
-      type: object
-      properties:
-        fieldErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-        generalErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-    ZonedDateTime:
-      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
-      example: '1659380719000'
-      type: integer
-      format: int64
     UserActionResponse:
       description: User Action API response object.
       type: object
@@ -347,35 +372,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/UserAction'
-    Error:
-      description: Defines an error.
+    LocalizedStrings:
+      description: Models a set of localized Strings that can be stored as JSON.
       type: object
-      properties:
-        code:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        message:
-          type: string
-    TransactionType:
-      description: The transaction types for Webhooks and other event systems within FusionAuth.
-      type: string
-      enum:
-      - None
-      - Any
-      - SimpleMajority
-      - SuperMajority
-      - AbsoluteMajority
-    UserActionOption:
-      description: Models content user action options.
-      type: object
-      properties:
-        localizedNames:
-          $ref: '#/components/schemas/LocalizedStrings'
-        name:
-          type: string
+      properties: {}
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

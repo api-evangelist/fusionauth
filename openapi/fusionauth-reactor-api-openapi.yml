@@ -56,6 +56,26 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    ReactorRequest:
+      description: Request for managing FusionAuth Reactor and licenses.
+      type: object
+      properties:
+        license:
+          type: string
+        licenseId:
+          type: string
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
     BreachedPasswordTenantMetric:
       description: ''
       type: object
@@ -72,14 +92,6 @@ components:
           type: integer
         passwordsCheckedCount:
           type: integer
-    ReactorRequest:
-      description: Request for managing FusionAuth Reactor and licenses.
-      type: object
-      properties:
-        license:
-          type: string
-        licenseId:
-          type: string
     ReactorMetrics:
       description: ''
       type: object
@@ -100,18 +112,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Error'
-    Error:
-      description: Defines an error.
-      type: object
-      properties:
-        code:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        message:
-          type: string
     ReactorMetricsResponse:
       description: ''
       type: object

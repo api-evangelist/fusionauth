@@ -202,55 +202,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    UserActionReasonRequest:
-      description: User Action Reason API request object.
-      type: object
-      properties:
-        userActionReason:
-          $ref: '#/components/schemas/UserActionReason'
-    LocalizedStrings:
-      description: Models a set of localized Strings that can be stored as JSON.
-      type: object
-      properties: {}
-    UserActionReasonResponse:
-      description: User Action Reason API response object.
-      type: object
-      properties:
-        userActionReason:
-          $ref: '#/components/schemas/UserActionReason'
-        userActionReasons:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserActionReason'
-    Errors:
-      description: Standard error domain object that can also be used as the response from an API call.
-      type: object
-      properties:
-        fieldErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-        generalErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-    ZonedDateTime:
-      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
-      example: '1659380719000'
-      type: integer
-      format: int64
-    Error:
-      description: Defines an error.
-      type: object
-      properties:
-        code:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        message:
-          type: string
     UserActionReason:
       description: Models action reasons.
       type: object
@@ -268,6 +219,55 @@ components:
           $ref: '#/components/schemas/LocalizedStrings'
         text:
           type: string
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    UserActionReasonResponse:
+      description: User Action Reason API response object.
+      type: object
+      properties:
+        userActionReason:
+          $ref: '#/components/schemas/UserActionReason'
+        userActionReasons:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserActionReason'
+    UserActionReasonRequest:
+      description: User Action Reason API request object.
+      type: object
+      properties:
+        userActionReason:
+          $ref: '#/components/schemas/UserActionReason'
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    LocalizedStrings:
+      description: Models a set of localized Strings that can be stored as JSON.
+      type: object
+      properties: {}
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

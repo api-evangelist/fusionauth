@@ -263,20 +263,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    KeyRequest:
-      description: Key API request object.
-      type: object
-      properties:
-        key:
-          $ref: '#/components/schemas/Key'
-    KeyType:
-      type: string
-      enum:
-      - EC
-      - RSA
-      - HMAC
-      - OKP
-      - Secret
     Key:
       description: Domain for a public key, key pair or an HMAC secret. This is used by KeyMaster to manage keys for JWTs, SAML, etc.
       type: object
@@ -314,6 +300,42 @@ components:
           type: string
         type:
           $ref: '#/components/schemas/KeyType'
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    KeyType:
+      type: string
+      enum:
+      - EC
+      - RSA
+      - HMAC
+      - OKP
+      - Secret
+    CertificateInformation:
+      type: object
+      properties:
+        issuer:
+          type: string
+        md5Fingerprint:
+          type: string
+        serialNumber:
+          type: string
+        sha1Fingerprint:
+          type: string
+        sha1Thumbprint:
+          type: string
+        sha256Fingerprint:
+          type: string
+        sha256Thumbprint:
+          type: string
+        subject:
+          type: string
+        validFrom:
+          $ref: '#/components/schemas/ZonedDateTime'
+        validTo:
+          $ref: '#/components/schemas/ZonedDateTime'
     KeySearchCriteria:
       description: Search criteria for Keys
       type: object
@@ -330,23 +352,6 @@ components:
           type: string
         startRow:
           type: integer
-    Errors:
-      description: Standard error domain object that can also be used as the response from an API call.
-      type: object
-      properties:
-        fieldErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-        generalErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-    ZonedDateTime:
-      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
-      example: '1659380719000'
-      type: integer
-      format: int64
     Error:
       description: Defines an error.
       type: object
@@ -383,35 +388,30 @@ components:
       - RS512
       - Ed25519
       - None
-    CertificateInformation:
-      type: object
-      properties:
-        issuer:
-          type: string
-        md5Fingerprint:
-          type: string
-        serialNumber:
-          type: string
-        sha1Fingerprint:
-          type: string
-        sha1Thumbprint:
-          type: string
-        sha256Fingerprint:
-          type: string
-        sha256Thumbprint:
-          type: string
-        subject:
-          type: string
-        validFrom:
-          $ref: '#/components/schemas/ZonedDateTime'
-        validTo:
-          $ref: '#/components/schemas/ZonedDateTime'
     KeySearchRequest:
       description: Search request for Keys
       type: object
       properties:
         search:
           $ref: '#/components/schemas/KeySearchCriteria'
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    KeyRequest:
+      description: Key API request object.
+      type: object
+      properties:
+        key:
+          $ref: '#/components/schemas/Key'
     KeySearchResponse:
       description: Key search response
       type: object

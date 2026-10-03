@@ -185,16 +185,30 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    MessengerResponse:
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    MessengerType:
       description: ''
+      type: string
+      enum:
+      - Generic
+      - Kafka
+      - Twilio
+    Error:
+      description: Defines an error.
       type: object
       properties:
-        messenger:
-          $ref: '#/components/schemas/BaseMessengerConfiguration'
-        messengers:
-          type: array
-          items:
-            $ref: '#/components/schemas/BaseMessengerConfiguration'
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
     BaseMessengerConfiguration:
       description: Do not require a setter for 'type', it is defined by the concrete class and is not mutable
       type: object
@@ -222,12 +236,16 @@ components:
           type: string
         type:
           $ref: '#/components/schemas/MessengerType'
-    MessengerRequest:
+    MessengerResponse:
       description: ''
       type: object
       properties:
         messenger:
           $ref: '#/components/schemas/BaseMessengerConfiguration'
+        messengers:
+          type: array
+          items:
+            $ref: '#/components/schemas/BaseMessengerConfiguration'
     Errors:
       description: Standard error domain object that can also be used as the response from an API call.
       type: object
@@ -240,30 +258,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Error'
-    ZonedDateTime:
-      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
-      example: '1659380719000'
-      type: integer
-      format: int64
-    Error:
-      description: Defines an error.
+    MessengerRequest:
+      description: ''
       type: object
       properties:
-        code:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        message:
-          type: string
-    MessengerType:
-      description: ''
-      type: string
-      enum:
-      - Generic
-      - Kafka
-      - Twilio
+        messenger:
+          $ref: '#/components/schemas/BaseMessengerConfiguration'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

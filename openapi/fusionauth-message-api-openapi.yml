@@ -248,24 +248,15 @@ components:
           type: string
         type:
           $ref: '#/components/schemas/MessageType'
-    MessageType:
-      description: ''
-      type: string
-      enum:
-      - SMS
-      - Voice
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
     Locale:
       description: A Locale object represents a specific geographical, political, or cultural region.
       example: en_US
       type: string
-    PreviewMessageTemplateRequest:
-      description: ''
-      type: object
-      properties:
-        locale:
-          $ref: '#/components/schemas/Locale'
-        messageTemplate:
-          $ref: '#/components/schemas/MessageTemplate'
     SMSMessage:
       description: ''
       type: object
@@ -273,6 +264,18 @@ components:
         phoneNumber:
           type: string
         textMessage:
+          type: string
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
           type: string
     Errors:
       description: Standard error domain object that can also be used as the response from an API call.
@@ -286,37 +289,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Error'
-    ZonedDateTime:
-      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
-      example: '1659380719000'
-      type: integer
-      format: int64
-    Error:
-      description: Defines an error.
-      type: object
-      properties:
-        code:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        message:
-          type: string
-    PreviewMessageTemplateResponse:
+    PreviewMessageTemplateRequest:
       description: ''
       type: object
       properties:
-        errors:
-          $ref: '#/components/schemas/Errors'
-        message:
-          $ref: '#/components/schemas/SMSMessage'
-        previewMessage:
-          type: string
-    MessageTemplateRequest:
-      description: A Message Template Request to the API
-      type: object
-      properties:
+        locale:
+          $ref: '#/components/schemas/Locale'
         messageTemplate:
           $ref: '#/components/schemas/MessageTemplate'
     MessageTemplateResponse:
@@ -329,6 +307,28 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/MessageTemplate'
+    PreviewMessageTemplateResponse:
+      description: ''
+      type: object
+      properties:
+        errors:
+          $ref: '#/components/schemas/Errors'
+        message:
+          $ref: '#/components/schemas/SMSMessage'
+        previewMessage:
+          type: string
+    MessageType:
+      description: ''
+      type: string
+      enum:
+      - SMS
+      - Voice
+    MessageTemplateRequest:
+      description: A Message Template Request to the API
+      type: object
+      properties:
+        messageTemplate:
+          $ref: '#/components/schemas/MessageTemplate'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

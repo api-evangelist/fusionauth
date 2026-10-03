@@ -809,6 +809,24 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    EntityGrantSearchCriteria:
+      description: Search criteria for entity grants.
+      type: object
+      properties:
+        entityId:
+          type: string
+          format: uuid
+        name:
+          type: string
+        userId:
+          type: string
+          format: uuid
+        numberOfResults:
+          type: integer
+        orderBy:
+          type: string
+        startRow:
+          type: integer
     Errors:
       description: Standard error domain object that can also be used as the response from an API call.
       type: object
@@ -821,6 +839,78 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Error'
+    EntityTypeResponse:
+      description: Entity Type API response object.
+      type: object
+      properties:
+        entityType:
+          $ref: '#/components/schemas/EntityType'
+        entityTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/EntityType'
+        permission:
+          $ref: '#/components/schemas/EntityTypePermission'
+    EntityGrantSearchResponse:
+      description: Search request for entity grants.
+      type: object
+      properties:
+        grants:
+          type: array
+          items:
+            $ref: '#/components/schemas/EntityGrant'
+        total:
+          type: integer
+          format: int64
+    EntityTypeSearchRequest:
+      description: Search request for entity types.
+      type: object
+      properties:
+        search:
+          $ref: '#/components/schemas/EntityTypeSearchCriteria'
+    EntityTypeRequest:
+      description: Entity Type API request object.
+      type: object
+      properties:
+        entityType:
+          $ref: '#/components/schemas/EntityType'
+        permission:
+          $ref: '#/components/schemas/EntityTypePermission'
+    EntityTypeSearchResponse:
+      description: Search response for entity types.
+      type: object
+      properties:
+        entityTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/EntityType'
+        total:
+          type: integer
+          format: int64
+    EntitySearchResponse:
+      description: Search request for entities
+      type: object
+      properties:
+        entities:
+          type: array
+          items:
+            $ref: '#/components/schemas/Entity'
+        nextResults:
+          type: string
+        total:
+          type: integer
+          format: int64
+    EntityJWTConfiguration:
+      description: JWT Configuration for entities.
+      type: object
+      properties:
+        accessTokenKeyId:
+          type: string
+          format: uuid
+        timeToLiveInSeconds:
+          type: integer
+        enabled:
+          type: boolean
     ZonedDateTime:
       description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
       example: '1659380719000'
@@ -850,64 +940,53 @@ components:
       properties:
         grant:
           $ref: '#/components/schemas/EntityGrant'
-    EntityGrantSearchRequest:
-      description: Search request for entity grants.
-      type: object
-      properties:
-        search:
-          $ref: '#/components/schemas/EntityGrantSearchCriteria'
-    EntityGrantSearchCriteria:
-      description: Search criteria for entity grants.
-      type: object
-      properties:
-        entityId:
-          type: string
-          format: uuid
-        name:
-          type: string
-        userId:
-          type: string
-          format: uuid
-        numberOfResults:
-          type: integer
-        orderBy:
-          type: string
-        startRow:
-          type: integer
-    EntityGrantSearchResponse:
-      description: Search request for entity grants.
-      type: object
-      properties:
-        grants:
-          type: array
-          items:
-            $ref: '#/components/schemas/EntityGrant'
-        total:
-          type: integer
-          format: int64
-    EntityTypeSearchRequest:
-      description: Search request for entity types.
-      type: object
-      properties:
-        search:
-          $ref: '#/components/schemas/EntityTypeSearchCriteria'
     EntitySearchRequest:
       description: Search request for entities
       type: object
       properties:
         search:
           $ref: '#/components/schemas/EntitySearchCriteria'
-    EntityTypeSearchResponse:
-      description: Search response for entity types.
+    Sort:
+      description: ''
+      type: string
+      enum:
+      - asc
+      - desc
+    EntityResponse:
+      description: Entity API response object.
       type: object
       properties:
-        entityTypes:
-          type: array
-          items:
-            $ref: '#/components/schemas/EntityType'
-        total:
-          type: integer
-          format: int64
+        entity:
+          $ref: '#/components/schemas/Entity'
+    Entity:
+      description: Models an entity that a user can be granted permissions to. Or an entity that can be granted permissions to another entity.
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        clientId:
+          type: string
+        clientSecret:
+          type: string
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        name:
+          type: string
+        parentId:
+          type: string
+          format: uuid
+        tenantId:
+          type: string
+          format: uuid
+        type:
+          $ref: '#/components/schemas/EntityType'
     EntityTypePermission:
       description: Models a specific entity type permission. This permission can be granted to users or other entities.
       type: object
@@ -929,6 +1008,43 @@ components:
           $ref: '#/components/schemas/ZonedDateTime'
         name:
           type: string
+    SortField:
+      description: ''
+      type: object
+      properties:
+        missing:
+          type: string
+        name:
+          type: string
+        order:
+          $ref: '#/components/schemas/Sort'
+    EntityGrant:
+      description: A grant for an entity to a user or another entity.
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        entity:
+          $ref: '#/components/schemas/Entity'
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        permissions:
+          type: array
+          uniqueItems: true
+          items: {}
+        recipientEntityId:
+          type: string
+          format: uuid
+        userId:
+          type: string
+          format: uuid
     EntityGrantResponse:
       description: Entity grant API response object.
       type: object
@@ -939,29 +1055,6 @@ components:
             $ref: '#/components/schemas/EntityGrant'
         grant:
           $ref: '#/components/schemas/EntityGrant'
-    EntityJWTConfiguration:
-      description: JWT Configuration for entities.
-      type: object
-      properties:
-        accessTokenKeyId:
-          type: string
-          format: uuid
-        timeToLiveInSeconds:
-          type: integer
-        enabled:
-          type: boolean
-    EntityTypeResponse:
-      description: Entity Type API response object.
-      type: object
-      properties:
-        entityType:
-          $ref: '#/components/schemas/EntityType'
-        entityTypes:
-          type: array
-          items:
-            $ref: '#/components/schemas/EntityType'
-        permission:
-          $ref: '#/components/schemas/EntityTypePermission'
     EntityType:
       description: Models an entity type that has a specific set of permissions. These are global objects and can be used across tenants.
       type: object
@@ -1006,76 +1099,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SortField'
-    EntityGrant:
-      description: A grant for an entity to a user or another entity.
+    EntityGrantSearchRequest:
+      description: Search request for entity grants.
       type: object
       properties:
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        entity:
-          $ref: '#/components/schemas/Entity'
-        id:
-          type: string
-          format: uuid
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        lastUpdateInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        permissions:
-          type: array
-          uniqueItems: true
-          items: {}
-        recipientEntityId:
-          type: string
-          format: uuid
-        userId:
-          type: string
-          format: uuid
-    Entity:
-      description: Models an entity that a user can be granted permissions to. Or an entity that can be granted permissions to another entity.
-      type: object
-      properties:
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        clientId:
-          type: string
-        clientSecret:
-          type: string
-        id:
-          type: string
-          format: uuid
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        lastUpdateInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        name:
-          type: string
-        parentId:
-          type: string
-          format: uuid
-        tenantId:
-          type: string
-          format: uuid
-        type:
-          $ref: '#/components/schemas/EntityType'
-    EntityTypeRequest:
-      description: Entity Type API request object.
-      type: object
-      properties:
-        entityType:
-          $ref: '#/components/schemas/EntityType'
-        permission:
-          $ref: '#/components/schemas/EntityTypePermission'
-    EntityResponse:
-      description: Entity API response object.
-      type: object
-      properties:
-        entity:
-          $ref: '#/components/schemas/Entity'
+        search:
+          $ref: '#/components/schemas/EntityGrantSearchCriteria'
     EntityTypeSearchCriteria:
       description: Search criteria for entity types.
       type: object
@@ -1088,35 +1117,6 @@ components:
           type: string
         startRow:
           type: integer
-    Sort:
-      description: ''
-      type: string
-      enum:
-      - asc
-      - desc
-    EntitySearchResponse:
-      description: Search request for entities
-      type: object
-      properties:
-        entities:
-          type: array
-          items:
-            $ref: '#/components/schemas/Entity'
-        nextResults:
-          type: string
-        total:
-          type: integer
-          format: int64
-    SortField:
-      description: ''
-      type: object
-      properties:
-        missing:
-          type: string
-        name:
-          type: string
-        order:
-          $ref: '#/components/schemas/Sort'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

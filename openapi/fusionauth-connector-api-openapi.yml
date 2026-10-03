@@ -185,24 +185,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ConnectorRequest:
-      description: ''
-      type: object
-      properties:
-        connector:
-          $ref: '#/components/schemas/BaseConnectorConfiguration'
-    Errors:
-      description: Standard error domain object that can also be used as the response from an API call.
-      type: object
-      properties:
-        fieldErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-        generalErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
     ZonedDateTime:
       description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
       example: '1659380719000'
@@ -220,13 +202,12 @@ components:
             type: object
         message:
           type: string
-    ConnectorType:
-      description: The types of connectors. This enum is stored as an ordinal on the <code>identities<code> table, order must be maintained.
-      type: string
-      enum:
-      - FusionAuth
-      - Generic
-      - LDAP
+    ConnectorRequest:
+      description: ''
+      type: object
+      properties:
+        connector:
+          $ref: '#/components/schemas/BaseConnectorConfiguration'
     BaseConnectorConfiguration:
       description: Do not require a setter for 'type', it is defined by the concrete class and is not mutable
       type: object
@@ -258,6 +239,25 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/BaseConnectorConfiguration'
+    ConnectorType:
+      description: The types of connectors. This enum is stored as an ordinal on the <code>identities<code> table, order must be maintained.
+      type: string
+      enum:
+      - FusionAuth
+      - Generic
+      - LDAP
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

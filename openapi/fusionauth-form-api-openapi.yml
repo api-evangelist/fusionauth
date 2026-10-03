@@ -355,80 +355,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    FormResponse:
-      description: Form response.
-      type: object
-      properties:
-        form:
-          $ref: '#/components/schemas/Form'
-        forms:
-          type: array
-          items:
-            $ref: '#/components/schemas/Form'
-    FormControl:
-      description: ''
-      type: string
-      enum:
-      - checkbox
-      - number
-      - password
-      - radio
-      - select
-      - textarea
-      - text
-    FormStepType:
-      description: Denotes the type of form step. This is used to configure different behavior on form steps in the registration flow.
-      type: string
-      enum:
-      - collectData
-      - verifyEmail
-      - verifyPhoneNumber
-    FormType:
-      description: ''
-      type: string
-      enum:
-      - registration
-      - adminRegistration
-      - adminUser
-      - selfServiceUser
-    FormStep:
-      description: ''
-      type: object
-      properties:
-        fields:
-          type: array
-          items:
-            type: string
-            format: uuid
-        type:
-          $ref: '#/components/schemas/FormStepType'
-    FormRequest:
-      description: Form response.
-      type: object
-      properties:
-        form:
-          $ref: '#/components/schemas/Form'
-    FormFieldResponse:
-      description: Form field response.
-      type: object
-      properties:
-        field:
-          $ref: '#/components/schemas/FormField'
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/FormField'
-    FormDataType:
-      description: ''
-      type: string
-      enum:
-      - bool
-      - consent
-      - date
-      - email
-      - number
-      - phoneNumber
-      - string
     FormField:
       description: ''
       type: object
@@ -472,18 +398,46 @@ components:
       example: '1659380719000'
       type: integer
       format: int64
-    Errors:
-      description: Standard error domain object that can also be used as the response from an API call.
+    FormType:
+      description: ''
+      type: string
+      enum:
+      - registration
+      - adminRegistration
+      - adminUser
+      - selfServiceUser
+    FormStepType:
+      description: Denotes the type of form step. This is used to configure different behavior on form steps in the registration flow.
+      type: string
+      enum:
+      - collectData
+      - verifyEmail
+      - verifyPhoneNumber
+    FormDataType:
+      description: ''
+      type: string
+      enum:
+      - bool
+      - consent
+      - date
+      - email
+      - number
+      - phoneNumber
+      - string
+    FormFieldValidator:
+      description: ''
       type: object
       properties:
-        fieldErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-        generalErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
+        expression:
+          type: string
+        enabled:
+          type: boolean
+    FormRequest:
+      description: Form response.
+      type: object
+      properties:
+        form:
+          $ref: '#/components/schemas/Form'
     Error:
       description: Defines an error.
       type: object
@@ -519,6 +473,17 @@ components:
             $ref: '#/components/schemas/FormStep'
         type:
           $ref: '#/components/schemas/FormType'
+    FormControl:
+      description: ''
+      type: string
+      enum:
+      - checkbox
+      - number
+      - password
+      - radio
+      - select
+      - textarea
+      - text
     FormFieldRequest:
       description: The FormField API request object.
       type: object
@@ -529,14 +494,49 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/FormField'
-    FormFieldValidator:
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    FormStep:
       description: ''
       type: object
       properties:
-        expression:
-          type: string
-        enabled:
-          type: boolean
+        fields:
+          type: array
+          items:
+            type: string
+            format: uuid
+        type:
+          $ref: '#/components/schemas/FormStepType'
+    FormFieldResponse:
+      description: Form field response.
+      type: object
+      properties:
+        field:
+          $ref: '#/components/schemas/FormField'
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FormField'
+    FormResponse:
+      description: Form response.
+      type: object
+      properties:
+        form:
+          $ref: '#/components/schemas/Form'
+        forms:
+          type: array
+          items:
+            $ref: '#/components/schemas/Form'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

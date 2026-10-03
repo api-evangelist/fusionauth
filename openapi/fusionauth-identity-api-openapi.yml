@@ -115,106 +115,11 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ExistingUserStrategy:
-      description: Represent the various statesexpectations of a user in the context of starting verification
-      type: string
-      enum:
-      - mustExist
-      - mustNotExist
-    Location:
-      description: Location information. Useful for IP addresses and other displayable data objects.
-      type: object
-      properties:
-        city:
-          type: string
-        country:
-          type: string
-        latitude:
-          type: number
-          format: double
-        longitude:
-          type: number
-          format: double
-        region:
-          type: string
-        zipcode:
-          type: string
-        displayString:
-          type: string
-    VerifyCompleteRequest:
-      description: Verify Complete API request object.
-      type: object
-      properties:
-        oneTimeCode:
-          type: string
-        verificationId:
-          type: string
-        eventInfo:
-          $ref: '#/components/schemas/EventInfo'
-    VerifyStartRequest:
-      description: ''
-      type: object
-      properties:
-        applicationId:
-          type: string
-          format: uuid
-        existingUserStrategy:
-          $ref: '#/components/schemas/ExistingUserStrategy'
-        loginId:
-          type: string
-        loginIdType:
-          type: string
-        state:
-          type: object
-          additionalProperties:
-            type: object
-        verificationStrategy:
-          $ref: '#/components/schemas/VerificationStrategy'
-    VerifyCompleteResponse:
-      description: Verify Complete API response object.
-      type: object
-      properties:
-        state:
-          type: object
-          additionalProperties:
-            type: object
-    VerifyStartResponse:
-      description: ''
-      type: object
-      properties:
-        oneTimeCode:
-          type: string
-        verificationId:
-          type: string
-    Errors:
-      description: Standard error domain object that can also be used as the response from an API call.
-      type: object
-      properties:
-        fieldErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-        generalErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
     VerifySendRequest:
       description: Verify Send API request object.
       type: object
       properties:
         verificationId:
-          type: string
-    Error:
-      description: Defines an error.
-      type: object
-      properties:
-        code:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        message:
           type: string
     VerifyRequest:
       description: Identity verify request. Used to administratively verify an identity.
@@ -232,6 +137,44 @@ components:
       enum:
       - ClickableLink
       - FormField
+    VerifyStartResponse:
+      description: ''
+      type: object
+      properties:
+        oneTimeCode:
+          type: string
+        verificationId:
+          type: string
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    VerifyCompleteRequest:
+      description: Verify Complete API request object.
+      type: object
+      properties:
+        oneTimeCode:
+          type: string
+        verificationId:
+          type: string
+        eventInfo:
+          $ref: '#/components/schemas/EventInfo'
+    VerifyCompleteResponse:
+      description: Verify Complete API response object.
+      type: object
+      properties:
+        state:
+          type: object
+          additionalProperties:
+            type: object
     EventInfo:
       description: Information about a user event (login, register, etc) that helps identify the source of the event (location, device type, OS, etc).
       type: object
@@ -254,6 +197,63 @@ components:
           type: string
         userAgent:
           type: string
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    VerifyStartRequest:
+      description: ''
+      type: object
+      properties:
+        applicationId:
+          type: string
+          format: uuid
+        existingUserStrategy:
+          $ref: '#/components/schemas/ExistingUserStrategy'
+        loginId:
+          type: string
+        loginIdType:
+          type: string
+        state:
+          type: object
+          additionalProperties:
+            type: object
+        verificationStrategy:
+          $ref: '#/components/schemas/VerificationStrategy'
+    Location:
+      description: Location information. Useful for IP addresses and other displayable data objects.
+      type: object
+      properties:
+        city:
+          type: string
+        country:
+          type: string
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        region:
+          type: string
+        zipcode:
+          type: string
+        displayString:
+          type: string
+    ExistingUserStrategy:
+      description: Represent the various statesexpectations of a user in the context of starting verification
+      type: string
+      enum:
+      - mustExist
+      - mustNotExist
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

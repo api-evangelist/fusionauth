@@ -51,6 +51,85 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    JSONWebKey:
+      description: A JSON Web Key as defined by <a href="https:tools.ietf.orghtmlrfc7517#section-4">RFC 7517 JSON Web Key (JWK)  Section 4<a> and <a href="https:tools.ietf.orghtmlrfc7518">RFC 7518 JSON Web Algorithms (JWA)<a>.
+      type: object
+      properties:
+        alg:
+          $ref: '#/components/schemas/Algorithm'
+        crv:
+          type: string
+        d:
+          type: string
+        dp:
+          type: string
+        dq:
+          type: string
+        e:
+          type: string
+        kid:
+          type: string
+        kty:
+          $ref: '#/components/schemas/KeyType'
+        n:
+          type: string
+        other:
+          type: object
+          additionalProperties:
+            type: object
+        p:
+          type: string
+        q:
+          type: string
+        qi:
+          type: string
+        use:
+          type: string
+        x:
+          type: string
+        x5c:
+          type: array
+          items:
+            type: string
+        x5t:
+          type: string
+        x5t#S256:
+          type: string
+        y:
+          type: string
+    KeyType:
+      type: string
+      enum:
+      - EC
+      - RSA
+      - HMAC
+      - OKP
+      - Secret
+    Algorithm:
+      description: Available JSON Web Algorithms (JWA) as described in RFC 7518 available for this JWT implementation.
+      type: string
+      enum:
+      - ES256
+      - ES384
+      - ES512
+      - HS256
+      - HS384
+      - HS512
+      - PS256
+      - PS384
+      - PS512
+      - RS256
+      - RS384
+      - RS512
+      - none
+    JWKSResponse:
+      description: ''
+      type: object
+      properties:
+        keys:
+          type: array
+          items:
+            $ref: '#/components/schemas/JSONWebKey'
     OpenIdConfiguration:
       description: OpenID Connect Configuration as described by the <a href="https:openid.netspecsopenid-connect-discovery-1_0.html#ProviderMetadata">OpenID  Provider Metadata<a>.
       type: object
@@ -117,85 +196,6 @@ components:
           type: array
           items:
             type: string
-    KeyType:
-      type: string
-      enum:
-      - EC
-      - RSA
-      - HMAC
-      - OKP
-      - Secret
-    Algorithm:
-      description: Available JSON Web Algorithms (JWA) as described in RFC 7518 available for this JWT implementation.
-      type: string
-      enum:
-      - ES256
-      - ES384
-      - ES512
-      - HS256
-      - HS384
-      - HS512
-      - PS256
-      - PS384
-      - PS512
-      - RS256
-      - RS384
-      - RS512
-      - none
-    JWKSResponse:
-      description: ''
-      type: object
-      properties:
-        keys:
-          type: array
-          items:
-            $ref: '#/components/schemas/JSONWebKey'
-    JSONWebKey:
-      description: A JSON Web Key as defined by <a href="https:tools.ietf.orghtmlrfc7517#section-4">RFC 7517 JSON Web Key (JWK)  Section 4<a> and <a href="https:tools.ietf.orghtmlrfc7518">RFC 7518 JSON Web Algorithms (JWA)<a>.
-      type: object
-      properties:
-        alg:
-          $ref: '#/components/schemas/Algorithm'
-        crv:
-          type: string
-        d:
-          type: string
-        dp:
-          type: string
-        dq:
-          type: string
-        e:
-          type: string
-        kid:
-          type: string
-        kty:
-          $ref: '#/components/schemas/KeyType'
-        n:
-          type: string
-        other:
-          type: object
-          additionalProperties:
-            type: object
-        p:
-          type: string
-        q:
-          type: string
-        qi:
-          type: string
-        use:
-          type: string
-        x:
-          type: string
-        x5c:
-          type: array
-          items:
-            type: string
-        x5t:
-          type: string
-        x5t#S256:
-          type: string
-        y:
-          type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
