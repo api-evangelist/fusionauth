@@ -115,12 +115,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    VerifySendRequest:
-      description: Verify Send API request object.
-      type: object
-      properties:
-        verificationId:
-          type: string
     VerifyRequest:
       description: Identity verify request. Used to administratively verify an identity.
       type: object
@@ -137,44 +131,6 @@ components:
       enum:
       - ClickableLink
       - FormField
-    VerifyStartResponse:
-      description: ''
-      type: object
-      properties:
-        oneTimeCode:
-          type: string
-        verificationId:
-          type: string
-    Error:
-      description: Defines an error.
-      type: object
-      properties:
-        code:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        message:
-          type: string
-    VerifyCompleteRequest:
-      description: Verify Complete API request object.
-      type: object
-      properties:
-        oneTimeCode:
-          type: string
-        verificationId:
-          type: string
-        eventInfo:
-          $ref: '#/components/schemas/EventInfo'
-    VerifyCompleteResponse:
-      description: Verify Complete API response object.
-      type: object
-      properties:
-        state:
-          type: object
-          additionalProperties:
-            type: object
     EventInfo:
       description: Information about a user event (login, register, etc) that helps identify the source of the event (location, device type, OS, etc).
       type: object
@@ -197,18 +153,16 @@ components:
           type: string
         userAgent:
           type: string
-    Errors:
-      description: Standard error domain object that can also be used as the response from an API call.
+    VerifyCompleteRequest:
+      description: Verify Complete API request object.
       type: object
       properties:
-        fieldErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-        generalErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
+        oneTimeCode:
+          type: string
+        verificationId:
+          type: string
+        eventInfo:
+          $ref: '#/components/schemas/EventInfo'
     VerifyStartRequest:
       description: ''
       type: object
@@ -248,12 +202,58 @@ components:
           type: string
         displayString:
           type: string
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    VerifySendRequest:
+      description: Verify Send API request object.
+      type: object
+      properties:
+        verificationId:
+          type: string
+    VerifyStartResponse:
+      description: ''
+      type: object
+      properties:
+        oneTimeCode:
+          type: string
+        verificationId:
+          type: string
     ExistingUserStrategy:
       description: Represent the various statesexpectations of a user in the context of starting verification
       type: string
       enum:
       - mustExist
       - mustNotExist
+    VerifyCompleteResponse:
+      description: Verify Complete API response object.
+      type: object
+      properties:
+        state:
+          type: object
+          additionalProperties:
+            type: object
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

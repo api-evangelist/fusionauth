@@ -254,11 +254,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ZonedDateTime:
-      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
-      example: '1659380719000'
-      type: integer
-      format: int64
     ConsentSearchResponse:
       description: Consent search response
       type: object
@@ -270,6 +265,79 @@ components:
         total:
           type: integer
           format: int64
+    ConsentSearchRequest:
+      description: Search request for Consents
+      type: object
+      properties:
+        search:
+          $ref: '#/components/schemas/ConsentSearchCriteria'
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    EmailPlus:
+      type: object
+      properties:
+        emailTemplateId:
+          type: string
+          format: uuid
+        maximumTimeToSendEmailInHours:
+          type: integer
+        minimumTimeToSendEmailInHours:
+          type: integer
+        enabled:
+          type: boolean
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    ConsentResponse:
+      description: API response for consent.
+      type: object
+      properties:
+        consent:
+          $ref: '#/components/schemas/Consent'
+        consents:
+          type: array
+          items:
+            $ref: '#/components/schemas/Consent'
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    ConsentSearchCriteria:
+      description: Search criteria for Consents
+      type: object
+      properties:
+        name:
+          type: string
+        numberOfResults:
+          type: integer
+        orderBy:
+          type: string
+        startRow:
+          type: integer
+    LocalizedIntegers:
+      description: Models a set of localized Integers that can be stored as JSON.
+      type: object
+      properties: {}
     Consent:
       description: Models a consent.
       type: object
@@ -302,80 +370,12 @@ components:
           type: array
           items:
             type: string
-    Error:
-      description: Defines an error.
-      type: object
-      properties:
-        code:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        message:
-          type: string
     ConsentRequest:
       description: API request for User consent types.
       type: object
       properties:
         consent:
           $ref: '#/components/schemas/Consent'
-    ConsentSearchCriteria:
-      description: Search criteria for Consents
-      type: object
-      properties:
-        name:
-          type: string
-        numberOfResults:
-          type: integer
-        orderBy:
-          type: string
-        startRow:
-          type: integer
-    Errors:
-      description: Standard error domain object that can also be used as the response from an API call.
-      type: object
-      properties:
-        fieldErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-        generalErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-    EmailPlus:
-      type: object
-      properties:
-        emailTemplateId:
-          type: string
-          format: uuid
-        maximumTimeToSendEmailInHours:
-          type: integer
-        minimumTimeToSendEmailInHours:
-          type: integer
-        enabled:
-          type: boolean
-    ConsentResponse:
-      description: API response for consent.
-      type: object
-      properties:
-        consent:
-          $ref: '#/components/schemas/Consent'
-        consents:
-          type: array
-          items:
-            $ref: '#/components/schemas/Consent'
-    ConsentSearchRequest:
-      description: Search request for Consents
-      type: object
-      properties:
-        search:
-          $ref: '#/components/schemas/ConsentSearchCriteria'
-    LocalizedIntegers:
-      description: Models a set of localized Integers that can be stored as JSON.
-      type: object
-      properties: {}
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

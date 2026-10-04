@@ -348,10 +348,17 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/EmailTemplate'
-    Locale:
-      description: A Locale object represents a specific geographical, political, or cultural region.
-      example: en_US
-      type: string
+    EmailTemplateErrors:
+      type: object
+      properties:
+        parseErrors:
+          type: object
+          additionalProperties:
+            type: string
+        renderErrors:
+          type: object
+          additionalProperties:
+            type: string
     EmailTemplateSearchResponse:
       description: Email template search response
       type: object
@@ -363,6 +370,98 @@ components:
         total:
           type: integer
           format: int64
+    EmailAddress:
+      description: An email address.
+      type: object
+      properties:
+        address:
+          type: string
+        display:
+          type: string
+    Locale:
+      description: A Locale object represents a specific geographical, political, or cultural region.
+      example: en_US
+      type: string
+    Email:
+      description: This class is an abstraction of a simple email message.
+      type: object
+      properties:
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+        bcc:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailAddress'
+        cc:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailAddress'
+        from:
+          $ref: '#/components/schemas/EmailAddress'
+        html:
+          type: string
+        replyTo:
+          $ref: '#/components/schemas/EmailAddress'
+        subject:
+          type: string
+        text:
+          type: string
+        to:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailAddress'
+    EmailTemplateRequest:
+      description: Email template request.
+      type: object
+      properties:
+        emailTemplate:
+          $ref: '#/components/schemas/EmailTemplate'
+    PreviewResponse:
+      description: ''
+      type: object
+      properties:
+        email:
+          $ref: '#/components/schemas/Email'
+        errors:
+          $ref: '#/components/schemas/Errors'
+    PreviewRequest:
+      description: ''
+      type: object
+      properties:
+        emailTemplate:
+          $ref: '#/components/schemas/EmailTemplate'
+        locale:
+          $ref: '#/components/schemas/Locale'
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    SendResponse:
+      description: ''
+      type: object
+      properties:
+        anonymousResults:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/EmailTemplateErrors'
+        results:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/EmailTemplateErrors'
+    LocalizedStrings:
+      description: Models a set of localized Strings that can be stored as JSON.
+      type: object
+      properties: {}
     EmailTemplate:
       description: Stores an email template used to send emails to users.
       type: object
@@ -394,147 +493,12 @@ components:
           $ref: '#/components/schemas/LocalizedStrings'
         name:
           type: string
-    Errors:
-      description: Standard error domain object that can also be used as the response from an API call.
-      type: object
-      properties:
-        fieldErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-        generalErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-    EmailAddress:
-      description: An email address.
-      type: object
-      properties:
-        address:
-          type: string
-        display:
-          type: string
-    PreviewResponse:
-      description: ''
-      type: object
-      properties:
-        email:
-          $ref: '#/components/schemas/Email'
-        errors:
-          $ref: '#/components/schemas/Errors'
-    Email:
-      description: This class is an abstraction of a simple email message.
-      type: object
-      properties:
-        attachments:
-          type: array
-          items:
-            $ref: '#/components/schemas/Attachment'
-        bcc:
-          type: array
-          items:
-            $ref: '#/components/schemas/EmailAddress'
-        cc:
-          type: array
-          items:
-            $ref: '#/components/schemas/EmailAddress'
-        from:
-          $ref: '#/components/schemas/EmailAddress'
-        html:
-          type: string
-        replyTo:
-          $ref: '#/components/schemas/EmailAddress'
-        subject:
-          type: string
-        text:
-          type: string
-        to:
-          type: array
-          items:
-            $ref: '#/components/schemas/EmailAddress'
-    SendResponse:
-      description: ''
-      type: object
-      properties:
-        anonymousResults:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/EmailTemplateErrors'
-        results:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/EmailTemplateErrors'
     EmailTemplateSearchRequest:
       description: Search request for email templates
       type: object
       properties:
         search:
           $ref: '#/components/schemas/EmailTemplateSearchCriteria'
-    EmailTemplateRequest:
-      description: Email template request.
-      type: object
-      properties:
-        emailTemplate:
-          $ref: '#/components/schemas/EmailTemplate'
-    ZonedDateTime:
-      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
-      example: '1659380719000'
-      type: integer
-      format: int64
-    EmailTemplateErrors:
-      type: object
-      properties:
-        parseErrors:
-          type: object
-          additionalProperties:
-            type: string
-        renderErrors:
-          type: object
-          additionalProperties:
-            type: string
-    EmailTemplateSearchCriteria:
-      description: Search criteria for Email templates
-      type: object
-      properties:
-        name:
-          type: string
-        numberOfResults:
-          type: integer
-        orderBy:
-          type: string
-        startRow:
-          type: integer
-    Error:
-      description: Defines an error.
-      type: object
-      properties:
-        code:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        message:
-          type: string
-    Attachment:
-      description: This class is a simple attachment with a byte array, name and MIME type.
-      type: object
-      properties:
-        attachment:
-          type: string
-          format: binary
-        mime:
-          type: string
-        name:
-          type: string
-    PreviewRequest:
-      description: ''
-      type: object
-      properties:
-        emailTemplate:
-          $ref: '#/components/schemas/EmailTemplate'
-        locale:
-          $ref: '#/components/schemas/Locale'
     SendRequest:
       description: ''
       type: object
@@ -567,10 +531,46 @@ components:
           items:
             type: string
             format: uuid
-    LocalizedStrings:
-      description: Models a set of localized Strings that can be stored as JSON.
+    EmailTemplateSearchCriteria:
+      description: Search criteria for Email templates
       type: object
-      properties: {}
+      properties:
+        name:
+          type: string
+        numberOfResults:
+          type: integer
+        orderBy:
+          type: string
+        startRow:
+          type: integer
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    Attachment:
+      description: This class is a simple attachment with a byte array, name and MIME type.
+      type: object
+      properties:
+        attachment:
+          type: string
+          format: binary
+        mime:
+          type: string
+        name:
+          type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

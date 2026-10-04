@@ -68,24 +68,59 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    WebhookEventLogConfiguration:
-      description: The system configuration for Webhook Event Log data.
-      type: object
-      properties:
-        delete:
-          $ref: '#/components/schemas/DeleteConfiguration'
-        enabled:
-          type: boolean
-    ZonedDateTime:
-      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
-      example: '1659380719000'
-      type: integer
-      format: int64
     LoginRecordConfiguration:
       type: object
       properties:
         delete:
           $ref: '#/components/schemas/DeleteConfiguration'
+    SystemConfigurationRequest:
+      description: Request for the system configuration API.
+      type: object
+      properties:
+        systemConfiguration:
+          $ref: '#/components/schemas/SystemConfiguration'
+    DeleteConfiguration:
+      type: object
+      properties:
+        numberOfDaysToRetain:
+          type: integer
+        enabled:
+          type: boolean
+    CORSConfiguration:
+      description: ''
+      type: object
+      properties:
+        allowCredentials:
+          type: boolean
+        allowedHeaders:
+          type: array
+          items:
+            type: string
+        allowedMethods:
+          type: array
+          items:
+            $ref: '#/components/schemas/HTTPMethod'
+        allowedOrigins:
+          type: array
+          items:
+            type: string
+            format: URI
+        debug:
+          type: boolean
+        exposedHeaders:
+          type: array
+          items:
+            type: string
+        preflightMaxAgeInSeconds:
+          type: integer
+        enabled:
+          type: boolean
+    SystemConfigurationResponse:
+      description: Response for the system configuration API.
+      type: object
+      properties:
+        systemConfiguration:
+          $ref: '#/components/schemas/SystemConfiguration'
     SystemConfiguration:
       description: ''
       type: object
@@ -116,48 +151,6 @@ components:
           $ref: '#/components/schemas/UsageDataConfiguration'
         webhookEventLogConfiguration:
           $ref: '#/components/schemas/WebhookEventLogConfiguration'
-    DeleteConfiguration:
-      type: object
-      properties:
-        numberOfDaysToRetain:
-          type: integer
-        enabled:
-          type: boolean
-    SystemConfigurationResponse:
-      description: Response for the system configuration API.
-      type: object
-      properties:
-        systemConfiguration:
-          $ref: '#/components/schemas/SystemConfiguration'
-    CORSConfiguration:
-      description: ''
-      type: object
-      properties:
-        allowCredentials:
-          type: boolean
-        allowedHeaders:
-          type: array
-          items:
-            type: string
-        allowedMethods:
-          type: array
-          items:
-            $ref: '#/components/schemas/HTTPMethod'
-        allowedOrigins:
-          type: array
-          items:
-            type: string
-            format: URI
-        debug:
-          type: boolean
-        exposedHeaders:
-          type: array
-          items:
-            type: string
-        preflightMaxAgeInSeconds:
-          type: integer
-        enabled:
-          type: boolean
     UsageDataConfiguration:
       description: Config for Usage Data  Stats
       type: object
@@ -166,6 +159,72 @@ components:
           type: integer
         enabled:
           type: boolean
+    UIConfiguration:
+      type: object
+      properties:
+        headerColor:
+          type: string
+        logoURL:
+          type: string
+        menuFontColor:
+          type: string
+    EventLogConfiguration:
+      type: object
+      properties:
+        numberToRetain:
+          type: integer
+    SystemTrustedProxyConfigurationPolicy:
+      description: ''
+      type: string
+      enum:
+      - All
+      - OnlyConfigured
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    SystemTrustedProxyConfiguration:
+      description: ''
+      type: object
+      properties:
+        trustPolicy:
+          $ref: '#/components/schemas/SystemTrustedProxyConfigurationPolicy'
+        trusted:
+          type: array
+          items:
+            type: string
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    WebhookEventLogConfiguration:
+      description: The system configuration for Webhook Event Log data.
+      type: object
+      properties:
+        delete:
+          $ref: '#/components/schemas/DeleteConfiguration'
+        enabled:
+          type: boolean
+    HTTPMethod:
+      description: ''
+      type: string
+      enum:
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      - HEAD
+      - OPTIONS
+      - PATCH
     AuditLogConfiguration:
       type: object
       properties:
@@ -183,70 +242,11 @@ components:
             type: object
         message:
           type: string
-    SystemTrustedProxyConfiguration:
-      description: ''
-      type: object
-      properties:
-        trustPolicy:
-          $ref: '#/components/schemas/SystemTrustedProxyConfigurationPolicy'
-        trusted:
-          type: array
-          items:
-            type: string
-    SystemConfigurationRequest:
-      description: Request for the system configuration API.
-      type: object
-      properties:
-        systemConfiguration:
-          $ref: '#/components/schemas/SystemConfiguration'
-    HTTPMethod:
-      description: ''
-      type: string
-      enum:
-      - GET
-      - POST
-      - PUT
-      - DELETE
-      - HEAD
-      - OPTIONS
-      - PATCH
     ZoneId:
       description: Timezone Identifier
       example: America/Denver
       pattern: ^w+/w+$
       type: string
-    Errors:
-      description: Standard error domain object that can also be used as the response from an API call.
-      type: object
-      properties:
-        fieldErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-        generalErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-    EventLogConfiguration:
-      type: object
-      properties:
-        numberToRetain:
-          type: integer
-    SystemTrustedProxyConfigurationPolicy:
-      description: ''
-      type: string
-      enum:
-      - All
-      - OnlyConfigured
-    UIConfiguration:
-      type: object
-      properties:
-        headerColor:
-          type: string
-        logoURL:
-          type: string
-        menuFontColor:
-          type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

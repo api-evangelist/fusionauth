@@ -68,6 +68,64 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    Integrations:
+      description: Available Integrations
+      type: object
+      properties:
+        cleanspeak:
+          $ref: '#/components/schemas/CleanSpeakConfiguration'
+        kafka:
+          $ref: '#/components/schemas/KafkaConfiguration'
+    IntegrationResponse:
+      description: The Integration Response
+      type: object
+      properties:
+        integrations:
+          $ref: '#/components/schemas/Integrations'
+    KafkaConfiguration:
+      description: ''
+      type: object
+      properties:
+        defaultTopic:
+          type: string
+        producer:
+          type: object
+          additionalProperties:
+            type: string
+        enabled:
+          type: boolean
+    UsernameModeration:
+      type: object
+      properties:
+        applicationId:
+          type: string
+          format: uuid
+        enabled:
+          type: boolean
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
     CleanSpeakConfiguration:
       description: CleanSpeak configuration at the system and application level.
       type: object
@@ -86,70 +144,12 @@ components:
           $ref: '#/components/schemas/UsernameModeration'
         enabled:
           type: boolean
-    Error:
-      description: Defines an error.
-      type: object
-      properties:
-        code:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        message:
-          type: string
-    UsernameModeration:
-      type: object
-      properties:
-        applicationId:
-          type: string
-          format: uuid
-        enabled:
-          type: boolean
-    IntegrationResponse:
-      description: The Integration Response
-      type: object
-      properties:
-        integrations:
-          $ref: '#/components/schemas/Integrations'
     IntegrationRequest:
       description: The Integration Request
       type: object
       properties:
         integrations:
           $ref: '#/components/schemas/Integrations'
-    KafkaConfiguration:
-      description: ''
-      type: object
-      properties:
-        defaultTopic:
-          type: string
-        producer:
-          type: object
-          additionalProperties:
-            type: string
-        enabled:
-          type: boolean
-    Errors:
-      description: Standard error domain object that can also be used as the response from an API call.
-      type: object
-      properties:
-        fieldErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-        generalErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-    Integrations:
-      description: Available Integrations
-      type: object
-      properties:
-        cleanspeak:
-          $ref: '#/components/schemas/CleanSpeakConfiguration'
-        kafka:
-          $ref: '#/components/schemas/KafkaConfiguration'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

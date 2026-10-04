@@ -229,6 +229,34 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    PreviewMessageTemplateRequest:
+      description: ''
+      type: object
+      properties:
+        locale:
+          $ref: '#/components/schemas/Locale'
+        messageTemplate:
+          $ref: '#/components/schemas/MessageTemplate'
+    MessageType:
+      description: ''
+      type: string
+      enum:
+      - SMS
+      - Voice
+    SMSMessage:
+      description: ''
+      type: object
+      properties:
+        phoneNumber:
+          type: string
+        textMessage:
+          type: string
+    MessageTemplateRequest:
+      description: A Message Template Request to the API
+      type: object
+      properties:
+        messageTemplate:
+          $ref: '#/components/schemas/MessageTemplate'
     MessageTemplate:
       description: Stores an message template used to distribute messages;
       type: object
@@ -248,35 +276,15 @@ components:
           type: string
         type:
           $ref: '#/components/schemas/MessageType'
+    Locale:
+      description: A Locale object represents a specific geographical, political, or cultural region.
+      example: en_US
+      type: string
     ZonedDateTime:
       description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
       example: '1659380719000'
       type: integer
       format: int64
-    Locale:
-      description: A Locale object represents a specific geographical, political, or cultural region.
-      example: en_US
-      type: string
-    SMSMessage:
-      description: ''
-      type: object
-      properties:
-        phoneNumber:
-          type: string
-        textMessage:
-          type: string
-    Error:
-      description: Defines an error.
-      type: object
-      properties:
-        code:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        message:
-          type: string
     Errors:
       description: Standard error domain object that can also be used as the response from an API call.
       type: object
@@ -289,24 +297,18 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Error'
-    PreviewMessageTemplateRequest:
-      description: ''
+    Error:
+      description: Defines an error.
       type: object
       properties:
-        locale:
-          $ref: '#/components/schemas/Locale'
-        messageTemplate:
-          $ref: '#/components/schemas/MessageTemplate'
-    MessageTemplateResponse:
-      description: ''
-      type: object
-      properties:
-        messageTemplate:
-          $ref: '#/components/schemas/MessageTemplate'
-        messageTemplates:
-          type: array
-          items:
-            $ref: '#/components/schemas/MessageTemplate'
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
     PreviewMessageTemplateResponse:
       description: ''
       type: object
@@ -317,18 +319,16 @@ components:
           $ref: '#/components/schemas/SMSMessage'
         previewMessage:
           type: string
-    MessageType:
+    MessageTemplateResponse:
       description: ''
-      type: string
-      enum:
-      - SMS
-      - Voice
-    MessageTemplateRequest:
-      description: A Message Template Request to the API
       type: object
       properties:
         messageTemplate:
           $ref: '#/components/schemas/MessageTemplate'
+        messageTemplates:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageTemplate'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

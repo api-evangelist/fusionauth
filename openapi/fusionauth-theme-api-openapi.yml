@@ -216,57 +216,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ThemeResponse:
-      description: Theme API response object.
-      type: object
-      properties:
-        theme:
-          $ref: '#/components/schemas/Theme'
-        themes:
-          type: array
-          items:
-            $ref: '#/components/schemas/Theme'
-    ZonedDateTime:
-      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
-      example: '1659380719000'
-      type: integer
-      format: int64
-    ThemeSearchResponse:
-      description: Search response for Themes
-      type: object
-      properties:
-        themes:
-          type: array
-          items:
-            $ref: '#/components/schemas/Theme'
-        total:
-          type: integer
-          format: int64
-    Favicon:
-      description: Components of a Favicon in an HTML {@code <head>} element.
-      type: object
-      properties:
-        href:
-          type: string
-          format: URI
-        rel:
-          type: string
-        sizes:
-          type: string
-        type:
-          type: string
-    Error:
-      description: Defines an error.
-      type: object
-      properties:
-        code:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        message:
-          type: string
     SimpleThemeVariables:
       description: Theme object for values used in the css variables for simple themes.
       type: object
@@ -341,12 +290,51 @@ components:
           type: string
         primaryButtonTextFocusColor:
           type: string
-    ThemeSearchRequest:
-      description: Search request for Themes.
+    LocalizedStrings:
+      description: Models a set of localized Strings that can be stored as JSON.
+      type: object
+      properties: {}
+    Favicon:
+      description: Components of a Favicon in an HTML {@code <head>} element.
       type: object
       properties:
-        search:
-          $ref: '#/components/schemas/ThemeSearchCriteria'
+        href:
+          type: string
+          format: URI
+        rel:
+          type: string
+        sizes:
+          type: string
+        type:
+          type: string
+    ThemeRequest:
+      description: Theme API request object.
+      type: object
+      properties:
+        sourceThemeId:
+          type: string
+          format: uuid
+        theme:
+          $ref: '#/components/schemas/Theme'
+    ThemeType:
+      type: string
+      enum:
+      - advanced
+      - simple
+    ThemeSearchCriteria:
+      description: Search criteria for themes
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/ThemeType'
+        numberOfResults:
+          type: integer
+        orderBy:
+          type: string
+        startRow:
+          type: integer
     Templates:
       type: object
       properties:
@@ -454,32 +442,12 @@ components:
           type: string
         registrationSend:
           type: string
-    ThemeSearchCriteria:
-      description: Search criteria for themes
+    ThemeSearchRequest:
+      description: Search request for Themes.
       type: object
       properties:
-        name:
-          type: string
-        type:
-          $ref: '#/components/schemas/ThemeType'
-        numberOfResults:
-          type: integer
-        orderBy:
-          type: string
-        startRow:
-          type: integer
-    Errors:
-      description: Standard error domain object that can also be used as the response from an API call.
-      type: object
-      properties:
-        fieldErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-        generalErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
+        search:
+          $ref: '#/components/schemas/ThemeSearchCriteria'
     Theme:
       description: ''
       type: object
@@ -509,24 +477,56 @@ components:
           $ref: '#/components/schemas/ThemeType'
         variables:
           $ref: '#/components/schemas/SimpleThemeVariables'
-    ThemeRequest:
-      description: Theme API request object.
+    ThemeSearchResponse:
+      description: Search response for Themes
       type: object
       properties:
-        sourceThemeId:
+        themes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Theme'
+        total:
+          type: integer
+          format: int64
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
           type: string
-          format: uuid
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    ThemeResponse:
+      description: Theme API response object.
+      type: object
+      properties:
         theme:
           $ref: '#/components/schemas/Theme'
-    ThemeType:
-      type: string
-      enum:
-      - advanced
-      - simple
-    LocalizedStrings:
-      description: Models a set of localized Strings that can be stored as JSON.
-      type: object
-      properties: {}
+        themes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Theme'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

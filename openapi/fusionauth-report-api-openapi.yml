@@ -205,18 +205,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Error:
-      description: Defines an error.
-      type: object
-      properties:
-        code:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        message:
-          type: string
     Count:
       description: ''
       type: object
@@ -225,30 +213,6 @@ components:
           type: integer
         interval:
           type: integer
-    Totals:
-      type: object
-      properties:
-        logins:
-          type: integer
-          format: int64
-        registrations:
-          type: integer
-          format: int64
-        totalRegistrations:
-          type: integer
-          format: int64
-    Errors:
-      description: Standard error domain object that can also be used as the response from an API call.
-      type: object
-      properties:
-        fieldErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-        generalErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
     MonthlyActiveUserReportResponse:
       description: Response for the daily active user report.
       type: object
@@ -260,11 +224,11 @@ components:
         total:
           type: integer
           format: int64
-    DailyActiveUserReportResponse:
-      description: Response for the daily active user report.
+    LoginReportResponse:
+      description: Response for the login report.
       type: object
       properties:
-        dailyActiveUsers:
+        hourlyCounts:
           type: array
           items:
             $ref: '#/components/schemas/Count'
@@ -285,6 +249,29 @@ components:
         totalGlobalRegistrations:
           type: integer
           format: int64
+    DailyActiveUserReportResponse:
+      description: Response for the daily active user report.
+      type: object
+      properties:
+        dailyActiveUsers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Count'
+        total:
+          type: integer
+          format: int64
+    Totals:
+      type: object
+      properties:
+        logins:
+          type: integer
+          format: int64
+        registrations:
+          type: integer
+          format: int64
+        totalRegistrations:
+          type: integer
+          format: int64
     RegistrationReportResponse:
       description: Response for the registration report.
       type: object
@@ -296,17 +283,30 @@ components:
         total:
           type: integer
           format: int64
-    LoginReportResponse:
-      description: Response for the login report.
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
       type: object
       properties:
-        hourlyCounts:
+        fieldErrors:
           type: array
           items:
-            $ref: '#/components/schemas/Count'
-        total:
-          type: integer
-          format: int64
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

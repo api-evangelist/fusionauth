@@ -64,18 +64,6 @@ components:
           type: string
         licenseId:
           type: string
-    Error:
-      description: Defines an error.
-      type: object
-      properties:
-        code:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        message:
-          type: string
     BreachedPasswordTenantMetric:
       description: ''
       type: object
@@ -112,6 +100,18 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Error'
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
     ReactorMetricsResponse:
       description: ''
       type: object

@@ -309,181 +309,34 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    MultiFactorEmailMethod:
+    TenantSearchCriteria:
+      description: Search criteria for Tenants
       type: object
       properties:
-        templateId:
+        name:
           type: string
-          format: uuid
-        enabled:
-          type: boolean
-    TenantRequest:
-      description: ''
-      type: object
-      properties:
-        sourceTenantId:
-          type: string
-          format: uuid
-        tenant:
-          $ref: '#/components/schemas/Tenant'
-        webhookIds:
-          type: array
-          items:
-            type: string
-            format: uuid
-        eventInfo:
-          $ref: '#/components/schemas/EventInfo'
-    EventConfiguration:
-      description: ''
-      type: object
-      properties:
-        events:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/EventConfigurationData'
-    RefreshTokenExpirationPolicy:
-      description: ''
-      type: string
-      enum:
-      - Fixed
-      - SlidingWindow
-      - SlidingWindowWithMaximumLifetime
-    SecureGeneratorConfiguration:
-      description: ''
-      type: object
-      properties:
-        length:
+        numberOfResults:
           type: integer
-        type:
-          $ref: '#/components/schemas/SecureGeneratorType'
-    PhoneUnverifiedOptions:
-      description: Configuration for unverified phone number identities.
+        orderBy:
+          type: string
+        startRow:
+          type: integer
+    EmailUnverifiedOptions:
+      description: ''
       type: object
       properties:
-        allowPhoneNumberChangeWhenGated:
+        allowEmailChangeWhenGated:
           type: boolean
         behavior:
           $ref: '#/components/schemas/UnverifiedBehavior'
-    PasswordEncryptionConfiguration:
-      description: Password Encryption Scheme Configuration
-      type: object
-      properties:
-        encryptionScheme:
-          type: string
-        encryptionSchemeFactor:
-          type: integer
-        modifyEncryptionSchemeOnLogin:
-          type: boolean
-    TenantResponse:
-      description: ''
-      type: object
-      properties:
-        tenant:
-          $ref: '#/components/schemas/Tenant'
-        tenants:
-          type: array
-          items:
-            $ref: '#/components/schemas/Tenant'
-    UnverifiedBehavior:
+    CaptchaMethod:
       description: ''
       type: string
       enum:
-      - Allow
-      - Gated
-    MaximumPasswordAge:
-      description: ''
-      type: object
-      properties:
-        days:
-          type: integer
-        enabled:
-          type: boolean
-    TenantMultiFactorConfiguration:
-      description: ''
-      type: object
-      properties:
-        authenticator:
-          $ref: '#/components/schemas/MultiFactorAuthenticatorMethod'
-        email:
-          $ref: '#/components/schemas/MultiFactorEmailMethod'
-        loginPolicy:
-          $ref: '#/components/schemas/MultiFactorLoginPolicy'
-        sms:
-          $ref: '#/components/schemas/MultiFactorSMSMethod'
-        voice:
-          $ref: '#/components/schemas/MultiFactorVoiceMethod'
-    BreachAction:
-      type: string
-      enum:
-      - 'Off'
-      - RecordOnly
-      - NotifyUser
-      - RequireChange
-    UniqueUsernameConfiguration:
-      type: object
-      properties:
-        numberOfDigits:
-          type: integer
-        separator:
-          type: string
-        strategy:
-          $ref: '#/components/schemas/UniqueUsernameStrategy'
-        enabled:
-          type: boolean
-    TenantDeleteRequest:
-      description: Request for the Tenant API to delete a tenant rather than using the URL parameters.
-      type: object
-      properties:
-        async:
-          type: boolean
-        eventInfo:
-          $ref: '#/components/schemas/EventInfo'
-    TenantAccessControlConfiguration:
-      description: ''
-      type: object
-      properties:
-        uiIPAccessControlListId:
-          type: string
-          format: uuid
-    Errors:
-      description: Standard error domain object that can also be used as the response from an API call.
-      type: object
-      properties:
-        fieldErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-        generalErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-    RefreshTokenRevocationPolicy:
-      description: ''
-      type: object
-      properties:
-        onLoginPrevented:
-          type: boolean
-        onMultiFactorEnable:
-          type: boolean
-        onOneTimeTokenReuse:
-          type: boolean
-        onPasswordChanged:
-          type: boolean
-    EmailSecurityType:
-      type: string
-      enum:
-      - NONE
-      - SSL
-      - TLS
-    TransactionType:
-      description: The transaction types for Webhooks and other event systems within FusionAuth.
-      type: string
-      enum:
-      - None
-      - Any
-      - SimpleMajority
-      - SuperMajority
-      - AbsoluteMajority
+      - GoogleRecaptchaV2
+      - GoogleRecaptchaV3
+      - HCaptcha
+      - HCaptchaEnterprise
     TenantUsernameConfiguration:
       description: ''
       type: object
@@ -496,105 +349,45 @@ components:
       properties:
         onPasswordReset:
           type: boolean
-    TenantSSOConfiguration:
+    PasswordEncryptionConfiguration:
+      description: Password Encryption Scheme Configuration
+      type: object
+      properties:
+        encryptionScheme:
+          type: string
+        encryptionSchemeFactor:
+          type: integer
+        modifyEncryptionSchemeOnLogin:
+          type: boolean
+    SecureGeneratorConfiguration:
       description: ''
       type: object
       properties:
-        allowAccessTokenBootstrap:
-          type: boolean
-        deviceTrustTimeToLiveInSeconds:
+        length:
           type: integer
-    TenantUserDeletePolicy:
-      description: A Tenant-level policy for deleting Users.
+        type:
+          $ref: '#/components/schemas/SecureGeneratorType'
+    TenantDeleteRequest:
+      description: Request for the Tenant API to delete a tenant rather than using the URL parameters.
       type: object
       properties:
-        unverified:
-          $ref: '#/components/schemas/TimeBasedDeletePolicy'
-    ConnectorPolicy:
+        async:
+          type: boolean
+        eventInfo:
+          $ref: '#/components/schemas/EventInfo'
+    TenantCaptchaConfiguration:
       description: ''
       type: object
       properties:
-        connectorId:
+        captchaMethod:
+          $ref: '#/components/schemas/CaptchaMethod'
+        secretKey:
           type: string
-          format: uuid
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        domains:
-          type: array
-          uniqueItems: true
-          items: {}
-        migrate:
-          type: boolean
-    RefreshTokenUsagePolicy:
-      description: ''
-      type: string
-      enum:
-      - Reusable
-      - OneTimeUse
-    RateLimitedRequestConfiguration:
-      description: ''
-      type: object
-      properties:
-        limit:
-          type: integer
-        timePeriodInSeconds:
-          type: integer
-        enabled:
-          type: boolean
-    MultiFactorSMSMethod:
-      type: object
-      properties:
-        messengerId:
+        siteKey:
           type: string
-          format: uuid
-        templateId:
-          type: string
-          format: uuid
-        enabled:
-          type: boolean
-    TenantSCIMServerConfiguration:
-      description: ''
-      type: object
-      properties:
-        clientEntityTypeId:
-          type: string
-          format: uuid
-        schemas:
-          type: object
-          additionalProperties:
-            type: object
-        serverEntityTypeId:
-          type: string
-          format: uuid
-        enabled:
-          type: boolean
-    FamilyConfiguration:
-      description: ''
-      type: object
-      properties:
-        allowChildRegistrations:
-          type: boolean
-        confirmChildEmailTemplateId:
-          type: string
-          format: uuid
-        deleteOrphanedAccounts:
-          type: boolean
-        deleteOrphanedAccountsDays:
-          type: integer
-        familyRequestEmailTemplateId:
-          type: string
-          format: uuid
-        maximumChildAge:
-          type: integer
-        minimumOwnerAge:
-          type: integer
-        parentEmailRequired:
-          type: boolean
-        parentRegistrationEmailTemplateId:
-          type: string
-          format: uuid
+        threshold:
+          type: number
+          format: double
         enabled:
           type: boolean
     TenantWebAuthnConfiguration:
@@ -613,17 +406,142 @@ components:
           type: string
         enabled:
           type: boolean
-    MultiFactorVoiceMethod:
+    TenantSearchResponse:
+      description: Tenant search response
       type: object
       properties:
-        messengerId:
+        tenants:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tenant'
+        total:
+          type: integer
+          format: int64
+    TenantUserDeletePolicy:
+      description: A Tenant-level policy for deleting Users.
+      type: object
+      properties:
+        unverified:
+          $ref: '#/components/schemas/TimeBasedDeletePolicy'
+    RefreshTokenOneTimeUseConfiguration:
+      description: Refresh token one-time use configuration. This configuration is utilized when the usage policy is  configured for one-time use.
+      type: object
+      properties:
+        gracePeriodInSeconds:
+          type: integer
+    MaximumPasswordAge:
+      description: ''
+      type: object
+      properties:
+        days:
+          type: integer
+        enabled:
+          type: boolean
+    TenantFormConfiguration:
+      description: ''
+      type: object
+      properties:
+        adminUserFormId:
           type: string
           format: uuid
-        templateId:
+    TenantSCIMServerConfiguration:
+      description: ''
+      type: object
+      properties:
+        clientEntityTypeId:
+          type: string
+          format: uuid
+        schemas:
+          type: object
+          additionalProperties:
+            type: object
+        serverEntityTypeId:
           type: string
           format: uuid
         enabled:
           type: boolean
+    TenantPhoneConfiguration:
+      description: Hold tenant phone configuration for passwordless and verification cases.
+      type: object
+      properties:
+        forgotPasswordTemplateId:
+          type: string
+          format: uuid
+        identityUpdateTemplateId:
+          type: string
+          format: uuid
+        implicitPhoneVerificationAllowed:
+          type: boolean
+        loginIdInUseOnCreateTemplateId:
+          type: string
+          format: uuid
+        loginIdInUseOnUpdateTemplateId:
+          type: string
+          format: uuid
+        loginNewDeviceTemplateId:
+          type: string
+          format: uuid
+        loginSuspiciousTemplateId:
+          type: string
+          format: uuid
+        messengerId:
+          type: string
+          format: uuid
+        passwordResetSuccessTemplateId:
+          type: string
+          format: uuid
+        passwordUpdateTemplateId:
+          type: string
+          format: uuid
+        passwordlessTemplateId:
+          type: string
+          format: uuid
+        setPasswordTemplateId:
+          type: string
+          format: uuid
+        twoFactorMethodAddTemplateId:
+          type: string
+          format: uuid
+        twoFactorMethodRemoveTemplateId:
+          type: string
+          format: uuid
+        unverified:
+          $ref: '#/components/schemas/PhoneUnverifiedOptions'
+        verificationCompleteTemplateId:
+          type: string
+          format: uuid
+        verificationStrategy:
+          $ref: '#/components/schemas/VerificationStrategy'
+        verificationTemplateId:
+          type: string
+          format: uuid
+        verifyPhoneNumber:
+          type: boolean
+    MultiFactorAuthenticatorMethod:
+      type: object
+      properties:
+        algorithm:
+          $ref: '#/components/schemas/TOTPAlgorithm'
+        codeLength:
+          type: integer
+        timeStep:
+          type: integer
+        enabled:
+          type: boolean
+    EventConfigurationData:
+      type: object
+      properties:
+        transactionType:
+          $ref: '#/components/schemas/TransactionType'
+        enabled:
+          type: boolean
+    BreachAction:
+      type: string
+      enum:
+      - 'Off'
+      - RecordOnly
+      - NotifyUser
+      - RequireChange
     TenantWebAuthnWorkflowConfiguration:
       description: ''
       type: object
@@ -634,20 +552,26 @@ components:
           $ref: '#/components/schemas/UserVerificationRequirement'
         enabled:
           type: boolean
-    EmailUnverifiedOptions:
-      description: ''
+    TenantOAuth2Configuration:
       type: object
       properties:
-        allowEmailChangeWhenGated:
-          type: boolean
-        behavior:
-          $ref: '#/components/schemas/UnverifiedBehavior'
-    TenantLoginConfiguration:
-      description: ''
+        clientCredentialsAccessTokenPopulateLambdaId:
+          type: string
+          format: uuid
+    MultiFactorEmailMethod:
       type: object
       properties:
-        requireAuthentication:
+        templateId:
+          type: string
+          format: uuid
+        enabled:
           type: boolean
+    BreachMatchMode:
+      type: string
+      enum:
+      - Low
+      - Medium
+      - High
     JWTConfiguration:
       description: JWT Configuration. A JWT Configuration for an Application may not be active if it is using the global configuration, the configuration  may be <code>enabled = false<code>.
       type: object
@@ -674,114 +598,132 @@ components:
           type: integer
         enabled:
           type: boolean
-    TenantSearchResponse:
-      description: Tenant search response
-      type: object
-      properties:
-        tenants:
-          type: array
-          items:
-            $ref: '#/components/schemas/Tenant'
-        total:
-          type: integer
-          format: int64
-    CaptchaMethod:
+    RefreshTokenUsagePolicy:
       description: ''
       type: string
       enum:
-      - GoogleRecaptchaV2
-      - GoogleRecaptchaV3
-      - HCaptcha
-      - HCaptchaEnterprise
+      - Reusable
+      - OneTimeUse
+    EmailSecurityType:
+      type: string
+      enum:
+      - NONE
+      - SSL
+      - TLS
+    UnverifiedBehavior:
+      description: ''
+      type: string
+      enum:
+      - Allow
+      - Gated
+    TenantSSOConfiguration:
+      description: ''
+      type: object
+      properties:
+        allowAccessTokenBootstrap:
+          type: boolean
+        deviceTrustTimeToLiveInSeconds:
+          type: integer
+    FailedAuthenticationConfiguration:
+      description: Configuration for the behavior of failed login attempts. This helps us protect against brute force password attacks.
+      type: object
+      properties:
+        actionCancelPolicy:
+          $ref: '#/components/schemas/FailedAuthenticationActionCancelPolicy'
+        actionDuration:
+          type: integer
+          format: int64
+        actionDurationUnit:
+          $ref: '#/components/schemas/ExpiryUnit'
+        emailUser:
+          type: boolean
+        resetCountInSeconds:
+          type: integer
+        tooManyAttempts:
+          type: integer
+        userActionId:
+          type: string
+          format: uuid
+    TenantSearchRequest:
+      description: Search request for Tenants
+      type: object
+      properties:
+        search:
+          $ref: '#/components/schemas/TenantSearchCriteria'
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    TenantRateLimitConfiguration:
+      description: ''
+      type: object
+      properties:
+        failedLogin:
+          $ref: '#/components/schemas/RateLimitedRequestConfiguration'
+        forgotPassword:
+          $ref: '#/components/schemas/RateLimitedRequestConfiguration'
+        sendEmailVerification:
+          $ref: '#/components/schemas/RateLimitedRequestConfiguration'
+        sendPasswordless:
+          $ref: '#/components/schemas/RateLimitedRequestConfiguration'
+        sendPasswordlessPhone:
+          $ref: '#/components/schemas/RateLimitedRequestConfiguration'
+        sendPhoneVerification:
+          $ref: '#/components/schemas/RateLimitedRequestConfiguration'
+        sendRegistrationVerification:
+          $ref: '#/components/schemas/RateLimitedRequestConfiguration'
+        sendTwoFactor:
+          $ref: '#/components/schemas/RateLimitedRequestConfiguration'
+    EventConfiguration:
+      description: ''
+      type: object
+      properties:
+        events:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/EventConfigurationData'
+    PhoneUnverifiedOptions:
+      description: Configuration for unverified phone number identities.
+      type: object
+      properties:
+        allowPhoneNumberChangeWhenGated:
+          type: boolean
+        behavior:
+          $ref: '#/components/schemas/UnverifiedBehavior'
     UniqueUsernameStrategy:
       type: string
       enum:
       - Always
       - OnCollision
-    ZonedDateTime:
-      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
-      example: '1659380719000'
-      type: integer
-      format: int64
-    EmailHeader:
-      description: ''
-      type: object
-      properties:
-        name:
-          type: string
-        value:
-          type: string
-    ObjectState:
+    VerificationStrategy:
       description: ''
       type: string
       enum:
-      - Active
-      - Inactive
-      - PendingDelete
-    PasswordValidationRules:
-      description: ''
-      type: object
-      properties:
-        breachDetection:
-          $ref: '#/components/schemas/PasswordBreachDetection'
-        disallowUserLoginId:
-          type: boolean
-        maxLength:
-          type: integer
-        minLength:
-          type: integer
-        rememberPreviousPasswords:
-          $ref: '#/components/schemas/RememberPreviousPasswords'
-        requireMixedCase:
-          type: boolean
-        requireNonAlpha:
-          type: boolean
-        requireNumber:
-          type: boolean
-        validateOnLogin:
-          type: boolean
-    BreachMatchMode:
+      - ClickableLink
+      - FormField
+    TransactionType:
+      description: The transaction types for Webhooks and other event systems within FusionAuth.
       type: string
       enum:
-      - Low
-      - Medium
-      - High
-    TenantRegistrationConfiguration:
+      - None
+      - Any
+      - SimpleMajority
+      - SuperMajority
+      - AbsoluteMajority
+    RefreshTokenSlidingWindowConfiguration:
       description: ''
       type: object
       properties:
-        blockedDomains:
-          type: array
-          uniqueItems: true
-          items: {}
-    TenantCaptchaConfiguration:
-      description: ''
-      type: object
-      properties:
-        captchaMethod:
-          $ref: '#/components/schemas/CaptchaMethod'
-        secretKey:
-          type: string
-        siteKey:
-          type: string
-        threshold:
-          type: number
-          format: double
-        enabled:
-          type: boolean
-    PasswordBreachDetection:
-      description: ''
-      type: object
-      properties:
-        matchMode:
-          $ref: '#/components/schemas/BreachMatchMode'
-        notifyUserEmailTemplateId:
-          type: string
-          format: uuid
-        onLogin:
-          $ref: '#/components/schemas/BreachAction'
-        enabled:
-          type: boolean
+        maximumTimeToLiveInMinutes:
+          type: integer
     Tenant:
       description: ''
       type: object
@@ -867,25 +809,49 @@ components:
           $ref: '#/components/schemas/TenantUsernameConfiguration'
         webAuthnConfiguration:
           $ref: '#/components/schemas/TenantWebAuthnConfiguration'
-    Error:
-      description: Defines an error.
+    RateLimitedRequestConfiguration:
+      description: ''
       type: object
       properties:
-        code:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        message:
-          type: string
-    UserVerificationRequirement:
-      description: Used to express whether the Relying Party requires <a href="https:www.w3.orgTRwebauthn-2#user-verification">user verification<a> for the  current operation.
+        limit:
+          type: integer
+        timePeriodInSeconds:
+          type: integer
+        enabled:
+          type: boolean
+    ExpiryUnit:
+      description: ''
       type: string
       enum:
-      - required
-      - preferred
-      - discouraged
+      - MINUTES
+      - HOURS
+      - DAYS
+      - WEEKS
+      - MONTHS
+      - YEARS
+    AuthenticatorAttachmentPreference:
+      description: Describes the authenticator attachment modality preference for a WebAuthn workflow. See {@link AuthenticatorAttachment}
+      type: string
+      enum:
+      - any
+      - platform
+      - crossPlatform
+    TenantRequest:
+      description: ''
+      type: object
+      properties:
+        sourceTenantId:
+          type: string
+          format: uuid
+        tenant:
+          $ref: '#/components/schemas/Tenant'
+        webhookIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+        eventInfo:
+          $ref: '#/components/schemas/EventInfo'
     EventInfo:
       description: Information about a user event (login, register, etc) that helps identify the source of the event (location, device type, OS, etc).
       type: object
@@ -908,54 +874,82 @@ components:
           type: string
         userAgent:
           type: string
-    TOTPAlgorithm:
+    ObjectState:
+      description: ''
       type: string
       enum:
-      - HmacSHA1
-      - HmacSHA256
-      - HmacSHA512
-    TenantOAuth2Configuration:
+      - Active
+      - Inactive
+      - PendingDelete
+    MultiFactorSMSMethod:
       type: object
       properties:
-        clientCredentialsAccessTokenPopulateLambdaId:
+        messengerId:
           type: string
           format: uuid
-    TenantLambdaConfiguration:
-      description: ''
-      type: object
-      properties:
-        loginValidationId:
+        templateId:
           type: string
           format: uuid
-        multiFactorRequirementId:
-          type: string
-          format: uuid
-        scimEnterpriseUserRequestConverterId:
-          type: string
-          format: uuid
-        scimEnterpriseUserResponseConverterId:
-          type: string
-          format: uuid
-        scimGroupRequestConverterId:
-          type: string
-          format: uuid
-        scimGroupResponseConverterId:
-          type: string
-          format: uuid
-        scimUserRequestConverterId:
-          type: string
-          format: uuid
-        scimUserResponseConverterId:
-          type: string
-          format: uuid
-    MinimumPasswordAge:
-      description: ''
-      type: object
-      properties:
-        seconds:
-          type: integer
         enabled:
           type: boolean
+    MultiFactorVoiceMethod:
+      type: object
+      properties:
+        messengerId:
+          type: string
+          format: uuid
+        templateId:
+          type: string
+          format: uuid
+        enabled:
+          type: boolean
+    FamilyConfiguration:
+      description: ''
+      type: object
+      properties:
+        allowChildRegistrations:
+          type: boolean
+        confirmChildEmailTemplateId:
+          type: string
+          format: uuid
+        deleteOrphanedAccounts:
+          type: boolean
+        deleteOrphanedAccountsDays:
+          type: integer
+        familyRequestEmailTemplateId:
+          type: string
+          format: uuid
+        maximumChildAge:
+          type: integer
+        minimumOwnerAge:
+          type: integer
+        parentEmailRequired:
+          type: boolean
+        parentRegistrationEmailTemplateId:
+          type: string
+          format: uuid
+        enabled:
+          type: boolean
+    Location:
+      description: Location information. Useful for IP addresses and other displayable data objects.
+      type: object
+      properties:
+        city:
+          type: string
+        country:
+          type: string
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        region:
+          type: string
+        zipcode:
+          type: string
+        displayString:
+          type: string
     EmailConfiguration:
       description: ''
       type: object
@@ -1034,52 +1028,58 @@ components:
           type: boolean
         verifyEmailWhenChanged:
           type: boolean
-    TenantSearchCriteria:
-      description: Search criteria for Tenants
-      type: object
-      properties:
-        name:
-          type: string
-        numberOfResults:
-          type: integer
-        orderBy:
-          type: string
-        startRow:
-          type: integer
-    TenantRateLimitConfiguration:
+    PasswordValidationRules:
       description: ''
       type: object
       properties:
-        failedLogin:
-          $ref: '#/components/schemas/RateLimitedRequestConfiguration'
-        forgotPassword:
-          $ref: '#/components/schemas/RateLimitedRequestConfiguration'
-        sendEmailVerification:
-          $ref: '#/components/schemas/RateLimitedRequestConfiguration'
-        sendPasswordless:
-          $ref: '#/components/schemas/RateLimitedRequestConfiguration'
-        sendPasswordlessPhone:
-          $ref: '#/components/schemas/RateLimitedRequestConfiguration'
-        sendPhoneVerification:
-          $ref: '#/components/schemas/RateLimitedRequestConfiguration'
-        sendRegistrationVerification:
-          $ref: '#/components/schemas/RateLimitedRequestConfiguration'
-        sendTwoFactor:
-          $ref: '#/components/schemas/RateLimitedRequestConfiguration'
-    TenantFormConfiguration:
+        breachDetection:
+          $ref: '#/components/schemas/PasswordBreachDetection'
+        disallowUserLoginId:
+          type: boolean
+        maxLength:
+          type: integer
+        minLength:
+          type: integer
+        rememberPreviousPasswords:
+          $ref: '#/components/schemas/RememberPreviousPasswords'
+        requireMixedCase:
+          type: boolean
+        requireNonAlpha:
+          type: boolean
+        requireNumber:
+          type: boolean
+        validateOnLogin:
+          type: boolean
+    MinimumPasswordAge:
       description: ''
       type: object
       properties:
-        adminUserFormId:
-          type: string
-          format: uuid
-    AuthenticatorAttachmentPreference:
-      description: Describes the authenticator attachment modality preference for a WebAuthn workflow. See {@link AuthenticatorAttachment}
-      type: string
-      enum:
-      - any
-      - platform
-      - crossPlatform
+        seconds:
+          type: integer
+        enabled:
+          type: boolean
+    TenantRegistrationConfiguration:
+      description: ''
+      type: object
+      properties:
+        blockedDomains:
+          type: array
+          uniqueItems: true
+          items: {}
+    TenantMultiFactorConfiguration:
+      description: ''
+      type: object
+      properties:
+        authenticator:
+          $ref: '#/components/schemas/MultiFactorAuthenticatorMethod'
+        email:
+          $ref: '#/components/schemas/MultiFactorEmailMethod'
+        loginPolicy:
+          $ref: '#/components/schemas/MultiFactorLoginPolicy'
+        sms:
+          $ref: '#/components/schemas/MultiFactorSMSMethod'
+        voice:
+          $ref: '#/components/schemas/MultiFactorVoiceMethod'
     RememberPreviousPasswords:
       description: ''
       type: object
@@ -1088,85 +1088,21 @@ components:
           type: integer
         enabled:
           type: boolean
-    TimeBasedDeletePolicy:
-      description: A policy for deleting Users based upon some external criteria.
-      type: object
-      properties:
-        enabledInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        numberOfDaysToRetain:
-          type: integer
-        enabled:
-          type: boolean
-    TenantSearchRequest:
-      description: Search request for Tenants
-      type: object
-      properties:
-        search:
-          $ref: '#/components/schemas/TenantSearchCriteria'
-    VerificationStrategy:
+    EmailHeader:
       description: ''
-      type: string
-      enum:
-      - ClickableLink
-      - FormField
-    SecureGeneratorType:
-      description: ''
-      type: string
-      enum:
-      - randomDigits
-      - randomBytes
-      - randomAlpha
-      - randomAlphaNumeric
-    EventConfigurationData:
       type: object
       properties:
-        transactionType:
-          $ref: '#/components/schemas/TransactionType'
-        enabled:
-          type: boolean
-    FailedAuthenticationConfiguration:
-      description: Configuration for the behavior of failed login attempts. This helps us protect against brute force password attacks.
-      type: object
-      properties:
-        actionCancelPolicy:
-          $ref: '#/components/schemas/FailedAuthenticationActionCancelPolicy'
-        actionDuration:
-          type: integer
-          format: int64
-        actionDurationUnit:
-          $ref: '#/components/schemas/ExpiryUnit'
-        emailUser:
-          type: boolean
-        resetCountInSeconds:
-          type: integer
-        tooManyAttempts:
-          type: integer
-        userActionId:
+        name:
           type: string
-          format: uuid
-    PasswordValidationRulesResponse:
-      description: ''
-      type: object
-      properties:
-        passwordValidationRules:
-          $ref: '#/components/schemas/PasswordValidationRules'
-    RefreshTokenSlidingWindowConfiguration:
-      description: ''
-      type: object
-      properties:
-        maximumTimeToLiveInMinutes:
-          type: integer
-    ExpiryUnit:
+        value:
+          type: string
+    RefreshTokenExpirationPolicy:
       description: ''
       type: string
       enum:
-      - MINUTES
-      - HOURS
-      - DAYS
-      - WEEKS
-      - MONTHS
-      - YEARS
+      - Fixed
+      - SlidingWindow
+      - SlidingWindowWithMaximumLifetime
     ExternalIdentifierConfiguration:
       description: ''
       type: object
@@ -1237,6 +1173,53 @@ components:
           type: integer
         webAuthnRegistrationChallengeTimeToLiveInSeconds:
           type: integer
+    TenantResponse:
+      description: ''
+      type: object
+      properties:
+        tenant:
+          $ref: '#/components/schemas/Tenant'
+        tenants:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tenant'
+    ConnectorPolicy:
+      description: ''
+      type: object
+      properties:
+        connectorId:
+          type: string
+          format: uuid
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        domains:
+          type: array
+          uniqueItems: true
+          items: {}
+        migrate:
+          type: boolean
+    TenantAccessControlConfiguration:
+      description: ''
+      type: object
+      properties:
+        uiIPAccessControlListId:
+          type: string
+          format: uuid
+    PasswordBreachDetection:
+      description: ''
+      type: object
+      properties:
+        matchMode:
+          $ref: '#/components/schemas/BreachMatchMode'
+        notifyUserEmailTemplateId:
+          type: string
+          format: uuid
+        onLogin:
+          $ref: '#/components/schemas/BreachAction'
+        enabled:
+          type: boolean
     MultiFactorLoginPolicy:
       description: ''
       type: string
@@ -1244,99 +1227,116 @@ components:
       - Disabled
       - Enabled
       - Required
-    RefreshTokenOneTimeUseConfiguration:
-      description: Refresh token one-time use configuration. This configuration is utilized when the usage policy is  configured for one-time use.
+    PasswordValidationRulesResponse:
+      description: ''
       type: object
       properties:
-        gracePeriodInSeconds:
+        passwordValidationRules:
+          $ref: '#/components/schemas/PasswordValidationRules'
+    TenantLambdaConfiguration:
+      description: ''
+      type: object
+      properties:
+        loginValidationId:
+          type: string
+          format: uuid
+        multiFactorRequirementId:
+          type: string
+          format: uuid
+        scimEnterpriseUserRequestConverterId:
+          type: string
+          format: uuid
+        scimEnterpriseUserResponseConverterId:
+          type: string
+          format: uuid
+        scimGroupRequestConverterId:
+          type: string
+          format: uuid
+        scimGroupResponseConverterId:
+          type: string
+          format: uuid
+        scimUserRequestConverterId:
+          type: string
+          format: uuid
+        scimUserResponseConverterId:
+          type: string
+          format: uuid
+    UniqueUsernameConfiguration:
+      type: object
+      properties:
+        numberOfDigits:
           type: integer
-    Location:
-      description: Location information. Useful for IP addresses and other displayable data objects.
+        separator:
+          type: string
+        strategy:
+          $ref: '#/components/schemas/UniqueUsernameStrategy'
+        enabled:
+          type: boolean
+    TOTPAlgorithm:
+      type: string
+      enum:
+      - HmacSHA1
+      - HmacSHA256
+      - HmacSHA512
+    TimeBasedDeletePolicy:
+      description: A policy for deleting Users based upon some external criteria.
       type: object
       properties:
-        city:
-          type: string
-        country:
-          type: string
-        latitude:
-          type: number
-          format: double
-        longitude:
-          type: number
-          format: double
-        region:
-          type: string
-        zipcode:
-          type: string
-        displayString:
-          type: string
-    MultiFactorAuthenticatorMethod:
-      type: object
-      properties:
-        algorithm:
-          $ref: '#/components/schemas/TOTPAlgorithm'
-        codeLength:
-          type: integer
-        timeStep:
+        enabledInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        numberOfDaysToRetain:
           type: integer
         enabled:
           type: boolean
-    TenantPhoneConfiguration:
-      description: Hold tenant phone configuration for passwordless and verification cases.
+    Error:
+      description: Defines an error.
       type: object
       properties:
-        forgotPasswordTemplateId:
+        code:
           type: string
-          format: uuid
-        identityUpdateTemplateId:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
           type: string
-          format: uuid
-        implicitPhoneVerificationAllowed:
+    TenantLoginConfiguration:
+      description: ''
+      type: object
+      properties:
+        requireAuthentication:
           type: boolean
-        loginIdInUseOnCreateTemplateId:
-          type: string
-          format: uuid
-        loginIdInUseOnUpdateTemplateId:
-          type: string
-          format: uuid
-        loginNewDeviceTemplateId:
-          type: string
-          format: uuid
-        loginSuspiciousTemplateId:
-          type: string
-          format: uuid
-        messengerId:
-          type: string
-          format: uuid
-        passwordResetSuccessTemplateId:
-          type: string
-          format: uuid
-        passwordUpdateTemplateId:
-          type: string
-          format: uuid
-        passwordlessTemplateId:
-          type: string
-          format: uuid
-        setPasswordTemplateId:
-          type: string
-          format: uuid
-        twoFactorMethodAddTemplateId:
-          type: string
-          format: uuid
-        twoFactorMethodRemoveTemplateId:
-          type: string
-          format: uuid
-        unverified:
-          $ref: '#/components/schemas/PhoneUnverifiedOptions'
-        verificationCompleteTemplateId:
-          type: string
-          format: uuid
-        verificationStrategy:
-          $ref: '#/components/schemas/VerificationStrategy'
-        verificationTemplateId:
-          type: string
-          format: uuid
-        verifyPhoneNumber:
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    SecureGeneratorType:
+      description: ''
+      type: string
+      enum:
+      - randomDigits
+      - randomBytes
+      - randomAlpha
+      - randomAlphaNumeric
+    UserVerificationRequirement:
+      description: Used to express whether the Relying Party requires <a href="https:www.w3.orgTRwebauthn-2#user-verification">user verification<a> for the  current operation.
+      type: string
+      enum:
+      - required
+      - preferred
+      - discouraged
+    RefreshTokenRevocationPolicy:
+      description: ''
+      type: object
+      properties:
+        onLoginPrevented:
+          type: boolean
+        onMultiFactorEnable:
+          type: boolean
+        onOneTimeTokenReuse:
+          type: boolean
+        onPasswordChanged:
           type: boolean
   securitySchemes:
     ApiKeyAuth:

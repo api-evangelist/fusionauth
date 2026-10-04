@@ -263,6 +263,22 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    KeyRequest:
+      description: Key API request object.
+      type: object
+      properties:
+        key:
+          $ref: '#/components/schemas/Key'
+    KeyResponse:
+      description: Key API response object.
+      type: object
+      properties:
+        key:
+          $ref: '#/components/schemas/Key'
+        keys:
+          type: array
+          items:
+            $ref: '#/components/schemas/Key'
     Key:
       description: Domain for a public key, key pair or an HMAC secret. This is used by KeyMaster to manage keys for JWTs, SAML, etc.
       type: object
@@ -300,19 +316,22 @@ components:
           type: string
         type:
           $ref: '#/components/schemas/KeyType'
-    ZonedDateTime:
-      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
-      example: '1659380719000'
-      type: integer
-      format: int64
-    KeyType:
-      type: string
-      enum:
-      - EC
-      - RSA
-      - HMAC
-      - OKP
-      - Secret
+    KeySearchCriteria:
+      description: Search criteria for Keys
+      type: object
+      properties:
+        algorithm:
+          $ref: '#/components/schemas/KeyAlgorithm'
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/KeyType'
+        numberOfResults:
+          type: integer
+        orderBy:
+          type: string
+        startRow:
+          type: integer
     CertificateInformation:
       type: object
       properties:
@@ -336,58 +355,17 @@ components:
           $ref: '#/components/schemas/ZonedDateTime'
         validTo:
           $ref: '#/components/schemas/ZonedDateTime'
-    KeySearchCriteria:
-      description: Search criteria for Keys
+    KeySearchResponse:
+      description: Key search response
       type: object
       properties:
-        algorithm:
-          $ref: '#/components/schemas/KeyAlgorithm'
-        name:
-          type: string
-        type:
-          $ref: '#/components/schemas/KeyType'
-        numberOfResults:
-          type: integer
-        orderBy:
-          type: string
-        startRow:
-          type: integer
-    Error:
-      description: Defines an error.
-      type: object
-      properties:
-        code:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        message:
-          type: string
-    KeyResponse:
-      description: Key API response object.
-      type: object
-      properties:
-        key:
-          $ref: '#/components/schemas/Key'
         keys:
           type: array
           items:
             $ref: '#/components/schemas/Key'
-    KeyAlgorithm:
-      type: string
-      enum:
-      - ES256
-      - ES384
-      - ES512
-      - HS256
-      - HS384
-      - HS512
-      - RS256
-      - RS384
-      - RS512
-      - Ed25519
-      - None
+        total:
+          type: integer
+          format: int64
     KeySearchRequest:
       description: Search request for Keys
       type: object
@@ -406,23 +384,45 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Error'
-    KeyRequest:
-      description: Key API request object.
+    Error:
+      description: Defines an error.
       type: object
       properties:
-        key:
-          $ref: '#/components/schemas/Key'
-    KeySearchResponse:
-      description: Key search response
-      type: object
-      properties:
-        keys:
-          type: array
-          items:
-            $ref: '#/components/schemas/Key'
-        total:
-          type: integer
-          format: int64
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    KeyType:
+      type: string
+      enum:
+      - EC
+      - RSA
+      - HMAC
+      - OKP
+      - Secret
+    KeyAlgorithm:
+      type: string
+      enum:
+      - ES256
+      - ES384
+      - ES512
+      - HS256
+      - HS384
+      - HS512
+      - RS256
+      - RS384
+      - RS512
+      - Ed25519
+      - None
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

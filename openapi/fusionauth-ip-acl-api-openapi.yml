@@ -213,29 +213,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    IPAccessControlListRequest:
-      description: ''
-      type: object
-      properties:
-        ipAccessControlList:
-          $ref: '#/components/schemas/IPAccessControlList'
-    ZonedDateTime:
-      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
-      example: '1659380719000'
-      type: integer
-      format: int64
-    IPAccessControlEntryAction:
-      description: ''
-      type: string
-      enum:
-      - Allow
-      - Block
-    IPAccessControlListSearchRequest:
-      description: Search request for IP ACLs .
-      type: object
-      properties:
-        search:
-          $ref: '#/components/schemas/IPAccessControlListSearchCriteria'
     IPAccessControlListSearchCriteria:
       description: ''
       type: object
@@ -248,18 +225,48 @@ components:
           type: string
         startRow:
           type: integer
-    Error:
-      description: Defines an error.
+    IPAccessControlListSearchRequest:
+      description: Search request for IP ACLs .
       type: object
       properties:
-        code:
+        search:
+          $ref: '#/components/schemas/IPAccessControlListSearchCriteria'
+    IPAccessControlListSearchResponse:
+      description: ''
+      type: object
+      properties:
+        ipAccessControlLists:
+          type: array
+          items:
+            $ref: '#/components/schemas/IPAccessControlList'
+        total:
+          type: integer
+          format: int64
+    IPAccessControlEntry:
+      description: ''
+      type: object
+      properties:
+        action:
+          $ref: '#/components/schemas/IPAccessControlEntryAction'
+        endIPAddress:
           type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        message:
+        startIPAddress:
           type: string
+    IPAccessControlListResponse:
+      description: ''
+      type: object
+      properties:
+        ipAccessControlList:
+          $ref: '#/components/schemas/IPAccessControlList'
+        ipAccessControlLists:
+          type: array
+          items:
+            $ref: '#/components/schemas/IPAccessControlList'
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
     Errors:
       description: Standard error domain object that can also be used as the response from an API call.
       type: object
@@ -272,17 +279,18 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Error'
-    IPAccessControlListSearchResponse:
-      description: ''
+    Error:
+      description: Defines an error.
       type: object
       properties:
-        ipAccessControlLists:
-          type: array
-          items:
-            $ref: '#/components/schemas/IPAccessControlList'
-        total:
-          type: integer
-          format: int64
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
     IPAccessControlList:
       description: ''
       type: object
@@ -304,26 +312,18 @@ components:
           $ref: '#/components/schemas/ZonedDateTime'
         name:
           type: string
-    IPAccessControlListResponse:
+    IPAccessControlEntryAction:
+      description: ''
+      type: string
+      enum:
+      - Allow
+      - Block
+    IPAccessControlListRequest:
       description: ''
       type: object
       properties:
         ipAccessControlList:
           $ref: '#/components/schemas/IPAccessControlList'
-        ipAccessControlLists:
-          type: array
-          items:
-            $ref: '#/components/schemas/IPAccessControlList'
-    IPAccessControlEntry:
-      description: ''
-      type: object
-      properties:
-        action:
-          $ref: '#/components/schemas/IPAccessControlEntryAction'
-        endIPAddress:
-          type: string
-        startIPAddress:
-          type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
