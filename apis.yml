@@ -592,6 +592,8 @@ apis:
   - type: SDKs
     url: https://fusionauth.io/docs/sdks/
 common:
+  - type: FinOps
+    url: finops/fusionauth-finops.yml
   - type: VendorFacets
     url: vendor-facets/fusionauth-vendor-facets.yml
   - type: RateLimits
