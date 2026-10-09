@@ -1,41 +1,35 @@
-generated: '2026-07-15'
+generated: '2026-09-23'
 method: generated
-source: openapi/fusionauth-openapi.yaml
+source: openapi/fusionauth-api-key-api-openapi.yml, openapi/fusionauth-application-api-openapi.yml,
+  openapi/fusionauth-connector-api-openapi.yml, openapi/fusionauth-consent-api-openapi.yml,
+  openapi/fusionauth-email-api-openapi.yml, openapi/fusionauth-entity-api-openapi.yml, openapi/fusionauth-form-api-openapi.yml,
+  openapi/fusionauth-group-api-openapi.yml, openapi/fusionauth-health-api-openapi.yml, openapi/fusionauth-identity-api-openapi.yml,
+  openapi/fusionauth-identity-provider-api-openapi.yml, openapi/fusionauth-integration-api-openapi.yml,
+  openapi/fusionauth-ip-acl-api-openapi.yml, openapi/fusionauth-jwt-api-openapi.yml, openapi/fusionauth-key-api-openapi.yml,
+  openapi/fusionauth-lambda-api-openapi.yml, openapi/fusionauth-login-api-openapi.yml, openapi/fusionauth-logout-api-openapi.yml,
+  openapi/fusionauth-message-api-openapi.yml, openapi/fusionauth-messenger-api-openapi.yml,
+  openapi/fusionauth-oauth2-api-openapi.yml, openapi/fusionauth-passwordless-api-openapi.yml,
+  openapi/fusionauth-reactor-api-openapi.yml, openapi/fusionauth-report-api-openapi.yml, openapi/fusionauth-status-api-openapi.yml,
+  openapi/fusionauth-system-api-openapi.yml, openapi/fusionauth-system-configuration-api-openapi.yml,
+  openapi/fusionauth-tenant-api-openapi.yml, openapi/fusionauth-tenant-manager-api-openapi.yml,
+  openapi/fusionauth-theme-api-openapi.yml, openapi/fusionauth-two-factor-api-openapi.yml, openapi/fusionauth-user-action-api-openapi.yml,
+  openapi/fusionauth-user-action-reason-api-openapi.yml, openapi/fusionauth-user-api-openapi.yml,
+  openapi/fusionauth-webauthn-api-openapi.yml, openapi/fusionauth-webhook-api-openapi.yml, openapi/fusionauth-well-known-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
   operations: 322
   by_action_class:
-    connected: 83
-    acting: 239
+    acting: 217
+    connected: 105
   by_consequence:
-    read: 83
-    write: 225
+    write: 203
+    read: 105
     physical: 5
     safety-critical: 9
   human_in_the_loop_required: 9
 operations:
-- path: /.well-known/jwks.json
-  method: get
-  operationId: retrieveJsonWebKeySetWithId
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /.well-known/openid-configuration
-  method: get
-  operationId: retrieveOpenIdConfigurationWithId
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
 - path: /api/api-key
   method: post
   operationId: createAPIKey
@@ -156,18 +150,12 @@ operations:
   method: post
   operationId: searchApplicationsWithId
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /api/application/{applicationId}
   method: post
   operationId: createApplicationWithId
@@ -532,18 +520,12 @@ operations:
   method: post
   operationId: searchConsentsWithId
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /api/consent/{consentId}
   method: post
   operationId: createConsentWithId
@@ -666,34 +648,22 @@ operations:
   method: post
   operationId: retrieveEmailTemplatePreviewWithId
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /api/email/template/search
   method: post
   operationId: searchEmailTemplatesWithId
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /api/email/template/{emailTemplateId}
   method: post
   operationId: createEmailTemplateWithId
@@ -788,34 +758,22 @@ operations:
   method: post
   operationId: searchEntityGrantsWithId
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /api/entity/search
   method: post
   operationId: searchEntitiesWithId
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /api/entity/search
   method: get
   operationId: searchEntitiesByIdsWithId
@@ -846,18 +804,12 @@ operations:
   method: post
   operationId: searchEntityTypesWithId
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /api/entity/type/{entityTypeId}
   method: post
   operationId: createEntityTypeWithId
@@ -1376,34 +1328,22 @@ operations:
   method: post
   operationId: searchGroupMembersWithId
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /api/group/search
   method: post
   operationId: searchGroupsWithId
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /api/group/{groupId}
   method: post
   operationId: createGroupWithId
@@ -1488,6 +1428,72 @@ operations:
     token:
       max-ttl: 3600
     audit: none
+- path: /api/identity/verify
+  method: post
+  operationId: verifyIdentityWithId
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/identity/verify/complete
+  method: post
+  operationId: completeVerifyIdentityWithId
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/identity/verify/send
+  method: post
+  operationId: sendVerifyIdentityWithId
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/identity/verify/start
+  method: post
+  operationId: startVerifyIdentityWithId
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
 - path: /api/identity-provider
   method: post
   operationId: createIdentityProvider
@@ -1596,18 +1602,12 @@ operations:
   method: post
   operationId: searchIdentityProvidersWithId
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /api/identity-provider/start
   method: post
   operationId: startIdentityProviderLoginWithId
@@ -1711,72 +1711,6 @@ operations:
 - path: /api/identity-provider/{identityProviderId}
   method: put
   operationId: updateIdentityProviderWithId
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/identity/verify
-  method: post
-  operationId: verifyIdentityWithId
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/identity/verify/complete
-  method: post
-  operationId: completeVerifyIdentityWithId
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/identity/verify/send
-  method: post
-  operationId: sendVerifyIdentityWithId
-  x-agentic-access:
-    action-class: acting
-    consequence: physical
-    subject: required
-    audience: null
-    token:
-      max-ttl: 300
-      exchange: true
-      purpose-required: true
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/identity/verify/start
-  method: post
-  operationId: startVerifyIdentityWithId
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -2136,18 +2070,12 @@ operations:
   method: post
   operationId: searchKeysWithId
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /api/key/{keyId}
   method: delete
   operationId: deleteKeyWithId
@@ -2220,18 +2148,12 @@ operations:
   method: post
   operationId: searchLambdasWithId
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /api/lambda/{lambdaId}
   method: post
   operationId: createLambdaWithId
@@ -2400,18 +2322,12 @@ operations:
   method: post
   operationId: retrieveMessageTemplatePreviewWithId
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /api/message/template/{messageTemplateId}
   method: post
   operationId: createMessageTemplateWithId
@@ -2576,6 +2492,116 @@ operations:
       - abnormal
       - high-value
     audit: required
+- path: /oauth2/device/approve
+  method: post
+  operationId: createDeviceApprove
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /oauth2/device/user-code
+  method: get
+  operationId: retrieveDeviceUserCode
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /oauth2/device/user-code
+  method: post
+  operationId: createDeviceUserCode
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /oauth2/device/validate
+  method: get
+  operationId: retrieveDeviceValidate
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /oauth2/device_authorize
+  method: post
+  operationId: createDevice_authorize
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /oauth2/introspect
+  method: post
+  operationId: createIntrospect
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /oauth2/token
+  method: post
+  operationId: createToken
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /oauth2/userinfo
+  method: get
+  operationId: retrieveUserInfoFromAccessTokenWithId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /api/passwordless/login
   method: post
   operationId: passwordlessLoginWithId
@@ -2712,38 +2738,6 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /api/system-configuration
-  method: patch
-  operationId: patchSystemConfigurationWithId
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/system-configuration
-  method: put
-  operationId: updateSystemConfigurationWithId
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
 - path: /api/system/audit-log
   method: post
   operationId: createAuditLogWithId
@@ -2764,18 +2758,12 @@ operations:
   method: post
   operationId: searchAuditLogsWithId
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /api/system/audit-log/{auditLogId}
   method: get
   operationId: retrieveAuditLogWithId
@@ -2790,18 +2778,12 @@ operations:
   method: post
   operationId: searchEventLogsWithId
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /api/system/event-log/{eventLogId}
   method: get
   operationId: retrieveEventLogWithId
@@ -2868,6 +2850,26 @@ operations:
   method: post
   operationId: searchWebhookEventLogsWithId
   x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/system/webhook-event-log/{webhookEventLogId}
+  method: get
+  operationId: retrieveWebhookEventLogWithId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/system-configuration
+  method: patch
+  operationId: patchSystemConfigurationWithId
+  x-agentic-access:
     action-class: acting
     consequence: write
     subject: required
@@ -2880,9 +2882,41 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /api/system/webhook-event-log/{webhookEventLogId}
+- path: /api/system-configuration
+  method: put
+  operationId: updateSystemConfigurationWithId
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/tenant
+  method: post
+  operationId: createTenant
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/tenant/password-validation-rules
   method: get
-  operationId: retrieveWebhookEventLogWithId
+  operationId: retrievePasswordValidationRulesWithId
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2890,9 +2924,87 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /api/tenant
+- path: /api/tenant/password-validation-rules/{tenantId}
+  method: get
+  operationId: retrievePasswordValidationRulesWithTenantIdWithId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/tenant/search
   method: post
-  operationId: createTenant
+  operationId: searchTenantsWithId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/tenant/{tenantId}
+  method: post
+  operationId: createTenantWithId
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/tenant/{tenantId}
+  method: delete
+  operationId: deleteTenantWithId
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/tenant/{tenantId}
+  method: patch
+  operationId: patchTenantWithId
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/tenant/{tenantId}
+  method: get
+  operationId: retrieveTenantWithId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/tenant/{tenantId}
+  method: put
+  operationId: updateTenantWithId
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -3002,116 +3114,6 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /api/tenant/password-validation-rules
-  method: get
-  operationId: retrievePasswordValidationRulesWithId
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/tenant/password-validation-rules/{tenantId}
-  method: get
-  operationId: retrievePasswordValidationRulesWithTenantIdWithId
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/tenant/search
-  method: post
-  operationId: searchTenantsWithId
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/tenant/{tenantId}
-  method: post
-  operationId: createTenantWithId
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/tenant/{tenantId}
-  method: delete
-  operationId: deleteTenantWithId
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/tenant/{tenantId}
-  method: patch
-  operationId: patchTenantWithId
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/tenant/{tenantId}
-  method: get
-  operationId: retrieveTenantWithId
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/tenant/{tenantId}
-  method: put
-  operationId: updateTenantWithId
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
 - path: /api/theme
   method: post
   operationId: createTheme
@@ -3132,18 +3134,12 @@ operations:
   method: post
   operationId: searchThemesWithId
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /api/theme/{themeId}
   method: post
   operationId: createThemeWithId
@@ -3298,47 +3294,15 @@ operations:
   method: post
   operationId: retrieveTwoFactorStatusWithRequestWithId
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/two-factor/status/{twoFactorTrustId}
-  method: get
-  operationId: retrieveTwoFactorStatusWithId
-  x-agentic-access:
     action-class: connected
     consequence: read
     subject: optional
     token:
       max-ttl: 3600
     audit: none
-- path: /api/user
-  method: post
-  operationId: createUser
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/user
+- path: /api/two-factor/status/{twoFactorTrustId}
   method: get
-  operationId: retrieveUser
+  operationId: retrieveTwoFactorStatusWithId
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -3365,6 +3329,80 @@ operations:
 - path: /api/user-action
   method: get
   operationId: retrieveUserAction
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/user-action/{userActionId}
+  method: post
+  operationId: createUserActionWithId
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/user-action/{userActionId}
+  method: delete
+  operationId: deleteUserActionWithId
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/user-action/{userActionId}
+  method: patch
+  operationId: patchUserActionWithId
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/user-action/{userActionId}
+  method: put
+  operationId: updateUserActionWithId
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/user-action/{userActionId}
+  method: get
+  operationId: retrieveUserActionWithId
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -3472,9 +3510,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /api/user-action/{userActionId}
+- path: /api/user
   method: post
-  operationId: createUserActionWithId
+  operationId: createUser
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -3488,57 +3526,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /api/user-action/{userActionId}
-  method: delete
-  operationId: deleteUserActionWithId
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/user-action/{userActionId}
-  method: patch
-  operationId: patchUserActionWithId
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/user-action/{userActionId}
-  method: put
-  operationId: updateUserActionWithId
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/user-action/{userActionId}
+- path: /api/user
   method: get
-  operationId: retrieveUserActionWithId
+  operationId: retrieveUser
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -3702,18 +3692,12 @@ operations:
   method: post
   operationId: searchUserCommentsWithId
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /api/user/comment/{userId}
   method: get
   operationId: retrieveUserCommentsWithId
@@ -4098,18 +4082,12 @@ operations:
   method: post
   operationId: searchUsersByQueryWithId
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /api/user/two-factor/recovery-code/{userId}
   method: post
   operationId: generateTwoFactorRecoveryCodesWithId
@@ -4484,18 +4462,12 @@ operations:
   method: post
   operationId: searchWebhooksWithId
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /api/webhook/{webhookId}
   method: post
   operationId: createWebhookWithId
@@ -4570,25 +4542,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /oauth2/device/approve
-  method: post
-  operationId: createDeviceApprove
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /oauth2/device/user-code
+- path: /.well-known/jwks.json
   method: get
-  operationId: retrieveDeviceUserCode
+  operationId: retrieveJsonWebKeySetWithId
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -4596,83 +4552,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /oauth2/device/user-code
-  method: post
-  operationId: createDeviceUserCode
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /oauth2/device/validate
+- path: /.well-known/openid-configuration
   method: get
-  operationId: retrieveDeviceValidate
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /oauth2/device_authorize
-  method: post
-  operationId: createDevice_authorize
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /oauth2/introspect
-  method: post
-  operationId: createIntrospect
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /oauth2/token
-  method: post
-  operationId: createToken
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /oauth2/userinfo
-  method: get
-  operationId: retrieveUserInfoFromAccessTokenWithId
+  operationId: retrieveOpenIdConfigurationWithId
   x-agentic-access:
     action-class: connected
     consequence: read
