@@ -68,24 +68,34 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    LoginRecordConfiguration:
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    SystemTrustedProxyConfigurationPolicy:
+      description: ''
+      type: string
+      enum:
+      - All
+      - OnlyConfigured
+    EventLogConfiguration:
+      type: object
+      properties:
+        numberToRetain:
+          type: integer
+    AuditLogConfiguration:
       type: object
       properties:
         delete:
           $ref: '#/components/schemas/DeleteConfiguration'
-    SystemConfigurationRequest:
-      description: Request for the system configuration API.
-      type: object
-      properties:
-        systemConfiguration:
-          $ref: '#/components/schemas/SystemConfiguration'
-    DeleteConfiguration:
-      type: object
-      properties:
-        numberOfDaysToRetain:
-          type: integer
-        enabled:
-          type: boolean
     CORSConfiguration:
       description: ''
       type: object
@@ -115,12 +125,55 @@ components:
           type: integer
         enabled:
           type: boolean
+    UIConfiguration:
+      type: object
+      properties:
+        headerColor:
+          type: string
+        logoURL:
+          type: string
+        menuFontColor:
+          type: string
+    SystemConfigurationRequest:
+      description: Request for the system configuration API.
+      type: object
+      properties:
+        systemConfiguration:
+          $ref: '#/components/schemas/SystemConfiguration'
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
     SystemConfigurationResponse:
       description: Response for the system configuration API.
       type: object
       properties:
         systemConfiguration:
           $ref: '#/components/schemas/SystemConfiguration'
+    SystemTrustedProxyConfiguration:
+      description: ''
+      type: object
+      properties:
+        trustPolicy:
+          $ref: '#/components/schemas/SystemTrustedProxyConfigurationPolicy'
+        trusted:
+          type: array
+          items:
+            type: string
+    ZoneId:
+      description: Timezone Identifier
+      example: America/Denver
+      pattern: ^w+/w+$
+      type: string
+    UsageDataConfiguration:
+      description: Config for Usage Data  Stats
+      type: object
+      properties:
+        numberOfDaysToRetain:
+          type: integer
+        enabled:
+          type: boolean
     SystemConfiguration:
       description: ''
       type: object
@@ -151,69 +204,11 @@ components:
           $ref: '#/components/schemas/UsageDataConfiguration'
         webhookEventLogConfiguration:
           $ref: '#/components/schemas/WebhookEventLogConfiguration'
-    UsageDataConfiguration:
-      description: Config for Usage Data  Stats
-      type: object
-      properties:
-        numberOfDaysToRetain:
-          type: integer
-        enabled:
-          type: boolean
-    UIConfiguration:
-      type: object
-      properties:
-        headerColor:
-          type: string
-        logoURL:
-          type: string
-        menuFontColor:
-          type: string
-    EventLogConfiguration:
-      type: object
-      properties:
-        numberToRetain:
-          type: integer
-    SystemTrustedProxyConfigurationPolicy:
-      description: ''
-      type: string
-      enum:
-      - All
-      - OnlyConfigured
-    ZonedDateTime:
-      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
-      example: '1659380719000'
-      type: integer
-      format: int64
-    SystemTrustedProxyConfiguration:
-      description: ''
-      type: object
-      properties:
-        trustPolicy:
-          $ref: '#/components/schemas/SystemTrustedProxyConfigurationPolicy'
-        trusted:
-          type: array
-          items:
-            type: string
-    Errors:
-      description: Standard error domain object that can also be used as the response from an API call.
-      type: object
-      properties:
-        fieldErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-        generalErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-    WebhookEventLogConfiguration:
-      description: The system configuration for Webhook Event Log data.
+    LoginRecordConfiguration:
       type: object
       properties:
         delete:
           $ref: '#/components/schemas/DeleteConfiguration'
-        enabled:
-          type: boolean
     HTTPMethod:
       description: ''
       type: string
@@ -225,11 +220,6 @@ components:
       - HEAD
       - OPTIONS
       - PATCH
-    AuditLogConfiguration:
-      type: object
-      properties:
-        delete:
-          $ref: '#/components/schemas/DeleteConfiguration'
     Error:
       description: Defines an error.
       type: object
@@ -242,11 +232,21 @@ components:
             type: object
         message:
           type: string
-    ZoneId:
-      description: Timezone Identifier
-      example: America/Denver
-      pattern: ^w+/w+$
-      type: string
+    DeleteConfiguration:
+      type: object
+      properties:
+        numberOfDaysToRetain:
+          type: integer
+        enabled:
+          type: boolean
+    WebhookEventLogConfiguration:
+      description: The system configuration for Webhook Event Log data.
+      type: object
+      properties:
+        delete:
+          $ref: '#/components/schemas/DeleteConfiguration'
+        enabled:
+          type: boolean
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

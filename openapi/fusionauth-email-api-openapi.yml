@@ -338,6 +338,10 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    LocalizedStrings:
+      description: Models a set of localized Strings that can be stored as JSON.
+      type: object
+      properties: {}
     EmailTemplateResponse:
       description: Email template response.
       type: object
@@ -348,17 +352,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/EmailTemplate'
-    EmailTemplateErrors:
-      type: object
-      properties:
-        parseErrors:
-          type: object
-          additionalProperties:
-            type: string
-        renderErrors:
-          type: object
-          additionalProperties:
-            type: string
     EmailTemplateSearchResponse:
       description: Email template search response
       type: object
@@ -370,70 +363,21 @@ components:
         total:
           type: integer
           format: int64
-    EmailAddress:
-      description: An email address.
+    Attachment:
+      description: This class is a simple attachment with a byte array, name and MIME type.
       type: object
       properties:
-        address:
+        attachment:
           type: string
-        display:
+          format: binary
+        mime:
+          type: string
+        name:
           type: string
     Locale:
       description: A Locale object represents a specific geographical, political, or cultural region.
       example: en_US
       type: string
-    Email:
-      description: This class is an abstraction of a simple email message.
-      type: object
-      properties:
-        attachments:
-          type: array
-          items:
-            $ref: '#/components/schemas/Attachment'
-        bcc:
-          type: array
-          items:
-            $ref: '#/components/schemas/EmailAddress'
-        cc:
-          type: array
-          items:
-            $ref: '#/components/schemas/EmailAddress'
-        from:
-          $ref: '#/components/schemas/EmailAddress'
-        html:
-          type: string
-        replyTo:
-          $ref: '#/components/schemas/EmailAddress'
-        subject:
-          type: string
-        text:
-          type: string
-        to:
-          type: array
-          items:
-            $ref: '#/components/schemas/EmailAddress'
-    EmailTemplateRequest:
-      description: Email template request.
-      type: object
-      properties:
-        emailTemplate:
-          $ref: '#/components/schemas/EmailTemplate'
-    PreviewResponse:
-      description: ''
-      type: object
-      properties:
-        email:
-          $ref: '#/components/schemas/Email'
-        errors:
-          $ref: '#/components/schemas/Errors'
-    PreviewRequest:
-      description: ''
-      type: object
-      properties:
-        emailTemplate:
-          $ref: '#/components/schemas/EmailTemplate'
-        locale:
-          $ref: '#/components/schemas/Locale'
     Errors:
       description: Standard error domain object that can also be used as the response from an API call.
       type: object
@@ -458,47 +402,14 @@ components:
           type: object
           additionalProperties:
             $ref: '#/components/schemas/EmailTemplateErrors'
-    LocalizedStrings:
-      description: Models a set of localized Strings that can be stored as JSON.
-      type: object
-      properties: {}
-    EmailTemplate:
-      description: Stores an email template used to send emails to users.
+    EmailAddress:
+      description: An email address.
       type: object
       properties:
-        defaultFromName:
+        address:
           type: string
-        defaultHtmlTemplate:
+        display:
           type: string
-        defaultSubject:
-          type: string
-        defaultTextTemplate:
-          type: string
-        fromEmail:
-          type: string
-        id:
-          type: string
-          format: uuid
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        lastUpdateInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        localizedFromNames:
-          $ref: '#/components/schemas/LocalizedStrings'
-        localizedHtmlTemplates:
-          $ref: '#/components/schemas/LocalizedStrings'
-        localizedSubjects:
-          $ref: '#/components/schemas/LocalizedStrings'
-        localizedTextTemplates:
-          $ref: '#/components/schemas/LocalizedStrings'
-        name:
-          type: string
-    EmailTemplateSearchRequest:
-      description: Search request for email templates
-      type: object
-      properties:
-        search:
-          $ref: '#/components/schemas/EmailTemplateSearchCriteria'
     SendRequest:
       description: ''
       type: object
@@ -531,23 +442,6 @@ components:
           items:
             type: string
             format: uuid
-    EmailTemplateSearchCriteria:
-      description: Search criteria for Email templates
-      type: object
-      properties:
-        name:
-          type: string
-        numberOfResults:
-          type: integer
-        orderBy:
-          type: string
-        startRow:
-          type: integer
-    ZonedDateTime:
-      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
-      example: '1659380719000'
-      type: integer
-      format: int64
     Error:
       description: Defines an error.
       type: object
@@ -560,17 +454,123 @@ components:
             type: object
         message:
           type: string
-    Attachment:
-      description: This class is a simple attachment with a byte array, name and MIME type.
+    EmailTemplateSearchRequest:
+      description: Search request for email templates
       type: object
       properties:
-        attachment:
+        search:
+          $ref: '#/components/schemas/EmailTemplateSearchCriteria'
+    PreviewRequest:
+      description: ''
+      type: object
+      properties:
+        emailTemplate:
+          $ref: '#/components/schemas/EmailTemplate'
+        locale:
+          $ref: '#/components/schemas/Locale'
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    EmailTemplateErrors:
+      type: object
+      properties:
+        parseErrors:
+          type: object
+          additionalProperties:
+            type: string
+        renderErrors:
+          type: object
+          additionalProperties:
+            type: string
+    EmailTemplateRequest:
+      description: Email template request.
+      type: object
+      properties:
+        emailTemplate:
+          $ref: '#/components/schemas/EmailTemplate'
+    Email:
+      description: This class is an abstraction of a simple email message.
+      type: object
+      properties:
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+        bcc:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailAddress'
+        cc:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailAddress'
+        from:
+          $ref: '#/components/schemas/EmailAddress'
+        html:
           type: string
-          format: binary
-        mime:
+        replyTo:
+          $ref: '#/components/schemas/EmailAddress'
+        subject:
           type: string
+        text:
+          type: string
+        to:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailAddress'
+    EmailTemplate:
+      description: Stores an email template used to send emails to users.
+      type: object
+      properties:
+        defaultFromName:
+          type: string
+        defaultHtmlTemplate:
+          type: string
+        defaultSubject:
+          type: string
+        defaultTextTemplate:
+          type: string
+        fromEmail:
+          type: string
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        localizedFromNames:
+          $ref: '#/components/schemas/LocalizedStrings'
+        localizedHtmlTemplates:
+          $ref: '#/components/schemas/LocalizedStrings'
+        localizedSubjects:
+          $ref: '#/components/schemas/LocalizedStrings'
+        localizedTextTemplates:
+          $ref: '#/components/schemas/LocalizedStrings'
         name:
           type: string
+    EmailTemplateSearchCriteria:
+      description: Search criteria for Email templates
+      type: object
+      properties:
+        name:
+          type: string
+        numberOfResults:
+          type: integer
+        orderBy:
+          type: string
+        startRow:
+          type: integer
+    PreviewResponse:
+      description: ''
+      type: object
+      properties:
+        email:
+          $ref: '#/components/schemas/Email'
+        errors:
+          $ref: '#/components/schemas/Errors'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

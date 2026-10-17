@@ -516,122 +516,33 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    EpicGamesIdentityProvider:
-      description: Epic gaming login provider.
+    UserIdentity:
+      description: ''
       type: object
       properties:
-        buttonText:
+        displayValue:
           type: string
-        client_id:
-          type: string
-        client_secret:
-          type: string
-        scope:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        applicationConfiguration:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/EpicGamesApplicationConfiguration'
-        attributeMappings:
-          type: object
-          additionalProperties:
-            type: string
-        debug:
-          type: boolean
-        id:
-          type: string
-          format: uuid
         insertInstant:
           $ref: '#/components/schemas/ZonedDateTime'
-        lambdaConfiguration:
-          $ref: '#/components/schemas/ProviderLambdaConfiguration'
+        lastLoginInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
         lastUpdateInstant:
           $ref: '#/components/schemas/ZonedDateTime'
-        linkingStrategy:
-          $ref: '#/components/schemas/IdentityProviderLinkingStrategy'
-        name:
-          type: string
-        source:
-          type: string
-        tenantConfiguration:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/IdentityProviderTenantConfiguration'
-        tenantId:
-          type: string
-          format: uuid
-        type:
-          $ref: '#/components/schemas/IdentityProviderType'
-    XboxIdentityProvider:
-      description: Xbox gaming login provider.
-      type: object
-      properties:
-        buttonText:
-          type: string
-        client_id:
-          type: string
-        client_secret:
-          type: string
-        scope:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        applicationConfiguration:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/XboxApplicationConfiguration'
-        attributeMappings:
-          type: object
-          additionalProperties:
-            type: string
-        debug:
+        moderationStatus:
+          $ref: '#/components/schemas/ContentStatus'
+        primary:
           type: boolean
-        id:
-          type: string
-          format: uuid
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        lambdaConfiguration:
-          $ref: '#/components/schemas/ProviderLambdaConfiguration'
-        lastUpdateInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        linkingStrategy:
-          $ref: '#/components/schemas/IdentityProviderLinkingStrategy'
-        name:
-          type: string
-        source:
-          type: string
-        tenantConfiguration:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/IdentityProviderTenantConfiguration'
-        tenantId:
-          type: string
-          format: uuid
         type:
-          $ref: '#/components/schemas/IdentityProviderType'
-    SAMLv2IdpInitiatedConfiguration:
-      description: Config for regular SAML IDP configurations that support IdP initiated requests
-      type: object
-      properties:
-        issuer:
+          $ref: '#/components/schemas/IdentityType'
+        value:
           type: string
-        enabled:
+        verified:
           type: boolean
-    ContentStatus:
-      description: Status for content like usernames, profile attributes, etc.
-      type: string
-      enum:
-      - ACTIVE
-      - PENDING
-      - REJECTED
-    XboxApplicationConfiguration:
+        verifiedInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        verifiedReason:
+          $ref: '#/components/schemas/IdentityVerifiedReason'
+    EpicGamesApplicationConfiguration:
       description: ''
       type: object
       properties:
@@ -649,376 +560,6 @@ components:
             type: object
         createRegistration:
           type: boolean
-    IdentityProviderOauth2Configuration:
-      description: ''
-      type: object
-      properties:
-        authorization_endpoint:
-          type: string
-          format: URI
-        clientAuthenticationMethod:
-          $ref: '#/components/schemas/ClientAuthenticationMethod'
-        client_id:
-          type: string
-        client_secret:
-          type: string
-        emailClaim:
-          type: string
-        emailVerifiedClaim:
-          type: string
-        issuer:
-          type: string
-          format: URI
-        scope:
-          type: string
-        token_endpoint:
-          type: string
-          format: URI
-        uniqueIdClaim:
-          type: string
-        userinfo_endpoint:
-          type: string
-          format: URI
-        usernameClaim:
-          type: string
-    IdentityProviderSearchRequest:
-      description: Search request for Identity Providers
-      type: object
-      properties:
-        search:
-          $ref: '#/components/schemas/IdentityProviderSearchCriteria'
-    GoogleIdentityProvider:
-      description: Google social login provider.
-      type: object
-      properties:
-        buttonText:
-          type: string
-        client_id:
-          type: string
-        client_secret:
-          type: string
-        loginMethod:
-          $ref: '#/components/schemas/IdentityProviderLoginMethod'
-        properties:
-          $ref: '#/components/schemas/GoogleIdentityProviderProperties'
-        scope:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        applicationConfiguration:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/GoogleApplicationConfiguration'
-        attributeMappings:
-          type: object
-          additionalProperties:
-            type: string
-        debug:
-          type: boolean
-        id:
-          type: string
-          format: uuid
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        lambdaConfiguration:
-          $ref: '#/components/schemas/ProviderLambdaConfiguration'
-        lastUpdateInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        linkingStrategy:
-          $ref: '#/components/schemas/IdentityProviderLinkingStrategy'
-        name:
-          type: string
-        source:
-          type: string
-        tenantConfiguration:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/IdentityProviderTenantConfiguration'
-        tenantId:
-          type: string
-          format: uuid
-        type:
-          $ref: '#/components/schemas/IdentityProviderType'
-    ExternalJWTApplicationConfiguration:
-      description: ''
-      type: object
-      properties:
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        createRegistration:
-          type: boolean
-    GoogleIdentityProviderProperties:
-      description: Google social login provider parameters.
-      type: object
-      properties:
-        api:
-          type: string
-        button:
-          type: string
-    LinkedInIdentityProvider:
-      description: ''
-      type: object
-      properties:
-        buttonText:
-          type: string
-        client_id:
-          type: string
-        client_secret:
-          type: string
-        scope:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        applicationConfiguration:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/LinkedInApplicationConfiguration'
-        attributeMappings:
-          type: object
-          additionalProperties:
-            type: string
-        debug:
-          type: boolean
-        id:
-          type: string
-          format: uuid
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        lambdaConfiguration:
-          $ref: '#/components/schemas/ProviderLambdaConfiguration'
-        lastUpdateInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        linkingStrategy:
-          $ref: '#/components/schemas/IdentityProviderLinkingStrategy'
-        name:
-          type: string
-        source:
-          type: string
-        tenantConfiguration:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/IdentityProviderTenantConfiguration'
-        tenantId:
-          type: string
-          format: uuid
-        type:
-          $ref: '#/components/schemas/IdentityProviderType'
-    NintendoApplicationConfiguration:
-      description: ''
-      type: object
-      properties:
-        buttonText:
-          type: string
-        client_id:
-          type: string
-        client_secret:
-          type: string
-        emailClaim:
-          type: string
-        scope:
-          type: string
-        uniqueIdClaim:
-          type: string
-        usernameClaim:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        createRegistration:
-          type: boolean
-    FacebookIdentityProvider:
-      description: Facebook social login provider.
-      type: object
-      properties:
-        appId:
-          type: string
-        buttonText:
-          type: string
-        client_secret:
-          type: string
-        fields:
-          type: string
-        loginMethod:
-          $ref: '#/components/schemas/IdentityProviderLoginMethod'
-        permissions:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        applicationConfiguration:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/FacebookApplicationConfiguration'
-        attributeMappings:
-          type: object
-          additionalProperties:
-            type: string
-        debug:
-          type: boolean
-        id:
-          type: string
-          format: uuid
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        lambdaConfiguration:
-          $ref: '#/components/schemas/ProviderLambdaConfiguration'
-        lastUpdateInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        linkingStrategy:
-          $ref: '#/components/schemas/IdentityProviderLinkingStrategy'
-        name:
-          type: string
-        source:
-          type: string
-        tenantConfiguration:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/IdentityProviderTenantConfiguration'
-        tenantId:
-          type: string
-          format: uuid
-        type:
-          $ref: '#/components/schemas/IdentityProviderType'
-    TwitterIdentityProvider:
-      description: Twitter social login provider.
-      type: object
-      properties:
-        buttonText:
-          type: string
-        consumerKey:
-          type: string
-        consumerSecret:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        applicationConfiguration:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/TwitterApplicationConfiguration'
-        attributeMappings:
-          type: object
-          additionalProperties:
-            type: string
-        debug:
-          type: boolean
-        id:
-          type: string
-          format: uuid
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        lambdaConfiguration:
-          $ref: '#/components/schemas/ProviderLambdaConfiguration'
-        lastUpdateInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        linkingStrategy:
-          $ref: '#/components/schemas/IdentityProviderLinkingStrategy'
-        name:
-          type: string
-        source:
-          type: string
-        tenantConfiguration:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/IdentityProviderTenantConfiguration'
-        tenantId:
-          type: string
-          format: uuid
-        type:
-          $ref: '#/components/schemas/IdentityProviderType'
-    Location:
-      description: Location information. Useful for IP addresses and other displayable data objects.
-      type: object
-      properties:
-        city:
-          type: string
-        country:
-          type: string
-        latitude:
-          type: number
-          format: double
-        longitude:
-          type: number
-          format: double
-        region:
-          type: string
-        zipcode:
-          type: string
-        displayString:
-          type: string
-    ChangePasswordReason:
-      description: ''
-      type: string
-      enum:
-      - Administrative
-      - Breached
-      - Expired
-      - Validation
-    SonyPSNApplicationConfiguration:
-      description: ''
-      type: object
-      properties:
-        buttonText:
-          type: string
-        client_id:
-          type: string
-        client_secret:
-          type: string
-        scope:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        createRegistration:
-          type: boolean
-    SAMLv2AssertionDecryptionConfiguration:
-      description: Configuration for encrypted assertions when acting as SAML Service Provider
-      type: object
-      properties:
-        keyTransportDecryptionKeyId:
-          type: string
-          format: uuid
-        enabled:
-          type: boolean
-    AppleApplicationConfiguration:
-      description: ''
-      type: object
-      properties:
-        bundleId:
-          type: string
-        buttonText:
-          type: string
-        keyId:
-          type: string
-          format: uuid
-        scope:
-          type: string
-        servicesId:
-          type: string
-        teamId:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        createRegistration:
-          type: boolean
-    IdentityProviderRequest:
-      description: ''
-      type: object
-      properties:
-        identityProvider:
-          $ref: '#/components/schemas/IdentityProviderField'
     UserRegistration:
       description: User registration information for a single application.
       type: object
@@ -1066,71 +607,28 @@ components:
           type: boolean
         verifiedInstant:
           $ref: '#/components/schemas/ZonedDateTime'
-    TwoFactorMethod:
+    IdentityProviderRequest:
       description: ''
       type: object
       properties:
-        authenticator:
-          $ref: '#/components/schemas/AuthenticatorConfiguration'
-        email:
-          type: string
-        id:
-          type: string
-        lastUsed:
-          type: boolean
-        method:
-          type: string
-        mobilePhone:
-          type: string
-        secret:
-          type: string
-    Locale:
-      description: A Locale object represents a specific geographical, political, or cultural region.
-      example: en_US
-      type: string
-    LoginPreventedResponse:
-      description: The summary of the action that is preventing login to be returned on the login response.
+        identityProvider:
+          $ref: '#/components/schemas/IdentityProviderField'
+    AppleIdentityProvider:
+      description: ''
       type: object
       properties:
-        actionId:
+        bundleId:
           type: string
-          format: uuid
-        actionerUserId:
-          type: string
-          format: uuid
-        expiry:
-          $ref: '#/components/schemas/ZonedDateTime'
-        localizedName:
-          type: string
-        localizedOption:
-          type: string
-        localizedReason:
-          type: string
-        name:
-          type: string
-        option:
-          type: string
-        reason:
-          type: string
-        reasonCode:
-          type: string
-    NintendoIdentityProvider:
-      description: Nintendo gaming login provider.
-      type: object
-      properties:
         buttonText:
           type: string
-        client_id:
+        keyId:
           type: string
-        client_secret:
-          type: string
-        emailClaim:
-          type: string
+          format: uuid
         scope:
           type: string
-        uniqueIdClaim:
+        servicesId:
           type: string
-        usernameClaim:
+        teamId:
           type: string
         data:
           type: object
@@ -1139,7 +637,7 @@ components:
         applicationConfiguration:
           type: object
           additionalProperties:
-            $ref: '#/components/schemas/NintendoApplicationConfiguration'
+            $ref: '#/components/schemas/AppleApplicationConfiguration'
         attributeMappings:
           type: object
           additionalProperties:
@@ -1170,106 +668,18 @@ components:
           format: uuid
         type:
           $ref: '#/components/schemas/IdentityProviderType'
-    ZoneId:
-      description: Timezone Identifier
-      example: America/Denver
-      pattern: ^w+/w+$
-      type: string
-    GroupMember:
-      description: A User's membership into a Group
+    SAMLv2DestinationAssertionConfiguration:
+      description: ''
       type: object
       properties:
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        groupId:
-          type: string
-          format: uuid
-        id:
-          type: string
-          format: uuid
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        userId:
-          type: string
-          format: uuid
-    ExternalJWTIdentityProvider:
-      description: External JWT-only identity provider.
-      type: object
-      properties:
-        claimMap:
-          type: object
-          additionalProperties:
-            type: string
-        domains:
+        alternates:
           type: array
-          uniqueItems: true
-          items: {}
-        defaultKeyId:
-          type: string
-          format: uuid
-        headerKeyParameter:
-          type: string
-        oauth2:
-          $ref: '#/components/schemas/IdentityProviderOauth2Configuration'
-        uniqueIdentityClaim:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        applicationConfiguration:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/ExternalJWTApplicationConfiguration'
-        attributeMappings:
-          type: object
-          additionalProperties:
+          items:
             type: string
-        debug:
-          type: boolean
-        id:
-          type: string
-          format: uuid
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        lambdaConfiguration:
-          $ref: '#/components/schemas/ProviderLambdaConfiguration'
-        lastUpdateInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        linkingStrategy:
-          $ref: '#/components/schemas/IdentityProviderLinkingStrategy'
-        name:
-          type: string
-        source:
-          type: string
-        tenantConfiguration:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/IdentityProviderTenantConfiguration'
-        tenantId:
-          type: string
-          format: uuid
-        type:
-          $ref: '#/components/schemas/IdentityProviderType'
-    HYPRApplicationConfiguration:
+        policy:
+          $ref: '#/components/schemas/SAMLv2DestinationAssertionPolicy'
+    TwitchApplicationConfiguration:
       description: ''
-      type: object
-      properties:
-        relyingPartyApplicationId:
-          type: string
-        relyingPartyURL:
-          type: string
-          format: URI
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        createRegistration:
-          type: boolean
-    SonyPSNIdentityProvider:
-      description: SonyPSN gaming login provider.
       type: object
       properties:
         buttonText:
@@ -1284,65 +694,8 @@ components:
           type: object
           additionalProperties:
             type: object
-        applicationConfiguration:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/SonyPSNApplicationConfiguration'
-        attributeMappings:
-          type: object
-          additionalProperties:
-            type: string
-        debug:
-          type: boolean
-        id:
-          type: string
-          format: uuid
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        lambdaConfiguration:
-          $ref: '#/components/schemas/ProviderLambdaConfiguration'
-        lastUpdateInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        linkingStrategy:
-          $ref: '#/components/schemas/IdentityProviderLinkingStrategy'
-        name:
-          type: string
-        source:
-          type: string
-        tenantConfiguration:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/IdentityProviderTenantConfiguration'
-        tenantId:
-          type: string
-          format: uuid
-        type:
-          $ref: '#/components/schemas/IdentityProviderType'
-    TwitterApplicationConfiguration:
-      description: ''
-      type: object
-      properties:
-        buttonText:
-          type: string
-        consumerKey:
-          type: string
-        consumerSecret:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
         createRegistration:
           type: boolean
-    IdentityProviderLoginStep:
-      type: object
-      properties:
-        detail:
-          type: string
-        success:
-          type: boolean
-        title:
-          type: string
     LoginResponse:
       description: ''
       type: object
@@ -1396,20 +749,353 @@ components:
           type: string
         user:
           $ref: '#/components/schemas/User'
-    LoginHintConfiguration:
+    IdentityVerifiedReason:
+      description: Models the reason that {@link UserIdentity#verified} was set to true or false.
+      type: string
+      enum:
+      - Skipped
+      - Trusted
+      - Unverifiable
+      - Implicit
+      - Pending
+      - Completed
+      - Disabled
+      - Administrative
+      - Import
+    IdentityProviderLink:
       description: ''
       type: object
       properties:
-        parameterName:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        displayName:
           type: string
-        enabled:
+        identityProviderId:
+          type: string
+          format: uuid
+        identityProviderName:
+          type: string
+        identityProviderType:
+          $ref: '#/components/schemas/IdentityProviderType'
+        identityProviderUserId:
+          type: string
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastLoginInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        tenantId:
+          type: string
+          format: uuid
+        token:
+          type: string
+        userId:
+          type: string
+          format: uuid
+    OpenIdConnectApplicationConfiguration:
+      description: ''
+      type: object
+      properties:
+        buttonImageURL:
+          type: string
+          format: URI
+        buttonText:
+          type: string
+        oauth2:
+          $ref: '#/components/schemas/IdentityProviderOauth2Configuration'
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        createRegistration:
           type: boolean
-    SteamAPIMode:
-      description: Steam API modes.
+    IdentityProviderTenantConfiguration:
+      description: ''
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        limitUserLinkCount:
+          $ref: '#/components/schemas/IdentityProviderLimitUserLinkingPolicy'
+    SonyPSNIdentityProvider:
+      description: SonyPSN gaming login provider.
+      type: object
+      properties:
+        buttonText:
+          type: string
+        client_id:
+          type: string
+        client_secret:
+          type: string
+        scope:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        applicationConfiguration:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/SonyPSNApplicationConfiguration'
+        attributeMappings:
+          type: object
+          additionalProperties:
+            type: string
+        debug:
+          type: boolean
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lambdaConfiguration:
+          $ref: '#/components/schemas/ProviderLambdaConfiguration'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        linkingStrategy:
+          $ref: '#/components/schemas/IdentityProviderLinkingStrategy'
+        name:
+          type: string
+        source:
+          type: string
+        tenantConfiguration:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/IdentityProviderTenantConfiguration'
+        tenantId:
+          type: string
+          format: uuid
+        type:
+          $ref: '#/components/schemas/IdentityProviderType'
+    PendingIdPLink:
+      description: ''
+      type: object
+      properties:
+        displayName:
+          type: string
+        email:
+          type: string
+        identityProviderId:
+          type: string
+          format: uuid
+        identityProviderLinks:
+          type: array
+          items:
+            $ref: '#/components/schemas/IdentityProviderLink'
+        identityProviderName:
+          type: string
+        identityProviderTenantConfiguration:
+          $ref: '#/components/schemas/IdentityProviderTenantConfiguration'
+        identityProviderType:
+          $ref: '#/components/schemas/IdentityProviderType'
+        identityProviderUserId:
+          type: string
+        user:
+          $ref: '#/components/schemas/User'
+        username:
+          type: string
+    EventInfo:
+      description: Information about a user event (login, register, etc) that helps identify the source of the event (location, device type, OS, etc).
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        deviceDescription:
+          type: string
+        deviceName:
+          type: string
+        deviceType:
+          type: string
+        ipAddress:
+          type: string
+        location:
+          $ref: '#/components/schemas/Location'
+        os:
+          type: string
+        userAgent:
+          type: string
+    TwitchIdentityProvider:
+      description: Twitch gaming login provider.
+      type: object
+      properties:
+        buttonText:
+          type: string
+        client_id:
+          type: string
+        client_secret:
+          type: string
+        scope:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        applicationConfiguration:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/TwitchApplicationConfiguration'
+        attributeMappings:
+          type: object
+          additionalProperties:
+            type: string
+        debug:
+          type: boolean
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lambdaConfiguration:
+          $ref: '#/components/schemas/ProviderLambdaConfiguration'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        linkingStrategy:
+          $ref: '#/components/schemas/IdentityProviderLinkingStrategy'
+        name:
+          type: string
+        source:
+          type: string
+        tenantConfiguration:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/IdentityProviderTenantConfiguration'
+        tenantId:
+          type: string
+          format: uuid
+        type:
+          $ref: '#/components/schemas/IdentityProviderType'
+    AppleApplicationConfiguration:
+      description: ''
+      type: object
+      properties:
+        bundleId:
+          type: string
+        buttonText:
+          type: string
+        keyId:
+          type: string
+          format: uuid
+        scope:
+          type: string
+        servicesId:
+          type: string
+        teamId:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        createRegistration:
+          type: boolean
+    DeviceInfo:
+      description: ''
+      type: object
+      properties:
+        description:
+          type: string
+        lastAccessedAddress:
+          type: string
+        lastAccessedInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        name:
+          type: string
+        type:
+          type: string
+    IdentityProviderField:
+      oneOf:
+      - $ref: '#/components/schemas/AppleIdentityProvider'
+      - $ref: '#/components/schemas/EpicGamesIdentityProvider'
+      - $ref: '#/components/schemas/ExternalJWTIdentityProvider'
+      - $ref: '#/components/schemas/FacebookIdentityProvider'
+      - $ref: '#/components/schemas/GoogleIdentityProvider'
+      - $ref: '#/components/schemas/HYPRIdentityProvider'
+      - $ref: '#/components/schemas/LinkedInIdentityProvider'
+      - $ref: '#/components/schemas/NintendoIdentityProvider'
+      - $ref: '#/components/schemas/OpenIdConnectIdentityProvider'
+      - $ref: '#/components/schemas/SAMLv2IdPInitiatedIdentityProvider'
+      - $ref: '#/components/schemas/SAMLv2IdentityProvider'
+      - $ref: '#/components/schemas/SonyPSNIdentityProvider'
+      - $ref: '#/components/schemas/SteamIdentityProvider'
+      - $ref: '#/components/schemas/TwitchIdentityProvider'
+      - $ref: '#/components/schemas/TwitterIdentityProvider'
+      - $ref: '#/components/schemas/XboxIdentityProvider'
+      discriminator:
+        propertyName: type
+        mapping:
+          Apple: '#/components/schemas/AppleIdentityProvider'
+          EpicGames: '#/components/schemas/EpicGamesIdentityProvider'
+          ExternalJWT: '#/components/schemas/ExternalJWTIdentityProvider'
+          Facebook: '#/components/schemas/FacebookIdentityProvider'
+          Google: '#/components/schemas/GoogleIdentityProvider'
+          HYPR: '#/components/schemas/HYPRIdentityProvider'
+          LinkedIn: '#/components/schemas/LinkedInIdentityProvider'
+          Nintendo: '#/components/schemas/NintendoIdentityProvider'
+          OpenIdConnect: '#/components/schemas/OpenIdConnectIdentityProvider'
+          SAMLv2IdPInitiated: '#/components/schemas/SAMLv2IdPInitiatedIdentityProvider'
+          SAMLv2: '#/components/schemas/SAMLv2IdentityProvider'
+          SonyPSN: '#/components/schemas/SonyPSNIdentityProvider'
+          Steam: '#/components/schemas/SteamIdentityProvider'
+          Twitch: '#/components/schemas/TwitchIdentityProvider'
+          Twitter: '#/components/schemas/TwitterIdentityProvider'
+          Xbox: '#/components/schemas/XboxIdentityProvider'
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    TOTPAlgorithm:
       type: string
       enum:
-      - Public
-      - Partner
+      - HmacSHA1
+      - HmacSHA256
+      - HmacSHA512
+    UserTwoFactorConfiguration:
+      description: ''
+      type: object
+      properties:
+        methods:
+          type: array
+          items:
+            $ref: '#/components/schemas/TwoFactorMethod'
+        recoveryCodes:
+          type: array
+          items:
+            type: string
+    IdentityProviderConnectionTestRequest:
+      description: A request for interacting with the identity provider connection test API
+      type: object
+      properties:
+        identityProviderId:
+          type: string
+          format: uuid
+        tenantId:
+          type: string
+          format: uuid
+    SteamApplicationConfiguration:
+      description: ''
+      type: object
+      properties:
+        apiMode:
+          $ref: '#/components/schemas/SteamAPIMode'
+        buttonText:
+          type: string
+        client_id:
+          type: string
+        scope:
+          type: string
+        webAPIKey:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        createRegistration:
+          type: boolean
     OpenIdConnectIdentityProvider:
       description: ''
       type: object
@@ -1465,58 +1151,28 @@ components:
           format: uuid
         type:
           $ref: '#/components/schemas/IdentityProviderType'
-    SteamIdentityProvider:
-      description: Steam gaming login provider.
+    ExternalJWTApplicationConfiguration:
+      description: ''
       type: object
       properties:
-        apiMode:
-          $ref: '#/components/schemas/SteamAPIMode'
-        buttonText:
-          type: string
-        client_id:
-          type: string
-        scope:
-          type: string
-        webAPIKey:
-          type: string
         data:
           type: object
           additionalProperties:
             type: object
-        applicationConfiguration:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/SteamApplicationConfiguration'
-        attributeMappings:
-          type: object
-          additionalProperties:
-            type: string
-        debug:
+        createRegistration:
           type: boolean
-        id:
-          type: string
-          format: uuid
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        lambdaConfiguration:
-          $ref: '#/components/schemas/ProviderLambdaConfiguration'
-        lastUpdateInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        linkingStrategy:
-          $ref: '#/components/schemas/IdentityProviderLinkingStrategy'
-        name:
-          type: string
-        source:
-          type: string
-        tenantConfiguration:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/IdentityProviderTenantConfiguration'
-        tenantId:
-          type: string
-          format: uuid
-        type:
-          $ref: '#/components/schemas/IdentityProviderType'
+    ClientAuthenticationMethod:
+      type: string
+      enum:
+      - none
+      - client_secret_basic
+      - client_secret_post
+    LookupResponse:
+      description: ''
+      type: object
+      properties:
+        identityProvider:
+          $ref: '#/components/schemas/IdentityProviderDetails'
     IdentityProviderLinkRequest:
       description: ''
       type: object
@@ -1527,51 +1183,6 @@ components:
           type: string
         eventInfo:
           $ref: '#/components/schemas/EventInfo'
-    IdentityProviderLinkingStrategy:
-      description: The IdP behavior when no user link has been made yet.
-      type: string
-      enum:
-      - CreatePendingLink
-      - Disabled
-      - LinkAnonymously
-      - LinkByEmail
-      - LinkByEmailForExistingUser
-      - LinkByUsername
-      - LinkByUsernameForExistingUser
-      - Unsupported
-    IdentityProviderResponse:
-      description: ''
-      type: object
-      properties:
-        identityProvider:
-          $ref: '#/components/schemas/IdentityProviderField'
-        identityProviders:
-          type: array
-          items:
-            $ref: '#/components/schemas/IdentityProviderField'
-    IdentityType:
-      description: Model identity types provided by FusionAuth.
-      type: object
-      properties:
-        name:
-          type: string
-    ZonedDateTime:
-      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
-      example: '1659380719000'
-      type: integer
-      format: int64
-    Error:
-      description: Defines an error.
-      type: object
-      properties:
-        code:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        message:
-          type: string
     IdentityProviderDetails:
       type: object
       properties:
@@ -1595,6 +1206,106 @@ components:
           format: uuid
         type:
           $ref: '#/components/schemas/IdentityProviderType'
+    IdentityProviderSearchCriteria:
+      description: Search criteria for Identity Providers.
+      type: object
+      properties:
+        applicationId:
+          type: string
+          format: uuid
+        name:
+          type: string
+        source:
+          type: string
+        tenantId:
+          type: string
+          format: uuid
+        type:
+          $ref: '#/components/schemas/IdentityProviderType'
+        numberOfResults:
+          type: integer
+        orderBy:
+          type: string
+        startRow:
+          type: integer
+    ProviderLambdaConfiguration:
+      type: object
+      properties:
+        reconcileId:
+          type: string
+          format: uuid
+    TwoFactorMethod:
+      description: ''
+      type: object
+      properties:
+        authenticator:
+          $ref: '#/components/schemas/AuthenticatorConfiguration'
+        email:
+          type: string
+        id:
+          type: string
+        lastUsed:
+          type: boolean
+        method:
+          type: string
+        mobilePhone:
+          type: string
+        secret:
+          type: string
+    BreachedPasswordStatus:
+      description: ''
+      type: string
+      enum:
+      - None
+      - ExactMatch
+      - SubAddressMatch
+      - PasswordOnly
+      - CommonPassword
+    SAMLv2AssertionConfiguration:
+      description: ''
+      type: object
+      properties:
+        destination:
+          $ref: '#/components/schemas/SAMLv2DestinationAssertionConfiguration'
+    SAMLv2IdpInitiatedConfiguration:
+      description: Config for regular SAML IDP configurations that support IdP initiated requests
+      type: object
+      properties:
+        issuer:
+          type: string
+        enabled:
+          type: boolean
+    GroupMember:
+      description: A User's membership into a Group
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        groupId:
+          type: string
+          format: uuid
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        userId:
+          type: string
+          format: uuid
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
     User:
       description: The public, global view of a User. This object contains all global information about the user including birthdate, registration information  preferred languages, global attributes, etc.
       type: object
@@ -1694,55 +1405,722 @@ components:
           type: boolean
         verifiedInstant:
           $ref: '#/components/schemas/ZonedDateTime'
-    IdentityProviderSearchCriteria:
-      description: Search criteria for Identity Providers.
+    TwitterIdentityProvider:
+      description: Twitter social login provider.
       type: object
       properties:
-        applicationId:
+        buttonText:
+          type: string
+        consumerKey:
+          type: string
+        consumerSecret:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        applicationConfiguration:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/TwitterApplicationConfiguration'
+        attributeMappings:
+          type: object
+          additionalProperties:
+            type: string
+        debug:
+          type: boolean
+        id:
           type: string
           format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lambdaConfiguration:
+          $ref: '#/components/schemas/ProviderLambdaConfiguration'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        linkingStrategy:
+          $ref: '#/components/schemas/IdentityProviderLinkingStrategy'
         name:
           type: string
         source:
           type: string
+        tenantConfiguration:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/IdentityProviderTenantConfiguration'
         tenantId:
           type: string
           format: uuid
         type:
           $ref: '#/components/schemas/IdentityProviderType'
-        numberOfResults:
-          type: integer
-        orderBy:
-          type: string
-        startRow:
-          type: integer
-    IdentityProviderConnectionTestRequest:
-      description: A request for interacting with the identity provider connection test API
+    IdentityProviderSearchResponse:
+      description: Identity Provider response.
       type: object
       properties:
-        identityProviderId:
+        identityProviders:
+          type: array
+          items:
+            $ref: '#/components/schemas/IdentityProviderField'
+        total:
+          type: integer
+          format: int64
+    IdentityProviderConnectionTestResponse:
+      description: A response for the identity provider connection test API
+      type: object
+      properties:
+        connectionTestId:
           type: string
-          format: uuid
-        tenantId:
-          type: string
-          format: uuid
-    OpenIdConnectApplicationConfiguration:
+        result:
+          $ref: '#/components/schemas/IdentityProviderConnectionTestResult'
+    IdentityProviderSearchRequest:
+      description: Search request for Identity Providers
+      type: object
+      properties:
+        search:
+          $ref: '#/components/schemas/IdentityProviderSearchCriteria'
+    IdentityProviderPendingLinkResponse:
       description: ''
       type: object
       properties:
-        buttonImageURL:
+        identityProviderTenantConfiguration:
+          $ref: '#/components/schemas/IdentityProviderTenantConfiguration'
+        linkCount:
+          type: integer
+        pendingIdPLink:
+          $ref: '#/components/schemas/PendingIdPLink'
+    IdentityProviderLimitUserLinkingPolicy:
+      description: ''
+      type: object
+      properties:
+        maximumLinks:
+          type: integer
+        enabled:
+          type: boolean
+    CanonicalizationMethod:
+      description: XML canonicalization method enumeration. This is used for the IdP and SP side of FusionAuth SAML.
+      type: string
+      enum:
+      - exclusive
+      - exclusive_with_comments
+      - inclusive
+      - inclusive_with_comments
+    FacebookIdentityProvider:
+      description: Facebook social login provider.
+      type: object
+      properties:
+        appId:
           type: string
-          format: URI
         buttonText:
+          type: string
+        client_secret:
+          type: string
+        fields:
+          type: string
+        loginMethod:
+          $ref: '#/components/schemas/IdentityProviderLoginMethod'
+        permissions:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        applicationConfiguration:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/FacebookApplicationConfiguration'
+        attributeMappings:
+          type: object
+          additionalProperties:
+            type: string
+        debug:
+          type: boolean
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lambdaConfiguration:
+          $ref: '#/components/schemas/ProviderLambdaConfiguration'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        linkingStrategy:
+          $ref: '#/components/schemas/IdentityProviderLinkingStrategy'
+        name:
+          type: string
+        source:
+          type: string
+        tenantConfiguration:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/IdentityProviderTenantConfiguration'
+        tenantId:
+          type: string
+          format: uuid
+        type:
+          $ref: '#/components/schemas/IdentityProviderType'
+    ContentStatus:
+      description: Status for content like usernames, profile attributes, etc.
+      type: string
+      enum:
+      - ACTIVE
+      - PENDING
+      - REJECTED
+    IdentityType:
+      description: Model identity types provided by FusionAuth.
+      type: object
+      properties:
+        name:
+          type: string
+    IdentityProviderStartLoginRequest:
+      description: ''
+      type: object
+      properties:
+        connectionTestId:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: string
+        identityProviderId:
+          type: string
+          format: uuid
+        loginId:
+          type: string
+        loginIdTypes:
+          type: array
+          items:
+            type: string
+        state:
+          type: object
+          additionalProperties:
+            type: object
+        applicationId:
+          type: string
+          format: uuid
+        ipAddress:
+          type: string
+        metaData:
+          $ref: '#/components/schemas/MetaData'
+        newDevice:
+          type: boolean
+        noJWT:
+          type: boolean
+    GoogleIdentityProvider:
+      description: Google social login provider.
+      type: object
+      properties:
+        buttonText:
+          type: string
+        client_id:
+          type: string
+        client_secret:
+          type: string
+        loginMethod:
+          $ref: '#/components/schemas/IdentityProviderLoginMethod'
+        properties:
+          $ref: '#/components/schemas/GoogleIdentityProviderProperties'
+        scope:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        applicationConfiguration:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/GoogleApplicationConfiguration'
+        attributeMappings:
+          type: object
+          additionalProperties:
+            type: string
+        debug:
+          type: boolean
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lambdaConfiguration:
+          $ref: '#/components/schemas/ProviderLambdaConfiguration'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        linkingStrategy:
+          $ref: '#/components/schemas/IdentityProviderLinkingStrategy'
+        name:
+          type: string
+        source:
+          type: string
+        tenantConfiguration:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/IdentityProviderTenantConfiguration'
+        tenantId:
+          type: string
+          format: uuid
+        type:
+          $ref: '#/components/schemas/IdentityProviderType'
+    NintendoIdentityProvider:
+      description: Nintendo gaming login provider.
+      type: object
+      properties:
+        buttonText:
+          type: string
+        client_id:
+          type: string
+        client_secret:
+          type: string
+        emailClaim:
+          type: string
+        scope:
+          type: string
+        uniqueIdClaim:
+          type: string
+        usernameClaim:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        applicationConfiguration:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/NintendoApplicationConfiguration'
+        attributeMappings:
+          type: object
+          additionalProperties:
+            type: string
+        debug:
+          type: boolean
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lambdaConfiguration:
+          $ref: '#/components/schemas/ProviderLambdaConfiguration'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        linkingStrategy:
+          $ref: '#/components/schemas/IdentityProviderLinkingStrategy'
+        name:
+          type: string
+        source:
+          type: string
+        tenantConfiguration:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/IdentityProviderTenantConfiguration'
+        tenantId:
+          type: string
+          format: uuid
+        type:
+          $ref: '#/components/schemas/IdentityProviderType'
+    ExternalJWTIdentityProvider:
+      description: External JWT-only identity provider.
+      type: object
+      properties:
+        claimMap:
+          type: object
+          additionalProperties:
+            type: string
+        domains:
+          type: array
+          uniqueItems: true
+          items: {}
+        defaultKeyId:
+          type: string
+          format: uuid
+        headerKeyParameter:
           type: string
         oauth2:
           $ref: '#/components/schemas/IdentityProviderOauth2Configuration'
+        uniqueIdentityClaim:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        applicationConfiguration:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/ExternalJWTApplicationConfiguration'
+        attributeMappings:
+          type: object
+          additionalProperties:
+            type: string
+        debug:
+          type: boolean
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lambdaConfiguration:
+          $ref: '#/components/schemas/ProviderLambdaConfiguration'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        linkingStrategy:
+          $ref: '#/components/schemas/IdentityProviderLinkingStrategy'
+        name:
+          type: string
+        source:
+          type: string
+        tenantConfiguration:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/IdentityProviderTenantConfiguration'
+        tenantId:
+          type: string
+          format: uuid
+        type:
+          $ref: '#/components/schemas/IdentityProviderType'
+    LocalDate:
+      description: A date without a time-zone in the ISO-8601 calendar system, such as 2007-12-03.
+      example: '2007-12-03'
+      pattern: ^[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]$
+      type: string
+    Locale:
+      description: A Locale object represents a specific geographical, political, or cultural region.
+      example: en_US
+      type: string
+    XboxIdentityProvider:
+      description: Xbox gaming login provider.
+      type: object
+      properties:
+        buttonText:
+          type: string
+        client_id:
+          type: string
+        client_secret:
+          type: string
+        scope:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        applicationConfiguration:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/XboxApplicationConfiguration'
+        attributeMappings:
+          type: object
+          additionalProperties:
+            type: string
+        debug:
+          type: boolean
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lambdaConfiguration:
+          $ref: '#/components/schemas/ProviderLambdaConfiguration'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        linkingStrategy:
+          $ref: '#/components/schemas/IdentityProviderLinkingStrategy'
+        name:
+          type: string
+        source:
+          type: string
+        tenantConfiguration:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/IdentityProviderTenantConfiguration'
+        tenantId:
+          type: string
+          format: uuid
+        type:
+          $ref: '#/components/schemas/IdentityProviderType'
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    IdentityProviderConnectionTestResult:
+      description: The results of an identity provider connection test.
+      type: object
+      properties:
+        email:
+          type: string
+        identityProviderId:
+          type: string
+          format: uuid
+        identityProviderUserId:
+          type: string
+        startInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        steps:
+          type: array
+          items:
+            $ref: '#/components/schemas/IdentityProviderLoginStep'
+        success:
+          type: boolean
+        username:
+          type: string
+    SAMLv2DestinationAssertionPolicy:
+      description: ''
+      type: string
+      enum:
+      - Enabled
+      - Disabled
+      - AllowAlternates
+    IdentityProviderType:
+      description: ''
+      type: string
+      enum:
+      - Apple
+      - EpicGames
+      - ExternalJWT
+      - Facebook
+      - Google
+      - HYPR
+      - LinkedIn
+      - Nintendo
+      - OpenIDConnect
+      - SAMLv2
+      - SAMLv2IdPInitiated
+      - SonyPSN
+      - Steam
+      - Twitch
+      - Twitter
+      - Xbox
+    Location:
+      description: Location information. Useful for IP addresses and other displayable data objects.
+      type: object
+      properties:
+        city:
+          type: string
+        country:
+          type: string
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        region:
+          type: string
+        zipcode:
+          type: string
+        displayString:
+          type: string
+    SAMLv2IdPInitiatedIdentityProvider:
+      description: SAML v2 IdP Initiated identity provider configuration.
+      type: object
+      properties:
+        issuer:
+          type: string
+        assertionDecryptionConfiguration:
+          $ref: '#/components/schemas/SAMLv2AssertionDecryptionConfiguration'
+        emailClaim:
+          type: string
+        keyId:
+          type: string
+          format: uuid
+        uniqueIdClaim:
+          type: string
+        useNameIdForEmail:
+          type: boolean
+        usernameClaim:
+          type: string
+    LoginHintConfiguration:
+      description: ''
+      type: object
+      properties:
+        parameterName:
+          type: string
+        enabled:
+          type: boolean
+    SAMLv2AssertionDecryptionConfiguration:
+      description: Configuration for encrypted assertions when acting as SAML Service Provider
+      type: object
+      properties:
+        keyTransportDecryptionKeyId:
+          type: string
+          format: uuid
+        enabled:
+          type: boolean
+    LoginPreventedResponse:
+      description: The summary of the action that is preventing login to be returned on the login response.
+      type: object
+      properties:
+        actionId:
+          type: string
+          format: uuid
+        actionerUserId:
+          type: string
+          format: uuid
+        expiry:
+          $ref: '#/components/schemas/ZonedDateTime'
+        localizedName:
+          type: string
+        localizedOption:
+          type: string
+        localizedReason:
+          type: string
+        name:
+          type: string
+        option:
+          type: string
+        reason:
+          type: string
+        reasonCode:
+          type: string
+    SteamIdentityProvider:
+      description: Steam gaming login provider.
+      type: object
+      properties:
+        apiMode:
+          $ref: '#/components/schemas/SteamAPIMode'
+        buttonText:
+          type: string
+        client_id:
+          type: string
+        scope:
+          type: string
+        webAPIKey:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        applicationConfiguration:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/SteamApplicationConfiguration'
+        attributeMappings:
+          type: object
+          additionalProperties:
+            type: string
+        debug:
+          type: boolean
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lambdaConfiguration:
+          $ref: '#/components/schemas/ProviderLambdaConfiguration'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        linkingStrategy:
+          $ref: '#/components/schemas/IdentityProviderLinkingStrategy'
+        name:
+          type: string
+        source:
+          type: string
+        tenantConfiguration:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/IdentityProviderTenantConfiguration'
+        tenantId:
+          type: string
+          format: uuid
+        type:
+          $ref: '#/components/schemas/IdentityProviderType'
+    IdentityProviderResponse:
+      description: ''
+      type: object
+      properties:
+        identityProvider:
+          $ref: '#/components/schemas/IdentityProviderField'
+        identityProviders:
+          type: array
+          items:
+            $ref: '#/components/schemas/IdentityProviderField'
+    NintendoApplicationConfiguration:
+      description: ''
+      type: object
+      properties:
+        buttonText:
+          type: string
+        client_id:
+          type: string
+        client_secret:
+          type: string
+        emailClaim:
+          type: string
+        scope:
+          type: string
+        uniqueIdClaim:
+          type: string
+        usernameClaim:
+          type: string
         data:
           type: object
           additionalProperties:
             type: object
         createRegistration:
           type: boolean
+    IdentityProviderOauth2Configuration:
+      description: ''
+      type: object
+      properties:
+        authorization_endpoint:
+          type: string
+          format: URI
+        clientAuthenticationMethod:
+          $ref: '#/components/schemas/ClientAuthenticationMethod'
+        client_id:
+          type: string
+        client_secret:
+          type: string
+        emailClaim:
+          type: string
+        emailVerifiedClaim:
+          type: string
+        issuer:
+          type: string
+          format: URI
+        scope:
+          type: string
+        token_endpoint:
+          type: string
+          format: URI
+        uniqueIdClaim:
+          type: string
+        userinfo_endpoint:
+          type: string
+          format: URI
+        usernameClaim:
+          type: string
+    LinkedInApplicationConfiguration:
+      description: ''
+      type: object
+      properties:
+        buttonText:
+          type: string
+        client_id:
+          type: string
+        client_secret:
+          type: string
+        scope:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        createRegistration:
+          type: boolean
+    IdentityProviderLinkResponse:
+      description: ''
+      type: object
+      properties:
+        identityProviderLink:
+          $ref: '#/components/schemas/IdentityProviderLink'
+        identityProviderLinks:
+          type: array
+          items:
+            $ref: '#/components/schemas/IdentityProviderLink'
     HYPRIdentityProvider:
       description: ''
       type: object
@@ -1790,176 +2168,63 @@ components:
           format: uuid
         type:
           $ref: '#/components/schemas/IdentityProviderType'
-    ProviderLambdaConfiguration:
+    TwitterApplicationConfiguration:
+      description: ''
       type: object
       properties:
-        reconcileId:
+        buttonText:
           type: string
-          format: uuid
-    SAMLv2IdPInitiatedIdentityProvider:
-      description: SAML v2 IdP Initiated identity provider configuration.
-      type: object
-      properties:
-        issuer:
+        consumerKey:
           type: string
-        assertionDecryptionConfiguration:
-          $ref: '#/components/schemas/SAMLv2AssertionDecryptionConfiguration'
-        emailClaim:
+        consumerSecret:
           type: string
-        keyId:
-          type: string
-          format: uuid
-        uniqueIdClaim:
-          type: string
-        useNameIdForEmail:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        createRegistration:
           type: boolean
-        usernameClaim:
-          type: string
-    SAMLv2DestinationAssertionPolicy:
-      description: ''
+    SteamAPIMode:
+      description: Steam API modes.
       type: string
       enum:
-      - Enabled
-      - Disabled
-      - AllowAlternates
-    AuthenticatorConfiguration:
-      description: ''
-      type: object
-      properties:
-        algorithm:
-          $ref: '#/components/schemas/TOTPAlgorithm'
-        codeLength:
-          type: integer
-        timeStep:
-          type: integer
-    DeviceInfo:
-      description: ''
-      type: object
-      properties:
-        description:
-          type: string
-        lastAccessedAddress:
-          type: string
-        lastAccessedInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        name:
-          type: string
-        type:
-          type: string
-    SAMLv2AssertionConfiguration:
-      description: ''
-      type: object
-      properties:
-        destination:
-          $ref: '#/components/schemas/SAMLv2DestinationAssertionConfiguration'
-    IdentityProviderLinkResponse:
-      description: ''
-      type: object
-      properties:
-        identityProviderLink:
-          $ref: '#/components/schemas/IdentityProviderLink'
-        identityProviderLinks:
-          type: array
-          items:
-            $ref: '#/components/schemas/IdentityProviderLink'
-    IdentityProviderType:
-      description: ''
-      type: string
-      enum:
-      - Apple
-      - EpicGames
-      - ExternalJWT
-      - Facebook
-      - Google
-      - HYPR
-      - LinkedIn
-      - Nintendo
-      - OpenIDConnect
-      - SAMLv2
-      - SAMLv2IdPInitiated
-      - SonyPSN
-      - Steam
-      - Twitch
-      - Twitter
-      - Xbox
-    IdentityProviderPendingLinkResponse:
-      description: ''
-      type: object
-      properties:
-        identityProviderTenantConfiguration:
-          $ref: '#/components/schemas/IdentityProviderTenantConfiguration'
-        linkCount:
-          type: integer
-        pendingIdPLink:
-          $ref: '#/components/schemas/PendingIdPLink'
-    UserTwoFactorConfiguration:
-      description: ''
-      type: object
-      properties:
-        methods:
-          type: array
-          items:
-            $ref: '#/components/schemas/TwoFactorMethod'
-        recoveryCodes:
-          type: array
-          items:
-            type: string
-    SAMLv2DestinationAssertionConfiguration:
-      description: ''
-      type: object
-      properties:
-        alternates:
-          type: array
-          items:
-            type: string
-        policy:
-          $ref: '#/components/schemas/SAMLv2DestinationAssertionPolicy'
-    CanonicalizationMethod:
-      description: XML canonicalization method enumeration. This is used for the IdP and SP side of FusionAuth SAML.
-      type: string
-      enum:
-      - exclusive
-      - exclusive_with_comments
-      - inclusive
-      - inclusive_with_comments
-    EventInfo:
-      description: Information about a user event (login, register, etc) that helps identify the source of the event (location, device type, OS, etc).
+      - Public
+      - Partner
+    MetaData:
       type: object
       properties:
         data:
           type: object
           additionalProperties:
             type: object
-        deviceDescription:
-          type: string
-        deviceName:
-          type: string
-        deviceType:
-          type: string
-        ipAddress:
-          type: string
-        location:
-          $ref: '#/components/schemas/Location'
-        os:
-          type: string
-        userAgent:
-          type: string
-    IdentityProviderTenantConfiguration:
+        device:
+          $ref: '#/components/schemas/DeviceInfo'
+        scopes:
+          type: array
+          uniqueItems: true
+          items: {}
+    FacebookApplicationConfiguration:
       description: ''
       type: object
       properties:
+        appId:
+          type: string
+        buttonText:
+          type: string
+        client_secret:
+          type: string
+        fields:
+          type: string
+        loginMethod:
+          $ref: '#/components/schemas/IdentityProviderLoginMethod'
+        permissions:
+          type: string
         data:
           type: object
           additionalProperties:
             type: object
-        limitUserLinkCount:
-          $ref: '#/components/schemas/IdentityProviderLimitUserLinkingPolicy'
-    IdentityProviderStartLoginResponse:
-      description: ''
-      type: object
-      properties:
-        code:
-          type: string
+        createRegistration:
+          type: boolean
     SAMLv2IdentityProvider:
       description: SAML v2 identity provider configuration.
       type: object
@@ -2008,7 +2273,20 @@ components:
           type: boolean
         usernameClaim:
           type: string
-    TwitchApplicationConfiguration:
+    GoogleIdentityProviderProperties:
+      description: Google social login provider parameters.
+      type: object
+      properties:
+        api:
+          type: string
+        button:
+          type: string
+    ZoneId:
+      description: Timezone Identifier
+      example: America/Denver
+      pattern: ^w+/w+$
+      type: string
+    LinkedInIdentityProvider:
       description: ''
       type: object
       properties:
@@ -2024,159 +2302,51 @@ components:
           type: object
           additionalProperties:
             type: object
-        createRegistration:
+        applicationConfiguration:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/LinkedInApplicationConfiguration'
+        attributeMappings:
+          type: object
+          additionalProperties:
+            type: string
+        debug:
           type: boolean
-    MetaData:
-      type: object
-      properties:
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        device:
-          $ref: '#/components/schemas/DeviceInfo'
-        scopes:
-          type: array
-          uniqueItems: true
-          items: {}
-    IdentityProviderLink:
-      description: ''
-      type: object
-      properties:
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        displayName:
-          type: string
-        identityProviderId:
+        id:
           type: string
           format: uuid
-        identityProviderName:
-          type: string
-        identityProviderType:
-          $ref: '#/components/schemas/IdentityProviderType'
-        identityProviderUserId:
-          type: string
         insertInstant:
           $ref: '#/components/schemas/ZonedDateTime'
-        lastLoginInstant:
+        lambdaConfiguration:
+          $ref: '#/components/schemas/ProviderLambdaConfiguration'
+        lastUpdateInstant:
           $ref: '#/components/schemas/ZonedDateTime'
+        linkingStrategy:
+          $ref: '#/components/schemas/IdentityProviderLinkingStrategy'
+        name:
+          type: string
+        source:
+          type: string
+        tenantConfiguration:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/IdentityProviderTenantConfiguration'
         tenantId:
           type: string
           format: uuid
-        token:
-          type: string
-        userId:
-          type: string
-          format: uuid
-    IdentityProviderField:
-      oneOf:
-      - $ref: '#/components/schemas/AppleIdentityProvider'
-      - $ref: '#/components/schemas/EpicGamesIdentityProvider'
-      - $ref: '#/components/schemas/ExternalJWTIdentityProvider'
-      - $ref: '#/components/schemas/FacebookIdentityProvider'
-      - $ref: '#/components/schemas/GoogleIdentityProvider'
-      - $ref: '#/components/schemas/HYPRIdentityProvider'
-      - $ref: '#/components/schemas/LinkedInIdentityProvider'
-      - $ref: '#/components/schemas/NintendoIdentityProvider'
-      - $ref: '#/components/schemas/OpenIdConnectIdentityProvider'
-      - $ref: '#/components/schemas/SAMLv2IdPInitiatedIdentityProvider'
-      - $ref: '#/components/schemas/SAMLv2IdentityProvider'
-      - $ref: '#/components/schemas/SonyPSNIdentityProvider'
-      - $ref: '#/components/schemas/SteamIdentityProvider'
-      - $ref: '#/components/schemas/TwitchIdentityProvider'
-      - $ref: '#/components/schemas/TwitterIdentityProvider'
-      - $ref: '#/components/schemas/XboxIdentityProvider'
-      discriminator:
-        propertyName: type
-        mapping:
-          Apple: '#/components/schemas/AppleIdentityProvider'
-          EpicGames: '#/components/schemas/EpicGamesIdentityProvider'
-          ExternalJWT: '#/components/schemas/ExternalJWTIdentityProvider'
-          Facebook: '#/components/schemas/FacebookIdentityProvider'
-          Google: '#/components/schemas/GoogleIdentityProvider'
-          HYPR: '#/components/schemas/HYPRIdentityProvider'
-          LinkedIn: '#/components/schemas/LinkedInIdentityProvider'
-          Nintendo: '#/components/schemas/NintendoIdentityProvider'
-          OpenIdConnect: '#/components/schemas/OpenIdConnectIdentityProvider'
-          SAMLv2IdPInitiated: '#/components/schemas/SAMLv2IdPInitiatedIdentityProvider'
-          SAMLv2: '#/components/schemas/SAMLv2IdentityProvider'
-          SonyPSN: '#/components/schemas/SonyPSNIdentityProvider'
-          Steam: '#/components/schemas/SteamIdentityProvider'
-          Twitch: '#/components/schemas/TwitchIdentityProvider'
-          Twitter: '#/components/schemas/TwitterIdentityProvider'
-          Xbox: '#/components/schemas/XboxIdentityProvider'
-    FacebookApplicationConfiguration:
+        type:
+          $ref: '#/components/schemas/IdentityProviderType'
+    XboxApplicationConfiguration:
       description: ''
       type: object
       properties:
-        appId:
-          type: string
-        buttonText:
-          type: string
-        client_secret:
-          type: string
-        fields:
-          type: string
-        loginMethod:
-          $ref: '#/components/schemas/IdentityProviderLoginMethod'
-        permissions:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        createRegistration:
-          type: boolean
-    TOTPAlgorithm:
-      type: string
-      enum:
-      - HmacSHA1
-      - HmacSHA256
-      - HmacSHA512
-    IdentityProviderConnectionTestResponse:
-      description: A response for the identity provider connection test API
-      type: object
-      properties:
-        connectionTestId:
-          type: string
-        result:
-          $ref: '#/components/schemas/IdentityProviderConnectionTestResult'
-    IdentityProviderConnectionTestResult:
-      description: The results of an identity provider connection test.
-      type: object
-      properties:
-        email:
-          type: string
-        identityProviderId:
-          type: string
-          format: uuid
-        identityProviderUserId:
-          type: string
-        startInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        steps:
-          type: array
-          items:
-            $ref: '#/components/schemas/IdentityProviderLoginStep'
-        success:
-          type: boolean
-        username:
-          type: string
-    SteamApplicationConfiguration:
-      description: ''
-      type: object
-      properties:
-        apiMode:
-          $ref: '#/components/schemas/SteamAPIMode'
         buttonText:
           type: string
         client_id:
           type: string
-        scope:
+        client_secret:
           type: string
-        webAPIKey:
+        scope:
           type: string
         data:
           type: object
@@ -2184,6 +2354,123 @@ components:
             type: object
         createRegistration:
           type: boolean
+    AuthenticatorConfiguration:
+      description: ''
+      type: object
+      properties:
+        algorithm:
+          $ref: '#/components/schemas/TOTPAlgorithm'
+        codeLength:
+          type: integer
+        timeStep:
+          type: integer
+    GoogleApplicationConfiguration:
+      description: ''
+      type: object
+      properties:
+        buttonText:
+          type: string
+        client_id:
+          type: string
+        client_secret:
+          type: string
+        loginMethod:
+          $ref: '#/components/schemas/IdentityProviderLoginMethod'
+        properties:
+          $ref: '#/components/schemas/GoogleIdentityProviderProperties'
+        scope:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        createRegistration:
+          type: boolean
+    EpicGamesIdentityProvider:
+      description: Epic gaming login provider.
+      type: object
+      properties:
+        buttonText:
+          type: string
+        client_id:
+          type: string
+        client_secret:
+          type: string
+        scope:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        applicationConfiguration:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/EpicGamesApplicationConfiguration'
+        attributeMappings:
+          type: object
+          additionalProperties:
+            type: string
+        debug:
+          type: boolean
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lambdaConfiguration:
+          $ref: '#/components/schemas/ProviderLambdaConfiguration'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        linkingStrategy:
+          $ref: '#/components/schemas/IdentityProviderLinkingStrategy'
+        name:
+          type: string
+        source:
+          type: string
+        tenantConfiguration:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/IdentityProviderTenantConfiguration'
+        tenantId:
+          type: string
+          format: uuid
+        type:
+          $ref: '#/components/schemas/IdentityProviderType'
+    HYPRApplicationConfiguration:
+      description: ''
+      type: object
+      properties:
+        relyingPartyApplicationId:
+          type: string
+        relyingPartyURL:
+          type: string
+          format: URI
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        createRegistration:
+          type: boolean
+    IdentityProviderLinkingStrategy:
+      description: The IdP behavior when no user link has been made yet.
+      type: string
+      enum:
+      - CreatePendingLink
+      - Disabled
+      - LinkAnonymously
+      - LinkByEmail
+      - LinkByEmailForExistingUser
+      - LinkByUsername
+      - LinkByUsernameForExistingUser
+      - Unsupported
+    ChangePasswordReason:
+      description: ''
+      type: string
+      enum:
+      - Administrative
+      - Breached
+      - Expired
+      - Validation
     IdentityProviderLoginMethod:
       description: ''
       type: string
@@ -2191,29 +2478,7 @@ components:
       - UsePopup
       - UseRedirect
       - UseVendorJavaScript
-    IdentityProviderSearchResponse:
-      description: Identity Provider response.
-      type: object
-      properties:
-        identityProviders:
-          type: array
-          items:
-            $ref: '#/components/schemas/IdentityProviderField'
-        total:
-          type: integer
-          format: int64
-    LocalDate:
-      description: A date without a time-zone in the ISO-8601 calendar system, such as 2007-12-03.
-      example: '2007-12-03'
-      pattern: ^[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]$
-      type: string
-    LookupResponse:
-      description: ''
-      type: object
-      properties:
-        identityProvider:
-          $ref: '#/components/schemas/IdentityProviderDetails'
-    EpicGamesApplicationConfiguration:
+    SonyPSNApplicationConfiguration:
       description: ''
       type: object
       properties:
@@ -2230,40 +2495,6 @@ components:
           additionalProperties:
             type: object
         createRegistration:
-          type: boolean
-    IdentityProviderStartLoginRequest:
-      description: ''
-      type: object
-      properties:
-        connectionTestId:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: string
-        identityProviderId:
-          type: string
-          format: uuid
-        loginId:
-          type: string
-        loginIdTypes:
-          type: array
-          items:
-            type: string
-        state:
-          type: object
-          additionalProperties:
-            type: object
-        applicationId:
-          type: string
-          format: uuid
-        ipAddress:
-          type: string
-        metaData:
-          $ref: '#/components/schemas/MetaData'
-        newDevice:
-          type: boolean
-        noJWT:
           type: boolean
     IdentityProviderLoginRequest:
       description: Login API request object used for login to third-party systems (i.e. Login with Facebook).
@@ -2293,252 +2524,21 @@ components:
           type: boolean
         noJWT:
           type: boolean
-    Errors:
-      description: Standard error domain object that can also be used as the response from an API call.
-      type: object
-      properties:
-        fieldErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-        generalErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-    BreachedPasswordStatus:
-      description: ''
-      type: string
-      enum:
-      - None
-      - ExactMatch
-      - SubAddressMatch
-      - PasswordOnly
-      - CommonPassword
-    IdentityProviderLimitUserLinkingPolicy:
+    IdentityProviderStartLoginResponse:
       description: ''
       type: object
       properties:
-        maximumLinks:
-          type: integer
-        enabled:
-          type: boolean
-    AppleIdentityProvider:
-      description: ''
+        code:
+          type: string
+    IdentityProviderLoginStep:
       type: object
       properties:
-        bundleId:
+        detail:
           type: string
-        buttonText:
-          type: string
-        keyId:
-          type: string
-          format: uuid
-        scope:
-          type: string
-        servicesId:
-          type: string
-        teamId:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        applicationConfiguration:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/AppleApplicationConfiguration'
-        attributeMappings:
-          type: object
-          additionalProperties:
-            type: string
-        debug:
+        success:
           type: boolean
-        id:
+        title:
           type: string
-          format: uuid
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        lambdaConfiguration:
-          $ref: '#/components/schemas/ProviderLambdaConfiguration'
-        lastUpdateInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        linkingStrategy:
-          $ref: '#/components/schemas/IdentityProviderLinkingStrategy'
-        name:
-          type: string
-        source:
-          type: string
-        tenantConfiguration:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/IdentityProviderTenantConfiguration'
-        tenantId:
-          type: string
-          format: uuid
-        type:
-          $ref: '#/components/schemas/IdentityProviderType'
-    LinkedInApplicationConfiguration:
-      description: ''
-      type: object
-      properties:
-        buttonText:
-          type: string
-        client_id:
-          type: string
-        client_secret:
-          type: string
-        scope:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        createRegistration:
-          type: boolean
-    TwitchIdentityProvider:
-      description: Twitch gaming login provider.
-      type: object
-      properties:
-        buttonText:
-          type: string
-        client_id:
-          type: string
-        client_secret:
-          type: string
-        scope:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        applicationConfiguration:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/TwitchApplicationConfiguration'
-        attributeMappings:
-          type: object
-          additionalProperties:
-            type: string
-        debug:
-          type: boolean
-        id:
-          type: string
-          format: uuid
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        lambdaConfiguration:
-          $ref: '#/components/schemas/ProviderLambdaConfiguration'
-        lastUpdateInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        linkingStrategy:
-          $ref: '#/components/schemas/IdentityProviderLinkingStrategy'
-        name:
-          type: string
-        source:
-          type: string
-        tenantConfiguration:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/IdentityProviderTenantConfiguration'
-        tenantId:
-          type: string
-          format: uuid
-        type:
-          $ref: '#/components/schemas/IdentityProviderType'
-    UserIdentity:
-      description: ''
-      type: object
-      properties:
-        displayValue:
-          type: string
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        lastLoginInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        lastUpdateInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        moderationStatus:
-          $ref: '#/components/schemas/ContentStatus'
-        primary:
-          type: boolean
-        type:
-          $ref: '#/components/schemas/IdentityType'
-        value:
-          type: string
-        verified:
-          type: boolean
-        verifiedInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        verifiedReason:
-          $ref: '#/components/schemas/IdentityVerifiedReason'
-    GoogleApplicationConfiguration:
-      description: ''
-      type: object
-      properties:
-        buttonText:
-          type: string
-        client_id:
-          type: string
-        client_secret:
-          type: string
-        loginMethod:
-          $ref: '#/components/schemas/IdentityProviderLoginMethod'
-        properties:
-          $ref: '#/components/schemas/GoogleIdentityProviderProperties'
-        scope:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        createRegistration:
-          type: boolean
-    ClientAuthenticationMethod:
-      type: string
-      enum:
-      - none
-      - client_secret_basic
-      - client_secret_post
-    PendingIdPLink:
-      description: ''
-      type: object
-      properties:
-        displayName:
-          type: string
-        email:
-          type: string
-        identityProviderId:
-          type: string
-          format: uuid
-        identityProviderLinks:
-          type: array
-          items:
-            $ref: '#/components/schemas/IdentityProviderLink'
-        identityProviderName:
-          type: string
-        identityProviderTenantConfiguration:
-          $ref: '#/components/schemas/IdentityProviderTenantConfiguration'
-        identityProviderType:
-          $ref: '#/components/schemas/IdentityProviderType'
-        identityProviderUserId:
-          type: string
-        user:
-          $ref: '#/components/schemas/User'
-        username:
-          type: string
-    IdentityVerifiedReason:
-      description: Models the reason that {@link UserIdentity#verified} was set to true or false.
-      type: string
-      enum:
-      - Skipped
-      - Trusted
-      - Unverifiable
-      - Implicit
-      - Pending
-      - Completed
-      - Disabled
-      - Administrative
-      - Import
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

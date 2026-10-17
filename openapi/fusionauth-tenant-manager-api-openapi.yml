@@ -188,78 +188,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    TenantManagerConfigurationRequest:
-      description: The Tenant Manager configuration request object
-      type: object
-      properties:
-        tenantManagerConfiguration:
-          $ref: '#/components/schemas/TenantManagerConfiguration'
-    TenantManagerApplicationConfiguration:
-      description: Tenant Manager application configuration.
-      type: object
-      properties:
-        applicationId:
-          type: string
-          format: uuid
-    TenantManagerIdentityProviderTypeConfiguration:
-      description: Configuration object for identity provider types allowed in Tenant Manager
-      type: object
-      properties:
-        defaultAttributeMappings:
-          type: object
-          additionalProperties:
-            type: string
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        lastUpdateInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        linkingStrategy:
-          $ref: '#/components/schemas/IdentityProviderLinkingStrategy'
-        type:
-          $ref: '#/components/schemas/IdentityProviderType'
-        enabled:
-          type: boolean
-    TenantManagerIdentityProviderTypeConfigurationRequest:
-      description: The Tenant Manager IdP type configuration request object
-      type: object
-      properties:
-        typeConfiguration:
-          $ref: '#/components/schemas/TenantManagerIdentityProviderTypeConfiguration'
-    ZonedDateTime:
-      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
-      example: '1659380719000'
-      type: integer
-      format: int64
-    Errors:
-      description: Standard error domain object that can also be used as the response from an API call.
-      type: object
-      properties:
-        fieldErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-        generalErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-    Error:
-      description: Defines an error.
-      type: object
-      properties:
-        code:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        message:
-          type: string
-    TenantManagerIdentityProviderTypeConfigurationResponse:
-      description: The Tenant Manager IdP type configuration response object
-      type: object
-      properties:
-        typeConfiguration:
-          $ref: '#/components/schemas/TenantManagerIdentityProviderTypeConfiguration'
     IdentityProviderType:
       description: ''
       type: string
@@ -280,6 +208,18 @@ components:
       - Twitch
       - Twitter
       - Xbox
+    IdentityProviderLinkingStrategy:
+      description: The IdP behavior when no user link has been made yet.
+      type: string
+      enum:
+      - CreatePendingLink
+      - Disabled
+      - LinkAnonymously
+      - LinkByEmail
+      - LinkByEmailForExistingUser
+      - LinkByUsername
+      - LinkByUsernameForExistingUser
+      - Unsupported
     TenantManagerConfiguration:
       description: Configuration object for the Tenant Manager.
       type: object
@@ -301,24 +241,84 @@ components:
           $ref: '#/components/schemas/ZonedDateTime'
         lastUpdateInstant:
           $ref: '#/components/schemas/ZonedDateTime'
-    IdentityProviderLinkingStrategy:
-      description: The IdP behavior when no user link has been made yet.
-      type: string
-      enum:
-      - CreatePendingLink
-      - Disabled
-      - LinkAnonymously
-      - LinkByEmail
-      - LinkByEmailForExistingUser
-      - LinkByUsername
-      - LinkByUsernameForExistingUser
-      - Unsupported
+    TenantManagerIdentityProviderTypeConfigurationRequest:
+      description: The Tenant Manager IdP type configuration request object
+      type: object
+      properties:
+        typeConfiguration:
+          $ref: '#/components/schemas/TenantManagerIdentityProviderTypeConfiguration'
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    TenantManagerApplicationConfiguration:
+      description: Tenant Manager application configuration.
+      type: object
+      properties:
+        applicationId:
+          type: string
+          format: uuid
     TenantManagerConfigurationResponse:
       description: The Tenant Manager configuration response object
       type: object
       properties:
         tenantManagerConfiguration:
           $ref: '#/components/schemas/TenantManagerConfiguration'
+    TenantManagerIdentityProviderTypeConfigurationResponse:
+      description: The Tenant Manager IdP type configuration response object
+      type: object
+      properties:
+        typeConfiguration:
+          $ref: '#/components/schemas/TenantManagerIdentityProviderTypeConfiguration'
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    TenantManagerConfigurationRequest:
+      description: The Tenant Manager configuration request object
+      type: object
+      properties:
+        tenantManagerConfiguration:
+          $ref: '#/components/schemas/TenantManagerConfiguration'
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    TenantManagerIdentityProviderTypeConfiguration:
+      description: Configuration object for identity provider types allowed in Tenant Manager
+      type: object
+      properties:
+        defaultAttributeMappings:
+          type: object
+          additionalProperties:
+            type: string
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        linkingStrategy:
+          $ref: '#/components/schemas/IdentityProviderLinkingStrategy'
+        type:
+          $ref: '#/components/schemas/IdentityProviderType'
+        enabled:
+          type: boolean
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

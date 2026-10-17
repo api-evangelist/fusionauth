@@ -178,103 +178,26 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    OAuthError:
+    IdentityProviderType:
       description: ''
-      type: object
-      properties:
-        change_password_id:
-          type: string
-        error_description:
-          type: string
-        error:
-          $ref: '#/components/schemas/OAuthErrorType'
-        error_uri:
-          type: string
-        two_factor_methods:
-          type: array
-          items:
-            $ref: '#/components/schemas/TwoFactorMethod'
-        error_reason:
-          $ref: '#/components/schemas/OAuthErrorReason'
-        two_factor_id:
-          type: string
-    IntrospectResponse:
-      description: ''
-      type: object
-      properties: {}
-    IdentityProviderLink:
-      description: ''
-      type: object
-      properties:
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        displayName:
-          type: string
-        identityProviderId:
-          type: string
-          format: uuid
-        identityProviderName:
-          type: string
-        identityProviderType:
-          $ref: '#/components/schemas/IdentityProviderType'
-        identityProviderUserId:
-          type: string
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        lastLoginInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        tenantId:
-          type: string
-          format: uuid
-        token:
-          type: string
-        userId:
-          type: string
-          format: uuid
-    AuthenticatorConfiguration:
-      description: ''
-      type: object
-      properties:
-        algorithm:
-          $ref: '#/components/schemas/TOTPAlgorithm'
-        codeLength:
-          type: integer
-        timeStep:
-          type: integer
-    DeviceResponse:
-      description: ''
-      type: object
-      properties:
-        device_code:
-          type: string
-        expires_in:
-          type: integer
-        interval:
-          type: integer
-        user_code:
-          type: string
-        verification_uri:
-          type: string
-          format: URI
-        verification_uri_complete:
-          type: string
-          format: URI
-    DeviceInfo:
-      description: ''
-      type: object
-      properties:
-        description:
-          type: string
-        lastAccessedAddress:
-          type: string
-        lastAccessedInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        name:
-          type: string
-        type:
-          type: string
+      type: string
+      enum:
+      - Apple
+      - EpicGames
+      - ExternalJWT
+      - Facebook
+      - Google
+      - HYPR
+      - LinkedIn
+      - Nintendo
+      - OpenIDConnect
+      - SAMLv2
+      - SAMLv2IdPInitiated
+      - SonyPSN
+      - Steam
+      - Twitch
+      - Twitter
+      - Xbox
     AccessToken:
       description: ''
       type: object
@@ -297,95 +220,72 @@ components:
         userId:
           type: string
           format: uuid
-    DeviceApprovalResponse:
+    AuthenticatorConfiguration:
       description: ''
       type: object
       properties:
-        deviceGrantStatus:
-          type: string
-        deviceInfo:
-          $ref: '#/components/schemas/DeviceInfo'
-        identityProviderLink:
-          $ref: '#/components/schemas/IdentityProviderLink'
-        tenantId:
-          type: string
-          format: uuid
-        userId:
-          type: string
-          format: uuid
-    IdentityProviderType:
-      description: ''
-      type: string
-      enum:
-      - Apple
-      - EpicGames
-      - ExternalJWT
-      - Facebook
-      - Google
-      - HYPR
-      - LinkedIn
-      - Nintendo
-      - OpenIDConnect
-      - SAMLv2
-      - SAMLv2IdPInitiated
-      - SonyPSN
-      - Steam
-      - Twitch
-      - Twitter
-      - Xbox
-    TwoFactorMethod:
+        algorithm:
+          $ref: '#/components/schemas/TOTPAlgorithm'
+        codeLength:
+          type: integer
+        timeStep:
+          type: integer
+    DeviceInfo:
       description: ''
       type: object
       properties:
-        authenticator:
-          $ref: '#/components/schemas/AuthenticatorConfiguration'
-        email:
+        description:
           type: string
-        id:
+        lastAccessedAddress:
           type: string
-        lastUsed:
-          type: boolean
-        method:
+        lastAccessedInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        name:
           type: string
-        mobilePhone:
+        type:
           type: string
-        secret:
-          type: string
-    TOTPAlgorithm:
-      type: string
-      enum:
-      - HmacSHA1
-      - HmacSHA256
-      - HmacSHA512
-    Errors:
-      description: Standard error domain object that can also be used as the response from an API call.
+    DeviceResponse:
+      description: ''
       type: object
       properties:
-        fieldErrors:
+        device_code:
+          type: string
+        expires_in:
+          type: integer
+        interval:
+          type: integer
+        user_code:
+          type: string
+        verification_uri:
+          type: string
+          format: URI
+        verification_uri_complete:
+          type: string
+          format: URI
+    UserinfoResponse:
+      description: ''
+      type: object
+      properties: {}
+    OAuthError:
+      description: ''
+      type: object
+      properties:
+        change_password_id:
+          type: string
+        error_description:
+          type: string
+        error:
+          $ref: '#/components/schemas/OAuthErrorType'
+        error_uri:
+          type: string
+        two_factor_methods:
           type: array
           items:
-            $ref: '#/components/schemas/Error'
-        generalErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-    Error:
-      description: Defines an error.
-      type: object
-      properties:
-        code:
+            $ref: '#/components/schemas/TwoFactorMethod'
+        error_reason:
+          $ref: '#/components/schemas/OAuthErrorReason'
+        two_factor_id:
           type: string
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        message:
-          type: string
-    ZonedDateTime:
-      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
-      example: '1659380719000'
-      type: integer
-      format: int64
     OAuthErrorType:
       type: string
       enum:
@@ -409,17 +309,22 @@ components:
       - expired_token
       - unsupported_token_type
       - invalid_dpop_proof
-    TokenType:
-      description: <ul>  <li>Bearer Token type as defined by <a href="https:tools.ietf.orghtmlrfc6750">RFC 6750<a>.<li>  <li>MAC Token type as referenced by <a href="https:tools.ietf.orghtmlrfc6749">RFC 6749<a> and  <a href="https:tools.ietf.orghtmldraft-ietf-oauth-v2-http-mac-05">  Draft RFC on OAuth 2.0 Message Authentication Code (MAC) Tokens<a>  <li>  <li>DPoP Token type as defined by <a href="https:datatracker.ietf.orgdochtmlrfc9449">RFC 9449<a><li>  <ul>
-      type: string
-      enum:
-      - Bearer
-      - MAC
-      - DPoP
-    UserinfoResponse:
+    DeviceApprovalResponse:
       description: ''
       type: object
-      properties: {}
+      properties:
+        deviceGrantStatus:
+          type: string
+        deviceInfo:
+          $ref: '#/components/schemas/DeviceInfo'
+        identityProviderLink:
+          $ref: '#/components/schemas/IdentityProviderLink'
+        tenantId:
+          type: string
+          format: uuid
+        userId:
+          type: string
+          format: uuid
     OAuthErrorReason:
       type: string
       enum:
@@ -499,6 +404,101 @@ components:
       - registration_required
       - registration_verification_required
       - consent_required
+    ZonedDateTime:
+      description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
+      example: '1659380719000'
+      type: integer
+      format: int64
+    IdentityProviderLink:
+      description: ''
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        displayName:
+          type: string
+        identityProviderId:
+          type: string
+          format: uuid
+        identityProviderName:
+          type: string
+        identityProviderType:
+          $ref: '#/components/schemas/IdentityProviderType'
+        identityProviderUserId:
+          type: string
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastLoginInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        tenantId:
+          type: string
+          format: uuid
+        token:
+          type: string
+        userId:
+          type: string
+          format: uuid
+    TOTPAlgorithm:
+      type: string
+      enum:
+      - HmacSHA1
+      - HmacSHA256
+      - HmacSHA512
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
+    TokenType:
+      description: <ul>  <li>Bearer Token type as defined by <a href="https:tools.ietf.orghtmlrfc6750">RFC 6750<a>.<li>  <li>MAC Token type as referenced by <a href="https:tools.ietf.orghtmlrfc6749">RFC 6749<a> and  <a href="https:tools.ietf.orghtmldraft-ietf-oauth-v2-http-mac-05">  Draft RFC on OAuth 2.0 Message Authentication Code (MAC) Tokens<a>  <li>  <li>DPoP Token type as defined by <a href="https:datatracker.ietf.orgdochtmlrfc9449">RFC 9449<a><li>  <ul>
+      type: string
+      enum:
+      - Bearer
+      - MAC
+      - DPoP
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    IntrospectResponse:
+      description: ''
+      type: object
+      properties: {}
+    TwoFactorMethod:
+      description: ''
+      type: object
+      properties:
+        authenticator:
+          $ref: '#/components/schemas/AuthenticatorConfiguration'
+        email:
+          type: string
+        id:
+          type: string
+        lastUsed:
+          type: boolean
+        method:
+          type: string
+        mobilePhone:
+          type: string
+        secret:
+          type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

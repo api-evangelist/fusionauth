@@ -68,14 +68,14 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Integrations:
-      description: Available Integrations
+    UsernameModeration:
       type: object
       properties:
-        cleanspeak:
-          $ref: '#/components/schemas/CleanSpeakConfiguration'
-        kafka:
-          $ref: '#/components/schemas/KafkaConfiguration'
+        applicationId:
+          type: string
+          format: uuid
+        enabled:
+          type: boolean
     IntegrationResponse:
       description: The Integration Response
       type: object
@@ -94,26 +94,20 @@ components:
             type: string
         enabled:
           type: boolean
-    UsernameModeration:
+    IntegrationRequest:
+      description: The Integration Request
       type: object
       properties:
-        applicationId:
-          type: string
-          format: uuid
-        enabled:
-          type: boolean
-    Errors:
-      description: Standard error domain object that can also be used as the response from an API call.
+        integrations:
+          $ref: '#/components/schemas/Integrations'
+    Integrations:
+      description: Available Integrations
       type: object
       properties:
-        fieldErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-        generalErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
+        cleanspeak:
+          $ref: '#/components/schemas/CleanSpeakConfiguration'
+        kafka:
+          $ref: '#/components/schemas/KafkaConfiguration'
     Error:
       description: Defines an error.
       type: object
@@ -126,6 +120,18 @@ components:
             type: object
         message:
           type: string
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
     CleanSpeakConfiguration:
       description: CleanSpeak configuration at the system and application level.
       type: object
@@ -144,12 +150,6 @@ components:
           $ref: '#/components/schemas/UsernameModeration'
         enabled:
           type: boolean
-    IntegrationRequest:
-      description: The Integration Request
-      type: object
-      properties:
-        integrations:
-          $ref: '#/components/schemas/Integrations'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

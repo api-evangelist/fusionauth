@@ -789,487 +789,19 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    PasswordlessStrategy:
-      description: ''
-      type: string
-      enum:
-      - ClickableLink
-      - FormField
-    SelfServiceFormConfiguration:
-      description: ''
-      type: object
-      properties:
-        requireCurrentPasswordOnPasswordChange:
-          type: boolean
-    SAMLv2Configuration:
-      type: object
-      properties:
-        assertionEncryptionConfiguration:
-          $ref: '#/components/schemas/SAMLv2AssertionEncryptionConfiguration'
-        audience:
-          type: string
-        authorizedRedirectURLs:
-          type: array
-          items:
-            type: string
-            format: URI
-        debug:
-          type: boolean
-        defaultVerificationKeyId:
-          type: string
-          format: uuid
-        initiatedLogin:
-          $ref: '#/components/schemas/SAMLv2IdPInitiatedLoginConfiguration'
-        issuer:
-          type: string
-        keyId:
-          type: string
-          format: uuid
-        loginHintConfiguration:
-          $ref: '#/components/schemas/LoginHintConfiguration'
-        logout:
-          $ref: '#/components/schemas/SAMLv2Logout'
-        logoutURL:
-          type: string
-          format: URI
-        requireSignedRequests:
-          type: boolean
-        xmlSignatureC14nMethod:
-          $ref: '#/components/schemas/CanonicalizationMethod'
-        xmlSignatureLocation:
-          $ref: '#/components/schemas/XMLSignatureLocation'
-        callbackURL:
-          type: string
-          format: URI
-        enabled:
-          type: boolean
-    ApplicationOAuthScope:
-      description: A custom OAuth scope for a specific application.
-      type: object
-      properties:
-        applicationId:
-          type: string
-          format: uuid
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        defaultConsentDetail:
-          type: string
-        defaultConsentMessage:
-          type: string
-        description:
-          type: string
-        id:
-          type: string
-          format: uuid
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        lastUpdateInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        name:
-          type: string
-        required:
-          type: boolean
-    SAMLv2SingleLogout:
-      type: object
-      properties:
-        keyId:
-          type: string
-          format: uuid
-        url:
-          type: string
-          format: URI
-        xmlSignatureC14nMethod:
-          $ref: '#/components/schemas/CanonicalizationMethod'
-        enabled:
-          type: boolean
-    LoginConfiguration:
-      type: object
-      properties:
-        allowTokenRefresh:
-          type: boolean
-        generateRefreshTokens:
-          type: boolean
-        requireAuthentication:
-          type: boolean
-    UsernameModeration:
-      type: object
-      properties:
-        applicationId:
-          type: string
-          format: uuid
-        enabled:
-          type: boolean
-    ApplicationEmailConfiguration:
-      type: object
-      properties:
-        emailUpdateEmailTemplateId:
-          type: string
-          format: uuid
-        emailVerificationEmailTemplateId:
-          type: string
-          format: uuid
-        emailVerifiedEmailTemplateId:
-          type: string
-          format: uuid
-        forgotPasswordEmailTemplateId:
-          type: string
-          format: uuid
-        loginIdInUseOnCreateEmailTemplateId:
-          type: string
-          format: uuid
-        loginIdInUseOnUpdateEmailTemplateId:
-          type: string
-          format: uuid
-        loginNewDeviceEmailTemplateId:
-          type: string
-          format: uuid
-        loginSuspiciousEmailTemplateId:
-          type: string
-          format: uuid
-        passwordResetSuccessEmailTemplateId:
-          type: string
-          format: uuid
-        passwordUpdateEmailTemplateId:
-          type: string
-          format: uuid
-        passwordlessEmailTemplateId:
-          type: string
-          format: uuid
-        setPasswordEmailTemplateId:
-          type: string
-          format: uuid
-        twoFactorMethodAddEmailTemplateId:
-          type: string
-          format: uuid
-        twoFactorMethodRemoveEmailTemplateId:
-          type: string
-          format: uuid
-    RefreshTokenOneTimeUseConfiguration:
-      description: Refresh token one-time use configuration. This configuration is utilized when the usage policy is  configured for one-time use.
-      type: object
-      properties:
-        gracePeriodInSeconds:
-          type: integer
-    XMLSignatureLocation:
-      type: string
-      enum:
-      - Assertion
-      - Response
-    ApplicationOAuthScopeRequest:
-      description: The Application Scope API request object.
-      type: object
-      properties:
-        scope:
-          $ref: '#/components/schemas/ApplicationOAuthScope'
-    SAMLv2AssertionEncryptionConfiguration:
-      type: object
-      properties:
-        digestAlgorithm:
-          type: string
-        encryptionAlgorithm:
-          type: string
-        keyLocation:
-          type: string
-        keyTransportAlgorithm:
-          type: string
-        keyTransportEncryptionKeyId:
-          type: string
-          format: uuid
-        maskGenerationFunction:
-          type: string
-        enabled:
-          type: boolean
-    ApplicationRegistrationDeletePolicy:
-      description: A Application-level policy for deleting Users.
-      type: object
-      properties:
-        unverified:
-          $ref: '#/components/schemas/TimeBasedDeletePolicy'
-    ApplicationSearchResponse:
-      description: Application search response
-      type: object
-      properties:
-        applications:
-          type: array
-          items:
-            $ref: '#/components/schemas/Application'
-        total:
-          type: integer
-          format: int64
-        expandable:
-          type: array
-          items:
-            type: string
-    ApplicationWebAuthnWorkflowConfiguration:
-      description: ''
-      type: object
-      properties:
-        enabled:
-          type: boolean
-    LogoutBehavior:
-      description: ''
-      type: string
-      enum:
-      - RedirectOnly
-      - AllApplications
-    JWTConfiguration:
-      description: JWT Configuration. A JWT Configuration for an Application may not be active if it is using the global configuration, the configuration  may be <code>enabled = false<code>.
-      type: object
-      properties:
-        accessTokenKeyId:
-          type: string
-          format: uuid
-        idTokenKeyId:
-          type: string
-          format: uuid
-        refreshTokenExpirationPolicy:
-          $ref: '#/components/schemas/RefreshTokenExpirationPolicy'
-        refreshTokenOneTimeUseConfiguration:
-          $ref: '#/components/schemas/RefreshTokenOneTimeUseConfiguration'
-        refreshTokenRevocationPolicy:
-          $ref: '#/components/schemas/RefreshTokenRevocationPolicy'
-        refreshTokenSlidingWindowConfiguration:
-          $ref: '#/components/schemas/RefreshTokenSlidingWindowConfiguration'
-        refreshTokenTimeToLiveInMinutes:
-          type: integer
-        refreshTokenUsagePolicy:
-          $ref: '#/components/schemas/RefreshTokenUsagePolicy'
-        timeToLiveInSeconds:
-          type: integer
-        enabled:
-          type: boolean
-    RefreshTokenUsagePolicy:
-      description: ''
-      type: string
-      enum:
-      - Reusable
-      - OneTimeUse
-    LoginIdType:
-      description: This is separate from IdentityType.
-      type: string
-      enum:
-      - email
-      - phoneNumber
-      - username
-    ApplicationRequest:
-      description: The Application API request object.
-      type: object
-      properties:
-        application:
-          $ref: '#/components/schemas/Application'
-        role:
-          $ref: '#/components/schemas/ApplicationRole'
-        sourceApplicationId:
-          type: string
-          format: uuid
-        eventInfo:
-          $ref: '#/components/schemas/EventInfo'
-    ApplicationSearchRequest:
-      description: Search request for Applications
-      type: object
-      properties:
-        search:
-          $ref: '#/components/schemas/ApplicationSearchCriteria'
-        expand:
-          type: array
-          items:
-            type: string
-    ApplicationWebAuthnConfiguration:
-      description: Application-level configuration for WebAuthn
-      type: object
-      properties:
-        bootstrapWorkflow:
-          $ref: '#/components/schemas/ApplicationWebAuthnWorkflowConfiguration'
-        reauthenticationWorkflow:
-          $ref: '#/components/schemas/ApplicationWebAuthnWorkflowConfiguration'
-        enabled:
-          type: boolean
-    ApplicationResponse:
-      description: The Application API response.
-      type: object
-      properties:
-        application:
-          $ref: '#/components/schemas/Application'
-        applications:
-          type: array
-          items:
-            $ref: '#/components/schemas/Application'
-        role:
-          $ref: '#/components/schemas/ApplicationRole'
-    UnverifiedBehavior:
-      description: ''
-      type: string
-      enum:
-      - Allow
-      - Gated
-    RegistrationType:
-      type: string
-      enum:
-      - basic
-      - advanced
-    ApplicationAccessControlConfiguration:
-      description: ''
-      type: object
-      properties:
-        uiIPAccessControlListId:
-          type: string
-          format: uuid
-    SAMLLogoutBehavior:
-      type: string
-      enum:
-      - AllParticipants
-      - OnlyOriginator
-    Errors:
-      description: Standard error domain object that can also be used as the response from an API call.
-      type: object
-      properties:
-        fieldErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-        generalErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-    UniversalApplicationConfiguration:
-      description: ''
-      type: object
-      properties:
-        universal:
-          type: boolean
-    PasswordlessConfiguration:
-      type: object
-      properties:
-        emailLoginStrategy:
-          $ref: '#/components/schemas/PasswordlessStrategy'
-        phoneLoginStrategy:
-          $ref: '#/components/schemas/PasswordlessStrategy'
-        enabled:
-          type: boolean
-    ProofKeyForCodeExchangePolicy:
+    ClientAuthenticationPolicy:
       description: ''
       type: string
       enum:
       - Required
       - NotRequired
-      - NotRequiredWhenUsingClientAuthentication
-    ApplicationOAuthScopeResponse:
-      description: The Application Scope API response.
-      type: object
-      properties:
-        scope:
-          $ref: '#/components/schemas/ApplicationOAuthScope'
-    OAuth2Configuration:
-      description: ''
-      type: object
-      properties:
-        authorizedOriginURLs:
-          type: array
-          items:
-            type: string
-            format: URI
-        authorizedRedirectURLs:
-          type: array
-          items:
-            type: string
-            format: URI
-        authorizedURLValidationPolicy:
-          $ref: '#/components/schemas/Oauth2AuthorizedURLValidationPolicy'
-        clientAuthenticationPolicy:
-          $ref: '#/components/schemas/ClientAuthenticationPolicy'
-        clientId:
-          type: string
-        clientSecret:
-          type: string
-        consentMode:
-          $ref: '#/components/schemas/OAuthScopeConsentMode'
-        debug:
-          type: boolean
-        deviceVerificationURL:
-          type: string
-          format: URI
-        enabledGrants:
-          type: array
-          uniqueItems: true
-          items: {}
-        generateRefreshTokens:
-          type: boolean
-        logoutBehavior:
-          $ref: '#/components/schemas/LogoutBehavior'
-        logoutURL:
-          type: string
-          format: URI
-        proofKeyForCodeExchangePolicy:
-          $ref: '#/components/schemas/ProofKeyForCodeExchangePolicy'
-        providedScopePolicy:
-          $ref: '#/components/schemas/ProvidedScopePolicy'
-        relationship:
-          $ref: '#/components/schemas/OAuthApplicationRelationship'
-        requireClientAuthentication:
-          type: boolean
-        requireRegistration:
-          type: boolean
-        scopeHandlingPolicy:
-          $ref: '#/components/schemas/OAuthScopeHandlingPolicy'
-        unknownScopePolicy:
-          $ref: '#/components/schemas/UnknownScopePolicy'
-    AuthenticationTokenConfiguration:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-    ApplicationExternalIdentifierConfiguration:
-      description: ''
-      type: object
-      properties:
-        twoFactorTrustIdTimeToLiveInSeconds:
-          type: integer
-    VerificationStrategy:
-      description: ''
+      - NotRequiredWhenUsingPKCE
+    OAuthApplicationRelationship:
+      description: The application's relationship to the authorization server. First-party applications will be granted implicit permission for requested scopes.  Third-party applications will use the {@link OAuthScopeConsentMode} policy.
       type: string
       enum:
-      - ClickableLink
-      - FormField
-    MultiFactorSMSTemplate:
-      type: object
-      properties:
-        templateId:
-          type: string
-          format: uuid
-    OAuthConfigurationResponse:
-      description: ''
-      type: object
-      properties:
-        httpSessionMaxInactiveInterval:
-          type: integer
-        logoutURL:
-          type: string
-          format: URI
-        oauthConfiguration:
-          $ref: '#/components/schemas/OAuth2Configuration'
-    RefreshTokenSlidingWindowConfiguration:
-      description: ''
-      type: object
-      properties:
-        maximumTimeToLiveInMinutes:
-          type: integer
-    ApplicationMultiFactorTrustPolicy:
-      description: ''
-      type: string
-      enum:
-      - Any
-      - This
-      - None
-    CanonicalizationMethod:
-      description: XML canonicalization method enumeration. This is used for the IdP and SP side of FusionAuth SAML.
-      type: string
-      enum:
-      - exclusive
-      - exclusive_with_comments
-      - inclusive
-      - inclusive_with_comments
+      - FirstParty
+      - ThirdParty
     SAMLv2Logout:
       type: object
       properties:
@@ -1287,48 +819,132 @@ components:
           $ref: '#/components/schemas/SAMLv2SingleLogout'
         xmlSignatureC14nMethod:
           $ref: '#/components/schemas/CanonicalizationMethod'
-    OAuthScopeConsentMode:
-      description: Controls the policy for requesting user permission to grant access to requested scopes during an OAuth workflow  for a third-party application.
-      type: string
-      enum:
-      - AlwaysPrompt
-      - RememberDecision
-      - NeverPrompt
-    ClientAuthenticationPolicy:
-      description: ''
-      type: string
-      enum:
-      - Required
-      - NotRequired
-      - NotRequiredWhenUsingPKCE
-    EventInfo:
-      description: Information about a user event (login, register, etc) that helps identify the source of the event (location, device type, OS, etc).
+    ApplicationResponse:
+      description: The Application API response.
       type: object
       properties:
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        deviceDescription:
-          type: string
-        deviceName:
-          type: string
-        deviceType:
-          type: string
-        ipAddress:
-          type: string
-        location:
-          $ref: '#/components/schemas/Location'
-        os:
-          type: string
-        userAgent:
-          type: string
+        application:
+          $ref: '#/components/schemas/Application'
+        applications:
+          type: array
+          items:
+            $ref: '#/components/schemas/Application'
+        role:
+          $ref: '#/components/schemas/ApplicationRole'
     Oauth2AuthorizedURLValidationPolicy:
       description: ''
       type: string
       enum:
       - AllowWildcards
       - ExactMatch
+    PasswordlessStrategy:
+      description: ''
+      type: string
+      enum:
+      - ClickableLink
+      - FormField
+    LoginIdType:
+      description: This is separate from IdentityType.
+      type: string
+      enum:
+      - email
+      - phoneNumber
+      - username
+    SelfServiceFormConfiguration:
+      description: ''
+      type: object
+      properties:
+        requireCurrentPasswordOnPasswordChange:
+          type: boolean
+    ProvidedScopePolicy:
+      description: The handling policy for scopes provided by FusionAuth
+      type: object
+      properties:
+        address:
+          $ref: '#/components/schemas/Requirable'
+        email:
+          $ref: '#/components/schemas/Requirable'
+        phone:
+          $ref: '#/components/schemas/Requirable'
+        profile:
+          $ref: '#/components/schemas/Requirable'
+    MultiFactorEmailTemplate:
+      type: object
+      properties:
+        templateId:
+          type: string
+          format: uuid
+    LogoutBehavior:
+      description: ''
+      type: string
+      enum:
+      - RedirectOnly
+      - AllApplications
+    ApplicationWebAuthnConfiguration:
+      description: Application-level configuration for WebAuthn
+      type: object
+      properties:
+        bootstrapWorkflow:
+          $ref: '#/components/schemas/ApplicationWebAuthnWorkflowConfiguration'
+        reauthenticationWorkflow:
+          $ref: '#/components/schemas/ApplicationWebAuthnWorkflowConfiguration'
+        enabled:
+          type: boolean
+    ApplicationMultiFactorTrustPolicy:
+      description: ''
+      type: string
+      enum:
+      - Any
+      - This
+      - None
+    ApplicationExternalIdentifierConfiguration:
+      description: ''
+      type: object
+      properties:
+        twoFactorTrustIdTimeToLiveInSeconds:
+          type: integer
+    MultiFactorLoginPolicy:
+      description: ''
+      type: string
+      enum:
+      - Disabled
+      - Enabled
+      - Required
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    PasswordlessConfiguration:
+      type: object
+      properties:
+        emailLoginStrategy:
+          $ref: '#/components/schemas/PasswordlessStrategy'
+        phoneLoginStrategy:
+          $ref: '#/components/schemas/PasswordlessStrategy'
+        enabled:
+          type: boolean
+    SAMLv2IdPInitiatedLoginConfiguration:
+      description: IdP Initiated login configuration
+      type: object
+      properties:
+        nameIdFormat:
+          type: string
+        enabled:
+          type: boolean
+    MultiFactorVoiceTemplate:
+      type: object
+      properties:
+        templateId:
+          type: string
+          format: uuid
     ObjectState:
       description: ''
       type: string
@@ -1336,6 +952,21 @@ components:
       - Active
       - Inactive
       - PendingDelete
+    ApplicationSearchResponse:
+      description: Application search response
+      type: object
+      properties:
+        applications:
+          type: array
+          items:
+            $ref: '#/components/schemas/Application'
+        total:
+          type: integer
+          format: int64
+        expandable:
+          type: array
+          items:
+            type: string
     Application:
       description: ''
       type: object
@@ -1416,20 +1047,85 @@ components:
           type: boolean
         webAuthnConfiguration:
           $ref: '#/components/schemas/ApplicationWebAuthnConfiguration'
-    Requirable:
-      description: Something that can be required and thus also optional. This currently extends Enableable because anything that is  requiredoptional is almost always enableable as well.
-      type: object
-      properties:
-        required:
-          type: boolean
-        enabled:
-          type: boolean
-    RegistrationUnverifiedOptions:
+    RefreshTokenUsagePolicy:
+      description: ''
+      type: string
+      enum:
+      - Reusable
+      - OneTimeUse
+    UniversalApplicationConfiguration:
       description: ''
       type: object
       properties:
-        behavior:
-          $ref: '#/components/schemas/UnverifiedBehavior'
+        universal:
+          type: boolean
+    OAuth2Configuration:
+      description: ''
+      type: object
+      properties:
+        authorizedOriginURLs:
+          type: array
+          items:
+            type: string
+            format: URI
+        authorizedRedirectURLs:
+          type: array
+          items:
+            type: string
+            format: URI
+        authorizedURLValidationPolicy:
+          $ref: '#/components/schemas/Oauth2AuthorizedURLValidationPolicy'
+        clientAuthenticationPolicy:
+          $ref: '#/components/schemas/ClientAuthenticationPolicy'
+        clientId:
+          type: string
+        clientSecret:
+          type: string
+        consentMode:
+          $ref: '#/components/schemas/OAuthScopeConsentMode'
+        debug:
+          type: boolean
+        deviceVerificationURL:
+          type: string
+          format: URI
+        enabledGrants:
+          type: array
+          uniqueItems: true
+          items: {}
+        generateRefreshTokens:
+          type: boolean
+        logoutBehavior:
+          $ref: '#/components/schemas/LogoutBehavior'
+        logoutURL:
+          type: string
+          format: URI
+        proofKeyForCodeExchangePolicy:
+          $ref: '#/components/schemas/ProofKeyForCodeExchangePolicy'
+        providedScopePolicy:
+          $ref: '#/components/schemas/ProvidedScopePolicy'
+        relationship:
+          $ref: '#/components/schemas/OAuthApplicationRelationship'
+        requireClientAuthentication:
+          type: boolean
+        requireRegistration:
+          type: boolean
+        scopeHandlingPolicy:
+          $ref: '#/components/schemas/OAuthScopeHandlingPolicy'
+        unknownScopePolicy:
+          $ref: '#/components/schemas/UnknownScopePolicy'
+    RefreshTokenSlidingWindowConfiguration:
+      description: ''
+      type: object
+      properties:
+        maximumTimeToLiveInMinutes:
+          type: integer
+    ProofKeyForCodeExchangePolicy:
+      description: ''
+      type: string
+      enum:
+      - Required
+      - NotRequired
+      - NotRequiredWhenUsingClientAuthentication
     Location:
       description: Location information. Useful for IP addresses and other displayable data objects.
       type: object
@@ -1450,6 +1146,38 @@ components:
           type: string
         displayString:
           type: string
+    ApplicationSearchRequest:
+      description: Search request for Applications
+      type: object
+      properties:
+        search:
+          $ref: '#/components/schemas/ApplicationSearchCriteria'
+        expand:
+          type: array
+          items:
+            type: string
+    TimeBasedDeletePolicy:
+      description: A policy for deleting Users based upon some external criteria.
+      type: object
+      properties:
+        enabledInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        numberOfDaysToRetain:
+          type: integer
+        enabled:
+          type: boolean
+    Error:
+      description: Defines an error.
+      type: object
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        message:
+          type: string
     LoginHintConfiguration:
       description: ''
       type: object
@@ -1458,132 +1186,61 @@ components:
           type: string
         enabled:
           type: boolean
-    CleanSpeakConfiguration:
-      description: CleanSpeak configuration at the system and application level.
+    SAMLv2Configuration:
       type: object
       properties:
-        apiKey:
+        assertionEncryptionConfiguration:
+          $ref: '#/components/schemas/SAMLv2AssertionEncryptionConfiguration'
+        audience:
           type: string
-        applicationIds:
+        authorizedRedirectURLs:
           type: array
           items:
             type: string
-            format: uuid
-        url:
+            format: URI
+        debug:
+          type: boolean
+        defaultVerificationKeyId:
+          type: string
+          format: uuid
+        initiatedLogin:
+          $ref: '#/components/schemas/SAMLv2IdPInitiatedLoginConfiguration'
+        issuer:
+          type: string
+        keyId:
+          type: string
+          format: uuid
+        loginHintConfiguration:
+          $ref: '#/components/schemas/LoginHintConfiguration'
+        logout:
+          $ref: '#/components/schemas/SAMLv2Logout'
+        logoutURL:
           type: string
           format: URI
-        usernameModeration:
-          $ref: '#/components/schemas/UsernameModeration'
+        requireSignedRequests:
+          type: boolean
+        xmlSignatureC14nMethod:
+          $ref: '#/components/schemas/CanonicalizationMethod'
+        xmlSignatureLocation:
+          $ref: '#/components/schemas/XMLSignatureLocation'
+        callbackURL:
+          type: string
+          format: URI
         enabled:
           type: boolean
-    RegistrationConfiguration:
-      type: object
-      properties:
-        birthDate:
-          $ref: '#/components/schemas/Requirable'
-        completeRegistration:
-          type: boolean
-        confirmPassword:
-          type: boolean
-        firstName:
-          $ref: '#/components/schemas/Requirable'
-        formId:
-          type: string
-          format: uuid
-        fullName:
-          $ref: '#/components/schemas/Requirable'
-        lastName:
-          $ref: '#/components/schemas/Requirable'
-        loginIdType:
-          $ref: '#/components/schemas/LoginIdType'
-        middleName:
-          $ref: '#/components/schemas/Requirable'
-        mobilePhone:
-          $ref: '#/components/schemas/Requirable'
-        preferredLanguages:
-          $ref: '#/components/schemas/Requirable'
-        type:
-          $ref: '#/components/schemas/RegistrationType'
-        enabled:
-          type: boolean
-    ApplicationSearchCriteria:
-      description: Search criteria for Applications
-      type: object
-      properties:
-        name:
-          type: string
-        state:
-          $ref: '#/components/schemas/ObjectState'
-        tenantId:
-          type: string
-          format: uuid
-        universal:
-          type: boolean
-        numberOfResults:
-          type: integer
-        orderBy:
-          type: string
-        startRow:
-          type: integer
-    UnknownScopePolicy:
-      description: Policy for handling unknown OAuth scopes in the request
+    OAuthScopeConsentMode:
+      description: Controls the policy for requesting user permission to grant access to requested scopes during an OAuth workflow  for a third-party application.
       type: string
       enum:
-      - Allow
-      - Remove
-      - Reject
-    RefreshTokenExpirationPolicy:
-      description: ''
-      type: string
-      enum:
-      - Fixed
-      - SlidingWindow
-      - SlidingWindowWithMaximumLifetime
-    ApplicationRole:
-      description: A role given to a user for a specific application.
-      type: object
-      properties:
-        description:
-          type: string
-        id:
-          type: string
-          format: uuid
-        insertInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        isDefault:
-          type: boolean
-        isSuperRole:
-          type: boolean
-        lastUpdateInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        name:
-          type: string
-    ApplicationMultiFactorConfiguration:
+      - AlwaysPrompt
+      - RememberDecision
+      - NeverPrompt
+    ApplicationWebAuthnWorkflowConfiguration:
       description: ''
       type: object
       properties:
-        email:
-          $ref: '#/components/schemas/MultiFactorEmailTemplate'
-        loginPolicy:
-          $ref: '#/components/schemas/MultiFactorLoginPolicy'
-        sms:
-          $ref: '#/components/schemas/MultiFactorSMSTemplate'
-        trustPolicy:
-          $ref: '#/components/schemas/ApplicationMultiFactorTrustPolicy'
-        voice:
-          $ref: '#/components/schemas/MultiFactorVoiceTemplate'
-    MultiFactorEmailTemplate:
-      type: object
-      properties:
-        templateId:
-          type: string
-          format: uuid
-    MultiFactorVoiceTemplate:
-      type: object
-      properties:
-        templateId:
-          type: string
-          format: uuid
+        enabled:
+          type: boolean
     ApplicationPhoneConfiguration:
       description: Hold application phone configuration for template overrides.
       type: object
@@ -1630,84 +1287,207 @@ components:
         verificationTemplateId:
           type: string
           format: uuid
-    MultiFactorLoginPolicy:
-      description: ''
-      type: string
-      enum:
-      - Disabled
-      - Enabled
-      - Required
-    ProvidedScopePolicy:
-      description: The handling policy for scopes provided by FusionAuth
+    AuthenticationTokenConfiguration:
       type: object
       properties:
-        address:
-          $ref: '#/components/schemas/Requirable'
-        email:
-          $ref: '#/components/schemas/Requirable'
-        phone:
-          $ref: '#/components/schemas/Requirable'
-        profile:
-          $ref: '#/components/schemas/Requirable'
-    ApplicationFormConfiguration:
-      description: ''
-      type: object
-      properties:
-        adminRegistrationFormId:
-          type: string
-          format: uuid
-        selfServiceFormConfiguration:
-          $ref: '#/components/schemas/SelfServiceFormConfiguration'
-        selfServiceFormId:
-          type: string
-          format: uuid
-    TimeBasedDeletePolicy:
-      description: A policy for deleting Users based upon some external criteria.
-      type: object
-      properties:
-        enabledInstant:
-          $ref: '#/components/schemas/ZonedDateTime'
-        numberOfDaysToRetain:
-          type: integer
         enabled:
           type: boolean
-    OAuthApplicationRelationship:
-      description: The application's relationship to the authorization server. First-party applications will be granted implicit permission for requested scopes.  Third-party applications will use the {@link OAuthScopeConsentMode} policy.
+    CleanSpeakConfiguration:
+      description: CleanSpeak configuration at the system and application level.
+      type: object
+      properties:
+        apiKey:
+          type: string
+        applicationIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+        url:
+          type: string
+          format: URI
+        usernameModeration:
+          $ref: '#/components/schemas/UsernameModeration'
+        enabled:
+          type: boolean
+    UnverifiedBehavior:
+      description: ''
       type: string
       enum:
-      - FirstParty
-      - ThirdParty
+      - Allow
+      - Gated
+    ApplicationRequest:
+      description: The Application API request object.
+      type: object
+      properties:
+        application:
+          $ref: '#/components/schemas/Application'
+        role:
+          $ref: '#/components/schemas/ApplicationRole'
+        sourceApplicationId:
+          type: string
+          format: uuid
+        eventInfo:
+          $ref: '#/components/schemas/EventInfo'
+    SAMLv2SingleLogout:
+      type: object
+      properties:
+        keyId:
+          type: string
+          format: uuid
+        url:
+          type: string
+          format: URI
+        xmlSignatureC14nMethod:
+          $ref: '#/components/schemas/CanonicalizationMethod'
+        enabled:
+          type: boolean
+    EventInfo:
+      description: Information about a user event (login, register, etc) that helps identify the source of the event (location, device type, OS, etc).
+      type: object
+      properties:
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        deviceDescription:
+          type: string
+        deviceName:
+          type: string
+        deviceType:
+          type: string
+        ipAddress:
+          type: string
+        location:
+          $ref: '#/components/schemas/Location'
+        os:
+          type: string
+        userAgent:
+          type: string
+    UsernameModeration:
+      type: object
+      properties:
+        applicationId:
+          type: string
+          format: uuid
+        enabled:
+          type: boolean
+    OAuthConfigurationResponse:
+      description: ''
+      type: object
+      properties:
+        httpSessionMaxInactiveInterval:
+          type: integer
+        logoutURL:
+          type: string
+          format: URI
+        oauthConfiguration:
+          $ref: '#/components/schemas/OAuth2Configuration'
+    VerificationStrategy:
+      description: ''
+      type: string
+      enum:
+      - ClickableLink
+      - FormField
+    RefreshTokenRevocationPolicy:
+      description: ''
+      type: object
+      properties:
+        onLoginPrevented:
+          type: boolean
+        onMultiFactorEnable:
+          type: boolean
+        onOneTimeTokenReuse:
+          type: boolean
+        onPasswordChanged:
+          type: boolean
+    RefreshTokenOneTimeUseConfiguration:
+      description: Refresh token one-time use configuration. This configuration is utilized when the usage policy is  configured for one-time use.
+      type: object
+      properties:
+        gracePeriodInSeconds:
+          type: integer
     ZonedDateTime:
       description: 'The number of milliseconds since the unix epoch: January 1, 1970 00:00:00 UTC. This value is always in UTC.'
       example: '1659380719000'
       type: integer
       format: int64
-    SAMLv2IdPInitiatedLoginConfiguration:
-      description: IdP Initiated login configuration
+    RefreshTokenExpirationPolicy:
+      description: ''
+      type: string
+      enum:
+      - Fixed
+      - SlidingWindow
+      - SlidingWindowWithMaximumLifetime
+    LoginConfiguration:
       type: object
       properties:
-        nameIdFormat:
-          type: string
-        enabled:
+        allowTokenRefresh:
           type: boolean
-    Error:
-      description: Defines an error.
+        generateRefreshTokens:
+          type: boolean
+        requireAuthentication:
+          type: boolean
+    ApplicationAccessControlConfiguration:
+      description: ''
       type: object
       properties:
-        code:
+        uiIPAccessControlListId:
           type: string
+          format: uuid
+    ApplicationOAuthScope:
+      description: A custom OAuth scope for a specific application.
+      type: object
+      properties:
+        applicationId:
+          type: string
+          format: uuid
         data:
           type: object
           additionalProperties:
             type: object
-        message:
+        defaultConsentDetail:
           type: string
-    OAuthScopeHandlingPolicy:
-      description: Controls the policy for whether OAuth workflows will more strictly adhere to the OAuth and OIDC specification  or run in backwards compatibility mode.
-      type: string
-      enum:
-      - Compatibility
-      - Strict
+        defaultConsentMessage:
+          type: string
+        description:
+          type: string
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        name:
+          type: string
+        required:
+          type: boolean
+    ApplicationOAuthScopeRequest:
+      description: The Application Scope API request object.
+      type: object
+      properties:
+        scope:
+          $ref: '#/components/schemas/ApplicationOAuthScope'
+    ApplicationSearchCriteria:
+      description: Search criteria for Applications
+      type: object
+      properties:
+        name:
+          type: string
+        state:
+          $ref: '#/components/schemas/ObjectState'
+        tenantId:
+          type: string
+          format: uuid
+        universal:
+          type: boolean
+        numberOfResults:
+          type: integer
+        orderBy:
+          type: string
+        startRow:
+          type: integer
     LambdaConfiguration:
       type: object
       properties:
@@ -1729,18 +1509,238 @@ components:
         userinfoPopulateId:
           type: string
           format: uuid
-    RefreshTokenRevocationPolicy:
+    ApplicationRegistrationDeletePolicy:
+      description: A Application-level policy for deleting Users.
+      type: object
+      properties:
+        unverified:
+          $ref: '#/components/schemas/TimeBasedDeletePolicy'
+    ApplicationOAuthScopeResponse:
+      description: The Application Scope API response.
+      type: object
+      properties:
+        scope:
+          $ref: '#/components/schemas/ApplicationOAuthScope'
+    OAuthScopeHandlingPolicy:
+      description: Controls the policy for whether OAuth workflows will more strictly adhere to the OAuth and OIDC specification  or run in backwards compatibility mode.
+      type: string
+      enum:
+      - Compatibility
+      - Strict
+    CanonicalizationMethod:
+      description: XML canonicalization method enumeration. This is used for the IdP and SP side of FusionAuth SAML.
+      type: string
+      enum:
+      - exclusive
+      - exclusive_with_comments
+      - inclusive
+      - inclusive_with_comments
+    MultiFactorSMSTemplate:
+      type: object
+      properties:
+        templateId:
+          type: string
+          format: uuid
+    RegistrationConfiguration:
+      type: object
+      properties:
+        birthDate:
+          $ref: '#/components/schemas/Requirable'
+        completeRegistration:
+          type: boolean
+        confirmPassword:
+          type: boolean
+        firstName:
+          $ref: '#/components/schemas/Requirable'
+        formId:
+          type: string
+          format: uuid
+        fullName:
+          $ref: '#/components/schemas/Requirable'
+        lastName:
+          $ref: '#/components/schemas/Requirable'
+        loginIdType:
+          $ref: '#/components/schemas/LoginIdType'
+        middleName:
+          $ref: '#/components/schemas/Requirable'
+        mobilePhone:
+          $ref: '#/components/schemas/Requirable'
+        preferredLanguages:
+          $ref: '#/components/schemas/Requirable'
+        type:
+          $ref: '#/components/schemas/RegistrationType'
+        enabled:
+          type: boolean
+    RegistrationType:
+      type: string
+      enum:
+      - basic
+      - advanced
+    ApplicationRole:
+      description: A role given to a user for a specific application.
+      type: object
+      properties:
+        description:
+          type: string
+        id:
+          type: string
+          format: uuid
+        insertInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        isDefault:
+          type: boolean
+        isSuperRole:
+          type: boolean
+        lastUpdateInstant:
+          $ref: '#/components/schemas/ZonedDateTime'
+        name:
+          type: string
+    Requirable:
+      description: Something that can be required and thus also optional. This currently extends Enableable because anything that is  requiredoptional is almost always enableable as well.
+      type: object
+      properties:
+        required:
+          type: boolean
+        enabled:
+          type: boolean
+    JWTConfiguration:
+      description: JWT Configuration. A JWT Configuration for an Application may not be active if it is using the global configuration, the configuration  may be <code>enabled = false<code>.
+      type: object
+      properties:
+        accessTokenKeyId:
+          type: string
+          format: uuid
+        idTokenKeyId:
+          type: string
+          format: uuid
+        refreshTokenExpirationPolicy:
+          $ref: '#/components/schemas/RefreshTokenExpirationPolicy'
+        refreshTokenOneTimeUseConfiguration:
+          $ref: '#/components/schemas/RefreshTokenOneTimeUseConfiguration'
+        refreshTokenRevocationPolicy:
+          $ref: '#/components/schemas/RefreshTokenRevocationPolicy'
+        refreshTokenSlidingWindowConfiguration:
+          $ref: '#/components/schemas/RefreshTokenSlidingWindowConfiguration'
+        refreshTokenTimeToLiveInMinutes:
+          type: integer
+        refreshTokenUsagePolicy:
+          $ref: '#/components/schemas/RefreshTokenUsagePolicy'
+        timeToLiveInSeconds:
+          type: integer
+        enabled:
+          type: boolean
+    ApplicationMultiFactorConfiguration:
       description: ''
       type: object
       properties:
-        onLoginPrevented:
+        email:
+          $ref: '#/components/schemas/MultiFactorEmailTemplate'
+        loginPolicy:
+          $ref: '#/components/schemas/MultiFactorLoginPolicy'
+        sms:
+          $ref: '#/components/schemas/MultiFactorSMSTemplate'
+        trustPolicy:
+          $ref: '#/components/schemas/ApplicationMultiFactorTrustPolicy'
+        voice:
+          $ref: '#/components/schemas/MultiFactorVoiceTemplate'
+    ApplicationFormConfiguration:
+      description: ''
+      type: object
+      properties:
+        adminRegistrationFormId:
+          type: string
+          format: uuid
+        selfServiceFormConfiguration:
+          $ref: '#/components/schemas/SelfServiceFormConfiguration'
+        selfServiceFormId:
+          type: string
+          format: uuid
+    UnknownScopePolicy:
+      description: Policy for handling unknown OAuth scopes in the request
+      type: string
+      enum:
+      - Allow
+      - Remove
+      - Reject
+    SAMLv2AssertionEncryptionConfiguration:
+      type: object
+      properties:
+        digestAlgorithm:
+          type: string
+        encryptionAlgorithm:
+          type: string
+        keyLocation:
+          type: string
+        keyTransportAlgorithm:
+          type: string
+        keyTransportEncryptionKeyId:
+          type: string
+          format: uuid
+        maskGenerationFunction:
+          type: string
+        enabled:
           type: boolean
-        onMultiFactorEnable:
-          type: boolean
-        onOneTimeTokenReuse:
-          type: boolean
-        onPasswordChanged:
-          type: boolean
+    RegistrationUnverifiedOptions:
+      description: ''
+      type: object
+      properties:
+        behavior:
+          $ref: '#/components/schemas/UnverifiedBehavior'
+    XMLSignatureLocation:
+      type: string
+      enum:
+      - Assertion
+      - Response
+    ApplicationEmailConfiguration:
+      type: object
+      properties:
+        emailUpdateEmailTemplateId:
+          type: string
+          format: uuid
+        emailVerificationEmailTemplateId:
+          type: string
+          format: uuid
+        emailVerifiedEmailTemplateId:
+          type: string
+          format: uuid
+        forgotPasswordEmailTemplateId:
+          type: string
+          format: uuid
+        loginIdInUseOnCreateEmailTemplateId:
+          type: string
+          format: uuid
+        loginIdInUseOnUpdateEmailTemplateId:
+          type: string
+          format: uuid
+        loginNewDeviceEmailTemplateId:
+          type: string
+          format: uuid
+        loginSuspiciousEmailTemplateId:
+          type: string
+          format: uuid
+        passwordResetSuccessEmailTemplateId:
+          type: string
+          format: uuid
+        passwordUpdateEmailTemplateId:
+          type: string
+          format: uuid
+        passwordlessEmailTemplateId:
+          type: string
+          format: uuid
+        setPasswordEmailTemplateId:
+          type: string
+          format: uuid
+        twoFactorMethodAddEmailTemplateId:
+          type: string
+          format: uuid
+        twoFactorMethodRemoveEmailTemplateId:
+          type: string
+          format: uuid
+    SAMLLogoutBehavior:
+      type: string
+      enum:
+      - AllParticipants
+      - OnlyOriginator
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

@@ -56,14 +56,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ReactorRequest:
-      description: Request for managing FusionAuth Reactor and licenses.
-      type: object
-      properties:
-        license:
-          type: string
-        licenseId:
-          type: string
     BreachedPasswordTenantMetric:
       description: ''
       type: object
@@ -80,26 +72,14 @@ components:
           type: integer
         passwordsCheckedCount:
           type: integer
-    ReactorMetrics:
-      description: ''
+    ReactorRequest:
+      description: Request for managing FusionAuth Reactor and licenses.
       type: object
       properties:
-        breachedPasswordMetrics:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/BreachedPasswordTenantMetric'
-    Errors:
-      description: Standard error domain object that can also be used as the response from an API call.
-      type: object
-      properties:
-        fieldErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
-        generalErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Error'
+        license:
+          type: string
+        licenseId:
+          type: string
     Error:
       description: Defines an error.
       type: object
@@ -118,6 +98,26 @@ components:
       properties:
         metrics:
           $ref: '#/components/schemas/ReactorMetrics'
+    Errors:
+      description: Standard error domain object that can also be used as the response from an API call.
+      type: object
+      properties:
+        fieldErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        generalErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+    ReactorMetrics:
+      description: ''
+      type: object
+      properties:
+        breachedPasswordMetrics:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/BreachedPasswordTenantMetric'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
